@@ -1,6 +1,7 @@
 /**
  * @author geekflyer
  */
+//Ext.define('indexbar', Ext.dataview.IndexBar);
 
 Ext.define('NeqMobile.view.patient.List', {
     extend:'Ext.Container',
@@ -13,27 +14,17 @@ Ext.define('NeqMobile.view.patient.List', {
 
         items:[
 
+
+            //new Ext.dataview.List({{
             {
+                xtype: 'list',
+              //  dock: 'right',
+              //  grouped     : true,
+            //   indexBar    : true,
                 flex:1,
-                xtype:'list',
-                // store : {
-                // fields : ['name'],
-                // data : [
-                // {
-                // id: 1, name : 'Cowper'
-                // }
-                //
-                // //, {
-                // id: 2, name : 'Everett'
-                // }, {
-                // id: 3, name : 'University'
-                // }, {
-                // id: 4, name : 'Forest'
-                // }
-                // ]
-                // },
                 store:'Patients',
-                itemTpl:'{name}'
+                itemTpl:'<strong>{lastName}</strong>'
+
             },
             {
 
@@ -102,10 +93,10 @@ Ext.define('NeqMobile.view.patient.List', {
 //                }
 //            }
         ]
-    },
+    }
 
-    initialize:function () {
+   /* initialize:function () {
         console.log('initialize Patients List View');
         this.callParent();
-    }
+    }*/
 });

@@ -2,5 +2,8 @@ Ext.define('NeqMobile.store.Patients', {
     extend: 'Ext.data.Store',
     requires: 'NeqMobile.model.Patient',
     model: 'NeqMobile.model.Patient',
-    autoLoad: true
-});
+    sorters: 'lastName',
+    autoLoad: true,
+    getGroupString: function(record) {
+        return record.get('lastName')[0];
+    }});

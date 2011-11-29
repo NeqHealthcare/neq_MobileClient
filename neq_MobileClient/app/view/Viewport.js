@@ -1,5 +1,3 @@
-Ext.require(['NeqMobile.view.patient.List']);
-
 Ext.define('NeqMobile.view.Viewport', {
         extend:'Ext.Panel',
         requires:['NeqMobile.view.patient.List'],

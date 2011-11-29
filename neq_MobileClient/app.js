@@ -1,5 +1,5 @@
 Ext.Loader.setConfig({
-    enabled:true
+ enabled:true
 });
 // Ext.application({
 // name: 'Sencha',
@@ -9,7 +9,7 @@ Ext.Loader.setConfig({
 // }
 // });
 
-Ext.require(['Ext.XTemplate', 'Ext.Panel', 'Ext.Button', 'Ext.List']);
+//Ext.require(['Ext.XTemplate', 'Ext.Panel', 'Ext.Button', 'Ext.List']);
 
 
 Ext.application({
@@ -22,13 +22,13 @@ Ext.application({
         {
         }
         ;
-    },
+    }
 
-    initialize:function () {
+   /* initialize:function () {
         console.log('app initialize');
         this.callParent();
     }
-
+*/
     // var mybutton = Ext.create('Ext.Button', {
     // text: 'Button'
     // });

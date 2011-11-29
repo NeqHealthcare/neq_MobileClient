@@ -1,6 +1,6 @@
 Ext.define('NeqMobile.model.Patient', {
 			extend : 'Ext.data.Model',
-			fields : ['id', 'name'],
+			fields : ['id','doctor', 'firstName','lastName','age','sex','other','disease','station','maritalstatus'],
 
 			proxy : {
 				type : 'ajax',
