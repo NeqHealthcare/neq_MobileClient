@@ -61,10 +61,12 @@ Ext.define('NeqMobile.view.patient.List', {
                         label:'User name',
                         name:'server'
                     },
-                    {xtype:'button',
+                    {
+                        xtype:'button',
                         ui:'confirm',
                         text:'Save',
-                        action:'saveServerProfile'}  // action gibt es nicht mehr!! Du meinst wahrscheinlich das property 'handler' --> siehe Sencha Docs Button
+                        action:'saveServerProfile'
+                    }  // action gibt es nicht mehr!! Du meinst wahrscheinlich das property 'handler' --> siehe Sencha Docs Button
                 ]
             }
 
