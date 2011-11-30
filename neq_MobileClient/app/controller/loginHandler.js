@@ -11,9 +11,9 @@ Ext.define('NeqMobile.controller.LoginHandler', {
     }
 
     ],
-
+*/
     init : function() {
-        console.log('Init home controller');
+        console.log('Init LoginHandler controller');
         // getMyButton().setHandler(function(){alert('2333');});
 
         this.control({
