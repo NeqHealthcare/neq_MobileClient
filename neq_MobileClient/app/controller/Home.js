@@ -1,7 +1,7 @@
 Ext.define('NeqMobile.controller.Home', {
     extend : 'Ext.app.Controller',
-    requires: ['NeqMobile.view.login.LoginForm','NeqMobile.view.Main'],
-    views : ['Main','patient.List','Testpanel','login.LoginForm'],
+    requires: ['NeqMobile.view.login.LoginForm','NeqMobile.view.Main','NeqMobile.view.PatientOverview'],
+    views : ['Main','patient.List','patient.Dashboard','Testpanel','login.LoginForm','PatientOverview','Workarea'],
     models : ['Patient','UserLoginData'],
     stores : ['Patients','Users'],
     refs : [
@@ -14,20 +14,29 @@ Ext.define('NeqMobile.controller.Home', {
         { ref: 'mytestpanel',
             selector : 'testpanel'},
         {   ref       : 'loginform',
-            selector  : 'loginform'}
+            selector  : 'loginform'},
+        { ref: 'patientoverview',
+            selector: 'patientoverview',
+        autoCreate: true},
+        { ref: 'workarea',
+            selector : 'workarea'}
     ],
-         
+
     init : function() {
 
 
-  //   Ext.ComponentQuery.query('loginform').down('button').setHandler(this.onLoginSuccess);
-
+        //   Ext.ComponentQuery.query('loginform').down('button').setHandler(this.onLoginSuccess);
 
 
         console.log('Init home controller');
-        this.getMainView().create();
-        var controller = this.getController('Login');
-        controller.addListener('loginSuccess', this.onLogin);
+        var myMainView = this.getMainView().create();
+        this.myview = myMainView;
+
+        this.control({
+            // example of listening to *all* button taps
+            'button': { 'tap': this.onLoginSuccess
+
+            }});
 
 //            // example of listening to *all* button taps
 //            // Add a listener to the  searches store, so when it loads we can call our own method
@@ -93,8 +102,11 @@ Ext.define('NeqMobile.controller.Home', {
     },
 
 
-     onLoginSuccess: function (user, session) {
-        this.fireEvent('loginSuccess', user, session);
+    onLoginSuccess: function (user, session) {
+      var patientoverview = this.getPatientOverviewView().create();
+     this.Workarea.add(patientoverview);
+    this.Workarea.setActiveItem(1);
+
     }
 
 
