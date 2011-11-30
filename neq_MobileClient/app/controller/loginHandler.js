@@ -1,7 +1,7 @@
 Ext.define('NeqMobile.controller.LoginHandler', {
     extend : 'Ext.app.Controller',
     views : ['Viewport','login.LoginForm'],
-    models : ['userLogin'],
+    models : ['userLoginData'],
     stores : ['loginHandler'],
 
 /*

@@ -13,4 +13,16 @@ Logout uncussefull (Json): "false"
 */
 
 
-Ext.define('NeqMobile.model.userLogin')
+Ext.define('NeqMobile.model.UserLoginData', {
+    extend: 'Ext.data.Model',
+    fields: [ 'username', 'password', 'backendSid' ],
+
+    proxy: {
+        type: 'rest',
+        url: 'http://localhost/neq_server/connection/login',
+        reader: {
+            type: 'json',
+            root: 'results'
+        }
+    }
+});
