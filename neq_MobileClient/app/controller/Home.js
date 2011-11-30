@@ -103,9 +103,12 @@ Ext.define('NeqMobile.controller.Home', {
 
 
     onLoginSuccess: function (user, session) {
-      var patientoverview = this.getPatientOverviewView().create();
-     this.Workarea.add(patientoverview);
-    this.Workarea.setActiveItem(1);
+      console.log('switching card');
+
+
+    // this.getWorkarea().add({html: 'test'});
+        this.getWorkarea().setActiveItem({xtype: 'patientoverview'});
+
 
     }
 

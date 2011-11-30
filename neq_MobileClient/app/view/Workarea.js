@@ -6,8 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 Ext.define('NeqMobile.view.Workarea', {
-        extend:'Ext.Panel',
-        requires:['NeqMobile.view.login.LoginForm'],
+        extend:'Ext.Container',
+        requires:['NeqMobile.view.login.LoginForm','NeqMobile.view.PatientOverview'],
         alias: 'widget.workarea',
 
 
@@ -17,12 +17,9 @@ Ext.define('NeqMobile.view.Workarea', {
               //  styleHtmlContent: true
             },
 
-            layout: {
-                type: 'card',
-                animation: {
-                    type: 'fade'
-                }
-            },
+            layout: 'card'
+
+,active:1,
 
             items: [
                 {
