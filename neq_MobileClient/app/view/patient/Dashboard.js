@@ -47,7 +47,9 @@ Ext.define('NeqMobile.view.patient.Dashboard', {
                                 {   xtype: 'textareafield',
                                     name: 'adress',
                                     label: 'Adresse'
-                                }
+                                }, {xtype: 'button',
+    text: 'blaa'}
+    
                                
                             ]}
                     ]

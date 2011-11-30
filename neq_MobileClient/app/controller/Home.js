@@ -1,6 +1,6 @@
 Ext.define('NeqMobile.controller.Home', {
     extend : 'Ext.app.Controller',
-    views : ['Main','patient.List'],
+    views : ['Main','patient.List','Testpanel'],
     models : ['Patient'],
     stores : ['Patients'],
     refs : [
@@ -9,8 +9,11 @@ Ext.define('NeqMobile.controller.Home', {
         {   ref       : 'mainview',
             selector  : 'Main',
             xtype     : 'Main',
-            autoCreate: true}
-
+            autoCreate: true},
+        { ref: 'mybutton',
+            selector : 'button'},
+        { ref: 'mytestpanel',
+            selector : '#testpanel'}
     ],
 
     init : function() {
@@ -18,15 +21,24 @@ Ext.define('NeqMobile.controller.Home', {
         
      this.getMainView().create();
 
-
-        this.control({
+           this.control({
             // example of listening to *all* button taps
  // Add a listener to the  searches store, so when it loads we can call our own method
 
 
 
             'button' : {
+
+               
+
                 'tap' : function() {
+
+
+                 var mypanel = Ext.widget('testpanel');
+
+                  
+                  //  Ext.Viewport.setActiveItem(mypanel);
+                    console.log('son muell');
                     console.log('There are'
                         + this.getPatientsStore()
                         .getTotalCount()
