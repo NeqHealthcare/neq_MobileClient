@@ -1,19 +1,18 @@
 Ext.define('NeqMobile.view.Main', {
         extend:'Ext.Panel',
-        requires:['NeqMobile.view.patient.List',
-            'NeqMobile.view.patient.Dashboard'],
-        
+        requires:['NeqMobile.view.login.LoginForm'],
+        xtype: 'main',
         config:{
 
             fullscreen:true,
-            layout:'hbox',
             items:[
                 {
-                    xtype:'patientlist',
-                    flex:25
-                },
-                { xtype:'patientdashboard',
-                flex:75}
+                    dock : 'top',
+                    xtype: 'toolbar',
+                    ui   : 'light',
+                    title: 'Neq Healthcare Mobile'},
+               {  xtype : 'loginform'
+                }
             ]
 
         }
