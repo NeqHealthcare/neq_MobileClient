@@ -1,6 +1,36 @@
 Ext.Loader.setConfig({
- enabled:true
+    enabled:true
 });
+
+Ext.application({
+    name:'NeqMobile',
+    controllers:['Home'],
+    models: ['Patient']
+});
+
+
+// autoCreateViewport : true,
+//    launch:function () {
+//        Ext.create('NeqMobile.view.Viewport')
+//        {
+//        }
+//        ;
+//    }
+
+/* initialize:function () {
+ console.log('app initialize');
+ this.callParent();
+ }
+ */
+// var mybutton = Ext.create('Ext.Button', {
+// text: 'Button'
+// });
+
+// Ext.Viewport.add(mybutton);
+
+// This is fired as soon as the page is ready
+
+
 // Ext.application({
 // name: 'Sencha',
 //
@@ -11,31 +41,3 @@ Ext.Loader.setConfig({
 
 //Ext.require(['Ext.XTemplate', 'Ext.Panel', 'Ext.Button', 'Ext.List']);
 
-
-Ext.application({
-    name:'NeqMobile',
-    appFolder:'app',
-    controllers:['Home'],
-    // autoCreateViewport : true,
-    launch:function () {
-        Ext.create('NeqMobile.view.Viewport')
-        {
-        }
-        ;
-    }
-
-   /* initialize:function () {
-        console.log('app initialize');
-        this.callParent();
-    }
-*/
-    // var mybutton = Ext.create('Ext.Button', {
-    // text: 'Button'
-    // });
-
-    // Ext.Viewport.add(mybutton);
-
-    // This is fired as soon as the page is ready
-
-});
-    

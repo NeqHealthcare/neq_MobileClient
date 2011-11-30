@@ -1,17 +1,19 @@
-Ext.define('NeqMobile.view.Viewport', {
+Ext.define('NeqMobile.view.Main', {
         extend:'Ext.Panel',
-        requires:['NeqMobile.view.patient.List'],
-
+        requires:['NeqMobile.view.patient.List',
+            'NeqMobile.view.patient.Dashboard'],
+        
         config:{
 
             fullscreen:true,
-            layout:'fit',
+            layout:'hbox',
             items:[
                 {
                     xtype:'patientlist',
-                    title:'Patients',
-                    iconCls:'star'
-                }
+                    flex:25
+                },
+                { xtype:'patientdashboard',
+                flex:75}
             ]
 
         }
