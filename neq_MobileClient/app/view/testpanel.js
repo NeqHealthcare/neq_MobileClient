@@ -23,7 +23,7 @@ Ext.define('NeqMobile.view.Testpanel', {
         config:{
 
            
-            html: 'du stinkst'
+            html: 'blablabllaaaa'
 
 //                    xtype : 'formpanel',
 //                    items: [

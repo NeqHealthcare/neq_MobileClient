@@ -4,5 +4,10 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name:'NeqMobile',
-    controllers:['Home']
+    controllers:['Home'],
+
+
+    launch: function() {
+        Ext.create('NeqMobile.view.Main');
+    }
 });
