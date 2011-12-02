@@ -17,13 +17,15 @@ Ext.define('NeqMobile.view.Workspace', {
                 type: 'card',
                 animation: {
                     type: 'slide',
-                    direction: 'left'
+                   direction: 'left'
                 }
             },
 
             items: [
                 {
                     xtype:'loginform'
+                },
+                {xtype: 'patientoverview'
                 }
             ]
         }}

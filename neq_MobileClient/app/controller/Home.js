@@ -42,7 +42,7 @@ Ext.define('NeqMobile.controller.Home', {
 
     onLoginSuccess: function (user, session) {
         console.log('switching card');
-this.getWorkspace().setActiveItem({xtype: 'patientoverview'});
+this.getWorkspace().setActiveItem(this.getPatientoverview());
 
 
     }
