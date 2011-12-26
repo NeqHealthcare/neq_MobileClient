@@ -20,8 +20,8 @@ Ext.define('NeqMobile.view.patient.List', {
             {
                 xtype:    'list',
                 //  dock: 'right',
-                //  grouped     : true,
-                //   indexBar    : true,
+               // grouped     : true,
+               //  indexBar    : true,
                 flex :1,
                 store :'Patients',
                 itemTpl: '<strong>{lastName}</strong>, {firstName} - {age}'

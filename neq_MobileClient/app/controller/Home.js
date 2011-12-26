@@ -9,10 +9,6 @@ Ext.define('NeqMobile.controller.Home', {
             selector  : 'Main',
             xtype     : 'Main',
             autoCreate: true},
-        { ref: 'mybutton',
-            selector : 'button'},
-        { ref: 'mytestpanel',
-            selector : 'testpanel'},
         {   ref       : 'loginform',
             selector  : 'loginform'},
         { ref: 'patientoverview',
@@ -33,7 +29,7 @@ Ext.define('NeqMobile.controller.Home', {
 
         this.control({
             // example of listening to *all* button taps
-            'button': { 'tap': this.onLoginSuccess
+            'loginform button[ui="confirm"]': { 'tap': this.onLoginSuccess
 
             }});
 
