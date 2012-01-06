@@ -8,18 +8,18 @@
 Ext.define('NeqMobile.view.PatientOverview', {
     extend:'Ext.Container',
     alias:'widget.patientoverview',
-    required: ['NeqMobile.view.patient.Dashboard','NeqMobile.view.patient.List'],
+    required:['NeqMobile.view.patient.Dashboard', 'NeqMobile.view.patient.List'],
 
     config:{
         layout:'hbox',
 
-        items: [
+        items:[
 
-            {xtype: 'patientlist',
-                flex: 25},
+            {xclass:'NeqMobile.view.patient.List',
+                flex:25},
             {
-                xtype: 'patientdashboard',
-                flex: 75}
+                xclass:'NeqMobile.view.patient.Dashboard',
+                flex:75}
         ]
     }
 });

@@ -1,24 +1,24 @@
 Ext.define('NeqMobile.controller.Home', {
-    extend : 'Ext.app.Controller',
-    requires: ['NeqMobile.view.login.LoginForm','NeqMobile.view.Main','NeqMobile.view.PatientOverview'],
-    views : ['Main','patient.List','patient.Dashboard','Testpanel','login.LoginForm','PatientOverview','Workspace'],
-    models : ['Patient','UserLoginData'],
-    stores : ['Patients','Users'],
-    refs : [
-        {   ref       : 'mainview',
-            selector  : 'Main',
-            xtype     : 'Main',
-            autoCreate: true},
-        {   ref       : 'loginform',
-            selector  : 'loginform'},
-        { ref: 'patientoverview',
-            selector: 'patientoverview',
-            autoCreate: true},
-        { ref: 'workspace',
-            selector : 'workspace'}
+    extend:'Ext.app.Controller',
+    requires:['NeqMobile.view.login.LoginForm', 'NeqMobile.view.Main', 'NeqMobile.view.PatientOverview'],
+    views:['Main', 'patient.List', 'patient.Dashboard', 'login.LoginForm', 'PatientOverview', 'Workspace'],
+    models:['Patient', 'UserLoginData'],
+    stores:['Patients', 'Users'],
+    refs:[
+        {   ref:'mainview',
+            selector:'Main',
+            xtype:'Main',
+            autoCreate:true},
+        {   ref:'loginform',
+            selector:'loginform'},
+        { ref:'patientoverview',
+            selector:'patientoverview',
+            autoCreate:true},
+        { ref:'workspace',
+            selector:'workspace'}
     ],
 
-    init : function() {
+    init:function () {
 
 
         //   Ext.ComponentQuery.query('loginform').down('button').setHandler(this.onLoginSuccess);
@@ -28,19 +28,22 @@ Ext.define('NeqMobile.controller.Home', {
 
 
         this.control({
-            // example of listening to *all* button taps
-            'loginform button[ui="confirm"]': { 'tap': this.onLoginSuccess
-
-            }});
+                // example of listening to *all* button taps
+                'loginform button[ui="confirm"]':{ 'tap':this.onLoginTry
+                }}
+        );
 
     },
 
 
-    onLoginSuccess: function (user, session) {
+    onLoginTry:function() {
+
+    },
+
+
+    onLoginSuccess: function () {
         console.log('switching card');
-this.getWorkspace().setActiveItem(this.getPatientoverview());
-
-
+        this.getWorkspace().setActiveItem(this.getPatientoverview());
     }
 
 

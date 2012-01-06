@@ -23,9 +23,9 @@ Ext.define('NeqMobile.view.Workspace', {
 
             items: [
                 {
-                    xtype:'loginform'
+                    xclass: 'NeqMobile.view.login.LoginForm'
                 },
-                {xtype: 'patientoverview'
+                {xclass: 'NeqMobile.view.PatientOverview'
                 }
             ]
         }}

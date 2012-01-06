@@ -13,7 +13,7 @@ Ext.define('NeqMobile.view.Main', {
                     ui   : 'light',
                     title: 'Neq Healthcare Mobile'},
 
-                {   xtype: 'workspace'}
+                {   xclass: 'NeqMobile.view.Workspace'}
             ]
 
         }

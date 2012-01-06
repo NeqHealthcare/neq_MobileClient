@@ -19,38 +19,39 @@ Ext.define('NeqMobile.view.patient.Dashboard', {
 
             items:[
                 {
-                    xtype : 'formpanel',
-                    items: [
+                    xtype:'formpanel',
+                    items:[
                         {
-                            xtype: 'fieldset',
+                            xtype:'fieldset',
 
 
-                            title: 'Basic Data',
-                            items: [
+                            title:'Basic Data',
+                            items:[
 
                                 {
 
-                                    xtype: 'textfield',
-                                    name: 'firstName',
-                                    label: 'First Name'
+                                    xtype:'textfield',
+                                    name:'firstName',
+                                    label:'First Name'
                                 },
                                 {
-                                    xtype: 'textfield',
-                                    name: 'lastName',
-                                    label: 'Last Name'
+                                    xtype:'textfield',
+                                    name:'lastName',
+                                    label:'Last Name'
                                 },
                                 {
-                                    xtype: 'textfield',
-                                    name: 'age',
-                                    label: 'Age'
+                                    xtype:'textfield',
+                                    name:'age',
+                                    label:'Age'
                                 },
-                                {   xtype: 'textareafield',
-                                    name: 'adress',
-                                    label: 'Adresse'
-                                }, {xtype: 'button',
-    text: 'blaa'}
-    
-                               
+                                {   xtype:'textareafield',
+                                    name:'adress',
+                                    label:'Adresse'
+                                },
+                                {xtype:'button',
+                                    text:'blaa'}
+
+
                             ]}
                     ]
                 }
