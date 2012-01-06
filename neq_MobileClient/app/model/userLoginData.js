@@ -19,7 +19,7 @@ Ext.define('NeqMobile.model.UserLoginData', {
 
     proxy: {
         type: 'rest',
-        url: 'http://localhost/neq_server/connection/login',
+        url: 'http://192.168.178.24:8080/connection/login?username=admin&password=iswi223%3C%3C&backendSid=gnuhealth1',
         reader: {
             type: 'json',
             root: 'results'
