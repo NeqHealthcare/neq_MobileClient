@@ -10,6 +10,9 @@ Logout Beispielurl:
     Request URL: http://localhost:8080/connection/logout?username=admin&session=SESSION_VARIABLE
     Logout successfull (Json): "true"
 Logout uncussefull (Json): "false"
+
+
+das ist neueeeee 07.01.2012 23:00
 */
 
 
@@ -26,3 +29,5 @@ Ext.define('NeqMobile.model.UserLoginData', {
         }
     }
 });
+
+
