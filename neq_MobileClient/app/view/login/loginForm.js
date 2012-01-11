@@ -8,14 +8,18 @@ Ext.define('NeqMobile.view.login.LoginForm', {
     alias:'widget.loginform',
 
     config:{
-
+     fullscreen:true,
+        layout: 'fit',
         items:[{
 
-                xtype:'fieldset',
-                title:'Login',
-                width:400,
+                xtype:'formpanel',
+                scrollable: false,
 
-                instructions:'Enter your credentials',
+
+               // title:'Login',
+              //  width:400,
+//fullscreen: true,
+             //   instructions:'Enter your credentials',
 
                 items:[
                     {
@@ -36,23 +40,26 @@ Ext.define('NeqMobile.view.login.LoginForm', {
                             { text:'NEQ Healthcare Theilemann ', value:'first' },
                             { text:'Uni Mannheim', value:'second' }
                         ]
-                    }
-             ,
-                     {
-                xtype:'button',
-                ui:'confirm',
-                text:'Login',
-                width:400
-            }
-                ]
-           },
+                    },
+                   {
+                                    xtype:'button',
+                                    ui:'confirm',
+                                    text:'Login',
+                                    width:400,
+                                },
+                    {
+                                    xtype: 'button',
+                                    ui :'action',
+                                    id: 'settingsButton',
+                                    text:'Settings',
+                                    width:200}
 
-            {
-                xtype: 'button',
-                ui :'action',
-                id: 'settingsButton',
-                text:'Settings',
-                width:200}
+
+]
+
+        }
+
+
 
         ]
     }
