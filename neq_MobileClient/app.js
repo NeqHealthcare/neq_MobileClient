@@ -4,7 +4,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name:'NeqMobile',
-    controllers:['Home'],
+    controllers:['Home','Login'],
 
 
     launch: function() {

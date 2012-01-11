@@ -10,7 +10,17 @@ Ext.define('NeqMobile.view.login.LoginForm', {
     config:{
      fullscreen:true,
         layout: 'fit',
-        items:[{
+        items:[
+
+            {
+                                docked : 'top',
+                                xtype: 'toolbar',
+                                ui   : 'light',
+                                title: 'Neq Healthcare Mobile Login'
+            }
+            ,{
+
+
 
                 xtype:'formpanel',
                 scrollable: false,
@@ -45,7 +55,7 @@ Ext.define('NeqMobile.view.login.LoginForm', {
                                     xtype:'button',
                                     ui:'confirm',
                                     text:'Login',
-                                    width:400,
+                                    width:400
                                 },
                     {
                                     xtype: 'button',

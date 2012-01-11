@@ -6,28 +6,55 @@
  * To change this template use File | Settings | File Templates.
  */
 Ext.define('NeqMobile.view.Workspace', {
-        extend:'Ext.Panel',
-        requires:['NeqMobile.view.login.LoginForm'],
-        alias: 'widget.workspace',
+        extend:'Ext.navigation.View',
+        alias:'widget.workspace',
+
+        initialize:function () {
+            this.callParent(arguments);
+
+            this.on({
+
+                painted:function (view) {
+
+                    view.getNavigationBar().add({
+                        xtype:'button',
+                        text:'Test',
+                        handler:function () {
+                            this.push({
+                                title:'A new view',
+                                html:'Some new content'
+                            });
+                        }
+                    });
 
 
-        config: {
-
-            layout: {
-                type: 'card',
-                animation: {
-                    type: 'slide',
-                   direction: 'left'
                 }
-            },
 
-            items: [
+            });
+        },
+
+        config:{
+            items:[
+/*
+            items:[
                 {
-                    xclass: 'NeqMobile.view.login.LoginForm'
+                    dock:'top',
+                    xtype:'toolbar',
+                    ui:'light',
+
+                    items:[
+                        {
+                            text:'Logout'
+                        }
+                    ]
                 },
-                {xclass: 'NeqMobile.view.PatientOverview'
+*/
+                {
+                    title:'PatientOverview',
+                    xclass:'NeqMobile.view.PatientOverview'
                 }
             ]
-        }}
+        }
+    }
 
 );

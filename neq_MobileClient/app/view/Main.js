@@ -4,16 +4,22 @@ Ext.define('NeqMobile.view.Main', {
         xtype: 'main',
         config:{
 
-           layout:'fit',
+            layout: {
+                            type: 'card',
+                            animation: {
+                                type: 'slide',
+                               direction: 'left'
+                            }
+                        },
             fullscreen:true,
             items:[
-                {
+             /*   {
                     docked : 'top',
                     xtype: 'toolbar',
                     ui   : 'light',
-                    title: 'Neq Healthcare Mobile'},
+                    title: 'Neq Healthcare Mobile'},*/
 
-                {   xclass: 'NeqMobile.view.Workspace'}
+                {   xclass: 'NeqMobile.view.login.LoginForm'}
             ]
 
         }
