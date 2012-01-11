@@ -2,8 +2,7 @@ Ext.define('NeqMobile.controller.Login', {
     extend : 'Ext.app.Controller',
     requires: ['NeqMobile.view.login.LoginForm'],
     views : ['login.LoginForm'],
-    models : ['UserLoginData'],
-    stores : ['Users'],
+   // stores : ['Users'],
     refs: [
         {   ref       : 'loginform',
             selector  : 'loginform'}
