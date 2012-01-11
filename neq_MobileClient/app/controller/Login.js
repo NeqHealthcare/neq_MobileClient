@@ -43,7 +43,7 @@ Ext.define('NeqMobile.controller.Login', {
             console.log('trying to load the session');
 
             var myvar = Ext.Ajax.request({
-                url:'http://192.168.178.33:8080/connection/login',
+                url:'http://theilemann.dyndns.org:8080/connection/login',
                 method:'GET',
                 scope:this,
                 params:{username:this.getLoginform().down('formpanel').getFields('name').getValue(), password:this.getLoginform().down('formpanel').getFields('password').getValue(), backendSid:'gnuhealth1'},
