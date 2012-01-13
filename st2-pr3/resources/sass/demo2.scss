@@ -1,0 +1,27 @@
+$body-bg-color: #fbf5e6;
+$base-color: #efe1d0;
+$active-color: #aa3030;
+ 
+@import 'sencha-touch/default/all';
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet; 
+@include sencha-picker;
+@include sencha-toolbar-forms;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-sheet;
+ 
+body {
+    font-family: Georgia;
+    color: #5a3d23;
+}
+ 
+.x-toolbar .x-toolbar-title {
+    color: #5a3d23;
+}
