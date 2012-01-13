@@ -17,17 +17,13 @@ Ext.define('NeqMobile.view.Workspace', {
                 painted:function (view) {
 
 
-                    view.getNavigationBar().add([{
+                    view.getNavigationBar().add({
                         xtype:'button',
-                        text:'Test',
-                        ui: 'forward',
-                        handler:function () {
-                            this.push({
-                                title:'A new view',
-                                html:'Some new content'
-                            });
-                        }
-                    }]);
+                        align:'right',
+                        text:'Logout',
+                        itemId:'LogoutButton'
+
+                });
 
 
                 }
@@ -36,6 +32,8 @@ Ext.define('NeqMobile.view.Workspace', {
         },
 
         config:{
+
+            autoDestroy:true,
             items:[
 /*
             items:[

@@ -8,8 +8,7 @@ Ext.define('NeqMobile.controller.Login', {
             selector  : 'loginform'},
         { ref:'workspace',
                     selector:'workspace',
-                    xtype:'workspace',
-                    autoCreate:true}
+                    xtype:'workspace'}
         ,
         {   ref:'main',
                     selector:'main',
@@ -26,6 +25,15 @@ Ext.define('NeqMobile.controller.Login', {
                         'loginform button[ui="confirm"]':{ 'tap':this.onLoginTry
                         }}
                 );
+
+        this.control(
+            {'loginform button[text="Settings"]':{ 'tap':this.onSettingsClick}}
+        );
+
+        this.application.on("logout", function() {
+             console.log('Login controller received the logout event');
+          });
+
 
       //  this.getLoginbutton().setHandler(this.onLoginSuccess);
 
@@ -57,7 +65,7 @@ Ext.define('NeqMobile.controller.Login', {
                     }
                     else
                         console.log('login refused');
-
+d
 
                 },
                 failure:function (response, opts) {
@@ -69,12 +77,18 @@ Ext.define('NeqMobile.controller.Login', {
         }
 
     ,
-
+        onSettingsClick:function ()
+        {
+            console.log('removing from mainview');
+            }
+,
 
     onLoginSuccess:function () {
             console.log('switching card');
-            this.getMain().setActiveItem(this.getWorkspace());
+        this.getMain().remove(this.getWorkspace(),true);
+            this.getMain().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
             this.fireEvent('loginSuccess');
+        this.getLoginform().down('formpanel').getFields('password').reset();
         }
     /*
 ,
@@ -82,7 +96,4 @@ Ext.define('NeqMobile.controller.Login', {
         this.fireEvent('loginSuccess', user, session);
     }
 */
-
-
-
 });

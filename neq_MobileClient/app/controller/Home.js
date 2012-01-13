@@ -19,7 +19,11 @@ Ext.define('NeqMobile.controller.Home', {
             autoCreate:true},
         { ref:'patientdashboard',
             selector:'patientdashboard',
-            autoCreate:true}
+            autoCreate:true},
+        { ref:'loginform',
+        selector:'loginform',
+        autoCreate:true,
+        xtype:'loginform'}
     ],
 
     init:function () {
@@ -31,13 +35,24 @@ Ext.define('NeqMobile.controller.Home', {
             {
                 'patientdashboard button':{'tap':this.onDashboardSubmit}
             }
-        )
+        );
+        this.control(
+            {
+                'navigationview navigationbar button[align="right"]': { 'tap':this.onLogoutClick}
+            }
+        );
 
     },
 
 
+    onLogoutClick: function()
+    {
+        this.getMain().setActiveItem(this.getLoginform());
+        this.application.fireEvent("logout");
 
 
+    }
+,
     onDashboardSubmit: function()
     {this.getWorkspace().push({
                         title: 'Second',
