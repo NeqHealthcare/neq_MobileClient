@@ -1,6 +1,8 @@
-st2-pr3/
+st2-pr3/docs/
+st2-pr3/examples/
+st2-pr3/pkgs/
+st2-pr3/src/
 .DS_Store
 .idea/.name
 .idea/workspace.xml
-.gitignore
 .st2-pr3/
