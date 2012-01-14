@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.Main', {
+Ext.define('NeqMobile.view.Viewport', {
         extend:'Ext.Panel',
         requires:['NeqMobile.view.login.LoginForm', 'NeqMobile.view.Workspace'],
         xtype: 'main',

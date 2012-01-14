@@ -30,9 +30,7 @@ Ext.define('NeqMobile.controller.Login', {
             {'loginform button[text="Settings"]':{ 'tap':this.onSettingsClick}}
         );
 
-        this.application.on("logout", function() {
-             console.log('Login controller received the logout event');
-          });
+
 
 
       //  this.getLoginbutton().setHandler(this.onLoginSuccess);
@@ -65,7 +63,7 @@ Ext.define('NeqMobile.controller.Login', {
                     }
                     else
                         console.log('login refused');
-d
+
 
                 },
                 failure:function (response, opts) {

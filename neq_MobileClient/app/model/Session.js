@@ -7,9 +7,5 @@
  */
 Ext.define('NeqMobile.model.Session', {
     extend: 'Ext.data.Model',
-    fields: ['id','session'],
-    proxy: {
-        type: 'rest',
-        url : 'http://theilemann.dyndns.org:8080/connection/login'
-    }
+    fields: ['user','sessionId']
 });
