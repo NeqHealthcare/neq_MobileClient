@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.navigation.View',
-        alias:'widget.workspace',
+        xtype:'Workspace',
 
         initialize:function () {
             this.callParent(arguments);
@@ -23,7 +23,7 @@ Ext.define('NeqMobile.view.Workspace', {
                         text:'Logout',
                         itemId:'LogoutButton'
 
-                });
+                    });
 
 
                 }
@@ -35,23 +35,23 @@ Ext.define('NeqMobile.view.Workspace', {
 
             autoDestroy:true,
             items:[
-/*
-            items:[
-                {
-                    dock:'top',
-                    xtype:'toolbar',
-                    ui:'light',
+                /*
+                 items:[
+                 {
+                 dock:'top',
+                 xtype:'toolbar',
+                 ui:'light',
 
-                    items:[
-                        {
-                            text:'Logout'
-                        }
-                    ]
-                },
-*/
+                 items:[
+                 {
+                 text:'Logout'
+                 }
+                 ]
+                 },
+                 */
                 {
-                    title:'PatientOverview',
-                    xclass:'NeqMobile.view.PatientOverview'
+                    title:'Dashboard',
+                    xclass:'NeqMobile.view.Dashboard'
                 }
             ]
         }

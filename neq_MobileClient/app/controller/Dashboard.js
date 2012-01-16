@@ -10,4 +10,5 @@ Ext.define('NeqMobile.controller.Dashboard', {
     requires:['NeqMobile.view.login.LoginForm', 'NeqMobile.view.Main', 'NeqMobile.view.PatientOverview'],
     views:['Viewport', 'patient.List', 'patient.Dashboard', 'login.LoginForm', 'PatientOverview', 'Workspace'],
     models:['Patient', 'Session'],
-    stores:['Patients'],
+    stores:['Patients']
+});

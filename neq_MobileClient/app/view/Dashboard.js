@@ -5,10 +5,10 @@
  * Time: 14:51
  * To change this template use File | Settings | File Templates.
  */
-Ext.define('NeqMobile.view.PatientOverview', {
+Ext.define('NeqMobile.view.Dashboard', {
     extend:'Ext.Container',
-    alias:'widget.patientoverview',
-    required:['NeqMobile.view.patient.Dashboard', 'NeqMobile.view.patient.List'],
+    xtype:'Dashboard',
+    required:['NeqMobile.view.patient.Info', 'NeqMobile.view.patient.List'],
 
     config:{
         layout:'hbox',
@@ -18,7 +18,7 @@ Ext.define('NeqMobile.view.PatientOverview', {
             {xclass:'NeqMobile.view.patient.List',
                 flex:25},
             {
-                xclass:'NeqMobile.view.patient.Dashboard',
+                xclass:'NeqMobile.view.patient.Info',
                 flex:75}
         ]
     }

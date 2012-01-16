@@ -1,9 +1,8 @@
 Ext.define('NeqMobile.view.Viewport', {
-        extend:'Ext.Panel',
-        requires:['NeqMobile.view.login.LoginForm', 'NeqMobile.view.Workspace'],
-        xtype: 'main',
+        extend:'Ext.Container',
+        requires:['NeqMobile.view.Login'],
+        xtype: 'Viewport',
         config:{
-
             layout: {
                             type: 'card',
                             animation: {
@@ -13,18 +12,11 @@ Ext.define('NeqMobile.view.Viewport', {
                         },
             fullscreen:true,
             items:[
-             /*   {
-                    docked : 'top',
-                    xtype: 'toolbar',
-                    ui   : 'light',
-                    title: 'Neq Healthcare Mobile'},*/
-
-                {   xclass: 'NeqMobile.view.login.LoginForm'}
+                {   xclass: 'NeqMobile.view.Login'}
             ]
 
         }
     }
-
 );
 
 // Ext.define('MH.view.Viewport', {

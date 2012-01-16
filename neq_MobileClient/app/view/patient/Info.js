@@ -9,9 +9,9 @@
  * @author geekflyer
  */
 
-Ext.define('NeqMobile.view.patient.Dashboard', {
+Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
-        alias:'widget.patientdashboard',
+        xtype:'patientInfo',
 
         config:{
 

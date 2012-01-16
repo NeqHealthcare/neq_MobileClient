@@ -1,7 +1,7 @@
 Ext.define('NeqMobile.view.patient.List', {
     extend:'Ext.Container',
     requires:'NeqMobile.store.Patients',
-    alias:'widget.patientlist',
+    xtype:'patientList',
 
     config:{
 
