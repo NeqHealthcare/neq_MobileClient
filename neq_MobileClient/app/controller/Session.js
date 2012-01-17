@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
 
-    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains'],
+    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     views:['Viewport', 'Workspace'],
     models:['Session', 'Domain'],
     stores:['Domains'],
@@ -55,6 +55,12 @@ Ext.define('NeqMobile.controller.Session', {
         this.application.on("logout", function () {
             console.log('Login controller received the logout event');
         });
+
+        this.control(
+            {
+                '#logoutButton': {'tap':this.onLogoutTry}
+            }
+        )
 
 
     }, onTest:function () {

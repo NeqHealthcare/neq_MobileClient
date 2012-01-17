@@ -8,6 +8,7 @@
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.navigation.View',
         xtype:'Workspace',
+        requires:['NeqMobile.view.Dashboard'],
 
         initialize:function () {
             this.callParent(arguments);

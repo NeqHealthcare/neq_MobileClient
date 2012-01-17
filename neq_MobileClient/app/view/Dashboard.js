@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.view.Dashboard', {
     extend:'Ext.Container',
     xtype:'Dashboard',
-    required:['NeqMobile.view.patient.Info', 'NeqMobile.view.patient.List'],
+    requires:['NeqMobile.view.patient.Info', 'NeqMobile.view.patient.List'],
 
     config:{
         layout:'hbox',
