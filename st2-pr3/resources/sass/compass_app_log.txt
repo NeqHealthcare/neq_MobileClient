@@ -30,3 +30,12 @@ Load paths:
 2012-01-13 20:32:02 overwrite ../css/neq_MobileClient.css 
 2012-01-13 20:35:57    create ../css/demo2.css 
 2012-01-13 20:36:11 overwrite ../css/demo2.css 
+2012-01-17 00:38:24    create ../css/demo1.css 
+2012-01-17 00:41:26 overwrite ../css/demo1.css 
+2012-01-17 00:42:40 overwrite ../css/demo1.css 
+2012-01-17 00:44:01     error demo1.scss (Line 9: Undefined mixin 'sencha-panel'.)
+2012-01-17 00:44:45     error demo1.scss (Line 9: Undefined mixin 'sencha-panel'.)
+2012-01-17 00:46:45    create ../css/demo1.css 
+2012-01-17 00:46:49    create ../css/demo2.css 
+2012-01-17 00:46:54    create ../css/neq_MobileClient.css 
+2012-01-17 00:46:59    create ../css/sencha-touch.css 

@@ -7,62 +7,46 @@ Ext.define('NeqMobile.view.Login', {
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
     config:{
-        layout:'hbox',
         items:[
-
             {
                 docked:'top',
                 xtype:'toolbar',
-                ui:'light',
-                title:'Neq Healthcare Mobile Login',
-                items:[
-                    {
-                        xtype:'button',
-                        text:'Domain Settings',
-                        itemId:'simple'
-                    }
-                ]
-
-            },
-
-
-            {
-                xtype:'list',
-                flex:1,
-                itemTpl:'<div class="contact">{name}'
-
-            },
-
-            {
-
-
+                ui:'light'
+            },{
                 xtype:'formpanel',
                 scrollable:false,
-                flex:5,
-
-                // title:'Login',
-                //  width:400,
-//fullscreen: true,
-                //   instructions:'Enter your credentials',
-
+                style:'margin:0px; padding:0px; margin-left:auto; margin-right: auto; width:400px;',
                 items:[
                     {
-                        xtype:'textfield',
-                        label:'Username',
-                        name:'user'
+                        xtype:'image',
+                        src:'../../theme/images/DefaultAvatar_small.jpg',
+                        style:' display: block; margin-left: auto; margin-right: auto; border: 5px solid black; width: 200px; height: 200px;'
                     },
                     {
+                        xtype:'textfield',
+                        label:'User',
+                        name:'user',
+                        placeHolder: 'Enter your Username',
+                        autoComplete: true,
+                        autoCorrect: true,
+                        style: 'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        //baseCls:'textfield',
+                        cls:'login'
+                    },{
                         xtype:'passwordfield',
                         label:'Password',
-                        name:'pass'
-                    },
-
-                    {
+                        name:'password',
+                        placeHolder: 'Enter your Password',
+                        style: 'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        //baseCls:'passwordfield',
+                        cls:'login'
+                    },{
                         xtype:'button',
-                        ui:'confirm',
                         text:'Login',
-                        width:400,
-                        itemId:'submitButton'
+                        style: 'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
+                        itemId:'submitButton',
+                        baseCls:'button',
+                        cls:'login'
                     }
 
 
@@ -73,5 +57,4 @@ Ext.define('NeqMobile.view.Login', {
 
         ]
     }
-})
-;
+});
