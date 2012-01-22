@@ -1,7 +1,4 @@
-st2-pr3/docs/
-st2-pr3/examples/
-st2-pr3/pkgs/
-st2-pr3/src/
+st2-pr3/
 .DS_Store
 .idea/.name
 .idea/workspace.xml
