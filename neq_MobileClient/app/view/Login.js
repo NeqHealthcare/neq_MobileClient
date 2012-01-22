@@ -7,22 +7,21 @@ Ext.define('NeqMobile.view.Login', {
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
     config:{
-      
+
         items:[
 
             {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                title:'Neq Healthcare Mobile Login',
                 items:[
                     {xtype:'spacer'},
-                                        {
-                                            xtype:'button',
-                                            itemId:'simple',
-                                            iconCls:'settings',
-                                            iconMask:true
-                                        }
+                    {
+                        xtype:'button',
+                        itemId:'simple',
+                        iconCls:'settings',
+                        iconMask:true
+                    }
                 ]
 
             },
@@ -42,24 +41,32 @@ Ext.define('NeqMobile.view.Login', {
                         xtype:'textfield',
                         label:'User',
                         name:'user',
-                        placeHolder: 'Enter your Username',
-                        autoComplete: true,
-                        autoCorrect: true,
-                        style: 'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        placeHolder:'Enter your Username',
+                        autoComplete:true,
+                        autoCorrect:true,
+                        style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
                         //baseCls:'textfield',
                         cls:'login'
-                    },{
+                    },
+                    {
                         xtype:'passwordfield',
                         label:'Password',
                         name:'password',
-                        placeHolder: 'Enter your Password',
-                        style: 'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        placeHolder:'Enter your Password',
+                        style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
                         //baseCls:'passwordfield',
                         cls:'login'
-                    },{
+                    },
+                    {
+                        xtype:'list',
+                        flex:1,
+                        itemTpl:'<div class="contact">{name}'
+
+                    },
+                    {
                         xtype:'button',
                         text:'Login',
-                        style: 'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
+                        style:'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
                         itemId:'submitButton',
                         baseCls:'button',
                         cls:'login'

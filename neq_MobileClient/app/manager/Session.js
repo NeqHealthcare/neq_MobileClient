@@ -46,12 +46,12 @@ Ext.define('NeqMobile.manager.Session',
             });
 
         },
-        login:function (domain, user, pass, successCallback, failureCallback, scope) {
+        login:function (domain, user, password, successCallback, failureCallback, scope) {
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
                 scope:this,
-                params:{username:user, password:pass, backendSid:domain.get('backendSid')},
+                params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
                     if (obj != 'false') {

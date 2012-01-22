@@ -8,5 +8,5 @@
 
 Ext.define('NeqMobile.model.Profile', {
 			extend : 'Ext.data.Model',
-			fields : ['Domain','user', 'pass','savepassword']
+			fields : ['Domain','user', 'password','savepassword']
 		});

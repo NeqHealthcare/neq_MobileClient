@@ -77,7 +77,7 @@ Ext.define('NeqMobile.controller.Session', {
         console.dir(this.getLogin().down('list').getSelected().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
         if (NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
-            loginForm.getFields('pass').getValue(), this.onLoginSuccess, this.onLoginFailure, this) == true) {
+            loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this) == true) {
             this.onLoginSuccess();
         }
     },
@@ -86,7 +86,7 @@ Ext.define('NeqMobile.controller.Session', {
         this.getViewport().remove(this.getWorkspace(), true);
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         this.fireEvent('loginSuccess');
-        this.getLogin().down('formpanel').getFields('pass').reset();
+        this.getLogin().down('formpanel').getFields('password').reset();
         console.log('writing session');
         console.log(NeqMobile.manager.Session.getSessionId());
     }
