@@ -14,25 +14,17 @@ Ext.define('NeqMobile.view.Login', {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                title:'Neq Healthcare Mobile Login',
                 items:[
+                    {xtype:'spacer'},
                     {
                         xtype:'button',
-                        text:'Domain Settings',
-                        itemId:'simple'
+                        itemId:'simple',
+                        iconCls:'settings',
+                        iconMask:true
                     }
                 ]
 
             },
-
-
-            {
-                xtype:'list',
-                flex:1,
-                itemTpl:'<div class="contact">{name}'
-
-            },
-
             {
 
 
@@ -61,8 +53,13 @@ Ext.define('NeqMobile.view.Login', {
                         xtype:'button',
                         ui:'confirm',
                         text:'Login',
-                        width:400,
                         itemId:'submitButton'
+                    },
+                    {
+                        xtype:'list',
+                        flex:1,
+                        itemTpl:'<div class="contact">{name}'
+
                     }
 
 

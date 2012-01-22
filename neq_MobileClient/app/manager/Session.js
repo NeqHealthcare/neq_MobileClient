@@ -20,7 +20,7 @@ Ext.define('NeqMobile.manager.Session',
             else
                 return true;
         },
-        logout:function (domain, user, session) {
+        logout:function (domain, user, session, scope) {
 
             Ext.Ajax.request({
                 url:url,
@@ -46,9 +46,9 @@ Ext.define('NeqMobile.manager.Session',
             });
 
         },
-        login:function (domain, user, pass, successCallback, failureCallback) {
+        login:function (domain, user, pass, successCallback, failureCallback, scope) {
             Ext.Ajax.request({
-                url: domain.getCoreURL() + '/connection/login',
+                url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
                 scope:this,
                 params:{username:user, password:pass, backendSid:domain.get('backendSid')},
@@ -61,17 +61,18 @@ Ext.define('NeqMobile.manager.Session',
                             sessionId:obj
                         });
                         this.session = mySession;
-                        successCallback();
+                        successCallback.apply(scope);
 
                     }
-                    else
+                    else {
                         console.log('login failed');
-                    failureCallback();
+                        failureCallback.apply(scope);
+                    }
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);
                     alert('no connection to server available');
-                    failureCallback();
+                    failureCallback.apply(scope);
                 }
             });
         }

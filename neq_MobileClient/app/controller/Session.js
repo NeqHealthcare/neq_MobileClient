@@ -7,8 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
-
-    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
+    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain'],
     views:['Viewport', 'Workspace'],
     models:['Session', 'Domain'],
     stores:['Domains'],
@@ -22,7 +21,7 @@ Ext.define('NeqMobile.controller.Session', {
         { ref:'Viewport',
             selector:'Viewport'},
         {ref:'Workspace',
-        selector:'Workspace'}
+            selector:'Workspace'}
     ],
     init:function () {
 
@@ -48,7 +47,7 @@ Ext.define('NeqMobile.controller.Session', {
 
         this.control(
             {
-                'Login #simple':{ 'tap':this.onTest}
+                'Login #simple':{ 'tap':this.onSettingsClick}
             }
         );
 
@@ -58,32 +57,36 @@ Ext.define('NeqMobile.controller.Session', {
 
         this.control(
             {
-                '#logoutButton': {'tap':this.onLogoutTry}
+                '#logoutButton':{'tap':this.onLogoutTry}
             }
         )
-
-
-    }, onTest:function () {
-        console.log('starting test');
+    },
+    launch:function () {
         var mystore = Ext.create('NeqMobile.store.Domains');
-        this.getLogin().down('list').setStore(mystore);
+        var domainlist = this.getLogin().down('list');
+        domainlist.setStore(mystore);
+        /* var currentSelection = domainlist.getSelected();
+         currentSelection.add('initialselect',domainlist.getAt(0));
+         domainlist.setSelected(currentSelection);*/
+
+        domainlist.select(mystore.getAt(0));
+
     },
     onLoginTry:function () {
         console.log('trying to login');
         console.dir(this.getLogin().down('list').getSelected().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
         if (NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
-            loginForm.getFields('pass').getValue(), this.onLoginSuccess, this.onLoginFailure) == true) {
+            loginForm.getFields('pass').getValue(), this.onLoginSuccess, this.onLoginFailure, this) == true) {
             this.onLoginSuccess();
         }
     },
     onLoginSuccess:function () {
-
         console.log('switching card');
-        Ext.ComponentQuery.query('Viewport')[0].remove(Ext.ComponentQuery.query('Workspace')[0], true);
-        Ext.ComponentQuery.query('Viewport')[0].setActiveItem(Ext.create('NeqMobile.view.Workspace'));
+        this.getViewport().remove(this.getWorkspace(), true);
+        this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         this.fireEvent('loginSuccess');
-        Ext.ComponentQuery.query('Login')[0].down('formpanel').getFields('pass').reset();
+        this.getLogin().down('formpanel').getFields('pass').reset();
         console.log('writing session');
         console.log(NeqMobile.manager.Session.getSessionId());
     }
