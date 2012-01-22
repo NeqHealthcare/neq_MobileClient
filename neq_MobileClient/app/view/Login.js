@@ -39,6 +39,7 @@ Ext.define('NeqMobile.view.Login', {
                     },
                     {
                         xtype:'textfield',
+                        value:'admin',
                         label:'User',
                         name:'user',
                         placeHolder:'Enter your Username',
@@ -50,6 +51,7 @@ Ext.define('NeqMobile.view.Login', {
                     },
                     {
                         xtype:'passwordfield',
+                        value:'iswi223<<',
                         label:'Password',
                         name:'password',
                         placeHolder:'Enter your Password',
@@ -59,7 +61,8 @@ Ext.define('NeqMobile.view.Login', {
                     },
                     {
                         xtype:'list',
-                        flex:1,
+                        width:400,
+                        height:75,
                         itemTpl:'<div class="contact">{name}'
 
                     },

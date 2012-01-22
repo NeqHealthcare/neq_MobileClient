@@ -7,18 +7,33 @@
  */
 Ext.define('NeqMobile.view.menu.Settings', {
     extend:'Ext.Panel',
-var overlay = Ext.create('Ext.Panel', {
-            floating        : true,
-            modal           : true,
-            hidden          : true,
-            height          : 300,
-            width           : '50%',
-            contentEl       : 'content',
-            styleHtmlContent: true,
-            scrollable      : true,
-            items: [{
-                    docked: 'top',
-                    xtype : 'toolbar',
-                    title : 'Overlay Title'
-            }]
-}
+    singleton:true,
+    xtype:'menuSettings',
+//    initialize:function () {
+//        this.callParent(arguments);
+//        this.on({
+//            disabledchange:function (panel) {
+//                panel.destroy();
+//            }});
+//    },
+
+
+    destroy:function () {
+        console.log('menuSettings destroyed')
+        this.callParent(arguments);
+    },
+    config:{
+        modal:true,
+        // hidden:true,
+        height:300,
+        width:150,
+        autoDestroy:true,
+        items:[
+            {
+                docked:'bottom',
+                xtype:'button',
+                text:'Logout',
+                itemId:'logoutbutton'
+            }
+        ]}
+});

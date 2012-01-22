@@ -14,32 +14,8 @@ Ext.define('NeqMobile.controller.Viewport', {
     ],
 
     init:function () {
-
+        this.callParent(arguments);
         console.log('Init Viewport controller');
-        this.control(
-            {
-                'patientdashboard button':{'tap':this.onDashboardSubmit}
-            }
-        );
-        this.control(
-            {
-                'navigationview navigationbar button[align="right"]': { 'tap':this.onLogoutClick}
-            }
-        );
-
-    },
-
-
-    onLogoutClick: function()
-    {
-        //this.getViewport().setActiveItem(this.getLoginform());
-       // this.application.fireEvent("logout",this);
     }
-,
-    onDashboardSubmit: function()
-    {this.getWorkspace().push({
-                        title: 'Second',
-                        html: 'Second view!'
-                    });}
 
 });

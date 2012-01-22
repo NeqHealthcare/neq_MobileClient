@@ -7,7 +7,8 @@
  */
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain'],
+    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain',
+        'NeqMobile.view.menu.Settings'],
     views:['Viewport', 'Workspace'],
     models:['Session', 'Domain'],
     stores:['Domains'],
@@ -21,7 +22,10 @@ Ext.define('NeqMobile.controller.Session', {
         { ref:'Viewport',
             selector:'Viewport'},
         {ref:'Workspace',
-            selector:'Workspace'}
+            selector:'Workspace'},
+        {ref:'MenuSettings',
+            selector:'menuSettings'
+        }
     ],
     init:function () {
 
@@ -57,9 +61,21 @@ Ext.define('NeqMobile.controller.Session', {
 
         this.control(
             {
-                '#logoutButton':{'tap':this.onLogoutTry}
+                'Workspace #doctorimage':{'tap':this.onShowLogoutMenu}
             }
         )
+        this.control(
+            {
+                'menuSettings #logoutbutton':{'tap':this.onLogoutClick}
+            }
+        )
+
+
+    },
+    onShowLogoutMenu:function (button) {
+        console.log('showing logout menu...');
+        var settingsmenu = NeqMobile.view.menu.Settings;
+        settingsmenu.showBy(button);
     },
     launch:function () {
         var mystore = Ext.create('NeqMobile.store.Domains');
@@ -89,5 +105,13 @@ Ext.define('NeqMobile.controller.Session', {
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('writing session');
         console.log(NeqMobile.manager.Session.getSessionId());
+    },
+
+    onLogoutClick:function () {
+        console.log('trying to logout');
+        NeqMobile.manager.Session.logout();
+        this.getViewport().setActiveItem(this.getLogin());
+        this.getMenuSettings().setHidden(true);
+    //    this.getMenuSettings().destroy();
     }
 });

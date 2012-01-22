@@ -21,14 +21,16 @@ Ext.define('NeqMobile.view.Workspace', {
 
                             {
                                 xtype:'label',
-                                html:'doctorname',
+                                html:'<span style="color:#E6E6E6">Dr. Jan Gansen</span>',
                                 align:'right'},
-
                             {
-                                xtype:'label',
-                                html:' picture ',
-                                align:'right'
-                            },
+                                xtype:'button',
+                                icon:'patientdummy.PNG',
+                                align:'right',
+                                itemId:'doctorimage'
+                            }
+                            ,
+
                             {
                                 xtype:'button',
                                 itemId:'SettingsButton',
@@ -65,7 +67,6 @@ Ext.define('NeqMobile.view.Workspace', {
                  },
                  */
                 {
-
                     xclass:'NeqMobile.view.Dashboard'
                 }
             ]

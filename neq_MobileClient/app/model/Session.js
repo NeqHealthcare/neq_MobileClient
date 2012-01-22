@@ -7,5 +7,5 @@
  */
 Ext.define('NeqMobile.model.Session', {
     extend: 'Ext.data.Model',
-    fields: ['user','sessionId']
+    fields: ['user','sessionId','domain']
 });

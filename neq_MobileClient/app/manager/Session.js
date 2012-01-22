@@ -20,28 +20,27 @@ Ext.define('NeqMobile.manager.Session',
             else
                 return true;
         },
-        logout:function (domain, user, session, scope) {
+        logout:function (successCallback, failureCallback, scope) {
 
             Ext.Ajax.request({
-                url:url,
+                url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
                 scope:this,
-                params:{username:user, session:session},
+                params:{username:this.session.get('user'), session:this.session.get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
                     if (obj = 'true') {
                         console.log('logout successfull');
-                        return true;
-                        this.onLogoutSuccess();
+                       if (successCallback) successCallback.apply(scope);
                     }
                     else
                         console.log('logout failed');
-                    return false;
+                    if (failureCallback) failureCallbackk.apply(scope);
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);
-                    alert('no connection to server available');
-                    return false;
+                    console.log('logout failed');
+                    if (failureCallback) failureCallbackk.apply(scope);
                 }
             });
 
@@ -58,7 +57,8 @@ Ext.define('NeqMobile.manager.Session',
                         console.log('login successfull');
                         var mySession = new NeqMobile.model.Session({
                             user:user,
-                            sessionId:obj
+                            sessionId:obj,
+                            domain:domain
                         });
                         this.session = mySession;
                         successCallback.apply(scope);
