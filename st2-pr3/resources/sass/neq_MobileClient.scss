@@ -1,5 +1,6 @@
 /*
-
+NEQ - Healtcare MobileClient - CSS Design - Tablet
+@Andreas chopsuey
 */
 
 $body-bg-color: #000;
@@ -46,4 +47,15 @@ $toolbar-gradient: 'glossy';
     &.x-tab-active {
         -webkit-box-shadow: inset rgba(#000, .8) 0 0 5px !important;
     }
+}
+
+.x-button-rpc{
+    border-radius: 5px;
+    border:1px solid #c4c4c4 !important;
+    background-color: White !important;
+}
+
+.x-button-rpc-spacer{
+    display: inline-block;
+    width: 5px;
 }
