@@ -99,11 +99,10 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('trying to login');
         console.dir(this.getLogin().down('list').getSelected().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
-        if (NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
-            loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this) == true) {
-            this.onLoginSuccess();
+       NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
+            loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
         }
-    },
+    ,
     onLoginSuccess:function () {
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);

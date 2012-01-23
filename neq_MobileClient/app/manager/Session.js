@@ -52,7 +52,8 @@ Ext.define('NeqMobile.manager.Session',
                 scope:this,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
-                    var obj = Ext.decode(response.responseText);
+                    //var obj = Ext.decode(response.responseText);
+                    var obj = response.responseText;
                     if (obj != 'false') {
                         console.log('login successfull');
                         var mySession = new NeqMobile.model.Session({

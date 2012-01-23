@@ -57,7 +57,6 @@ Ext.define('NeqMobile.controller.settings.Domains', {
         console.log('loading domain data into form');
         this.getSettingsDomains().down('formpanel').setRecord(record);
     },
-
     onSaveClick:function () {
         var newdomain = new NeqMobile.model.Domain(this.getSettingsDomains().down('formpanel').getValues());
         if (this.getDomainsList().hasSelection()) {
