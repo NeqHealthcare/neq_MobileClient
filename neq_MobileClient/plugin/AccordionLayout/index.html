@@ -14,7 +14,7 @@
 		<script type="text/javascript">
 Ext.setup({
     onReady: function() {
-    	Ext.regModel("Contact", {
+    	Ext.ModelManager.register("Contact", {
             fields: ["firstName", "lastName"]
         });
 

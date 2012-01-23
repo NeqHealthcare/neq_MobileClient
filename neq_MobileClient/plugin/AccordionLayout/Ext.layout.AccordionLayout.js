@@ -332,4 +332,4 @@ Ext.layout.AccordionLayout = Ext.extend(Ext.layout.Default, {
 	}
 });
 
-Ext.regLayout("accordion", Ext.layout.AccordionLayout);
+Ext.ModelManager.register("accordion", Ext.layout.AccordionLayout);
