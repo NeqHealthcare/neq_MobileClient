@@ -18,7 +18,7 @@ Ext.define('NeqMobile.view.Login', {
                     {xtype:'spacer'},
                     {
                         xtype:'button',
-                        itemId:'simple',
+                        itemId:'settingsbutton',
                         iconCls:'settings',
                         iconMask:true
                     }

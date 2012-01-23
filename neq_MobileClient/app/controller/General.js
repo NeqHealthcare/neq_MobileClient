@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.controller.Viewport', {
+Ext.define('NeqMobile.controller.General', {
     extend:'Ext.app.Controller',
     views:['Viewport'],
     requires:[ 'NeqMobile.store.Patients'],

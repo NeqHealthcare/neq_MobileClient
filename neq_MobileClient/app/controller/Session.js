@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
     requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain',
-        'NeqMobile.view.menu.Settings'],
+        'NeqMobile.view.menu.Settings','NeqMobile.view.settings.Domains'],
     views:['Viewport', 'Workspace'],
     models:['Session', 'Domain'],
     stores:['Domains'],
@@ -28,7 +28,6 @@ Ext.define('NeqMobile.controller.Session', {
         }
     ],
     init:function () {
-
         console.log('Init Session controller');
         /* this.control(
          {
@@ -51,10 +50,9 @@ Ext.define('NeqMobile.controller.Session', {
 
         this.control(
             {
-                'Login #simple':{ 'tap':this.onSettingsClick}
+                'Login #settingsbutton':{ 'tap':this.onSettingsClick}
             }
         );
-
         this.application.on("logout", function () {
             console.log('Login controller received the logout event');
         });
@@ -72,6 +70,15 @@ Ext.define('NeqMobile.controller.Session', {
 
 
     },
+
+    onSettingsClick:function () {
+        console.log('switching card');
+        this.getViewport().setActiveItem(Ext.create('NeqMobile.view.settings.Domains'));
+        this.getController('settings.Domains');
+        console.log('showing Domain Settings');
+    },
+
+
     onShowLogoutMenu:function (button) {
         console.log('showing logout menu...');
         var settingsmenu = NeqMobile.view.menu.Settings;
@@ -80,13 +87,13 @@ Ext.define('NeqMobile.controller.Session', {
     launch:function () {
         var mystore = Ext.create('NeqMobile.store.Domains');
         var domainlist = this.getLogin().down('list');
+        mystore.load();
         domainlist.setStore(mystore);
         /* var currentSelection = domainlist.getSelected();
          currentSelection.add('initialselect',domainlist.getAt(0));
          domainlist.setSelected(currentSelection);*/
 
         domainlist.select(mystore.getAt(0));
-
     },
     onLoginTry:function () {
         console.log('trying to login');
@@ -103,8 +110,7 @@ Ext.define('NeqMobile.controller.Session', {
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         this.fireEvent('loginSuccess');
         this.getLogin().down('formpanel').getFields('password').reset();
-        console.log('writing session');
-        console.log(NeqMobile.manager.Session.getSessionId());
+        console.log('save sessionID...');
     },
 
     onLogoutClick:function () {
@@ -112,6 +118,6 @@ Ext.define('NeqMobile.controller.Session', {
         NeqMobile.manager.Session.logout();
         this.getViewport().setActiveItem(this.getLogin());
         this.getMenuSettings().setHidden(true);
-    //    this.getMenuSettings().destroy();
+        //    this.getMenuSettings().destroy();
     }
 });

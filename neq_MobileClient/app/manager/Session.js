@@ -12,7 +12,7 @@ Ext.define('NeqMobile.manager.Session',
             return this.session.get('user');
         },
         getSessionId:function () {
-            return this.session.get('sessionID');
+            return this.session.get('sessionId');
         },
         isLoggedIn:function () {
             if (this.session == undefined || this.session == null)
@@ -31,7 +31,7 @@ Ext.define('NeqMobile.manager.Session',
                     var obj = Ext.decode(response.responseText);
                     if (obj = 'true') {
                         console.log('logout successfull');
-                       if (successCallback) successCallback.apply(scope);
+                        if (successCallback) successCallback.apply(scope);
                     }
                     else
                         console.log('logout failed');
@@ -43,7 +43,7 @@ Ext.define('NeqMobile.manager.Session',
                     if (failureCallback) failureCallbackk.apply(scope);
                 }
             });
-
+            this.session = undefined;
         },
         login:function (domain, user, password, successCallback, failureCallback, scope) {
             Ext.Ajax.request({
@@ -65,13 +65,13 @@ Ext.define('NeqMobile.manager.Session',
 
                     }
                     else {
-                        console.log('login failed');
-                        failureCallback.apply(scope);
+                        console.log('login failed caused by wrong credentials');
+                        if (failureCallback) failureCallback.apply(scope);
                     }
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);
-                    alert('no connection to server available');
+                    console.log('login failed - server not reachable')
                     failureCallback.apply(scope);
                 }
             });

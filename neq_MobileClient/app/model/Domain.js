@@ -15,8 +15,8 @@ Ext.define('NeqMobile.model.Domain', {
             }
         },
         proxy: {
-                type: 'sessionstorage',
-                id  : 'Domains'
+                type: 'localstorage',
+                id  : 'NeqMobile-Domains'
             }
     }
 );
