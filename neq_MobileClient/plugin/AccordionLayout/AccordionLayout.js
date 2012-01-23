@@ -19,27 +19,27 @@ Ext.layout.AccordionLayout = Ext.extend(Ext.layout.Default, {
 	/**
 	  * @cfg {String} itemCls
 	  * Default CSS class to be added to each item.
-	  * Default: 'x-accordion-item'
+	  * Default: 'x-AccordionLayout-item'
 	  */
-	itemCls : "x-accordion-item",
+	itemCls : "x-AccordionLayout-item",
 	/**
 	  * @cfg {String} headerCls
 	  * Default CSS class to be added to each item's header.
-	  * Default: 'x-accordion-header'
+	  * Default: 'x-AccordionLayout-header'
 	  */
-	headerCls : "x-accordion-header",
+	headerCls : "x-AccordionLayout-header",
 	/**
 	  * @cfg {String} arrowCls
 	  * Default CSS class to be added to each item's arrow.
-	  * Default: 'x-accordion-arrow'
+	  * Default: 'x-AccordionLayout-arrow'
 	  */
-	arrowCls : "x-accordion-arrow",
+	arrowCls : "x-AccordionLayout-arrow",
 	/**
 	  * @cfg {String} targetCls
 	  * Default CSS class to be added to target el.
-	  * Default: 'x-layout-accordion'
+	  * Default: 'x-layout-AccordionLayout'
 	  */
-	targetCls : "x-layout-accordion",
+	targetCls : "x-layout-AccordionLayout",
 	/**
 	  * @cfg {Boolean} allowCollapse
 	  * Allow all items to be collapsed at the same time.
@@ -74,7 +74,7 @@ Ext.layout.AccordionLayout = Ext.extend(Ext.layout.Default, {
 	/**
 	  * @private
 	  */
-	type : "accordion",
+	type : "AccordionLayout",
 	/**
 	  * @private
 	  */
@@ -332,4 +332,4 @@ Ext.layout.AccordionLayout = Ext.extend(Ext.layout.Default, {
 	}
 });
 
-Ext.regLayout("accordion", Ext.layout.AccordionLayout);
+Ext.regLayout("AccordionLayout", Ext.layout.AccordionLayout);
