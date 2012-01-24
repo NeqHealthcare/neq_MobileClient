@@ -8,15 +8,15 @@
 
 Ext.define('NeqMobile.model.Domain', {
         extend:'Ext.data.Model',
-        fields:['name','ip', 'port', 'backendSid','protocol'],
-        getCoreURL: function() {
+        fields:['id', 'name', 'ip', 'port', 'backendSid', 'protocol'],
+        getCoreURL:function () {
             {
                 return this.get('protocol') + '://' + this.get('ip') + ':' + this.get('port')
             }
         },
-        proxy: {
-                type: 'localstorage',
-                id  : 'NeqMobile-Domains'
-            }
+        proxy:{
+            type:'localstorage',
+            id:'NeqMobile-Domains'
+        }
     }
 );

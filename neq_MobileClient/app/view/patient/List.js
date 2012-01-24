@@ -3,34 +3,42 @@ Ext.define('NeqMobile.view.patient.List', {
     requires:'NeqMobile.store.Patients',
     xtype:'patientList',
 
+    initialize:function () {
+        this.callParent(arguments);
+
+//        this.on({
+//            show:function (view) {
+//                console.log('applying store');
+//                this.down('list').setStore(Ext.data.StoreManager.lookup('myPatientsStore'));
+//                Ext.data.StoreManager.lookup('myPatientsStore').load();
+//            }
+//        });
+    },
+
+
     config:{
 
         layout:'vbox',
 
         items:[
-            {xtype : 'toolbar',
-                ui : 'searchbar',
-                docked : 'top'
-                ,items:[
+            {xtype:'toolbar',
+                ui:'searchbar',
+                docked:'top', items:[
                 {
-                    xtype: 'searchfield'
+                    xtype:'searchfield'
                 }
             ]
             },
             {
-                xtype:    'list',
+                xtype:'list',
                 //  dock: 'right',
-               // grouped     : true,
-               //  indexBar    : true,
-                flex :1,
-                store :'Patients',
-                itemTpl: '<strong>{lastName}</strong>, {firstName} - {age}'
+                // grouped     : true,
+                //  indexBar    : true,
+                flex:1,
+                store:'NeqMobile.store.Patients',
+                itemTpl:'{id}  <strong>{rec_name}</strong>'
             }
         ]
-    },
-
-    initialize:function () {
-        console.log('initialize Patients list');
-        this.callParent();
     }
+
 });

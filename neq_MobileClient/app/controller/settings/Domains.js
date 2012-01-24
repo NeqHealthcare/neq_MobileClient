@@ -27,7 +27,7 @@ Ext.define('NeqMobile.controller.settings.Domains', {
 
         this.control(
             {
-                'settingsDomains container #domainslist':{ 'select':this.onItemSelect}
+                'settingsDomains container #domainslist':{ 'select':this.onItemSelect, 'disclose':this.onItemDisclose}
             }
         );
 
@@ -43,7 +43,19 @@ Ext.define('NeqMobile.controller.settings.Domains', {
             }
         )
 
+        var store = Ext.data.StoreManager.lookup('myDomainStore');
+        this.getDomainsList().setStore(store);
 
+    },
+    launch:function () {
+
+        console.log('launch of domains controller');
+
+        this.callParent(arguments);
+
+    },
+    test:function () {
+        console.log('test function called!!!')
     },
 
     launch:function () {
@@ -56,14 +68,33 @@ Ext.define('NeqMobile.controller.settings.Domains', {
     onItemSelect:function (list, record, options) {
         console.log('loading domain data into form');
         this.getSettingsDomains().down('formpanel').setRecord(record);
+        console.log(record.getId());
+    },
+    onItemDisclose:function (record, target, index, e, eOpts) {
+        var callback = function (buttonid) {
+            if (buttonid == 'ok') {
+                this.DeleteItem(record);
+            }
+            console.log('finished');
+        }
+        console.log('showing confirm box...');
+        Ext.Msg.prompt('Delete ' + record.get('name'), 'Really wanna delete the connection: ' + record.get('name') + ' ?', callback, this);
+    },
+    DeleteItem:function (record) {
+        console.log('removing ' + record.get('name'));
+        console.log('deletion does not work at the moment, due a framework bug');
+        //this.getDomainsList().getStore().remove(record);
     },
     onSaveClick:function () {
-        var newdomain = new NeqMobile.model.Domain(this.getSettingsDomains().down('formpanel').getValues());
+        var formdata = this.getSettingsDomains().down('formpanel').getValues();
         if (this.getDomainsList().hasSelection()) {
             console.log('trying to update the selected record');
-            this.getDomainsList().getStore().remove(this.getDomainsList().getSelection()[0]);
+            var myrecord = this.getDomainsList().getSelection()[0];
+            myrecord.set(formdata);
         }
-        this.getDomainsList().getStore().add(newdomain);
-        this.getDomainsList().getStore().sync();
+        else {
+            var newdomain = new NeqMobile.model.Domain(formdata);
+            this.getDomainsList().getStore().add(newdomain);
+        }
     }
 });

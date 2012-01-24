@@ -10,7 +10,7 @@ Ext.define('NeqMobile.store.Domains', {
     requires:'NeqMobile.model.Domain',
     model:'NeqMobile.model.Domain',
     autoLoad:true,
-    id: 'myDomainStore'
+    autoSync:true
 //    data:[
 //        {name:'GnuHe1', ip:'theilemann.dyndns.org', port:'8080', backendSid:'gnuhealth1', protocol:'HTTP'},
 //        {name:'blaserve', ip:'blablabla.dyndns.org', port:'7777', backendSid:'blabluas', protocol:'HTTP'}

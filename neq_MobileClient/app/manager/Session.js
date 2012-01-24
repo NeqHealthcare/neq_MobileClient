@@ -11,6 +11,9 @@ Ext.define('NeqMobile.manager.Session',
         getUser:function () {
             return this.session.get('user');
         },
+        getSession:function () {
+            return this.session
+        },
         getSessionId:function () {
             return this.session.get('sessionId');
         },
