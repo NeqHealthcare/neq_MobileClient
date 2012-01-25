@@ -8,6 +8,7 @@
 /**
  * @author geekflyer
  */
+var a = "aaa"
 
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
@@ -23,39 +24,58 @@ Ext.define('NeqMobile.view.patient.Info', {
                     items:[
                         {
                             xtype:'fieldset',
-
-
-                            title:'Basic Data',
+                            title: 'Patient Information',
                             items:[
+                                {
+                                html:
+                                '<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>'+
+                                    '<img src="http://t0.gstatic.com/images?q=tbn:ANd9GcS-l5gDNi9BJ9ucACpWOoIlJggmKALKjdjDn42fgbIipSOUGrdmBg"></th><th>H a m b u r g</th><th>M u e n c h e n'+
+                                    '</th></tr><tr><td>Buletten</td><td>Frikadellen</td><td>Fleischpflanzerl</td></tr><table>'
 
-                                {
-
-                                    xtype:'textfield',
-                                    name:'firstName',
-                                    label:'First Name'
                                 },
-                                {
-                                    xtype:'textfield',
-                                    name:'lastName',
-                                    label:'Last Name'
-                                },
-                                {
+                            {
                                     xtype:'textfield',
                                     name:'age',
-                                    label:'Age'
+                                    label:'Age123',
+                                    value: '123 Yrs',
+                                    readOnly: true
                                 },
                                 {   xtype:'textareafield',
                                     name:'adress',
-                                    label:'Adresse'
+                                    label:'Adresse',
+                                    value: a,
+                                    readOnly: true
+
                                 },
                                 {xtype:'button',
                                     text:'blaa'}
 
+                            ]
+                        },
+                        {
+                            xtype:'fieldset',
+                            title: 'Allergies & Critical Information',
+                            items:[
+                                {
+                                   // xtype: ''
+                                }
+                            ]
 
-                            ]}
+                        },
+                        {
+                            xtype: 'fieldset',
+                            title: 'Diseases'
+
+                        },
+                        {
+                            xtype: 'fieldset',
+                            title: 'Medication'
+
+                        }
                     ]
                 }
-            ]}}
+
+         ]}}
 
 
 );
