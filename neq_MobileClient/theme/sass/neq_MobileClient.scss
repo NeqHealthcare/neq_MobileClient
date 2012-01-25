@@ -1,6 +1,8 @@
 /* Sencha Touch 2 Demo Video Tutorial */
 /* 24.01.2012 ST2-PR4                 */
 
+// Variables
+
 $blue: #3bbfce;
 $margin: 16px;
 
@@ -13,7 +15,54 @@ $margin: 16px;
     color: $blue;
 }
 
+// Math
 
+$one: 8px;
+$two: 16px;
+$three: 3;
+
+.example1a {
+    border: 1px solid $one / 2; // 4px;
+}
+
+.example2a {
+    margin: $two * $three; //48px
+}
+
+// Color
+
+.example1b {
+    color:darken(yellow, 10);
+    background:lighten(blue, 30);
+    border-color:saturate(#aa0000, 10);
+}
+
+.example2b {
+    background:mix(yellow, red);
+}
+
+// Mixins
+
+@mixin add-stuff($color) {
+    color:$color;
+    background-color:#000;
+
+    .child {
+        padding:5px;
+    }
+}
+
+.example1c {
+    @include add-stuff(blue);
+}
+
+// Compass
+
+@import 'compass';
+
+.example1d {
+    @include border-radius(5px);
+}
 
 /*
 NEQ - Healtcare MobileClient - CSS Design - Tablet
