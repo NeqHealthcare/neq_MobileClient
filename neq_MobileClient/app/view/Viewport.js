@@ -1,18 +1,29 @@
 Ext.define('NeqMobile.view.Viewport', {
         extend:'Ext.Container',
         requires:['NeqMobile.view.Login'],
-        xtype: 'Viewport',
+        xtype:'Viewport',
+
+        initialize:function () {
+            this.callParent(arguments);
+
+            this.on({
+                activeitemchange:function (view) {
+                    console.log('card switched');
+                }})
+        },
+
         config:{
-            layout: {
-                            type: 'card',
-                            animation: {
-                                type: 'slide',
-                               direction: 'left'
-                            }
-                        },
+
+            layout:{
+                type:'card',
+                animation:{
+                    type:'slide',
+                    direction:'left'
+                }
+            },
             fullscreen:true,
             items:[
-                {   xclass: 'NeqMobile.view.Login'}
+                {   xclass:'NeqMobile.view.Login'}
             ]
 
         }

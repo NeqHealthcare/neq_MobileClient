@@ -59,12 +59,15 @@ Ext.define('NeqMobile.view.Login', {
                         //baseCls:'passwordfield',
                         cls:'login'
                     },
+//                    {xtype:'selectfield',
+//                        store:'Domains'
+//                    },
                     {
                         xtype:'list',
                         width:400,
                         height:75,
-                        itemTpl:'<div class="contact">{name}'
-
+                        store:'Domains',
+                        itemTpl:'{name}'
                     },
                     {
                         xtype:'button',

@@ -2,7 +2,10 @@ Ext.define('NeqMobile.controller.General', {
     extend:'Ext.app.Controller',
     views:['Viewport'],
     requires:[ 'NeqMobile.store.Patients'],
-    refs:[
+
+
+    config:{
+        refs:[
         {   ref:'viewport',
             selector:'viewport',
             xtype:'viewport',
@@ -11,7 +14,8 @@ Ext.define('NeqMobile.controller.General', {
             selector:'Workspace',
             xtype:'Workspace',
             autoCreate:true}
-    ],
+    ]
+    },
 
     init:function () {
         this.callParent(arguments);

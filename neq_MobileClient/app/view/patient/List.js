@@ -28,7 +28,8 @@ Ext.define('NeqMobile.view.patient.List', {
                     xtype:'searchfield'
                 }
             ]
-            },
+            }
+            ,
             {
                 xtype:'list',
                 //  dock: 'right',

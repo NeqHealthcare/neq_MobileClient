@@ -4,7 +4,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name:'NeqMobile',
-    controllers:['General','Session'],
+    controllers:['General','Session','settings.Domains'],
     launch: function() {
         Ext.create('NeqMobile.view.Viewport');
     }

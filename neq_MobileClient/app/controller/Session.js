@@ -13,37 +13,16 @@ Ext.define('NeqMobile.controller.Session', {
     models:['Session', 'Domain'],
     stores:['Domains'],
     scope:this,
-
-    refs:[
-        { ref:'Login',
-            selector:'Login',
-            autoCreate:true,
-            xtype:'Login'},
-        { ref:'Viewport',
-            selector:'Viewport'},
-        {ref:'Workspace',
-            selector:'Workspace'},
-        {ref:'MenuSettings',
-            selector:'menuSettings'
-        },
-        {ref:'SettingsDomains',
-            selector:'settingsDomains'}
-    ],
+    config:{
+        refs:{
+            login:'Login',
+            Viewport:'Viewport',
+            Workspace:'Workspace',
+            MenuSettings:'menuSettings',
+            SettingsDomains:'settingsDomains'
+        }},
     init:function () {
         console.log('Init Session controller');
-        /* this.control(
-         {
-         'patientdashboard button':{'tap':this.onDashboardSubmit}
-         }
-         );*/
-        /*  this.control(
-         {
-         'navigationview navigationbar button[align="right"]':{ 'tap':this.onLogoutClick}
-         }
-         );
-         */
-
-
         this.control(
             {
                 'Login #submitButton':{ 'tap':this.onLoginTry}
@@ -55,10 +34,6 @@ Ext.define('NeqMobile.controller.Session', {
                 'Login #settingsbutton':{ 'tap':this.onSettingsClick}
             }
         );
-        this.application.on("logout", function () {
-            console.log('Login controller received the logout event');
-        });
-
         this.control(
             {
                 'Workspace #doctorimage':{'tap':this.onShowLogoutMenu}
@@ -74,8 +49,13 @@ Ext.define('NeqMobile.controller.Session', {
                 'settingsDomains toolbar #backbutton':{'tap':this.onBackFromDomainSettings}
             }
         )
-    },
 
+//        console.log('setting value of store');
+//        var mystore = Ext.create('NeqMobile.store.Domains', {storeId:'myDomainStore'});
+//        var domainlist = this.getLogin().down('selectfield');
+//        mystore.load();
+//        domainlist.setStore(mystore);
+    },
     onBackFromDomainSettings:function () {
         this.getViewport().setActiveItem(this.getLogin());
         console.log('itemcount: ' + this.getViewport().getItems().length);
@@ -90,8 +70,9 @@ Ext.define('NeqMobile.controller.Session', {
             settingsdomains = Ext.create('NeqMobile.view.settings.Domains');
         }
         this.getViewport().setActiveItem(settingsdomains);
-        this.getController('settings.Domains');
-        console.log('showing Domain Settings');
+        console.log('showing Domain Settings...');
+       var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
+       mycontroller.launch();
     },
 
 
@@ -99,13 +80,6 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('showing logout menu...');
         var settingsmenu = NeqMobile.view.menu.Settings;
         settingsmenu.showBy(button);
-    },
-    launch:function () {
-        var mystore = Ext.create('NeqMobile.store.Domains', {storeId:'myDomainStore'});
-        var domainlist = this.getLogin().down('list');
-        mystore.load();
-        domainlist.setStore(mystore);
-        domainlist.select(mystore.getAt(0));
     },
     onLoginTry:function () {
         console.log('trying to login');
@@ -147,7 +121,7 @@ Ext.define('NeqMobile.controller.Session', {
         }
         //   var store = Ext.data.StoreManager.lookup('myPatientsStore');
 
-       // Ext.ComponentQuery.query('patientList')[0].down('list').setStore(store);
+        // Ext.ComponentQuery.query('patientList')[0].down('list').setStore(store);
         this.getWorkspace().down('list').setStore(store);
         store.load();
     },
@@ -159,4 +133,5 @@ Ext.define('NeqMobile.controller.Session', {
         this.getMenuSettings().setHidden(true);
         //    this.getMenuSettings().destroy();
     }
-});
+})
+;
