@@ -23,39 +23,57 @@ Ext.define('NeqMobile.view.patient.Info', {
                     items:[
                         {
                             xtype:'fieldset',
-
-
-                            title:'Basic Data',
+                            title: 'Patient Information',
                             items:[
+                                {
+                                html:
+                                '<table><tr><th>B  e r  l i n</th><th>H a m b u r g</th><th>M u e n c h e n'+
+                                    '</th></tr><tr><td>Buletten</td><td>Frikadellen</td><td>Fleischpflanzerl</td></tr><table>'
 
-                                {
-
-                                    xtype:'textfield',
-                                    name:'firstName',
-                                    label:'First Name'
                                 },
-                                {
-                                    xtype:'textfield',
-                                    name:'lastName',
-                                    label:'Last Name'
-                                },
-                                {
+                            {
                                     xtype:'textfield',
                                     name:'age',
-                                    label:'Age'
+                                    label:'Age123',
+                                    value: '123 Yrs',
+                                    readOnly: true
                                 },
                                 {   xtype:'textareafield',
                                     name:'adress',
-                                    label:'Adresse'
+                                    label:'Adresse',
+                                    value: 'A5',
+                                    readOnly: true
+
                                 },
                                 {xtype:'button',
                                     text:'blaa'}
 
+                            ]
+                        },
+                        {
+                            xtype:'fieldset',
+                            title: 'Allergies & Critical Information',
+                            items:[
+                                {
+                                   // xtype: ''
+                                }
+                            ]
 
-                            ]}
+                        },
+                        {
+                            xtype: 'fieldset',
+                            title: 'Diseases'
+
+                        },
+                        {
+                            xtype: 'fieldset',
+                            title: 'Medication'
+
+                        }
                     ]
                 }
-            ]}}
+
+         ]}}
 
 
 );
