@@ -1,3 +1,58 @@
+/* Sencha Touch 2 Demo Video Tutorial */
+/* 24.01.2012 ST2-PR4                 */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\000039}}
+.example1 {
+  border-color: #3bbfce;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000313}}
+.example2 {
+  margin: 16px;
+  color: #3bbfce;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000324}}
+.example1a {
+  border: 1px solid 4px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000328}}
+.example2a {
+  margin: 48px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000334}}
+.example1b {
+  color: #cccc00;
+  background: #9999ff;
+  border-color: #aa0000;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000340}}
+.example2b {
+  background: #ff7f00;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000355}}
+.example1c {
+  color: blue;
+  background-color: #000;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000350}}
+.example1c .child {
+  padding: 5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\0000363}}
+.example1d {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
 /*
 NEQ - Healtcare MobileClient - CSS Design - Tablet
 @Andreas chopsuey
@@ -5796,30 +5851,30 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2-pr3\/resources\/sass\/neq_MobileClient\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003103}}
 .x-toolbar .x-toolbar-title {
   color: #cdfb35;
   text-shadow: rgba(255, 255, 255, 0.8) 0 1px 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2-pr3\/resources\/sass\/neq_MobileClient\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003108}}
 .x-tab-active img {
   background: white none !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2-pr3\/resources\/sass\/neq_MobileClient\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003113}}
 .x-tabbar.x-docked-bottom .x-tab.x-tab-active {
   -webkit-box-shadow: inset rgba(0, 0, 0, 0.8) 0 0 5px !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2-pr3\/resources\/sass\/neq_MobileClient\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003118}}
 .x-button-rpc {
   border-radius: 5px;
   border: 1px solid #c4c4c4 !important;
   background-color: White !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2-pr3\/resources\/sass\/neq_MobileClient\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003124}}
 .x-button-rpc-spacer {
   display: inline-block;
   width: 5px;

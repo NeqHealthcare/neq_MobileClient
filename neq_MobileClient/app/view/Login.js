@@ -30,12 +30,12 @@ Ext.define('NeqMobile.view.Login', {
 
                 xtype:'formpanel',
                 scrollable:false,
-                style:'margin:0px; padding:0px; margin-left:auto; margin-right: auto; width:400px;',
+                //style:'margin:0px; padding:0px; margin-left:auto; margin-right: auto; width:400px;',
                 items:[
                     {
                         xtype:'image',
-                        src:'../../theme/images/DefaultAvatar_small.jpg',
-                        style:' display: block; margin-left: auto; margin-right: auto; border: 5px solid black; width: 200px; height: 200px;'
+                        src:'theme/images/user/DefaultAvatar_small.jpg',
+                        //style:' display: block; margin-left: auto; margin-right: auto; border: 5px solid black; width: 200px; height: 200px;'
                     },
                     {
                         xtype:'textfield',
@@ -45,7 +45,7 @@ Ext.define('NeqMobile.view.Login', {
                         placeHolder:'Enter your Username',
                         autoComplete:true,
                         autoCorrect:true,
-                        style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        //style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
                         //baseCls:'textfield',
                         cls:'login'
                     },
@@ -55,7 +55,7 @@ Ext.define('NeqMobile.view.Login', {
                         label:'Password',
                         name:'password',
                         placeHolder:'Enter your Password',
-                        style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
+                        //style:'border:5px solid black; margin:5px; background-color:grey; border-radius: 15px;',
                         //baseCls:'passwordfield',
                         cls:'login'
                     },
@@ -72,9 +72,10 @@ Ext.define('NeqMobile.view.Login', {
                     {
                         xtype:'button',
                         text:'Login',
-                        style:'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
+                        ui: 'confirm',
+                        //style:'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
                         itemId:'submitButton',
-                        baseCls:'button',
+                        //baseCls:'button',
                         cls:'login'
                     }
 
