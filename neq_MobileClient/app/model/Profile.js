@@ -7,6 +7,10 @@
  */
 
 Ext.define('NeqMobile.model.Profile', {
-			extend : 'Ext.data.Model',
-			fields : ['Domain','user', 'password','savepassword']
-		});
+    extend:'Ext.data.Model',
+
+    config:{
+        fields:['Domain', 'user', 'password', 'savepassword']
+
+    }})
+;

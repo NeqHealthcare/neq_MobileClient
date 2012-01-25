@@ -6,6 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 Ext.define('NeqMobile.model.Session', {
-    extend: 'Ext.data.Model',
-    fields: ['user','sessionId','domain']
+    extend:'Ext.data.Model',
+    config:{fields:['user', 'sessionId', 'domain']}
 });

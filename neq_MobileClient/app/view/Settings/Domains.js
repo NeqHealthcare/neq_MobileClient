@@ -22,7 +22,8 @@ Ext.define('NeqMobile.view.settings.Domains', {
                     {
                         xtype:'button',
                         text:'back',
-                        ui:'back'
+                        ui:'back',
+                        itemId:'backbutton'
                     }
                 ]
             },
@@ -43,8 +44,19 @@ Ext.define('NeqMobile.view.settings.Domains', {
                     },
                     {
                         xtype:'list',
-                        flex:1,
                         store:'Domains',
+                        flex:1,
+                        onItemDisclosure:function () {
+
+                        },
+
+
+//                            function(record,btn,index)
+//                        {
+//                            Ext.Msg.alert('Tap','Disclose more info for ' + record.get('firstName'), Ext.emptyFn);
+//
+//                        },
+                   //     store:'Domains',
                         itemId:'domainslist',
                         itemTpl:'<strong>{name}</strong>'
                     }
@@ -95,8 +107,8 @@ Ext.define('NeqMobile.view.settings.Domains', {
                                 cls:'settings_Domains',
                                 name:'protocol',
                                 options:[
-                                    {text:'HTTPS', value:'HTTPS'},
-                                    {text:'HTTP', value:'HTTP'}
+                                    {text:'HTTP', value:'HTTP'},
+                                    {text:'HTTPS', value:'HTTPS'}
                                 ]
                             }
                             ,

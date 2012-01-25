@@ -9,25 +9,19 @@ Ext.define('NeqMobile.controller.settings.Domains', {
     extend:'Ext.app.Controller',
     views:['settings.Domains'],
     requires:[],
-    refs:[
-        {   ref:'viewport',
-            selector:'viewport',
-            xtype:'viewport',
-            autoCreate:true},
-        { ref:'SettingsDomains',
-            selector:'settingsDomains'
-        },
-        { ref:'DomainsList',
-            selector:'settingsDomains container #domainslist'}
-    ],
-
+    config:{
+        refs:{
+            viewport:'viewport',
+            SettingsDomains:'settingsDomains',
+            DomainsList:'settingsDomains container #domainslist'
+        }
+    },
     init:function () {
+        console.log('init of domains controller');
         this.callParent(arguments);
-        console.log('Init Domain Settings controller');
-
         this.control(
             {
-                'settingsDomains container #domainslist':{ 'select':this.onItemSelect}
+                'settingsDomains container #domainslist':{ 'select':this.onItemSelect, 'disclose':this.onItemDisclose}
             }
         );
 
@@ -42,12 +36,13 @@ Ext.define('NeqMobile.controller.settings.Domains', {
                 'settingsDomains formpanel #savebutton':{'tap':this.onSaveClick}
             }
         )
-
-
     },
-
     launch:function () {
+        console.log('launch of domains controller');
         this.callParent(arguments);
+    },
+    test:function () {
+        console.log('test function called!!!')
     },
     onAddDomain:function () {
         this.getDomainsList().deselect(this.getDomainsList().getSelection());
@@ -56,14 +51,35 @@ Ext.define('NeqMobile.controller.settings.Domains', {
     onItemSelect:function (list, record, options) {
         console.log('loading domain data into form');
         this.getSettingsDomains().down('formpanel').setRecord(record);
+        console.log(record.getId());
+    },
+    onItemDisclose:function (view, record, target, index, e, eOpts) {
+        var callback = function (buttonid) {
+            if (buttonid == 'yes') {
+                this.DeleteItem(record);
+            }
+            console.log('finished deleting');
+        }
+        console.log('showing confirm box...');
+        Ext.Msg.confirm('Delete ' + record.get('name'), 'Really wanna delete the connection: ' + record.get('name') + ' ?', callback, this);
+    },
+    DeleteItem:function (record) {
+        console.log('removing record: ' + record.get('name'));
+       // console.log('deletion does not work at the moment, due a framework bug');
+       var mystore = this.getDomainsList().getStore();
+        mystore.remove(record);
+        mystore.sync();
     },
     onSaveClick:function () {
-        var newdomain = new NeqMobile.model.Domain(this.getSettingsDomains().down('formpanel').getValues());
+        var formdata = this.getSettingsDomains().down('formpanel').getValues();
         if (this.getDomainsList().hasSelection()) {
             console.log('trying to update the selected record');
-            this.getDomainsList().getStore().remove(this.getDomainsList().getSelection()[0]);
+            var myrecord = this.getDomainsList().getSelection()[0];
+            myrecord.set(formdata);
         }
-        this.getDomainsList().getStore().add(newdomain);
-        this.getDomainsList().getStore().sync();
+        else {
+            var newdomain = new NeqMobile.model.Domain(formdata);
+            this.getDomainsList().getStore().add(newdomain);
+        }
     }
 });
