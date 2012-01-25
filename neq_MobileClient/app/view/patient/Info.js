@@ -8,6 +8,7 @@
 /**
  * @author geekflyer
  */
+var a = "aaa"
 
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
@@ -27,7 +28,8 @@ Ext.define('NeqMobile.view.patient.Info', {
                             items:[
                                 {
                                 html:
-                                '<table><tr><th>B  e r  l i n</th><th>H a m b u r g</th><th>M u e n c h e n'+
+                                '<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>'+
+                                    '<img src="http://t0.gstatic.com/images?q=tbn:ANd9GcS-l5gDNi9BJ9ucACpWOoIlJggmKALKjdjDn42fgbIipSOUGrdmBg"></th><th>H a m b u r g</th><th>M u e n c h e n'+
                                     '</th></tr><tr><td>Buletten</td><td>Frikadellen</td><td>Fleischpflanzerl</td></tr><table>'
 
                                 },
@@ -41,7 +43,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                                 {   xtype:'textareafield',
                                     name:'adress',
                                     label:'Adresse',
-                                    value: 'A5',
+                                    value: a,
                                     readOnly: true
 
                                 },
