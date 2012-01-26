@@ -6,6 +6,7 @@ Ext.define('NeqMobile.store.Patients', {
         config:{model:'NeqMobile.model.Patient',
             //  sorters: 'lastName',
             autoLoad:true,
+            autoSync:true,
 //    getGroupString:function (record) {
 //        return record.get('lastName')[0];
 //    }

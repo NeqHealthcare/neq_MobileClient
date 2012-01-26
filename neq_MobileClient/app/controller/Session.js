@@ -71,8 +71,8 @@ Ext.define('NeqMobile.controller.Session', {
         }
         this.getViewport().setActiveItem(settingsdomains);
         console.log('showing Domain Settings...');
-       var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
-       mycontroller.launch();
+        var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
+        mycontroller.launch();
     },
 
 
@@ -91,39 +91,39 @@ Ext.define('NeqMobile.controller.Session', {
     onLoginSuccess:function () {
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
-        if (this.getWorkspace()) {
-            this.getWorkspace().destroy();
-        }
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         this.fireEvent('loginSuccess');
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('save sessionID...');
+
+        Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('myPatientsStore'));
+        var storeProxy = {type:'ajax',
+            url:NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + '/patients/all_for_user',
+            extraParams:{session:NeqMobile.manager.Session.getSessionId()
+            },
+            reader:{
+                type:'json',
+                root:'results'
+            }}
+
         var store;
         if (!Ext.data.StoreManager.lookup('myPatientsStore')) {
             store = new NeqMobile.store.Patients(
                 {
                     storeId:'myPatientsStore',
-                    proxy:{
-                        type:'ajax',
-                        url:NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + '/patients/all',
-                        extraParams:{session:NeqMobile.manager.Session.getSessionId()
-                        },
-                        reader:{
-                            type:'json',
-                            root:'results'
-                        }
-                    }
+                    proxy:storeProxy
                 }
             );
         }
         else {
+            console.log('lookup started');
             store = Ext.data.StoreManager.lookup('myPatientsStore');
+            store.setProxy(storeProxy);
         }
         //   var store = Ext.data.StoreManager.lookup('myPatientsStore');
-
         // Ext.ComponentQuery.query('patientList')[0].down('list').setStore(store);
         this.getWorkspace().down('list').setStore(store);
-        store.load();
+       // setTimeout(store.load(),50000);
     },
 
     onLogoutClick:function () {

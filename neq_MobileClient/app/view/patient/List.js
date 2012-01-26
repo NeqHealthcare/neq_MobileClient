@@ -36,7 +36,7 @@ Ext.define('NeqMobile.view.patient.List', {
                 // grouped     : true,
                 //  indexBar    : true,
                 flex:1,
-                store:'NeqMobile.store.Patients',
+               // store:'NeqMobile.store.Patients',
                 itemTpl:'{id}  <strong>{rec_name}</strong>'
             }
         ]

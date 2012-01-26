@@ -44,7 +44,9 @@ Ext.define('NeqMobile.view.Workspace', {
 
 
                 }
-
+//                ,
+//                show:function(view){alert('show event fired')},
+//                hide:function(view){alert('hide event fired')}
             });
         },
 

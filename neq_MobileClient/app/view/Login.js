@@ -41,7 +41,7 @@ Ext.define('NeqMobile.view.Login', {
                         name:'user',
                         placeHolder:'Enter your Username',
                         autoComplete:true,
-                        autoCorrect:true,
+                        autoCorrect:true
 
                     //    cls:'login'
                     },

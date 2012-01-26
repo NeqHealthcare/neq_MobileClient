@@ -7,9 +7,18 @@ Ext.define('NeqMobile.view.Viewport', {
             this.callParent(arguments);
 
             this.on({
-                activeitemchange:function (view) {
-                    console.log('card switched');
-                }})
+                activeitemchange:function (view, newview, oldview) {
+                    console.log('activeitemchange fired');
+                    if (oldview.isXType('Workspace')) {
+
+                        oldview.destroy();
+                        console.log('workspace destroyed');
+                    }
+                },
+                activate:function () {
+                    alert('activate fired');
+                }
+            })
         },
 
         config:{
