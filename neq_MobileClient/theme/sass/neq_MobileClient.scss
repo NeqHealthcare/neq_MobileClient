@@ -1,7 +1,7 @@
 /* Sencha Touch 2 Demo Video Tutorial */
 /* 24.01.2012 ST2-PR4                 */
 
-// Variables
+/*// Variables
 
 $blue: #3bbfce;
 $margin: 16px;
@@ -62,7 +62,7 @@ $three: 3;
 
 .example1d {
     @include border-radius(5px);
-}
+}*/
 
 /*
 NEQ - Healtcare MobileClient - CSS Design - Tablet
@@ -84,7 +84,13 @@ $tabs-bar-gradient: 'matte';
 $tabs-bottom-active-gradient: 'recessed';
  
 $toolbar-gradient: 'glossy';
- 
+
+$page-bg-color:  black                ;
+$sheet-bg-color: black                ;
+$sheet-button-spacing: 10px          ;
+$sheet-padding: 0px;
+
+
 @import 'sencha-touch/default/all';
 @include sencha-panel;
 @include sencha-buttons;

@@ -10,6 +10,34 @@ Ext.define('NeqMobile.view.Dashboard', {
     xtype:'Dashboard',
     requires:['NeqMobile.view.patient.Info', 'NeqMobile.view.patient.List'],
 
+    initialize:function () {
+        this.callParent(arguments);
+
+        this.on({
+
+            painted:function (dashboar) {
+                dashboar.add(
+                    [
+
+                        {xtype:'toolbar',
+                            ui:'searchbar',
+                            docked:'top', items:[
+                            {
+                                xtype:'searchfield'
+                            }
+                        ]
+                        }
+
+
+                    ]);
+
+
+            }
+//                ,
+//                show:function(view){alert('show event fired')},
+//                hide:function(view){alert('hide event fired')}
+        });
+    },
     config:{
         layout:'hbox',
         fullscreen:true,
