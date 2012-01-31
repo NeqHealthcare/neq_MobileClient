@@ -39,9 +39,15 @@ Ext.define('NeqMobile.view.Login', {
                 scrollable:false,
                 items:[
                     {
-                        xtype:'image',
+                        html: '<img src="theme/images/user/DefaultAvatar_small.jpg"' +
+                                   'style="padding:0px; margin: 0px; margin-left: 75px; height: 150px; width: 150px;"/>'
+/*                        xtype:'image',
+                        width: 150,
+                        height: 150,
+                        margin:0,
+                        padding:0,
                         id: 'image',
-                        src:'theme/images/user/DefaultAvatar_small.jpg',
+                        src:'theme/images/user/DefaultAvatar_small.jpg',*/
 
 
                     },
@@ -51,6 +57,9 @@ Ext.define('NeqMobile.view.Login', {
                         value:'admin',
                         label:'User',
                         name:'user',
+                        width:300,
+                        margin:0,
+                        padding:0,
                         placeHolder:'Enter your Username',
                         autoComplete:true,
                         autoCorrect:true
@@ -62,6 +71,9 @@ Ext.define('NeqMobile.view.Login', {
                         id: 'passwordfield',
                         value:'iswi223<<',
                         label:'Password',
+                        width:300,
+                        margin:0,
+                        padding:0,
                         name:'password',
                         placeHolder:'Enter your Password'
                     //    cls:'login'
@@ -71,7 +83,7 @@ Ext.define('NeqMobile.view.Login', {
 //                    },
                     {
                         xtype:'list',
-                        width:400,
+                        width:300,
                         height:55,
                         margin:0,
                         padding:0,
