@@ -15,8 +15,8 @@ Ext.define('NeqMobile.view.Dashboard', {
 
         this.on({
 
-            painted:function (viewport) {
-                viewport.getNavigationBar().add(
+            painted:function (dashboar) {
+                dashboar.add(
                     [
 
                         {xtype:'toolbar',
