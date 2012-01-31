@@ -37,7 +37,7 @@ var tpl = new Ext.XTemplate(
 
 
 Ext.define('NeqMobile.view.patient.Info', {
-        extend:'Ext.Component',
+        extend:'Ext.Container',
         xtype:'patientInfo',
 
         loadPatient:function (patientrecord) {
