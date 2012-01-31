@@ -7,25 +7,25 @@ Ext.define('SkeletonApp.view.Viewport', {
             type:'vbox'
         },
         items:[
-            {
-                xtype:'navigationbar',
-                title:'Hello',
-                docked:'top'
 
-            },
             {
-
                 flex:1,
                 xtype:'list',
                 layout:'auto',
                 store:'Skeletons',
                 itemTpl:'Hello {name}!'
             }
-        ]
+            ,
+            {  xtype:'selectfield',
+                options:[
+                    {text:'First Option', value:'first'},
+                    {text:'Second Option', value:'second'},
+                    {text:'Third Option', value:'third'}
+                ]
+            }
+        ]}
+
+})
 
 
-
-    }
-
-
-});
+;

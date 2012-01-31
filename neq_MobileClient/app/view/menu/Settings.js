@@ -25,9 +25,9 @@ Ext.define('NeqMobile.view.menu.Settings', {
     config:{
         modal:true,
         // hidden:true,
-       // height:300,
-       height:50,
-        width:150,
+        // height:300,
+        width:'5%',
+        height:'10%',
         autoDestroy:true,
         items:[
             {

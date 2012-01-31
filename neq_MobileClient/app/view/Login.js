@@ -51,7 +51,6 @@ Ext.define('NeqMobile.view.Login', {
                         label:'Password',
                         name:'password',
                         placeHolder:'Enter your Password',
-
                         cls:'login'
                     },
 //                    {xtype:'selectfield',

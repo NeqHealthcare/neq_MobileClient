@@ -1,10 +1,10 @@
 {
- "skeletons": [
- {
- "name": "Jack"
- },
- {
-"name": "Bones"
- }
- ]
- }
+    "skeletons":[
+        {
+            "name":"Jack"
+        },
+        {
+            "name":"Bones"
+        }
+    ]
+}

@@ -10,6 +10,6 @@ Ext.application({
     stores:['Skeletons'] ,
 
     launch: function() {
-        Ext.create('SkeletonApp.view.Viewport');
+     Ext.Viewport.add(Ext.create('SkeletonApp.view.Viewport'));
     }
 });
