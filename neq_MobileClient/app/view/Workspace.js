@@ -68,7 +68,14 @@ Ext.define('NeqMobile.view.Workspace', {
                  ]
                  },
                  */
-                {
+                /*{xtype:'toolbar',
+                    ui:'searchbar',
+                    docked:'top', items:[
+                    {
+                        xtype:'searchfield'
+                    }
+                ]
+                },*/{
                     xclass:'NeqMobile.view.Dashboard'
                 }
             ]

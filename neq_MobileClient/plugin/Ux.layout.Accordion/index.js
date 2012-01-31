@@ -34,6 +34,31 @@ Ext.setup({
             scrollable : 'vertical',
             items      : [
                 {
+                    title : 'A-Test',
+                    items : [
+                        {
+                            xtype : 'textfield',
+                            label : 'Test'
+                        },
+                        {
+                            xtype  : 'toolbar',
+                            docked : 'bottom',
+                            items  : [
+                                {
+                                    text : 'Cancel',
+                                    ui   : 'decline'
+                                },
+                                {
+                                    xtype : 'spacer'
+                                },
+                                {
+                                    text : 'Save',
+                                    ui   : 'confirm'
+                                }
+                            ]
+                        }
+                    ]
+                },{
                     title : 'Form',
                     items : [
                         {
