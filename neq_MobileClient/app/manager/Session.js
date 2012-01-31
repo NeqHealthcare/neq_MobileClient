@@ -29,6 +29,7 @@ Ext.define('NeqMobile.manager.Session',
                 url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
                 scope:this,
+                timeout:5000,
                 params:{username:this.session.get('user'), session:this.session.get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
@@ -53,6 +54,7 @@ Ext.define('NeqMobile.manager.Session',
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
                 scope:this,
+                timeout:5000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     //var obj = Ext.decode(response.responseText);
@@ -69,11 +71,14 @@ Ext.define('NeqMobile.manager.Session',
 
                     }
                     else {
+                        Ext.Msg.alert('Connection refused', 'The server rejected the connection, probably caused by wrong credentials', Ext.emptyFn);
+
                         console.log('login failed caused by wrong credentials');
                         if (failureCallback) failureCallback.apply(scope);
                     }
                 },
                 failure:function (response, opts) {
+                    Ext.Msg.alert('Server not responding', 'The server ist not responding, check your connection settings or ask the administrator.', Ext.emptyFn);
                     console.log('server-side failure with status code ' + response.status);
                     console.log('login failed - server not reachable')
                     failureCallback.apply(scope);

@@ -85,8 +85,13 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('trying to login');
         console.dir(this.getLogin().down('list').getSelected().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
-        NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
-            loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
+        if (this.getLogin().down('list').getSelected().getAt(0)) {
+            NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
+                loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
+        }
+        else {
+            Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
+        }
     },
     onLoginSuccess:function () {
         console.log('switching card');
@@ -122,7 +127,7 @@ Ext.define('NeqMobile.controller.Session', {
         //   var store = Ext.data.StoreManager.lookup('myPatientsStore');
         // Ext.ComponentQuery.query('patientList')[0].down('list').setStore(store);
         this.getWorkspace().down('list').setStore(store);
-       // setTimeout(store.load(),50000);
+        // setTimeout(store.load(),50000);
     },
 
     onLogoutClick:function () {

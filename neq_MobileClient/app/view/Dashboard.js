@@ -15,22 +15,7 @@ Ext.define('NeqMobile.view.Dashboard', {
 
         this.on({
 
-            painted:function (dashboar) {
-                dashboar.add(
-                    [
-
-                        {xtype:'toolbar',
-                            ui:'searchbar',
-                            docked:'top', items:[
-                            {
-                                xtype:'searchfield'
-                            }
-                        ]
-                        }
-
-
-                    ]);
-
+            painted:function (dashboard) {
 
             }
 //                ,

@@ -27,6 +27,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
 
+            var searchstring = Ext.String.trim(searchfield.getValue());
+            searchstring = searchstring.replace(/\s+/g,'|')
             store.clearFilter();
             store.filter(
                 {filterFn:function (item) {
@@ -35,10 +37,10 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     console.log(name);
                         console.log(id);
 
-                    console.log(searchfield.getValue());
-                    var searchstring = "/" + searchfield.getValue () + "/";
-                    console.log(searchstring);
-                    if (searchstring.test(name) || searchstring.test(id)) {
+                    console.log('the searchstring is:' + searchstring);
+                    var searchexpr = new RegExp(searchstring,'i');
+                    console.log(searchexpr);
+                    if (searchexpr.test(name) || searchexpr.test(id)) {
                         return true
                     }
                     else {

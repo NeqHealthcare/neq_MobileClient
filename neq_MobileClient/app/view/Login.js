@@ -32,7 +32,7 @@ Ext.define('NeqMobile.view.Login', {
                 //    type: 'vbox',
                 //    align: 'middle'
                 //},
-                centered: 'true',
+               // centered: 'true',
                 //pack: 'start',
                 ui: 'login',
                 style: 'background-color: white;',
@@ -54,7 +54,7 @@ Ext.define('NeqMobile.view.Login', {
                     {
                         xtype:'textfield',
                         id: 'textfield',
-                        value:'admin',
+                        value:'jgansen',
                         label:'User',
                         name:'user',
                         width:300,
