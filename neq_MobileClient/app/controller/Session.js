@@ -86,6 +86,8 @@ Ext.define('NeqMobile.controller.Session', {
         console.dir(this.getLogin().down('list').getSelected().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
         if (this.getLogin().down('list').getSelected().getAt(0)) {
+
+            Ext.Viewport.setMasked({ xtype:'loadmask', message: 'trying to login...' });
             NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
                 loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
         }
@@ -93,7 +95,12 @@ Ext.define('NeqMobile.controller.Session', {
             Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
         }
     },
+    onLoginFailure:function()
+    {
+        Ext.Viewport.setMasked(false);
+    },
     onLoginSuccess:function () {
+        Ext.Viewport.setMasked(false);
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
