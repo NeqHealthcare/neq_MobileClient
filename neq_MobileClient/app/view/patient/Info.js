@@ -42,7 +42,8 @@ Ext.define('NeqMobile.view.patient.Info', {
 
         loadPatient:function (patientrecord) {
           //  data = patientrecord.getFields();
-            console.log('setting the data config of the info component')
+            console.log('setting the data config of the info component');
+            console.log('the patients data...');
             console.log(patientrecord.data);
             this.setData(patientrecord.data);
             }
