@@ -11,7 +11,5 @@ Ext.define('NeqMobile.model.Patient', {
 //            }
 //        }
     }
-
-
 })
 ;

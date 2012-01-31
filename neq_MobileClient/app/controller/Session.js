@@ -105,7 +105,6 @@ Ext.define('NeqMobile.controller.Session', {
                 type:'json',
                 root:'results'
             }}
-
         var store;
         if (!Ext.data.StoreManager.lookup('myPatientsStore')) {
             store = new NeqMobile.store.Patients(

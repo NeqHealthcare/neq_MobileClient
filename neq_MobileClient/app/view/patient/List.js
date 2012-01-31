@@ -25,7 +25,8 @@ Ext.define('NeqMobile.view.patient.List', {
                 ui:'searchbar',
                 docked:'top', items:[
                 {
-                    xtype:'searchfield'
+                    xtype:'searchfield',
+                    itemId:'patientsearchfield'
                 }
             ]
             }

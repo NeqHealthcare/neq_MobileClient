@@ -6,9 +6,49 @@
  * To change this template use File | Settings | File Templates.
  */
 Ext.define('NeqMobile.controller.Dashboard', {
-    extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.login.LoginForm', 'NeqMobile.view.Main', 'NeqMobile.view.PatientOverview', 'NeqMobile.store.Patients'],
-    views:['Viewport', 'patient.List', 'patient.Dashboard', 'login.LoginForm', 'PatientOverview', 'Workspace'],
-    models:['Patient', 'Session'],
-    stores:['Patients']
-});
+        extend:'Ext.app.Controller',
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
+        views:['Viewport', 'patient.List', 'Dashboard', 'Workspace'],
+        models:['Patient', 'Session'],
+        stores:['Patients'],
+        config:{
+
+            control:{
+                'Dashboard #patientsearchfield':{
+                    keyup:'doFilter'
+                }
+            },
+
+            refs:{
+                loginButton:'button[action=login]'
+            }},
+
+
+        doFilter:function (searchfield, e, eOpts) {
+            var store = Ext.data.StoreManager.lookup('myPatientsStore');
+
+            store.clearFilter();
+            store.filter(
+                {filterFn:function (item) {
+                    var name = item.get('rec_name');
+                    var id = item.get('id');
+                    console.log(name);
+                        console.log(id);
+
+                    console.log(searchfield.getValue());
+                    var searchstring = "/" + searchfield.getValue () + "/";
+                    console.log(searchstring);
+                    if (searchstring.test(name) || searchstring.test(id)) {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
+                }}
+            );
+            console.log('applying filter');
+        }
+    }
+
+
+);
