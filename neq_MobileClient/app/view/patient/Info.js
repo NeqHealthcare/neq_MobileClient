@@ -29,7 +29,7 @@ var tpl = new Ext.XTemplate(
     '<tpl for="diagnoseList">',
     '<tr><td>{id}</td><td>{is_active}</td><td>{pathology_rec_name}</td></tr>',
     '</tpl>',
-    '</tbody',
+    '</tbody>',
     '</table>',
     {
         // XTemplate configuration:

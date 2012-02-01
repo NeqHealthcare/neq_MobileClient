@@ -92,7 +92,9 @@ NEQ - Healtcare MobileClient - CSS Design - Tablet
 
 $base-color: #333;
 $base-gradient: 'matte';
-$active-color: blue;
+$active-color: #BDBDBD; // bspw. selektion in liste
+$login-button-color: #BDBDBD;//#ff8000; //orange
+$login-formpanel-color: #333333;
 
 @import 'sencha-touch/default/all';
 @include sencha-panel;
@@ -109,7 +111,60 @@ $active-color: blue;
 @include sencha-form;
 @include sencha-sheet;
 
- 
+@include sencha-button-ui('login-button', $login-button-color, 'glossy');
+//@include sencha-panel-ui('login-formpanel', $login-formpanel-color, 'glossy');
+
+.login{}
+
+.loginform {
+    background-color: white;
+    margin: 50px auto;
+    padding-top: 0px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    position: absolute !important;
+    //width: 100%;
+    //height: 100%;
+    display: -webkit-box;
+    //-webkit-box-align: center;
+    //-webkit-box-pack: center;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px #BDBDBD;
+    box-shadow: 10px 10px 5px #BDBDBD;
+    border: 2px solid #BDBDBD;
+}
+// Userimage for Login
+.loginform img {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    //-webkit-box-shadow: 10px 10px 5px #BDBDBD;
+    //box-shadow: 10px 10px 5px #BDBDBD;
+    padding:10px;
+    margin:0px;
+    margin-top: 10px;
+    height: 150px; width: 150px;
+}
+
+.loginform #textfield, #passwordfield {
+    padding: 0px;
+    margin: 0px;
+    width: 300px;
+}
+
+.loginform #passwordfield {}
+
+.loginform #login-list {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    align: center;
+    width:300px; height:48px;
+}
+
+.loginform #login-button {}
+
 .x-toolbar .x-toolbar-title {
     color: saturate(lighten($active-color, 10%), 20%);
     text-shadow: rgba(#fff, .8) 0 1px 20px;
