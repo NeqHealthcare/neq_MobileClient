@@ -10,7 +10,7 @@
  */
 var tpl = new Ext.XTemplate(
     '<p>ID: {id}</p>',
-    '<p>Name: {rec_name}</p>',
+    '<p>Name: {reclili_name}</p>',
 
     '<p>Sex: ',
    '{[this.getLongSex(values.sex)]}',
@@ -19,15 +19,16 @@ var tpl = new Ext.XTemplate(
     '<h1>Diagnoses</h1>',
     '<table border="1"> ',
     '<thead>',
-        '<tr>',
-          '<th>id</th>',
-          '<th>active</th>',
-          '<th>name</th>',
-        '</tr>',
-      '</thead>',
+    '<tr>',
+    '<th>id</th>',
+    '<th>active</th>',
+    '<th>name</th>',
+    '</tr>',
+    '</thead>',
     '<tbody>',
     '<tpl for="diagnoseList">',
-    '<tr><td>{id}</td><td>{is_active}</td><td>{pathology_rec_name}</td></tr>',
+    '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
+    //is_active
     '</tpl>',
     '</tbody',
     '</table>',
@@ -42,7 +43,15 @@ var tpl = new Ext.XTemplate(
         },
         isBaby:function (age) {
             return age < 1;
+        },
+
+        checkAct: function (activness){
+            if(activness == 'true'){
+                return '<input type="checkbox" checked />'
+            }
+            else return '<input type="checkbox" unchecked />'
         }
+
     }
 );
 
@@ -50,29 +59,45 @@ var tpl = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
+        ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
         loadPatient:function (patientrecord) {
           //  data = patientrecord.getFields();
             console.log('setting the data config of the info component');
             console.log('the patients data...');
             console.log(patientrecord.data);
-            this.setData(patientrecord.data);
+            this.down('component').setData(patientrecord.data);
             }
         ,
 
         config:{
-            styleHtmlContent:true,
 
+            styleHtmlContent:true,
+            layout:'vbox',
             // layout:'card',
-            tpl:tpl
+          //  tpl:tpl',
+
+            items: [
+                {
+                    flex:1,
+                    xtype: 'container',
+                    tpl:tpl
+            },
+                {flex:1,
+                    xtype:'button',
+                                    text:'blaa'}
+
+
+            ]
+
 //            items:[
 //                {
 //                    xtype:'formpanel',
-//                    scrollable:true,
+//                    scrollable:true,{
 //                    items:[
 //                        {
 //                            xtype:'fieldset',
-//                            title:'Patient Information',
+//                             title:'Patient Information',
 //                            items:[
 //                                {
 //                                    html:'<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>' +
@@ -134,7 +159,10 @@ Ext.define('NeqMobile.view.patient.Info', {
 //                }
 //
 //            ]
+
+
         }
+
     }
 
 
