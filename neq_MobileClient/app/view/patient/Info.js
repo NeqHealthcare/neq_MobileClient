@@ -9,11 +9,11 @@
  * @author geekflyer
  */
 var tpl = new Ext.XTemplate(
-    '<p>ID: {id}</p>',
+    '<p>ID: {[values.get("id")]}</p>',
     '<p>Name: {rec_name}</p>',
 
     '<p>Sex: ',
-   '{[this.getLongSex(values.sex)]}',
+   '{[this.getLongSex(values.get("sex"))]}',
     '</p>',
 
     '<h1>Diagnoses</h1>',
@@ -26,8 +26,8 @@ var tpl = new Ext.XTemplate(
         '</tr>',
       '</thead>',
     '<tbody>',
-    '<tpl for="diagnoseList">',
-    '<tr><td>{id}</td><td>{is_active}</td><td>{pathology_rec_name}</td></tr>',
+    '<tpl for=[values.get("diagnoseList").data]>',
+    '<tr><td>bas</td><td>asdf</td><td>sdaf</td></tr>',
     '</tpl>',
     '</tbody',
     '</table>',
@@ -45,18 +45,15 @@ var tpl = new Ext.XTemplate(
         }
     }
 );
-
-
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
-
         loadPatient:function (patientrecord) {
           //  data = patientrecord.getFields();
             console.log('setting the data config of the info component');
             console.log('the patients data...');
             console.log(patientrecord.data);
-            this.setData(patientrecord.data);
+            this.setData(patientrecord);
             }
         ,
 
