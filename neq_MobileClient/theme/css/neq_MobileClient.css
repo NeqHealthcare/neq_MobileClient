@@ -633,7 +633,7 @@ input, textarea {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/core\/_core\.scss}line{font-family:\00003183}}
 .x-fullscreen {
-  background: black;
+  background: white;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_map\.scss}line{font-family:\000031}}
@@ -3957,10 +3957,10 @@ audio {
   padding: 0px;
   border-top: 1px solid black;
   height: auto;
-  background-color: black;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
-  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-color: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #ffffff), color-stop(100%, #ededed));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 2%, #ededed);
+  background-image: linear-gradient(#ffffff, #ffffff 2%, #ededed);
   -webkit-border-radius: 0;
   border-radius: 0;
 }
@@ -5899,10 +5899,10 @@ input[type="search"]::-webkit-search-cancel-button {
   padding: 0px;
   border-top: 1px solid black;
   height: auto;
-  background-color: black;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
-  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-color: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #ffffff), color-stop(100%, #ededed));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 2%, #ededed);
+  background-image: linear-gradient(#ffffff, #ffffff 2%, #ededed);
   -webkit-border-radius: 0;
   border-radius: 0;
 }
@@ -5916,30 +5916,30 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003110}}
 .x-toolbar .x-toolbar-title {
   color: #cdfb35;
   text-shadow: rgba(255, 255, 255, 0.8) 0 1px 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003115}}
 .x-tab-active img {
   background: white none !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003120}}
 .x-tabbar.x-docked-bottom .x-tab.x-tab-active {
   -webkit-box-shadow: inset rgba(0, 0, 0, 0.8) 0 0 5px !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003125}}
 .x-button-rpc {
   border-radius: 5px;
   border: 1px solid #c4c4c4 !important;
   background-color: White !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003131}}
 .x-button-rpc-spacer {
   display: inline-block;
   width: 5px;
