@@ -4,6 +4,21 @@
 NEQ - Healtcare MobileClient - CSS Design - Tablet
 @Andreas chopsuey
 */
+/*$body-bg-color: #000;*/
+/*$base-color: #333;*/
+/*$base-gradient: 'matte';*/
+/*$active-color: #B2DF1E;*/
+/*$tabs-dark: $base-color;*/
+/*$tabs-light: #555;*/
+/*$tabs-bottom-radius: .4em;*/
+/*$tabs-bottom-gradient: 'bevel';*/
+/*$tabs-bar-gradient: 'matte';*/
+/*$tabs-bottom-active-gradient: 'recessed';*/
+/*$toolbar-gradient: 'glossy';*/
+/*$page-bg-color:  white                ;*/
+/*$sheet-bg-color: white                ;*/
+/*$sheet-button-spacing: 10px          ;*/
+/*$sheet-padding: 0px;*/
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/core\/_reset\.scss}line{font-family:\000033}}
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3,
 h4, h5, h6, pre, code, form, fieldset, legend,
@@ -633,7 +648,7 @@ input, textarea {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/core\/_core\.scss}line{font-family:\00003183}}
 .x-fullscreen {
-  background: black;
+  background: #eeeeee;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_map\.scss}line{font-family:\000031}}
@@ -3474,25 +3489,25 @@ audio {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_buttons\.scss}line{font-family:\0000387}}
-.x-button-round, .x-button.x-button-action-round, .x-button.x-button-confirm-round, .x-button.x-button-decline-round {
+.x-button-round, .x-button.x-button-action-round, .x-button.x-button-confirm-round, .x-button.x-button-decline-round, .x-button.x-button-login-button-round {
   -webkit-border-radius: 0.9em;
   border-radius: 0.9em;
   padding: 0.1em 0.9em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_buttons\.scss}line{font-family:\0000392}}
-.x-button-small, .x-button.x-button-action-small, .x-button.x-button-confirm-small, .x-button.x-button-decline-small, .x-toolbar .x-button-small, .x-toolbar .x-button.x-button-action-small, .x-toolbar .x-button.x-button-confirm-small, .x-toolbar .x-button.x-button-decline-small {
+.x-button-small, .x-button.x-button-action-small, .x-button.x-button-confirm-small, .x-button.x-button-decline-small, .x-button.x-button-login-button-small, .x-toolbar .x-button-small, .x-toolbar .x-button.x-button-action-small, .x-toolbar .x-button.x-button-confirm-small, .x-toolbar .x-button.x-button-decline-small, .x-toolbar .x-button.x-button-login-button-small {
   -webkit-border-radius: 0.3em;
   border-radius: 0.3em;
   padding: .2em .4em;
   min-height: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_buttons\.scss}line{font-family:\0000397}}
-.x-button-small .x-button-label, .x-button.x-button-action-small .x-button-label, .x-button.x-button-confirm-small .x-button-label, .x-button.x-button-decline-small .x-button-label, .x-button-small .x-hasbadge .x-badge, .x-hasbadge .x-button-small .x-badge, .x-button.x-button-action-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-action-small .x-badge, .x-button.x-button-confirm-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-confirm-small .x-badge, .x-button.x-button-decline-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-decline-small .x-badge, .x-toolbar .x-button-small .x-button-label, .x-toolbar .x-button.x-button-action-small .x-button-label, .x-toolbar .x-button.x-button-confirm-small .x-button-label, .x-toolbar .x-button.x-button-decline-small .x-button-label, .x-toolbar .x-button-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button-small .x-badge, .x-toolbar .x-button.x-button-action-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-action-small .x-badge, .x-toolbar .x-button.x-button-confirm-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-confirm-small .x-badge, .x-toolbar .x-button.x-button-decline-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-decline-small .x-badge {
+.x-button-small .x-button-label, .x-button.x-button-action-small .x-button-label, .x-button.x-button-confirm-small .x-button-label, .x-button.x-button-decline-small .x-button-label, .x-button.x-button-login-button-small .x-button-label, .x-button-small .x-hasbadge .x-badge, .x-hasbadge .x-button-small .x-badge, .x-button.x-button-action-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-action-small .x-badge, .x-button.x-button-confirm-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-confirm-small .x-badge, .x-button.x-button-decline-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-decline-small .x-badge, .x-button.x-button-login-button-small .x-hasbadge .x-badge, .x-hasbadge .x-button.x-button-login-button-small .x-badge, .x-toolbar .x-button-small .x-button-label, .x-toolbar .x-button.x-button-action-small .x-button-label, .x-toolbar .x-button.x-button-confirm-small .x-button-label, .x-toolbar .x-button.x-button-decline-small .x-button-label, .x-toolbar .x-button.x-button-login-button-small .x-button-label, .x-toolbar .x-button-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button-small .x-badge, .x-toolbar .x-button.x-button-action-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-action-small .x-badge, .x-toolbar .x-button.x-button-confirm-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-confirm-small .x-badge, .x-toolbar .x-button.x-button-decline-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-decline-small .x-badge, .x-toolbar .x-button.x-button-login-button-small .x-hasbadge .x-badge, .x-hasbadge .x-toolbar .x-button.x-button-login-button-small .x-badge {
   font-size: .6em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_buttons\.scss}line{font-family:\00003101}}
-.x-button-small .x-button-icon, .x-button.x-button-action-small .x-button-icon, .x-button.x-button-confirm-small .x-button-icon, .x-button.x-button-decline-small .x-button-icon, .x-toolbar .x-button-small .x-button-icon, .x-toolbar .x-button.x-button-action-small .x-button-icon, .x-toolbar .x-button.x-button-confirm-small .x-button-icon, .x-toolbar .x-button.x-button-decline-small .x-button-icon {
+.x-button-small .x-button-icon, .x-button.x-button-action-small .x-button-icon, .x-button.x-button-confirm-small .x-button-icon, .x-button.x-button-decline-small .x-button-icon, .x-button.x-button-login-button-small .x-button-icon, .x-toolbar .x-button-small .x-button-icon, .x-toolbar .x-button.x-button-action-small .x-button-icon, .x-toolbar .x-button.x-button-confirm-small .x-button-icon, .x-toolbar .x-button.x-button-decline-small .x-button-icon, .x-toolbar .x-button.x-button-login-button-small .x-button-icon {
   width: .75em;
   height: .75em;
 }
@@ -3659,9 +3674,9 @@ audio {
 .x-toolbar .x-button.x-button-plain.x-button-pressed {
   background: none;
   -webkit-box-shadow: none;
-  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 24, color-stop(0%, rgba(254, 255, 253, 0.7)), color-stop(100%, rgba(254, 255, 253, 0)));
-  background-image: -webkit-radial-gradient(rgba(254, 255, 253, 0.7), rgba(254, 255, 253, 0) 24px);
-  background-image: radial-gradient(rgba(254, 255, 253, 0.7), rgba(254, 255, 253, 0) 24px);
+  background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 24, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 24px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 24px);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_buttons\.scss}line{font-family:\00003239}}
 .x-button.x-button-plain.x-button-pressed .x-button-icon.x-button-mask,
@@ -3840,40 +3855,40 @@ audio {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000355}}
 .x-button.x-button-action, .x-toolbar .x-button.x-button-action, .x-button.x-button-action-round, .x-toolbar .x-button.x-button-action-round, .x-button.x-button-action-small, .x-toolbar .x-button.x-button-action-small {
-  border: 0.1em solid #6a8512;
-  border-top-color: #7c9c15;
-  color: white;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+  border: 0.1em solid #8a8a8a;
+  border-top-color: #979797;
+  color: black;
+  text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 0.1em 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000360}}
 .x-button.x-button-action.x-button-back:before, .x-button.x-button-action.x-button-forward:before, .x-toolbar .x-button.x-button-action.x-button-back:before, .x-toolbar .x-button.x-button-action.x-button-forward:before, .x-button.x-button-action-round.x-button-back:before, .x-button.x-button-action-round.x-button-forward:before, .x-toolbar .x-button.x-button-action-round.x-button-back:before, .x-toolbar .x-button.x-button-action-round.x-button-forward:before, .x-button.x-button-action-small.x-button-back:before, .x-button.x-button-action-small.x-button-forward:before, .x-toolbar .x-button.x-button-action-small.x-button-back:before, .x-toolbar .x-button.x-button-action-small.x-button-forward:before {
-  background: #6a8512;
+  background: #8a8a8a;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000364}}
 .x-button.x-button-action, .x-button.x-button-action.x-button-back:after, .x-button.x-button-action.x-button-forward:after, .x-toolbar .x-button.x-button-action, .x-toolbar .x-button.x-button-action.x-button-back:after, .x-toolbar .x-button.x-button-action.x-button-forward:after, .x-button.x-button-action-round, .x-button.x-button-action-round.x-button-back:after, .x-button.x-button-action-round.x-button-forward:after, .x-toolbar .x-button.x-button-action-round, .x-toolbar .x-button.x-button-action-round.x-button-back:after, .x-toolbar .x-button.x-button-action-round.x-button-forward:after, .x-button.x-button-action-small, .x-button.x-button-action-small.x-button-back:after, .x-button.x-button-action-small.x-button-forward:after, .x-toolbar .x-button.x-button-action-small, .x-toolbar .x-button.x-button-action-small.x-button-back:after, .x-toolbar .x-button.x-button-action-small.x-button-forward:after {
-  background-color: #b2df1e;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e0f3a3), color-stop(2%, #bde53c), color-stop(100%, #99c01a));
-  background-image: -webkit-linear-gradient(#e0f3a3, #bde53c 2%, #99c01a);
-  background-image: linear-gradient(#e0f3a3, #bde53c 2%, #99c01a);
+  background-color: #bdbdbd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #cfcfcf), color-stop(100%, #ababab));
+  background-image: -webkit-linear-gradient(#ffffff, #cfcfcf 2%, #ababab);
+  background-image: linear-gradient(#ffffff, #cfcfcf 2%, #ababab);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000368}}
 .x-button.x-button-action .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-action .x-button-icon.x-icon-mask, .x-button.x-button-action-round .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-action-round .x-button-icon.x-icon-mask, .x-button.x-button-action-small .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-action-small .x-button-icon.x-icon-mask {
-  background-color: white;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #ffffff), color-stop(100%, #f4fbe0));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 2%, #f4fbe0);
-  background-image: linear-gradient(#ffffff, #ffffff 2%, #f4fbe0);
+  background-color: black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000377}}
 .x-button.x-button-action.x-button-pressed, .x-button.x-button-action.x-button-active, .x-toolbar .x-button.x-button-action.x-button-pressed, .x-toolbar .x-button.x-button-action.x-button-active, .x-button.x-button-action-round.x-button-pressed, .x-button.x-button-action-round.x-button-active, .x-toolbar .x-button.x-button-action-round.x-button-pressed, .x-toolbar .x-button.x-button-action-round.x-button-active, .x-button.x-button-action-small.x-button-pressed, .x-button.x-button-action-small.x-button-active, .x-toolbar .x-button.x-button-action-small.x-button-pressed, .x-toolbar .x-button.x-button-action-small.x-button-active {
-  -webkit-box-shadow: inset #7fa011 0 0 0.1em, rgba(255, 255, 255, 0.1) 0 0.1em 0;
+  -webkit-box-shadow: inset #9c9292 0 0 0.1em, rgba(255, 255, 255, 0.1) 0 0.1em 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000378}}
 .x-button.x-button-action.x-button-pressed, .x-button.x-button-action.x-button-pressed:after, .x-button.x-button-action.x-button-active, .x-button.x-button-action.x-button-active:after, .x-toolbar .x-button.x-button-action.x-button-pressed, .x-toolbar .x-button.x-button-action.x-button-pressed:after, .x-toolbar .x-button.x-button-action.x-button-active, .x-toolbar .x-button.x-button-action.x-button-active:after, .x-button.x-button-action-round.x-button-pressed, .x-button.x-button-action-round.x-button-pressed:after, .x-button.x-button-action-round.x-button-active, .x-button.x-button-action-round.x-button-active:after, .x-toolbar .x-button.x-button-action-round.x-button-pressed, .x-toolbar .x-button.x-button-action-round.x-button-pressed:after, .x-toolbar .x-button.x-button-action-round.x-button-active, .x-toolbar .x-button.x-button-action-round.x-button-active:after, .x-button.x-button-action-small.x-button-pressed, .x-button.x-button-action-small.x-button-pressed:after, .x-button.x-button-action-small.x-button-active, .x-button.x-button-action-small.x-button-active:after, .x-toolbar .x-button.x-button-action-small.x-button-pressed, .x-toolbar .x-button.x-button-action-small.x-button-pressed:after, .x-toolbar .x-button.x-button-action-small.x-button-active, .x-toolbar .x-button.x-button-action-small.x-button-active:after {
-  background-color: #99c01a;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #759314), color-stop(10%, #87a917), color-stop(65%, #99c01a), color-stop(100%, #9bc21a));
-  background-image: -webkit-linear-gradient(#759314, #87a917 10%, #99c01a 65%, #9bc21a);
-  background-image: linear-gradient(#759314, #87a917 10%, #99c01a 65%, #9bc21a);
+  background-color: #ababab;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #929292), color-stop(10%, #9e9e9e), color-stop(65%, #ababab), color-stop(100%, #acacac));
+  background-image: -webkit-linear-gradient(#929292, #9e9e9e 10%, #ababab 65%, #acacac);
+  background-image: linear-gradient(#929292, #9e9e9e 10%, #ababab 65%, #acacac);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000355}}
@@ -3954,20 +3969,20 @@ audio {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000335}}
 .x-sheet {
-  padding: 0px;
+  padding: 0.7em;
   border-top: 1px solid black;
   height: auto;
-  background-color: black;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
-  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(77, 77, 77, 0.9)), color-stop(2%, rgba(18, 18, 18, 0.9)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -webkit-linear-gradient(rgba(77, 77, 77, 0.9), rgba(18, 18, 18, 0.9) 2%, rgba(0, 0, 0, 0.9));
+  background-image: linear-gradient(rgba(77, 77, 77, 0.9), rgba(18, 18, 18, 0.9) 2%, rgba(0, 0, 0, 0.9));
   -webkit-border-radius: 0;
   border-radius: 0;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000344}}
 .x-sheet-inner > .x-button {
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000347}}
 .x-sheet-inner > .x-button:last-child {
@@ -3988,7 +4003,7 @@ audio {
   -webkit-background-clip: padding;
   background-clip: padding-box;
   overflow: hidden;
-  margin: 0px;
+  margin: 0.7em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_picker\.scss}line{font-family:\0000327}}
 .x-sheet.x-picker .x-sheet-inner:before, .x-sheet.x-picker .x-sheet-inner:after {
@@ -4069,13 +4084,13 @@ audio {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_picker\.scss}line{font-family:\0000391}}
 .x-picker-bar {
-  border-top: 0.12em solid #b2df1e;
-  border-bottom: 0.12em solid #b2df1e;
+  border-top: 0.12em solid #bdbdbd;
+  border-bottom: 0.12em solid #bdbdbd;
   height: 2.5em;
-  background-color: rgba(189, 242, 13, 0.3);
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(228, 250, 158, 0.3)), color-stop(2%, rgba(198, 244, 47, 0.3)), color-stop(100%, rgba(162, 208, 11, 0.3)));
-  background-image: -webkit-linear-gradient(rgba(228, 250, 158, 0.3), rgba(198, 244, 47, 0.3) 2%, rgba(162, 208, 11, 0.3));
-  background-image: linear-gradient(rgba(228, 250, 158, 0.3), rgba(198, 244, 47, 0.3) 2%, rgba(162, 208, 11, 0.3));
+  background-color: rgba(242, 13, 13, 0.3);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(250, 158, 158, 0.3)), color-stop(2%, rgba(244, 47, 47, 0.3)), color-stop(100%, rgba(208, 11, 11, 0.3)));
+  background-image: -webkit-linear-gradient(rgba(250, 158, 158, 0.3), rgba(244, 47, 47, 0.3) 2%, rgba(208, 11, 11, 0.3));
+  background-image: linear-gradient(rgba(250, 158, 158, 0.3), rgba(244, 47, 47, 0.3) 2%, rgba(208, 11, 11, 0.3));
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0.2em 0.2em;
 }
 
@@ -4270,8 +4285,8 @@ audio {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003150}}
 .x-tabbar.x-docked-bottom .x-tab {
-  -webkit-border-radius: 0.4em;
-  border-radius: 0.4em;
+  -webkit-border-radius: 0.25em;
+  border-radius: 0.25em;
   min-width: 3.3em;
   position: relative;
   padding-top: .2em;
@@ -4349,15 +4364,15 @@ audio {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003229}}
 .x-tabbar-light {
-  background-color: #555555;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a2a2a2), color-stop(2%, #676767), color-stop(100%, #434343));
-  background-image: -webkit-linear-gradient(#a2a2a2, #676767 2%, #434343);
-  background-image: linear-gradient(#a2a2a2, #676767 2%, #434343);
-  border-color: #484848;
+  background-color: #404040;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8c8c8c), color-stop(2%, #525252), color-stop(100%, #2e2e2e));
+  background-image: -webkit-linear-gradient(#8c8c8c, #525252 2%, #2e2e2e);
+  background-image: linear-gradient(#8c8c8c, #525252 2%, #2e2e2e);
+  border-color: #333333;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003233}}
 .x-tabbar-light .x-tab {
-  color: #bbbbbb;
+  color: #a6a6a6;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003237}}
 .x-tabbar-light .x-tab-active {
@@ -4374,51 +4389,51 @@ audio {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003250}}
 .x-tabbar-light.x-docked-bottom .x-tab .x-button-icon {
-  background-color: #888888;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d4d4d4), color-stop(2%, #9a9a9a), color-stop(100%, #767676));
-  background-image: -webkit-linear-gradient(#d4d4d4, #9a9a9a 2%, #767676);
-  background-image: linear-gradient(#d4d4d4, #9a9a9a 2%, #767676);
+  background-color: #737373;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bfbfbf), color-stop(2%, #858585), color-stop(100%, #616161));
+  background-image: -webkit-linear-gradient(#bfbfbf, #858585 2%, #616161);
+  background-image: linear-gradient(#bfbfbf, #858585 2%, #616161);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003255}}
 .x-tabbar-light.x-docked-bottom .x-tab-active {
-  background-color: #626262;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aeaeae), color-stop(2%, #747474), color-stop(100%, #505050));
-  background-image: -webkit-linear-gradient(#aeaeae, #747474 2%, #505050);
-  background-image: linear-gradient(#aeaeae, #747474 2%, #505050);
+  background-color: #4d4d4d;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #999999), color-stop(2%, #5e5e5e), color-stop(100%, #3b3b3b));
+  background-image: -webkit-linear-gradient(#999999, #5e5e5e 2%, #3b3b3b);
+  background-image: linear-gradient(#999999, #5e5e5e 2%, #3b3b3b);
   text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003259}}
 .x-tabbar-light.x-docked-bottom .x-tab-active .x-button-icon {
-  background-color: #c0f805;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #99c604), color-stop(10%, #acdf04), color-stop(65%, #c0f805), color-stop(100%, #c1fa05));
-  background-image: -webkit-linear-gradient(#99c604, #acdf04 10%, #c0f805 65%, #c1fa05);
-  background-image: linear-gradient(#99c604, #acdf04 10%, #c0f805 65%, #c1fa05);
+  background-color: #cab0b0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e9dede), color-stop(50%, #d4bfbf), color-stop(51%, #cab0b0), color-stop(100%, #c0a1a1));
+  background-image: -webkit-linear-gradient(#e9dede, #d4bfbf 50%, #cab0b0 51%, #c0a1a1);
+  background-image: linear-gradient(#e9dede, #d4bfbf 50%, #cab0b0 51%, #c0a1a1);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003268}}
 .x-tabbar-light.x-docked-top .x-tab-active {
-  background-color: #484848;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2f2f2f), color-stop(10%, #3b3b3b), color-stop(65%, #484848), color-stop(100%, #4a4a4a));
-  background-image: -webkit-linear-gradient(#2f2f2f, #3b3b3b 10%, #484848 65%, #4a4a4a);
-  background-image: linear-gradient(#2f2f2f, #3b3b3b 10%, #484848 65%, #4a4a4a);
+  background-color: #333333;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a1a1a), color-stop(10%, #262626), color-stop(65%, #333333), color-stop(100%, #343434));
+  background-image: -webkit-linear-gradient(#1a1a1a, #262626 10%, #333333 65%, #343434);
+  background-image: linear-gradient(#1a1a1a, #262626 10%, #333333 65%, #343434);
   color: white;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003229}}
 .x-tabbar-dark {
-  background-color: #333333;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #808080), color-stop(2%, #454545), color-stop(100%, #212121));
-  background-image: -webkit-linear-gradient(#808080, #454545 2%, #212121);
-  background-image: linear-gradient(#808080, #454545 2%, #212121);
-  border-color: #262626;
+  background-color: black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+  border-color: black;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003233}}
 .x-tabbar-dark .x-tab {
-  color: #999999;
+  color: #666666;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003237}}
 .x-tabbar-dark .x-tab-active {
-  color: white;
+  color: #e6e6e6;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003241}}
 .x-tabbar-dark .x-tab-pressed {
@@ -4431,33 +4446,33 @@ audio {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003250}}
 .x-tabbar-dark.x-docked-bottom .x-tab .x-button-icon {
-  background-color: #666666;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b3b3b3), color-stop(2%, #787878), color-stop(100%, #545454));
-  background-image: -webkit-linear-gradient(#b3b3b3, #787878 2%, #545454);
-  background-image: linear-gradient(#b3b3b3, #787878 2%, #545454);
+  background-color: #333333;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #808080), color-stop(2%, #454545), color-stop(100%, #212121));
+  background-image: -webkit-linear-gradient(#808080, #454545 2%, #212121);
+  background-image: linear-gradient(#808080, #454545 2%, #212121);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003255}}
 .x-tabbar-dark.x-docked-bottom .x-tab-active {
-  background-color: #404040;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8c8c8c), color-stop(2%, #525252), color-stop(100%, #2e2e2e));
-  background-image: -webkit-linear-gradient(#8c8c8c, #525252 2%, #2e2e2e);
-  background-image: linear-gradient(#8c8c8c, #525252 2%, #2e2e2e);
+  background-color: #0d0d0d;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #595959), color-stop(2%, #1f1f1f), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#595959, #1f1f1f 2%, #000000);
+  background-image: linear-gradient(#595959, #1f1f1f 2%, #000000);
   text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003259}}
 .x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon {
-  background-color: #e7ff97;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dbff64), color-stop(10%, #e1ff7e), color-stop(65%, #e7ff97), color-stop(100%, #e7ff9a));
-  background-image: -webkit-linear-gradient(#dbff64, #e1ff7e 10%, #e7ff97 65%, #e7ff9a);
-  background-image: linear-gradient(#dbff64, #e1ff7e 10%, #e7ff97 65%, #e7ff9a);
+  background-color: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #ffffff), color-stop(51%, #ffffff), color-stop(100%, #fbe9e9));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 50%, #ffffff 51%, #fbe9e9);
+  background-image: linear-gradient(#ffffff, #ffffff 50%, #ffffff 51%, #fbe9e9);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_tabs\.scss}line{font-family:\00003268}}
 .x-tabbar-dark.x-docked-top .x-tab-active {
-  background-color: #262626;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0d0d0d), color-stop(10%, #1a1a1a), color-stop(65%, #262626), color-stop(100%, #282828));
-  background-image: -webkit-linear-gradient(#0d0d0d, #1a1a1a 10%, #262626 65%, #282828);
-  background-image: linear-gradient(#0d0d0d, #1a1a1a 10%, #262626 65%, #282828);
+  background-color: black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(10%, #000000), color-stop(65%, #000000), color-stop(100%, #010101));
+  background-image: -webkit-linear-gradient(#000000, #000000 10%, #000000 65%, #010101);
+  background-image: linear-gradient(#000000, #000000 10%, #000000 65%, #010101);
   color: white;
 }
 
@@ -4519,9 +4534,9 @@ audio {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar\.scss}line{font-family:\00003104}}
 .x-toolbar-dark {
   background-color: #1a1a1a;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404040), color-stop(50%, #262626), color-stop(51%, #1a1a1a), color-stop(100%, #0d0d0d));
-  background-image: -webkit-linear-gradient(#404040, #262626 50%, #1a1a1a 51%, #0d0d0d);
-  background-image: linear-gradient(#404040, #262626 50%, #1a1a1a 51%, #0d0d0d);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(2%, #2b2b2b), color-stop(100%, #080808));
+  background-image: -webkit-linear-gradient(#666666, #2b2b2b 2%, #080808);
+  background-image: linear-gradient(#666666, #2b2b2b 2%, #080808);
   border-color: black;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar\.scss}line{font-family:\00003108}}
@@ -4564,9 +4579,9 @@ audio {
 .x-toolbar-dark .x-field-select.x-button-back:after, .x-toolbar
 .x-toolbar-dark .x-field-select.x-button-forward:after {
   background-color: black;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #262626), color-stop(50%, #0d0d0d), color-stop(51%, #000000), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(#262626, #0d0d0d 50%, #000000 51%, #000000);
-  background-image: linear-gradient(#262626, #0d0d0d 50%, #000000 51%, #000000);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000368}}
 .x-toolbar-dark .x-button .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-dark .x-button .x-button-icon.x-icon-mask,
@@ -4604,9 +4619,9 @@ audio {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar\.scss}line{font-family:\00003104}}
 .x-toolbar-light {
   background-color: #333333;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #595959), color-stop(50%, #404040), color-stop(51%, #333333), color-stop(100%, #262626));
-  background-image: -webkit-linear-gradient(#595959, #404040 50%, #333333 51%, #262626);
-  background-image: linear-gradient(#595959, #404040 50%, #333333 51%, #262626);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #808080), color-stop(2%, #454545), color-stop(100%, #212121));
+  background-image: -webkit-linear-gradient(#808080, #454545 2%, #212121);
+  background-image: linear-gradient(#808080, #454545 2%, #212121);
   border-color: black;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar\.scss}line{font-family:\00003108}}
@@ -4637,9 +4652,9 @@ audio {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000364}}
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select, .x-toolbar-light .x-field-select.x-button-back:after, .x-toolbar-light .x-field-select.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select, .x-toolbar .x-toolbar-light .x-field-select.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select.x-button-forward:after {
   background-color: #1a1a1a;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404040), color-stop(50%, #262626), color-stop(51%, #1a1a1a), color-stop(100%, #0d0d0d));
-  background-image: -webkit-linear-gradient(#404040, #262626 50%, #1a1a1a 51%, #0d0d0d);
-  background-image: linear-gradient(#404040, #262626 50%, #1a1a1a 51%, #0d0d0d);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(2%, #2b2b2b), color-stop(100%, #080808));
+  background-image: -webkit-linear-gradient(#666666, #2b2b2b 2%, #080808);
+  background-image: linear-gradient(#666666, #2b2b2b 2%, #080808);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000368}}
 .x-toolbar-light .x-button .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-light .x-button .x-button-icon.x-icon-mask, .x-toolbar-light .x-field-select .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-light .x-field-select .x-button-icon.x-icon-mask {
@@ -4823,12 +4838,12 @@ audio {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_list\.scss}line{font-family:\0000381}}
 .x-list .x-list-disclosure {
   overflow: visible;
-  -webkit-mask: 0 0 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFBElEQVRoBe2aS4gdRRRA8+L/m0QIJkYNLlQUNOAvigpRcCEIcSsiCLoLLoILcaM7QVBX4koRshDxt9CFKCoiuvGDCP5QkxCiJhInRo2Ovzie80gPNWX1dL3uesM09IUz3V1169a9daur+031aG5ubkUpGY1GK7G1Dq4Cz9vKiIY74Sv8+72tkWQ7Ay4Bxo+Hu2E3/AuOZBf+ov2TsL6Ef5WNUsGazXvgEHQJMm77N/aeg3Mrh7seOweMM2bWYH+B2OES1/9g9w0oEnSngHHCYO+FGSgRXJ0NM/0idA565BRpKyxSt9J2B5xWY+Mw5Udq6uqKT6XimESlmX4d7sTnA4n6rKJjs7QSSgTrSno7nJyodtFyGr4AP4G6TeLIHweb4A44C0LR1xtgCzwP7aTtIkBvLlSfQjwNZyl7FNa0sU077V4DX0Js25X7cRjPzDb2Nd5FnK7xPbGXskdwxsxOLLRzdnwIj8GvkQFnypqobKLLrgGnOjMzP6cqJijzfn0NXPljmXRNWNC+dcBHM7HA2NELp10nwbaz5iC4OsdidTyrYp3a68ZFi7XJFfNsOBGcUmFnPpbiBWkVZefT7g+OXcTF0EUsFPtaje0Lw0LOzfoM49B4Gy36WMKwK+WDcC2cAmGwXK7YAAYdym9c+NiIdUOdnHODc6DjpPioix9LBvwtPE3QOzjWi7MjBS0M8CGY1huUA1ISg/4cNqXiqcqSwVqJ3AQ/QEmnpm3LR+IzsLYKMD4mA6bBOfAKuFpO28nS9v0Bcxckn9V1Ad9Pg2m/H5cONLT3Mf5fFGfX63hBQG8s7/LXxcdV0nvjMtgKp0MojuaroM60xYB8Z78ZTog6c515B1ylXey+ARe3/0tqFNCy0RjrkdvgOwhH0TeiB2A1uMBNGx9Ta+FZiP34mrIrQR39cECSUzqZYYIcR0mjJtmFwmHUvdenLjwmnUl7Eh05+LP40fjvoGTACYN1Rc6CecGhM7lw2lt+AA7Fg4fOespXgYO0j3pvnXmh3rY+/52+vrXtRSd841rQJ/WV1JVX9eNj14DnjeHnJVw8DBeAnX8A2ynfXwXN+cWUPQUOjNl6i7Jt1I9nCOe+1V0NT4AB/wkvw31QRIoFjDfnwRXgfVbJGZzsry44boTNUGVjlvOToPpV5FvbjXApKE7VLZ6UkpWlDGHH+96pV93/4TSsujGA8MeF51Xw6njuO3soKTth/UTnJQOeqONFlKsBW0SlfdVyDLh9NBkth4AzBqnXKkOGe52+DOeHDGcMUq9Vhgz3On0Zzg8ZzhikXqsMGe51+jKcHzKcMUi9Vhky3Ov0ZTg/ZDhjkHqtMmS41+nLcH7IcMYg9VplOWY4/Md88cEtHbDOVg5Xx9jpsM9Yx52JeAcw1ontTXRdcm9pFz3vBveHdNJN6YPVRhrnivtMlruZ5g7DFxBuXLut8j7sA/d43Yr5CIpJsYAJ7DN2/27Bsw1gwAb3I8wLOp+g4w6+nw/6HddOyszqWDg/Qv2bXFwH4+1SyhyUYtI1YLc85wXn/ORAagWdPVRKUqh3AJwtdTLeWq2rbCoP76cm3bjeLG6ELjZim03XJujyJqXF6rtmeDvGNzMN/ajEAZi2rKOD67t00jVgN7+3dnFgqdsu5XRc6tiS/eUGvBTTNengBIVZPuYG7LcYPjdluYk++bTw++pGyQ34bSy9B35Vs5zEYGfgJfg+x7H/ADoy2VfnrtXoAAAAAElFTkSuQmCC');
-    -webkit-mask-size: 1.7em;
-  background-color: #b9ec11;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e3f89e), color-stop(2%, #c3f031), color-stop(100%, #9fca0f));
-  background-image: -webkit-linear-gradient(#e3f89e, #c3f031 2%, #9fca0f);
-  background-image: linear-gradient(#e3f89e, #c3f031 2%, #9fca0f);
+  -webkit-mask: 0 0 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpFNkNCM0JGNTZFMjI2ODExQkNGQjkwMzk3MDc3MkZFQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3M0MzQUU1QUFDQkQxMURGOEQ2MUVDMjM0MzY2NTBDQSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3M0MzQUU1OUFDQkQxMURGOEQ2MUVDMjM0MzY2NTBDQSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU3Q0IzQkY1NkUyMjY4MTFCQ0ZCOTAzOTcwNzcyRkVCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU2Q0IzQkY1NkUyMjY4MTFCQ0ZCOTAzOTcwNzcyRkVCIi8+IDwvcmRmOkRlc2NyaXB0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') no-repeat;
+  -webkit-mask-size: 1.7em;
+  background-color: #c4b6b6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #d4caca), color-stop(100%, #b4a3a3));
+  background-image: -webkit-linear-gradient(#ffffff, #d4caca 2%, #b4a3a3);
+  background-image: linear-gradient(#ffffff, #d4caca 2%, #b4a3a3);
   width: 1.7em;
   height: 1.7em;
 }
@@ -4862,19 +4877,19 @@ audio {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_list\.scss}line{font-family:\00003117}}
 .x-list .x-list-item.x-item-pressed {
-  border-top-color: #fefffd;
-  background: #fefffd none;
+  border-top-color: white;
+  background: white none;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_list\.scss}line{font-family:\00003125}}
 .x-list .x-list-item.x-item-selected {
-  background-color: #b2df1e;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e0f3a3), color-stop(2%, #bde53c), color-stop(100%, #99c01a));
-  background-image: -webkit-linear-gradient(#e0f3a3, #bde53c 2%, #99c01a);
-  background-image: linear-gradient(#e0f3a3, #bde53c 2%, #99c01a);
-  color: white;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
-  border-top-color: #c2e749;
-  border-bottom-color: #7c9c15;
+  background-color: #bdbdbd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #cfcfcf), color-stop(100%, #ababab));
+  background-image: -webkit-linear-gradient(#ffffff, #cfcfcf 2%, #ababab);
+  background-image: linear-gradient(#ffffff, #cfcfcf 2%, #ababab);
+  color: black;
+  text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
+  border-top-color: #d7d7d7;
+  border-bottom-color: #979797;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_list\.scss}line{font-family:\00003138}}
@@ -5523,7 +5538,7 @@ html, body {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003329}}
 .x-field .x-input-radio:checked:after,
 .x-field .x-input-checkbox:checked:after {
-  border-color: #b2df1e;
+  border-color: #bdbdbd;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003336}}
@@ -5896,51 +5911,147 @@ input[type="search"]::-webkit-search-cancel-button {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000335}}
 .x-sheet {
-  padding: 0px;
+  padding: 0.7em;
   border-top: 1px solid black;
   height: auto;
-  background-color: black;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
-  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-color: rgba(0, 0, 0, 0.9);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(77, 77, 77, 0.9)), color-stop(2%, rgba(18, 18, 18, 0.9)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background-image: -webkit-linear-gradient(rgba(77, 77, 77, 0.9), rgba(18, 18, 18, 0.9) 2%, rgba(0, 0, 0, 0.9));
+  background-image: linear-gradient(rgba(77, 77, 77, 0.9), rgba(18, 18, 18, 0.9) 2%, rgba(0, 0, 0, 0.9));
   -webkit-border-radius: 0;
   border-radius: 0;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000344}}
 .x-sheet-inner > .x-button {
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_sheets\.scss}line{font-family:\0000347}}
 .x-sheet-inner > .x-button:last-child {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000355}}
+.x-button.x-button-login-button, .x-toolbar .x-button.x-button-login-button, .x-button.x-button-login-button-round, .x-toolbar .x-button.x-button-login-button-round, .x-button.x-button-login-button-small, .x-toolbar .x-button.x-button-login-button-small {
+  border: 0.1em solid #8a8a8a;
+  border-top-color: #979797;
+  color: black;
+  text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 0.1em 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000360}}
+.x-button.x-button-login-button.x-button-back:before, .x-button.x-button-login-button.x-button-forward:before, .x-toolbar .x-button.x-button-login-button.x-button-back:before, .x-toolbar .x-button.x-button-login-button.x-button-forward:before, .x-button.x-button-login-button-round.x-button-back:before, .x-button.x-button-login-button-round.x-button-forward:before, .x-toolbar .x-button.x-button-login-button-round.x-button-back:before, .x-toolbar .x-button.x-button-login-button-round.x-button-forward:before, .x-button.x-button-login-button-small.x-button-back:before, .x-button.x-button-login-button-small.x-button-forward:before, .x-toolbar .x-button.x-button-login-button-small.x-button-back:before, .x-toolbar .x-button.x-button-login-button-small.x-button-forward:before {
+  background: #8a8a8a;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000364}}
+.x-button.x-button-login-button, .x-button.x-button-login-button.x-button-back:after, .x-button.x-button-login-button.x-button-forward:after, .x-toolbar .x-button.x-button-login-button, .x-toolbar .x-button.x-button-login-button.x-button-back:after, .x-toolbar .x-button.x-button-login-button.x-button-forward:after, .x-button.x-button-login-button-round, .x-button.x-button-login-button-round.x-button-back:after, .x-button.x-button-login-button-round.x-button-forward:after, .x-toolbar .x-button.x-button-login-button-round, .x-toolbar .x-button.x-button-login-button-round.x-button-back:after, .x-toolbar .x-button.x-button-login-button-round.x-button-forward:after, .x-button.x-button-login-button-small, .x-button.x-button-login-button-small.x-button-back:after, .x-button.x-button-login-button-small.x-button-forward:after, .x-toolbar .x-button.x-button-login-button-small, .x-toolbar .x-button.x-button-login-button-small.x-button-back:after, .x-toolbar .x-button.x-button-login-button-small.x-button-forward:after {
+  background-color: #bdbdbd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e3e3e3), color-stop(50%, #cacaca), color-stop(51%, #bdbdbd), color-stop(100%, #b0b0b0));
+  background-image: -webkit-linear-gradient(#e3e3e3, #cacaca 50%, #bdbdbd 51%, #b0b0b0);
+  background-image: linear-gradient(#e3e3e3, #cacaca 50%, #bdbdbd 51%, #b0b0b0);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000368}}
+.x-button.x-button-login-button .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-login-button .x-button-icon.x-icon-mask, .x-button.x-button-login-button-round .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-login-button-round .x-button-icon.x-icon-mask, .x-button.x-button-login-button-small .x-button-icon.x-icon-mask, .x-toolbar .x-button.x-button-login-button-small .x-button-icon.x-icon-mask {
+  background-color: black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(2%, #121212), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#4d4d4d, #121212 2%, #000000);
+  background-image: linear-gradient(#4d4d4d, #121212 2%, #000000);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000377}}
+.x-button.x-button-login-button.x-button-pressed, .x-button.x-button-login-button.x-button-active, .x-toolbar .x-button.x-button-login-button.x-button-pressed, .x-toolbar .x-button.x-button-login-button.x-button-active, .x-button.x-button-login-button-round.x-button-pressed, .x-button.x-button-login-button-round.x-button-active, .x-toolbar .x-button.x-button-login-button-round.x-button-pressed, .x-toolbar .x-button.x-button-login-button-round.x-button-active, .x-button.x-button-login-button-small.x-button-pressed, .x-button.x-button-login-button-small.x-button-active, .x-toolbar .x-button.x-button-login-button-small.x-button-pressed, .x-toolbar .x-button.x-button-login-button-small.x-button-active {
+  -webkit-box-shadow: inset #9c9292 0 0 0.1em, rgba(255, 255, 255, 0.1) 0 0.1em 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000378}}
+.x-button.x-button-login-button.x-button-pressed, .x-button.x-button-login-button.x-button-pressed:after, .x-button.x-button-login-button.x-button-active, .x-button.x-button-login-button.x-button-active:after, .x-toolbar .x-button.x-button-login-button.x-button-pressed, .x-toolbar .x-button.x-button-login-button.x-button-pressed:after, .x-toolbar .x-button.x-button-login-button.x-button-active, .x-toolbar .x-button.x-button-login-button.x-button-active:after, .x-button.x-button-login-button-round.x-button-pressed, .x-button.x-button-login-button-round.x-button-pressed:after, .x-button.x-button-login-button-round.x-button-active, .x-button.x-button-login-button-round.x-button-active:after, .x-toolbar .x-button.x-button-login-button-round.x-button-pressed, .x-toolbar .x-button.x-button-login-button-round.x-button-pressed:after, .x-toolbar .x-button.x-button-login-button-round.x-button-active, .x-toolbar .x-button.x-button-login-button-round.x-button-active:after, .x-button.x-button-login-button-small.x-button-pressed, .x-button.x-button-login-button-small.x-button-pressed:after, .x-button.x-button-login-button-small.x-button-active, .x-button.x-button-login-button-small.x-button-active:after, .x-toolbar .x-button.x-button-login-button-small.x-button-pressed, .x-toolbar .x-button.x-button-login-button-small.x-button-pressed:after, .x-toolbar .x-button.x-button-login-button-small.x-button-active, .x-toolbar .x-button.x-button-login-button-small.x-button-active:after {
+  background-color: #ababab;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #929292), color-stop(10%, #9e9e9e), color-stop(65%, #ababab), color-stop(100%, #acacac));
+  background-image: -webkit-linear-gradient(#929292, #9e9e9e 10%, #ababab 65%, #acacac);
+  background-image: linear-gradient(#929292, #9e9e9e 10%, #ababab 65%, #acacac);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003119}}
+.loginform {
+  background-color: white;
+  margin: 50px auto;
+  padding-top: 0px;
+  text-align: center;
+  top: 0%;
+  left: 40%;
+  position: absolute !important;
+  display: -webkit-box;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 10px 5px #BDBDBD;
+  box-shadow: 10px 10px 5px #BDBDBD;
+  border: 2px solid #BDBDBD;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003139}}
+.loginform img {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px;
+  margin-top: 10px;
+  height: 150px;
+  width: 150px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003150}}
+.loginform #textfield, #passwordfield {
+  padding: 0px;
+  margin: 0px;
+  width: 300px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003158}}
+.loginform #login-list {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  align: center;
+  width: 300px;
+  height: 48px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003168}}
 .x-toolbar .x-toolbar-title {
-  color: #cdfb35;
+  color: #dfcece;
   text-shadow: rgba(255, 255, 255, 0.8) 0 1px 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003173}}
 .x-tab-active img {
   background: white none !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003178}}
 .x-tabbar.x-docked-bottom .x-tab.x-tab-active {
   -webkit-box-shadow: inset rgba(0, 0, 0, 0.8) 0 0 5px !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003183}}
 .x-button-rpc {
   border-radius: 5px;
   border: 1px solid #c4c4c4 !important;
   background-color: White !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003189}}
 .x-button-rpc-spacer {
   display: inline-block;
   width: 5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003194}}
+.x-list .x-list-disclosure {
+  overflow: visible;
+  -webkit-mask: 0 0 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFBElEQVRoBe2aS4gdRRRA8+L/m0QIJkYNLlQUNOAvigpRcCEIcSsiCLoLLoILcaM7QVBX4koRshDxt9CFKCoiuvGDCP5QkxCiJhInRo2Ovzie80gPNWX1dL3uesM09IUz3V1169a9daur+031aG5ubkUpGY1GK7G1Dq4Cz9vKiIY74Sv8+72tkWQ7Ay4Bxo+Hu2E3/AuOZBf+ov2TsL6Ef5WNUsGazXvgEHQJMm77N/aeg3Mrh7seOweMM2bWYH+B2OES1/9g9w0oEnSngHHCYO+FGSgRXJ0NM/0idA565BRpKyxSt9J2B5xWY+Mw5Udq6uqKT6XimESlmX4d7sTnA4n6rKJjs7QSSgTrSno7nJyodtFyGr4AP4G6TeLIHweb4A44C0LR1xtgCzwP7aTtIkBvLlSfQjwNZyl7FNa0sU077V4DX0Js25X7cRjPzDb2Nd5FnK7xPbGXskdwxsxOLLRzdnwIj8GvkQFnypqobKLLrgGnOjMzP6cqJijzfn0NXPljmXRNWNC+dcBHM7HA2NELp10nwbaz5iC4OsdidTyrYp3a68ZFi7XJFfNsOBGcUmFnPpbiBWkVZefT7g+OXcTF0EUsFPtaje0Lw0LOzfoM49B4Gy36WMKwK+WDcC2cAmGwXK7YAAYdym9c+NiIdUOdnHODc6DjpPioix9LBvwtPE3QOzjWi7MjBS0M8CGY1huUA1ISg/4cNqXiqcqSwVqJ3AQ/QEmnpm3LR+IzsLYKMD4mA6bBOfAKuFpO28nS9v0Bcxckn9V1Ad9Pg2m/H5cONLT3Mf5fFGfX63hBQG8s7/LXxcdV0nvjMtgKp0MojuaroM60xYB8Z78ZTog6c515B1ylXey+ARe3/0tqFNCy0RjrkdvgOwhH0TeiB2A1uMBNGx9Ta+FZiP34mrIrQR39cECSUzqZYYIcR0mjJtmFwmHUvdenLjwmnUl7Eh05+LP40fjvoGTACYN1Rc6CecGhM7lw2lt+AA7Fg4fOespXgYO0j3pvnXmh3rY+/52+vrXtRSd841rQJ/WV1JVX9eNj14DnjeHnJVw8DBeAnX8A2ynfXwXN+cWUPQUOjNl6i7Jt1I9nCOe+1V0NT4AB/wkvw31QRIoFjDfnwRXgfVbJGZzsry44boTNUGVjlvOToPpV5FvbjXApKE7VLZ6UkpWlDGHH+96pV93/4TSsujGA8MeF51Xw6njuO3soKTth/UTnJQOeqONFlKsBW0SlfdVyDLh9NBkth4AzBqnXKkOGe52+DOeHDGcMUq9Vhgz3On0Zzg8ZzhikXqsMGe51+jKcHzKcMUi9Vhky3Ov0ZTg/ZDhjkHqtMmS41+nLcH7IcMYg9VplOWY4/Md88cEtHbDOVg5Xx9jpsM9Yx52JeAcw1ontTXRdcm9pFz3vBveHdNJN6YPVRhrnivtMlruZ5g7DFxBuXLut8j7sA/d43Yr5CIpJsYAJ7DN2/27Bsw1gwAb3I8wLOp+g4w6+nw/6HddOyszqWDg/Qv2bXFwH4+1SyhyUYtI1YLc85wXn/ORAagWdPVRKUqh3AJwtdTLeWq2rbCoP76cm3bjeLG6ELjZim03XJujyJqXF6rtmeDvGNzMN/ajEAZi2rKOD67t00jVgN7+3dnFgqdsu5XRc6tiS/eUGvBTTNengBIVZPuYG7LcYPjdluYk++bTw++pGyQ34bSy9B35Vs5zEYGfgJfg+x7H/ADoy2VfnrtXoAAAAAElFTkSuQmCC");
+  -webkit-mask-size: 1.7em;
+  background-color: #b9ec11;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e3f89e), color-stop(2%, #c3f031), color-stop(100%, #9fca0f));
+  background-image: -webkit-linear-gradient(#e3f89e, #c3f031 2%, #9fca0f);
+  background-image: linear-gradient(#e3f89e, #c3f031 2%, #9fca0f);
+  width: 1.7em;
+  height: 1.7em;
 }

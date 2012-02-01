@@ -29,7 +29,7 @@ var tpl = new Ext.XTemplate(
     '<tpl for=[values.get("diagnoseList").data]>',
     '<tr><td>bas</td><td>asdf</td><td>sdaf</td></tr>',
     '</tpl>',
-    '</tbody',
+    '</tbody>',
     '</table>',
     {
         // XTemplate configuration:

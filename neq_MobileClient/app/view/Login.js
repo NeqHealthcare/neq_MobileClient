@@ -6,6 +6,7 @@ Ext.define('NeqMobile.view.Login', {
     extend:'Ext.Container',
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
+    cls: 'login',
     config:{
 
         items:[
@@ -14,7 +15,7 @@ Ext.define('NeqMobile.view.Login', {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                title:'NEQ Mobile Client',
+                //title:'NEQ Mobile Client',
                 items:[
                     {xtype:'spacer'},
                     {
@@ -28,15 +29,16 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype:'formpanel',
-                centered:'true',
+                //centered:'true',
                 //pack: 'start',
-                ui:'login',
-                style:'background-color: white;',
+                //ui:'login',
+                StyleHtmlContent: true,
+                cls:'loginform',
+                //style:'background-color: white;',
                 scrollable:false,
                 items:[
                     {
-                        html:'<img src="theme/images/user/DefaultAvatar_small.jpg"' +
-                            'style="padding:0px; margin: 0px; margin-left: 75px; height: 150px; width: 150px;"/>'
+                        html:'<img src="theme/images/user/DefaultAvatar_small.jpg"/>'
                     },
                     {
                         xtype:'textfield',
@@ -44,9 +46,9 @@ Ext.define('NeqMobile.view.Login', {
                         value:'jgansen',
                         label:'User',
                         name:'user',
-                        width:300,
-                        margin:0,
-                        padding:0,
+                        //width:300,
+                        //margin:0,
+                        //padding:0,
                         placeHolder:'Enter your Username',
                         autoComplete:true,
                         autoCorrect:true
@@ -58,9 +60,9 @@ Ext.define('NeqMobile.view.Login', {
                         id:'passwordfield',
                         value:'iswi223<<',
                         label:'Password',
-                        width:300,
-                        margin:0,
-                        padding:0,
+                        //width:300,
+                        //margin:0,
+                        //padding:0,
                         name:'password',
                         placeHolder:'Enter your Password'
                         //    cls:'login'
@@ -74,14 +76,16 @@ Ext.define('NeqMobile.view.Login', {
                         height:48,
                         margin:0,
                         padding:0,
-                        style:'border: 0px; padding: 0px; margin: 0px; align: center;',
+                        //style:'border: 0px; padding: 0px; margin: 0px; align: center;',
+                        id: 'login-list',
                         store:'Domains',
                         itemTpl:'{name}'
                     },
                     {
                         xtype:'button',
                         text:'Login',
-                        ui:'confirm',
+                        id:'login-button',
+                        ui:'login-button',
                         itemId:'submitButton'
                         //baseCls:'button',
                         //       cls:'login'
