@@ -83,20 +83,20 @@ Ext.define('NeqMobile.controller.Session', {
     },
     onLoginTry:function () {
         console.log('trying to login');
-        console.dir(this.getLogin().down('list').getSelected().getAt(0));
+        // console.dir(this.getLogin().down('list').getSelection().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
-        if (this.getLogin().down('list').getSelected().getAt(0)) {
-
-            Ext.Viewport.setMasked({ xtype:'loadmask', message: 'trying to login...' });
+        if (this.getLogin().down('list').getSelection().length != 0) {
+            console.log('there is selected one');
+            Ext.Viewport.setMasked({ xtype:'loadmask', message:'trying to login...' });
             NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
                 loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
         }
         else {
+            console.log('no item selected');
             Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
         }
     },
-    onLoginFailure:function()
-    {
+    onLoginFailure:function () {
         Ext.Viewport.setMasked(false);
     },
     onLoginSuccess:function () {
@@ -108,6 +108,8 @@ Ext.define('NeqMobile.controller.Session', {
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('save sessionID...');
 
+
+        // Creating the required Patient Store and its Proxy to load patient data from MAIS
         Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('myPatientsStore'));
         var storeProxy = {type:'ajax',
             url:NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + '/patients/all_for_user',
@@ -117,24 +119,14 @@ Ext.define('NeqMobile.controller.Session', {
                 type:'json',
                 root:'results'
             }}
-        var store;
-        if (!Ext.data.StoreManager.lookup('myPatientsStore')) {
-            store = new NeqMobile.store.Patients(
-                {
-                    storeId:'myPatientsStore',
-                    proxy:storeProxy
-                }
-            );
-        }
-        else {
-            console.log('lookup started');
-            store = Ext.data.StoreManager.lookup('myPatientsStore');
-            store.setProxy(storeProxy);
-        }
-        //   var store = Ext.data.StoreManager.lookup('myPatientsStore');
-        // Ext.ComponentQuery.query('patientList')[0].down('list').setStore(store);
+        var store = new NeqMobile.store.Patients(
+            {
+                storeId:'myPatientsStore',
+                proxy:storeProxy
+            }
+        );
+
         this.getWorkspace().down('list').setStore(store);
-        // setTimeout(store.load(),50000);
     },
 
     onLogoutClick:function () {

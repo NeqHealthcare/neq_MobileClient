@@ -14,7 +14,7 @@ Ext.define('NeqMobile.view.Login', {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                title: 'NEQ Mobile Client',
+                title:'NEQ Mobile Client',
                 items:[
                     {xtype:'spacer'},
                     {
@@ -28,32 +28,34 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype:'formpanel',
-                //layout: {
-                //    type: 'vbox',
-                //    align: 'middle'
-                //},
-               centered: 'true',
+
+                  centered: 'true',
                 //pack: 'start',
-                ui: 'login',
-                style: 'background-color: white;',
+                ui:'login',
+//                style:'background-color: white;'
+//                    +
+//                    'display: -webkit-box;' +
+//                    '-webkit-box-align: center;' +
+//                    '-webkit-box-pack: center',
+
                 scrollable:false,
                 items:[
                     {
-                        html: '<img src="theme/images/user/DefaultAvatar_small.jpg"' +
-                                   'style="padding:0px; margin: 0px; margin-left: 75px; height: 150px; width: 150px;"/>'
-/*                        xtype:'image',
-                        width: 150,
-                        height: 150,
-                        margin:0,
-                        padding:0,
-                        id: 'image',
-                        src:'theme/images/user/DefaultAvatar_small.jpg',*/
+                        html:'<img src="theme/images/user/DefaultAvatar_small.jpg"' +
+                            'style="padding:0px; margin: 0px; margin-left: 75px; height: 150px; width: 150px;"/>'
+                        /*                        xtype:'image',
+                         width: 150,
+                         height: 150,
+                         margin:0,
+                         padding:0,
+                         id: 'image',
+                         src:'theme/images/user/DefaultAvatar_small.jpg',*/
 
 
                     },
                     {
                         xtype:'textfield',
-                        id: 'textfield',
+                        id:'textfield',
                         value:'jgansen',
                         label:'User',
                         name:'user',
@@ -64,11 +66,11 @@ Ext.define('NeqMobile.view.Login', {
                         autoComplete:true,
                         autoCorrect:true
 
-                    //    cls:'login'
+                        //    cls:'login'
                     },
                     {
                         xtype:'passwordfield',
-                        id: 'passwordfield',
+                        id:'passwordfield',
                         value:'iswi223<<',
                         label:'Password',
                         width:300,
@@ -76,7 +78,7 @@ Ext.define('NeqMobile.view.Login', {
                         padding:0,
                         name:'password',
                         placeHolder:'Enter your Password'
-                    //    cls:'login'
+                        //    cls:'login'
                     },
 //                    {xtype:'selectfield',
 //                        store:'Domains'
@@ -87,7 +89,7 @@ Ext.define('NeqMobile.view.Login', {
                         height:48,
                         margin:0,
                         padding:0,
-                        style: 'border: 0px; padding: 0px; margin: 0px; align: center;',
+                        style:'border: 0px; padding: 0px; margin: 0px; align: center;',
                         store:'Domains',
                         itemTpl:'{name}'
                     },
@@ -97,7 +99,7 @@ Ext.define('NeqMobile.view.Login', {
                         ui:'confirm',
                         itemId:'submitButton'
                         //baseCls:'button',
-                 //       cls:'login'
+                        //       cls:'login'
                     }
 
 
