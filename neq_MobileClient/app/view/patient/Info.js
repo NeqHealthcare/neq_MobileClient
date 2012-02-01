@@ -11,23 +11,34 @@
 var tpl = new Ext.XTemplate(
     '<p>ID: {id}</p>',
     '<p>Name: {rec_name}</p>',
-    '<p>Kids: ',
-    '<tpl for="kids">',
-    '<tpl if="this.isGirl(name)">',
-    '<p>Girl: {name} - {age}</p>',
-    '<tpl else>',
-    '<p>Boy: {name} - {age}</p>',
+
+    '<p>Sex: ',
+   '{[this.getLongSex(values.sex)]}',
+    '</p>',
+
+    '<h1>Diagnoses</h1>',
+    '<table border="1"> ',
+    '<thead>',
+        '<tr>',
+          '<th>id</th>',
+          '<th>active</th>',
+          '<th>name</th>',
+        '</tr>',
+      '</thead>',
+    '<tbody>',
+    '<tpl for="diagnoseList">',
+    '<tr><td>{id}</td><td>{is_active}</td><td>{pathology_rec_name}</td></tr>',
     '</tpl>',
-    '<tpl if="this.isBaby(age)">',
-    '<p>{name} is a baby!</p>',
-    '</tpl>',
-    '</tpl></p>',
+    '</tbody',
+    '</table>',
     {
         // XTemplate configuration:
         disableFormats:true,
         // member functions:
-        isGirl:function (name) {
-            return name == 'Sara Grace';
+        getLongSex:function (shortsex) {
+            if (shortsex ==="m")
+            {return "male"}
+            else return "female"
         },
         isBaby:function (age) {
             return age < 1;
@@ -50,6 +61,7 @@ Ext.define('NeqMobile.view.patient.Info', {
         ,
 
         config:{
+            styleHtmlContent:true,
 
             // layout:'card',
             tpl:tpl

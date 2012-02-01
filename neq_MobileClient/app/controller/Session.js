@@ -63,6 +63,7 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('switching card');
         var settingsdomains;
         if (this.getSettingsDomains()) {
+            console.log('loading old settings view');
             settingsdomains = this.getSettingsDomains();
         }
         else {
@@ -70,8 +71,8 @@ Ext.define('NeqMobile.controller.Session', {
         }
         this.getViewport().setActiveItem(settingsdomains);
         console.log('showing Domain Settings...');
-        var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
-        mycontroller.launch();
+//        var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
+//        mycontroller.launch();
     },
 
 
