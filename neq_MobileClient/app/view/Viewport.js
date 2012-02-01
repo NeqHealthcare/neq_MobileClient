@@ -22,7 +22,7 @@ Ext.define('NeqMobile.view.Viewport', {
         },
 
         config:{
-
+            fullscreen:true,
             layout:{
                 type:'card',
                 animation:{
@@ -30,7 +30,7 @@ Ext.define('NeqMobile.view.Viewport', {
                     direction:'left'
                 }
             },
-            fullscreen:true,
+
             items:[
                 {   xclass:'NeqMobile.view.Login'}
             ]

@@ -10,19 +10,18 @@ Ext.define('NeqMobile.view.settings.Domains', {
     requires:['NeqMobile.store.Domains'],
     xtype:'settingsDomains',
     config:{
+
         layout:'hbox',
         items:[
 
             {   //this is the toolbar at the top
                 docked:'top',
                 xtype:'toolbar',
-                ui:'light',
-                layout:'hbox',
+                // ui:'light',
                 items:[
                     {
-                        xtype:'button',
-                        text:'back',
                         ui:'back',
+                        text:'Back',
                         itemId:'backbutton'
                     }
                 ]
@@ -56,7 +55,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
 //                            Ext.Msg.alert('Tap','Disclose more info for ' + record.get('firstName'), Ext.emptyFn);
 //
 //                        },
-                   //     store:'Domains',
+                        //     store:'Domains',
                         itemId:'domainslist',
                         itemTpl:'<strong>{name}</strong>'
                     }

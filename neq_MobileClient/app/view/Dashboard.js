@@ -25,7 +25,7 @@ Ext.define('NeqMobile.view.Dashboard', {
     },
     config:{
         layout:'hbox',
-        fullscreen:true,
+
         items:[
 
             {xclass:'NeqMobile.view.patient.List',

@@ -16,8 +16,6 @@ Ext.define('NeqMobile.view.menu.Settings', {
 //                panel.destroy();
 //            }});
 //    },
-
-
     destroy:function () {
         console.log('menuSettings destroyed')
         this.callParent(arguments);
