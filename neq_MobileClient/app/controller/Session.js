@@ -28,7 +28,6 @@ Ext.define('NeqMobile.controller.Session', {
                 'Login #submitButton':{ 'tap':this.onLoginTry}
             }
         );
-
         this.control(
             {
                 'Login #settingsbutton':{ 'tap':this.onSettingsClick}
@@ -93,7 +92,9 @@ Ext.define('NeqMobile.controller.Session', {
         }
         else {
             console.log('no item selected');
-            Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
+           Ext.Viewport.setMasked(true);
+           Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
+           Ext.Viewport.setMasked(false);
         }
     },
     onLoginFailure:function () {

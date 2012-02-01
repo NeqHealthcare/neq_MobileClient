@@ -28,30 +28,15 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype:'formpanel',
-
-                  centered: 'true',
+                centered:'true',
                 //pack: 'start',
                 ui:'login',
-//                style:'background-color: white;'
-//                    +
-//                    'display: -webkit-box;' +
-//                    '-webkit-box-align: center;' +
-//                    '-webkit-box-pack: center',
-
+                style:'background-color: white;',
                 scrollable:false,
                 items:[
                     {
                         html:'<img src="theme/images/user/DefaultAvatar_small.jpg"' +
                             'style="padding:0px; margin: 0px; margin-left: 75px; height: 150px; width: 150px;"/>'
-                        /*                        xtype:'image',
-                         width: 150,
-                         height: 150,
-                         margin:0,
-                         padding:0,
-                         id: 'image',
-                         src:'theme/images/user/DefaultAvatar_small.jpg',*/
-
-
                     },
                     {
                         xtype:'textfield',

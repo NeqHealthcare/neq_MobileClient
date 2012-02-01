@@ -4,7 +4,6 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name: 'SkeletonApp',
-
     controllers: ['Main'],
     models:['Skeleton'] ,
     stores:['Skeletons'] ,
