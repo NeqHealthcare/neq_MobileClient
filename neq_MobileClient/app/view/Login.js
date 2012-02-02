@@ -6,9 +6,8 @@ Ext.define('NeqMobile.view.Login', {
     extend:'Ext.Container',
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
-    cls: 'login',
     config:{
-
+        cls: 'login',
         items:[
 
             {
@@ -37,7 +36,7 @@ Ext.define('NeqMobile.view.Login', {
                 //centered:'true',
                 //pack: 'start',
                 //ui:'login',
-                StyleHtmlContent: true,
+                //StyleHtmlContent: true,
                 cls:'loginform',
                 //style:'background-color: white;',
                 scrollable:false,
