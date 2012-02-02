@@ -93,8 +93,9 @@ NEQ - Healtcare MobileClient - CSS Design - Tablet
 $base-color: #333;
 $base-gradient: 'matte';
 $active-color: #BDBDBD; // bspw. selektion in liste
-$login-button-color: #BDBDBD;//#ff8000; //orange
+$login-button-color:  #BDBDBD; //#ff8000; //orange
 $login-formpanel-color: #333333;
+
 
 @import 'sencha-touch/default/all';
 @include sencha-panel;
@@ -114,56 +115,78 @@ $login-formpanel-color: #333333;
 @include sencha-button-ui('login-button', $login-button-color, 'glossy');
 //@include sencha-panel-ui('login-formpanel', $login-formpanel-color, 'glossy');
 
+
+
+
+
 .login{}
 
 .loginform {
-    background-color: white;
-    margin: 50px auto;
-    padding-top: 0px;
+    //background-color: white;
+    margin: 0 auto;
+    //margin-top: 250px;
+    //padding-top: 0px;
     text-align: center;
-    top: 0%;
-    left: 40%;
-    position: absolute !important;
-    //width: 100%;
-    //height: 100%;
-    display: -webkit-box;
+    //position: absolute !important;
+    //top: 50%;
+    //left: 50%;
+    //display: -webkit-box;
     //-webkit-box-align: center;
     //-webkit-box-pack: center;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 10px 10px 5px #BDBDBD;
-    box-shadow: 10px 10px 5px #BDBDBD;
-    border: 2px solid #BDBDBD;
+    //-webkit-box-shadow: 10px 10px 5px #BDBDBD;
+    //box-shadow: 10px 10px 5px #BDBDBD;
+    //border: 2px solid #BDBDBD;
+    font-size: 10pt;
+    width:240px;
 }
 // Userimage for Login
 .loginform img {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
     //-webkit-box-shadow: 10px 10px 5px #BDBDBD;
     //box-shadow: 10px 10px 5px #BDBDBD;
-    padding:10px;
+    padding: 2px;
+    background-color: #BDBDBD;
     margin:0px;
-    margin-top: 10px;
-    height: 150px; width: 150px;
+    margin-top: 30px; margin-bottom: 20px;
+    height: 125px; width: 125px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 3px solid #BDBDBD;
+}
+
+.x-field {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .loginform #textfield, #passwordfield {
     padding: 0px;
     margin: 0px;
-    width: 300px;
+    text-align: left;
+    background-color: white;
 }
-
-.loginform #passwordfield {}
 
 .loginform #login-list {
     border: none;
     padding: 0px;
     margin: 0px;
-    align: center;
-    width:300px; height:48px;
+    //align: center;
+    height:40px;
+    line-height: 16px;
+} 
+
+.x-list, .x-list-item {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
-.loginform #login-button {}
+.loginform #login-button {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 0px;
+    width: 150px;
+}
 
 .x-toolbar .x-toolbar-title {
     color: saturate(lighten($active-color, 10%), 20%);
