@@ -15,7 +15,7 @@ Ext.define('NeqMobile.view.Login', {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                //title:'NEQ Mobile Client',
+                title:'Login',
                 items:[
                     {xtype:'spacer'},
                     {
@@ -72,11 +72,14 @@ Ext.define('NeqMobile.view.Login', {
 //                    },
                     {
                         xtype:'list',
-                        width:300,
-                        height:48,
+                        //width:300,
+                        height:35,
                         margin:0,
                         padding:0,
-                        //style:'border: 0px; padding: 0px; margin: 0px; align: center;',
+                        items:[{
+                            xtype:'label',
+                            text: 'Domain:'
+                        }],
                         id: 'login-list',
                         store:'Domains',
                         itemTpl:'{name}'
