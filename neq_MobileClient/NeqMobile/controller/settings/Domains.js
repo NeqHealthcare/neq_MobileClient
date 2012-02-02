@@ -7,8 +7,7 @@
  */
 Ext.define('NeqMobile.controller.settings.Domains', {
     extend:'Ext.app.Controller',
-    views:['settings.Domains'],
-    requires:[],
+
     config:{
         refs:{
             viewport:'viewport',

@@ -1,6 +1,6 @@
 Ext.define('NeqMobile.view.patient.List', {
     extend:'Ext.Container',
-    requires:'NeqMobile.store.Patients',
+   requires:'NeqMobile.store.Patients',
     xtype:'patientList',
 
     initialize:function () {

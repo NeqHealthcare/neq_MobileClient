@@ -1,27 +1,24 @@
 Ext.define('NeqMobile.view.Viewport', {
         extend:'Ext.Container',
-        requires:['NeqMobile.view.Login'],
+       requires:['NeqMobile.view.Login'],
         xtype:'Viewport',
 
         initialize:function () {
             this.callParent(arguments);
 
-            this.on({
-                activeitemchange:function (view, newview, oldview) {
-                    console.log('activeitemchange fired');
-                    if (oldview.isXType('Workspace')) {
-
-                        oldview.destroy();
-                        console.log('workspace destroyed');
-                    }
-                },
-                activate:function () {
-                    alert('activate fired');
-                }
-            })
+//            this.on({
+//                activeitemchange:function (view, newview, oldview) {
+//                    console.log('activeitemchange fired');
+//                    if (oldview.isXType('Workspace')) {
+//                        oldview.destroy();
+//                        console.log('workspace destroyed');
+//                    }
+//                }
+//            })
         },
 
         config:{
+            autoDestroy:true,
             fullscreen:true,
             layout:{
                 type:'card',

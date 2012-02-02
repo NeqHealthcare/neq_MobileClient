@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.store.Domains', {
     extend:'Ext.data.Store',
-    requires:'NeqMobile.model.Domain',
+   requires:'NeqMobile.model.Domain',
     config:{model:'NeqMobile.model.Domain',
         autoLoad:true,
         autoSync:true

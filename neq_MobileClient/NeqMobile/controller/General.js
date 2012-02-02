@@ -1,9 +1,6 @@
 Ext.define('NeqMobile.controller.General', {
     extend:'Ext.app.Controller',
-    views:['Viewport'],
     requires:[ 'NeqMobile.store.Patients'],
-
-
     config:{
         refs:[
         {   ref:'viewport',

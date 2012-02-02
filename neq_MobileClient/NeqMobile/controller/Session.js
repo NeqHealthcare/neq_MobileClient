@@ -7,11 +7,9 @@
  */
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain',
-        'NeqMobile.view.menu.Settings', 'NeqMobile.view.settings.Domains'],
-    views:['Viewport', 'Workspace'],
-    models:['Session', 'Domain'],
-    stores:['Domains'],
+   requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain',
+       'NeqMobile.view.menu.Settings', 'NeqMobile.view.settings.Domains'],
+
     scope:this,
     config:{
         refs:{
@@ -98,9 +96,9 @@ Ext.define('NeqMobile.controller.Session', {
         }
         else {
            console.log('no item selected');
-           Ext.Viewport.setMasked(true);
+         //  Ext.Viewport.setMasked(true);
            Ext.Msg.alert('Create a Connection', 'Create and Choose a connection by clicking on the Settings button in the upper right corner.', Ext.emptyFn);
-           Ext.Viewport.setMasked(false);
+         //  Ext.Viewport.setMasked(false);
         }
     },
     onLoginFailure:function () {
@@ -139,7 +137,7 @@ Ext.define('NeqMobile.controller.Session', {
     onLogoutClick:function () {
         console.log('trying to logout');
         NeqMobile.manager.Session.logout();
-        this.getViewport().setActiveItem(this.getLogin());
+        this.getViewport().remove(this.getWorkspace(),true);
         this.getMenuSettings().setHidden(true);
         //    this.getMenuSettings().destroy();
     }

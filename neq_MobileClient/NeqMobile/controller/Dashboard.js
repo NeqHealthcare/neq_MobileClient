@@ -7,10 +7,8 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
-        views:['Viewport', 'patient.List', 'Dashboard', 'Workspace'],
-        models:['Patient', 'Session'],
-        stores:['Patients'],
+      requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
+
         config:{
 
             refs:{

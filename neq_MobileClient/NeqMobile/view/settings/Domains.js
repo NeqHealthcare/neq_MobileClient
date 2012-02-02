@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.view.settings.Domains', {
     extend:'Ext.Container',
-    requires:['NeqMobile.store.Domains'],
+   requires:['NeqMobile.store.Domains'],
     xtype:'settingsDomains',
     config:{
 
