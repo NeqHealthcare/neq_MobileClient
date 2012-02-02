@@ -121,7 +121,18 @@ $login-formpanel-color: #333333;
 
 .login{}
 
-.loginform {
+.login-toolbar {
+    text-align: center;
+}
+
+.login-toolbar img{
+   padding:0px;
+   margin:0px;
+   height: 40px; width: 75px;
+   background-color: white;
+}
+
+.loginform, .x-select-overlay {
     //background-color: white;
     margin: 0 auto;
     //margin-top: 250px;
@@ -155,18 +166,31 @@ $login-formpanel-color: #333333;
     border: 3px solid #BDBDBD;
 }
 
+      /*
 .x-field {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-}
+}   */
 
-.loginform #textfield, #passwordfield {
+.loginform #textfield, #passwordfield, #selectfield {
     padding: 0px;
     margin: 0px;
     text-align: left;
     background-color: white;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.x-field-select, .x-form-label{
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+//, .x-componend-outer, .x-field-input, .x-field-mask
+.x-select-overlay {
+    margin-top: 50px;
+    background-color: #BDBDBD;
 }
 
+/*
 .loginform #login-list {
     border: none;
     padding: 0px;
@@ -175,12 +199,12 @@ $login-formpanel-color: #333333;
     height:40px;
     line-height: 16px;
 } 
-
-.x-list, .x-list-item {
+*/
+/*.x-list, .x-list-item {
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
-
+ */
 .loginform #login-button {
     margin: 0 auto;
     margin-top: 20px;
