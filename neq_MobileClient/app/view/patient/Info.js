@@ -73,18 +73,21 @@ Ext.define('NeqMobile.view.patient.Info', {
         config:{
 
             styleHtmlContent:true,
-            layout:'vbox',
+            layout:'hbox',
             // layout:'card',
           //  tpl:tpl',
 
             items: [
+                {xtype:'label',
+                    flex:1
+                    ,
+                   tpl:tpl
+            },
                 {
                     flex:1,
-                    tpl:tpl
-            },
-                {flex:1,
-                    xtype:'button',
-                                    text:'blaa'}
+                    xtype:'label',
+
+                   html: '<h1>some other HTML Code</h1>'}
 
 
             ]

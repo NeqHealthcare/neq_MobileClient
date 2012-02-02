@@ -6,9 +6,9 @@ Ext.define('NeqMobile.view.Login', {
     extend:'Ext.Container',
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
-    cls: 'login',
-    config:{
 
+    config:{
+        cls: 'login',
         items:[
 
             {
