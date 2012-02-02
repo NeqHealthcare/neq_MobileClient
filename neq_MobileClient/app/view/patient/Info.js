@@ -80,7 +80,6 @@ Ext.define('NeqMobile.view.patient.Info', {
             items: [
                 {
                     flex:1,
-                    xtype: 'container',
                     tpl:tpl
             },
                 {flex:1,
