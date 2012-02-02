@@ -30,7 +30,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
         onPatientSelect:function (list, record, options) {
             console.log('loading patient');
             this.getPatientInfo().loadPatient(record);
-
 //                xtype:'container',
 //                html: '<table border="1">' +
 //                  '<tr>' +
