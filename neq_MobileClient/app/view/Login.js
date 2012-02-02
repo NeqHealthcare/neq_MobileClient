@@ -15,7 +15,7 @@ Ext.define('NeqMobile.view.Login', {
                 docked:'top',
                 xtype:'toolbar',
                 ui:'light',
-                title:'Login',
+                //title:'NEQ Mobile Client',
                 items:[
                     {xtype:'spacer'},
                     {
@@ -67,22 +67,10 @@ Ext.define('NeqMobile.view.Login', {
                         placeHolder:'Enter your Password'
                         //    cls:'login'
                     },
-//                    {xtype:'selectfield',
-//                        store:'Domains'
-//                    },
-                    {
-                        xtype:'list',
-                        //width:300,
-                        height:35,
-                        margin:0,
-                        padding:0,
-                        items:[{
-                            xtype:'label',
-                            text: 'Domain:'
-                        }],
-                        id: 'login-list',
+                    {xtype:'selectfield',
                         store:'Domains',
-                        itemTpl:'{name}'
+                        displayField: 'name',
+                        valueField:'id'
                     },
                     {
                         xtype:'button',

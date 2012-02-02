@@ -30,7 +30,7 @@ var tpl = new Ext.XTemplate(
     '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
     //is_active
     '</tpl>',
-    '</tbody>',
+    '</tbody',
     '</table>',
     {
         // XTemplate configuration:

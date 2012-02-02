@@ -85,16 +85,21 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('trying to login');
         // console.dir(this.getLogin().down('list').getSelection().getAt(0));
         var loginForm = this.getLogin().down('formpanel');
-        if (this.getLogin().down('list').getSelection().length != 0) {
+        var myselectfield = this.getLogin().down('selectfield');
+
+        if
+            //this.getLogin().down('list').getSelection().length != 0)
+           (myselectfield.getRecord() != undefined)
+            {
             console.log('there is selected one');
             Ext.Viewport.setMasked({ xtype:'loadmask', message:'trying to login...' });
-            NeqMobile.manager.Session.login(this.getLogin().down('list').getSelected().getAt(0), loginForm.getFields('user').getValue(),
+            NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
                 loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
         }
         else {
-            console.log('no item selected');
+           console.log('no item selected');
            Ext.Viewport.setMasked(true);
-           Ext.Msg.alert('Choose a Connection', 'Choose a connection.', Ext.emptyFn);
+           Ext.Msg.alert('Create a Connection', 'Create and Choose a connection by clicking on the Settings button in the upper right corner.', Ext.emptyFn);
            Ext.Viewport.setMasked(false);
         }
     },
