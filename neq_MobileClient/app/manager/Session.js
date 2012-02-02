@@ -78,7 +78,10 @@ Ext.define('NeqMobile.manager.Session',
                     }
                 },
                 failure:function (response, opts) {
-                    Ext.Msg.alert('Server not responding', 'The server ist not responding, check your connection settings or ask the administrator.', Ext.emptyFn);
+                    Ext.Msg.alert('Server not responding', '' +
+                        'Ther occured a technical connection problem. Possible causes are:<br><br>' +
+                        '1. you forgot to start chrome with the option<br>--disable-web-security (beforehand you have to kill all chrome processes)<br><br>' +
+                        '2. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
                     console.log('server-side failure with status code ' + response.status);
                     console.log('login failed - server not reachable')
                     failureCallback.apply(scope);
