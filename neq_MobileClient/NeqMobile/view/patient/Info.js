@@ -86,10 +86,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                 {
                     flex:1,
                     xtype:'label',
-
                    html: '<h1>some other HTML Code</h1>'}
-
-
             ]
 
 //            items:[
