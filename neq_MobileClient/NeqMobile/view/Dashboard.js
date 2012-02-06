@@ -29,10 +29,13 @@ Ext.define('NeqMobile.view.Dashboard', {
         items:[
 
             {xclass:'NeqMobile.view.patient.List',
-                flex:25},
+          flex:1,
+            minWidth:250,
+            maxWidth:500},
             {
                 xclass:'NeqMobile.view.patient.Info',
-                flex:75}
+                flex:5
+               }
         ]
     }
 });

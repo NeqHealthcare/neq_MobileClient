@@ -1,5 +1,6 @@
 Ext.Loader.setConfig({
-    enabled:true
+    enabled:true,
+    disableCaching: true // for debugging
 });
 
 Ext.application({
@@ -9,7 +10,7 @@ Ext.application({
     controllers:['General', 'Session', 'NeqMobile.controller.settings.Domains', 'Dashboard'],
     views:['NeqMobile.view.settings.Domains', 'Viewport', 'NeqMobile.view.patient.List', 'Dashboard', 'Workspace'],
     stores:['Patients', 'Domains'],
-    models:['Patient', 'Session', 'Domain'],
+    models:['Patient', 'Session', 'Domain','DiagnoseOverview'],
 
     launch:function () {
         Ext.Viewport.add(

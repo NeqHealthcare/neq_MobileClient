@@ -1,6 +1,6 @@
 Ext.define('NeqMobile.view.patient.List', {
     extend:'Ext.Container',
-   requires:'NeqMobile.store.Patients',
+    requires:'NeqMobile.store.Patients',
     xtype:'patientList',
 
     initialize:function () {
@@ -33,17 +33,32 @@ Ext.define('NeqMobile.view.patient.List', {
             ,
             {
                 xtype:'list',
+               // styleHtmlContent:true,
                 //  dock: 'right',
                 // grouped     : true,
                 //  indexBar    : true,
+                styleHtmlContent:true,
                 flex:1,
                 // store:'NeqMobile.store.Patients',
-                itemTpl:'{id}  <strong>{rec_name}</strong>' +
-                    '<br>' +
-                    'age: {[values.age.split(" ")\[0\]]} ' +
-                    //'{[myage.slice(0,myage.length - 1)]}' +
-                    ' actual disease: {latestDiagnoseRecName}' +
-                    '  sex: {sex}'
+                itemTpl:'<table>' +
+                    '<tr>' +
+                    '<td rowspan="2">' +
+                    '<img width="40" height="40" src="theme/images/user/DefaultAvatar_small.jpg" />' +
+                    '</td>' +
+                    '<td>' +
+                    '<strong>{rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}' +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>' +
+                    '<table>' +
+                    '<tr>' +
+                    '<td>{latestDiagnoseRecName} </td>' +
+                    '</tr>' +
+                    '</table>' +
+                    '</td>' +
+                    '</tr>' +
+                    '</table>'
             }
         ]
     }

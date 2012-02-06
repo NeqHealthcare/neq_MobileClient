@@ -24,15 +24,16 @@ Ext.define('NeqMobile.view.menu.Settings', {
         modal:true,
         // hidden:true,
         // height:300,
-        width:'5%',
-        height:'10%',
+        width: 120,
+                        height: 45,
         autoDestroy:true,
         items:[
             {
-                docked:'bottom',
+
                 xtype:'button',
                 text:'Logout',
-                itemId:'logoutbutton'
+                itemId:'logoutbutton',
+                ui: 'decline'
             }
         ]}
 });

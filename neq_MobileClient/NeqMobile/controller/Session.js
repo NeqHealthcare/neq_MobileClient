@@ -106,9 +106,7 @@ Ext.define('NeqMobile.controller.Session', {
                 storeId:'myPatientsStore'
             }
         );
-
         store.load();
-
         this.getWorkspace().down('list').setStore(store);
     },
 

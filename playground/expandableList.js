@@ -141,7 +141,7 @@ Ext.application({
 
         Ext.create('Ext.Container',
             {fullscreen:true,
-                width:1500,
+               // width:1500,
                 styleHtmlContent:true,
                 scrollable:true,
 //                layout:{type:'vbox',

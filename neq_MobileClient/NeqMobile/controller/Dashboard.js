@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-      requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
 
         config:{
 
@@ -20,14 +20,58 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     keyup:'doFilter'
                 },
                 'Dashboard patientList list':{
-                    select:'onPatientSelect'
+                    select:'doNothing'
                 }
             }
         },
-
+        doNothing:function () {
+        },
         onPatientSelect:function (list, record, options) {
             console.log('loading patient');
-            this.getPatientInfo().loadPatient(record);
+
+
+            //
+            //
+            // console.log(record.diagnoseoverviews().data);
+            var ageFilter = new Ext.util.Filter({
+                property:'age',
+                value:32
+            });
+
+
+//            var longNameFilter = new Ext.util.Filter({
+//                filterFn: function(item) {
+//                    return true
+//                }
+//            });
+
+
+            var store = Ext.create('Ext.data.Store', {
+                model:'NeqMobile.model.Patient',
+                filters:longNameFilter,
+                remoteFilter:true
+            });
+            store.load();
+//
+//            var store = Ext.create('Ext.data.Store', {
+//                model:'NeqMobile.model.DiagnoseOverview',
+//                filters:[
+//                    {
+//                        property:'id',
+//                        value:'2'
+//                    }
+//                ]
+//            });
+//
+//
+//            store.load(
+//                {
+//                    params:{id:1}
+//                });
+//
+//            console.log(store);
+
+            //this.getPatientInfo().loadPatient(record);
 //                xtype:'container',
 //                html: '<table border="1">' +
 //                  '<tr>' +
@@ -50,7 +94,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
         },
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
-
             var searchstring = Ext.String.trim(searchfield.getValue());
             searchstring = searchstring.replace(/\s+/g, '|')
             store.clearFilter();

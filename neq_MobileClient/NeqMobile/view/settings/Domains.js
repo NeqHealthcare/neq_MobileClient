@@ -10,7 +10,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
    requires:['NeqMobile.store.Domains'],
     xtype:'settingsDomains',
     config:{
-
+      //  styleHtmlContent:true,
         layout:'hbox',
         items:[
 
@@ -30,6 +30,8 @@ Ext.define('NeqMobile.view.settings.Domains', {
                 xtype:'container',
                 flex:1,
                 layout:'vbox',
+                minWidth:75,
+                maxWidth:250,
                 items:[
                     {xtype:'toolbar',
                         docked:'top', items:[
@@ -65,8 +67,10 @@ Ext.define('NeqMobile.view.settings.Domains', {
 
             {
                 flex:5,
+                styleHtmlContent:true,
                 xtype:'formpanel',
                 scrollable:false,
+                maxWidth:500,
                 items:[
                     {xtype:'fieldset',
                         title:'Connection Settings',
