@@ -35,10 +35,13 @@ Ext.define('NeqMobile.controller.Dashboard', {
             {
                 diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
+
+            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
           diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback: function(records, operation, success) {
                    var patientinfo = this.getPatientInfo();
+                   patientinfo.setMasked(false);
                     if (!patientinfo){alert('the patientinfo view was not found')};
                     console.log(patientinfo);
                    patientinfo.loadPatient(patientrecord,diagnosestore);
@@ -57,7 +60,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     var id = item.get('id');
                     console.log(name);
                     console.log(id);
-
                     console.log('the searchstring is:' + searchstring);
                     var searchexpr = new RegExp(searchstring, 'i');
                     console.log(searchexpr);
