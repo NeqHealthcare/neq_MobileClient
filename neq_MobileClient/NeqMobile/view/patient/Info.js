@@ -61,12 +61,14 @@ Ext.define('NeqMobile.view.patient.Info', {
         xtype:'patientInfo',
         ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
-        loadPatient:function (patientrecord) {
+
+        loadPatient:function (patientrecord, diagnoses) {
           //  data = patientrecord.getFields();
             console.log('setting the data config of the info component');
             console.log('the patients data...');
             console.log(patientrecord.data);
             this.down('component').setData(patientrecord.data);
+            console.log(diagnoses.data);
             }
         ,
 

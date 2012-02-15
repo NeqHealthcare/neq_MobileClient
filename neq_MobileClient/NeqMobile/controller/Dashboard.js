@@ -20,77 +20,29 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     keyup:'doFilter'
                 },
                 'Dashboard patientList list':{
-                    select:'doNothing'
+                    select:'onPatientSelect'
                 }
             }
         },
         doNothing:function () {
         },
-        onPatientSelect:function (list, record, options) {
+        onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
+            var patientid = patientrecord.get('id');
 
-
-            //
-            //
-            // console.log(record.diagnoseoverviews().data);
-            var ageFilter = new Ext.util.Filter({
-                property:'age',
-                value:32
+            var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
+            if(!diagnosestore)
+            {
+                diagnosestore = new NeqMobile.store.Diagnoses();
+            }
+            diagnosestore.getProxy().setExtraParam('id', patientid);
+            diagnosestore.load({
+                callback: function(records, operation, success) {
+                   var patientinfo = Ext.ComponentQuery.query('Dashboard patientInfo');
+                   patientinfo.loadPatient(patientrecord,diagnosestore);
+                },
+                scope: this
             });
-
-
-//            var longNameFilter = new Ext.util.Filter({
-//                filterFn: function(item) {
-//                    return true
-//                }
-//            });
-
-
-            var store = Ext.create('Ext.data.Store', {
-                model:'NeqMobile.model.Patient',
-                filters:longNameFilter,
-                remoteFilter:true
-            });
-            store.load();
-//
-//            var store = Ext.create('Ext.data.Store', {
-//                model:'NeqMobile.model.DiagnoseOverview',
-//                filters:[
-//                    {
-//                        property:'id',
-//                        value:'2'
-//                    }
-//                ]
-//            });
-//
-//
-//            store.load(
-//                {
-//                    params:{id:1}
-//                });
-//
-//            console.log(store);
-
-            //this.getPatientInfo().loadPatient(record);
-//                xtype:'container',
-//                html: '<table border="1">' +
-//                  '<tr>' +
-//                    '<th>Berlin</th>'+
-//                 '   <th>Hamburg</th>' +
-//                 '  <th>M&uuml;nchen</th>' +
-//                '  </tr>' +
-//                '  <tr>' +
-//                 '   <td>Milj&ouml;h</td>' +
-//                 '   <td>Kiez</td>' +
-//                    '<td>Bierdampf</td>' +
-//                '  </tr>' +
-//                 '<tr>' +
-//                   ' <td>Buletten</td>' +
-//                   '<td>Frikadellen</td>' +
-//                   ' <td>Fleischpflanzerl</td>' +
-//                  '</tr>' +
-//                '</table>'
-
         },
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
