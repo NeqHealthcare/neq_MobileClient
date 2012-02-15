@@ -34,6 +34,11 @@ var diagnoses = new Ext.XTemplate(
                 '<td>{pathology_rec_name}</td>',
             '</tr>',
             '</tpl>',
+            '<tr>',
+                '<td>1</td>',
+                '<td>Aktiv Raum 5</td>',
+                '<td>Notaufnahme</td>',
+            '</tr>',
         '</tbody>',
     '</table>',
 
