@@ -10,11 +10,36 @@
  */
 
 var patientheader = new Ext.XTemplate(
-    '<h1>here should be the patient header</h1>'
+    //'<h1>here should be the patient header</h1>'
+    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
+    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
+    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
+    '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
+    '<br /><br />'
 );
 var diagnoses = new Ext.XTemplate(
+    '<table id="box-table-a" summary="Employee Pay Sheet">',
+        '<thead>',
+            '<tr>',
+                '<th scope="col">ID</th>',
+                '<th scope="col">Active</th>',
+                '<th scope="col">Name</th>',
+            '</tr>',
+        '</thead>',
+        '<tbody>',
+            '<tpl for="diagnoseList">',
+            '<tr>',
+                '<td>{id}</td>',
+                '<td>{[this.checkAct(values.is_active)]}</td>',
+                '<td>{pathology_rec_name}</td>',
+            '</tr>',
+            '</tpl>',
+        '</tbody>',
+    '</table>',
+
+    /*
     '<p>ID: {id}</p>',
-    '<p>Name: {reclili_name}</p>',
+    '<p>Name: {rec_name}</p>',
 
     '<p>Sex: ',
     '{[this.getLongSex(values.sex)]}',
@@ -36,6 +61,7 @@ var diagnoses = new Ext.XTemplate(
     '</tpl>',
     '</tbody',
     '</table>',
+    */
     {
         // XTemplate configuration:
         disableFormats:true,

@@ -6298,3 +6298,38 @@ input[type="search"]::-webkit-search-cancel-button {
 .x-patients .x-item-selected {
   border-top-color: #D1D1D1 !important;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003287}}
+#box-table-a {
+  font-size: 12px;
+  margin: 45px;
+  margin-left: 0px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003297}}
+#box-table-a th {
+  font-size: 13px;
+  font-weight: normal;
+  padding: 8px;
+  background: #b9c9fe;
+  border-top: 4px solid #aabcfe;
+  border-bottom: 1px solid #fff;
+  color: #039;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003307}}
+#box-table-a td {
+  padding: 8px;
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  color: #669;
+  border-top: 1px solid transparent;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/wamp\/www\/neq_MobileClient\/neq_MobileClient\/theme\/sass\/neq_MobileClient\.scss}line{font-family:\00003315}}
+#box-table-a tr:hover td {
+  background: #d0dafd;
+  color: #339;
+}
