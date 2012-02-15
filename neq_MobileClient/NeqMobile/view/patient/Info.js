@@ -9,6 +9,7 @@
  * @author geekflyer
  */
 
+
 var patientheader = new Ext.XTemplate(
     //'<h1>here should be the patient header</h1>'
     '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
@@ -17,51 +18,54 @@ var patientheader = new Ext.XTemplate(
     '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
     '<br /><br />'
 );
-var diagnoses = new Ext.XTemplate(
-    '<table id="box-table-a" summary="Employee Pay Sheet">',
-        '<thead>',
-            '<tr>',
-                '<th scope="col">ID</th>',
-                '<th scope="col">Active</th>',
-                '<th scope="col">Name</th>',
-            '</tr>',
-        '</thead>',
-        '<tbody>',
-            '<tpl for="diagnoseList">',
-            '<tr>',
-                '<td>{id}</td>',
-                '<td>{[this.checkAct(values.is_active)]}</td>',
-                '<td>{pathology_rec_name}</td>',
-            '</tr>',
-            '</tpl>',
-        '</tbody>',
-    '</table>',
 
-    /*
-    '<p>ID: {id}</p>',
-    '<p>Name: {rec_name}</p>',
-
-    '<p>Sex: ',
-    '{[this.getLongSex(values.sex)]}',
-    '</p>',
-
-    '<h1>Diagnoses</h1>',
-    '<table border="1"> ',
+//this is the template for each item in the dataview!
+var diagnosesitem = new Ext.XTemplate(
+    'is active: {is_active}' +
+        '<table id="box-table-a" summary="Employee Pay Sheet">',
     '<thead>',
     '<tr>',
-    '<th>id</th>',
-    '<th>active</th>',
-    '<th>name</th>',
+    '<th scope="col">ID</th>',
+    '<th scope="col">Active</th>',
+    '<th scope="col">Name</th>',
     '</tr>',
     '</thead>',
     '<tbody>',
     '<tpl for="diagnoseList">',
-    '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
-    //is_active
+    '<tr>',
+    '<td>{id}</td>',
+    '<td>{[this.checkAct(values.is_active)]}</td>',
+    '<td>{pathology_rec_name}</td>',
+    '</tr>',
     '</tpl>',
-    '</tbody',
+    '</tbody>',
     '</table>',
-    */
+
+    /*
+     '<p>ID: {id}</p>',
+     '<p>Name: {rec_name}</p>',
+
+     '<p>Sex: ',
+     '{[this.getLongSex(values.sex)]}',
+     '</p>',
+
+     '<h1>Diagnoses</h1>',
+     '<table border="1"> ',
+     '<thead>',
+     '<tr>',
+     '<th>id</th>',
+     '<th>active</th>',
+     '<th>name</th>',
+     '</tr>',
+     '</thead>',
+     '<tbody>',
+     '<tpl for="diagnoseList">',
+     '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
+     //is_active
+     '</tpl>',
+     '</tbody',
+     '</table>',
+     */
     {
         // XTemplate configuration:
         disableFormats:true,
@@ -99,7 +103,10 @@ Ext.define('NeqMobile.view.patient.Info', {
             console.log('the patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
-            this.down('#diagnoses').setData(patientrecord.data);
+            if (!this.down('#diagnoses').getStore()) {
+                console.log('apply diagnoses store');
+                this.down('#diagnoses').setStore(diagnoses);
+            }
             console.log(diagnoses.data);
         },
 
@@ -116,11 +123,15 @@ Ext.define('NeqMobile.view.patient.Info', {
                     itemId:'patientheader',
                     tpl:patientheader
                 },
+                {xtype:'container',
+                    html:'here you should insert the table header or something similar'},
                 {
-
-                    xtype:'container',
+                    xtype:'dataview',
+                    height:2000,
+                    scrollable:'true',
                     itemId:'diagnoses',
-                    tpl:diagnoses}
+                    //  store:'diagnoses',
+                    itemTpl:diagnosesitem}
             ]
 
 //            items:[
