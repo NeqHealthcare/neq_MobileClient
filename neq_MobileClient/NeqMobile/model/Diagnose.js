@@ -14,7 +14,7 @@ Ext.define('NeqMobile.model.Diagnose', {
             'doctor',
             'doctor_rec_name',
             'extra_info',
-            'healead_date',
+            'healed_date',
             'is_active',
             'is_allergy',
             'is_infectious',
