@@ -12,9 +12,11 @@
 var patientheader = new Ext.XTemplate(
     '<h3>Patient</h3><table cellpadding="5" cellspacing="10" style="background-color: #FFFFFF; -webkit-border-radius: 6px";>' +
         '<tr>'+
-        '<th rowspan="2" width=120><img src="theme/images/user/DefaultAvatar_small.jpg" width="114" height="125"></th>'+
-        '   <td align="left"><b>Name:</b> {id}</td></tr>'+
-        '<tr><td>-</td></tr></table>'
+        '<th rowspan="4" width=70><img src="theme/images/user/DefaultAvatar_small.jpg" width="60" height="67"></th>'+
+        '   <td align="left"><b>ID:</b> {id}</td></tr>'+
+        '<tr><td><b>Name:</b>{rec_name}</td></tr>'+
+        '<tr><td><b>Sex:</b>{sex}</td></tr>' +
+        '<tr><td><small>{latestDiagnoseRecName}</small></td></tr>'+'</table>'
 //    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
 //    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
 //    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
@@ -26,7 +28,7 @@ var patientheader = new Ext.XTemplate(
 
 var diagnoses = new Ext.XTemplate(
     '<br><h3>Diseases</h3>'+
-        '<table id="box-table-a" summary="Employee Pay Sheet" style="background-color: #FFFFFF; -webkit-border-radius: 6px";>',
+        '<table id="box-table-a" summary="Employee Pay Sheet">',
         '<thead>',
             '<tr>',
                 '<th scope="col">Date</th>',
@@ -46,7 +48,7 @@ var diagnoses = new Ext.XTemplate(
                 '<td>{pathology_rec_name}</td>',
                 '<td>{disease_severity}</td>',
                 '<td>{healed_dated}</td>',
-                '<td>{[this.checkStatus(values.is_infecitous)]}</td>',
+                '<td>{[this.checkStatus(values.is_infectious)]}</td>',
                 '<td>{[this.checkStatus(values.is_allergy)]}</td>',
             '</tr>',
             '</tpl>',
@@ -61,7 +63,7 @@ var diagnoses = new Ext.XTemplate(
             if (currentStat == 'true') {
                 return '<input type="checkbox" checked="checked" />'
             }
-            else return '<input type="checkbox" checked="unchecked" />'
+            else return '<input type="checkbox"/>'
         }
 
     }
