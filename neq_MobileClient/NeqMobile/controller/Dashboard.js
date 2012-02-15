@@ -42,7 +42,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 callback: function(records, operation, success) {
                    var patientinfo = this.getPatientInfo();
                    patientinfo.setMasked(false);
-                   patientinfo.loadPatient(patientrecord,diagnosestore);
+                   var response = operation.getResponse();
+                   var responseobject = Ext.decode(response.responseText);
+                   patientinfo.loadPatient(patientrecord,responseobject);
                 },
                 scope: this
             });

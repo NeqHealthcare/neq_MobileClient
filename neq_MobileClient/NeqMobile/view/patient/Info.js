@@ -25,30 +25,31 @@ var patientheader = new Ext.XTemplate(
 
 var diagnoses = new Ext.XTemplate(
     '<table id="box-table-a" summary="Employee Pay Sheet">',
-        '<thead>',
-            '<tr>',
-                '<th scope="col">Date</th>',
-                '<th scope="col">Activity Status</th>',
-                '<th scope="col">Disease</th>',
-                '<th scope="col">Severity</th>',
-                '<th scope="col">Healed Date</th>',
-                '<th scope="col">Infectability</th>',
-                '<th scope="col">Allergies</th>',
-            '</tr>',
-        '</thead>',
-        '<tbody>',
-            '<tpl for="diagnoseList">',
-            '<tr>',
-                '<td>{diagnosed_date}</td>',
-                '<td>{[this.checkAct(value.is_active)]}</td>',
-                '<td>{pathology_rec_name}</td>',
-                '<td>{disease_severity}</td>',
-                '<td>{healed_dated}</td>',
-                '<td>{is_infectious}</td>',
-                '<td>{is_allergy}</td>',
-            '</tr>',
-            '</tpl>',
-        '</tbody>',
+    '<thead>',
+    '<tr>',
+    '<th scope="col">Date</th>',
+    '<th scope="col">Activity Status</th>',
+    '<th scope="col">Disease</th>',
+    '<th scope="col">Severity</th>',
+    '<th scope="col">Healed Date</th>',
+    '<th scope="col">Infectability</th>',
+    '<th scope="col">Allergies</th>',
+    '</tr>',
+    '</thead>',
+    '<tbody>',
+    '<tpl for=".">',
+    '<tr>',
+
+    '<td>{diagnosed_date.day}.{diagnosed_date.month}.{diagnosed_date.year}</td>',
+    '<td>{[this.checkAct(values.is_active)]}</td>',
+    '<td>{pathology_rec_name}</td>',
+    '<td>{disease_severity}</td>',
+    '<td>{healed_dated}</td>',
+    '<td>{is_infectious}</td>',
+    '<td>{is_allergy}</td>',
+    '</tr>',
+    '</tpl>',
+    '</tbody>',
     '</table>',
 
     {
@@ -63,54 +64,6 @@ var diagnoses = new Ext.XTemplate(
         }
 
     }
-
-    /*
-    '<p>ID: {id}</p>',
-    '<p>Name: {rec_name}</p>',
-
-    '<p>Sex: ',
-    '{[this.getLongSex(values.sex)]}',
-    '</p>',
-
-    '<h1>Diagnoses</h1>',
-    '<table border="1"> ',
-    '<thead>',
-    '<tr>',
-    '<th>id</th>',
-    '<th>active</th>',
-    '<th>name</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for="diagnoseList">',
-    '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
-    //is_active
-    '</tpl>',
-    '</tbody',
-    '</table>',
-    */
- /*   {
-        // XTemplate configuration:
-        disableFormats:true,
-        // member functions:
-        getLongSex:function (shortsex) {
-        if (shortsex === "m") {
-        return "male"
-    }
-    else return "female"
-    },
-    isBaby:function (age) {
-        return age < 1;
-    },
-
-    checkAct:function (activness) {
-        if (activness == 'true') {
-            return '<input type="checkbox" checked />'
-        }
-        else return '<input type="checkbox" unchecked />'
-    }
-
-    }*/
 );
 
 
@@ -126,8 +79,9 @@ Ext.define('NeqMobile.view.patient.Info', {
             console.log('the patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
-            this.down('#diagnoses').setData(patientrecord.data);
-            console.log(diagnoses.data);
+            console.log('the diagnoses data');
+            this.down('#diagnoses').setData(diagnoses);
+            console.log(diagnoses);
         },
         config:{
 
@@ -148,78 +102,6 @@ Ext.define('NeqMobile.view.patient.Info', {
                     itemId:'diagnoses',
                     tpl:diagnoses}
             ]
-
-//            items:[
-//                {
-//                    xtype:'formpanel',
-//                    scrollable:true,{
-//                    items:[
-//                        {
-//                            xtype:'fieldset',
-//                             title:'Patient Information',
-//                            items:[
-//                                {
-//                                    html:'<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>' +
-//                                        '<img src="http://t0.gstatic.com/images?q=tbn:ANd9GcS-l5gDNi9BJ9ucACpWOoIlJggmKALKjdjDn42fgbIipSOUGrdmBg"></th><th>H a m b u r g</th><th>M u e n c h e n' +
-//                                        '</th></tr><tr><td>Buletten</td><td>Frikadellen</td><td>Fleischpflanzerl</td></tr><table>'
-//
-//                                },
-//                                {
-//                                    xtype:'textfield',
-//                                    name:'age',
-//                                    label:'Age123',
-//                                    value:'123 Yrs',
-//                                    readOnly:true
-//                                }
-//
-//                                ,
-//                                {
-//                                    xtype:'textfield',
-//                                    name:'age',
-//                                    label:'Age123',
-//                                    value:'123 Yrs',
-//                                    readOnly:true
-//                                }
-//                                ,
-//                                {   xtype:'textareafield',
-//                                    name:'adress',
-//                                    label:'Adresse',
-//                                    value:'aaa',
-//                                    readOnly:true
-//
-//                                },
-//                                {xtype:'button',
-//                                    text:'blaa'}
-//
-//                            ]
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Allergies & Critical Information',
-//                            items:[
-//                                {
-//                                    // xtype: ''
-//                                }
-//                            ]
-//
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Diseases'
-//
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Medication'
-//
-//                        }
-//
-//                    ]
-//                }
-//
-//            ]
-
-
         }
 
     }

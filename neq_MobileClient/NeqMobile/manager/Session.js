@@ -68,11 +68,9 @@ Ext.define('NeqMobile.manager.Session',
                         });
                         this.session = mySession;
                         successCallback.apply(scope);
-
                     }
                     else {
                         Ext.Msg.alert('Connection refused', 'The server rejected the connection, probably caused by wrong credentials', Ext.emptyFn);
-
                         console.log('login failed caused by wrong credentials');
                         if (failureCallback) failureCallback.apply(scope);
                     }
