@@ -6,17 +6,19 @@ Ext.define('NeqMobile.model.Diagnose', {
     config:{
         fields:[
             'id',
-            "status"        ,
-          "pathology.rec_name"  ,
-          "pregnancy_warning",
-            "is_active",
-            "short_comment",
-            "diagnosed_date",
-            "healed_date",
-            "pathology",
-            "disease_severity",
-            "is_infectious",
-            "is_allergy"
+            'age',
+            'allergy_type',
+            'date_start_treatment',
+            'diagnosed_date',
+            'disease_severity',
+            'doctor',
+            'doctor_rec_name',
+            'extra_info',
+            'healead_date',
+            'is_active',
+            'is_allergy',
+            'is_infectious',
+            'is_on_treatment'
         ],
         proxy:myproxy
 //          associations:[
