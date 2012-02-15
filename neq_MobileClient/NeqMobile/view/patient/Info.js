@@ -10,32 +10,59 @@
  */
 
 var patientheader = new Ext.XTemplate(
+//    '<h1>"Information"</h1><table border="2" cellspacing="10">' +
+//        '</table>'
+
     //'<h1>here should be the patient header</h1>'
     '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
     //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
     '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
     '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
     '<br /><br />'
+
 );
+
+
 var diagnoses = new Ext.XTemplate(
     '<table id="box-table-a" summary="Employee Pay Sheet">',
         '<thead>',
             '<tr>',
-                '<th scope="col">ID</th>',
-                '<th scope="col">Active</th>',
-                '<th scope="col">Name</th>',
+                '<th scope="col">Date</th>',
+                '<th scope="col">Activity Status</th>',
+                '<th scope="col">Disease</th>',
+                '<th scope="col">Severity</th>',
+                '<th scope="col">Healed Date</th>',
+                '<th scope="col">Infectability</th>',
+                '<th scope="col">Allergies</th>',
             '</tr>',
         '</thead>',
         '<tbody>',
             '<tpl for="diagnoseList">',
             '<tr>',
-                '<td>{id}</td>',
-                '<td>{[this.checkAct(values.is_active)]}</td>',
+                '<td>{diagnosed_date}</td>',
+                '<td>{[this.checkAct(value.is_active)]}</td>',
                 '<td>{pathology_rec_name}</td>',
+                '<td>{disease_severity}</td>',
+                '<td>{healed_dated}</td>',
+                '<td>{is_infectious}</td>',
+                '<td>{is_allergy}</td>',
             '</tr>',
             '</tpl>',
         '</tbody>',
     '</table>',
+
+    {
+        // XTemplate configuration:
+        disableFormats:true,
+        // member functions:
+        checkAct:function (activness) {
+            if (activness == 'true') {
+                return '<input type="checkbox" checked="checked" />'
+            }
+            else return '<input type="checkbox" checked="unchecked" />'
+        }
+
+    }
 
     /*
     '<p>ID: {id}</p>',
@@ -62,28 +89,28 @@ var diagnoses = new Ext.XTemplate(
     '</tbody',
     '</table>',
     */
-    {
+ /*   {
         // XTemplate configuration:
         disableFormats:true,
         // member functions:
         getLongSex:function (shortsex) {
-            if (shortsex === "m") {
-                return "male"
-            }
-            else return "female"
-        },
-        isBaby:function (age) {
-            return age < 1;
-        },
-
-        checkAct:function (activness) {
-            if (activness == 'true') {
-                return '<input type="checkbox" checked />'
-            }
-            else return '<input type="checkbox" unchecked />'
-        }
-
+        if (shortsex === "m") {
+        return "male"
     }
+    else return "female"
+    },
+    isBaby:function (age) {
+        return age < 1;
+    },
+
+    checkAct:function (activness) {
+        if (activness == 'true') {
+            return '<input type="checkbox" checked />'
+        }
+        else return '<input type="checkbox" unchecked />'
+    }
+
+    }*/
 );
 
 
