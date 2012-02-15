@@ -1,4 +1,4 @@
-var myproxy = Ext.create('NeqMobile.proxy.AbstractProxy',
+var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
     {customUrl:'/dashboard/one'});
 
 Ext.define('NeqMobile.model.Diagnose', {
@@ -21,20 +21,6 @@ Ext.define('NeqMobile.model.Diagnose', {
             'is_on_treatment'
         ],
         proxy:myproxy
-//          associations:[
-//
-//
-//
-//                        {
-//                            type:'belongsTo',
-//                            model:'Patient',
-//                            primaryKey:'id',
-//                            foreignKey:'id',
-//                            ownerModel:'Patient',
-//                            associatedModel:'Patient',
-//                            associationKey:'id' // read child data from child_groups
-//                        }]
 
-        // ]
     }
 });
