@@ -18,15 +18,11 @@ Ext.define('NeqMobile.view.Login', {
                 //title:'Login',
                 items:[
                     {
-                        html:'<img src="theme/images/ci/NEQ_Final.png"/>',
-                        docked:'left'
-                    },
-                    {xtype:'spacer'},
-                    {
                         xtype:'button',
                         itemId:'settingsbutton',
                         iconCls:'settings',
-                        iconMask:true
+                        iconMask:true,
+                        docked:'right'
                     }
                 ]
 
