@@ -109,7 +109,6 @@ Ext.define('NeqMobile.view.patient.Info', {
             console.log('diagnose data...')
             console.log(diagnoses.getData());
         },
-
         config:{
 
             styleHtmlContent:true,

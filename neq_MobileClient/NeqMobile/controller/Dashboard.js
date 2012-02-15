@@ -42,8 +42,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 callback: function(records, operation, success) {
                    var patientinfo = this.getPatientInfo();
                    patientinfo.setMasked(false);
-                    if (!patientinfo){alert('the patientinfo view was not found')};
-                    console.log(patientinfo);
                    patientinfo.loadPatient(patientrecord,diagnosestore);
                 },
                 scope: this
