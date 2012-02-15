@@ -8,12 +8,16 @@
 /**
  * @author geekflyer
  */
-var tpl = new Ext.XTemplate(
+
+var patientheader = new Ext.XTemplate(
+    '<h1>here should be the patient header</h1>'
+);
+var diagnoses = new Ext.XTemplate(
     '<p>ID: {id}</p>',
     '<p>Name: {reclili_name}</p>',
 
     '<p>Sex: ',
-   '{[this.getLongSex(values.sex)]}',
+    '{[this.getLongSex(values.sex)]}',
     '</p>',
 
     '<h1>Diagnoses</h1>',
@@ -37,16 +41,17 @@ var tpl = new Ext.XTemplate(
         disableFormats:true,
         // member functions:
         getLongSex:function (shortsex) {
-            if (shortsex ==="m")
-            {return "male"}
+            if (shortsex === "m") {
+                return "male"
+            }
             else return "female"
         },
         isBaby:function (age) {
             return age < 1;
         },
 
-        checkAct: function (activness){
-            if(activness == 'true'){
+        checkAct:function (activness) {
+            if (activness == 'true') {
                 return '<input type="checkbox" checked />'
             }
             else return '<input type="checkbox" unchecked />'
@@ -59,36 +64,37 @@ var tpl = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
-        ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
+        //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
 
         loadPatient:function (patientrecord, diagnoses) {
-          //  data = patientrecord.getFields();
+            //  data = patientrecord.getFields();
             console.log('setting the data config of the info component');
             console.log('the patients data...');
             console.log(patientrecord.data);
-            this.down('component').setData(patientrecord.data);
+            this.down('#patientheader').setData(patientrecord.data);
+            this.down('#diagnoses').setData(patientrecord.data);
             console.log(diagnoses.data);
-            }
-        ,
+        },
 
         config:{
 
             styleHtmlContent:true,
-            layout:'hbox',
+            layout:'vbox',
             // layout:'card',
-          //  tpl:tpl',
+            //  tpl:tpl',
 
-            items: [
-                {xtype:'label',
-                    flex:1
-                    ,
-                   tpl:tpl
-            },
+            items:[
+                {xtype:'container',
+
+                    itemId:'patientheader',
+                    tpl:patientheader
+                },
                 {
-                    flex:1,
-                    xtype:'label',
-                   html: '<h1>some other HTML Code</h1>'}
+
+                    xtype:'container',
+                    itemId:'diagnoses',
+                    tpl:diagnoses}
             ]
 
 //            items:[

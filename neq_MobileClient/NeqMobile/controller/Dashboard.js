@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients','NeqMobile.store.Diagnoses'],
 
         config:{
 
@@ -33,12 +33,14 @@ Ext.define('NeqMobile.controller.Dashboard', {
             var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
             if(!diagnosestore)
             {
-                diagnosestore = new NeqMobile.store.Diagnoses();
+                diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
-            diagnosestore.getProxy().setExtraParam('id', patientid);
+          diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback: function(records, operation, success) {
-                   var patientinfo = Ext.ComponentQuery.query('Dashboard patientInfo');
+                   var patientinfo = this.getPatientInfo();
+                    if (!patientinfo){alert('the patientinfo view was not found')};
+                    console.log(patientinfo);
                    patientinfo.loadPatient(patientrecord,diagnosestore);
                 },
                 scope: this
