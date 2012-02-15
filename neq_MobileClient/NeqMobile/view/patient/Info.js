@@ -131,7 +131,6 @@ Ext.define('NeqMobile.view.patient.Info', {
             this.down('#diagnoses').setData(patientrecord.data);
             console.log(diagnoses.data);
         },
-
         config:{
             scrollable: true,
             styleHtmlContent:true,
