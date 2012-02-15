@@ -19,10 +19,8 @@ var patientheader = new Ext.XTemplate(
     '<br /><br />'
 );
 
-//this is the template for each item in the dataview!
-var diagnosesitem = new Ext.XTemplate(
-    'is active: {is_active}' +
-        '<table id="box-table-a" summary="Employee Pay Sheet">',
+var diagnosestable = new Ext.XTemplate(
+     '<table id="box-table-a" summary="Employee Pay Sheet">',
     '<thead>',
     '<tr>',
     '<th scope="col">ID</th>',
@@ -31,7 +29,7 @@ var diagnosesitem = new Ext.XTemplate(
     '</tr>',
     '</thead>',
     '<tbody>',
-    '<tpl for="diagnoseList">',
+    '<tpl for=".">',
     '<tr>',
     '<td>{id}</td>',
     '<td>{[this.checkAct(values.is_active)]}</td>',
@@ -103,11 +101,13 @@ Ext.define('NeqMobile.view.patient.Info', {
             console.log('the patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
-            if (!this.down('#diagnoses').getStore()) {
-                console.log('apply diagnoses store');
-                this.down('#diagnoses').setStore(diagnoses);
-            }
-            console.log(diagnoses.data);
+//            if (!this.down('#diagnoses').getStore()) {
+//                console.log('apply diagnoses store');
+//                this.down('#diagnoses').setStore(diagnoses);
+//            }
+            this.down('#diagnoses').setData(diagnoses.getData());
+            console.log('diagnose data...')
+            console.log(diagnoses.getData());
         },
 
         config:{
@@ -124,14 +124,10 @@ Ext.define('NeqMobile.view.patient.Info', {
                     tpl:patientheader
                 },
                 {xtype:'container',
-                    html:'here you should insert the table header or something similar'},
-                {
-                    xtype:'dataview',
-                    height:2000,
-                    scrollable:'true',
+                    height:5000,
                     itemId:'diagnoses',
                     //  store:'diagnoses',
-                    itemTpl:diagnosesitem}
+                    tpl:diagnosestable}
             ]
 
 //            items:[
