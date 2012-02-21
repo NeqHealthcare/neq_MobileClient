@@ -117,22 +117,64 @@ var diagnoses = new Ext.XTemplate(
     }*/
 );
 
+var vaccinations = new Ext.XTemplate(
+    '<br><h3>Vaccinations</h3>'+
+        '<table id="box-table-a" summary="Patient Vaccinations">',
+    '<thead>',
+    '<tr>',
+    '<th scope="col">Vaccination</th>',
+    '<th scope="col">Dose Number</th>',
+    '<th scope="col">Date</th>',
+    '<th scope="col">Next Dose</th>',
+    '</tr>',
+    '</thead>',
+    '<tbody>',
+    '<tpl for=".">',
+    '<tr>',
+    '<td>{vaccine_rec_name}</td>',
+    '<td>{dose}</td>',
+    '<td>{date.month}/{date.day}/{date.year}</td>',
+    '<td>{next_dose_date.month}/{next_dose_date.day}/{next_dose_date.year}</td>',
+    '</tr>',
+    '</tpl>',
+    '</tbody>',
+    '</table>',
+
+    {
+        // XTemplate configuration:
+        disableFormats:true,
+        // member functions:
+        checkStatus:function (currentStat) {
+            if (currentStat == 'true') {
+                return '<input type="checkbox" checked="checked" />'
+            }
+            else return '<input type="checkbox"/>'
+        }
+
+    }
+
+);
+
 
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
         //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
-
-        loadPatient:function (patientrecord, diagnoses) {
-            //  data = patientrecord.getFields();
-            console.log('setting the data config of the info component');
-            console.log('the patients data...');
+        loadPatientHeader:function (patientrecord){
+            console.log('setting patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
-            console.log('the diagnoses data');
+        },
+        loadDiagnoses:function (diagnoses){
+            console.log('setting diagnoses data');
             this.down('#diagnoses').setData(diagnoses);
             console.log(diagnoses);
+        },
+        loadVaccinations:function (vaccinations){
+            console.log('setting vaccinations data');
+            this.down('#vaccinations').setData(vaccinations);
+            console.log(vaccinations);
         },
         config:{
             scrollable: true,
@@ -151,7 +193,14 @@ Ext.define('NeqMobile.view.patient.Info', {
 
                     xtype:'container',
                     itemId:'diagnoses',
-                    tpl:diagnoses}
+                    tpl:diagnoses
+                },
+                {
+
+                    xtype:'container',
+                    itemId:'vaccinations',
+                    tpl:vaccinations
+                }
             ]
         }
 

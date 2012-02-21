@@ -2,7 +2,7 @@
  * Created by J.G.
  */
 var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/medication'});
+    {customUrl:'/medication/all'});
 
 Ext.define('NeqMobile.model.Medication', {
     extend:'Ext.data.Model',

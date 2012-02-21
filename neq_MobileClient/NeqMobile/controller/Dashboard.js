@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients','NeqMobile.store.Diagnoses'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients','NeqMobile.store.Diagnoses','NeqMobile.store.Vaccinations'],
 
         config:{
 
@@ -29,6 +29,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
             var patientid = patientrecord.get('id');
+            this.getPatientInfo().loadPatientHeader(patientrecord);
 
             var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
             if(!diagnosestore)
@@ -36,15 +37,32 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
 
-            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
+          this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
           diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback: function(records, operation, success) {
                    var patientinfo = this.getPatientInfo();
-                   patientinfo.setMasked(false);
                    var response = operation.getResponse();
                    var responseobject = Ext.decode(response.responseText);
-                   patientinfo.loadPatient(patientrecord,responseobject);
+                   patientinfo.loadDiagnoses(responseobject);
+                },
+                scope: this
+            });
+
+            var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
+            if(!vaccinationstore)
+            {
+                vaccinationstore = Ext.create('NeqMobile.store.Vaccinations');
+            }
+          vaccinationstore.getProxy().setExtraParam('patientId', patientid);
+            vaccinationstore.load({
+                callback: function(records, operation, success) {
+                    var patientinfo = this.getPatientInfo();
+                    patientinfo.setMasked(false);
+                    var response = operation.getResponse();
+                    console.log('vaccinations: '+response);
+                    var responseobject = Ext.decode(response.responseText);
+                    patientinfo.loadVaccinations(responseobject);
                 },
                 scope: this
             });
