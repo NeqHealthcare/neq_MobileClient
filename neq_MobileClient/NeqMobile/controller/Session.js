@@ -66,7 +66,6 @@ Ext.define('NeqMobile.controller.Session', {
         if
         //this.getLogin().down('list').getSelection().length != 0)
             (myselectfield.getRecord() != undefined) {
-            console.log('there is selected one');
             Ext.Viewport.setMasked({ xtype:'loadmask', message:'trying to login...' });
             NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
                 loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);

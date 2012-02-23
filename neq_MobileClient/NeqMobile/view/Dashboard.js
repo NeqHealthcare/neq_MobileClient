@@ -31,7 +31,7 @@ Ext.define('NeqMobile.view.Dashboard', {
             {xclass:'NeqMobile.view.patient.List',
           flex:1,
             minWidth:250,
-            maxWidth:500},
+            maxWidth:400},
             {
                 xclass:'NeqMobile.view.patient.Info',
                 flex:5

@@ -10,28 +10,46 @@
  */
 
 var patientheader = new Ext.XTemplate(
-    //'<h1>here should be the patient header</h1>'
-    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
-    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
-    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
-    '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
-    '<br /><br />'
+    '<h3>Patient</h3><table cellpadding="5" cellspacing="10" style="background-color: #FFFFFF; -webkit-border-radius: 6px";>' +
+        '<tr>'+
+        '<th rowspan="4" width=70><img src="theme/images/user/DefaultAvatar_small.jpg" width="60" height="67"></th>'+
+        '   <td align="left"><b>ID:</b> {id}</td></tr>'+
+        '<tr><td><b>Name:</b>{rec_name}</td></tr>'+
+        '<tr><td><b>Sex:</b>{sex}</td></tr>' +
+        '<tr><td><small>{latestDiagnoseRecName}</small></td></tr>'+'</table>'
+//    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
+//    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
+//    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
+//    '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
+//    '<br /><br />'
+
 );
+
+
 var diagnoses = new Ext.XTemplate(
-    '<table id="box-table-a" summary="Employee Pay Sheet">',
+    '<br><h3>Diseases</h3>'+
+        '<table id="box-table-a" summary="Employee Pay Sheet">',
         '<thead>',
             '<tr>',
-                '<th scope="col">ID</th>',
-                '<th scope="col">Active</th>',
-                '<th scope="col">Name</th>',
+                '<th scope="col">Date</th>',
+                '<th scope="col">Activity Status</th>',
+                '<th scope="col">Disease</th>',
+                '<th scope="col">Severity</th>',
+                '<th scope="col">Healed Date</th>',
+                '<th scope="col">Infectability</th>',
+                '<th scope="col">Allergies</th>',
             '</tr>',
         '</thead>',
         '<tbody>',
-            '<tpl for="diagnoseList">',
+            '<tpl for=".">',
             '<tr>',
-                '<td>{id}</td>',
-                '<td>{[this.checkAct(values.is_active)]}</td>',
+                '<td>{diagnosed_date.day}.{diagnosed_date.month}.{diagnosed_date.year}</td>',
+                '<td>{[this.checkStatus(values.is_active)]}</td>',
                 '<td>{pathology_rec_name}</td>',
+                '<td>{disease_severity}</td>',
+                '<td>{healed_dated}</td>',
+                '<td>{[this.checkStatus(values.is_infectious)]}</td>',
+                '<td>{[this.checkStatus(values.is_allergy)]}</td>',
             '</tr>',
             '</tpl>',
             '<tr>',
@@ -41,6 +59,19 @@ var diagnoses = new Ext.XTemplate(
             '</tr>',
         '</tbody>',
     '</table>',
+
+    {
+        // XTemplate configuration:
+        disableFormats:true,
+        // member functions:
+        checkStatus:function (currentStat) {
+            if (currentStat == 'true') {
+                return '<input type="checkbox" checked="checked" />'
+            }
+            else return '<input type="checkbox"/>'
+        }
+
+    }
 
     /*
     '<p>ID: {id}</p>',
@@ -67,28 +98,66 @@ var diagnoses = new Ext.XTemplate(
     '</tbody',
     '</table>',
     */
-    {
+ /*   {
         // XTemplate configuration:
         disableFormats:true,
         // member functions:
         getLongSex:function (shortsex) {
-            if (shortsex === "m") {
-                return "male"
-            }
-            else return "female"
-        },
-        isBaby:function (age) {
-            return age < 1;
-        },
+        if (shortsex === "m") {
+        return "male"
+    }
+    else return "female"
+    },
+    isBaby:function (age) {
+        return age < 1;
+    },
 
-        checkAct:function (activness) {
-            if (activness == 'true') {
-                return '<input type="checkbox" checked />'
+    checkAct:function (activness) {
+        if (activness == 'true') {
+            return '<input type="checkbox" checked />'
+        }
+        else return '<input type="checkbox" unchecked />'
+    }
+
+    }*/
+);
+
+var vaccinations = new Ext.XTemplate(
+    '<br><h3>Vaccinations</h3>'+
+        '<table id="box-table-a" summary="Patient Vaccinations">',
+    '<thead>',
+    '<tr>',
+    '<th scope="col">Vaccination</th>',
+    '<th scope="col">Dose Number</th>',
+    '<th scope="col">Date</th>',
+    '<th scope="col">Next Dose</th>',
+    '</tr>',
+    '</thead>',
+    '<tbody>',
+    '<tpl for=".">',
+    '<tr>',
+    '<td>{vaccine_rec_name}</td>',
+    '<td>{dose}</td>',
+    '<td>{date.month}/{date.day}/{date.year}</td>',
+    '<td>{next_dose_date.month}/{next_dose_date.day}/{next_dose_date.year}</td>',
+    '</tr>',
+    '</tpl>',
+    '</tbody>',
+    '</table>',
+
+    {
+        // XTemplate configuration:
+        disableFormats:true,
+        // member functions:
+        checkStatus:function (currentStat) {
+            if (currentStat == 'true') {
+                return '<input type="checkbox" checked="checked" />'
             }
-            else return '<input type="checkbox" unchecked />'
+            else return '<input type="checkbox"/>'
         }
 
     }
+
 );
 
 
@@ -97,19 +166,23 @@ Ext.define('NeqMobile.view.patient.Info', {
         xtype:'patientInfo',
         //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
-
-        loadPatient:function (patientrecord, diagnoses) {
-            //  data = patientrecord.getFields();
-            console.log('setting the data config of the info component');
-            console.log('the patients data...');
+        loadPatientHeader:function (patientrecord){
+            console.log('setting patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
-            this.down('#diagnoses').setData(patientrecord.data);
-            console.log(diagnoses.data);
         },
-
+        loadDiagnoses:function (diagnoses){
+            console.log('setting diagnoses data');
+            this.down('#diagnoses').setData(diagnoses);
+            console.log(diagnoses);
+        },
+        loadVaccinations:function (vaccinations){
+            console.log('setting vaccinations data');
+            this.down('#vaccinations').setData(vaccinations);
+            console.log(vaccinations);
+        },
         config:{
-
+            scrollable: true,
             styleHtmlContent:true,
             layout:'vbox',
             // layout:'card',
@@ -125,80 +198,15 @@ Ext.define('NeqMobile.view.patient.Info', {
 
                     xtype:'container',
                     itemId:'diagnoses',
-                    tpl:diagnoses}
+                    tpl:diagnoses
+                },
+                {
+
+                    xtype:'container',
+                    itemId:'vaccinations',
+                    tpl:vaccinations
+                }
             ]
-
-//            items:[
-//                {
-//                    xtype:'formpanel',
-//                    scrollable:true,{
-//                    items:[
-//                        {
-//                            xtype:'fieldset',
-//                             title:'Patient Information',
-//                            items:[
-//                                {
-//                                    html:'<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>' +
-//                                        '<img src="http://t0.gstatic.com/images?q=tbn:ANd9GcS-l5gDNi9BJ9ucACpWOoIlJggmKALKjdjDn42fgbIipSOUGrdmBg"></th><th>H a m b u r g</th><th>M u e n c h e n' +
-//                                        '</th></tr><tr><td>Buletten</td><td>Frikadellen</td><td>Fleischpflanzerl</td></tr><table>'
-//
-//                                },
-//                                {
-//                                    xtype:'textfield',
-//                                    name:'age',
-//                                    label:'Age123',
-//                                    value:'123 Yrs',
-//                                    readOnly:true
-//                                }
-//
-//                                ,
-//                                {
-//                                    xtype:'textfield',
-//                                    name:'age',
-//                                    label:'Age123',
-//                                    value:'123 Yrs',
-//                                    readOnly:true
-//                                }
-//                                ,
-//                                {   xtype:'textareafield',
-//                                    name:'adress',
-//                                    label:'Adresse',
-//                                    value:'aaa',
-//                                    readOnly:true
-//
-//                                },
-//                                {xtype:'button',
-//                                    text:'blaa'}
-//
-//                            ]
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Allergies & Critical Information',
-//                            items:[
-//                                {
-//                                    // xtype: ''
-//                                }
-//                            ]
-//
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Diseases'
-//
-//                        },
-//                        {
-//                            xtype:'fieldset',
-//                            title:'Medication'
-//
-//                        }
-//
-//                    ]
-//                }
-//
-//            ]
-
-
         }
 
     }

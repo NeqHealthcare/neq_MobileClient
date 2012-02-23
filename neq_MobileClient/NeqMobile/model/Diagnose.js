@@ -14,11 +14,12 @@ Ext.define('NeqMobile.model.Diagnose', {
             'doctor',
             'doctor_rec_name',
             'extra_info',
-            'healead_date',
+            'healed_date',
             'is_active',
             'is_allergy',
             'is_infectious',
-            'is_on_treatment'
+            'is_on_treatment',
+            'pathology_rec_name'
         ],
         proxy:myproxy
 
