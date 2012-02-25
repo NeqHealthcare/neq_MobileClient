@@ -6,113 +6,42 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('CollapsibleContainer',
-    {extend:'Ext.Container',
-        xtype:'collapsibleContainer',
-        setButtonText:function (text) {
-            this.down('button').setText(text);
-        },
-        config:{
-
-
-            layout:'vbox',
-
-
-            items:[
-                {xtype:'button',
-                    text:'click me',
-                    handler:function () {
-                        if (this.up().down('container').isHidden()) {
-                            this.up().down('container').setHidden(false)
-                            console.log('showing full container')
-                        }
-                        else {
-                            this.up().down('container').setHidden(true)
-                            console.log('hiding container');
-                        }
-                    }
-                },
-
-                {
-                    html:'<p>ID: {id}</p>' +
-                        '<p>Name: {reclili_name}</p>' +
-
-                        '<p>Sex: ' +
-                        '{[this.getLongSex(values.sex)]}' +
-                        '</p>' +
-
-                        '<h1>Diagnoses</h1>' +
-                        '<table border="1">' +
-                        '<thead>' +
-                        '<tr>' +
-                        '<th>id</th>' +
-                        '<th>active</th>' +
-                        '<th>name</th>' +
-                        '</tr>' +
-                        '</thead>' +
-                        '<tbody>' +
-                        '<tpl for="diagnoseList">' +
-                        '<tr><td>{id}</td><td>' + '{[this.checkAct(values.is_active)]}' + '</td><td>{pathology_rec_name}</td></tr>' +
-                        '<tr><td>{id}</td><td>' + '{[this.checkAct(values.is_active)]}' + '</td><td>{pathology_rec_name}</td></tr>' +
-                        '<tr><td>{id}</td><td>' + '{[this.checkAct(values.is_active)]}' + '</td><td>{pathology_rec_name}</td></tr>' +
-                        '<tr><td>{id}</td><td>' + '{[this.checkAct(values.is_active)]}' + '</td><td>{pathology_rec_name}</td></tr>' +
-                        //is_active
-                        '</tpl>' +
-                        '</tbody' +
-                        '</table>',
-                    //  height:200,
-                    hidden:true
-                }
-
-            ]
-        }
-
-    }
-
-
-)
-
-
-Ext.define('MyListItem', {
-    extend:'Ext.dataview.component.DataItem',
-    requires:['Ext.Button'],
-    xtype:'mylistitem',
-
-    config:{
-        nameButton:true,
-
-        dataMap:{
-            getNameButton:{
-                setButtonText:'name'
-            }
-        }
-    },
-
-    applyNameButton:function (config) {
-        return Ext.factory(config, CollapsibleContainer, this.getNameButton());
-    },
-
-    updateNameButton:function (newNameButton, oldNameButton) {
-        if (oldNameButton) {
-            this.remove(oldNameButton);
-        }
-
-        if (newNameButton) {
-            // add an event listeners for the `tap` event onto the new button, and tell it to call the onNameButtonTap method
-            // when it happens
-            newNameButton.on('tap', this.onNameButtonTap, this);
-
-            this.add(newNameButton);
-        }
-    }
+Ext.Loader.setConfig({
+    enabled:true,
+    disableCaching:true // for debugging
 });
+
+Ext.Loader.setPath({
+
+    'NeqMobile.ux.expandableList':'./NeqMobileUX'
+})
+
+//Ext.define('Custombutton', {
+//        extend:'Ext.Button',
+//        xtype:'custombutton',
+//        config:{
+//        }}
+//)
+
+
+
 
 Ext.application({
     name:'SkeletonApp',
+    requires:['NeqMobile.ux.expandableList.ItemOverview'],
     launch:function () {
 
         var dataviewconfig = {
-
+            headerCmp:{
+                xtype:'container',
+                layout:'hbox',
+                title:'My Toolbar',
+                items:[
+        {html:'Medication',flex:1},{html:'start of treatment',flex:1},{html:'end of treatment',flex:1},{html:'Course Completed',flex:1},{html: 'Discontinued',flex:1},{html:'Active',flex:1}
+             ]
+            },
+            overviewXtype:'itemoverview',
+            detailXtype:'formpanel',
             scrollable:false,
             store:{
                 fields:['name', 'age'],
@@ -128,30 +57,29 @@ Ext.application({
                     {name:'Jacky Nguyen', age:24},
                     {name:'Ed Spencer', age:26}
                 ]
-            },
-
-            useComponents:true,
-            defaultType:'mylistitem'
+            }
         };
 
-        var dw1 = Ext.create('Ext.DataView', dataviewconfig);
-        var dw2 = Ext.create('Ext.DataView', dataviewconfig);
-        var dw3 = Ext.create('Ext.DataView', dataviewconfig);
-
+        var dw1 = Ext.create('NeqMobile.ux.expandableList.ExpandableList', dataviewconfig);
+        var dw2 = Ext.create('NeqMobile.ux.expandableList.ExpandableList', dataviewconfig);
+        var dw3 = Ext.create('NeqMobile.ux.expandableList.ExpandableList', dataviewconfig);
 
         Ext.create('Ext.Container',
             {fullscreen:true,
-               // width:1500,
+                // width:1500,
                 styleHtmlContent:true,
                 scrollable:true,
 //                layout:{type:'vbox',
 //                    flex:1},
-                items:[dw1,
+                items:[
+
+                    dw1,
                     {html:'<h1>das ist ein Abstandshalter - Groesse 100 px</h1>',
                         height:100},
                     dw2,
                     {html:'<h1>das ist ein Abstandshalter - Groesse 200 px</h1>', height:200},
-                    dw3]
+                    dw3
+                ]
             }
         )
 
