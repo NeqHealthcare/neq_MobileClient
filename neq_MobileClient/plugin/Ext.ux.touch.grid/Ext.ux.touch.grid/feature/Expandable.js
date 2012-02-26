@@ -21,9 +21,9 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     handleTap:function (dw, index, item, record, e, eOpts) {
         //checking whether the user clicked on the Overview or the Detailview (when visible)
         var y = e.pageY;
-        overviewEl = item.child('*:first-child');
+        var overviewEl = item.child('*:first-child');
         var xy = overviewEl.getXY();
-        bottomOfOverview = xy[1] + overviewEl.getHeight();
+        var bottomOfOverview = xy[1] + overviewEl.getHeight();
         if (bottomOfOverview < y) {
             console.log('clicked on overview');
             this.doToggle(dw, index, item, record, e, eOpts);
@@ -45,11 +45,14 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
             desiredCmp.record = itemrecord;
             var detailinstance = Ext.ComponentManager.create(desiredCmp);
 
+
+
             Ext.Anim.run(detailinstance, 'slide', {
                 direction:'down',
                 autoClear: true
             });
             detailinstance.renderTo(item);
+
             item.detailinstance = detailinstance;
             dw.fireEvent('itemexpanded',dw,index,item,itemrecord, e,eOpts)
         }
