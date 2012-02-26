@@ -11,9 +11,8 @@
 
 var daterenderer = function (value, values) {
     return value.day + '.' + value.month + '.' + value.year
-    }
-var booleanrenderer = function (value, values)
-{
+}
+var booleanrenderer = function (value, values) {
     if (value) {
         return '<input type="checkbox" checked="checked" />'
     }
@@ -169,7 +168,8 @@ Ext.define('NeqMobile.view.patient.Info', {
                     xtype:'container',
                     itemId:'vaccinations',
                     tpl:vaccinations
-                },
+                }
+                ,
                 {xtype:'touchgridpanel',
                     itemId:'diagnoses',
                     scrollable:false,

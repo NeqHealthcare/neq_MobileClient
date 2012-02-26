@@ -37,7 +37,7 @@ Ext.define('Ext.ux.touch.grid.View', {
         var me = this;
 
         me.callParent();
-
+        console.log('initializing gridview');
         if (typeof me.initFeatures === 'function' && typeof me.features === 'object') {
             me.initFeatures(me.features, 'initialize');
         }
