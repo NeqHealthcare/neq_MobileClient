@@ -11,6 +11,13 @@
 
 var daterenderer = function (value, values) {
     return value.day + '.' + value.month + '.' + value.year
+    }
+var booleanrenderer = function (value, values)
+{
+    if (value) {
+        return '<input type="checkbox" checked="checked" />'
+    }
+    else return '<input type="checkbox"/>'
 }
 
 var patientheader = new Ext.XTemplate(
@@ -125,12 +132,12 @@ Ext.define('NeqMobile.view.patient.Info', {
         },
         loadDiagnosesDeprecated:function (diagnoses) {
             console.log('setting diagnoses data');
-            this.down('#diagnoses').setData(diagnoses);
+            this.down('#olddiagnoses').setData(diagnoses);
             console.log(diagnoses);
         },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');
-            this.down('#newdiagnoses').setStore(diagnosestore);
+            this.down('#diagnoses').setStore(diagnosestore);
             console.log(diagnoses);
         },
         loadVaccinations:function (vaccinations) {
@@ -154,7 +161,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                 {
 
                     xtype:'container',
-                    itemId:'diagnoses',
+                    itemId:'olddiagnoses',
                     tpl:diagnoses
                 },
                 {
@@ -164,7 +171,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                     tpl:vaccinations
                 },
                 {xtype:'touchgridpanel',
-                    itemId:'newdiagnoses',
+                    itemId:'diagnoses',
                     scrollable:false,
                     features:[
                         {
@@ -185,6 +192,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             header:'Activity Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
+                            renderer:booleanrenderer,
                             width:'15%',
                             filter:{ type:'numeric' }
                         },
@@ -223,6 +231,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
+                            renderer:booleanrenderer,
                             width:'15%'
 
                         },
@@ -232,6 +241,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
+                            renderer:booleanrenderer,
                             width:'15%'
                         }
                     ]
