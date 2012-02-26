@@ -5,7 +5,7 @@
  * Time: 17:06
  * To change this template use File | Settings | File Templates.
  */
-Ext.define('NeqMobile.ux.expandableList.ListItem', {
+Ext.define('NeqMobile.ux.expandableList.ExpandableListItem', {
     extend:'Ext.dataview.component.DataItem',
     xtype:'expandablelistitem',
 
@@ -32,6 +32,9 @@ Ext.define('NeqMobile.ux.expandableList.ListItem', {
             return;
         }
 
+        //[C.T.] here i removed the usage of the dataMap and instead inserted the code line below, which simply invokes the setRecord method of the
+        //OverviewItem. This causes all Fields (which inherit from Ext.field.Field) to be updated with the corresponding values from the Model Record.
+        //However, it is required, that the OverviewItem is an Ext.form.Panel for this to work.
         me.getOverviewItem().setRecord(newRecord);
 
         /**
@@ -47,25 +50,17 @@ Ext.define('NeqMobile.ux.expandableList.ListItem', {
     },
 
     applyOverviewItem:function (config) {
-        var me = this;
-        Ext.Logger.log('applynamebutton is called');
-        xtype = me.config.dataview.getOverviewXtype();
-        console.log( me.config.dataview.getOverviewXtype());
-        console.log(config);
+        xtype = this.config.dataview.getOverviewXtype();
+        console.log( this.config.dataview.getOverviewXtype());
         return Ext.factory({xtype:xtype});
     },
-    updateOverviewItem:function (newNameButton, oldNameButton) {
-        Ext.Logger.log('updateNameButton is called');
-        if (oldNameButton) {
-            this.remove(oldNameButton);
+    updateOverviewItem:function (newOverviewItem, oldOverviewItem) {
+        Ext.Logger.log('updateOverviewItem is called');
+        if (oldOverviewItem) {
+            this.remove(oldOverviewItem);
         }
-
-        if (newNameButton) {
-            // add an event listeners for the `tap` event onto the new button, and tell it to call the onNameButtonTap method
-            // when it happens
-            newNameButton.on('tap', this.onNameButtonTap, this);
-
-            this.add(newNameButton);
+        if (newOverviewItem) {
+            this.insertFirst(newOverviewItem);
         }
     }
 });

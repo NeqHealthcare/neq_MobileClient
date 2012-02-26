@@ -9,14 +9,18 @@
  * @author geekflyer
  */
 
+var daterenderer = function (value, values) {
+    return value.day + '.' + value.month + '.' + value.year
+}
+
 var patientheader = new Ext.XTemplate(
     '<h3>Patient</h3><table cellpadding="5" cellspacing="10" style="background-color: #FFFFFF; -webkit-border-radius: 6px";>' +
-        '<tr>'+
-        '<th rowspan="4" width=70><img src="theme/images/user/DefaultAvatar_small.jpg" width="60" height="67"></th>'+
-        '   <td align="left"><b>ID:</b> {id}</td></tr>'+
-        '<tr><td><b>Name:</b>{rec_name}</td></tr>'+
+        '<tr>' +
+        '<th rowspan="4" width=70><img src="theme/images/user/DefaultAvatar_small.jpg" width="60" height="67"></th>' +
+        '   <td align="left"><b>ID:</b> {id}</td></tr>' +
+        '<tr><td><b>Name:</b>{rec_name}</td></tr>' +
         '<tr><td><b>Sex:</b>{sex}</td></tr>' +
-        '<tr><td><small>{latestDiagnoseRecName}</small></td></tr>'+'</table>'
+        '<tr><td><small>{latestDiagnoseRecName}</small></td></tr>' + '</table>'
 //    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
 //    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
 //    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
@@ -27,32 +31,32 @@ var patientheader = new Ext.XTemplate(
 
 
 var diagnoses = new Ext.XTemplate(
-    '<br><h3>Diseases</h3>'+
+    '<br><h3>Diseases</h3>' +
         '<table id="box-table-a" summary="Employee Pay Sheet">',
-        '<thead>',
-            '<tr>',
-                '<th scope="col">Date</th>',
-                '<th scope="col">Activity Status</th>',
-                '<th scope="col">Disease</th>',
-                '<th scope="col">Severity</th>',
-                '<th scope="col">Healed Date</th>',
-                '<th scope="col">Infectability</th>',
-                '<th scope="col">Allergies</th>',
-            '</tr>',
-        '</thead>',
-        '<tbody>',
-            '<tpl for=".">',
-            '<tr>',
-                '<td>{diagnosed_date.day}.{diagnosed_date.month}.{diagnosed_date.year}</td>',
-                '<td>{[this.checkStatus(values.is_active)]}</td>',
-                '<td>{pathology_rec_name}</td>',
-                '<td>{disease_severity}</td>',
-                '<td>{healed_dated}</td>',
-                '<td>{[this.checkStatus(values.is_infectious)]}</td>',
-                '<td>{[this.checkStatus(values.is_allergy)]}</td>',
-            '</tr>',
-            '</tpl>',
-        '</tbody>',
+    '<thead>',
+    '<tr>',
+    '<th scope="col">Date</th>',
+    '<th scope="col">Activity Status</th>',
+    '<th scope="col">Disease</th>',
+    '<th scope="col">Severity</th>',
+    '<th scope="col">Healed Date</th>',
+    '<th scope="col">Infectability</th>',
+    '<th scope="col">Allergies</th>',
+    '</tr>',
+    '</thead>',
+    '<tbody>',
+    '<tpl for=".">',
+    '<tr>',
+    '<td>{diagnosed_date.day}.{diagnosed_date.month}.{diagnosed_date.year}</td>',
+    '<td>{[this.checkStatus(values.is_active)]}</td>',
+    '<td>{pathology_rec_name}</td>',
+    '<td>{disease_severity}</td>',
+    '<td>{healed_dated}</td>',
+    '<td>{[this.checkStatus(values.is_infectious)]}</td>',
+    '<td>{[this.checkStatus(values.is_allergy)]}</td>',
+    '</tr>',
+    '</tpl>',
+    '</tbody>',
     '</table>',
 
     {
@@ -67,58 +71,10 @@ var diagnoses = new Ext.XTemplate(
         }
 
     }
-
-    /*
-    '<p>ID: {id}</p>',
-    '<p>Name: {rec_name}</p>',
-
-    '<p>Sex: ',
-    '{[this.getLongSex(values.sex)]}',
-    '</p>',
-
-    '<h1>Diagnoses</h1>',
-    '<table border="1"> ',
-    '<thead>',
-    '<tr>',
-    '<th>id</th>',
-    '<th>active</th>',
-    '<th>name</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for="diagnoseList">',
-    '<tr><td>{id}</td><td>', '{[this.checkAct(values.is_active)]}', '</td><td>{pathology_rec_name}</td></tr>',
-    //is_active
-    '</tpl>',
-    '</tbody',
-    '</table>',
-    */
- /*   {
-        // XTemplate configuration:
-        disableFormats:true,
-        // member functions:
-        getLongSex:function (shortsex) {
-        if (shortsex === "m") {
-        return "male"
-    }
-    else return "female"
-    },
-    isBaby:function (age) {
-        return age < 1;
-    },
-
-    checkAct:function (activness) {
-        if (activness == 'true') {
-            return '<input type="checkbox" checked />'
-        }
-        else return '<input type="checkbox" unchecked />'
-    }
-
-    }*/
 );
 
 var vaccinations = new Ext.XTemplate(
-    '<br><h3>Vaccinations</h3>'+
+    '<br><h3>Vaccinations</h3>' +
         '<table id="box-table-a" summary="Patient Vaccinations">',
     '<thead>',
     '<tr>',
@@ -159,25 +115,31 @@ var vaccinations = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
+        requires:['NeqMobile.view.patient.detail.DiseasesDetail'],
         //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
-        loadPatientHeader:function (patientrecord){
+        loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
         },
-        loadDiagnoses:function (diagnoses){
+        loadDiagnosesDeprecated:function (diagnoses) {
             console.log('setting diagnoses data');
             this.down('#diagnoses').setData(diagnoses);
             console.log(diagnoses);
         },
-        loadVaccinations:function (vaccinations){
+        loadDiagnoses:function (diagnosestore) {
+            console.log('setting diagnoses store');
+            this.down('#newdiagnoses').setStore(diagnosestore);
+            console.log(diagnoses);
+        },
+        loadVaccinations:function (vaccinations) {
             console.log('setting vaccinations data');
             this.down('#vaccinations').setData(vaccinations);
             console.log(vaccinations);
         },
         config:{
-            scrollable: true,
+            scrollable:true,
             styleHtmlContent:true,
             layout:'vbox',
             // layout:'card',
@@ -200,7 +162,86 @@ Ext.define('NeqMobile.view.patient.Info', {
                     xtype:'container',
                     itemId:'vaccinations',
                     tpl:vaccinations
+                },
+
+                {xtype:'touchgridpanel',
+                    itemId:'newdiagnoses',
+                    scrollable:false,
+
+                    features:[
+                        {
+                            ftype:'Ext.ux.touch.grid.feature.Expandable',
+                            launchFn:'initialize',
+                            detailCmp:{ xtype:'diseasesdetail'}
+                        }
+                    ],
+                    columns:[
+                        {
+                            header:'Date',
+                            dataIndex:'diagnosed_date',
+                            style:'padding-left: 1em;',
+                            width:'10%',
+                            renderer:daterenderer
+                        },
+                        {
+                            header:'Activity Status',
+                            dataIndex:'is_active',
+                            style:'text-align: center;',
+                            width:'15%',
+                            filter:{ type:'numeric' }
+                        },
+                        {
+                            header:'Disease',
+                            dataIndex:'pathology_rec_name',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer:function (value, values) {
+                                var color = (value > 0) ? '009933' : 'FF0000';
+                                return '<span style="color: #' + color + ';">' + value + '</span>';
+                            }
+                        },
+                        {
+                            header:'Severity',
+                            dataIndex:'disease_severity',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer:function (value, values) {
+                                var color = (value > 0) ? '009933' : 'FF0000';
+                                return '<span style="color: #' + color + ';">' + value + '</span>';
+                            }
+                        },
+                        {
+                            header:'Healed Date',
+                            dataIndex:'healed_date',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            width:'15%',
+                            renderer:daterenderer
+                        }   ,
+                        {
+                            header:'Infectability',
+                            dataIndex:'is_infectious',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            width:'15%'
+
+                        },
+                        {
+                            header:'Allergies',
+                            dataIndex:'is_allergy',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            width:'15%'
+                        }
+                    ]
+
+
                 }
+
+
             ]
         }
 

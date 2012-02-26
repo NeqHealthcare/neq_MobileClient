@@ -44,7 +44,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
                    var patientinfo = this.getPatientInfo();
                    var response = operation.getResponse();
                    var responseobject = Ext.decode(response.responseText);
-                   patientinfo.loadDiagnoses(responseobject);
+                   patientinfo.loadDiagnosesDeprecated(responseobject);
+                   patientinfo.loadDiagnoses(diagnosestore);
                 },
                 scope: this
             });

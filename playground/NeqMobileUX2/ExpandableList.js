@@ -7,46 +7,53 @@
  */
 Ext.define('NeqMobile.ux.expandableList.ExpandableList',
     {   extend:'Ext.DataView',
-        requires:['NeqMobile.ux.expandableList.ExpandableListItem'],
         xtype:'expdandablelist',
         config:{
-            defaultType:'expandablelistitem',
             headerCmp:undefined,
             overviewXtype:undefined,
             detailXtype:undefined,
-            useComponents:false,
             listeners:{
                 itemtap:function (dw, index, item, record, e, eOpts) {
                     var y = e.pageY;
-                    var overviewId = item.getAt(0).getId();
-                    var overviewEl = Ext.get(overviewId);
+                    overviewEl = item.child('div:first-child');
                     var xy = overviewEl.getXY();
                     bottomOfOverview = xy[1] + overviewEl.getHeight();
                     if (bottomOfOverview > y) {
                         console.log('clicked on overview');
-                        this.doToggle(dw,index,item,record, e,eOpts);}
-                     else {
+                        this.doToggle(dw, index, item, record, e, eOpts);
+                    }
+                    else {
                         console.log('clicked on detail')
                     }
                     ;
                 }
             }
         },
+
+        constructor:function (config) {
+            this.callParent(arguments);
+        },
         setHeaderCmp:function (headerCmp) {
             var me = this;
             headerCmp.docked = 'top';
-            var headerInstance = Ext.factory(headerCmp);
+            var headerInstance = Ext.ComponentManager.create(headerCmp);
             me.add(headerInstance);
         },
-        doToggle:function (dw,index,item,record, e,eOpts) {
-            if (!item.getExpanded()) {
-                item.setExpanded(true);
-                var detailinstance = Ext.factory({xtype:this.getDetailXtype(),record:record});
-                item.add(detailinstance) ;
+        doToggle:function (dw, index, item, record, e, eOpts) {
+            if (!item.Expanded) {
+                console.log('expanding...')
+                item.Expanded = true;
+                var desiredCmp = this.getDetailXtype();
+                desiredCmp.record:record
+
+                var detailinstance = Ext.ComponentManager.create({xtype:this.getDetailXtype(), record:record});
+                detailinstance.renderTo(item);
+                item.detailinstance = detailinstance;
             }
             else {
-                item.setExpanded(false);
-                item.getAt(1).destroy();
+                console.log('collapsing...');
+                item.Expanded = false;
+                item.detailinstance.destroy();
             }
         }
     }
