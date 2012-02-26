@@ -132,17 +132,23 @@ Ext.define('NeqMobile.view.patient.Info', {
         loadDiagnosesDeprecated:function (diagnoses) {
             console.log('setting diagnoses data');
             this.down('#olddiagnoses').setData(diagnoses);
-            console.log(diagnoses);
+
         },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');
             this.down('#diagnoses').setStore(diagnosestore);
-            console.log(diagnoses);
+
         },
         loadVaccinations:function (vaccinations) {
             console.log('setting vaccinations data');
             this.down('#vaccinations').setData(vaccinations);
-            console.log(vaccinations);
+
+        },
+
+        loadMedications:function (medicationstore) {
+            console.log('setting medications tore');
+            this.down('#medications').setStore(medicationstore);
+
         },
         config:{
             scrollable:true,
@@ -199,6 +205,84 @@ Ext.define('NeqMobile.view.patient.Info', {
                         {
                             header:'Disease',
                             dataIndex:'pathology_rec_name',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer:function (value, values) {
+                                var color = (value > 0) ? '009933' : 'FF0000';
+                                return '<span style="color: #' + color + ';">' + value + '</span>';
+                            }
+                        },
+                        {
+                            header:'Severity',
+                            dataIndex:'disease_severity',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer:function (value, values) {
+                                var color = (value > 0) ? '009933' : 'FF0000';
+                                return '<span style="color: #' + color + ';">' + value + '</span>';
+                            }
+                        },
+                        {
+                            header:'Healed Date',
+                            dataIndex:'healed_date',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            width:'15%',
+                            renderer:daterenderer
+                        }   ,
+                        {
+                            header:'Infectability',
+                            dataIndex:'is_infectious',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            renderer:booleanrenderer,
+                            width:'15%'
+
+                        },
+                        {
+                            header:'Allergies',
+                            dataIndex:'is_allergy',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            renderer:booleanrenderer,
+                            width:'15%'
+                        }
+                    ]
+
+
+                }   ,
+                {xtype:'touchgridpanel',
+                    itemId:'medications',
+                    scrollable:false,
+                    features:[
+                        {
+                            ftype:'Ext.ux.touch.grid.feature.Expandable',
+                            launchFn:'initialize',
+                            detailCmp:{ xtype:'medicationsdetail'}
+                        }
+                    ],
+                    columns:[
+                        {
+                            header:'Date',
+                            dataIndex:'diagnosed_date',
+                            style:'padding-left: 1em;',
+                            width:'10%',
+                            renderer:daterenderer
+                        },
+                        {
+                            header:'Activity Status',
+                            dataIndex:'is_active',
+                            style:'text-align: center;',
+                            renderer:booleanrenderer,
+                            width:'15%',
+                            filter:{ type:'numeric' }
+                        },
+                        {
+                            header:'Disease',
+                            dataIndex:'medicament_rec_name',
                             cls:'centered-cell',
                             width:'15%',
                             renderer:function (value, values) {

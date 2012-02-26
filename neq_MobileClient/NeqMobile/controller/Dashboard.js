@@ -91,6 +91,21 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 },
                 scope:this
             });
+
+
+            var medicationstore = Ext.data.StoreManager.lookup('diagnoses');
+            if (!medicationstore) {
+                medicationstore = Ext.create('NeqMobile.store.Diagnoses');
+            }
+
+            medicationstore.getProxy().setExtraParam('patientId', patientid);
+            medicationstore.load({
+                callback:function (records, operation, success) {
+                    patientinfo.loadMedications(medicationstore);
+                },
+                scope:this
+            });
+
         },
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
