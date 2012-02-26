@@ -1,18 +1,26 @@
 /**
- * Created by JetBrains WebStorm.
+ * Created with JetBrains WebStorm.
  * User: geekflyer
- * Date: 03.02.12
- * Time: 02:16
+ * Date: 26.02.12
+ * Time: 02:23
  * To change this template use File | Settings | File Templates.
  */
 
+
+/**
+ * Created with JetBrains WebStorm.
+ * User: geekflyer
+ * Date: 26.02.12
+ * Time: 02:00
+ * To change this template use File | Settings | File Templates.
+ */
 Ext.Loader.setConfig({
     enabled:true,
     disableCaching:true // for debugging
 });
 
 Ext.Loader.setPath({
-    'NeqMobile.ux.expandableList':'./NeqMobileUX'
+    'NeqMobile.ux.expandableList':'./NeqMobileUX2'
 })
 
 //Ext.define('Custombutton', {
@@ -26,21 +34,23 @@ Ext.Loader.setPath({
 
 
 Ext.application({
-    name:'SkeletonApp',
-    requires:['NeqMobile.ux.expandableList.ItemOverview'],
+    name:'lightweightExpandable',
+    requires:['NeqMobile.ux.expandableList.DetailView'],
     launch:function () {
 
         var dataviewconfig = {
             headerCmp:{
+
                 xtype:'container',
                 layout:'hbox',
                 title:'My Toolbar',
                 items:[
-        {html:'Medication',flex:1},{html:'start of treatment',flex:1},{html:'end of treatment',flex:1},{html:'Course Completed',flex:1},{html: 'Discontinued',flex:1},{html:'Active',flex:1}
-             ]
+                    {html:'Medication',flex:1},{html:'start of treatment',flex:1},{html:'end of treatment',flex:1},{html:'Course Completed',flex:1},{html: 'Discontinued',flex:1},{html:'Active',flex:1}
+                ]
             },
+            itemTpl: '<div>{name} is {age} years old</div>',
             overviewXtype:'itemoverview',
-            detailXtype:'formpanel',
+            detailXtype:'detailview',
             scrollable:false,
             store:{
                 fields:['name', 'age'],
@@ -103,11 +113,11 @@ Ext.application({
                 items:[
 
                     dw1,
-                    {html:'<h1>das ist ein Abstandshalter - Groesse 100 px</h1>' }
-//                        height:100},
-//                    dw2,
-//                    {html:'<h1>das ist ein Abstandshalter - Groesse 200 px</h1>', height:200},
-//                    dw3
+                    {html:'<h1>das ist ein Abstandshalter - Groesse 100 px</h1>' ,height:100} ,
+
+                    dw2,
+                    {html:'<h1>das ist ein Abstandshalter - Groesse 200 px</h1>', height:200},
+                    dw3
                 ]
             }
         )
