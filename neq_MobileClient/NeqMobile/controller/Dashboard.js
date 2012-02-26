@@ -35,10 +35,13 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 console.log('lets scroll');
                 var myscroll = me.getPatientInfo().getScrollable().getScroller();
                 var patientEl = me.getPatientInfo().element;
-                var movepixels = patientEl.getHeight() - (item.getY() - patientEl.getY() + item.getHeight());
-                console.log(-movepixels);
-                if (-movepixels > 0) {
-                    myscroll.scrollBy(0, -movepixels, true);
+                var maxmove = item.getY() - patientEl.getY();
+                var wantmove = maxmove + item.getHeight() - patientEl.getHeight();
+                var tomove = wantmove;
+                if (maxmove < wantmove){tomove = maxmove;}
+                console.log(tomove);
+                if (tomove > 0) {
+                    myscroll.scrollBy(0, tomove, true);
                 }
             }
 
