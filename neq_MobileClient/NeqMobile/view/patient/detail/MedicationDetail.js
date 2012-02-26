@@ -1,5 +1,37 @@
-Ext.define('MyApp.view.ui.MyContainer', {
-    extend: 'Ext.Container',
+/*
+ Ext.define('NeqMobile.model.Medication', {
+ extend:'Ext.data.Model',
+ config:{
+ fields:[
+ 'dose',
+ 'route',
+ 'duration_period',
+ 'frequency_unit',
+ 'dose_unit',
+ 'frequency',
+ 'indication',
+ 'notes',
+ 'is_active',
+ 'admin_times',
+ 'common_dosage',
+ 'duration',
+ 'form_rec_name',
+ 'doctor_rec_name',
+ 'route_rec_name',
+ 'dose_unit_rec_name',
+ 'indication_rec_name',
+ 'common_dosage_rec_name',
+ 'course_completed',
+ 'discontinued',
+ 'medicament_rec_name',
+ 'start_treatment',
+ 'end_treatment'
+ ],
+ */
+
+Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
+    extend: 'Ext.form.Panel',
+    xtype:'medicationdetail',
 
     config: {
         items: [
@@ -15,7 +47,7 @@ Ext.define('MyApp.view.ui.MyContainer', {
                         width: 250,
                         label: 'Indication:',
                         labelWidth: '42%',
-                        name: 'indication',
+                        name: 'indication_rec_name',   //glaube nicht das es hier stimmt muss value sein oder so
                         readOnly: true,
                         flex: 1
                     },
