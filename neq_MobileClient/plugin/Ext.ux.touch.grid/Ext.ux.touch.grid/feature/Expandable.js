@@ -44,28 +44,15 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
             var desiredCmp = this.getDetailCmp();
             desiredCmp.record = itemrecord;
             var detailinstance = Ext.ComponentManager.create(desiredCmp);
-
-
-
-            Ext.Anim.run(detailinstance, 'slide', {
-                direction:'down',
-                autoClear: true
-            });
             detailinstance.renderTo(item);
-
             item.detailinstance = detailinstance;
-            dw.fireEvent('itemexpanded',dw,index,item,itemrecord, e,eOpts)
+            dw.fireEvent('itemexpanded',dw,index,item,itemrecord, e,eOpts,detailinstance)
         }
         // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
         else {
             console.log('collapsing...');
             item.expanded = false;
-            Ext.Anim.run(item.detailinstance, 'slide', {
-                direction:'up',
-                autoClear: true,
-                after: function(){item.detailinstance.destroy();}
-            });
-
+            item.detailinstance.destroy();
             dw.fireEvent('itemcollapsed',dw,index,item,itemrecord, e,eOpts)
         }
     }

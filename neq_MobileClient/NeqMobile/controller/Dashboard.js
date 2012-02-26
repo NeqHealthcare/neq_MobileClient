@@ -22,30 +22,31 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
-                'Dashboard #newdiagnoses':{itemexpanded:'onItemTap'}
+                'Dashboard #diagnoses':{itemexpanded:'onItemTap'}
             }
         },
         doNothing:function () {
         },
-        onItemTap:function (dw, index, item, record, e, eOpts) {
+        onItemTap:function (dw, index, item, record, e, eOpts, detailcont) {
+            console.log('itemtap invoked');
+            var me = this;
+
+            var callback = function () {
+                console.log('lets scroll');
+                var myscroll = me.getPatientInfo().getScrollable().getScroller();
+                var patientEl = me.getPatientInfo().element;
+                var movepixels = patientEl.getHeight() - (item.getY() - patientEl.getY() + item.getHeight());
+                console.log(-movepixels);
+                if (-movepixels > 0) {
+                    myscroll.scrollBy(0, -movepixels, true);
+                }
+            }
+
+            //   detailcont.on('painted', callback, me, { single:true });
 
 
-      //trying to make appropriate scrolling when item is expanded
-
-
-//            Ext.Function.defer(function () {
-//                var myscroll = this.getPatientInfo().getScrollable().getScroller();
-//                var patientEl = this.getPatientInfo().element;
-//                var itempositiony = myscroll.position.y + item.getY() - patientEl.getY();
-//                console.log(myscroll.position.y)
-//                console.log(itempositiony)
-//
-//                this.getSize().y - this.getContainerSize().y  ;
-//                var target = bottom
-////                if (movepixels > 0) {
-////                    myscroll.scrollTo(0, movepixels, true);
-////                }
-//            }, 500,this);
+            Ext.Function.defer(callback
+                , 150, this);
 
         },
         onPatientSelect:function (list, patientrecord, options) {
