@@ -12,7 +12,10 @@ Ext.define('NeqMobile.view.patient.detail.DiseasesDetail',
         config:{
             scrollable:false,
             items:[
-                {html:'<h2>Parteyyy!!</h2>'}
+                {html:'<h2>Parteyyy!!</h2>'
+                    +'<h2>Parteyyy!!</h2>'
+                    + '<h2>Parteyyy!!</h2>' + '<h2>Parteyyy!!</h2>' + '<h2>Parteyyy!!</h2>' + '<h2>Parteyyy!!</h2>'
+                    }
             ]
         }}
 )

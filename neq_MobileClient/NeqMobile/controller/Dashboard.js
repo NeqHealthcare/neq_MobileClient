@@ -21,11 +21,25 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 },
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
-                }
+                },
+                'Dashboard #newdiagnoses':
+                {itemexpanded:'onItemTap'}
             }
         },
         doNothing:function () {
         },
+        onItemTap:function (dw, index, item, record, e, eOpts)
+        {
+            var myscroll = this.getPatientInfo().getScrollable().getScroller();
+
+
+//            Ext.Function.defer(function(){
+//                var height = item.child('*:last-child').getHeight();
+//                myscroll.scrollBy(0,height,true);
+//            },500);
+
+        }
+         ,
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
             var patientid = patientrecord.get('id');
