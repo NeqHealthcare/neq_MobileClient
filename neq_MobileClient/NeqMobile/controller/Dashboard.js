@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients','NeqMobile.store.Diagnoses','NeqMobile.store.Vaccinations'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations'],
 
         config:{
 
@@ -22,64 +22,70 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
-                'Dashboard #newdiagnoses':
-                {itemexpanded:'onItemTap'}
+                'Dashboard #newdiagnoses':{itemexpanded:'onItemTap'}
             }
         },
         doNothing:function () {
         },
-        onItemTap:function (dw, index, item, record, e, eOpts)
-        {
-            var myscroll = this.getPatientInfo().getScrollable().getScroller();
+        onItemTap:function (dw, index, item, record, e, eOpts) {
 
 
-//            Ext.Function.defer(function(){
-//                var height = item.child('*:last-child').getHeight();
-//                myscroll.scrollBy(0,height,true);
-//            },500);
+      //trying to make appropriate scrolling when item is expanded
 
-        }
-         ,
+
+//            Ext.Function.defer(function () {
+//                var myscroll = this.getPatientInfo().getScrollable().getScroller();
+//                var patientEl = this.getPatientInfo().element;
+//                var itempositiony = myscroll.position.y + item.getY() - patientEl.getY();
+//                console.log(myscroll.position.y)
+//                console.log(itempositiony)
+//
+//                this.getSize().y - this.getContainerSize().y  ;
+//                var target = bottom
+////                if (movepixels > 0) {
+////                    myscroll.scrollTo(0, movepixels, true);
+////                }
+//            }, 500,this);
+
+        },
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
 
             var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
-            if(!diagnosestore)
-            {
+            if (!diagnosestore) {
                 diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
 
-          this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
-          diagnosestore.getProxy().setExtraParam('id', patientid);
+            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
+            diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
-                callback: function(records, operation, success) {
-                   var patientinfo = this.getPatientInfo();
-                   var response = operation.getResponse();
-                   var responseobject = Ext.decode(response.responseText);
-                   patientinfo.loadDiagnosesDeprecated(responseobject);
-                   patientinfo.loadDiagnoses(diagnosestore);
+                callback:function (records, operation, success) {
+                    var patientinfo = this.getPatientInfo();
+                    var response = operation.getResponse();
+                    var responseobject = Ext.decode(response.responseText);
+                    patientinfo.loadDiagnosesDeprecated(responseobject);
+                    patientinfo.loadDiagnoses(diagnosestore);
                 },
-                scope: this
+                scope:this
             });
 
             var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
-            if(!vaccinationstore)
-            {
+            if (!vaccinationstore) {
                 vaccinationstore = Ext.create('NeqMobile.store.Vaccinations');
             }
-          vaccinationstore.getProxy().setExtraParam('patientId', patientid);
+            vaccinationstore.getProxy().setExtraParam('patientId', patientid);
             vaccinationstore.load({
-                callback: function(records, operation, success) {
+                callback:function (records, operation, success) {
                     var patientinfo = this.getPatientInfo();
                     patientinfo.setMasked(false);
                     var response = operation.getResponse();
-                    console.log('vaccinations: '+response);
+                    console.log('vaccinations: ' + response);
                     var responseobject = Ext.decode(response.responseText);
                     patientinfo.loadVaccinations(responseobject);
                 },
-                scope: this
+                scope:this
             });
         },
         doFilter:function (searchfield, e, eOpts) {

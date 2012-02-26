@@ -163,11 +163,9 @@ Ext.define('NeqMobile.view.patient.Info', {
                     itemId:'vaccinations',
                     tpl:vaccinations
                 },
-
                 {xtype:'touchgridpanel',
                     itemId:'newdiagnoses',
                     scrollable:false,
-
                     features:[
                         {
                             ftype:'Ext.ux.touch.grid.feature.Expandable',
