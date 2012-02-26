@@ -121,7 +121,7 @@ var vaccinations = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
-        requires:['NeqMobile.view.patient.detail.DiseasesDetail'],
+        requires:['NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail'],
         //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
         loadPatientHeader:function (patientrecord) {
@@ -183,7 +183,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                         {
                             ftype:'Ext.ux.touch.grid.feature.Expandable',
                             launchFn:'initialize',
-                            detailCmp:{ xtype:'diseasesdetail'}
+                            detailCmp:{ xtype:'diseasedetail'}
                         }
                     ],
                     columns:[
@@ -261,7 +261,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                         {
                             ftype:'Ext.ux.touch.grid.feature.Expandable',
                             launchFn:'initialize',
-                            detailCmp:{ xtype:'medicationsdetail'}
+                            detailCmp:{ xtype:'medicationdetail'}
                         }
                     ],
                     columns:[
@@ -269,8 +269,8 @@ Ext.define('NeqMobile.view.patient.Info', {
                             header:'Date',
                             dataIndex:'diagnosed_date',
                             style:'padding-left: 1em;',
-                            width:'10%',
-                            renderer:daterenderer
+                            width:'10%'
+
                         },
                         {
                             header:'Activity Status',
@@ -306,8 +306,8 @@ Ext.define('NeqMobile.view.patient.Info', {
                             hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
-                            width:'15%',
-                            renderer:daterenderer
+                            width:'15%'
+
                         }   ,
                         {
                             header:'Infectability',

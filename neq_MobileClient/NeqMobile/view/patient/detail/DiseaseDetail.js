@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('NeqMobile.view.patient.detail.DiseasesDetail',
+Ext.define('NeqMobile.view.patient.detail.DiseaseDetail',
     {  extend:'Ext.form.Panel',
-        xtype:'diseasesdetail',
+        xtype:'diseasedetail',
         config:{
             scrollable:false,
             items:[

@@ -22,7 +22,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
-                'Dashboard #diagnoses':{itemexpanded:'onItemTap'}
+                'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
+                'Dashboard #medications':{itemexpanded:'onItemTap'}
             }
         },
         doNothing:function () {
@@ -54,6 +55,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
         },
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
+            var patientinfo = this.getPatientInfo();
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
 
@@ -82,7 +84,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
             vaccinationstore.getProxy().setExtraParam('patientId', patientid);
             vaccinationstore.load({
                 callback:function (records, operation, success) {
-                    var patientinfo = this.getPatientInfo();
                     patientinfo.setMasked(false);
                     var response = operation.getResponse();
                     console.log('vaccinations: ' + response);
@@ -93,9 +94,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
             });
 
 
-            var medicationstore = Ext.data.StoreManager.lookup('diagnoses');
+            var medicationstore = Ext.data.StoreManager.lookup('medications');
             if (!medicationstore) {
-                medicationstore = Ext.create('NeqMobile.store.Diagnoses');
+                medicationstore = Ext.create('NeqMobile.store.Medications');
             }
 
             medicationstore.getProxy().setExtraParam('patientId', patientid);

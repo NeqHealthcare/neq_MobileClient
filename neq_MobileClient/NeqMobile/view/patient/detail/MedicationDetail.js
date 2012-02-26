@@ -32,8 +32,8 @@
 Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
     extend: 'Ext.form.Panel',
     xtype:'medicationdetail',
-
     config: {
+        scrollable:false,
         items: [
             {
                 xtype: 'fieldset',
