@@ -38,6 +38,8 @@ Ext.define('NeqMobile.view.patient.List', {
                 // grouped     : true,
                 //  indexBar    : true,
                 //styleHtmlContent:true,
+               // flex:1,
+
                 flex:1,
                 cls:'x-patients',
                 //store:'NeqMobile.store.Patients',

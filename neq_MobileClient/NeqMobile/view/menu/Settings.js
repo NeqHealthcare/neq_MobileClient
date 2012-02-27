@@ -21,11 +21,12 @@ Ext.define('NeqMobile.view.menu.Settings', {
         this.callParent(arguments);
     },
     config:{
-        modal:true,
+         modal:true,
+        hideOnMaskTap:true,
         // hidden:true,
         // height:300,
         width: 120,
-                        height: 45,
+        height: 45,
         autoDestroy:true,
         items:[
             {
