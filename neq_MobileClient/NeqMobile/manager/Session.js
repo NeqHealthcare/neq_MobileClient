@@ -53,6 +53,8 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
+                withCredentials: true,
+                useDefaultXhrHeader: false,
                 scope:this,
                 timeout:5000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
