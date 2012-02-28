@@ -32,182 +32,233 @@
 Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
     extend: 'Ext.form.Panel',
     xtype:'medicationdetail',
+
     config: {
-        scrollable:false,
+        scrollable: false,
         items: [
             {
                 xtype: 'fieldset',
-                layout: {
-                    align: 'start',
-                    type: 'hbox'
-                },
                 items: [
                     {
-                        xtype: 'textfield',
-                        width: 250,
-                        label: 'Indication:',
-                        labelWidth: '42%',
-                        name: 'indication_rec_name',   //glaube nicht das es hier stimmt muss value sein oder so
-                        readOnly: true,
-                        flex: 1
-                    },
-                    {
-                        xtype: 'textfield',
-                        width: 250,
-                        label: 'Physician:',
-                        labelWidth: '42%',
-                        name: 'physician',
-                        readOnly: true,
-                        flex: 2
-                    }
-                ]
-            },
-            {
-                xtype: 'fieldset',
-                layout: {
-                    type: 'default'
-                },
-                title: 'Dosage',
-                items: [
-                    {
-                        xtype: 'container',
+                        xtype: 'fieldset',
+                        padding: '0 10 0 10',
                         layout: {
                             type: 'hbox'
                         },
                         items: [
                             {
-                                xtype: 'container',
+                                xtype: 'panel',
+                                flex: 1,
                                 items: [
                                     {
                                         xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Form:',
-                                        labelWidth: '42%',
-                                        name: 'form',
-                                        readOnly: true
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Administration Route:',
-                                        labelWidth: '42%',
-                                        name: 'aroute',
-                                        readOnly: true
+                                        style: 'text-align: right;',
+                                        label: 'Indication:',
+                                        name:  'indication_rec_name'
                                     }
                                 ]
                             },
                             {
-                                xtype: 'container',
-                                items: [
-                                    {
-                                        xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Dose:',
-                                        labelWidth: '42%',
-                                        name: 'dose',
-                                        readOnly: true
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Dose Unit:',
-                                        labelWidth: '42%',
-                                        name: 'doseUnit',
-                                        readOnly: true
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        width: 250,
-                                        label: 'X-Times:',
-                                        labelWidth: '42%',
-                                        name: 'xtimes',
-                                        readOnly: true
-                                    }
-                                ]
+                                xtype: 'panel',
+                                flex: 1
                             },
                             {
-                                xtype: 'container',
+                                xtype: 'panel',
+                                flex: 1,
                                 items: [
                                     {
                                         xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Treatment Duration:',
-                                        labelWidth: '42%',
-                                        name: 'treatmentDuration',
-                                        readOnly: true
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        width: 250,
-                                        label: 'Treatment Periode:',
-                                        labelWidth: '42%',
-                                        name: 'treatmentPeriod',
-                                        readOnly: true
+                                        style: 'text-align: right;',
+                                        label: 'Physician:',
+                                        name: 'doctor_rec_name'
                                     }
                                 ]
                             }
                         ]
                     },
                     {
-                        xtype: 'container',
-                        layout: {
-                            type: 'hbox'
-                        },
+                        xtype: 'fieldset',
+                        padding: '0 10 0 10',
+                        title: 'Dosage',
                         items: [
                             {
-                                xtype: 'container',
+                                xtype: 'panel',
+                                padding: '10 0 0 0',
+                                layout: {
+                                    type: 'hbox'
+                                },
+                                flex: 1,
                                 items: [
                                     {
-                                        xtype: 'fieldset',
-                                        title: 'Common Dosage',
+                                        xtype: 'panel',
+                                        itemId: 'dosagePanelLeft',
+                                        padding: '0 0 0 10',
+                                        flex: 2,
                                         items: [
                                             {
-                                                xtype: 'textfield',
-                                                label: 'Field'
-                                            },
+                                                xtype: 'fieldset',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Form:',
+                                                        labelWidth: '55%',
+                                                        name: 'form_rec_name',
+                                                        readOnly: true
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Administration Route:',
+                                                        labelWidth: '55%',
+                                                        name: 'adminroute',
+                                                        readOnly: true
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        itemId: 'dosagePanelMiddle',
+                                        margin: '0 50 0 50',
+                                        flex: 1,
+                                        items: [
                                             {
-                                                xtype: 'textfield',
-                                                label: 'Field'
+                                                xtype: 'fieldset',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Dose:',
+                                                        labelWidth: '55%',
+                                                        name: 'dose'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Dose Unit:',
+                                                        labelWidth: '55%',
+                                                        name: 'dose_unit_rec_name'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'X:',
+                                                        labelWidth: '55%',
+                                                        name: 'frequency'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        itemId: 'dosagePanelRight',
+                                        padding: '0 10 0 0',
+                                        flex: 2,
+                                        items: [
+                                            {
+                                                xtype: 'fieldset',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Treatment Duration:',
+                                                        labelWidth: '65%',
+                                                        name: 'treatmentduration'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Treatment Period:',
+                                                        labelWidth: '65%',
+                                                        name: 'treatmentperiod'
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 ]
                             },
                             {
-                                xtype: 'container',
+                                xtype: 'panel',
+                                padding: '0 0 10 0',
+                                layout: {
+                                    type: 'hbox'
+                                },
                                 items: [
                                     {
-                                        xtype: 'fieldset',
-                                        title: 'Specific Dosage',
+                                        xtype: 'panel',
+                                        padding: '0 0 0 10',
+                                        flex: 2,
                                         items: [
                                             {
-                                                xtype: 'textfield',
-                                                label: 'Field'
-                                            },
+                                                xtype: 'fieldset',
+                                                title: 'Common Dosage',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Frequency:',
+                                                        labelWidth: '55%',
+                                                        name: 'frequency'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Admin Hours:',
+                                                        labelWidth: '55%',
+                                                        name: 'adminhours'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        margin: '0 50 0 50',
+                                        flex: 1
+                                    },
+                                    {
+                                        xtype: 'panel',
+                                        padding: '0 10 0 0',
+                                        flex: 2,
+                                        items: [
                                             {
-                                                xtype: 'textfield',
-                                                label: 'Field'
+                                                xtype: 'fieldset',
+                                                title: 'Specific Dosage',
+                                                items: [
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Frequency',
+                                                        labelWidth: '65%'
+                                                    },
+                                                    {
+                                                        xtype: 'textfield',
+                                                        border: 1,
+                                                        style: 'text-align: right;',
+                                                        label: 'Unit:',
+                                                        labelWidth: '65%'
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
                                 ]
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                xtype: 'fieldset',
-                layout: {
-                    align: 'start',
-                    type: 'hbox'
-                },
-                title: 'Notes',
-                items: [
-                    {
-                        xtype: 'textareafield',
-                        label: 'Field',
-                        flex: 2
                     }
                 ]
             }
