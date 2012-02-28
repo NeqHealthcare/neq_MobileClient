@@ -28,8 +28,10 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
+                withCredentials: true,
+                useDefaultXhrHeader: false,
                 scope:this,
-                timeout:5000,
+                timeout:30000,
                 params:{username:this.session.get('user'), session:this.session.get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
@@ -56,7 +58,7 @@ Ext.define('NeqMobile.manager.Session',
                 withCredentials: true,
                 useDefaultXhrHeader: false,
                 scope:this,
-                timeout:5000,
+                timeout:30000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     //var obj = Ext.decode(response.responseText);
