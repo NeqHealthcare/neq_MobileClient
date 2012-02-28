@@ -135,7 +135,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Dose:',
                                                         labelWidth: '55%',
-                                                        name: 'dose'
+                                                        name: 'dose',
+                                                        readOnly: true
                                                     },
                                                     {
                                                         xtype: 'textfield',
@@ -143,7 +144,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Dose Unit:',
                                                         labelWidth: '55%',
-                                                        name: 'dose_unit_rec_name'
+                                                        name: 'dose_unit_rec_name',
+                                                        readOnly: true
                                                     },
                                                     {
                                                         xtype: 'textfield',
@@ -151,7 +153,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'X:',
                                                         labelWidth: '55%',
-                                                        name: 'frequency'
+                                                        name: 'frequency',
+                                                        readOnly: true
                                                     }
                                                 ]
                                             }
@@ -172,7 +175,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Treatment Duration:',
                                                         labelWidth: '65%',
-                                                        name: 'treatmentduration'
+                                                        name: 'treatmentduration',
+                                                        readOnly: true
                                                     },
                                                     {
                                                         xtype: 'textfield',
@@ -180,7 +184,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Treatment Period:',
                                                         labelWidth: '65%',
-                                                        name: 'treatmentperiod'
+                                                        name: 'treatmentperiod',
+                                                        readOnly: true
                                                     }
                                                 ]
                                             }
@@ -210,7 +215,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Frequency:',
                                                         labelWidth: '55%',
-                                                        name: 'frequency'
+                                                        name: 'frequency',
+                                                        readOnly: true
                                                     },
                                                     {
                                                         xtype: 'textfield',
@@ -218,7 +224,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         style: 'text-align: right;',
                                                         label: 'Admin Hours:',
                                                         labelWidth: '55%',
-                                                        name: 'adminhours'
+                                                        name: 'adminhours',
+                                                        readOnly: true
                                                     }
                                                 ]
                                             }
@@ -243,14 +250,16 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                                                         border: 1,
                                                         style: 'text-align: right;',
                                                         label: 'Frequency',
-                                                        labelWidth: '65%'
+                                                        labelWidth: '65%',
+                                                        readOnly: true
                                                     },
                                                     {
                                                         xtype: 'textfield',
                                                         border: 1,
                                                         style: 'text-align: right;',
                                                         label: 'Unit:',
-                                                        labelWidth: '65%'
+                                                        labelWidth: '65%',
+                                                        readOnly: true
                                                     }
                                                 ]
                                             }
