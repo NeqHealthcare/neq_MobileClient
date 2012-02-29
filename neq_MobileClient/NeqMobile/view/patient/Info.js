@@ -14,9 +14,16 @@ var daterenderer = function (value, values) {
 }
 var booleanrenderer = function (value, values) {
     if (value) {
-        return '<input type="checkbox" checked="checked" />'
+        return '<input type="checkbox" checked="checked" disabled />'
     }
-    else return '<input type="checkbox"/>'
+    else return '<input type="checkbox" disabled/>'
+}
+
+var bulletRenderer = function(value, values){
+    if (value) {
+        return '<img src="../neq_MobileClient/bullet_black.png">'
+    }
+    else return '<img src="../neq_MobileClient/bullet_red.png"/>'
 }
 
 var patientheader = new Ext.XTemplate(
@@ -198,7 +205,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             header:'Activity Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
-                            renderer:booleanrenderer,
+                            renderer:bulletRenderer,
                             width:'15%',
                             filter:{ type:'numeric' }
                         },
@@ -237,7 +244,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
-                            renderer:booleanrenderer,
+                            renderer:bulletRenderer,
                             width:'15%'
 
                         },
@@ -247,7 +254,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                             hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
-                            renderer:booleanrenderer,
+                            renderer:bulletRenderer,
                             width:'15%'
                         }
                     ]
