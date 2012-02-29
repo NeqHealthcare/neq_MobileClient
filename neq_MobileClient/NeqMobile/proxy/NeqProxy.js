@@ -33,7 +33,7 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
     },
     config:{
         customUrl:undefined,
-        withCredentials:true,
+      //  withCredentials:true,
         reader:{
             type:'json',
             root:'results'
