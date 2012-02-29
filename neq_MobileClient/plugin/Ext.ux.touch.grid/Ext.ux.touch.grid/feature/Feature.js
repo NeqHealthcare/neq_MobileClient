@@ -31,6 +31,8 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
             if (typeof feature === 'object') {
                 cfg = feature;
                 feature = feature.ftype;
+                // this is removed, due it causes a bug:
+             //   delete cfg.ftype;
             }
 
             cfg.grid = me;
