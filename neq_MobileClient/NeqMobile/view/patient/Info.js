@@ -256,6 +256,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                 }   ,
                 {xtype:'touchgridpanel',
                     itemId:'medications',
+
                     scrollable:false,
                     features:[
                         {
