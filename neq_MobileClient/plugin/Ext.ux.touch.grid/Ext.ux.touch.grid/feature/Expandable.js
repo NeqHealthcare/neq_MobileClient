@@ -7,16 +7,16 @@
  */
 Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     extend:'Ext.ux.touch.grid.feature.Abstract',
-    requires:['Ext.ux.touch.grid.feature.Abstract','Ext.Anim'],
+    requires:['Ext.ux.touch.grid.feature.Abstract', 'Ext.Anim'],
 
     config:{
         events:{
             grid:{
                 itemtap:'handleTap'
             }
-        }
-        ,
-        detailCmp:undefined
+        },
+        detailCmp:undefined,
+        expandeditem:undefined
     },
     handleTap:function (dw, index, item, record, e, eOpts) {
         //checking whether the user clicked on the Overview or the Detailview (when visible)
@@ -34,26 +34,38 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         ;
     },
 
-    //expanding or collapsing the item, depending on the previous status
-    //during expanding a new DetailView instance is created and a model instance is assigned to the DetailView.
     doToggle:function (dw, index, item, itemrecord, e, eOpts) {
-        var me = this;
+        //expanding or collapsing the item, depending on the previous status
         if (!item.expanded) {
-            console.log('expanding...')
-            item.expanded = true;
-            var desiredCmp = this.getDetailCmp();
-            desiredCmp.record = itemrecord;
-            var detailinstance = Ext.ComponentManager.create(desiredCmp);
-            detailinstance.renderTo(item);
-            item.detailinstance = detailinstance;
-            dw.fireEvent('itemexpanded',dw,index,item,itemrecord, e,eOpts,detailinstance)
+            this.expand(dw, index, item, itemrecord, e, eOpts);
         }
-        // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
         else {
-            console.log('collapsing...');
-            item.expanded = false;
-            item.detailinstance.destroy();
-            dw.fireEvent('itemcollapsed',dw,index,item,itemrecord, e,eOpts)
+            this.collapse(dw, index, item, itemrecord, e, eOpts);
         }
+    },
+
+    expand:function (dw, index, item, itemrecord, e, eOpts) {
+        //during expanding a new DetailView instance is created and a model instance is assigned to the DetailView.
+        console.log('expanding...')
+
+        //get currently expanded item
+        var expandeditem = this.getExpandeditem();
+        if (expandeditem){
+        this.collapse(dw, index, expandeditem, itemrecord, e, eOpts); }
+        item.expanded = true;
+        this.setExpandeditem(item);
+        var desiredCmp = this.getDetailCmp();
+        desiredCmp.record = itemrecord;
+        var detailinstance = Ext.ComponentManager.create(desiredCmp);
+        detailinstance.renderTo(item);
+        item.detailinstance = detailinstance;
+        dw.fireEvent('itemexpanded', dw, index, item, itemrecord, e, eOpts, detailinstance)
+    },
+    collapse:function (dw, index, item, itemrecord, e, eOpts) {
+        // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
+        console.log('collapsing...');
+        item.expanded = false;
+        item.detailinstance.destroy();
+        dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     }
 });
