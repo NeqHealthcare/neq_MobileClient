@@ -12,6 +12,12 @@
 var daterenderer = function (value, values) {
     return value.day + '.' + value.month + '.' + value.year
 }
+
+var daterendererLong = function(value,values){
+    var date = new Date(value);
+    return date.getDay()+'.'+date.getMonth()+'.'+date.getYear()
+}
+
 var booleanrenderer = function (value, values) {
     if (value) {
         return '<input type="checkbox" checked="checked" disabled />'
@@ -53,8 +59,7 @@ Ext.define('NeqMobile.view.patient.Info', {
         },
         loadVaccinations:function (vaccinationstore) {
             console.log('setting vaccinations data');
-          // this here is already prepared for the vaccinations table - uncomment it when the table is included
-          //  this.down('#vaccinations').Store(vaccinationstore);
+            this.down('#vaccinations').setStore(vaccinationstore);
         },
 
         loadMedications:function (medicationstore) {
@@ -73,170 +78,229 @@ Ext.define('NeqMobile.view.patient.Info', {
                     tpl:patientheader
                 },
                 {
+                    xtype: 'fieldset',
+                    title: 'Diagnoses',
+                    items: [
+                        {xtype:'touchgridpanel',
+                            itemId:'diagnoses',
+                            scrollable:false,
+                            features:[
+                                {
+                                    ftype:'Ext.ux.touch.grid.feature.Expandable',
+                                    launchFn:'initialize',
+                                    detailCmp:{ xtype:'diseasedetail'}
+                                }
+                            ],
+                            columns:[
+                                {
+                                    header:'Date',
+                                    dataIndex:'diagnosed_date',
+                                    style:'padding-left: 1em;',
+                                    width:'10%',
+                                    renderer:daterenderer
+                                },
+                                {
+                                    header:'Activity Status',
+                                    dataIndex:'is_active',
+                                    style:'text-align: center;',
+                                    renderer:bulletRenderer,
+                                    width:'15%',
+                                    filter:{ type:'numeric' }
+                                },
+                                {
+                                    header:'Disease',
+                                    dataIndex:'pathology_rec_name',
+                                    cls:'centered-cell',
+                                    width:'15%',
+                                    renderer:function (value, values) {
+                                        var color = (value > 0) ? '009933' : 'FF0000';
+                                        return '<span style="color: #' + color + ';">' + value + '</span>';
+                                    }
+                                },
+                                {
+                                    header:'Severity',
+                                    dataIndex:'disease_severity',
+                                    cls:'centered-cell',
+                                    width:'15%',
+                                    renderer:function (value, values) {
+                                        var color = (value > 0) ? '009933' : 'FF0000';
+                                        return '<span style="color: #' + color + ';">' + value + '</span>';
+                                    }
+                                },
+                                {
+                                    header:'Healed Date',
+                                    dataIndex:'healed_date',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    width:'15%',
+                                    renderer:daterenderer
+                                }   ,
+                                {
+                                    header:'Infectability',
+                                    dataIndex:'is_infectious',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    renderer:bulletRenderer,
+                                    width:'15%'
 
-                    xtype:'touchgridpanel',
-                    itemId:'vaccinations'
-                }
-                ,
-                {xtype:'touchgridpanel',
-                    itemId:'diagnoses',
-                    scrollable:false,
-                    features:[
-                        {
-                            ftype:'Ext.ux.touch.grid.feature.Expandable',
-                            launchFn:'initialize',
-                            detailCmp:{ xtype:'diseasedetail'}
-                        }
-                    ],
-                    columns:[
-                        {
-                            header:'Date',
-                            dataIndex:'diagnosed_date',
-                            style:'padding-left: 1em;',
-                            width:'10%',
-                            renderer:daterenderer
-                        },
-                        {
-                            header:'Activity Status',
-                            dataIndex:'is_active',
-                            style:'text-align: center;',
-                            renderer:bulletRenderer,
-                            width:'15%',
-                            filter:{ type:'numeric' }
-                        },
-                        {
-                            header:'Disease',
-                            dataIndex:'pathology_rec_name',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
-                        },
-                        {
-                            header:'Severity',
-                            dataIndex:'disease_severity',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
-                        },
-                        {
-                            header:'Healed Date',
-                            dataIndex:'healed_date',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            width:'15%',
-                            renderer:daterenderer
-                        }   ,
-                        {
-                            header:'Infectability',
-                            dataIndex:'is_infectious',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            renderer:bulletRenderer,
-                            width:'15%'
-
-                        },
-                        {
-                            header:'Allergies',
-                            dataIndex:'is_allergy',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            renderer:bulletRenderer,
-                            width:'15%'
-                        }
-                    ]
+                                },
+                                {
+                                    header:'Allergies',
+                                    dataIndex:'is_allergy',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    renderer:bulletRenderer,
+                                    width:'15%'
+                                }
+                            ]
 
 
-                }   ,
-                {xtype:'touchgridpanel',
-                    itemId:'medications',
-
-                    scrollable:false,
-                    features:[
-                        {
-                            ftype:'Ext.ux.touch.grid.feature.Expandable',
-                            launchFn:'initialize',
-                            detailCmp:{ xtype:'medicationdetail'}
-                        }
-                    ],
-                    columns:[
-                        {
-                            header:'Date',
-                            dataIndex:'diagnosed_date',
-                            style:'padding-left: 1em;',
-                            width:'10%'
-
-                        },
-                        {
-                            header:'Activity Status',
-                            dataIndex:'is_active',
-                            style:'text-align: center;',
-                            renderer:booleanrenderer,
-                            width:'15%',
-                            filter:{ type:'numeric' }
-                        },
-                        {
-                            header:'Disease',
-                            dataIndex:'medicament_rec_name',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
-                        },
-                        {
-                            header:'Severity',
-                            dataIndex:'disease_severity',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
-                        },
-                        {
-                            header:'Healed Date',
-                            dataIndex:'healed_date',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            width:'15%'
-
-                        }   ,
-                        {
-                            header:'Infectability',
-                            dataIndex:'is_infectious',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            renderer:booleanrenderer,
-                            width:'15%'
-
-                        },
-                        {
-                            header:'Allergies',
-                            dataIndex:'is_allergy',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            renderer:booleanrenderer,
-                            width:'15%'
                         }
                     ]
+                },
+                {
+                    xtype: 'fieldset',
+                    title: 'Medications',
+                    items: [
+                        {xtype:'touchgridpanel',
+                            itemId:'medications',
+
+                            scrollable:false,
+                            features:[
+                                {
+                                    ftype:'Ext.ux.touch.grid.feature.Expandable',
+                                    launchFn:'initialize',
+                                    detailCmp:{ xtype:'medicationdetail'}
+                                }
+                            ],
+                            columns:[
+                                {
+                                    header:'Medication',
+                                    dataIndex:'medicament_rec_name',
+                                    cls:'centered-cell',
+                                    width:'25%',
+                                    renderer:function (value, values) {
+                                        var color = (value > 0) ? '009933' : 'FF0000';
+                                        return '<span style="color: #' + color + ';">' + value + '</span>';
+                                    }
+                                },
+                                {
+                                    header:'Start of Treatment',
+                                    dataIndex:'start_treatment',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    width:'15%',
+                                    renderer:daterendererLong
+
+                                }   ,
+                                {
+                                    header:'End of Treatment',
+                                    dataIndex:'end_treatment',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    width:'15%',
+                                    renderer:daterendererLong
+
+                                }   ,
+                                {
+                                    header:'Course Completed',
+                                    dataIndex:'course_completed',
+                                    style:'text-align: center;',
+                                    renderer:bulletRenderer,
+                                    width:'15%',
+                                    filter:{ type:'numeric' }
+                                },
+                                {
+                                    header:'Discontinued',
+                                    dataIndex:'discontinued',
+                                    style:'text-align: center;',
+                                    renderer:bulletRenderer,
+                                    width:'15%',
+                                    filter:{ type:'numeric' }
+                                },
+                                {
+                                    header:'Active',
+                                    dataIndex:'is_active',
+                                    style:'text-align: center;',
+                                    renderer:bulletRenderer,
+                                    width:'15%',
+                                    filter:{ type:'numeric' }
+                                }
+                            ]
 
 
+                        }
+                    ]
+                },
+                {
+                    xtype: 'fieldset',
+                    title: 'Vaccinations',
+                    items: [
+                        {xtype:'touchgridpanel',
+                            itemId:'vaccinations',
+
+                            scrollable:false,
+                            features:[
+                                {
+                                    ftype:'Ext.ux.touch.grid.feature.Expandable',
+                                    launchFn:'initialize',
+                                    detailCmp:{ xtype:'vaccinationdetail'}
+                                }
+                            ],
+                            columns:[
+                                {
+                                    header:'Vaccine',
+                                    dataIndex:'vaccine_rec_name',
+                                    style:'padding-left: 1em;',
+                                    width:'25%'
+
+                                },
+                                {
+                                    header:'Dose Number',
+                                    dataIndex:'dose',
+                                    style:'padding-left: 1em;',
+                                    width:'15%',
+                                    filter:{ type:'numeric' }
+                                },
+                                {
+                                    header:'Date',
+                                    dataIndex:'date',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    width:'15%',
+                                    renderer:daterenderer
+
+                                }   ,
+                                {
+                                    header:'Next Dose',
+                                    dataIndex:'next_dose_date',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    sortable:false,
+                                    width:'15%',
+                                    renderer:daterenderer
+
+                                }   ,
+                                {
+                                    header:'Observations',
+                                    dataIndex:'observations',
+                                    hidden:true,
+                                    style:'text-align: right; padding-right: 1em;',
+                                    style:'padding-left: 1em;',
+                                    width:'30%'
+                                }
+                            ]
+
+
+                        }
+                    ]
                 }
-
-
             ]
         }
 
