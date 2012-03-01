@@ -68,10 +68,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
             diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback:function (records, operation, success) {
-                    var patientinfo = this.getPatientInfo();
-                    var response = operation.getResponse();
-                    var responseobject = Ext.decode(response.responseText);
-                    patientinfo.loadDiagnosesDeprecated(responseobject);
                     patientinfo.loadDiagnoses(diagnosestore);
                 },
                 scope:this
@@ -84,11 +80,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             vaccinationstore.getProxy().setExtraParam('patientId', patientid);
             vaccinationstore.load({
                 callback:function (records, operation, success) {
-                    patientinfo.setMasked(false);
-                    var response = operation.getResponse();
-                    console.log('vaccinations: ' + response);
-                    var responseobject = Ext.decode(response.responseText);
-                    patientinfo.loadVaccinations(responseobject);
+                    patientinfo.loadVaccinations(vaccinationstore);
                 },
                 scope:this
             });
@@ -103,6 +95,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             medicationstore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadMedications(medicationstore);
+                    patientinfo.setMasked(false);
                 },
                 scope:this
             });

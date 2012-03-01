@@ -34,122 +34,27 @@ var patientheader = new Ext.XTemplate(
         '<tr><td><b>Name:</b>{rec_name}</td></tr>' +
         '<tr><td><b>Sex:</b>{sex}</td></tr>' +
         '<tr><td><small>{latestDiagnoseRecName}</small></td></tr>' + '</table>'
-//    '<div class="patientImage" style="float: left; height: 125px; width: 114px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
-//    //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
-//    '<span style="display: block; font-size: 12pt; font-weight: bold; color: #000;">ID: {id} - {rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}&nbsp;</span>',
-//    '<span style="display: block; font-size: 12pt; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>',
-//    '<br /><br />'
-
 );
-
-
-var diagnoses = new Ext.XTemplate(
-    '<br><h3>Diseases</h3>' +
-        '<table id="box-table-a" summary="Employee Pay Sheet">',
-    '<thead>',
-    '<tr>',
-    '<th scope="col">Date</th>',
-    '<th scope="col">Activity Status</th>',
-    '<th scope="col">Disease</th>',
-    '<th scope="col">Severity</th>',
-    '<th scope="col">Healed Date</th>',
-    '<th scope="col">Infectability</th>',
-    '<th scope="col">Allergies</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for=".">',
-    '<tr>',
-    '<td>{diagnosed_date.day}.{diagnosed_date.month}.{diagnosed_date.year}</td>',
-    '<td>{[this.checkStatus(values.is_active)]}</td>',
-    '<td>{pathology_rec_name}</td>',
-    '<td>{disease_severity}</td>',
-    '<td>{healed_dated}</td>',
-    '<td>{[this.checkStatus(values.is_infectious)]}</td>',
-    '<td>{[this.checkStatus(values.is_allergy)]}</td>',
-    '</tr>',
-    '</tpl>',
-    '</tbody>',
-    '</table>',
-
-    {
-        // XTemplate configuration:
-        disableFormats:true,
-        // member functions:
-        checkStatus:function (currentStat) {
-            if (currentStat == 'true') {
-                return '<input type="checkbox" checked="checked" />'
-            }
-            else return '<input type="checkbox"/>'
-        }
-
-    }
-);
-
-var vaccinations = new Ext.XTemplate(
-    '<br><h3>Vaccinations</h3>' +
-        '<table id="box-table-a" summary="Patient Vaccinations">',
-    '<thead>',
-    '<tr>',
-    '<th scope="col">Vaccination</th>',
-    '<th scope="col">Dose Number</th>',
-    '<th scope="col">Date</th>',
-    '<th scope="col">Next Dose</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for=".">',
-    '<tr>',
-    '<td>{vaccine_rec_name}</td>',
-    '<td>{dose}</td>',
-    '<td>{date.month}/{date.day}/{date.year}</td>',
-    '<td>{next_dose_date.month}/{next_dose_date.day}/{next_dose_date.year}</td>',
-    '</tr>',
-    '</tpl>',
-    '</tbody>',
-    '</table>',
-
-    {
-        // XTemplate configuration:
-        disableFormats:true,
-        // member functions:
-        checkStatus:function (currentStat) {
-            if (currentStat == 'true') {
-                return '<input type="checkbox" checked="checked" />'
-            }
-            else return '<input type="checkbox"/>'
-        }
-
-    }
-
-);
-
 
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
         requires:['NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail'],
-        //ref: ['NeqMobile.view.patient.SimpleDiseaseView.tpl1'],
 
         loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
             console.log(patientrecord.data);
             this.down('#patientheader').setData(patientrecord.data);
         },
-        loadDiagnosesDeprecated:function (diagnoses) {
-            console.log('setting diagnoses data');
-            this.down('#olddiagnoses').setData(diagnoses);
-
-        },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');
             this.down('#diagnoses').setStore(diagnosestore);
 
         },
-        loadVaccinations:function (vaccinations) {
+        loadVaccinations:function (vaccinationstore) {
             console.log('setting vaccinations data');
-            this.down('#vaccinations').setData(vaccinations);
-
+          // this here is already prepared for the vaccinations table - uncomment it when the table is included
+          //  this.down('#vaccinations').Store(vaccinationstore);
         },
 
         loadMedications:function (medicationstore) {
@@ -161,9 +66,6 @@ Ext.define('NeqMobile.view.patient.Info', {
             scrollable:true,
             styleHtmlContent:true,
             layout:'vbox',
-            // layout:'card',
-            //  tpl:tpl',
-
             items:[
                 {xtype:'container',
 
@@ -172,15 +74,8 @@ Ext.define('NeqMobile.view.patient.Info', {
                 },
                 {
 
-                    xtype:'container',
-                    itemId:'olddiagnoses',
-                    tpl:diagnoses
-                },
-                {
-
-                    xtype:'container',
-                    itemId:'vaccinations',
-                    tpl:vaccinations
+                    xtype:'touchgridpanel',
+                    itemId:'vaccinations'
                 }
                 ,
                 {xtype:'touchgridpanel',
