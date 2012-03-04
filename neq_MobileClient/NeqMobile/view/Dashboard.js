@@ -28,11 +28,13 @@ Ext.define('NeqMobile.view.Dashboard', {
 
         items:[
 
-            {xclass:'NeqMobile.view.patient.List',
-          width:300
+            {
+                region: 'west',
+                xclass:'NeqMobile.view.patient.List'
           },
             {
                 xclass:'NeqMobile.view.patient.Info',
+                region: 'center',
                 flex:5
                }
         ]

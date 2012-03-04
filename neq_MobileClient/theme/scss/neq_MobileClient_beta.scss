@@ -204,5 +204,12 @@ $list-active-color: mix(#043F62, #fff, 0);
     width: 5px;
 }
 
+#hidePatientListButton{
+    button-radius: 0px;
+    background-color: #000;
+}
 
-
+.hidePatientListButton{
+    button-radius: 0px;
+    background-color: #000;
+}

@@ -13,7 +13,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
             refs:{
                 loginButton:'button[action=login]',
-                patientInfo:'patientInfo'
+                patientInfo:'patientInfo',
+                patientListContainer:'Dashboard patientList #patientListContainer'
             },
             control:{
                 'Dashboard #patientsearchfield':{
@@ -22,8 +23,20 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
+                'Dashboard patientList #hidePatientListButton':{
+                    tap:'onHideElementSelect'
+                },
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
-                'Dashboard #medications':{itemexpanded:'onItemTap'}
+                'Dashboard #medications':{itemexpanded:'onItemTap'},
+                'Dashboard #vaccinations':{itemexpanded:'onItemTap'}
+            }
+        },
+        onHideElementSelect:function(button,e,eOpts){
+            var patientListContainer = this.getPatientListContainer();
+            if(patientListContainer.isHidden()){
+                patientListContainer.setHidden(false);
+            }else{
+                patientListContainer.setHidden(true);
             }
         },
         doNothing:function () {
