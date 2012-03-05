@@ -16,7 +16,6 @@ Ext.define('NeqMobile.view.Dashboard', {
         this.on({
 
             painted:function (dashboard) {
-
             }
 //                ,
 //                show:function(view){alert('show event fired')},

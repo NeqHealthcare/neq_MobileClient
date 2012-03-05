@@ -24,14 +24,14 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     select:'onPatientSelect'
                 },
                 'Dashboard patientList #hidePatientListButton':{
-                    tap:'onHideElementSelect'
+                    tap:'onHideElementTap'
                 },
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'Dashboard #medications':{itemexpanded:'onItemTap'},
                 'Dashboard #vaccinations':{itemexpanded:'onItemTap'}
             }
         },
-        onHideElementSelect:function(button,e,eOpts){
+        onHideElementTap:function(button,e,eOpts){
             var patientListContainer = this.getPatientListContainer();
             if(patientListContainer.isHidden()){
                 patientListContainer.setHidden(false);
@@ -69,6 +69,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
             var patientinfo = this.getPatientInfo();
+            if(patientinfo.isHidden()){
+                patientinfo.setHidden(false);
+            }
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
 
