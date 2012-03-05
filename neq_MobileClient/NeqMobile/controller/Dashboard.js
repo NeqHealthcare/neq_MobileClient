@@ -13,7 +13,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
             refs:{
                 loginButton:'button[action=login]',
-                patientInfo:'patientInfo'
+                patientInfo:'patientInfo',
+                patientListContainer:'Dashboard patientList #patientListContainer'
             },
             control:{
                 'Dashboard #patientsearchfield':{
@@ -22,8 +23,20 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
+                'Dashboard patientList #hidePatientListButton':{
+                    tap:'onHideElementTap'
+                },
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
-                'Dashboard #medications':{itemexpanded:'onItemTap'}
+                'Dashboard #medications':{itemexpanded:'onItemTap'},
+                'Dashboard #vaccinations':{itemexpanded:'onItemTap'}
+            }
+        },
+        onHideElementTap:function(button,e,eOpts){
+            var patientListContainer = this.getPatientListContainer();
+            if(patientListContainer.isHidden()){
+                patientListContainer.setHidden(false);
+            }else{
+                patientListContainer.setHidden(true);
             }
         },
         doNothing:function () {
@@ -56,6 +69,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
             var patientinfo = this.getPatientInfo();
+            if(patientinfo.isHidden()){
+                patientinfo.setHidden(false);
+            }
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
 
@@ -68,10 +84,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
             diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback:function (records, operation, success) {
-                    var patientinfo = this.getPatientInfo();
-                    var response = operation.getResponse();
-                    var responseobject = Ext.decode(response.responseText);
-                    patientinfo.loadDiagnosesDeprecated(responseobject);
                     patientinfo.loadDiagnoses(diagnosestore);
                 },
                 scope:this
@@ -84,11 +96,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             vaccinationstore.getProxy().setExtraParam('patientId', patientid);
             vaccinationstore.load({
                 callback:function (records, operation, success) {
-                    patientinfo.setMasked(false);
-                    var response = operation.getResponse();
-                    console.log('vaccinations: ' + response);
-                    var responseobject = Ext.decode(response.responseText);
-                    patientinfo.loadVaccinations(responseobject);
+                    patientinfo.loadVaccinations(vaccinationstore);
                 },
                 scope:this
             });
@@ -103,6 +111,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             medicationstore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadMedications(medicationstore);
+                    patientinfo.setMasked(false);
                 },
                 scope:this
             });

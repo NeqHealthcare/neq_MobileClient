@@ -16,7 +16,6 @@ Ext.define('NeqMobile.view.Dashboard', {
         this.on({
 
             painted:function (dashboard) {
-
             }
 //                ,
 //                show:function(view){alert('show event fired')},
@@ -28,11 +27,13 @@ Ext.define('NeqMobile.view.Dashboard', {
 
         items:[
 
-            {xclass:'NeqMobile.view.patient.List',
-          width:300
+            {
+                region: 'west',
+                xclass:'NeqMobile.view.patient.List'
           },
             {
                 xclass:'NeqMobile.view.patient.Info',
+                region: 'center',
                 flex:5
                }
         ]

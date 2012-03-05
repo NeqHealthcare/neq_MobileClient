@@ -28,8 +28,10 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
+               withCredentials: true,
+
                 scope:this,
-                timeout:5000,
+                timeout:30000,
                 params:{username:this.session.get('user'), session:this.session.get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
@@ -53,13 +55,15 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
+              withCredentials: true,
+
                 scope:this,
-                timeout:5000,
+                timeout:30000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     //var obj = Ext.decode(response.responseText);
                     var obj = response.responseText;
-                    if (obj != 'false') {
+                    if (obj != 'false' && !(obj === "")) {
                         console.log('login successfull');
                         var mySession = new NeqMobile.model.Session({
                             user:user,
@@ -70,16 +74,15 @@ Ext.define('NeqMobile.manager.Session',
                         successCallback.apply(scope);
                     }
                     else {
-                        Ext.Msg.alert('Connection refused', 'The server rejected the connection, probably caused by wrong credentials', Ext.emptyFn);
-                        console.log('login failed caused by wrong credentials');
+                        Ext.Msg.alert('Connection failed', 'try again', Ext.emptyFn);
+                        console.log('login failed');
                         if (failureCallback) failureCallback.apply(scope);
                     }
                 },
                 failure:function (response, opts) {
-                    Ext.Msg.alert('Server not responding', '' +
-                        'Ther occured a technical connection problem. Possible causes are:<br><br>' +
-                        '1. you forgot to start chrome with the option<br>--disable-web-security (beforehand you have to kill all chrome processes)<br><br>' +
-                        '2. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
+                    Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
+                        'It occured a technical connection problem. Possible causes are:<br><br>' +
+                        '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
                     console.log('server-side failure with status code ' + response.status);
                     console.log('login failed - server not reachable')
                     failureCallback.apply(scope);

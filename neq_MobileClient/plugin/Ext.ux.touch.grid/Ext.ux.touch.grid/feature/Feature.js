@@ -31,14 +31,15 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
             if (typeof feature === 'object') {
                 cfg = feature;
                 feature = feature.ftype;
-                delete cfg.ftype;
+                // this is removed, due it causes a bug:
+             //   delete cfg.ftype;
             }
 
             cfg.grid = me;
 
             console.log(feature);
             // temporary bugfix:
-            var feature = 'Ext.ux.touch.grid.feature.Expandable'
+          //  var feature = 'Ext.ux.touch.grid.feature.Expandable'
             feature = Ext.create(feature, cfg);
 
             if (feature && typeof feature.init === 'function') {
