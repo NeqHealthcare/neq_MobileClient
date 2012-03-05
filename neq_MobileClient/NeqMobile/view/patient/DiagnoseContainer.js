@@ -23,32 +23,24 @@ Ext.define('NeqMobile.view.patient.DiagnoseContainer', {
                             renderer:daterenderer
                         },
                         {
+                            header:'Disease',
+                            dataIndex:'pathology_rec_name',
+                            cls:'centered-cell',
+                            width:'25%'
+                        },
+                        {
                             header:'Activity Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'15%',
+                            width:'10%',
                             filter:{ type:'numeric' }
-                        },
-                        {
-                            header:'Disease',
-                            dataIndex:'pathology_rec_name',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
                         },
                         {
                             header:'Severity',
                             dataIndex:'disease_severity',
                             cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
+                            width:'10%'
                         },
                         {
                             header:'Healed Date',
