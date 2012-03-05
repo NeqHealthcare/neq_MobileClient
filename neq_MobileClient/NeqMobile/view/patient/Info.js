@@ -77,7 +77,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                     itemId:'patientheader',
                     tpl:patientheader
                 },
-                {xtype:'diagnosescontainer',
+                {xtype:'diagnosescontainer'
                 }
                 ,
                 {xtype:'medicationscontainer'
