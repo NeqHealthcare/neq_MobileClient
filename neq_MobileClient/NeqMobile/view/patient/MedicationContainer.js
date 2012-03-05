@@ -23,7 +23,7 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
                             width:'25%',
                             renderer:function (value, values) {
                                 var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
+                                return '<span>' + value + '</span>'; //style="color: #' + color + ';"
                             }
                         },
                         {
