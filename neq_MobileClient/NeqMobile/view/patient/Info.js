@@ -60,7 +60,7 @@ var patientheader = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
-        requires:['NeqMobile.view.patient.MedicationContainer','NeqMobile.view.patient.VaccinationContainer','NeqMobile.view.patient.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
+        requires:['NeqMobile.view.patient.PatientHeader','NeqMobile.view.patient.MedicationContainer','NeqMobile.view.patient.VaccinationContainer','NeqMobile.view.patient.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
 
         loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
@@ -87,11 +87,9 @@ Ext.define('NeqMobile.view.patient.Info', {
             hidden: true,
             layout:'vbox',
             items:[
-                {xtype:'container',
-
-                    itemId:'patientheader',
-                    tpl:patientheader
-                },
+                {xtype:'patientheader'
+                }
+                ,
                 {xtype:'diagnosescontainer'
                 }
                 ,

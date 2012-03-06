@@ -3,6 +3,7 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
         xtype:'medicationscontainer',
         config:{
             title:'Medications',
+            padding: '10 10 10 10',
             items:[
                 {xtype:'touchgridpanel',
                     itemId:'medications',
