@@ -13,8 +13,7 @@ var daterenderer = function (value, values) {
     return value.day + '.' + value.month + '.' + value.year
 }
 
-var daterendererLong = function(value,values){
-    var date = new Date(value);
+var daterendererLong = function(date,values){
     return date.getDay()+'.'+date.getMonth()+'.'+date.getYear()
 }
 
@@ -50,7 +49,7 @@ Ext.define('NeqMobile.view.patient.Info', {
         loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
             console.log(patientrecord.data);
-            this.down('#patientheader').setData(patientrecord.data);
+           this.down('#patientheader').setData(patientrecord.data);
         },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');
@@ -190,7 +189,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                                 {
                                     header:'Start of Treatment',
                                     dataIndex:'start_treatment',
-                                    hidden:true,
+
                                     style:'text-align: right; padding-right: 1em;',
                                     sortable:false,
                                     width:'15%',
@@ -200,7 +199,7 @@ Ext.define('NeqMobile.view.patient.Info', {
                                 {
                                     header:'End of Treatment',
                                     dataIndex:'end_treatment',
-                                    hidden:true,
+
                                     style:'text-align: right; padding-right: 1em;',
                                     sortable:false,
                                     width:'15%',
@@ -212,24 +211,24 @@ Ext.define('NeqMobile.view.patient.Info', {
                                     dataIndex:'course_completed',
                                     style:'text-align: center;',
                                     renderer:bulletRenderer,
-                                    width:'15%',
-                                    filter:{ type:'numeric' }
+                                    width:'15%'
+
                                 },
                                 {
                                     header:'Discontinued',
                                     dataIndex:'discontinued',
                                     style:'text-align: center;',
                                     renderer:bulletRenderer,
-                                    width:'15%',
-                                    filter:{ type:'numeric' }
+                                    width:'15%'
+
                                 },
                                 {
                                     header:'Active',
                                     dataIndex:'is_active',
                                     style:'text-align: center;',
                                     renderer:bulletRenderer,
-                                    width:'15%',
-                                    filter:{ type:'numeric' }
+                                    width:'15%'
+
                                 }
                             ]
 

@@ -28,7 +28,7 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
-               withCredentials: true,
+            //   withCredentials: true,
 
                 scope:this,
                 timeout:30000,
@@ -55,7 +55,7 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
-              withCredentials: true,
+             // withCredentials: true,
 
                 scope:this,
                 timeout:30000,
@@ -74,8 +74,9 @@ Ext.define('NeqMobile.manager.Session',
                         successCallback.apply(scope);
                     }
                     else {
-                        Ext.Msg.alert('Connection failed', 'try again', Ext.emptyFn);
+                        Ext.Msg.alert('Connection failed', 'try again <br> server-side failure with status code: ' + response.status, Ext.emptyFn);
                         console.log('login failed');
+                        console.log('server-side failure with status code ' + response.status);
                         if (failureCallback) failureCallback.apply(scope);
                     }
                 },
