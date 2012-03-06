@@ -19,7 +19,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Disease',
                             dataIndex:'pathology_rec_name',
-                            style:'text-align: left; padding-right: 1em;',
+                            style:'text-align: left; padding-left: 1em;',
                             width:'33%'
                         },
                         {
