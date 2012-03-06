@@ -13,8 +13,7 @@ var daterenderer = function (value, values) {
     return value.day + '.' + value.month + '.' + value.year
 }
 
-var daterendererLong = function(value,values){
-    var date = new Date(value);
+var daterendererLong = function(date,values){
     return date.getDay()+'.'+date.getMonth()+'.'+date.getYear()
 }
 
