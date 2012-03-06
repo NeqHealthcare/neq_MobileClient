@@ -64,8 +64,8 @@ Ext.define('NeqMobile.view.patient.Info', {
 
         loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
-            console.log(patientrecord.data);
-            this.down('#patientheader').setData(patientrecord.data);
+            console.log(patientrecord);
+            this.down('#patientheader').setRecord(patientrecord);
         },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');

@@ -17,6 +17,7 @@ Ext.define('NeqMobile.view.Login', {
 
     config: {
         cls: 'login',
+        scrollable: 'auto',
         items: [
             {
                 xtype: 'toolbar',
@@ -101,7 +102,7 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype: 'panel',
-                docked: 'bottom',
+
                 items: [
                     {
                         xtype: 'image',
