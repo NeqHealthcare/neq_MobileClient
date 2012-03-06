@@ -19,12 +19,8 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
                         {
                             header:'Medication',
                             dataIndex:'medicament_rec_name',
-                            cls:'centered-cell',
-                            width:'25%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span>' + value + '</span>'; //style="color: #' + color + ';"
-                            }
+                            style:'padding-left: 1em;',
+                            width:'25%'
                         },
                         {
                             header:'Start of Treatment',
