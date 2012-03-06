@@ -31,15 +31,30 @@ var bulletRenderer = function(value, values){
     else return '<img src="../neq_MobileClient/bullet_red.png"/>'
 }
 
+
+var severityrenderer = function(value, values){
+    var barColor1="blue", barColor2="blue";
+    if(value.charAt(0)>2){
+        barColor1="black"
+    }
+    else(value.charAt(0)>1)
+    {
+        barColor1="black", barColor2="black"
+    }
+    return '<img src="../neq_MobileClient/'+barColor1+'_bar.png"><img src="../neq_MobileClient/'+barColor2+'_bar.png"><img src="../neq_MobileClient/blue_bar.png">';
+
+}
+
+
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
         xtype:'patientInfo',
-        requires:['NeqMobile.view.patient.PatientHeader','NeqMobile.view.patient.MedicationContainer','NeqMobile.view.patient.VaccinationContainer','NeqMobile.view.patient.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
+        requires:['NeqMobile.view.patient.detail.PatientHeader','NeqMobile.view.patient.detail.MedicationContainer','NeqMobile.view.patient.detail.VaccinationContainer','NeqMobile.view.patient.detail.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
 
         loadPatientHeader:function (patientrecord) {
             console.log('setting patients data...');
-            console.log(patientrecord.data);
-            this.down('#patientheader').setData(patientrecord.data);
+            console.log(patientrecord);
+            this.down('#patientheader').setRecord(patientrecord);
         },
         loadDiagnoses:function (diagnosestore) {
             console.log('setting diagnoses store');
@@ -61,22 +76,19 @@ Ext.define('NeqMobile.view.patient.Info', {
             hidden: true,
             layout:'vbox',
             items:[
-                {
-                    xtype:'patientheader'
-                },
-                {
-                    xtype:'diagnosescontainer'
+                {xtype:'patientheader'
                 }
                 ,
-                {
-                    xtype:'medicationscontainer'
+                {xtype:'diagnosescontainer'
+                }
+                ,
+                {xtype:'medicationscontainer'
                 },
-                {
-                    xtype:'vaccinationscontainer'
+                {xtype:'vaccinationscontainer'
                 }
 
             ]
         }
 
     }
-);
+)

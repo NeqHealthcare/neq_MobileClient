@@ -1,0 +1,34 @@
+// 1 BASIC DESIGN
+
+// 2 VIEWS
+
+// 2-1 BASIC
+/* ------------------------------ */
+// 2-1-1 Viewport
+/* ------------------------------ */
+// 2-1-2 Login
+/* ------------------------------ */
+
+// 2-1-3 Dashboard
+/* ------------------------------ */
+// 2-1-4 Workspace
+
+// 2-2 MENU
+
+// 2-3 PATIENT
+/* ------------------------------ */
+// 2-3-1 Info
+/* ------------------------------ */
+// 2-3-2 List
+/* ------------------------------ */
+#x-hidePatientListButton {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    background-image: -moz-linear-gradient(left , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
+    background-image: -webkit-linear-gradient(left , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
+}
+
+// 2-3-3 DiseasesDetail
+/* ------------------------------ */
+// 2-3-4 MedicationDetail
+/* ------------------------------ */

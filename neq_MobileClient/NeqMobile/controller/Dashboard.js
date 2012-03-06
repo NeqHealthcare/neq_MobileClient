@@ -23,7 +23,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList list':{
                     select:'onPatientSelect'
                 },
-                'Dashboard patientList #hidePatientListButton':{
+                'Dashboard patientList #x-hidePatientListButton':{
                     tap:'onHideElementTap'
                 },
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
