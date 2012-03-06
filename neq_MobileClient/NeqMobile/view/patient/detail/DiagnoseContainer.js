@@ -17,6 +17,12 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                     ],
                     columns:[
                         {
+                            header:'Disease',
+                            dataIndex:'pathology_rec_name',
+                            style:'text-align: left; padding-right: 1em;',
+                            width:'33%'
+                        },
+                        {
                             header:'Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
@@ -30,13 +36,6 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             style:'padding-right: 1em; text-align: right;',
                             width:'15%',
                             renderer:daterendererLong
-                        },
-
-                        {
-                            header:'Disease',
-                            dataIndex:'pathology_rec_name',
-                            style:'text-align: right; padding-right: 1em;',
-                            width:'33%'
                         },
                         {
                             header:'Severity',

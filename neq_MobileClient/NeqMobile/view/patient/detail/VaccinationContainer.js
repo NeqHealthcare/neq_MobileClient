@@ -21,13 +21,13 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                             header:'Vaccine',
                             dataIndex:'vaccine_rec_name',
                             style:'padding-left: 1em;',
-                            width:'25%'
+                            width:'55%'
 
                         },
                         {
                             header:'Dose Number',
                             dataIndex:'dose',
-                            style:'padding-left: 1em;',
+                            style:'text-align: right; padding-right: 1em;',
                             width:'15%',
                             filter:{ type:'numeric' }
                         },
@@ -50,15 +50,8 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                             width:'15%',
                             renderer:daterenderer
 
-                        }   ,
-                        {
-                            header:'Observations',
-                            dataIndex:'observations',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            style:'padding-left: 1em;',
-                            width:'30%'
                         }
+
                     ]
 
 

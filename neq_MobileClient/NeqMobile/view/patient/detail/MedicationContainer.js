@@ -21,7 +21,8 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             header:'Medication',
                             dataIndex:'medicament_rec_name',
                             cls:'centered-cell',
-                            width:'53%'
+                            style:'padding-left: 1em;',
+                            width:'55%'
                         },
                         {
                             header:'Start of Treatment',
@@ -56,7 +57,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             dataIndex:'is_active',
                             style: 'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'7%',
+                            width:'5%',
                             filter:{ type:'numeric' }
                         },
                         {
