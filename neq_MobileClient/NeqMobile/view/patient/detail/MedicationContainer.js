@@ -57,16 +57,14 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             dataIndex:'is_active',
                             style: 'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'5%',
-                            filter:{ type:'numeric' }
+                            width:'5%'
                         },
                         {
                             header:'Discontinued',
                             dataIndex:'discontinued',
                             style:'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'10%',
-                            filter:{ type:'numeric' }
+                            width:'10%'
                         }
 
                     ]
