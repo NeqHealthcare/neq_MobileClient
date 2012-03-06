@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.patient.DiagnoseContainer', {
+Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
         extend:'Ext.form.FieldSet',
         xtype:'diagnosescontainer',
         config:{

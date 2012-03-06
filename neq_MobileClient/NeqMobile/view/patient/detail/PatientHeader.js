@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.patient.PatientHeader',{
+Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
         extend:'Ext.form.Panel',
         xtype:'patientheader',
         config:{

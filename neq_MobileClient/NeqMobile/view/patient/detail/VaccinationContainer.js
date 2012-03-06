@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.patient.VaccinationContainer', {
+Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
         extend:'Ext.form.FieldSet',
         xtype:'vaccinationscontainer',
         config:{
