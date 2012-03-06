@@ -20,11 +20,7 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
                             header:'Medication',
                             dataIndex:'medicament_rec_name',
                             cls:'centered-cell',
-                            width:'25%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
+                            width:'53%'
                         },
                         {
                             header:'Start of Treatment',
@@ -46,12 +42,20 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
                             renderer:daterendererLong
 
                         }   ,
+//                        {
+//                            header:'Course Completed',
+//                            dataIndex:'course_completed',
+//                            style:'text-align: center;',
+//                            renderer:bulletRenderer,
+//                            width:'15%',
+//                            filter:{ type:'numeric' }
+//                        },
                         {
-                            header:'Course Completed',
-                            dataIndex:'course_completed',
-                            style:'text-align: center;',
+                            header:'Active',
+                            dataIndex:'is_active',
+                            style: 'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'15%',
+                            width:'7%',
                             filter:{ type:'numeric' }
                         },
                         {
@@ -59,17 +63,10 @@ Ext.define('NeqMobile.view.patient.MedicationContainer', {
                             dataIndex:'discontinued',
                             style:'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'15%',
-                            filter:{ type:'numeric' }
-                        },
-                        {
-                            header:'Active',
-                            dataIndex:'is_active',
-                            style:'text-align: center;',
-                            renderer:bulletRenderer,
-                            width:'15%',
+                            width:'10%',
                             filter:{ type:'numeric' }
                         }
+
                     ]
 
 

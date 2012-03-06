@@ -32,6 +32,21 @@ var bulletRenderer = function(value, values){
     else return '<img src="../neq_MobileClient/bullet_red.png"/>'
 }
 
+
+var severityrenderer = function(value, values){
+    var barColor1="blue", barColor2="blue";
+    if(value.charAt(0)>2){
+        barColor1="black"
+    }
+    else(value.charAt(0)>1)
+    {
+        barColor1="black", barColor2="black"
+    }
+    return '<img src="../neq_MobileClient/'+barColor1+'_bar.png"><img src="../neq_MobileClient/'+barColor2+'_bar.png"><img src="../neq_MobileClient/blue_bar.png">';
+
+}
+
+
 var patientheader = new Ext.XTemplate(
     '<h3>Patient</h3><table cellpadding="5" cellspacing="10" style="background-color: #FFFFFF; -webkit-border-radius: 6px";>' +
         '<tr>' +
@@ -89,4 +104,4 @@ Ext.define('NeqMobile.view.patient.Info', {
         }
 
     }
-);
+)

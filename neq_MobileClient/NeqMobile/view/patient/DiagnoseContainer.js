@@ -16,39 +16,34 @@ Ext.define('NeqMobile.view.patient.DiagnoseContainer', {
                     ],
                     columns:[
                         {
-                            header:'Date',
-                            dataIndex:'diagnosed_date',
-                            style:'padding-left: 1em;',
-                            width:'10%',
-                            renderer:daterenderer
-                        },
-                        {
-                            header:'Activity Status',
+                            header:'Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
                             renderer:bulletRenderer,
-                            width:'15%',
+                            width:'7%',
                             filter:{ type:'numeric' }
                         },
                         {
+                            header:'Date',
+                            dataIndex:'diagnosed_date',
+                            style:'padding-right: 1em; text-align: right;',
+                            width:'15%',
+                            renderer:daterendererLong
+                        },
+
+                        {
                             header:'Disease',
                             dataIndex:'pathology_rec_name',
-                            cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
+                            style:'text-align: right; padding-right: 1em;',
+                            width:'33%'
                         },
                         {
                             header:'Severity',
                             dataIndex:'disease_severity',
+                            style: 'text-align: center;',
                             cls:'centered-cell',
-                            width:'15%',
-                            renderer:function (value, values) {
-                                var color = (value > 0) ? '009933' : 'FF0000';
-                                return '<span style="color: #' + color + ';">' + value + '</span>';
-                            }
+                            width:'10%',
+                            renderer: severityrenderer
                         },
                         {
                             header:'Healed Date',
@@ -57,30 +52,28 @@ Ext.define('NeqMobile.view.patient.DiagnoseContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterenderer
+                            renderer:daterendererLong
                         }   ,
                         {
                             header:'Infectability',
                             dataIndex:'is_infectious',
                             hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: center;',
                             sortable:false,
-                            renderer:bulletRenderer,
-                            width:'15%'
+                            renderer:booleanrenderer,
+                            width:'10%'
 
                         },
                         {
                             header:'Allergies',
                             dataIndex:'is_allergy',
                             hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: center; padding-right: 1em;',
                             sortable:false,
-                            renderer:bulletRenderer,
-                            width:'15%'
+                            renderer:booleanrenderer,
+                            width:'10%'
                         }
                     ]
-
-
                 }
             ]
         }
