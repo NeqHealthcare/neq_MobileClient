@@ -2,95 +2,117 @@
  * @author chopsuey
  */
 
-Ext.define('NeqMobile.view.Login', {
-    extend:'Ext.Container',
-   requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
-    xtype:'Login',
-    config:{
-        cls: 'login',
-        items:[
+/*
+ xtype: 'image',
+ height: 196,
+ margin: '30 0 10 0',
+ width: 150,
+ src: 'theme/images/user/DefaultAvatar_small.jpg'
+ */
 
+Ext.define('NeqMobile.view.Login', {
+    extend: 'Ext.Container',
+    requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
+    xtype:'Login',
+
+    config: {
+        cls: 'login',
+        items: [
             {
-                docked:'top',
-                xtype:'toolbar',
-                ui:'light',
-                cls:'login-toolbar',
-                //title:'Login',
-                items:[
+                xtype: 'toolbar',
+                docked: 'top',
+                ui: 'light',
+                items: [
                     {
-                        xtype:'button',
-                        itemId:'settingsbutton',
-                        iconCls:'settings',
-                        iconMask:true,
-                        docked:'right'
+                        xtype: 'button',
+                        docked: 'right',
+                        itemId: 'settingsbutton',
+                        iconCls: 'settings',
+                        iconMask: true
                     }
                 ]
-
             },
             {
-                xtype:'formpanel',
-              //  centered:'true',
-                //pack: 'start',
-                //ui:'login',
-                //StyleHtmlContent: true,
-                cls:'loginform',
-                //style:'background-color: white;',
-                scrollable:false,
-                items:[
+                xtype: 'formpanel',
+                padding: '20 0 0 0',
+                layout: {
+                    align: 'center',
+                    pack: 'center',
+                    type: 'vbox'
+                },
+                scrollable: false,
+                items: [
                     {
-                        html:'<img src="theme/images/user/DefaultAvatar_small.jpg"/>'
+                        xtype: 'image',
+                        height: 196,
+                        margin: '0 0 10 0',
+                        width: 150,
+                        src: 'theme/images/user/DefaultAvatar_small.jpg'
                     },
                     {
-                        xtype:'textfield',
-                        id:'textfield',
-                        value:'jgansen',
-                        label:'User',
-                        name:'user',
-                        //width:300,
-                        //margin:0,
-                        //padding:0,
-                        placeHolder:'Enter your Username',
-                        autoComplete:true,
-                        autoCorrect:true
-
-                        //    cls:'login'
-                    },
-                    {
-                        xtype:'passwordfield',
-                        id:'passwordfield',
-                        value:'iswi223<<',
-                        label:'Password',
-                        //width:300,
-                        //margin:0,
-                        //padding:0,
-                        name:'password',
-                        placeHolder:'Enter your Password'
-                        //    cls:'login'
-                    },
-                    {
-                        xtype:'selectfield',
-                        id:'selectfield',
-                        label: 'Domain',
-                        store:'Domains',
-                        displayField: 'name',
-                        valueField:'id'
-                    },
-                    {
-                        xtype:'button',
-                        text:'Login',
-                        id:'login-button',
-                        ui:'login-button',
-                        itemId:'submitButton'
-                        //baseCls:'button',
-                        //       cls:'login'
+                        xtype: 'fieldset',
+                        style: 'text-align: right;',
+                        width: 280,
+                        layout: {
+                            align: 'start',
+                            type: 'vbox'
+                        },
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                id: 'textfield',
+                                label: 'User:',
+                                labelWidth: '40%',
+                                name: 'user',
+                                value: 'jgansen',
+                                autoComplete: true,
+                                autoCorrect: true,
+                                placeHolder: 'Enter Username'
+                            },
+                            {
+                                xtype: 'passwordfield',
+                                id: 'passwordfield',
+                                label: 'Password:',
+                                labelWidth: '40%',
+                                name: 'password',
+                                value: 'iswi223<<',
+                                placeHolder: 'Enter Password'
+                            },
+                            {
+                                xtype: 'selectfield',
+                                id: 'selectfield',
+                                label: 'Domain:',
+                                labelWidth: '40%',
+                                placeHolder: 'Top Right Corner',
+                                displayField: 'name',
+                                store: 'Domains',
+                                valueField: 'id'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'login-button',
+                                itemId: 'submitButton',
+                                width: 280,
+                                text: 'Login'
+                            }
+                        ]
                     }
-
-
                 ]
-
+            },
+            {
+                xtype: 'panel',
+                docked: 'bottom',
+                items: [
+                    {
+                        xtype: 'image',
+                        docked: 'right',
+                        height: 158,
+                        width: 300,
+                        src: 'theme/images/ci/NEQ_Final.png'
+                    }
+                ]
             }
-
-
         ]
     }
+
 });

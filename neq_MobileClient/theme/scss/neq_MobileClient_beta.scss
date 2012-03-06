@@ -172,7 +172,13 @@ $list-active-color: mix(#043F62, #fff, 0);
 	color: #339;
 }
 // 2-3-3 DiseasesDetail
-
+/* ------------------------------ */
+// 2-3-4 MedicationDetail
+/* ------------------------------ */
+.x-component.x-medicationdetail{}
+.x-component.x-medicationdetail.x-form-fieldset{}
+.x-component.x-medicationdetail.x-form-fieldset.x-field-indication{}
+.x-component.x-medicationdetail.x-form-fieldset.x-field-physician{}
 
 
 
@@ -204,5 +210,12 @@ $list-active-color: mix(#043F62, #fff, 0);
     width: 5px;
 }
 
+#hidePatientListButton{
+    button-radius: 0px;
+    background-color: #000;
+}
 
-
+.hidePatientListButton{
+    button-radius: 0px;
+    background-color: #000;
+}

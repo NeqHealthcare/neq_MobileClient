@@ -34,7 +34,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
     xtype:'medicationdetail',
 
     config: {
-        layout: {
+            layout: {
             type: 'vbox'
         },
         scrollable: false,
