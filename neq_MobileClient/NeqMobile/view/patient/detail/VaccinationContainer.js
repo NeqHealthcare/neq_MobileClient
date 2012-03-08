@@ -38,7 +38,7 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterenderer
+                            renderer:daterendererLong
 
                         }   ,
                         {
@@ -48,7 +48,7 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterenderer
+                            renderer:daterendererLong
 
                         }
 

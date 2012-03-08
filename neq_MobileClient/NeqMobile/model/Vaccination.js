@@ -12,8 +12,8 @@ Ext.define('NeqMobile.model.Vaccination', {
             'vaccine_rec_name',
             'vaccine_lot',
             'institution_rec_name',
-            'date',
-            'next_dose_date',
+            {name:'date', type:'date',dateFormat:'time'},
+            {name:'next_dose_date', type:'date',dateFormat:'time'},
             'observations'
         ],
         proxy:myproxy
