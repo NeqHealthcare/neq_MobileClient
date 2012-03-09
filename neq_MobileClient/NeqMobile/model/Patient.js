@@ -5,7 +5,20 @@ Ext.define('NeqMobile.model.Patient', {
         extend:'Ext.data.Model',
         config:{
             fields:['id', 'rec_name',{name:'age', type:'date',dateFormat:'time'},
-                'diseases', 'latestDiagnoseRecName', 'primary_care_doctor_name', 'primary_care_doctor_rec_name', 'sex'
+                'diseases', 'latestDiagnoseRecName', 'primary_care_doctor_name', 'primary_care_doctor_rec_name',
+                {
+                    name: 'sex',
+                    convert: function(value, record) {
+                        var sex  = value;
+                            if(sex == 'f'){
+                                sex = 'female';
+                            }else{
+                                sex = 'male';
+                            }
+
+                        return sex;
+                    }
+                }
             ],
             proxy:myproxy,
             associations:[

@@ -2,27 +2,19 @@
  * @author chopsuey
  */
 
-/*
- xtype: 'image',
- height: 196,
- margin: '30 0 10 0',
- width: 150,
- src: 'theme/images/user/DefaultAvatar_small.jpg'
- */
-
 Ext.define('NeqMobile.view.Login', {
     extend: 'Ext.Container',
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
     xtype:'Login',
 
     config: {
-        cls: 'login',
+        cls: 'x-login',
         scrollable: 'auto',
         items: [
             {
                 xtype: 'toolbar',
                 docked: 'top',
-                ui: 'light',
+                //ui: 'light',
                 items: [
                     {
                         xtype: 'button',
@@ -45,10 +37,11 @@ Ext.define('NeqMobile.view.Login', {
                 items: [
                     {
                         xtype: 'image',
-                        height: 196,
+                        id: 'avatar',
+                        height: 200,
+                        width: 200,
                         margin: '0 0 10 0',
-                        width: 150,
-                        src: 'theme/images/user/DefaultAvatar_small.jpg'
+                        src: 'theme/images/user/doctor_avatar_big.jpg'
                     },
                     {
                         xtype: 'fieldset',
@@ -102,14 +95,17 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype: 'panel',
-
+                layout: {
+                    align: 'center',
+                    pack: 'center',
+                    type: 'vbox'
+                },
                 items: [
                     {
                         xtype: 'image',
-                        docked: 'right',
-                        height: 158,
-                        width: 300,
-                        src: 'theme/images/ci/NEQ_Final.png'
+                        height: 73,
+                        width: 143,
+                        src: 'theme/images/ci/neq_logo_stamped.png'
                     }
                 ]
             }
