@@ -1,5 +1,29 @@
 // 1 BASIC DESIGN
+//$base-color: #5694FF;
+$base-gradient: 'matte';
+$active-color: #BDBDBD; // bspw. selektion in liste
+$login-button-color:  #BDBDBD; //#ff8000; //orange
+//$login-formpanel-color: #5694ff;
 
+$list-pressed-color: mix(#08679F, #DEDEDE, 10);
+$list-active-color: mix(#043F62, #DEDEDE, 0);
+
+@import 'sencha-touch/default/all';
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-toolbar-forms;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-sheet;
+
+@include sencha-button-ui('login-button', $login-button-color, 'glossy');
 // 2 VIEWS
 
 // 2-1 BASIC - ROOT
@@ -62,7 +86,22 @@
     font-weight: normal;
     color: #666;
   }
+  /* FUNZT zur Zeit nicht oO ??
+  .x-item-pressed,
+  .x-item-selected {
+    border-top-color: #D1D1D1 !important;
+  }
+  .x-field-select, .x-form-label {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  .x-select-overlay {
+    margin-top: 50px;
+    background-color: #BDBDBD;
+  }
+  */
 }
+
 // 2-3-3 DiseasesDetail.js
 /* ------------------------------ */
 // 2-3-4 MedicationDetail.js
