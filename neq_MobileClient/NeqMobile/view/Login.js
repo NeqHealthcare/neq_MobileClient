@@ -16,7 +16,7 @@ Ext.define('NeqMobile.view.Login', {
     xtype:'Login',
 
     config: {
-        cls: 'login',
+        cls: 'x-login',
         scrollable: 'auto',
         items: [
             {
@@ -45,10 +45,11 @@ Ext.define('NeqMobile.view.Login', {
                 items: [
                     {
                         xtype: 'image',
+                        id: 'avatar',
                         height: 200,
                         width: 200,
                         margin: '0 0 10 0',
-                        src: 'theme/images/user/DefaultAvatar_login.jpg'
+                        src: 'theme/images/user/DefaultAvatar_login.jpg',
                     },
                     {
                         xtype: 'fieldset',

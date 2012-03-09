@@ -41,9 +41,9 @@ Ext.define('NeqMobile.view.patient.List', {
                         xtype:'list',
                         flex:1,
                         cls:'x-patientslist',
-                        itemTpl:['<div class="list-patient-image"></div>',
-                            '<span class="list-block-bold">{rec_name}<br />{age} - {sex}&nbsp;</span>',
-                            '<span class="list-block-normal">{latestDiagnoseRecName}&nbsp;</span>'].join('')
+                        itemTpl:['<div id="list-patient-image"></div>',
+                            '<span id="list-block-bold">{rec_name}<br />{age} - {sex}&nbsp;</span>',
+                            '<span id="list-block-normal">{latestDiagnoseRecName}&nbsp;</span>'].join('')
                     }
                 ]
             },

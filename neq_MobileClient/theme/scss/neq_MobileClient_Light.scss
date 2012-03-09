@@ -8,6 +8,15 @@
 /* ------------------------------ */
 // 2-1-2 Login
 /* ------------------------------ */
+.x-login{
+  #avatar {
+    background-size: cover;
+    background-position: center center;
+    background: #ddd;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);
+  }
+}
 
 // 2-1-3 Dashboard
 /* ------------------------------ */
@@ -28,28 +37,31 @@
     background-image: -webkit-linear-gradient(left , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
 }
 
-.x-patientslist .list-block-bold{
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  color: #666;
-}
-
-.x-patientslist .list-block-normal{
-  display: block;
-  font-size: 14px;
-  font-weight: normal;
-  color: #666;
-}
-
-.x-patientslist .list-patient-image {
-  float: left;
-  height: 45px;
-  width: 45px;
-  margin-right: 10px;
-  background-size: cover;
-  background-position: center center;
-  background-image:url(../images/user/DefaultAvatar_small.jpg);
+.x-patientslist{
+  div#list-patient-image {
+    float: left;
+    height: 45px;
+    width: 45px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center center;
+    background: #ddd;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);
+    background-image:url(../images/user/DefaultAvatar_small.jpg);
+  }
+  span#list-block-bold{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+  }
+  span#list-block-normal{
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+  }
 }
 
 .x-list .x-list-disclosure {
