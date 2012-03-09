@@ -11,6 +11,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
     xtype:'settingsDomains',
     config:{
       //  styleHtmlContent:true,
+        cls: 'x-settingsDomains',
         layout:'hbox',
         items:[
 
@@ -74,7 +75,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
                 items:[
                     {xtype:'fieldset',
                         title:'Connection Settings',
-                        instructions:'Enter the Connection data, you did get from your administrator',
+                        instructions:'Enter the Connection data, you received from your administrator',
                         items:[
                             {
                                 xtype:'textfield',

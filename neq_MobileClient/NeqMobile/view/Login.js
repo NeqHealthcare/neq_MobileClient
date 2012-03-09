@@ -2,14 +2,6 @@
  * @author chopsuey
  */
 
-/*
- xtype: 'image',
- height: 196,
- margin: '30 0 10 0',
- width: 150,
- src: 'theme/images/user/DefaultAvatar_big.jpg'
- */
-
 Ext.define('NeqMobile.view.Login', {
     extend: 'Ext.Container',
     requires:['NeqMobile.store.Domains', 'NeqMobile.store.Patients'],
