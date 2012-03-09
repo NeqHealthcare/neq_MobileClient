@@ -49,7 +49,7 @@ Ext.define('NeqMobile.view.patient.List', {
                         flex:1,
                         cls:'x-patients',
                         //store:'NeqMobile.store.Patients',
-                        itemTpl:['<div class="patientImage" style="float: left; height: 37px; width: 37px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
+                        itemTpl:['<div class="patientImage" style="float: left; height: 45px; width: 45px; margin-right: 10px; background-size: cover; background-position: center center; background-image:url(theme/images/user/DefaultPatientAvatar_big.jpg);"></div>',
                             //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
                             '<span style="display: block; font-size: 14px; font-weight: bold; color: #666;">{rec_name}</strong><br />{age} - {sex}&nbsp;</span>',
                             '<span style="display: block; font-size: 14px; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>'].join('')
@@ -58,7 +58,7 @@ Ext.define('NeqMobile.view.patient.List', {
                          itemTpl:'<table>' +
                          '<tr>' +
                          '<td rowspan="2">' +
-                         '<img width="40" height="40" src="theme/images/user/DefaultAvatar_small.jpg" />' +
+                         '<img width="40" height="40" src="theme/images/user/DefaultAvatar_big.jpg" />' +
                          '</td>' +
                          '<td>' +
                          '<strong>{rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}' +

@@ -21,12 +21,11 @@
 /* ------------------------------ */
 // 2-3-2 List
 /* ------------------------------ */
-.x-patients {
-    .x-item-pressed,
-    .x-item-selected {
-        background-image: -moz-linear-gradient(top , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
-        background-image: -webkit-linear-gradient(top , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
-    }
+#x-hidePatientListButton {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    background-image: -moz-linear-gradient(left , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
+    background-image: -webkit-linear-gradient(left , rgb(235,235,235) 26%, rgb(214,214,214) 63%, rgb(191,191,191) 82%);
 }
 // 2-3-3 DiseasesDetail
 /* ------------------------------ */
