@@ -3,6 +3,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
         xtype:'patientheader',
         config:{
             itemId:'patientheader',
+            cls: 'x-patientheader',
             layout:'hbox',
             scrollable: false,
 
@@ -23,7 +24,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                     xtype: 'panel',
                                     padding: '10 10 10 10',
                                     dock: 'left',
-                                    html: '<img src="theme/images/user/patient_avatar_big.jpg" width="145" height="145">'
+                                    html: '<img style="background-size: cover; background-position: center center; background: #ddd; border-radius: 3px; -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);" src="theme/images/user/patient_avatar_big.jpg" width="145" height="145">'
                                 },
                                 {
                                     xtype: 'textfield',
