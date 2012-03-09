@@ -46,7 +46,7 @@ var mycont = Ext.create('Ext.Container',{
             scrollable:false,
             items:[
                 {
-                    html:'<img src="../neq_MobileClient/theme/images/user/DefaultAvatar_small.jpg"/>'
+                    html:'<img src="../neq_MobileClient/theme/images/user/DefaultAvatar_big.jpg"/>'
                 },
                 {
                     xtype:'textfield',

@@ -7,7 +7,7 @@
  height: 196,
  margin: '30 0 10 0',
  width: 150,
- src: 'theme/images/user/DefaultAvatar_small.jpg'
+ src: 'theme/images/user/DefaultAvatar_big.jpg'
  */
 
 Ext.define('NeqMobile.view.Login', {
@@ -45,10 +45,10 @@ Ext.define('NeqMobile.view.Login', {
                 items: [
                     {
                         xtype: 'image',
-                        height: 196,
+                        height: 200,
+                        width: 202,
                         margin: '0 0 10 0',
-                        width: 150,
-                        src: 'theme/images/user/DefaultAvatar_small.jpg'
+                        src: 'theme/images/user/DefaultAvatar_big.jpg'
                     },
                     {
                         xtype: 'fieldset',
