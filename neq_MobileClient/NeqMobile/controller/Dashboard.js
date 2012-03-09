@@ -53,7 +53,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 var wantmove = maxmove + item.getHeight() - patientEl.getHeight();
                 var tomove = wantmove;
                 if (maxmove < wantmove){tomove = maxmove;}
-                console.log(tomove);
                 if (tomove > 0) {
                     myscroll.scrollBy(0, tomove, true);
                 }

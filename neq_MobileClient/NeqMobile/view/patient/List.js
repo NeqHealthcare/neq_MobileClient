@@ -51,7 +51,9 @@ Ext.define('NeqMobile.view.patient.List', {
                         //store:'NeqMobile.store.Patients',
                         itemTpl:['<div class="patientImage" style="float: left; height: 37px; width: 37px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
                             //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
-                            '<span style="display: block; font-size: 14px; font-weight: bold; color: #666;">{rec_name}</strong><br />{age} - {sex}&nbsp;</span>',
+                            '<span style="display: block; font-size: 14px; font-weight: bold; color: #666;">{rec_name}</strong><br />' +
+                                '{[NeqMobile.util.Renderer.daterenderer(values.age)]} ' +
+                                '- {sex}&nbsp;</span>',
                             '<span style="display: block; font-size: 14px; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>'].join('')
 
                         /*

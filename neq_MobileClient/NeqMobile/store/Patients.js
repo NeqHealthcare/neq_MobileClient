@@ -4,6 +4,7 @@ Ext.define('NeqMobile.store.Patients', {
 
 
         config:{model:'NeqMobile.model.Patient',
+            sorters: 'rec_name',
             //  sorters: 'lastName',
 //            autoLoad:true,
 //            autoSync:true,

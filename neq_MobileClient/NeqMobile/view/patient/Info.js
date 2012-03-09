@@ -9,42 +9,6 @@
  * @author geekflyer
  */
 
-var daterenderer = function (value, values) {
-    return value.day + '.' + value.month + '.' + value.year
-}
-
-var daterendererLong = function(date,values){
-    return date.getDay()+'.'+date.getMonth()+'.'+date.getYear()
-}
-
-var booleanrenderer = function (value, values) {
-    if (value) {
-        return '<input type="checkbox" checked="checked" disabled />'
-    }
-    else return '<input type="checkbox" disabled/>'
-}
-
-var bulletRenderer = function(value, values){
-    if (value) {
-        return '<img src="../neq_MobileClient/bullet_black.png">'
-    }
-    else return '<img src="../neq_MobileClient/bullet_red.png"/>'
-}
-
-
-var severityrenderer = function(value, values){
-    var barColor1="blue", barColor2="blue";
-    if(value.charAt(0)>2){
-        barColor1="black"
-    }
-    else(value.charAt(0)>1)
-    {
-        barColor1="black", barColor2="black"
-    }
-    return '<img src="../neq_MobileClient/'+barColor1+'_bar.png"><img src="../neq_MobileClient/'+barColor2+'_bar.png"><img src="../neq_MobileClient/blue_bar.png">';
-
-}
-
 
 Ext.define('NeqMobile.view.patient.Info', {
         extend:'Ext.Container',
