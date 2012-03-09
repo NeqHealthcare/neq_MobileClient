@@ -95,14 +95,17 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype: 'panel',
-
+                layout: {
+                    align: 'center',
+                    pack: 'center',
+                    type: 'vbox'
+                },
                 items: [
                     {
                         xtype: 'image',
-                        docked: 'right',
-                        height: 158,
-                        width: 300,
-                        src: 'theme/images/ci/NEQ_Final.png'
+                        height: 73,
+                        width: 143,
+                        src: 'theme/images/ci/neq_logo_stamped.png'
                     }
                 ]
             }
