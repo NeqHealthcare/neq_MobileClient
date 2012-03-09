@@ -67,7 +67,7 @@ Ext.define('NeqMobile.view.Workspace', {
                             align:'right'},
                         {
                             xtype:'button',
-                            icon:'theme/images/view/patientdummy.PNG',
+                            icon:'theme/images/user/doctor_avatar_small.jpg',
                             align:'right',
                             itemId:'doctorimage'
                         }

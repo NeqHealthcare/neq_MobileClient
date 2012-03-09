@@ -23,7 +23,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                     xtype: 'panel',
                                     padding: '10 10 10 10',
                                     dock: 'left',
-                                    html: '<img src="theme/images/user/DefaultAvatar_original.jpg" width="145" height="145">'
+                                    html: '<img src="theme/images/user/patient_avatar_big.jpg" width="145" height="145">'
                                 },
                                 {
                                     xtype: 'textfield',
