@@ -69,7 +69,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
 )
 
 var completerenderer = function(value, values){
-    if (values.course_completed )
+    if (values.course_completed)
         return '<div style="text-decoration: line-through;">'+value+'</div>'
     else{
         if(value.discontinued)
