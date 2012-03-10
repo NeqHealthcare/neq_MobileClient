@@ -67,7 +67,19 @@ Ext.define('NeqMobile.controller.Dashboard', {
         },
         onPatientSelect:function (list, patientrecord, options) {
             console.log('loading patient');
+            var me = this;
+
             var patientinfo = this.getPatientInfo();
+
+            var finishcount = 0;
+            var finishwaiter = function () {
+                finishcount++;
+                if (finishcount === 3)
+                {
+                    patientinfo.setMasked(false);
+                }
+            }
+
             if(patientinfo.isHidden()){
                 patientinfo.setHidden(false);
             }
@@ -84,6 +96,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             diagnosestore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadDiagnoses(diagnosestore);
+                    finishwaiter();
                 },
                 scope:this
             });
@@ -96,6 +109,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             vaccinationstore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadVaccinations(vaccinationstore);
+                    finishwaiter();
                 },
                 scope:this
             });
@@ -110,7 +124,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
             medicationstore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadMedications(medicationstore);
-                    patientinfo.setMasked(false);
+                    finishwaiter();
+
                 },
                 scope:this
             });
