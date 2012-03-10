@@ -33,7 +33,16 @@ Ext.define('NeqMobile.util.Renderer',
                 barColor1="black", barColor2="black"
             }
             return '<img src="theme/images/view/patient/'+barColor1+'_bar.png"><img src="theme/images/view/patient/'+barColor2+'_bar.png"><img src="theme/images/view/patient/blue_bar.png">';
-
+        },
+        completerenderer: function(value, values){
+            if(values.discontinued && !values.course_completed)
+                return '<span style="color:#FF0000;">'+value+'</span>'
+            if (!values.discontinued && values.course_completed)
+                return '<div style="text-decoration: line-through;">'+value+'</div>'
+            else{
+                return '<div style="text-decoration: none;">'+value+'</div>'
         }
+}
+
 
     });
