@@ -19,20 +19,20 @@ Ext.define('NeqMobile.util.Renderer',
         },
         bulletRenderer:function (value, values) {
             if (value) {
-                return '<img src="../neq_MobileClient/bullet_black.png">'
+                return '<img src="theme/images/view/patient/bullet_black.png">'
             }
-            else return '<img src="../neq_MobileClient/bullet_red.png"/>'
+            else return '<img src="theme/images/view/patient/bullet_red.png"/>'
         },
         severityrenderer:function (value, values) {
-            var barColor1 = "blue", barColor2 = "blue";
-            if (value.charAt(0) > 2) {
-                barColor1 = "black"
+            var barColor1="blue", barColor2="blue";
+            if(value.charAt(0)>2){
+                barColor1="black"
             }
-            else(value.charAt(0) > 1)
+            else(value.charAt(0)>1)
             {
-                barColor1 = "black", barColor2 = "black"
+                barColor1="black", barColor2="black"
             }
-            return '<img src="../neq_MobileClient/' + barColor1 + '_bar.png"><img src="../neq_MobileClient/' + barColor2 + '_bar.png"><img src="../neq_MobileClient/blue_bar.png">';
+            return '<img src="theme/images/view/patient/'+barColor1+'_bar.png"><img src="theme/images/view/patient/'+barColor2+'_bar.png"><img src="theme/images/view/patient/blue_bar.png">';
 
         }
 
