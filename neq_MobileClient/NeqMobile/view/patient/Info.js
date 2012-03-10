@@ -10,7 +10,7 @@
  */
 
 var daterenderer = function (value, values) {
-    return value.day + '.' + value.month + '.' + value.year
+        return value.day + '.' + value.month + '.' + value.year
 }
 
 var daterendererLong = function(date,values){
@@ -31,18 +31,19 @@ var bulletRenderer = function(value, values){
     else return '<img src="../neq_MobileClient/bullet_red.png"/>'
 }
 
-
 var severityrenderer = function(value, values){
-    var barColor1="blue", barColor2="blue";
+    var barColor1,barColor2;
     if(value.charAt(0)>2){
-        barColor1="black"
+        barColor1="blue", barColor2="blue"
     }
-    else(value.charAt(0)>1)
-    {
-        barColor1="black", barColor2="black"
+    else{
+        if(value.charAt(0)>1){
+            barColor1="black", barColor2="blue"
+        }
+        else
+            barColor1="black", barColor2="black"
     }
     return '<img src="../neq_MobileClient/'+barColor1+'_bar.png"><img src="../neq_MobileClient/'+barColor2+'_bar.png"><img src="../neq_MobileClient/blue_bar.png">';
-
 }
 
 

@@ -19,9 +19,9 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                     columns:[
                         {
                             header:'Medication',
-                            dataIndex:'medicament_rec_name',
-                            cls:'centered-cell',
+                            dataIndex:  'medicament_rec_name',
                             style:'padding-left: 1em;',
+                            renderer: completerenderer,
                             width:'55%'
                         },
                         {
@@ -44,14 +44,6 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             renderer:daterendererLong
 
                         }   ,
-//                        {
-//                            header:'Course Completed',
-//                            dataIndex:'course_completed',
-//                            style:'text-align: center;',
-//                            renderer:bulletRenderer,
-//                            width:'15%',
-//                            filter:{ type:'numeric' }
-//                        },
                         {
                             header:'Active',
                             dataIndex:'is_active',
@@ -76,9 +68,16 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
     }
 )
 
-
-
-
+var completerenderer = function(value, values){
+    if (values.course_completed )
+        return '<div style="text-decoration: line-through;">'+value+'</div>'
+    else{
+        if(value.discontinued)
+            return '<div style="font-color:#FF0000">'+value+'</div>'
+        else
+            return '<div style="text-decoration: none;">'+value+'</div>'
+}
+}
 
 
 
