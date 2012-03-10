@@ -31,7 +31,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
 
                         }   ,
                         {
@@ -41,21 +41,21 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
 
                         }   ,
                         {
                             header:'Active',
                             dataIndex:'is_active',
                             style: 'text-align: center;',
-                            renderer:bulletRenderer,
+                            renderer:NeqMobile.util.Renderer.bulletRenderer,
                             width:'5%'
                         },
                         {
                             header:'Discontinued',
                             dataIndex:'discontinued',
                             style:'text-align: center;',
-                            renderer:bulletRenderer,
+                            renderer:NeqMobile.util.Renderer.bulletRenderer,
                             width:'10%'
                         }
 
