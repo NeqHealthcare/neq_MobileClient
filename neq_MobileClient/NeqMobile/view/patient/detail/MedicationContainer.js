@@ -1,3 +1,14 @@
+var completerenderer = function(value, values){
+    if (values.course_completed)
+        return '<div style="text-decoration: line-through;">'+value+'</div>'
+    else{
+       if(values.discontinued)
+            return '<span style="color:#FF0000">'+value+'</span>'
+        else
+        return '<div style="text-decoration: none;">'+value+'</div>'
+    }
+}
+
 Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
         extend:'Ext.form.FieldSet',
         xtype:'medicationscontainer',
@@ -68,16 +79,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
     }
 )
 
-var completerenderer = function(value, values){
-    if (values.course_completed )
-        return '<div style="text-decoration: line-through;">'+value+'</div>'
-    else{
-        if(value.discontinued)
-            return '<div style="font-color:#FF0000">'+value+'</div>'
-        else
-            return '<div style="text-decoration: none;">'+value+'</div>'
-}
-}
+
 
 
 
