@@ -21,14 +21,14 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                             header:'Vaccine',
                             dataIndex:'vaccine_rec_name',
                             style:'padding-left: 1em;',
-                            width:'55%'
+                            width:'60%'
 
                         },
                         {
                             header:'Dose Number',
                             dataIndex:'dose',
                             style:'text-align: right; padding-right: 1em;',
-                            width:'15%',
+                            width:'10%',
                             filter:{ type:'numeric' }
                         },
                         {

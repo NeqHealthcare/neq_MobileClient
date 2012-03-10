@@ -31,13 +31,6 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             filter:{ type:'numeric' }
                         },
                         {
-                            header:'Date',
-                            dataIndex:'diagnosed_date',
-                            style:'padding-right: 1em; text-align: right;',
-                            width:'15%',
-                            renderer:NeqMobile.util.Renderer.daterenderer
-                        },
-                        {
                             header:'Severity',
                             dataIndex:'disease_severity',
                             style: 'text-align: center;',
@@ -45,15 +38,6 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             width:'10%',
                             renderer: NeqMobile.util.Renderer.severityrenderer
                         },
-                        {
-                            header:'Healed Date',
-                            dataIndex:'healed_date',
-                            hidden:true,
-                            style:'text-align: right; padding-right: 1em;',
-                            sortable:false,
-                            width:'15%',
-                            renderer:NeqMobile.util.Renderer.daterenderer
-                        }   ,
                         {
                             header:'Infectability',
                             dataIndex:'is_infectious',
@@ -72,6 +56,22 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
+                        },
+                        {
+                            header:'Diagnosed Date',
+                            dataIndex:'diagnosed_date',
+                            style:'padding-right: 1em; text-align: right;',
+                            width:'15%',
+                            renderer:NeqMobile.util.Renderer.daterenderer
+                        },
+                        {
+                            header:'Healed Date',
+                            dataIndex:'healed_date',
+                            hidden:true,
+                            style:'text-align: right; padding-right: 1em;',
+                            sortable:false,
+                            width:'15%',
+                            renderer:NeqMobile.util.Renderer.daterenderer
                         }
                     ]
                 }

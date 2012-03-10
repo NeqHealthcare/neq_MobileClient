@@ -1,14 +1,3 @@
-var completerenderer = function(value, values){
-    if (values.course_completed)
-        return '<div style="text-decoration: line-through;">'+value+'</div>'
-    else{
-       if(values.discontinued)
-            return '<span style="color:#FF0000">'+value+'</span>'
-        else
-        return '<div style="text-decoration: none;">'+value+'</div>'
-    }
-}
-
 Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
         extend:'Ext.form.FieldSet',
         xtype:'medicationscontainer',
@@ -32,8 +21,15 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             header:'Medication',
                             dataIndex:  'medicament_rec_name',
                             style:'padding-left: 1em;',
-                            renderer: completerenderer,
-                            width:'55%'
+                            renderer: NeqMobile.util.Renderer.completerenderer,
+                            width:'60%'
+                        },
+                        {
+                            header:'Active',
+                            dataIndex:'is_active',
+                            style: 'text-align: center;',
+                            renderer:NeqMobile.util.Renderer.bulletRenderer,
+                            width:'10%'
                         },
                         {
                             header:'Start of Treatment',
@@ -54,22 +50,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
 
-                        }   ,
-                        {
-                            header:'Active',
-                            dataIndex:'is_active',
-                            style: 'text-align: center;',
-                            renderer:NeqMobile.util.Renderer.bulletRenderer,
-                            width:'5%'
-                        },
-                        {
-                            header:'Discontinued',
-                            dataIndex:'discontinued',
-                            style:'text-align: center;',
-                            renderer:NeqMobile.util.Renderer.bulletRenderer,
-                            width:'10%'
                         }
-
                     ]
 
 
