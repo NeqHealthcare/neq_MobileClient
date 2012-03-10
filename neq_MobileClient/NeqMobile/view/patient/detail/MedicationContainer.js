@@ -19,10 +19,17 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                     columns:[
                         {
                             header:'Medication',
-                            dataIndex:'medicament_rec_name',
-                            cls:'centered-cell',
+                            dataIndex:  'medicament_rec_name',
                             style:'padding-left: 1em;',
-                            width:'55%'
+                            renderer: NeqMobile.util.Renderer.completerenderer,
+                            width:'60%'
+                        },
+                        {
+                            header:'Active',
+                            dataIndex:'is_active',
+                            style: 'text-align: center;',
+                            renderer:NeqMobile.util.Renderer.bulletRenderer,
+                            width:'10%'
                         },
                         {
                             header:'Start of Treatment',
@@ -31,7 +38,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
 
                         }   ,
                         {
@@ -41,32 +48,9 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
 
-                        }   ,
-//                        {
-//                            header:'Course Completed',
-//                            dataIndex:'course_completed',
-//                            style:'text-align: center;',
-//                            renderer:bulletRenderer,
-//                            width:'15%',
-//                            filter:{ type:'numeric' }
-//                        },
-                        {
-                            header:'Active',
-                            dataIndex:'is_active',
-                            style: 'text-align: center;',
-                            renderer:bulletRenderer,
-                            width:'5%'
-                        },
-                        {
-                            header:'Discontinued',
-                            dataIndex:'discontinued',
-                            style:'text-align: center;',
-                            renderer:bulletRenderer,
-                            width:'10%'
                         }
-
                     ]
 
 
@@ -75,8 +59,6 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
         }
     }
 )
-
-
 
 
 
