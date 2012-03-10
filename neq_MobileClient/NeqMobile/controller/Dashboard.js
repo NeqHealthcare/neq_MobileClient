@@ -116,6 +116,12 @@ Ext.define('NeqMobile.controller.Dashboard', {
             });
 
         },
+
+        waitforloading: function(){
+
+        }
+            ,
+
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
             var searchstring = Ext.String.trim(searchfield.getValue());
