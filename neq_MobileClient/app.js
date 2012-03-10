@@ -9,7 +9,7 @@ Ext.application({
     appFolder:'NeqMobile',
 //    viewport:{ xclass: 'NeqMobile.view.Viewport'},
     name:'NeqMobile',
-    requires:['Ext.ux.touch.grid.View','Ext.ux.touch.grid.feature.Expandable','Ext.DateExtras'],
+    requires:['Ext.ux.touch.grid.View','Ext.ux.touch.grid.feature.Expandable','Ext.DateExtras','NeqMobile.util.Renderer'],
     controllers:['General', 'Session', 'NeqMobile.controller.settings.Domains', 'Dashboard'],
     views:['NeqMobile.view.settings.Domains', 'Viewport', 'NeqMobile.view.patient.List', 'Dashboard', 'Workspace'],
     stores:['Patients', 'Domains'],

@@ -26,7 +26,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             header:'Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
-                            renderer:bulletRenderer,
+                            renderer:NeqMobile.util.Renderer.bulletRenderer,
                             width:'7%',
                             filter:{ type:'numeric' }
                         },
@@ -35,7 +35,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             dataIndex:'diagnosed_date',
                             style:'padding-right: 1em; text-align: right;',
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
                         },
                         {
                             header:'Severity',
@@ -43,7 +43,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             style: 'text-align: center;',
                             cls:'centered-cell',
                             width:'10%',
-                            renderer: severityrenderer
+                            renderer: NeqMobile.util.Renderer.severityrenderer
                         },
                         {
                             header:'Healed Date',
@@ -52,7 +52,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
-                            renderer:daterendererLong
+                            renderer:NeqMobile.util.Renderer.daterenderer
                         }   ,
                         {
                             header:'Infectability',
@@ -60,7 +60,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             hidden:true,
                             style:'text-align: center;',
                             sortable:false,
-                            renderer:booleanrenderer,
+                            renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
 
                         },
@@ -70,7 +70,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             hidden:true,
                             style:'text-align: center; padding-right: 1em;',
                             sortable:false,
-                            renderer:booleanrenderer,
+                            renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
                         }
                     ]

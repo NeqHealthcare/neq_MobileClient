@@ -39,42 +39,13 @@ Ext.define('NeqMobile.view.patient.List', {
                     ,
                     {
                         xtype:'list',
-                        // styleHtmlContent:true,
-                        //  dock: 'right',
-                        // grouped     : true,
-                        //  indexBar    : true,
-                        //styleHtmlContent:true,
-                        // flex:1,
-
                         flex:1,
-                        cls:'x-patients',
-                        //store:'NeqMobile.store.Patients',
-                        itemTpl:['<div class="patientImage" style="float: left; height: 37px; width: 37px; margin-right: 10px; background-size: cover; background-position: center center; background: #ddd; @include border-radius(3px); -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6); background-image:url(theme/images/user/DefaultAvatar_small.jpg);"></div>',
-                            //'<div class="headshot" style="background-image:url(resources/images/headshots/{headshot});"></div>',
-                            '<span style="display: block; font-size: 14px; font-weight: bold; color: #666;">{rec_name}</strong><br />{age} - {sex}&nbsp;</span>',
-                            '<span style="display: block; font-size: 14px; font-weight: normal; color: #666;">{latestDiagnoseRecName}&nbsp;</span>'].join('')
-
-                        /*
-                         itemTpl:'<table>' +
-                         '<tr>' +
-                         '<td rowspan="2">' +
-                         '<img width="40" height="40" src="theme/images/user/DefaultAvatar_small.jpg" />' +
-                         '</td>' +
-                         '<td>' +
-                         '<strong>{rec_name}</strong>  - {[values.age.split(" ")\[0\]]} - {sex}' +
-                         '</td>' +
-                         '</tr>' +
-                         '<tr>' +
-                         '<td>' +
-                         '<table>' +
-                         '<tr>' +
-                         '<td>{latestDiagnoseRecName} </td>' +
-                         '</tr>' +
-                         '</table>' +
-                         '</td>' +
-                         '</tr>' +
-                         '</table>'
-                         */
+                        cls:'x-patientslist',
+                        itemTpl:['<div id="list-patient-image"></div>',
+                            '<span id="list-block-bold">{rec_name}<br />' +
+                                '{[NeqMobile.util.Renderer.daterenderer(values.age)]}' +
+                                ' - {sex}&nbsp;</span>',
+                            '<span id="list-block-normal">{latestDiagnoseRecName}&nbsp;</span>'].join('')
                     }
                 ]
             },
