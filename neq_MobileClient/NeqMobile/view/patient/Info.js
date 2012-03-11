@@ -15,22 +15,20 @@ Ext.define('NeqMobile.view.patient.Info', {
         requires:['NeqMobile.view.patient.detail.PatientHeader','NeqMobile.view.patient.detail.MedicationContainer','NeqMobile.view.patient.detail.VaccinationContainer','NeqMobile.view.patient.detail.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
 
         loadPatientHeader:function (patientrecord) {
-            console.log('setting patients data...');
-            console.log(patientrecord);
             this.down('#patientheader').setRecord(patientrecord);
         },
         loadDiagnoses:function (diagnosestore) {
-            console.log('setting diagnoses store');
+
             this.down('#diagnoses').setStore(diagnosestore);
 
         },
         loadMedications:function (medicationstore) {
-            console.log('setting medications tore');
+
             this.down('#medications').setStore(medicationstore);
 
         },
         loadVaccinations:function (vaccinationstore) {
-            console.log('setting vaccinations data');
+
             this.down('#vaccinations').setStore(vaccinationstore);
         },
         config:{

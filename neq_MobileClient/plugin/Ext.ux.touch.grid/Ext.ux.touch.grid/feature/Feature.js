@@ -7,10 +7,6 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
 
     initFeatures:function (features, launchFn) {
 
-
-
-        console.log('the features');
-        console.log(features);
         var me = this;
 
         features = me.getFeatures(features, launchFn);
@@ -37,9 +33,6 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
 
             cfg.grid = me;
 
-            console.log(feature);
-            // temporary bugfix:
-          //  var feature = 'Ext.ux.touch.grid.feature.Expandable'
             feature = Ext.create(feature, cfg);
 
             if (feature && typeof feature.init === 'function') {
@@ -54,7 +47,6 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
     destroyFeatures:function () {
         var me = this,
             features = me._features;
-        console.log('destroying features');
         features.each(function (feature) {
             if (typeof feature.onDestroy === 'function') {
                 feature.onDestroy();

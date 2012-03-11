@@ -27,8 +27,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             dataIndex:'is_active',
                             style:'text-align: center;',
                             renderer:NeqMobile.util.Renderer.bulletRenderer,
-                            width:'7%',
-                            filter:{ type:'numeric' }
+                            width:'7%'
                         },
                         {
                             header:'Severity',
@@ -56,7 +55,10 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
-                        },
+                        }
+                        ,
+
+
                         {
                             header:'Diagnosed Date',
                             dataIndex:'diagnosed_date',

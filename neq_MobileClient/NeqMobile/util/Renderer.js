@@ -9,7 +9,12 @@ Ext.define('NeqMobile.util.Renderer',
     {
         singleton:true,
         daterenderer:function (date, values) {
+            if (date)
+            {
             return Ext.Date.format(date, 'd.m.Y');
+            }
+            else
+            {return '-'}
         },
         booleanrenderer:function (value, values) {
             if (value) {

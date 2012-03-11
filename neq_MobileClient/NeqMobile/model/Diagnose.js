@@ -1,5 +1,5 @@
 var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/dashboard/one'});
+    {customUrl:'/diagnose/all'});
 
 Ext.define('NeqMobile.model.Diagnose', {
     extend:'Ext.data.Model',

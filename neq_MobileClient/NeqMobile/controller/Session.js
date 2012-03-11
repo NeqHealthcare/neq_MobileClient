@@ -29,7 +29,7 @@ Ext.define('NeqMobile.controller.Session', {
     },
     init:function () {
         this.callParent(arguments);
-        console.log('Init Session controller');
+
     },
     onBackFromDomainSettings:function () {
         this.getViewport().setActiveItem(this.getLogin());
@@ -39,21 +39,21 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('switching card');
         var settingsdomains;
         if (this.getSettingsDomains()) {
-            console.log('loading old settings view');
+
             settingsdomains = this.getSettingsDomains();
         }
         else {
             settingsdomains = Ext.create('NeqMobile.view.settings.Domains');
         }
         this.getViewport().setActiveItem(settingsdomains);
-        console.log('showing Domain Settings...');
+
 //        var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
 //        mycontroller.launch();
     },
 
 
     onShowLogoutMenu:function (button) {
-        console.log('showing logout menu...');
+
         var settingsmenu = NeqMobile.view.menu.Settings;
         settingsmenu.showBy(button);
     },

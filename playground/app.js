@@ -5,6 +5,7 @@ Ext.Loader.setConfig({
 Ext.application({
     name: 'SkeletonApp',
     launch: function() {
-     Ext.Viewport.add(Ext.create('SkeletonApp.view.Viewport'));
+       var d = new Date(0);
+       console.log(d);
     }
 });

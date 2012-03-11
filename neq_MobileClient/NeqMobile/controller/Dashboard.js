@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications'],
 
         config:{
 
@@ -42,11 +42,11 @@ Ext.define('NeqMobile.controller.Dashboard', {
         doNothing:function () {
         },
         onItemTap:function (dw, index, item, record, e, eOpts, detailcont) {
-            console.log('itemtap invoked');
+
             var me = this;
 
             var callback = function () {
-                console.log('lets scroll');
+
                 var myscroll = me.getPatientInfo().getScrollable().getScroller();
                 var patientEl = me.getPatientInfo().element;
                 var maxmove = item.getY() - patientEl.getY();
@@ -66,7 +66,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
         },
         onPatientSelect:function (list, patientrecord, options) {
-            console.log('loading patient');
+
             var me = this;
 
             var patientinfo = this.getPatientInfo();
@@ -86,12 +86,13 @@ Ext.define('NeqMobile.controller.Dashboard', {
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
 
+            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
+
+
             var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
             if (!diagnosestore) {
                 diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
-
-            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading patient details'});
             diagnosestore.getProxy().setExtraParam('id', patientid);
             diagnosestore.load({
                 callback:function (records, operation, success) {
@@ -100,6 +101,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 },
                 scope:this
             });
+
+
 
             var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
             if (!vaccinationstore) {
@@ -132,10 +135,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
         },
 
-        waitforloading: function(){
 
-        }
-            ,
 
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
@@ -148,7 +148,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     var id = item.get('id');
                     console.log(name);
                     console.log(id);
-                    console.log('the searchstring is:' + searchstring);
                     var searchexpr = new RegExp(searchstring, 'i');
                     console.log(searchexpr);
                     if (searchexpr.test(name) || searchexpr.test(id)) {
@@ -159,7 +158,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     }
                 }}
             );
-            console.log('applying filter');
+
         }
     }
 

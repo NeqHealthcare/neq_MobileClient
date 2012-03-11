@@ -83,7 +83,7 @@ Ext.define('NeqMobile.view.Workspace', {
                 /*
                  items:[
                  {
-                 dock:'top',
+
                  xtype:'toolbar',
                  ui:'light',
 

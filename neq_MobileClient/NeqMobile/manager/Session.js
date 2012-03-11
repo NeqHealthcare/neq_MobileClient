@@ -56,18 +56,17 @@ Ext.define('NeqMobile.manager.Session',
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
              // withCredentials: true,
-
                 scope:this,
                 timeout:30000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     //var obj = Ext.decode(response.responseText);
-                    var obj = response.responseText;
-                    if (obj != 'false' && !(obj === "")) {
+                    var obj = Ext.decode(response.responseText);
+                    if (obj.data) {
                         console.log('login successfull');
                         var mySession = new NeqMobile.model.Session({
                             user:user,
-                            sessionId:obj,
+                            sessionId:obj.data[0],
                             domain:domain
                         });
                         this.session = mySession;

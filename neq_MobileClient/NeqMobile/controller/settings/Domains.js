@@ -16,7 +16,7 @@ Ext.define('NeqMobile.controller.settings.Domains', {
         }
     },
     init:function () {
-        console.log('init of domains controller');
+
         this.callParent(arguments);
         this.control(
             {
@@ -37,7 +37,7 @@ Ext.define('NeqMobile.controller.settings.Domains', {
         )
     },
     launch:function () {
-        console.log('launch of domains controller');
+
         this.callParent(arguments);
     },
     test:function () {
