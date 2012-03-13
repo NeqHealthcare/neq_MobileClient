@@ -12,8 +12,8 @@ Ext.define('NeqMobile.store.Diagnoses', {
 
         config:{model:'NeqMobile.model.Diagnose',
             //  sorters: 'lastName',
-//            autoLoad:true,
-//            autoSync:true,
+ //           autoLoad:true,
+ //           autoSync:true,
             storeId:'diagnoses'
         }}
 );

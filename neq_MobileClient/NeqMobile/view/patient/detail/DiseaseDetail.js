@@ -57,6 +57,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Disease:',
                                         labelWidth: '57%',
+                                        name: 'pathology_rec_name',
                                         readOnly: true
                                     },
                                     {
@@ -65,7 +66,9 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Status of the disease:',
                                         labelWidth: '57%',
-                                        readOnly: true
+                                        name: 'is_active',
+                                        readOnly: true,
+                                        store: 'diagnoses'
                                     }
                                 ]
                             },
@@ -79,6 +82,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Date of diagnosis:',
                                         labelWidth: '50%',
+                                        name: 'diagnosed_date',
                                         placeHolder: 'mm/dd/yyyy',
                                         readOnly: true
                                     },
@@ -88,7 +92,9 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Severity:',
                                         labelWidth: '50%',
-                                        readOnly: true
+                                        name: 'disease_severity',
+                                        readOnly: true,
+                                        store: 'diagnoses'
                                     }
                                 ]
                             },
@@ -102,6 +108,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Physician:',
                                         labelWidth: '40%',
+                                        name: 'doctor_rec_name',
                                         readOnly: true
                                     },
                                     {
@@ -109,7 +116,8 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         height: 54,
                                         style: 'text-align: right;',
                                         label: 'Infectious disease:',
-                                        labelWidth: '60%'
+                                        labelWidth: '60%',
+                                        name: 'is_infectious'
                                     }
                                 ]
                             }
@@ -138,7 +146,9 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Allergy type:',
                                         labelWidth: '54%',
-                                        readOnly: true
+                                        name: 'allergy_type',
+                                        readOnly: true,
+                                        store: 'diagnoses'
                                     }
                                 ]
                             },
@@ -160,7 +170,8 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         height: 54,
                                         style: 'text-align: right;',
                                         label: 'Allergic disease:',
-                                        labelWidth: '60%'
+                                        labelWidth: '60%',
+                                        name: 'is_allergy'
                                     }
                                 ]
                             }
@@ -188,6 +199,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Start of Treatment:',
                                         labelWidth: '57%',
+                                        name: 'date_start_treatment',
                                         readOnly: true
                                     },
                                     {
@@ -195,6 +207,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Treatment description:',
                                         labelWidth: '57%',
+                                        name: 'extra_info',
                                         readOnly: true
                                     }
                                 ]
@@ -213,6 +226,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'End of treatmeant:',
                                         labelWidth: '50%',
+                                        name: 'healed_date',
                                         readOnly: true
                                     },
                                     {
@@ -220,6 +234,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         style: 'text-align: right;',
                                         label: 'Code:',
                                         labelWidth: '50%',
+                                        name: 'id',
                                         readOnly: true
                                     }
                                 ]
@@ -237,7 +252,8 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         xtype: 'togglefield',
                                         height: 54,
                                         label: 'Currently on treatment:',
-                                        labelWidth: '60%'
+                                        labelWidth: '60%',
+                                        name: 'is_on_treatment'
                                     }
                                 ]
                             }
