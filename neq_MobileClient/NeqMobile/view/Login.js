@@ -77,7 +77,6 @@ Ext.define('NeqMobile.view.Login', {
                                 id: 'selectfield',
                                 label: 'Domain:',
                                 labelWidth: '40%',
-                                placeHolder: 'Top Right Corner',
                                 displayField: 'name',
                                 store: 'Domains',
                                 valueField: 'id'

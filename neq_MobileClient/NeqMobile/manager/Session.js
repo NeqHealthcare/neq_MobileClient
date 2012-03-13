@@ -28,7 +28,7 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:this.session.get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
-            //   withCredentials: true,
+                //   withCredentials: true,
 
                 scope:this,
                 timeout:30000,
@@ -55,36 +55,45 @@ Ext.define('NeqMobile.manager.Session',
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
-             // withCredentials: true,
+                // withCredentials: true,
                 scope:this,
                 timeout:30000,
                 params:{username:user, password:password, backendSid:domain.get('backendSid')},
                 success:function (response, opts) {
                     //var obj = Ext.decode(response.responseText);
-                    var obj = Ext.decode(response.responseText);
-                    if (obj.data) {
-                        console.log('login successfull');
-                        var mySession = new NeqMobile.model.Session({
-                            user:user,
-                            sessionId:obj.data[0],
-                            domain:domain
-                        });
-                        this.session = mySession;
-                        successCallback.apply(scope);
+
+                    var obj = Ext.decode(response.responseText, true);
+                    if (obj) {
+                        if (obj.success === 'true' && obj.data) {
+                            console.log('login successfull');
+                            var mySession = new NeqMobile.model.Session({
+                                user:user,
+                                sessionId:obj.data[0],
+                                domain:domain
+                            });
+                            this.session = mySession;
+                            successCallback.apply(scope);
+                        }
+                        else
+                        {
+                            Ext.Msg.alert('Connection failed', 'Server replied: ' + obj.error);
+                            if (failureCallback) failureCallback.apply(scope);
+                        }
                     }
                     else {
-                        Ext.Msg.alert('Connection failed', 'try again <br> server-side failure with status code: ' + response.status, Ext.emptyFn);
+                        Ext.Msg.alert('Connection failed', '<br> status code: ' + response.status, Ext.emptyFn);
                         console.log('login failed');
                         console.log('server-side failure with status code ' + response.status);
                         if (failureCallback) failureCallback.apply(scope);
                     }
                 },
                 failure:function (response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                    console.log('login failed - server not reachable')
                     Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
                         'It occured a technical connection problem. Possible causes are:<br><br>' +
                         '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
-                    console.log('server-side failure with status code ' + response.status);
-                    console.log('login failed - server not reachable')
+
                     failureCallback.apply(scope);
                 }
             });
