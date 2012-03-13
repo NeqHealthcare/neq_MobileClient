@@ -10,14 +10,15 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
             items:[
                 {
                     xtype:'fieldset',
-                    title:'Patient',
+
                     layout:'hbox',
                     width: '100%',
                     items:[
                         {
                             xtype: 'panel',
                             layout:'vbox',
-                            padding: '10 10 10 10',
+                            margin: '0',
+                            padding: '5',
                             width: '100%',
                             items:[
                                 {

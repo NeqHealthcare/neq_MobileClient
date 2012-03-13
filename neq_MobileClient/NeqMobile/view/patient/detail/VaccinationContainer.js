@@ -3,7 +3,8 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
         xtype:'vaccinationscontainer',
         config:{
             title:'Vaccinations',
-            padding: '10 10 10 10',
+            margin: '0',
+            padding: '5',
             items:[
                 {xtype:'touchgridpanel',
                     itemId:'vaccinations',

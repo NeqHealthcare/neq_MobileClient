@@ -3,7 +3,8 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
         xtype:'diagnosescontainer',
         config:{
             title:'Diagnoses',
-            padding: '10 10 10 10',
+            margin: '0',
+            padding: '5',
             items:[
                 {xtype:'touchgridpanel',
                     itemId:'diagnoses',
