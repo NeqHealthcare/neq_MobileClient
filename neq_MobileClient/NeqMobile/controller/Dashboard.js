@@ -14,6 +14,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             refs:{
                 loginButton:'button[action=login]',
                 patientInfo:'patientInfo',
+                patientInfoContd1:'patientInfoContd1',
                 patientListContainer:'Dashboard patientList #patientListContainer'
             },
             control:{
@@ -26,6 +27,10 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'Dashboard patientList #x-hidePatientListButton':{
                     tap:'onHideElementTap'
                 },
+                'patientInfoContd1 #x-createNewLabRequestButton':{
+                    tap:'onCreateNewLabRequestTap'
+                }
+                ,
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'Dashboard #medications':{itemexpanded:'onItemTap'},
                 'Dashboard #vaccinations':{itemexpanded:'onItemTap'}
@@ -38,6 +43,11 @@ Ext.define('NeqMobile.controller.Dashboard', {
             }else{
                 patientListContainer.setHidden(true);
             }
+        },
+        onCreateNewLabRequestTap:function(button,e,eOpts){
+            var labTestRequestOverlay = Ext.create('NeqMobile.view.patient..create.CreateLabTestRequest');
+            this.overlay = Ext.Viewport.add(labTestRequestOverlay);
+            this.overlay.show();
         },
         doNothing:function () {
         },
@@ -70,6 +80,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             var me = this;
 
             var patientinfo = this.getPatientInfo();
+            var patientInfoContd1 = this.getPatientInfoContd1();
 
             var finishcount = 0;
             var finishwaiter = function () {
@@ -82,6 +93,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
             if(patientinfo.isHidden()){
                 patientinfo.setHidden(false);
+            }
+            if(patientInfoContd1.isHidden()){
+                patientInfoContd1.setHidden(false);
             }
             var patientid = patientrecord.get('id');
             this.getPatientInfo().loadPatientHeader(patientrecord);
