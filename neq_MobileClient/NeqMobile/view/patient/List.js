@@ -42,7 +42,7 @@ Ext.define('NeqMobile.view.patient.List', {
                         flex:1,
                         cls:'x-patientslist',
                         itemTpl:['<div id="list-patient-image"></div>',
-                            '<span id="list-block-bold">{rec_name}<br />' +
+                            '<span id="list-block-bold">{rec_name}&nbsp;({id})<br />' +
                                 '{[NeqMobile.util.Renderer.daterenderer(values.age)]}' +
                                 ' - {sex}&nbsp;</span>',
                             '<span id="list-block-normal">{latestDiagnoseRecName}&nbsp;</span>'].join('')

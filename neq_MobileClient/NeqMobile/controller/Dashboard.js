@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications','NeqMobile.view.patient.create.CreateLabTestRequest'],
 
         config:{
 
@@ -15,7 +15,8 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 loginButton:'button[action=login]',
                 patientInfo:'patientInfo',
                 patientInfoContd1:'patientInfoContd1',
-                patientListContainer:'Dashboard patientList #patientListContainer'
+                patientListContainer:'Dashboard patientList #patientListContainer',
+                labTestRequestOverlay: 'createlabtestrequestoverlay'
             },
             control:{
                 'Dashboard #patientsearchfield':{
@@ -45,7 +46,12 @@ Ext.define('NeqMobile.controller.Dashboard', {
             }
         },
         onCreateNewLabRequestTap:function(button,e,eOpts){
-            var labTestRequestOverlay = Ext.create('NeqMobile.view.patient..create.CreateLabTestRequest');
+            var labTestRequestOverlay;
+            if(this.getLabTestRequestOverlay()){
+                labTestRequestOverlay = this.getLabTestRequestOverlay();
+            }else{
+                labTestRequestOverlay = Ext.create('NeqMobile.view.patient.create.CreateLabTestRequest');
+            }
             this.overlay = Ext.Viewport.add(labTestRequestOverlay);
             this.overlay.show();
         },

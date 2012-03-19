@@ -2,7 +2,7 @@
  * @author Jan Gansen
  */
 
-Ext.define('NeqMobile.view.patient..create.CreateLabTestRequest', {
+Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
         extend:'Ext.Panel',
         xtype:'createlabtestrequestoverlay',
         requires:[],
@@ -21,9 +21,13 @@ Ext.define('NeqMobile.view.patient..create.CreateLabTestRequest', {
             },
             centered:true,
             width: 400,
-            height: 300,
+            height: 250,
             styleHtmlContent:true,
-            layout:'vbox',
+            layout: {
+                align: 'center',
+                pack: 'center',
+                type: 'vbox'
+            },
             scrollable: true,
             items:[
                 {
@@ -32,70 +36,64 @@ Ext.define('NeqMobile.view.patient..create.CreateLabTestRequest', {
                     title: 'Create New Lab Test Request'
                 },
                 {
-                    xtype: 'formpanel',
-                    padding: '10 0 0 0',
+                    xtype: 'fieldset',
+                    style: 'text-align: right;',
+                    width: '100%',
                     layout: {
-                        align: 'center',
-                        pack: 'center',
+                        align: 'start',
                         type: 'vbox'
                     },
                     items: [
                         {
-                            xtype: 'fieldset',
-                            style: 'text-align: right;',
-                            width: 280,
-                            layout: {
-                                align: 'start',
-                                type: 'vbox'
-                            },
-                            items: [
+                            xtype: 'selectfield',
+                            label: 'Test Type:',
+                            labelWidth: '30%',
+                            width: '100%',
+                            name: 'testTypeSelectField',
+                            options: [
                                 {
-                                    xtype: 'selectfield',
-                                    label: 'Test Type:',
-                                    name: 'testTypeSelectField',
-                                    options: [
-                                        {
-                                            text: 'sample1',
-                                            value: 'sample 1'
-                                        },
-                                        {
-                                            text: 'sample2',
-                                            value: 'sample 2'
-                                        },
-                                        {
-                                            text: 'sample3',
-                                            value: 'sample 3'
-                                        }
-                                    ]
+                                    text: 'sample1',
+                                    value: 'sample 1'
                                 },
                                 {
-                                    xtype: 'datepickerfield',
-                                    destroyPickerOnHide: true,
-                                    name: 'date',
-                                    label: 'Date:',
-                                    value: new Date(),
-                                    picker: {
-                                        yearFrom: new Date().getYear()
-                                    }
+                                    text: 'sample2',
+                                    value: 'sample 2'
                                 },
                                 {
-                                    xtype: 'textfield',
-                                    name: 'physician',
-                                    label: 'Physician:',
-                                    placeHolder: 'Tom Roy',
-                                    autoCapitalize: true,
-                                    required: true,
-                                    clearIcon: false
-                                },
-                                {
-                                    xtype: 'button',
-                                    id: 'x-submitLabTestRequestButton',
-                                    width: 280,
-                                    text: 'Submit Lab Test Request'
+                                    text: 'sample3',
+                                    value: 'sample 3'
                                 }
                             ]
+                        },
+                        {
+                            xtype: 'datepickerfield',
+                            destroyPickerOnHide: true,
+                            name: 'date',
+                            label: 'Date:',
+                            labelWidth: '30%',
+                            width: '100%',
+                            value: new Date(),
+                            picker: {
+                                yearFrom: new Date().getYear()
+                            }
+                        },
+                        {
+                            xtype: 'textfield',
+                            name: 'physician',
+                            label: 'Physician:',
+                            labelWidth: '30%',
+                            width: '100%',
+                            placeHolder: 'Tom Roy',
+                            autoCapitalize: true,
+                            clearIcon: false
                         }
                     ]
+                },
+                {
+                    width: 250,
+                    xtype: 'button',
+                    id: 'x-submitLabTestRequestButton',
+                    text: 'submit'
                 }
             ]
         }
