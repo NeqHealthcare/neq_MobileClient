@@ -32,7 +32,10 @@ Ext.define('NeqMobile.view.patient.Info', {
             this.down('#vaccinations').setStore(vaccinationstore);
         },
         config:{
-            scrollable:true,
+            scrollable: {
+                direction: 'vertical',
+                directionLock: true
+            },
             styleHtmlContent:true,
             hidden: true,
             layout:'vbox',

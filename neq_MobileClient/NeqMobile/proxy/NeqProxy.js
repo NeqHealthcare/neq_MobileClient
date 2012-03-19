@@ -10,13 +10,6 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
 
     buildUrl:function (request) {
         var me = this;
-       // var url = this.callParent(arguments);
-
-
-        url = NeqMobile.manager.Session.getSession().get('domain').getCoreURL()
-
-        var me = this;
-
         var url = NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + me.getCustomUrl();
 //        if (me.getNoCache()) {
 //            url = Ext.urlAppend(url, Ext.String.format("{0}={1}", me.getCacheString(), Ext.Date.now()));
@@ -33,7 +26,6 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
     },
     config:{
         customUrl:undefined,
-      //  withCredentials:true,
         reader:{
             type:'json',
             rootProperty:'data'

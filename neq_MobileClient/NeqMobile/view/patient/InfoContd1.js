@@ -43,7 +43,10 @@ Ext.define('NeqMobile.view.patient.InfoContd1', {
         config:{
             scrollable:true,
             styleHtmlContent:true,
-            hidden: true,
+            scrollable: {
+                direction: 'vertical',
+                directionLock: true
+            },
             layout:'vbox',
             items:[
                 {
