@@ -13,23 +13,27 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
             refs:{
                 loginButton:'button[action=login]',
-                patientInfo:'patientInfo',
+                patientInfo:'patientinfo',
                 patientInfoContd1:'patientInfoContd1',
-                patientListContainer:'Dashboard patientList #patientListContainer',
-                labTestRequestOverlay: 'createlabtestrequestoverlay'
+                patientListContainer:'Dashboard patientlist #patientListContainer',
+                labTestRequestOverlay: 'createlabtestrequestoverlay',
+                patientlist:'patientlist'
             },
             control:{
                 'Dashboard #patientsearchfield':{
                     keyup:'doFilter'
                 },
-                'Dashboard patientList list':{
+                'Dashboard patientlist list':{
                     select:'onPatientSelect'
                 },
-                'Dashboard patientList #x-hidePatientListButton':{
+                'Dashboard patientlist #x-hidePatientListButton':{
                     tap:'onHideElementTap'
                 },
                 'patientInfoContd1 #x-createNewLabRequestButton':{
                     tap:'onCreateNewLabRequestTap'
+                },
+                'Dashboard patientlist #refreshbutton':{
+                    tap:'onTapRefreshButton'
                 }
                 ,
                 'Dashboard #diagnoses':{itemexpanded:'onItemTap'},
@@ -45,6 +49,16 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 patientListContainer.setHidden(true);
             }
         },
+        onTapRefreshButton:function()
+        {
+           var store = Ext.data.StoreManager.lookup('myPatientsStore');
+            store.load({
+                callback:function (records, operation, success) {
+                   this.doFilter(this.getPatientlist().down('searchfield'));
+                },
+                scope:this
+            });
+        }   ,
         onCreateNewLabRequestTap:function(button,e,eOpts){
             var labTestRequestOverlay;
             if(this.getLabTestRequestOverlay()){
@@ -154,9 +168,6 @@ Ext.define('NeqMobile.controller.Dashboard', {
             });
 
         },
-
-
-
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
             var searchstring = Ext.String.trim(searchfield.getValue());

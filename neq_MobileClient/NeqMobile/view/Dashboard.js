@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.view.Dashboard', {
     extend:'Ext.Container',
     xtype:'Dashboard',
-   requires:['NeqMobile.view.patient.Info', 'NeqMobile.view.patient.List','NeqMobile.view.patient.InfoContd1'],
+   requires:['NeqMobile.view.patient.PatientInfo', 'NeqMobile.view.patient.PatientList','NeqMobile.view.patient.PatientInfoContd1'],
 
     initialize:function () {
         this.callParent(arguments);
@@ -29,7 +29,7 @@ Ext.define('NeqMobile.view.Dashboard', {
 
             {
                 region: 'west',
-                xclass:'NeqMobile.view.patient.List'
+                xtype:'patientlist'
           },
             {
                 xtype: 'carousel',
@@ -37,7 +37,7 @@ Ext.define('NeqMobile.view.Dashboard', {
                 region: 'center',
                 items: [
                     {
-                        xtype:'patientInfo'
+                        xtype:'patientinfo'
                     },
                     {
                         xtype:'patientInfoContd1'

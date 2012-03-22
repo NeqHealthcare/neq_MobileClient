@@ -9,9 +9,9 @@
  * @author geekflyer
  */
 
-Ext.define('NeqMobile.view.patient.Info', {
+Ext.define('NeqMobile.view.patient.PatientInfo', {
         extend:'Ext.Container',
-        xtype:'patientInfo',
+        xtype:'patientinfo',
         requires:['NeqMobile.view.patient.detail.PatientHeader','NeqMobile.view.patient.detail.MedicationContainer','NeqMobile.view.patient.detail.VaccinationContainer','NeqMobile.view.patient.detail.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
 
         loadPatientHeader:function (patientrecord) {
