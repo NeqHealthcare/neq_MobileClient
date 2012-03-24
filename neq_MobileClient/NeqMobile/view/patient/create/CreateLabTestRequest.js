@@ -49,21 +49,8 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                             label: 'Test Type:',
                             labelWidth: '30%',
                             width: '100%',
-                            name: 'testTypeSelectField',
-                            options: [
-                                {
-                                    text: 'sample1',
-                                    value: 'sample 1'
-                                },
-                                {
-                                    text: 'sample2',
-                                    value: 'sample 2'
-                                },
-                                {
-                                    text: 'sample3',
-                                    value: 'sample 3'
-                                }
-                            ]
+                            valueField: 'name',
+                            displayField: 'name'
                         },
                         {
                             xtype: 'datepickerfield',

@@ -7,7 +7,7 @@
  */
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications','NeqMobile.view.patient.create.CreateLabTestRequest'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications','NeqMobile.model.LabTestRequest','NeqMobile.view.patient.create.CreateLabTestRequest'],
 
         config:{
 
@@ -17,6 +17,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 patientInfoContd1:'patientInfoContd1',
                 patientListContainer:'Dashboard patientlist #patientListContainer',
                 labTestRequestOverlay: 'createlabtestrequestoverlay',
+                labTestTypesList: 'createlabtestrequestoverlay selectfield',
                 patientlist:'patientlist'
             },
             control:{
@@ -66,8 +67,22 @@ Ext.define('NeqMobile.controller.Dashboard', {
             }else{
                 labTestRequestOverlay = Ext.create('NeqMobile.view.patient.create.CreateLabTestRequest');
             }
-            this.overlay = Ext.Viewport.add(labTestRequestOverlay);
-            this.overlay.show();
+            this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading parameters'});
+
+            var labtesttypestore = Ext.data.StoreManager.lookup('labtesttypes');
+            if (!labtesttypestore) {
+                labtesttypestore = Ext.create('NeqMobile.store.LabTestTypes');
+            }
+            labtesttypestore.load({
+                callback:function (records, operation, success) {
+                    this.getLabTestTypesList().setStore(labtesttypestore);
+                    this.getPatientInfo().setMasked(false);
+                    this.overlay = Ext.Viewport.add(labTestRequestOverlay);
+                    this.overlay.show();
+                },
+                scope:this
+            });
+
         },
         doNothing:function () {
         },
@@ -105,7 +120,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
             var finishcount = 0;
             var finishwaiter = function () {
                 finishcount++;
-                if (finishcount === 3)
+                if (finishcount === 4)
                 {
                     patientinfo.setMasked(false);
                 }
@@ -163,6 +178,22 @@ Ext.define('NeqMobile.controller.Dashboard', {
                     patientinfo.loadMedications(medicationstore);
                     finishwaiter();
 
+                },
+                scope:this
+            });
+
+            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
+            if (!labtestrequeststore) {
+                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
+            }
+
+            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
+            labtestrequeststore.load({
+                callback:function (records, operation, success) {
+                    var response = operation.getResponse();
+                    var responseObject = Ext.decode(response.responseText);
+                    patientInfoContd1.loadLabTestRequests(responseObject);
+                    finishwaiter();
                 },
                 scope:this
             });

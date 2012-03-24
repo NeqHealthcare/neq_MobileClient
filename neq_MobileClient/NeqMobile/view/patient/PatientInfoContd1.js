@@ -2,13 +2,9 @@
  * @author Jan Gansen
  */
 
-var blub = new Ext.XTemplate(
-    'this is a test'
-)
 
-var labTestRequestsTable = new Ext.XTemplate(
+var testtemplate = new Ext.XTemplate(
     '<table border="1">',
-    '<caption> Caption</caption>',
     '<thead>',
     '<tr>',
     '<th scope="col">Test Type</th>',
@@ -37,11 +33,12 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
         xtype:'patientInfoContd1',
         requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer'],
 
-    //    loadPatientHeader:function (patientrecord) {
-      //      this.down('#patientheader').setRecord(patientrecord);
-       // },
+        loadLabTestRequests:function (labtestrequests) {
+          console.log(labtestrequests.data);
+          this.down('labtestrequestscontainer').setData(labtestrequests.data);
+        },
+
         config:{
-            scrollable:true,
             styleHtmlContent:true,
             scrollable: {
                 direction: 'vertical',
@@ -69,7 +66,7 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
                     ]
                 },
                 {
-                    xtype:'labtestrequestscontainer'
+                  xtype:'labtestrequestscontainer'
                 }
             ]
         }
