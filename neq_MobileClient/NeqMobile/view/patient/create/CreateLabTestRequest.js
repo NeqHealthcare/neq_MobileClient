@@ -37,6 +37,7 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                 },
                 {
                     xtype: 'fieldset',
+                    id: 'createLabtestRequestFieldSet',
                     style: 'text-align: right;',
                     width: '100%',
                     layout: {
@@ -70,7 +71,7 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                             label: 'Physician:',
                             labelWidth: '30%',
                             width: '100%',
-                            placeHolder: 'Tom Roy',
+                            placeHolder: 'Current Doctor',
                             autoCapitalize: true,
                             clearIcon: false
                         }

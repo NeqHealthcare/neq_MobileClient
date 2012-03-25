@@ -5,6 +5,9 @@
  * Time: 02:57
  * To change this template use File | Settings | File Templates.
  */
+
+var selectedPatient;
+
 Ext.define('NeqMobile.controller.Dashboard', {
         extend:'Ext.app.Controller',
         requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications','NeqMobile.model.LabTestRequest','NeqMobile.view.patient.create.CreateLabTestRequest'],
@@ -33,6 +36,9 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 'patientInfoContd1 #x-createNewLabRequestButton':{
                     tap:'onCreateNewLabRequestTap'
                 },
+                'createlabtestrequestoverlay #x-submitLabTestRequestButton':{
+                    tap:'onSubmitLabTestRequestTap'
+                },
                 'Dashboard patientlist #refreshbutton':{
                     tap:'onTapRefreshButton'
                 }
@@ -60,6 +66,64 @@ Ext.define('NeqMobile.controller.Dashboard', {
                 scope:this
             });
         }   ,
+        onSubmitLabTestRequestTap:function(button,e,eOpts){
+            var me = this;
+
+            var labTestRequestOverlay = this.getLabTestRequestOverlay();
+            var fieldSet = labTestRequestOverlay.getComponent('createLabtestRequestFieldSet');
+            var selectField = fieldSet.getComponent(0);
+            var datePickerField = fieldSet.getComponent(1);
+
+            var patient_id = selectedPatient.get('id');
+            var state = 'draft';
+            var rec_name = selectField.getValue();
+            var request_type_id = selectField.getRecord().get('id');
+            var doctor_rec_name = 'Gansen, Jan'; // needs to be changed as soon as the information is available
+            var doctor_id = 1; // needs to be changed as soon as the information is available
+            var date = datePickerField.getValue().getTime();
+
+            var newRequest = Ext.create('NeqMobile.model.LabTestRequest', {
+                patient_id: patient_id,
+                state : state,
+                rec_name: rec_name,
+                doctor_rec_name: doctor_rec_name,
+                date: date
+            });
+            newRequest.getProxy().setExtraParam('patient_id', patient_id);
+            newRequest.getProxy().setExtraParam('request_type_id', request_type_id);
+            newRequest.getProxy().setExtraParam('doctor_id', doctor_id);
+            newRequest.getProxy().setExtraParam('date', date);
+            newRequest.save({
+                success: function(newRequest) {
+                    console.log("request successfully saved");
+                    var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
+                    if (!labtestrequeststore) {
+                        labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
+                    }
+
+                    labtestrequeststore.getProxy().setExtraParam('patientId', patient_id);
+                    labtestrequeststore.load({
+                        callback:function (records, operation, success) {
+                            var response = operation.getResponse();
+                            var responseObject = Ext.decode(response.responseText);
+                            me.getPatientInfoContd1().loadLabTestRequests(responseObject);
+                        },
+                        scope:this
+                    });
+                },
+                failure:function (response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                    console.log('login failed - server not reachable')
+                    Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
+                        'It occured a technical connection problem. Possible causes are:<br><br>' +
+                        '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
+
+                    failureCallback.apply(scope);
+                }
+
+            });
+            labTestRequestOverlay.setHidden(true);
+        },
         onCreateNewLabRequestTap:function(button,e,eOpts){
             var labTestRequestOverlay;
             if(this.getLabTestRequestOverlay()){
@@ -111,7 +175,7 @@ Ext.define('NeqMobile.controller.Dashboard', {
 
         },
         onPatientSelect:function (list, patientrecord, options) {
-
+            selectedPatient = patientrecord;
             var me = this;
 
             var patientinfo = this.getPatientInfo();

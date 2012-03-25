@@ -35,7 +35,7 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
 
         loadLabTestRequests:function (labtestrequests) {
           console.log(labtestrequests.data);
-          this.down('labtestrequestscontainer').setData(labtestrequests.data);
+          this.down('labtestrequestscontainer #x-labTestRequestsTable').setData(labtestrequests.data);
         },
 
         config:{
@@ -47,25 +47,6 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
             hidden: true,
             layout:'vbox',
             items:[
-                {
-                    xtype: 'panel',
-                    padding: '0 0 0 0',
-                    layout: 'hbox',
-                    items:[
-                        {
-                            xtype: 'label',
-                            html: 'Lab Test Requests'
-                        },
-                        {
-                            xtype: 'button',
-                            id: 'x-createNewLabRequestButton',
-                            margin: '0 0 0 10',
-                            text: 'Create New Request',
-                            ui: 'normal',
-                            align:'right'
-                        }
-                    ]
-                },
                 {
                   xtype:'labtestrequestscontainer'
                 }

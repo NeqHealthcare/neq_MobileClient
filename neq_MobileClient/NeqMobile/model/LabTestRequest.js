@@ -13,7 +13,7 @@ Ext.define('NeqMobile.model.LabTestRequest', {
             'state',
             'rec_name',
             'doctor_rec_name',
-            {name:'date', type:'date',dateFormat:'time'},
+            {name:'date', type:'date',dateFormat:'time'}
         ],
         proxy:myproxy
 

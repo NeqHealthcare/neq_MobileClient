@@ -28,29 +28,39 @@ var labTestRequestsTable = new Ext.XTemplate(
 
 var testdata = [
                     {
-                     patient_id: '12',
-                     state: 'not yet',
-                     rec_name: 'rec name?',
-                     doctor_rec_name: 'doc',
-                     date: '2012-12-12'
-                    },
-                    {
-                    patient_id: '12',
-                    state: 'not yet',
-                    rec_name: 'rec name?',
-                    doctor_rec_name: 'doc',
-                    date: '2012-12-12'
+                     patient_id: '',
+                     state: '',
+                     rec_name: 'no requests',
+                     doctor_rec_name: '',
+                     date: ''
                     }
                 ]
 
 
 Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
-        extend:'Ext.Panel',
+
+        extend:'Ext.form.FieldSet',
         xtype:'labtestrequestscontainer',
-        requires:[],
-        data: null,
-        config: {
-            tpl : labTestRequestsTable
+        config:{
+            title:'Lab Test Requests',
+            margin: '0',
+            padding: '5',
+            items:[
+                {
+                    xtype: 'button',
+                    id: 'x-createNewLabRequestButton',
+                    margin: '0 0 5 0',
+                    text: 'Create New Request',
+                    ui: 'normal',
+                    width: 200
+                },
+                {
+                    xtype: 'panel',
+                        id: 'x-labTestRequestsTable',
+                    data: testdata,
+                    tpl: labTestRequestsTable
+                }
+            ]
         }
 
     }
