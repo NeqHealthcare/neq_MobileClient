@@ -48,7 +48,7 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
         extend:'Ext.Panel',
         xtype:'labtestrequestscontainer',
         requires:[],
-        data: testdata,
+        data: null,
         config: {
             tpl : labTestRequestsTable
         }
