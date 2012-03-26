@@ -11,6 +11,37 @@ Ext.define('NeqMobile.view.Dashboard', {
    requires:['NeqMobile.view.patient.PatientInfo', 'NeqMobile.view.patient.PatientList','NeqMobile.view.patient.PatientInfoContd1'],
 
     initialize:function () {
+
+ //// TEST ANFANG
+ /*
+        Ext.setup({
+            onReady: function() {
+                //create draw component with a yellow circle in it
+                var drawComponent = new Ext.draw.Component({
+                    items: [{
+                        type: 'circle',
+                        fill: '#ffc',
+                        radius: 100,
+                        x: 100,
+                        y: 100
+                    }]
+                });
+
+                //add the component to the panel
+                new Ext.chart.Panel({
+                    fullscreen: true,
+                    title: 'Yellow Circle',
+                    items: drawComponent
+                });
+
+                //make sure we render the image
+                drawComponent.surface.renderFrame();
+            }
+        });
+*/
+/// TEST ENDE
+
+
         this.callParent(arguments);
 
         this.on({
@@ -21,6 +52,7 @@ Ext.define('NeqMobile.view.Dashboard', {
 //                show:function(view){alert('show event fired')},
 //                hide:function(view){alert('hide event fired')}
         });
+
     },
     config:{
         layout:'hbox',
