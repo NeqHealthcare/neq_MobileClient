@@ -3,14 +3,6 @@ Ext.define('NeqMobile.controller.General', {
     requires:[ 'NeqMobile.store.Patients'],
     config:{
 
-    },
-
-
-
-
-    init:function () {
-        this.callParent(arguments);
-
     }
 
 });

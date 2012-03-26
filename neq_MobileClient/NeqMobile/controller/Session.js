@@ -15,21 +15,17 @@ Ext.define('NeqMobile.controller.Session', {
         refs:{
             login:'Login',
             Viewport:'Viewport',
-            Workspace:'Workspace',
+            Workspace:'workspace',
             MenuSettings:'menuSettings',
             SettingsDomains:'settingsDomains'
         },
         control:{
             'Login #submitButton':{tap:'onLoginTry'},
             'Login #settingsbutton':{tap:'onSettingsClick'},
-            'Workspace #doctorimage':{tap:'onShowLogoutMenu'},
+            'workspace #doctorimage':{tap:'onShowLogoutMenu'},
             'menuSettings #logoutbutton':{tap:'onLogoutClick'},
             'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'}
         }
-    },
-    init:function () {
-        this.callParent(arguments);
-
     },
     onBackFromDomainSettings:function () {
         this.getViewport().setActiveItem(this.getLogin());
@@ -46,9 +42,6 @@ Ext.define('NeqMobile.controller.Session', {
             settingsdomains = Ext.create('NeqMobile.view.settings.Domains');
         }
         this.getViewport().setActiveItem(settingsdomains);
-
-//        var mycontroller = Ext.create('NeqMobile.controller.settings.Domains');
-//        mycontroller.launch();
     },
 
 
@@ -89,24 +82,16 @@ Ext.define('NeqMobile.controller.Session', {
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('save sessionID...');
 
-
         // Creating the required Patient Store and its Proxy to load patient data from MAIS
         Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('myPatientsStore'));
-//        var storeProxy = {type:'ajax',
-//            url:NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + '/patients/all_for_user',
-//            extraParams:{session:NeqMobile.manager.Session.getSessionId()
-//            },
-//            reader:{
-//                type:'json',
-//                root:'results'
-//            }}
+
         var store = new NeqMobile.store.Patients(
             {
                 storeId:'myPatientsStore'
             }
         );
         store.load();
-        this.getWorkspace().down('list').setStore(store);
+        this.getWorkspace().down('patientlist').down('list').setStore(store);
     },
 
     onLogoutClick:function () {

@@ -3,19 +3,6 @@ Ext.define('NeqMobile.view.patient.PatientList', {
     requires:'NeqMobile.store.Patients',
     xtype:'patientlist',
 
-    initialize:function () {
-        this.callParent(arguments);
-
-//        this.on({
-//            show:function (view) {
-//                console.log('applying store');
-//                this.down('list').setStore(Ext.data.StoreManager.lookup('myPatientsStore'));
-//                Ext.data.StoreManager.lookup('myPatientsStore').load();
-//            }
-//        });
-    },
-
-
     config:{
 
         layout:'hbox',
