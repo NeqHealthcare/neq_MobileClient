@@ -262,21 +262,21 @@ Ext.define('NeqMobile.controller.Workspace', {
                 scope:this
             });
 
-//            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
-//            if (!labtestrequeststore) {
-//                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
-//            }
-//
-//            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
-//            labtestrequeststore.load({
-//                callback:function (records, operation, success) {
-//                    var response = operation.getResponse();
-//                    var responseObject = Ext.decode(response.responseText);
-//                    patientInfoContd1.loadLabTestRequests(responseObject);
-//                    finishwaiter(1);
-//                },
-//                scope:this
-//            });
+            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
+            if (!labtestrequeststore) {
+                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
+            }
+
+            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
+            labtestrequeststore.load({
+                callback:function (records, operation, success) {
+                    var response = operation.getResponse();
+                    var responseObject = Ext.decode(response.responseText);
+                    patientInfoContd1.loadLabTestRequests(responseObject);
+                    finishwaiter(1);
+                },
+                scope:this
+            });
 
         },
         doFilter:function (searchfield, e, eOpts) {
