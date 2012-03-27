@@ -1,13 +1,12 @@
-Ext.define('NeqMobile.view.patient.detail.PatientHeader', {
+Ext.define('NeqMobile.view.doctor.DoctorHeader', {
     extend: 'Ext.form.Panel',
     xtype: 'doctorheader',
-
     config: {
+        scrollable:false,
         layout: {
             itemId:'doctorheader',
             cls: 'x-doctorheader',
-            layout:'hbox',
-            scrollable: false
+            layout:'hbox'
         },
         items: [
             {

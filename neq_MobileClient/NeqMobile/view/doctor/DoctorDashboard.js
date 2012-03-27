@@ -8,10 +8,11 @@
 
 Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     extend:'Ext.Container',
+    requires:['NeqMobile.view.doctor.DoctorHeader'],
     xtype:'doctordashboard',
     config:{
         items:[
-            {html:'doctor dashboard'}
+            { xtype:'doctorheader'  }
         ]
     }
 })
