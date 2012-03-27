@@ -18,6 +18,8 @@ Ext.define('NeqMobile.view.Workspace', {
                 {xtype:'toolbar',
                     docked:'top',
                     items:[
+                        { iconMask:true, iconCls:'home', itemId:'homebutton'},
+
                         {xtype:'spacer'},
 
                         {
@@ -48,12 +50,14 @@ Ext.define('NeqMobile.view.Workspace', {
                         },
                         {
                             xtype:'container',
-                            layout:'card',
+                            layout:{type:'card',
+                                animation:'fade'},
                             flex:5,
                             region:'center',
+                            itemId:'dashboardcontainer',
                             items:[
                                 {
-                                    xtype:'patientdashboard'
+                                    xtype:'doctordashboard'
                                 }
                             ]
                         }

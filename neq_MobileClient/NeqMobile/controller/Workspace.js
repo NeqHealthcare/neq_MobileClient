@@ -10,16 +10,19 @@ var selectedPatient;
 
 Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations','NeqMobile.store.Medications','NeqMobile.model.LabTestRequest','NeqMobile.view.patient.create.CreateLabTestRequest'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest'],
         config:{
             refs:{
                 loginButton:'button[action=login]',
                 patientInfo:'patientinfo',
+                patientdashboard:'patientdashboard',
+                doctordashboard:'doctordashboard',
                 patientInfoContd1:'patientInfoContd1',
                 patientListContainer:'Dashboard patientlist #patientListContainer',
-                labTestRequestOverlay: 'createlabtestrequestoverlay',
-                labTestTypesList: 'createlabtestrequestoverlay selectfield',
-                patientlist:'patientlist'
+                labTestRequestOverlay:'createlabtestrequestoverlay',
+                labTestTypesList:'createlabtestrequestoverlay selectfield',
+                patientlist:'patientlist',
+                workspace:'workspace'
             },
             control:{
                 'workspace #patientsearchfield':{
@@ -39,32 +42,34 @@ Ext.define('NeqMobile.controller.Workspace', {
                 },
                 'workspace patientlist #refreshbutton':{
                     tap:'onTapRefreshButton'
-                }
-                ,
+                },
                 'patientdashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'patientdashboard #medications':{itemexpanded:'onItemTap'},
-                'patientdashboard #vaccinations':{itemexpanded:'onItemTap'}
+                'patientdashboard #vaccinations':{itemexpanded:'onItemTap'},
+                'workspace #homebutton':{tap:'switchtohome'}
             }
         },
-        onHideElementTap:function(button,e,eOpts){
+        onHideElementTap:function (button, e, eOpts) {
             var patientListContainer = this.getPatientListContainer();
-            if(patientListContainer.isHidden()){
+            if (patientListContainer.isHidden()) {
                 patientListContainer.setHidden(false);
-            }else{
+            } else {
                 patientListContainer.setHidden(true);
             }
         },
-        onTapRefreshButton:function()
-        {
-           var store = Ext.data.StoreManager.lookup('myPatientsStore');
+        switchtohome:function (button, e, eOpts) {
+            this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getDoctordashboard());
+        },
+        onTapRefreshButton:function () {
+            var store = Ext.data.StoreManager.lookup('myPatientsStore');
             store.load({
                 callback:function (records, operation, success) {
-                   this.doFilter(this.getPatientlist().down('searchfield'));
+                    this.doFilter(this.getPatientlist().down('searchfield'));
                 },
                 scope:this
             });
-        }   ,
-        onSubmitLabTestRequestTap:function(button,e,eOpts){
+        },
+        onSubmitLabTestRequestTap:function (button, e, eOpts) {
             var me = this;
 
             var labTestRequestOverlay = this.getLabTestRequestOverlay();
@@ -81,18 +86,18 @@ Ext.define('NeqMobile.controller.Workspace', {
             var date = datePickerField.getValue().getTime();
 
             var newRequest = Ext.create('NeqMobile.model.LabTestRequest', {
-                patient_id: patient_id,
-                state : state,
-                rec_name: rec_name,
-                doctor_rec_name: doctor_rec_name,
-                date: date
+                patient_id:patient_id,
+                state:state,
+                rec_name:rec_name,
+                doctor_rec_name:doctor_rec_name,
+                date:date
             });
             newRequest.getProxy().setExtraParam('patient_id', patient_id);
             newRequest.getProxy().setExtraParam('request_type_id', request_type_id);
             newRequest.getProxy().setExtraParam('doctor_id', doctor_id);
             newRequest.getProxy().setExtraParam('date', date);
             newRequest.save({
-                success: function(newRequest) {
+                success:function (newRequest) {
                     console.log("request successfully saved");
                     var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
                     if (!labtestrequeststore) {
@@ -122,11 +127,11 @@ Ext.define('NeqMobile.controller.Workspace', {
             });
             labTestRequestOverlay.setHidden(true);
         },
-        onCreateNewLabRequestTap:function(button,e,eOpts){
+        onCreateNewLabRequestTap:function (button, e, eOpts) {
             var labTestRequestOverlay;
-            if(this.getLabTestRequestOverlay()){
+            if (this.getLabTestRequestOverlay()) {
                 labTestRequestOverlay = this.getLabTestRequestOverlay();
-            }else{
+            } else {
                 labTestRequestOverlay = Ext.create('NeqMobile.view.patient.create.CreateLabTestRequest');
             }
             this.getPatientInfo().setMasked({ xtype:'loadmask', message:'loading parameters'});
@@ -159,7 +164,9 @@ Ext.define('NeqMobile.controller.Workspace', {
                 var maxmove = item.getY() - patientEl.getY();
                 var wantmove = maxmove + item.getHeight() - patientEl.getHeight();
                 var tomove = wantmove;
-                if (maxmove < wantmove){tomove = maxmove;}
+                if (maxmove < wantmove) {
+                    tomove = maxmove;
+                }
                 if (tomove > 0) {
                     myscroll.scrollBy(0, tomove, true);
                 }
@@ -173,24 +180,26 @@ Ext.define('NeqMobile.controller.Workspace', {
 
         },
         onPatientSelect:function (list, patientrecord, options) {
+            if (this.getPatientdashboard() === null || this.getPatientdashboard() === undefined)
+           {   console.log('creating patient dashboard');
+                new NeqMobile.view.patient.PatientDashboard;
+           }
+            this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientdashboard());
             selectedPatient = patientrecord;
             var me = this;
-
             var patientinfo = this.getPatientInfo();
             var patientInfoContd1 = this.getPatientInfoContd1();
-
             var finishcounterInfo = 0;
             var finishcounterInfoContd1 = 0;
             var finishwaiter = function (viewtype) {
-                if(viewtype == 0){
+                if (viewtype == 0) {
                     finishcounterInfo++;
-                    if (finishcounterInfo === 3)
-                    {
+                    if (finishcounterInfo === 3) {
                         patientinfo.setMasked(false);
                     }
-                }else if (viewtype == 1){
+                } else if (viewtype == 1) {
                     finishcounterInfoContd1++;
-                    if(finishcounterInfoContd1 === 1){
+                    if (finishcounterInfoContd1 === 1) {
                         patientInfoContd1.setMasked(false);
                     }
                 }
@@ -198,10 +207,10 @@ Ext.define('NeqMobile.controller.Workspace', {
 
             }
 
-            if(patientinfo.isHidden()){
+            if (patientinfo.isHidden()) {
                 patientinfo.setHidden(false);
             }
-            if(patientInfoContd1.isHidden()){
+            if (patientInfoContd1.isHidden()) {
                 patientInfoContd1.setHidden(false);
             }
             var patientid = patientrecord.get('id');
@@ -222,7 +231,6 @@ Ext.define('NeqMobile.controller.Workspace', {
                 },
                 scope:this
             });
-
 
 
             var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');

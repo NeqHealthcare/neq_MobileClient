@@ -7,7 +7,7 @@
  */
 
 Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
-    extend:'Ext.carousel.Carousel',
+    extend:'Ext.Container',
     xtype:'doctordashboard',
     config:{
         items:[
