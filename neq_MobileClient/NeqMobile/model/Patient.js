@@ -1,5 +1,5 @@
 var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/patient',
+    {customUrl:'/patient/bla',
     extraParams:{ownonly:true}});
 
 Ext.define('NeqMobile.model.Patient', {
