@@ -10,7 +10,7 @@ var selectedPatient;
 
 Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest','NeqMobile.store.LabResults'],
         config:{
             refs:{
                 loginButton:'button[action=login]',
@@ -46,6 +46,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 'patientdashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'patientdashboard #medications':{itemexpanded:'onItemTap'},
                 'patientdashboard #vaccinations':{itemexpanded:'onItemTap'},
+                'patientdashboard #labresult':{itemexpanded: 'onItemTap'},
                 'workspace #homebutton':{tap:'switchtohome'}
             }
         },
@@ -274,6 +275,21 @@ Ext.define('NeqMobile.controller.Workspace', {
                     var responseObject = Ext.decode(response.responseText);
                     patientInfoContd1.loadLabTestRequests(responseObject);
                     finishwaiter(1);
+                },
+                scope:this
+            });
+
+            var labresultstore = Ext.data.StoreManager.lookup('labresults');
+            if (!labresultstore) {
+                labresultstore = Ext.create('NeqMobile.store.LabResults');
+            }
+
+                labresultstore.getProxy().setExtraParam('patientId', patientid);
+                labresultstore.load({
+                callback:function (records, operation, success) {
+                    patientInfoContd1.loadLabResults(labresultstore);
+                    finishwaiter(1);
+
                 },
                 scope:this
             });
