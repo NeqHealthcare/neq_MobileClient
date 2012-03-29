@@ -22,6 +22,7 @@ Ext.define('NeqMobile.model.LabResults',{
                 'date_requested',
                 'date_analysis'
             ]
-        }
+        },
+        proxy:myproxy
     }
 )

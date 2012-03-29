@@ -39,7 +39,7 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
         },
 
         loadLabResults:function (labresultstore) {
-            this.down('labresultscontainer labresult').setStore(labresultstore.data);
+            this.down('labresultscontainer #labresult').setStore(labresultstore);
         },
 
 

@@ -10,7 +10,7 @@ var selectedPatient;
 
 Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest','NeqMobile.store.LabResults'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults'],
         config:{
             refs:{
                 loginButton:'button[action=login]',
@@ -46,7 +46,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 'patientdashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'patientdashboard #medications':{itemexpanded:'onItemTap'},
                 'patientdashboard #vaccinations':{itemexpanded:'onItemTap'},
-                'patientdashboard #labresult':{itemexpanded: 'onItemTap'},
+                'patientdashboard #labresult':{itemexpanded:'onItemTap'},
                 'workspace #homebutton':{tap:'switchtohome'}
             }
         },
@@ -181,10 +181,10 @@ Ext.define('NeqMobile.controller.Workspace', {
 
         },
         onPatientSelect:function (list, patientrecord, options) {
-            if (this.getPatientdashboard() === null || this.getPatientdashboard() === undefined)
-           {   console.log('creating patient dashboard');
+            if (this.getPatientdashboard() === null || this.getPatientdashboard() === undefined) {
+                console.log('creating patient dashboard');
                 new NeqMobile.view.patient.PatientDashboard;
-           }
+            }
             this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientdashboard());
             selectedPatient = patientrecord;
             var me = this;
@@ -284,8 +284,8 @@ Ext.define('NeqMobile.controller.Workspace', {
                 labresultstore = Ext.create('NeqMobile.store.LabResults');
             }
 
-                labresultstore.getProxy().setExtraParam('patientId', patientid);
-                labresultstore.load({
+            labresultstore.getProxy().setExtraParam('patientId', patientid);
+            labresultstore.load({
                 callback:function (records, operation, success) {
                     patientInfoContd1.loadLabResults(labresultstore);
                     finishwaiter(1);
