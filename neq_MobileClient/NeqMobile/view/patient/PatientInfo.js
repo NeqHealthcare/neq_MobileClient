@@ -37,7 +37,6 @@ Ext.define('NeqMobile.view.patient.PatientInfo', {
                 directionLock: true
             },
             styleHtmlContent:true,
-            hidden: true,
             layout:'vbox',
             items:[
                 {xtype:'patientheader'

@@ -13,7 +13,9 @@ Ext.define('NeqMobile.view.patient.PatientDashboard', {
         items:[
             {
                 xtype:'patientinfo'
-            },
+            }
+
+            ,
             {
                 xtype:'patientInfoContd1'
             }

@@ -98,32 +98,8 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
     },
 
 onPatientSelect:function(){
-var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
-if (!labtestrequeststore) {
-    labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
-}
-labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
-labtestrequeststore.load({
-    callback:function (records, operation, success) {
-        var response = operation.getResponse();
-        var responseObject = Ext.decode(response.responseText);
-        this.getPatientInfoContd1.loadLabTestRequests(responseObject);
-    },
-    scope:this
-});
 
-var labresultstore = Ext.data.StoreManager.lookup('labresults');
-if (!labresultstore) {
-    labresultstore = Ext.create('NeqMobile.store.LabResults');
-}
 
-labresultstore.getProxy().setExtraParam('patientId', patientid);
-labresultstore.load({
-    callback:function (records, operation, success) {
-        this.getPatientInfoContd1.loadLabResults(labresultstore);
-    },
-    scope:this
-});
 }
 });
 
