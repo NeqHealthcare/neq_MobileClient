@@ -95,12 +95,7 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
             },
             scope:this
         });
-    },
-
-onPatientSelect:function(){
-
-
-}
+    }
 });
 
 
