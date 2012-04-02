@@ -44,7 +44,6 @@ Ext.define('NeqMobile.controller.Session', {
         this.getViewport().setActiveItem(settingsdomains);
     },
 
-
     onShowLogoutMenu:function (button) {
 
         var settingsmenu = NeqMobile.view.menu.Settings;
@@ -93,7 +92,6 @@ Ext.define('NeqMobile.controller.Session', {
         store.load();
         this.getWorkspace().down('patientlist').down('list').setStore(store);
     },
-
     onLogoutClick:function () {
         console.log('trying to logout');
         NeqMobile.manager.Session.logout();

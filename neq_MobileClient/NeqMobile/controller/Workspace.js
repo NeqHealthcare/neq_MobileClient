@@ -13,25 +13,12 @@ Ext.define('NeqMobile.controller.Workspace', {
         requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults'],
         config:{
             refs:{
-
-//                loginButton:'button[action=login]',
-//                patientInfo:'patientinfo',
-//                patientdashboard:'patientdashboard',
-//                doctordashboard:'doctordashboard',
-//                patientListContainer:'Dashboard patientlist #patientListContainer',
-//                patientlist:'patientlist',
                 workspace:'workspace'
             },
             control:{
                 'workspace #patientsearchfield':{keyup:'doFilter'},
-
-//                'workspace patientlist #x-hidePatientListButton':{
-//                    tap:'tooglePatientlistVisibility'
-//                },
-
-                'workspace patientlist #refreshbutton':{ tap:'onTapRefreshButton'},
-
-               'workspace #homebutton':{tap:'switchtohome'}
+                'workspace patientlist #refreshbutton':{tap:'onTapRefreshButton'},
+                'workspace #homebutton':{tap:'switchtohome'}
             }
         },
         togglePatientlistVisibility:function (button, e, eOpts) {
