@@ -7,22 +7,18 @@
  */
 Ext.define('NeqMobile.manager.Session',
     {singleton:true,
-        session:undefined,
-        getUser:function () {
-            return this.session.get('user');
-        },
-        getSession:function () {
-            return this.session
-        },
+        //session:undefined,
+        config:
+        {session: undefined},
         getSessionId:function () {
-            return this.session.get('sessionId');
+            return this.getSession().get('sessionId');
         },
-        isLoggedIn:function () {
-            if (this.session == undefined || this.session == null)
-                return false;
-            else
-                return true;
-        },
+//        isLoggedIn:function () {
+//            if (this.session == undefined || this.session == null)
+//                return false;
+//            else
+//                return true;
+//        },
         logout:function (successCallback, failureCallback, scope) {
 
             Ext.Ajax.request({
@@ -32,7 +28,7 @@ Ext.define('NeqMobile.manager.Session',
 
                 scope:this,
                 timeout:30000,
-                params:{username:this.session.get('user'), session:this.session.get('sessionId')},
+                params:{username:this.getSession().get('user'), session:this.getSession().get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
                     if (obj = 'true') {
@@ -71,7 +67,7 @@ Ext.define('NeqMobile.manager.Session',
                                 sessionId:obj.data[0],
                                 domain:domain
                             });
-                            this.session = mySession;
+                            this.setSession(mySession);
                             successCallback.apply(scope);
                         }
                         else
