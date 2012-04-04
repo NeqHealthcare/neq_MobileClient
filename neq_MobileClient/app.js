@@ -11,7 +11,7 @@ Ext.application({
     name:'NeqMobile',
     requires:['Ext.ux.touch.grid.View','Ext.ux.touch.grid.feature.Expandable','Ext.DateExtras','NeqMobile.util.Renderer','NeqMobile.proxy.NeqProxy',
         'Ext.field.Password','Ext.Img','Ext.field.Select','Ext.Label','Ext.field.Search','Ext.field.DatePicker','Ext.field.Toggle'],
-    controllers:['General', 'Session', 'NeqMobile.controller.settings.Domains', 'Workspace','PatientDashboard','PatientDashboardLab'],
+    controllers:['General', 'Session', 'NeqMobile.controller.settings.Domains', 'Workspace','PatientDashboard','PatientDashboardLab','DoctorDashboard'],
     views:['NeqMobile.view.settings.Domains', 'Viewport', 'NeqMobile.view.patient.PatientList', 'NeqMobile.view.patient.PatientDashboard','NeqMobile.view.doctor.DoctorDashboard', 'Workspace'],
     stores:['Patients', 'Domains'],
     models:['Patient', 'Session', 'Domain','Diagnose'],

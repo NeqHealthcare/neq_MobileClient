@@ -12,7 +12,7 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     xtype:'doctordashboard',
     config:{
         items:[
-            { xtype:'doctorheader'  }
+            { xtype:'doctorheader'}
         ]
     }
 })

@@ -45,7 +45,7 @@ Ext.define('NeqMobile.controller.PatientDashboard', {
         var patientid = patientrecord.get('id');
         patientinfo.loadPatientHeader(patientrecord);
 
-        patientinfo.setMasked({ xtype:'loadmask', message:'loading patient details'});
+        patientinfo.setMasked({xtype:'loadmask', message:'loading patient details',transparent:true});
 
         var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
         if (!diagnosestore) {
@@ -116,7 +116,6 @@ Ext.define('NeqMobile.controller.PatientDashboard', {
             },
             scope:this
         });
-
     }
 //>>> DO NOT DELETE THIS!!!  <<<
     //>>> DO NOT DELETE THIS!!!  <<<

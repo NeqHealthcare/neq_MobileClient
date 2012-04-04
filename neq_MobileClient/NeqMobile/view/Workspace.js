@@ -52,8 +52,7 @@ Ext.define('NeqMobile.view.Workspace', {
                         },
                         {
                             xtype:'container',
-                            layout:{type:'card',
-                                animation:'fade'},
+                            layout:{type:'card'},
                             flex:5,
                             region:'center',
                             itemId:'dashboardcontainer',
