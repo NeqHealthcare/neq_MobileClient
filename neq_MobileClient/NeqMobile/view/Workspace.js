@@ -24,8 +24,10 @@ Ext.define('NeqMobile.view.Workspace', {
 
                         {
                             xtype:'label',
-                            html:'<span style="color:#E6E6E6">Dr. Jan Gansen</span>',
-                            align:'right'},
+                            tpl:'<span style="color:#E6E6E6">{name}</span>',
+                            align:'right',
+                            itemId:'doctorname'
+                        },
                         {
                             xtype:'button',
                             icon:'theme/images/user/doctor_avatar_small.jpg',

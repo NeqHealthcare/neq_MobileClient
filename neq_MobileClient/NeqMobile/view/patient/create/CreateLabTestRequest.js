@@ -71,7 +71,7 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                             label: 'Physician:',
                             labelWidth: '30%',
                             width: '100%',
-                            placeHolder: 'Current Doctor.js',
+                            placeHolder: 'Current Userinfo.js',
                             autoCapitalize: true,
                             clearIcon: false
                         }

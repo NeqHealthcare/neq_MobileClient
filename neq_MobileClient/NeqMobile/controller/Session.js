@@ -14,10 +14,10 @@ Ext.define('NeqMobile.controller.Session', {
     config:{
         refs:{
             login:'Login',
-            Viewport:'Viewport',
-            Workspace:'workspace',
-            MenuSettings:'menuSettings',
-            SettingsDomains:'settingsDomains'
+            viewport:'Viewport',
+            workspace:'workspace',
+            menuSettings:'menuSettings',
+            settingsDomains:'settingsDomains'
         },
         control:{
             'Login #submitButton':{tap:'onLoginTry'},
@@ -91,6 +91,9 @@ Ext.define('NeqMobile.controller.Session', {
         );
         store.load();
         this.getWorkspace().down('patientlist').down('list').setStore(store);
+       var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
+        this.getWorkspace().down('#doctorname').setData(userinfodata);
+        this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
     },
     onLogoutClick:function () {
         console.log('trying to logout');

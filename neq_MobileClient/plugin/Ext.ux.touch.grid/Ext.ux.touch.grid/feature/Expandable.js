@@ -48,8 +48,8 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         //during expanding a new DetailView instance is created and a model instance is assigned to the DetailView.
         //get currently expanded item
         var expandeditem = this.getExpandeditem();
-        if (expandeditem){
-        this.collapse(dw, index, expandeditem, itemrecord, e, eOpts); }
+//        if (expandeditem){
+//        this.collapse(dw, index, expandeditem, itemrecord, e, eOpts); }
         item.expanded = true;
         this.setExpandeditem(item);
         var desiredCmp = this.getDetailCmp();
@@ -62,7 +62,8 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     collapse:function (dw, index, item, itemrecord, e, eOpts) {
         // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
         item.expanded = false;
-        item.detailinstance.destroy();
+        item.detailinstance.setHidden(true);
+        Ext.defer(function() {item.detailinstance.destroy()});
         dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     }
 });

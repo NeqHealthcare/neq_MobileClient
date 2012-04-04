@@ -18,11 +18,12 @@ Ext.define('NeqMobile.controller.Workspace', {
             control:{
                 'workspace #patientsearchfield':{keyup:'doFilter'},
                 'workspace patientlist #refreshbutton':{tap:'onTapRefreshButton'},
-                'workspace #homebutton':{tap:'switchtohome'}
+                'workspace #homebutton':{tap:'switchtohome'},
+                'workspace patientlist #showHidePatientListButton':{tap:'showHidePatientlist'}
             }
         },
-        togglePatientlistVisibility:function (button, e, eOpts) {
-            var patientListContainer = this.getWorkspace().down('patientlist');
+        showHidePatientlist:function (button, e, eOpts) {
+            var patientListContainer = this.getWorkspace().down('patientlist #patientListContainer');
             if (patientListContainer.isHidden()) {
                 patientListContainer.setHidden(false);
             } else {

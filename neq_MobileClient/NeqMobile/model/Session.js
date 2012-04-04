@@ -11,6 +11,7 @@ Ext.define('NeqMobile.model.Session', {
         fields:['user',
             'sessionId',
             'domain',
-            'doctor']
+            'doctor',
+        'userinfo']
     }
 });

@@ -7,6 +7,7 @@
  */
 Ext.define('NeqMobile.manager.Session',
     {singleton:true,
+        requires:['NeqMobile.model.Userinfo'],
         //session:undefined,
         config:
         {session: undefined},
@@ -22,7 +23,7 @@ Ext.define('NeqMobile.manager.Session',
         logout:function (successCallback, failureCallback, scope) {
 
             Ext.Ajax.request({
-                url:this.session.get('domain').getCoreURL() + '/connection/logout',
+                url:this.getSession().get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
                 //   withCredentials: true,
 
@@ -68,7 +69,14 @@ Ext.define('NeqMobile.manager.Session',
                                 domain:domain
                             });
                             this.setSession(mySession);
-                            successCallback.apply(scope);
+                            var userinfomodel = Ext.ModelMgr.getModel('NeqMobile.model.Userinfo');
+                            userinfomodel.load(undefined,{
+                                success:function(userinfo){
+                                    mySession.set('userinfo',userinfo);
+                                    successCallback.apply(scope);
+                                }
+                            });
+
                         }
                         else
                         {
