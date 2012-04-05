@@ -55,11 +55,11 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             return data;
         };
 
-        window.store1 = new Ext.create('Ext.data.JsonStore', {
-            fields:['name', 'data1', 'data2', 'data3', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', 'iphone', 'android', 'ipad'],
-            data:generateData(5, 20)
-        });
-
+//        window.store1 = new Ext.create('Ext.data.JsonStore', {
+//            fields:['name', 'data1', 'data2', 'data3', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', 'iphone', 'android', 'ipad'],
+//            data:generateData(5, 20)
+//        });
+//
 //        window.chart = Ext.create('Ext.chart.Chart', {
 //            layout:'auto',
 //            themeCls:'bar1',
