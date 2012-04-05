@@ -67,11 +67,12 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                         },
                         {
                             xtype: 'textfield',
+                            itemId: 'doctorNameField',
                             name: 'physician',
                             label: 'Physician:',
                             labelWidth: '30%',
                             width: '100%',
-                            placeHolder: 'Current Userinfo.js',
+                            placeHolder: 'Current User',
                             autoCapitalize: true,
                             clearIcon: false
                         }

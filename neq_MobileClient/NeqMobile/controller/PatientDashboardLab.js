@@ -22,13 +22,13 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         var fieldSet = labTestRequestOverlay.getComponent('createLabtestRequestFieldSet');
         var selectField = fieldSet.getComponent(0);
         var datePickerField = fieldSet.getComponent(1);
-
+        var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
         var patient_id = selectedPatient.get('id');
         var state = 'draft';
         var rec_name = selectField.getValue();
         var request_type_id = selectField.getRecord().get('id');
-        var doctor_rec_name = 'Gansen, Jan'; // needs to be changed as soon as the information is available
-        var doctor_id = 1; // needs to be changed as soon as the information is available
+        var doctor_rec_name = userinfo.get('name');
+        var doctor_id = 1;
         var date = datePickerField.getValue().getTime();
         var newRequest = Ext.create('NeqMobile.model.LabTestRequest', {
             patient_id:patient_id,
@@ -79,6 +79,8 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         } else {
             labTestRequestOverlay = Ext.create('NeqMobile.view.patient.create.CreateLabTestRequest');
         }
+        var doctorTextField = (labTestRequestOverlay.getComponent('createLabtestRequestFieldSet')).getComponent('doctorNameField');
+        doctorTextField.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
         this.getPatientInfoContd1().setMasked({ xtype:'loadmask', message:'loading parameters'});
 
         var labtesttypestore = Ext.data.StoreManager.lookup('labtesttypes');
