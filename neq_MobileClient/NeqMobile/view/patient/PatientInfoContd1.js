@@ -34,7 +34,6 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
         requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer','NeqMobile.view.patient.detail.LabResultsContainer'],
 
         loadLabTestRequests:function (labtestrequests) {
-          console.log(labtestrequests.data);
           this.down('labtestrequestscontainer #x-labTestRequestsTable').setData(labtestrequests.data);
         },
 

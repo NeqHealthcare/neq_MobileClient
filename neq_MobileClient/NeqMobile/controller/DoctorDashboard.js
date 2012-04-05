@@ -27,34 +27,34 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         Ext.Viewport.on('login', this.startpolling, me);
         Ext.Viewport.on('logout', this.stoppolling, me);
 
-//        window.generateData = function (n, floor) {
-//            var data = [],
-//                i;
-//
-//            floor = (!floor && floor !== 0) ? 20 : floor;
-//
-//            for (i = 0; i < (n || 12); i++) {
-//                data.push({
-//                    name:Ext.Date.monthNames[i % 12],
-//                    data1:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    data2:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    data3:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2003:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2004:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2005:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2006:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2007:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2008:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2009:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    2010:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    iphone:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    android:Math.floor(Math.max((Math.random() * 100), floor)),
-//                    ipad:Math.floor(Math.max((Math.random() * 100), floor))
-//                });
-//            }
-//            return data;
-//        };
-//
+        window.generateData = function (n, floor) {
+            var data = [],
+                i;
+
+            floor = (!floor && floor !== 0) ? 20 : floor;
+
+            for (i = 0; i < (n || 12); i++) {
+                data.push({
+                    name:Ext.Date.monthNames[i % 12],
+                    data1:Math.floor(Math.max((Math.random() * 100), floor)),
+                    data2:Math.floor(Math.max((Math.random() * 100), floor)),
+                    data3:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2003:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2004:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2005:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2006:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2007:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2008:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2009:Math.floor(Math.max((Math.random() * 100), floor)),
+                    2010:Math.floor(Math.max((Math.random() * 100), floor)),
+                    iphone:Math.floor(Math.max((Math.random() * 100), floor)),
+                    android:Math.floor(Math.max((Math.random() * 100), floor)),
+                    ipad:Math.floor(Math.max((Math.random() * 100), floor))
+                });
+            }
+            return data;
+        };
+
 //        window.store1 = new Ext.create('Ext.data.JsonStore', {
 //            fields:['name', 'data1', 'data2', 'data3', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', 'iphone', 'android', 'ipad'],
 //            data:generateData(5, 20)

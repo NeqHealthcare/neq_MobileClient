@@ -32,7 +32,7 @@ Ext.define('NeqMobile.manager.Session',
                 params:{username:this.getSession().get('user'), session:this.getSession().get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
-                    if (obj = 'true') {
+                    if (obj.success === "true") {
                         console.log('logout successfull');
                         if (successCallback) successCallback.apply(scope);
                     }
