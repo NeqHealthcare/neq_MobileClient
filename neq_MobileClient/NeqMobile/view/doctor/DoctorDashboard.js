@@ -8,11 +8,15 @@
 
 Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     extend:'Ext.Container',
-    requires:['NeqMobile.view.doctor.DoctorHeader','NeqMobile.view.doctor.DoctorDashboardLab'],
+    requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab','NeqMobile.view.chart.TestChart'],
     xtype:'doctordashboard',
     config:{
+        scrollable:true,
         items:[
+//            {xtype:'testchart'},
             { xtype:'doctorheader'},
-            {xtype:'doctordashboardlab'}        ]
+            {xtype:'doctordashboardlab'}
+
+        ]
     }
 })

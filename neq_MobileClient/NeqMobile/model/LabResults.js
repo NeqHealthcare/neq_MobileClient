@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/labtest/one'});
-
+//var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
+//    {customUrl:'/labtest/one'});
+//
 
 Ext.define('NeqMobile.model.LabResults',{
         extend:'Ext.data.Model',
@@ -21,8 +21,12 @@ Ext.define('NeqMobile.model.LabResults',{
                 'patient_rec_name',
                 'date_requested',
                 'date_analysis'
-            ]
-        },
-        proxy:myproxy
+            ],
+            proxy:{
+                type:'neqproxy',
+                customUrl:'/labtest/one'
+            }
+        }
+
     }
 )
