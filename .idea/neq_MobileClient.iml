@@ -3,8 +3,10 @@
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/st2" />
+      <excludeFolder url="file://$MODULE_DIR$/st2 - Copy" />
       <excludeFolder url="file://$MODULE_DIR$/st2_charts" />
       <excludeFolder url="file://$MODULE_DIR$/st2_pure" />
+      <excludeFolder url="file://$MODULE_DIR$/st2charts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

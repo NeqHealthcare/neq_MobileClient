@@ -108,7 +108,6 @@ Ext.define('NeqMobile.controller.PatientDashboard', {
         if (!labresultstore) {
             labresultstore = Ext.create('NeqMobile.store.LabResults');
         }
-
         labresultstore.getProxy().setExtraParam('patientId', patientid);
         labresultstore.load({
             callback:function (records, operation, success) {
