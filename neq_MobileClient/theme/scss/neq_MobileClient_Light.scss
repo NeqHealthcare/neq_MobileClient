@@ -8,6 +8,10 @@ $login-button-color:  #BDBDBD; //#ff8000; //orange
 $list-pressed-color: mix(#08679F, #DEDEDE, 10);
 $list-active-color: mix(#043F62, #DEDEDE, 0);
 
+//table blue
+$table_color_top: #177abf;
+$table_color_bottom: #105484;
+
 @import 'sencha-touch/default/all';
 @include sencha-panel;
 @include sencha-buttons;
@@ -105,6 +109,21 @@ $list-active-color: mix(#043F62, #DEDEDE, 0);
 // 2-3-3 DiseasesDetail.js
 /* ------------------------------ */
 // 2-3-4 MedicationDetail.js
+/* ------------------------------ */
+// 2-3-4 LabTestRequestTable.js
+#labTestRequestsTable table{
+    th{
+        background-image: -moz-linear-gradient(bottom, $table_color_bottom 20%, $table_color_top 90%);
+        background-image: -webkit-linear-gradient(bottom, $table_color_bottom 20%, $table_color_top 90%);
+        color: white;
+        text-shadow: black 0px -1px;
+        line-height: 2em;
+    }
+    td{
+        font-weight: bold;
+    }
+
+}
 /* ------------------------------ */
 // 2-4 SETTINGS - FOLDER
 /* ------------------------------ */

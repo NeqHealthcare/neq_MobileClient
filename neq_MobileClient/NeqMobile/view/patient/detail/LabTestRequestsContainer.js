@@ -26,17 +26,6 @@ var labTestRequestsTable = new Ext.XTemplate(
     '</table>'
 )
 
-var testdata = [
-                    {
-                     patient_id: '',
-                     state: '',
-                     rec_name: 'no requests',
-                     doctor_rec_name: '',
-                     date: ''
-                    }
-                ]
-
-
 Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
 
         extend:'Ext.form.FieldSet',
@@ -56,8 +45,8 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                 },
                 {
                     xtype: 'panel',
-                        id: 'x-labTestRequestsTable',
-                    data: testdata,
+                    id: 'labTestRequestsTable',
+                    data: null,
                     tpl: labTestRequestsTable
                 }
 
