@@ -77,7 +77,8 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
-        this.fireEvent('loginSuccess');
+        console.log('firing login event');
+        Ext.Viewport.fireEvent('login');
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('save sessionID...');
 
@@ -97,6 +98,7 @@ Ext.define('NeqMobile.controller.Session', {
     },
     onLogoutClick:function () {
         console.log('trying to logout');
+        Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
         this.getViewport().remove(this.getWorkspace(), true);
         this.getMenuSettings().setHidden(true);

@@ -18,7 +18,7 @@ Ext.define('NeqMobile.controller.Workspace', {
             control:{
                 'workspace #patientsearchfield':{keyup:'doFilter'},
                 'workspace patientlist #refreshbutton':{tap:'onTapRefreshButton'},
-                'workspace #homebutton':{tap:'switchtohome'},
+
                 'workspace patientlist #showHidePatientListButton':{tap:'showHidePatientlist'}
             }
         },
@@ -29,10 +29,6 @@ Ext.define('NeqMobile.controller.Workspace', {
             } else {
                 patientListContainer.setHidden(true);
             }
-        },
-        switchtohome:function (button, e, eOpts) {
-            var workspace = this.getWorkspace();
-            workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
         },
         onTapRefreshButton:function () {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');

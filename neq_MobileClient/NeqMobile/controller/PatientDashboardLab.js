@@ -30,7 +30,6 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         var doctor_rec_name = 'Gansen, Jan'; // needs to be changed as soon as the information is available
         var doctor_id = 1; // needs to be changed as soon as the information is available
         var date = datePickerField.getValue().getTime();
-
         var newRequest = Ext.create('NeqMobile.model.LabTestRequest', {
             patient_id:patient_id,
             state:state,
@@ -97,8 +96,3 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         });
     }
 });
-
-
-
-
-
