@@ -117,33 +117,5 @@ Ext.define('NeqMobile.controller.PatientDashboard', {
             scope:this
         });
     }
-//>>> DO NOT DELETE THIS!!!  <<<
-    //>>> DO NOT DELETE THIS!!!  <<<
-    //>>> DO NOT DELETE THIS!!!  <<<
-//    ,
-//    onItemTap:function (dw, index, item, record, e, eOpts, detailcont) {
-//
-//        var me = this;
-//
-//        var callback = function () {
-//
-//            var myscroll = me.getPatientInfo().getScrollable().getScroller();
-//            var patientEl = me.getPatientInfo().element;
-//            var maxmove = item.getY() - patientEl.getY();
-//            var wantmove = maxmove + item.getHeight() - patientEl.getHeight();
-//            var tomove = wantmove;
-//            if (maxmove < wantmove) {
-//                tomove = maxmove;
-//            }
-//            if (tomove > 0) {
-//                myscroll.scrollBy(0, tomove, true);
-//            }
-//        }
-//        Ext.Function.defer(callback
-//            , 150, this);
-//
-//    }
-    //>>> DO NOT DELETE THIS!!!  <<<
-    //>>> DO NOT DELETE THIS!!!  <<<
-    //>>> DO NOT DELETE THIS!!!  <<<
+
 });
