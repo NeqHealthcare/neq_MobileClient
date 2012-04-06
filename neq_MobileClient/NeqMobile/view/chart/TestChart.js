@@ -7,9 +7,9 @@
  */
 
 Ext.define('NeqMobile.view.chart.TestChart', {
-    extend:'Ext.Container',
-    xtype:'testchart',
-    title:'some title'
+    extend:'Ext.chart.Panel',
+    xtype:'testchart'
+
 //    ,
 //    buttons:[
 //        {
