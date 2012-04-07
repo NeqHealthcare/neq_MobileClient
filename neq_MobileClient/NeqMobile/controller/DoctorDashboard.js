@@ -17,8 +17,12 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         },
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
-            'workspace #homebutton':{tap:'onHomeTap'}
+            'workspace #homebutton':{tap:'onHomeTap'},
+            'workspace doctordashboard touchgridpanel':{itemtap:'onLabtestTap'}
 
+        },
+        routes:{
+            'doctordashboard':'switchtohome'
         },
         pollFn:undefined
     },
@@ -27,154 +31,20 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
 
         Ext.Viewport.on('login', this.startpolling, me);
         Ext.Viewport.on('logout', this.stoppolling, me);
-
-        window.generateData = function (n, floor) {
-            var data = [],
-                i;
-
-            floor = (!floor && floor !== 0) ? 20 : floor;
-
-            for (i = 0; i < (n || 12); i++) {
-                data.push({
-                    name:Ext.Date.monthNames[i % 12],
-                    data1:Math.floor(Math.max((Math.random() * 100), floor)),
-                    data2:Math.floor(Math.max((Math.random() * 100), floor)),
-                    data3:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2003:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2004:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2005:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2006:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2007:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2008:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2009:Math.floor(Math.max((Math.random() * 100), floor)),
-                    2010:Math.floor(Math.max((Math.random() * 100), floor)),
-                    iphone:Math.floor(Math.max((Math.random() * 100), floor)),
-                    android:Math.floor(Math.max((Math.random() * 100), floor)),
-                    ipad:Math.floor(Math.max((Math.random() * 100), floor))
-                });
-            }
-            return data;
-        };
-
-        window.store1 = new Ext.create('Ext.data.JsonStore', {
-            fields:['name', 'data1', 'data2', 'data3', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', 'iphone', 'android', 'ipad'],
-            data:generateData(5, 20)
-        });
-
-        window.chart = Ext.create('Ext.chart.Chart', {
-            layout:'auto',
-            themeCls:'bar1',
-            theme:'Demo',
-            store:store1,
-            animate:true,
-            shadow:false,
-            legend:{
-                position:{
-                    portrait:'bottom',
-                    landscape:'right'
-                },
-                labelFont:'17px Arial'
-            }
-
-            ,
-            interactions:[
-                {
-                    type:'reset'
-                },
-                {
-                    type:'togglestacked'
-                },
-//                {
-//                    type:'panzoom',
-//                    axes:{
-//                        left:{}
-//                    }
-//                },
-                'itemhighlight',
-                {
-                    type:'iteminfo',
-                    gesture:'longpress',
-                    panel:{
-                        items:[
-                            {
-                                docked:'top',
-                                xtype:'toolbar',
-                                title:'Details'
-                            }
-                        ]
-                    },
-                    listeners:{
-                        'show':function (me, item, panel) {
-                            panel.setHtml('<ul><li><b>Month:</b> ' + item.value[0] + '</li><li><b>Value: </b> ' + item.value[1] + '</li></ul>');
-                        }
-                    }
-                },
-                {
-                    type:'itemcompare',
-                    offset:{
-                        x:-10
-                    },
-                    listeners:{
-                        'show':function (interaction) {
-                            var val1 = interaction.item1.value,
-                                val2 = interaction.item2.value;
-                            var chartPanel = me.getDoctordashboard().down('testchart');
-                            chartPanel.descriptionPanel.setTitle(val1[0] + ' to ' + val2[0] + ' : ' + Math.round((val2[1] - val1[1]) / val1[1] * 100) + '%');
-                            chartPanel.headerPanel.getLayout().setAnimation('slide');
-                            chartPanel.headerPanel.setActiveItem(1);
-                        },
-                        'hide':function () {
-                            var chartPanel = me.getDoctordashboard().down('testchart');
-                            var animation = chartPanel.headerPanel.getLayout().getAnimation();
-                            if (animation) {
-                                animation.setReverse(true);
-                            }
-                            chartPanel.headerPanel.setActiveItem(0);
-                        }
-                    }
-                }
-            ],
-            axes:[
-                {
-                    type:'Numeric',
-                    position:'bottom',
-                    fields:['2008', '2009', '2010'],
-                    label:{
-                        renderer:function (v) {
-                            return v.toFixed(0);
-                        }
-                    },
-                    title:'Number of Hits',
-                    minimum:0
-                },
-                {
-                    type:'Category',
-                    position:'left',
-                    fields:['name'],
-                    title:'Month of the Year'
-                }
-            ],
-            series:[
-                {
-                    type:'bar',
-                    xField:'name',
-                    yField:['2008', '2009', '2010'],
-                    axis:'bottom',
-                    highlight:true,
-                    showInLegend:true
-                }
-            ]
-        });
-
-
     },
+
     onHomeTap:function () {
-        this.switchtohome();
-        this.createchart();
-
+        this.redirectTo('doctordashboard');
     },
 
-
+    switchtohome:function (button, e, eOpts) {
+        var workspace = this.getWorkspace();
+        workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
+        this.refreshnewlabresults();
+    },
+    onLabtestTap:function (dw, index, item, record, e, eOpts) {
+        this.redirectTo('patient/' + record.get('patient'));
+    },
     stoppolling:function () {
         console.log('stopping polling');
         var pollFn = this.getPollFn();
@@ -202,11 +72,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         pollFn = setInterval(pollFn, 60000);
         this.setPollFn(pollFn);
     },
-    switchtohome:function (button, e, eOpts) {
-        var workspace = this.getWorkspace();
-        workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
-        this.refreshnewlabresults();
-    },
+
     refreshnewlabresults:function () {
         var me = this;
         var mystore = Ext.data.StoreManager.lookup('newlabresults');
@@ -225,19 +91,21 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     },
 
     createchart:function () {
-     var testchart = this.getDoctordashboard().down('testchart');
+        var testchart = this.getDoctordashboard().down('testchart');
         testchart.setHeight(750);
 //        testchart.setWidth(500);
         var mycircle = new Ext.draw.Component({
-            items: [{
-                type: 'circle',
-                fill: '#ffc',
-                radius: 100,
-                x: 100,
-                y: 100
-            }]
+            items:[
+                {
+                    type:'circle',
+                    fill:'#ffc',
+                    radius:100,
+                    x:100,
+                    y:100
+                }
+            ]
         });
 
-       testchart.setItems(mycircle);
+        testchart.setItems(mycircle);
     }
 });

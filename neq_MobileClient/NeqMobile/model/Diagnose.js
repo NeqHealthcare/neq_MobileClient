@@ -1,6 +1,3 @@
-var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/diagnose/all'});
-
 Ext.define('NeqMobile.model.Diagnose', {
     extend:'Ext.data.Model',
     config:{
@@ -21,7 +18,10 @@ Ext.define('NeqMobile.model.Diagnose', {
             'is_on_treatment',
             'pathology_rec_name'
         ],
-        proxy:myproxy
+        proxy:{
+            type:'neqproxy',
+            customUrl:'/diagnose/all'
+        }
 
     }
 });

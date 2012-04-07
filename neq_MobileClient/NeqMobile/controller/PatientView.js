@@ -16,26 +16,33 @@ Ext.define('NeqMobile.controller.PatientView', {
         control:{
             'workspace patientlist list':{select:'onPatientSelect'}
         },
-        routes: {
-            'patients/:id/dashboard/': 'showPatient'
-        }
-    },
+        routes:{
+            'patient/:id':'showPatient'
+        },
+        before:{showPatient:'createPatientView'
+        } },
 
-    onPatientSelect:function (list, patientrecord, options) {
-
+    createPatientView:function (action) {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
-            console.log('creating patient Info Container');
+            console.log('creating Patient View Container');
             new NeqMobile.view.patient.PatientView;
         }
-
+        action.resume();
+    },
+    onPatientSelect:function (list, patientrecord, options) {
+        console.log('on patient select called');
+        this.redirectTo(patientrecord);
+    },
+    showPatient:function (id) {
+        console.log('showing patient');
+        this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
+        this.loadPatientData(id);
+    },
+    loadPatientData:function (patientid) {
         // < var definitions
         var patientview = this.getPatientview();
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
-
-
-        this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
-        selectedPatient = patientrecord;
         var me = this;
         var finishcounterInfo = 0;
         var finishwaiter = function () {
@@ -44,11 +51,13 @@ Ext.define('NeqMobile.controller.PatientView', {
                 me.getPatientview().down('patientdashboard').setMasked(false);
             }
         };
-
-        var patientid = patientrecord.get('id');
-        patientdashboard.loadPatientHeader(patientrecord);
-
-        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details',transparent:true});
+        var patientmodel = Ext.ModelMgr.getModel('NeqMobile.model.Patient');
+        patientmodel.load(patientid, {
+            success:function (patientrecord) {
+                patientdashboard.loadPatientHeader(patientrecord);
+            }
+        });
+        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
 
         var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
         if (!diagnosestore) {
@@ -76,8 +85,6 @@ Ext.define('NeqMobile.controller.PatientView', {
             },
             scope:this
         });
-
-
         var medicationstore = Ext.data.StoreManager.lookup('medications');
         if (!medicationstore) {
             medicationstore = Ext.create('NeqMobile.store.Medications');

@@ -2,9 +2,6 @@
  * Created by J.G.
  */
 
-var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/labtest/params'});
-
 Ext.define('NeqMobile.model.LabTestType', {
     extend:'Ext.data.Model',
     config:{
@@ -13,7 +10,10 @@ Ext.define('NeqMobile.model.LabTestType', {
             'code',
             'name'
         ],
-        proxy:myproxy
+        proxy:{
+            type:'neqproxy',
+            customUrl:'/labtest/params'
+        }
 
     }
 });

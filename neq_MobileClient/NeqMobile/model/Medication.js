@@ -1,8 +1,6 @@
 /**
  * Created by J.G.
  */
-var myproxy = Ext.create('NeqMobile.proxy.NeqProxy',
-    {customUrl:'/medication/all'});
 
 Ext.define('NeqMobile.model.Medication', {
     extend:'Ext.data.Model',
@@ -26,13 +24,15 @@ Ext.define('NeqMobile.model.Medication', {
             'dose_unit_rec_name',
             'indication_rec_name',
             'common_dosage_rec_name',
-            {name:'course_completed',type:'bool'},
-            {name:'discontinued',type:'bool'},
+            {name:'course_completed', type:'bool'},
+            {name:'discontinued', type:'bool'},
             'medicament_rec_name',
-            {name:'start_treatment', type:'date',dateFormat:'time'},
-            {name:'end_treatment', type:'date',dateFormat:'time'}
+            {name:'start_treatment', type:'date', dateFormat:'time'},
+            {name:'end_treatment', type:'date', dateFormat:'time'}
         ],
-        proxy:myproxy
-
+        proxy:{
+            type:'neqproxy',
+            customUrl:'/medication/all'
+        }
     }
 });
