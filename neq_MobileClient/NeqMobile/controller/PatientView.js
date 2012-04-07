@@ -5,12 +5,12 @@
  * Time: 22:06
  * To change this template use File | Settings | File Templates.
  */
-Ext.define('NeqMobile.controller.PatientInfo', {
+Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
     requires:[ 'NeqMobile.store.Patients'],
     config:{
         refs:{
-            patientinfo:'patientinfo',
+            patientview:'patientview',
             workspace:'workspace'
         },
         control:{
@@ -23,25 +23,25 @@ Ext.define('NeqMobile.controller.PatientInfo', {
 
     onPatientSelect:function (list, patientrecord, options) {
 
-        if (this.getPatientinfo() === null || this.getPatientinfo() === undefined) {
+        if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating patient Info Container');
-            new NeqMobile.view.patient.PatientInfo;
+            new NeqMobile.view.patient.PatientView;
         }
 
         // < var definitions
-        var patientinfo = this.getPatientinfo();
-        var patientdashboard = patientinfo.down('patientdashboard');
+        var patientview = this.getPatientview();
+        var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
 
 
-        this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientinfo());
+        this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
         selectedPatient = patientrecord;
         var me = this;
         var finishcounterInfo = 0;
         var finishwaiter = function () {
             finishcounterInfo++;
             if (finishcounterInfo === 3) {
-                me.getPatientinfo().down('patientdashboard').setMasked(false);
+                me.getPatientview().down('patientdashboard').setMasked(false);
             }
         };
 
@@ -102,7 +102,7 @@ Ext.define('NeqMobile.controller.PatientInfo', {
             callback:function (records, operation, success) {
                 var response = operation.getResponse();
                 var responseObject = Ext.decode(response.responseText);
-                patientinfo.down('patientlab').loadLabTestRequests(responseObject);
+                patientview.down('patientlab').loadLabTestRequests(responseObject);
             },
             scope:this
         });
@@ -114,7 +114,7 @@ Ext.define('NeqMobile.controller.PatientInfo', {
         labresultstore.getProxy().setExtraParam('patientId', patientid);
         labresultstore.load({
             callback:function (records, operation, success) {
-                patientinfo.down('patientlab').loadLabResults(labresultstore);
+                patientview.down('patientlab').loadLabResults(labresultstore);
             },
             scope:this
         });

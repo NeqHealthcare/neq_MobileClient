@@ -6,10 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('NeqMobile.view.patient.PatientInfo', {
+Ext.define('NeqMobile.view.patient.PatientView', {
     extend:'Ext.carousel.Carousel',
     requires:['NeqMobile.view.patient.PatientDashboard','NeqMobile.view.patient.PatientLab'],
-    xtype:'patientinfo',
+    xtype:'patientview',
     config:{
         items:[
             {
