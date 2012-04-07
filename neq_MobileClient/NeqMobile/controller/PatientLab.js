@@ -1,13 +1,13 @@
-Ext.define('NeqMobile.controller.PatientDashboardLab', {
+Ext.define('NeqMobile.controller.PatientLab', {
     extend:'Ext.app.Controller',
     config:{
         refs:{
             labTestRequestOverlay:'createlabtestrequestoverlay',
             labTestTypesList:'createlabtestrequestoverlay selectfield',
-            patientInfoContd1:'patientInfoContd1'
+            patientlab:'patientlab'
         },
         control:{
-            'patientInfoContd1 #x-createNewLabRequestButton':{
+            'patientlab #x-createNewLabRequestButton':{
                 tap:'onCreateNewLabRequestTap'
             },
             'createlabtestrequestoverlay #x-submitLabTestRequestButton':{
@@ -54,7 +54,7 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
                     callback:function (records, operation, success) {
                         var response = operation.getResponse();
                         var responseObject = Ext.decode(response.responseText);
-                        me.getPatientInfoContd1().loadLabTestRequests(responseObject);
+                        me.getPatientlab().loadLabTestRequests(responseObject);
                     },
                     scope:this
                 });
@@ -81,7 +81,7 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         }
         var doctorTextField = (labTestRequestOverlay.getComponent('createLabtestRequestFieldSet')).getComponent('doctorNameField');
         doctorTextField.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
-        this.getPatientInfoContd1().setMasked({ xtype:'loadmask', message:'loading parameters'});
+        this.getPatientlab().setMasked({ xtype:'loadmask', message:'loading parameters'});
 
         var labtesttypestore = Ext.data.StoreManager.lookup('labtesttypes');
         if (!labtesttypestore) {
@@ -90,7 +90,7 @@ Ext.define('NeqMobile.controller.PatientDashboardLab', {
         labtesttypestore.load({
             callback:function (records, operation, success) {
                 this.getLabTestTypesList().setStore(labtesttypestore);
-                this.getPatientInfoContd1().setMasked(false);
+                this.getPatientlab().setMasked(false);
                 this.overlay = Ext.Viewport.add(labTestRequestOverlay);
                 this.overlay.show();
             },
