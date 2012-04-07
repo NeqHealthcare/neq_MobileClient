@@ -3,9 +3,9 @@
  */
 
 
-Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
+Ext.define('NeqMobile.view.patient.PatientLab', {
         extend:'Ext.Container',
-        xtype:'patientInfoContd1',
+        xtype:'patientlab',
         requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer','NeqMobile.view.patient.detail.LabResultsContainer'],
 
         loadLabTestRequests:function (labtestrequests) {
