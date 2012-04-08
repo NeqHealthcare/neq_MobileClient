@@ -36,19 +36,12 @@ Ext.define('NeqMobile.model.LabResults', {
                 method:'GET',
                 scope:me,
                 params:{session:session.get('sessionId'), labTestRequestId:this.get('test')},
-                success:function (response, opts) {
+                callback:function (opts, success, response) {
                     var obj = Ext.decode(response.responseText, true);
-                    if (obj) {
-                        if (obj.success === 'true') {
-                            console.log('removal successfull');
-                        }
-                        else {
-                            console.log('removal failed')
-                        }
+                    if (obj && obj.success && obj.success === 'true') {
+                        console.log('removal successfull');
                     }
-                },
-                failure:function (response, opts) {
-                    {
+                    else {
                         console.log('removal failed')
                     }
                 }
