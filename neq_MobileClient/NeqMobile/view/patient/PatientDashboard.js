@@ -18,7 +18,7 @@ Ext.define('NeqMobile.view.patient.PatientDashboard', {
                 xtype:'patientInfoContd1'
             },
             {
-                xtype:'patientInfoContd2'
+                xtype:'patientinfoimages'
             }
         ]
 

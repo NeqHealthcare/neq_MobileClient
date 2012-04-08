@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.proxy.NeqProxy', {
     extend:'Ext.data.proxy.Rest',
 
-    buildUrl:function (request) {
+    buildUrl:function () {
         var me = this;
         var url = NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + me.getCustomUrl();
 //        if (me.getNoCache()) {

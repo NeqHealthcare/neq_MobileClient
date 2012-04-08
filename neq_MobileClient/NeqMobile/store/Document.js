@@ -11,9 +11,13 @@ Ext.define('NeqMobile.store.Document', {
 
 
         config:{model:'NeqMobile.model.Document',
-           // sorters: 'lastName',
- //           autoLoad:true,
- //           autoSync:true,
-            //storeId:'id'
+            sorters:'description',
+            //autoLoad:true,
+            //autoSync:true,
+            storeId:'documents'
+
         }}
+
+
 );
+

@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.Container',
         xtype:'workspace',
-        requires:['NeqMobile.view.patient.PatientInfo', 'NeqMobile.view.patient.PatientList', 'NeqMobile.view.patient.PatientInfoContd1'],
+        requires:['NeqMobile.view.patient.PatientInfo', 'NeqMobile.view.patient.PatientList', 'NeqMobile.view.patient.PatientInfoContd1', 'NeqMobile.view.patient.PatientInfoImages'],
 
         config:{
             layout:'fit',
