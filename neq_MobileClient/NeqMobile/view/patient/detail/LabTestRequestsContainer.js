@@ -60,6 +60,7 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                     data: testdata,
                     tpl: labTestRequestsTable
                 }
+
             ]
         }
 

@@ -31,12 +31,17 @@ var testtemplate = new Ext.XTemplate(
 Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
         extend:'Ext.Container',
         xtype:'patientInfoContd1',
-        requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer'],
+        requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer','NeqMobile.view.patient.detail.LabResultsContainer'],
 
         loadLabTestRequests:function (labtestrequests) {
           console.log(labtestrequests.data);
           this.down('labtestrequestscontainer #x-labTestRequestsTable').setData(labtestrequests.data);
         },
+
+        loadLabResults:function (labresultstore) {
+            this.down('labresultscontainer #labresult').setStore(labresultstore);
+        },
+
 
         config:{
             styleHtmlContent:true,
@@ -49,6 +54,9 @@ Ext.define('NeqMobile.view.patient.PatientInfoContd1', {
             items:[
                 {
                   xtype:'labtestrequestscontainer'
+                },
+                {
+                    xtype:'labresultscontainer'
                 }
             ]
         }
