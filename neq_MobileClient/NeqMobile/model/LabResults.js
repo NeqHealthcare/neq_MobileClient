@@ -10,7 +10,7 @@
 //    {customUrl:'/labtest/one'});
 //
 
-Ext.define('NeqMobile.model.LabResults',{
+Ext.define('NeqMobile.model.LabResults', {
         extend:'Ext.data.Model',
         config:{
             fields:[
@@ -26,6 +26,35 @@ Ext.define('NeqMobile.model.LabResults',{
                 type:'neqproxy',
                 customUrl:'/labtest/one'
             }
+        },
+        markAsRead:function () {
+            var me = this;
+            var session = NeqMobile.manager.Session.getSession();
+            Ext.Ajax.request({
+                url:session.get('domain').getCoreURL() +
+                    '/labtest/watchlist/remove',
+                method:'GET',
+                scope:me,
+                params:{session:session.get('sessionId'), labTestRequestId:this.get('test')},
+                success:function (response, opts) {
+                    var obj = Ext.decode(response.responseText, true);
+                    if (obj) {
+                        if (obj.success === 'true') {
+                            console.log('removal successfull');
+                        }
+                        else {
+                            console.log('removal failed')
+                        }
+                    }
+                },
+                failure:function (response, opts) {
+                    {
+                        console.log('removal failed')
+                    }
+                }
+            });
+
+
         }
 
     }

@@ -92,9 +92,10 @@ Ext.define('NeqMobile.controller.Session', {
         );
         store.load();
         this.getWorkspace().down('patientlist').down('list').setStore(store);
-       var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
+        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
         this.getWorkspace().down('#doctorname').setData(userinfodata);
         this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
+        this.redirectTo('doctordashboard');
     },
     onLogoutClick:function () {
         console.log('trying to logout');

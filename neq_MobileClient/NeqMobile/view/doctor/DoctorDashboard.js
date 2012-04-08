@@ -22,9 +22,9 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
 
             }
 
-            ,
-            {xtype:'testchart'
-            }
+//            ,
+//            {xtype:'testchart'
+//            }
 
         ]
     }

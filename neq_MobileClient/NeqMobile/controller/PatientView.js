@@ -17,17 +17,17 @@ Ext.define('NeqMobile.controller.PatientView', {
             'workspace patientlist list':{select:'onPatientSelect'}
         },
         routes:{
-            'patient/:id':'showPatient'
+            'patient/:id':'showPatient',
+            'patient/:id/lab':'showPatientLab'
         },
-        before:{showPatient:'createPatientView'
+        before:{
         } },
 
-    createPatientView:function (action) {
+    createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
             new NeqMobile.view.patient.PatientView;
         }
-        action.resume();
     },
     onPatientSelect:function (list, patientrecord, options) {
         console.log('on patient select called');
@@ -35,11 +35,18 @@ Ext.define('NeqMobile.controller.PatientView', {
     },
     showPatient:function (id) {
         console.log('showing patient');
+        this.createPatientView();
         this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
+    showPatientLab:function(id)
+    {
+      this.showPatient(id);
+      this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
+    },
     loadPatientData:function (patientid) {
         // < var definitions
+        NeqMobile.manager.Session.setCurrentPatient(patientid);
         var patientview = this.getPatientview();
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >

@@ -23,7 +23,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
         var selectField = fieldSet.getComponent(0);
         var datePickerField = fieldSet.getComponent(1);
         var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
-        var patient_id = selectedPatient.get('id');
+        var patient_id = NeqMobile.manager.Session.getCurrentPatient();
         var state = 'draft';
         var rec_name = selectField.getValue();
         var request_type_id = selectField.getRecord().get('id');

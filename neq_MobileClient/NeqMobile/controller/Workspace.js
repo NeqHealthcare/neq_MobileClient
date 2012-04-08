@@ -39,6 +39,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 scope:this
             });
         },
+
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('myPatientsStore');
             var searchstring = Ext.String.trim(searchfield.getValue());
