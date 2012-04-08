@@ -41,7 +41,8 @@ Ext.define('NeqMobile.view.patient.PatientList', {
             {
                 xtype:'button',
                 width: 5,
-                id:'x-hidePatientListButton',
+                id:'showHidePatientListButton',
+                itemId:'showHidePatientListButton',
                 iconCls: 'arrow_left',
                 iconMask: true
             }

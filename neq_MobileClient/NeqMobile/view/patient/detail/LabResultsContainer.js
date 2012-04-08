@@ -52,26 +52,3 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
     }
 
 )
-
-var tmp =  new Ext.XTemplate( '<table border="1">',
-    '<caption> Caption</caption>',
-    '<thead>',
-    '<tr>',
-    '<th scope="col">Test Type</th>',
-    '<th scope="col">Date</th>',
-    '<th scope="col">Physician</th>',
-    '<th scope="col">State</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for=".">',
-    '<tr>',
-    '<td>{test}</td>',
-    '<td>{patient}</td>',
-    '<td>{name}</td>',
-    '<td>{test_rec_name}</td>',
-    '</tr>',
-    '</tpl>',
-    '</tbody>',
-    '</table>')
-

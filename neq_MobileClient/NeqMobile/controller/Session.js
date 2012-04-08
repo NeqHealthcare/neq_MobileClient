@@ -14,10 +14,10 @@ Ext.define('NeqMobile.controller.Session', {
     config:{
         refs:{
             login:'Login',
-            Viewport:'Viewport',
-            Workspace:'workspace',
-            MenuSettings:'menuSettings',
-            SettingsDomains:'settingsDomains'
+            viewport:'Viewport',
+            workspace:'workspace',
+            menuSettings:'menuSettings',
+            settingsDomains:'settingsDomains'
         },
         control:{
             'Login #submitButton':{tap:'onLoginTry'},
@@ -43,7 +43,6 @@ Ext.define('NeqMobile.controller.Session', {
         }
         this.getViewport().setActiveItem(settingsdomains);
     },
-
 
     onShowLogoutMenu:function (button) {
 
@@ -78,7 +77,8 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
-        this.fireEvent('loginSuccess');
+        console.log('firing login event');
+        Ext.Viewport.fireEvent('login');
         this.getLogin().down('formpanel').getFields('password').reset();
         console.log('save sessionID...');
 
@@ -92,10 +92,14 @@ Ext.define('NeqMobile.controller.Session', {
         );
         store.load();
         this.getWorkspace().down('patientlist').down('list').setStore(store);
+        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
+        this.getWorkspace().down('#doctorname').setData(userinfodata);
+        this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
+        this.redirectTo('doctordashboard');
     },
-
     onLogoutClick:function () {
         console.log('trying to logout');
+        Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
         this.getViewport().remove(this.getWorkspace(), true);
         this.getMenuSettings().setHidden(true);

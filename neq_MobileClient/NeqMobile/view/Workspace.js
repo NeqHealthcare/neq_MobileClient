@@ -8,7 +8,7 @@
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.Container',
         xtype:'workspace',
-        requires:['NeqMobile.view.patient.PatientInfo', 'NeqMobile.view.patient.PatientList', 'NeqMobile.view.patient.PatientInfoContd1', 'NeqMobile.view.patient.PatientInfoImages'],
+        requires:['NeqMobile.view.patient.PatientView', 'NeqMobile.view.patient.PatientList', 'NeqMobile.view.patient.PatientLab', 'NeqMobile.view.patient.PatientInfoImages'],
 
         config:{
             layout:'fit',
@@ -24,8 +24,10 @@ Ext.define('NeqMobile.view.Workspace', {
 
                         {
                             xtype:'label',
-                            html:'<span style="color:#E6E6E6">Dr. Jan Gansen</span>',
-                            align:'right'},
+                            tpl:'<span style="color:#E6E6E6">{name}</span>',
+                            align:'right',
+                            itemId:'doctorname'
+                        },
                         {
                             xtype:'button',
                             icon:'theme/images/user/doctor_avatar_small.jpg',

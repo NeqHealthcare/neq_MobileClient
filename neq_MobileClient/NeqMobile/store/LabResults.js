@@ -9,7 +9,6 @@
 Ext.define('NeqMobile.store.LabResults', {
         extend:'Ext.data.Store',
         requires:'NeqMobile.model.LabResults',
-
         config:{
             model:'NeqMobile.model.LabResults',
             storeId:'labresults'

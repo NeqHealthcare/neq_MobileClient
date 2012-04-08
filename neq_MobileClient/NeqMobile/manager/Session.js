@@ -7,35 +7,47 @@
  */
 Ext.define('NeqMobile.manager.Session',
     {singleton:true,
-        session:undefined,
-        getUser:function () {
-            return this.session.get('user');
-        },
-        getSession:function () {
-            return this.session
+        requires:['NeqMobile.model.Userinfo'],
+        //session:undefined,
+        config:{
+            session:undefined,
+            currentPatient:undefined
         },
         getSessionId:function () {
-            return this.session.get('sessionId');
+            return this.getSession().get('sessionId');
         },
-        isLoggedIn:function () {
+        isAuthenticated:function () {
             if (this.session == undefined || this.session == null)
                 return false;
             else
                 return true;
         },
+        authenticate:function(params)
+        {
+          var success;
+
+          if (this.isAuthenicated() === true)
+          {
+              success = true;
+          }
+            else
+          {
+             // (domain, user, password, success, failure, scope)
+          }
+        },
         logout:function (successCallback, failureCallback, scope) {
 
             Ext.Ajax.request({
-                url:this.session.get('domain').getCoreURL() + '/connection/logout',
+                url:this.getSession().get('domain').getCoreURL() + '/connection/logout',
                 method:'GET',
                 //   withCredentials: true,
 
                 scope:this,
                 timeout:30000,
-                params:{username:this.session.get('user'), session:this.session.get('sessionId')},
+                params:{username:this.getSession().get('user'), session:this.getSession().get('sessionId')},
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
-                    if (obj = 'true') {
+                    if (obj.success === "true") {
                         console.log('logout successfull');
                         if (successCallback) successCallback.apply(scope);
                     }
@@ -51,7 +63,7 @@ Ext.define('NeqMobile.manager.Session',
             });
             this.session = undefined;
         },
-        login:function (domain, user, password, successCallback, failureCallback, scope) {
+        login:function (domain, user, password, success, failure, scope) {
             Ext.Ajax.request({
                 url:domain.getCoreURL() + '/connection/login',
                 method:'GET',
@@ -71,20 +83,26 @@ Ext.define('NeqMobile.manager.Session',
                                 sessionId:obj.data[0],
                                 domain:domain
                             });
-                            this.session = mySession;
-                            successCallback.apply(scope);
+                            this.setSession(mySession);
+                            var userinfomodel = Ext.ModelMgr.getModel('NeqMobile.model.Userinfo');
+                            userinfomodel.load(undefined, {
+                                success:function (userinfo) {
+                                    mySession.set('userinfo', userinfo);
+                                    success.apply(scope);
+                                }
+                            });
+
                         }
-                        else
-                        {
+                        else {
                             Ext.Msg.alert('Connection failed', 'Server replied: ' + obj.error);
-                            if (failureCallback) failureCallback.apply(scope);
+                            if (failure) failure.apply(scope);
                         }
                     }
                     else {
                         Ext.Msg.alert('Connection failed', '<br> status code: ' + response.status, Ext.emptyFn);
                         console.log('login failed');
                         console.log('server-side failure with status code ' + response.status);
-                        if (failureCallback) failureCallback.apply(scope);
+                        if (failure) failure.apply(scope);
                     }
                 },
                 failure:function (response, opts) {
@@ -94,7 +112,7 @@ Ext.define('NeqMobile.manager.Session',
                         'It occured a technical connection problem. Possible causes are:<br><br>' +
                         '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
 
-                    failureCallback.apply(scope);
+                    failure.apply(scope);
                 }
             });
         }
