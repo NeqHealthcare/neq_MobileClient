@@ -1,24 +1,3 @@
-Ext.define('Init_Document', {
-    extend:'Ext.data.Model',
-    config:{
-        fields:[
-            "id", "link", "description", "type"
-        ],
-        proxy:myproxy
-
-    }
-});
-
-
-var store = Ext.create('Ext.data.Store', {
-    model:'Init_Document',
-    //sorters: 'lastName',
-
-    data:[
-        {   id:"id", link:"link", description:"description", type:"type"}
-    ]
-});
-
 var full_url = "";
 
 Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {

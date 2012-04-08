@@ -39,10 +39,9 @@ Ext.define('NeqMobile.controller.PatientView', {
         this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
-    showPatientLab:function(id)
-    {
-      this.showPatient(id);
-      this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
+    showPatientLab:function (id) {
+        this.showPatient(id);
+        this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
     },
     loadPatientData:function (patientid) {
         // < var definitions
@@ -50,14 +49,28 @@ Ext.define('NeqMobile.controller.PatientView', {
         var patientview = this.getPatientview();
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
+        var patientinfoimages = patientview.down('patientinfoimages');
         var me = this;
         var finishcounterInfo = 0;
-        var finishwaiter = function () {
-            finishcounterInfo++;
-            if (finishcounterInfo === 3) {
-                me.getPatientview().down('patientdashboard').setMasked(false);
+        var finishwaiter = function (viewtype) {
+            if (viewtype == 0) {
+                finishcounterInfo++;
+                if (finishcounterInfo === 3) {
+                    patientinfo.setMasked(false);
+                }
+            } else if (viewtype == 1) {
+                finishcounterInfoContd1++;
+                if (finishcounterInfoContd1 === 1) {
+                    patientInfoContd1.setMasked(false);
+                }
+
+            } else if (viewtype == 2) {
+                finishcounterInfoimages++;
+                if (finishcounterInfoimages === 1) {
+                    patientinfoimages.setMasked(false);
+                }
             }
-        };
+        }
         var patientmodel = Ext.ModelMgr.getModel('NeqMobile.model.Patient');
         patientmodel.load(patientid, {
             success:function (patientrecord) {
@@ -65,6 +78,24 @@ Ext.define('NeqMobile.controller.PatientView', {
             }
         });
         patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
+        patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
+
+        var documentstore = Ext.data.StoreManager.lookup('documents');
+
+        if (!documentstore) {
+            documentstore = Ext.create('NeqMobile.store.Document');
+        }
+
+        documentstore.getProxy().setExtraParam('id', patientid);
+
+        documentstore.load({
+            callback:function (records, operation, success) {
+                patientinfoimages.loadDocument(documentstore);
+                finishwaiter(2);
+            },
+            scope:this
+        });
+
 
         var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
         if (!diagnosestore) {
