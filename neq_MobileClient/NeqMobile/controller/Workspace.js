@@ -10,7 +10,7 @@ var selectedPatient;
 
 Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest'],
         config:{
             refs:{
                 loginButton:'button[action=login]',
@@ -18,6 +18,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 patientdashboard:'patientdashboard',
                 doctordashboard:'doctordashboard',
                 patientInfoContd1:'patientInfoContd1',
+                patientInfoImages:'patientinfoimages',
                 patientListContainer:'Dashboard patientlist #patientListContainer',
                 labTestRequestOverlay:'createlabtestrequestoverlay',
                 labTestTypesList:'createlabtestrequestoverlay selectfield',
@@ -46,7 +47,6 @@ Ext.define('NeqMobile.controller.Workspace', {
                 'patientdashboard #diagnoses':{itemexpanded:'onItemTap'},
                 'patientdashboard #medications':{itemexpanded:'onItemTap'},
                 'patientdashboard #vaccinations':{itemexpanded:'onItemTap'},
-                'patientdashboard #labresult':{itemexpanded:'onItemTap'},
                 'workspace #homebutton':{tap:'switchtohome'}
             }
         },
@@ -190,8 +190,10 @@ Ext.define('NeqMobile.controller.Workspace', {
             var me = this;
             var patientinfo = this.getPatientInfo();
             var patientInfoContd1 = this.getPatientInfoContd1();
+            var patientinfoimages = this.getPatientInfoImages();
             var finishcounterInfo = 0;
             var finishcounterInfoContd1 = 0;
+            var finishcounterInfoimages = 0;
             var finishwaiter = function (viewtype) {
                 if (viewtype == 0) {
                     finishcounterInfo++;
@@ -202,6 +204,12 @@ Ext.define('NeqMobile.controller.Workspace', {
                     finishcounterInfoContd1++;
                     if (finishcounterInfoContd1 === 1) {
                         patientInfoContd1.setMasked(false);
+                    }
+
+                } else if (viewtype == 2) {
+                    finishcounterInfoimages++;
+                    if (finishcounterInfoimages === 1) {
+                        patientinfoimages.setMasked(false);
                     }
                 }
 
@@ -219,12 +227,18 @@ Ext.define('NeqMobile.controller.Workspace', {
 
             patientinfo.setMasked({ xtype:'loadmask', message:'loading patient details'});
             patientInfoContd1.setMasked({ xtype:'loadmask', message:'loading patient details'});
+            patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
 
             var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
+
+
             if (!diagnosestore) {
                 diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
             }
+
+
             diagnosestore.getProxy().setExtraParam('id', patientid);
+
             diagnosestore.load({
                 callback:function (records, operation, success) {
                     patientinfo.loadDiagnoses(diagnosestore);
@@ -233,6 +247,22 @@ Ext.define('NeqMobile.controller.Workspace', {
                 scope:this
             });
 
+
+            var documentstore = Ext.data.StoreManager.lookup('documents');
+
+            if (!documentstore) {
+                documentstore = Ext.create('NeqMobile.store.Document');
+            }
+
+            documentstore.getProxy().setExtraParam('id', patientid);
+
+            documentstore.load({
+                callback:function (records, operation, success) {
+                    patientinfoimages.loadDocument(documentstore);
+                    finishwaiter(2);
+                },
+                scope:this
+            });
 
             var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
             if (!vaccinationstore) {
@@ -263,36 +293,21 @@ Ext.define('NeqMobile.controller.Workspace', {
                 scope:this
             });
 
-            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
-            if (!labtestrequeststore) {
-                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
-            }
-
-            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
-            labtestrequeststore.load({
-                callback:function (records, operation, success) {
-                    var response = operation.getResponse();
-                    var responseObject = Ext.decode(response.responseText);
-                    patientInfoContd1.loadLabTestRequests(responseObject);
-                    finishwaiter(1);
-                },
-                scope:this
-            });
-
-            var labresultstore = Ext.data.StoreManager.lookup('labresults');
-            if (!labresultstore) {
-                labresultstore = Ext.create('NeqMobile.store.LabResults');
-            }
-
-            labresultstore.getProxy().setExtraParam('patientId', patientid);
-            labresultstore.load({
-                callback:function (records, operation, success) {
-                    patientInfoContd1.loadLabResults(labresultstore);
-                    finishwaiter(1);
-
-                },
-                scope:this
-            });
+//            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
+//            if (!labtestrequeststore) {
+//                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
+//            }
+//
+//            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
+//            labtestrequeststore.load({
+//                callback:function (records, operation, success) {
+//                    var response = operation.getResponse();
+//                    var responseObject = Ext.decode(response.responseText);
+//                    patientInfoContd1.loadLabTestRequests(responseObject);
+//                    finishwaiter(1);
+//                },
+//                scope:this
+//            });
 
         },
         doFilter:function (searchfield, e, eOpts) {
