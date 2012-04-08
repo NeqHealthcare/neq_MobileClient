@@ -52,13 +52,9 @@ Ext.define('NeqMobile.controller.PatientView', {
         var patientinfoimages = patientview.down('patientinfoimages');
         var me = this;
         var finishcounterInfo = 0;
+        var finishcounterInfoimages = 0;
         var finishwaiter = function (viewtype) {
-            if (viewtype == 0) {
-                finishcounterInfo++;
-                if (finishcounterInfo === 3) {
-                    patientinfo.setMasked(false);
-                }
-            } else if (viewtype == 1) {
+            if (viewtype == 1) {
                 finishcounterInfoContd1++;
                 if (finishcounterInfoContd1 === 1) {
                     patientInfoContd1.setMasked(false);
