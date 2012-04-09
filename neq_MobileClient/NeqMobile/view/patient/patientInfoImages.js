@@ -28,8 +28,6 @@ Ext.define('NeqMobile.view.patient.PatientInfoImages', {
         },
 
         config:{
-            //scrollable: true,
-
             layout:'vbox',
             items:[
                 {

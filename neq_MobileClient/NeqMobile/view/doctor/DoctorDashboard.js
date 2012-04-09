@@ -11,6 +11,7 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab', 'NeqMobile.view.chart.TestChart'],
     xtype:'doctordashboard',
     config:{
+        styleHtmlContent:true,
         scrollable:true,
         layout:{
             itemId: 'doctordashboard',

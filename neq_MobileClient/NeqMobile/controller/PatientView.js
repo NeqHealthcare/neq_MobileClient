@@ -26,7 +26,8 @@ Ext.define('NeqMobile.controller.PatientView', {
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
-            new NeqMobile.view.patient.PatientView;
+            var patientview = new NeqMobile.view.patient.PatientView;
+            patientview.setActiveItem(1);
         }
     },
     onPatientSelect:function (list, patientrecord, options) {
