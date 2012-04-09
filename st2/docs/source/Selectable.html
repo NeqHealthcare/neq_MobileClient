@@ -204,48 +204,27 @@ Ext.define('Ext.mixin.Selectable', {
      * @param {Number} endRow The index of the last row in the range
      * @param {Boolean} keepExisting (optional) True to retain existing selections
      */
-    selectRange: function(startRecord, endRecord, keepExisting, dir) {
+    selectRange: function(startRecord, endRecord, keepExisting) {
         var me = this,
             store = me.getStore(),
-            startRow = store.indexOf(startRecord),
-            endRow = store.indexOf(endRecord),
-            selectedCount = 0,
-            tmp, dontDeselect, i;
+            records = [],
+            tmp, i;
 
         if (me.getDisableSelection()) {
             return;
         }
 
         // swap values
-        if (startRow &gt; endRow) {
-            tmp = endRow;
-            endRow = startRow;
-            startRow = tmp;
+        if (startRecord &gt; endRecord) {
+            tmp = endRecord;
+            endRecord = startRecord;
+            startRecord = tmp;
         }
 
-        for (i = startRow; i &lt;= endRow; i++) {
-            if (me.isSelected(store.getAt(i))) {
-                selectedCount++;
-            }
+        for (i = startRecord; i &lt;= endRecord; i++) {
+            records.push(store.getAt(i));
         }
-
-        if (!dir) {
-            dontDeselect = -1;
-        }
-        else {
-            dontDeselect = (dir == 'up') ? startRow : endRow;
-        }
-
-        for (i = startRow; i &lt;= endRow; i++) {
-            if (selectedCount == (endRow - startRow + 1)) {
-                if (i != dontDeselect) {
-                    me.deselect(i, true);
-                }
-            } else {
-                me.select(i, true);
-            }
-
-        }
+        this.doMultiSelect(records, keepExisting);
     },
 
 <span id='Ext-mixin-Selectable-method-select'>    /**
@@ -402,7 +381,7 @@ Ext.define('Ext.mixin.Selectable', {
             //&lt;deprecated product=touch since=2.0&gt;
             me.fireAction('beforeselectionchange', [me], function() {
             //&lt;/deprecated&gt;
-                me.fireEvent('selectionchange', me, me.getSelection());
+                me.fireAction('selectionchange', [me], 'getSelection');
             //&lt;deprecated product=touch since=2.0&gt;
             });
             //&lt;/deprecated&gt;

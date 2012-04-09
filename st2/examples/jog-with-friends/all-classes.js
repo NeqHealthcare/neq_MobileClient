@@ -4069,6 +4069,22 @@ Ext.define('Ext.mixin.Observable', {
      *   Causes the handler to be delayed by the specified number of milliseconds. If the event fires again within that
      *   time, the original handler is _not_ invoked, but the new handler is scheduled in its place.
      *
+     * - **element** : String
+     *
+     *   Allows you to add a listener onto a element of this component using the elements reference.
+     *
+     *       Ext.create('Ext.Component', {
+     *           listeners: {
+     *               element: 'element',
+     *               tap: function() {
+     *                   console.log('element tap!');
+     *               }
+     *           }
+     *       });
+     *
+     *   All components have the `element` reference, which is the outer most element of the component. {@link Ext.Container} also has the
+     *   `innerElement` element which contains all children. In most cases `element` is adequate.
+     *
      * - **delegate** : String
      *
      *   Uses {@link Ext.ComponentQuery} to delegate events to a specified query selector within this item.
@@ -4436,12 +4452,14 @@ Ext.define('Ext.mixin.Observable', {
          * @method
          * Alias for {@link #addManagedListener}.
          * @inheritdoc Ext.mixin.Observable#addManagedListener
+         * @deprecated 2.0.0 This is now done automatically
          */
         mon: 'addManagedListener',
         /**
          * @method
          * Alias for {@link #removeManagedListener}.
          * @inheritdoc Ext.mixin.Observable#removeManagedListener
+         * @deprecated 2.0.0 This is now done automatically
          */
         mun: 'removeManagedListener'
     });
@@ -4676,6 +4694,15 @@ Ext.define('Ext.fx.animation.Abstract', {
 
     getStates: function() {
         return this.states;
+    },
+
+    stop: function() {
+        this.fireEvent('stop', this);
+    },
+
+    destroy: function() {
+        this.stop();
+        this.callParent();
     },
 
     setState: function(name, state) {
@@ -5407,6 +5434,7 @@ Ext.define('Ext.AbstractComponent', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * The Default Layout is the layout that all other layouts inherit from. The main capability it provides is docking,
  * which means that every other layout can also provide docking support. It's unusual to use Default layout directly,
@@ -5609,9 +5637,7 @@ Ext.define('Ext.layout.Default', {
 
         Ext.Array.remove(this.innerItems, item);
 
-        try {
-            this.container.innerElement.dom.removeChild(item.renderElement.dom);
-        } catch(e) {}
+        Ext.fly(item.renderElement).destroy();
     },
 
     /**
@@ -5768,11 +5794,15 @@ Ext.define('Ext.layout.Default', {
         return this;
     },
 
+    getInnerItemsContainer: function() {
+        return this.container.innerElement;
+    },
+
     insertItem: function(item, index) {
        var container = this.container,
            items = container.getItems().items,
            innerItems = this.innerItems,
-           containerDom = container.innerElement.dom,
+           containerDom = this.getInnerItemsContainer().dom,
            itemDom = item.renderElement.dom,
            relativeItem, relativeItemDom, domIndex;
 
@@ -5826,6 +5856,7 @@ Ext.define('Ext.layout.Default', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * Fit Layout is probably the simplest layout available. All it does is make a child component fit to the full size of
  * its parent Container.
@@ -5901,6 +5932,7 @@ Ext.define('Ext.layout.Fit', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * AbstractBox is a superclass for the two box layouts:
  *
@@ -5943,6 +5975,9 @@ Ext.define('Ext.layout.AbstractBox', {
          * - ** center ** : child items are packed together at mid-width of container
          * - ** end ** : child items are packed together at right side of container
          * - **stretch** : child items are stretched vertically to fill the height of the container
+         *
+         * Please see the 'Pack and Align' section of the [Layout guide](#!/guide/layouts) for a detailed example and
+         * explanation.
          * @accessor
          */
         align: 'stretch',
@@ -5955,6 +5990,9 @@ Ext.define('Ext.layout.AbstractBox', {
          * - ** start ** : child items are packed together at left side of container
          * - ** center ** : child items are packed together at mid-width of container
          * - ** end ** : child items are packed together at right side of container
+         *
+         * Please see the 'Pack and Align' section of the [Layout guide](#!/guide/layouts) for a detailed example and
+         * explanation.
          * @accessor
          */
         pack: null
@@ -6114,6 +6152,7 @@ Ext.define('Ext.layout.AbstractBox', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * The HBox (short for horizontal box) layout makes it easy to position items horizontally in a
  * {@link Ext.Container Container}. It can size items based on a fixed width or a fraction of the total width
@@ -6194,6 +6233,7 @@ Ext.define('Ext.layout.HBox', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * The VBox (short for vertical box) layout makes it easy to position items horizontally in a
  * {@link Ext.Container Container}. It can size items based on a fixed height or a fraction of the total height
@@ -10332,6 +10372,7 @@ Ext.define('Ext.fx.layout.Card', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * Sometimes you want to show several screens worth of information but you've only got a small screen to work with.
  * TabPanels and Carousels both enable you to see one screen of many at a time, and underneath they both use a Card
@@ -10436,6 +10477,20 @@ Ext.define('Ext.layout.Card', {
         this.callParent(arguments);
     },
 
+    getInnerItemsContainer: function() {
+        var innerItemsContainer = this.innerItemsContainer;
+
+        if (!innerItemsContainer) {
+            this.innerItemsContainer = innerItemsContainer = Ext.Element.create({
+                className: 'x-layout-card-container'
+            });
+
+            this.container.innerElement.append(innerItemsContainer);
+        }
+
+        return innerItemsContainer;
+    },
+
     /**
      * @private
      */
@@ -10493,6 +10548,7 @@ Ext.define('Ext.layout.Card', {
 
 /**
  * @aside guide layouts
+ * @aside video layouts
  *
  * Factory class which returns an instance of the provided layout.
  */
@@ -10702,7 +10758,7 @@ Ext.define('Ext.util.translatable.Abstract', {
 
         this.stopAnimation();
 
-        if (animation !== undefined) {
+        if (animation) {
             return this.translateAnimated(x, y, animation);
         }
 
@@ -12515,7 +12571,7 @@ Ext.define('Ext.Component', {
          * Force the component to take up 100% width and height available, by adding it to {@link Ext.Viewport}.
          * @cfg {Boolean} fullscreen
          */
-        if ('fullscreen' in me.config) {
+        if (me.config.fullscreen) {
             me.fireEvent('fullscreen', me);
         }
 
@@ -12862,7 +12918,9 @@ Ext.define('Ext.Component', {
      * All cls methods directly report to the {@link #cls} configuration, so anytime it changes, {@link #updateCls} will be called
      */
     updateCls: function(newCls, oldCls) {
-        this.element.replaceCls(oldCls, newCls);
+        if (oldCls != newCls && this.element) {
+            this.element.replaceCls(oldCls, newCls);
+        }
     },
 
     /**
@@ -13240,6 +13298,7 @@ Ext.define('Ext.Component', {
 
     /**
      * Hides this Component
+     * @param {Object/Boolean} animation (optional)
      */
     hide: function(animation) {
         if (!this.getHidden()) {
@@ -13264,19 +13323,19 @@ Ext.define('Ext.Component', {
 
     /**
      * Shows this component
+     * @param {Object/Boolean} animation (optional)
      */
     show: function(animation) {
         var hidden = this.getHidden();
         if (hidden || hidden === null) {
-            if (animation === undefined || (animation && !animation.isComponent)) {
+            if (animation === true) {
+                animation = 'fadeIn';
+            }
+            else if (animation === undefined || (animation && animation.isComponent)) {
                 animation = this.getShowAnimation();
             }
 
             if (animation) {
-                if (animation === true) {
-                    animation = 'fadeIn';
-                }
-
                 this.onBefore({
                     hiddenchange: 'animateFn',
                     scope: this,
@@ -13292,7 +13351,7 @@ Ext.define('Ext.Component', {
     },
 
     animateFn: function(animation, component, newState, oldState, options, controller) {
-        if (animation) {
+        if (animation && (!newState || (newState && this.isPainted()))) {
             var anim = new Ext.fx.Animation(animation);
 
             anim.setElement(component.element);
@@ -13837,7 +13896,7 @@ var owningTabPanel = grid.up('tabpanel');
 
         this.setRecord(null);
 
-        Ext.destroy(this.innerHtmlElement, this.getTranslatable());
+        Ext.destroy(this.innerHtmlElement, this.getTranslatable(), this.getPlugins());
         Ext.ComponentManager.unregister(this);
 
         this.callParent();
@@ -14460,10 +14519,19 @@ Ext.define('Ext.Button', {
 
         /**
          * @cfg {String} iconMaskCls
+         * @private
          * The CSS class to add to the icon element as allowed by {@link #iconMask}.
          * @accessor
          */
-        iconMaskCls: Ext.baseCSSPrefix + 'icon-mask'
+        iconMaskCls: Ext.baseCSSPrefix + 'icon-mask',
+
+        /**
+         * @cfg {String} iconCls
+         * Optional CSS class to add to the icon element. This is useful if you want to use a CSS
+         * background image to create your Button icon.
+         * @accessor
+         */
+        iconCls: null
     },
 
     config: {
@@ -14480,14 +14548,6 @@ Ext.define('Ext.Button', {
          * @accessor
          */
         text: null,
-
-        /**
-         * @cfg {String} iconCls
-         * Optional CSS class to add to the icon element. This is useful if you want to use a CSS
-         * background image to create your Button icon.
-         * @accessor
-         */
-        iconCls: null,
 
         /**
          * @cfg {String} icon
@@ -14513,7 +14573,7 @@ Ext.define('Ext.Button', {
 
         /**
          * @cfg {Boolean} iconMask
-         * Whether or not to mask the icon with the {@link #iconMaskCls} configuration.
+         * Whether or not to mask the icon with the {@link #iconMask} configuration.
          * This is needed if you want to use any of the bundled pictos icons in the Sencha Touch SASS.
          * @accessor
          */
@@ -14614,13 +14674,14 @@ Ext.define('Ext.Button', {
      */
     updateText: function(text) {
         var textElement = this.textElement;
-
-        if (text) {
-            textElement.show();
-            textElement.setHtml(text);
-        }
-        else {
-            textElement.hide();
+        if (textElement) {
+            if (text) {
+                textElement.show();
+                textElement.setHtml(text);
+            }
+            else {
+                textElement.hide();
+            }
         }
     },
 
@@ -14912,7 +14973,8 @@ Ext.define('Ext.Button', {
      */
     doTap: function(me, e) {
         var handler = me.getHandler(),
-            scope = me.getScope() || me;
+            scope = me.getScope() || me,
+            args = arguments;
 
         if (!handler) {
             return;
@@ -14926,7 +14988,9 @@ Ext.define('Ext.Button', {
         //where the button was.
         e.preventDefault();
 
-        handler.apply(scope, arguments);
+        Ext.defer(function() {
+            handler.apply(scope, args);
+        }, 1);
     }
 }, function() {
     //<deprecated product=touch since=2.0>
@@ -15773,7 +15837,16 @@ Ext.define('Ext.field.Input', {
     },
 
     setValue: function(newValue) {
+        var oldValue = this._value;
+
         this.updateValue(this.applyValue(newValue));
+
+        newValue = this.getValue();
+
+        if (String(newValue) != String(oldValue) && this.initialized) {
+            this.onChange(this, newValue, oldValue);
+        }
+
         return this;
     },
 
@@ -16093,16 +16166,7 @@ Ext.define('Ext.field.Input', {
 
     // @private
     onClearIconTap: function(e) {
-        var oldValue = this.getValue(),
-            newValue;
-
         this.fireEvent('clearicontap', this, e);
-
-        newValue = this.getValue();
-
-        if (String(newValue) != String(oldValue)) {
-            this.onChange(this, newValue, oldValue);
-        }
 
         //focus the field after cleartap happens, but only on android.
         //this is to stop the keyboard from hiding. TOUCH-2064
@@ -16205,6 +16269,13 @@ Ext.define('Ext.field.Field', {
         labelWidth: '30%',
 
         /**
+         * @cfg {Boolean} labelWrap True to allow the label to wrap. If set to false, the label will be truncated with
+         * an ellipsis.
+         * @accessor
+         */
+        labelWrap: false,
+
+        /**
          * @cfg {Boolean} clearIcon True to use a clear icon in this field
          * @accessor
          */
@@ -16282,7 +16353,9 @@ Ext.define('Ext.field.Field', {
         /**
          * @cfg {String} inputCls CSS class to add to the input element of this fields {@link #component}
          */
-        inputCls: null
+        inputCls: null,
+
+        bubbleEvents: ['action']
     },
 
     /**
@@ -16335,7 +16408,7 @@ Ext.define('Ext.field.Field', {
         if (newLabelAlign) {
             renderElement.addCls(prefix + 'label-align-' + newLabelAlign);
 
-            if (newLabelAlign == "top") {
+            if (newLabelAlign == "top" || newLabelAlign == "bottom") {
                 this.label.setWidth('100%');
             } else {
                 this.updateLabelWidth(this.getLabelWidth());
@@ -16360,12 +16433,25 @@ Ext.define('Ext.field.Field', {
 
     // @private
     updateLabelWidth: function(newLabelWidth) {
+        var labelAlign = this.getLabelAlign();
+
         if (newLabelWidth) {
-            if (this.getLabelAlign() == "top") {
+            if (labelAlign == "top" || labelAlign == "bottom") {
                 this.label.setWidth('100%');
             } else {
                 this.label.setWidth(newLabelWidth);
             }
+        }
+    },
+
+    // @private
+    updateLabelWrap: function(newLabelWrap, oldLabelWrap) {
+        var cls = Ext.baseCSSPrefix + 'form-label-nowrap';
+
+        if (!newLabelWrap) {
+            this.addCls(cls);
+        } else {
+            this.removeCls(cls);
         }
     },
 
@@ -19255,7 +19341,7 @@ Ext.define('Ext.behavior.Scrollable', {
     setConfig: function(config) {
         var scrollView = this.scrollView,
             component = this.component,
-            scrollViewElement, scrollContainer, scrollerElement;
+            scrollViewElement, scrollerElement;
 
         if (config) {
             if (!scrollView) {
@@ -19265,7 +19351,7 @@ Ext.define('Ext.behavior.Scrollable', {
                 component.setUseBodyElement(true);
 
                 this.scrollerElement = scrollerElement = component.innerElement;
-                this.scrollContainer = scrollContainer = scrollerElement.wrap();
+                this.scrollContainer = scrollerElement.wrap();
                 this.scrollViewElement = scrollViewElement = component.bodyElement;
 
                 scrollView.setElement(scrollViewElement);
@@ -19276,7 +19362,7 @@ Ext.define('Ext.behavior.Scrollable', {
 
                 component.on(this.listeners);
             }
-            else if (Ext.isObject(config)) {
+            else if (Ext.isString(config) || Ext.isObject(config)) {
                 scrollView.setConfig(config);
             }
         }
@@ -19475,26 +19561,26 @@ Ext.define('Ext.Container', {
         /**
          * @cfg {Object/String} layout Configuration for this Container's layout. Example:
          *
-         *    Ext.create('Ext.Container', {
-         *        layout: {
-         *            type: 'hbox',
-         *            align: 'middle'
-         *        },
-         *        items: [
-         *            {
-         *                xtype: 'panel',
-         *                flex: 1,
-         *                style: 'background-color: red;'
-         *            },
-         *            {
-         *                xtype: 'panel',
-         *                flex: 2,
-         *                style: 'background-color: green'
-         *            }
-         *        ]
-         *    });
+         *     Ext.create('Ext.Container', {
+         *         layout: {
+         *             type: 'hbox',
+         *             align: 'middle'
+         *         },
+         *         items: [
+         *             {
+         *                 xtype: 'panel',
+         *                 flex: 1,
+         *                 style: 'background-color: red;'
+         *             },
+         *             {
+         *                 xtype: 'panel',
+         *                 flex: 2,
+         *                 style: 'background-color: green'
+         *             }
+         *         ]
+         *     });
          *
-         * See the layouts guide for more information
+         * See the [Layouts Guide](#!/guide/layouts) for more information
          *
          * @accessor
          */
@@ -19641,8 +19727,8 @@ Ext.define('Ext.Container', {
         modal: null,
 
         /**
-         * @cfg {Boolean} hideOnMaskTap When using a {@link #modal} Component, setting this to true (the default) will
-         * hide the modal mask and the Container when the mask is tapped on
+         * @cfg {Boolean} hideOnMaskTap When using a {@link #modal} Component, setting this to true will hide the modal
+         * mask and the Container when the mask is tapped on
          * @accessor
          */
         hideOnMaskTap: null
@@ -20389,7 +20475,7 @@ Ext.define('Ext.Container', {
         var layout = this.getLayout();
 
         if (this.isRendered() && item.setRendered(false)) {
-            item.fireAction('renderedchange', [this, item, false], 'onItemRemove', layout, { args: [item, index] });
+            item.fireAction('renderedchange', [this, item, false], 'onItemRemove', layout, { args: [item, index, undefined] });
         }
         else {
             layout.onItemRemove(item, index);
@@ -21590,8 +21676,6 @@ Ext.define('Ext.Sheet', {
  * some user feedback from the MessageBox, you must use a callback function (see the `fn` configuration option parameter
  * for the {@link #method-show show} method for more details).
  *
- * ## Example
- *
  *     @example preview
  *     Ext.Msg.alert('Title', 'The quick brown fox jumped over the lazy dog.', Ext.emptyFn);
  *
@@ -22151,9 +22235,9 @@ Ext.define('Ext.MessageBox', {
             message     : message,
             buttons     : Ext.MessageBox.OK,
             promptConfig: false,
-            fn          : function(buttonId) {
+            fn          : function() {
                 if (fn) {
-                    fn.call(scope, buttonId);
+                    fn.apply(scope, arguments);
                 }
             },
             scope: scope
@@ -22189,9 +22273,9 @@ Ext.define('Ext.MessageBox', {
             buttons     : Ext.MessageBox.YESNO,
             promptConfig: false,
             scope       : scope,
-            fn: function(button) {
+            fn: function() {
                 if (fn) {
-                    fn.call(scope, button);
+                    fn.apply(scope, arguments);
                 }
             }
         });
@@ -22205,17 +22289,17 @@ Ext.define('Ext.MessageBox', {
      *
      * Example usage:
      *
-     *         Ext.Msg.prompt(
-     *             'Welcome!',
-     *             'What\'s your name going to be today?',
-     *             function(buttonId, value) {
-     *                 console.log(value)
-     *             },
-     *             null,
-     *             false,
-     *             null,
-     *             { autocapitalize : true, placeholder : 'First-name please...' }
-     *         );
+     *     Ext.Msg.prompt(
+     *         'Welcome!',
+     *         'What\'s your name going to be today?',
+     *         function (buttonId, value) {
+     *             console.log(value)
+     *         },
+     *         null,
+     *         false,
+     *         null,
+     *         { autoCapitalize : true, placeHolder : 'First-name please...' }
+     *     );
      *
      * @param {String} title The title bar text
      *
@@ -22256,9 +22340,9 @@ Ext.define('Ext.MessageBox', {
             prompt   : prompt || true,
             multiLine: multiLine,
             value    : value,
-            fn: function(button, inputValue) {
+            fn: function() {
                 if (fn) {
-                    fn.call(scope, button, inputValue);
+                    fn.apply(scope, arguments);
                 }
             }
         });
@@ -22311,6 +22395,12 @@ Ext.define('Ext.MessageBox', {
          * A global shared singleton instance of the {@link Ext.MessageBox} class.
          *
          * Allows for simple creation of various different alerts and notifications.
+         *
+         * To change any cofigurations on this singleton instance, you must change the
+         * defaultAllowedConfig object.  For example to remove all animations on Msg:
+         *
+         * Ext.Msg.defaultAllowedConfig.showAnimation = false;
+         * Ext.Msg.defaultAllowedConfig.hideAnimation = false;
          *
          * ## Examples
          *
@@ -23379,7 +23469,6 @@ Ext.define('Ext.event.recognizer.LongPress', {
      * @member Ext.dom.Element
      * @event taphold
      * @inheritdoc Ext.dom.Element#longpress
-     * @deprecated 2.0.0 Please add listener to 'longpress' event instead
      */
 
     fireLongPress: function(e) {
@@ -23424,7 +23513,6 @@ Ext.define('Ext.event.recognizer.LongPress', {
     }
 
 }, function() {
-    //<deprecated product=touch since=2.0>
     this.override({
         handledEvents: ['longpress', 'taphold'],
 
@@ -23439,7 +23527,6 @@ Ext.define('Ext.event.recognizer.LongPress', {
             return this.callOverridden(arguments);
         }
     });
-    //</deprecated>
 });
 
 /**
@@ -25656,6 +25743,8 @@ Ext.define('Ext.fx.runner.CssTransition', {
             endData = {},
             runningNameMap, toPropertyNames, i, ln, name;
 
+        animation.un('stop', 'onAnimationStop', this);
+
         if (runningData) {
             runningNameMap = runningData.nameMap;
         }
@@ -25675,7 +25764,7 @@ Ext.define('Ext.fx.runner.CssTransition', {
             for (i = 0,ln = toPropertyNames.length; i < ln; i++) {
                 name = toPropertyNames[i];
 
-                if (!runningNameMap.hasOwnProperty(name)) {
+                if (runningNameMap && !runningNameMap.hasOwnProperty(name)) {
                     endData[name] = null;
                 }
             }
@@ -25722,8 +25811,13 @@ Ext.define('Ext.fx.runner.CssTransition', {
     refreshRunningAnimationsData: function(element, propertyNames, interrupt, replace) {
         var id = element.getId(),
             runningAnimationsData = this.runningAnimationsData,
-            runningData = runningAnimationsData[id],
-            nameMap = runningData.nameMap,
+            runningData = runningAnimationsData[id];
+
+        if (!runningData) {
+            return;
+        }
+
+        var nameMap = runningData.nameMap,
             nameList = runningData.nameList,
             sessions = runningData.sessions,
             ln, j, subLn, name,
@@ -25859,7 +25953,7 @@ Ext.define('Ext.fx.runner.CssTransition', {
             i, j, ln, animation, propertiesLength, sessionNameMap,
             computedStyle, formattedName, name, toFormattedValue,
             computedValue, fromFormattedValue, isLengthProperty,
-            runningNameMap, runningNameList, runningSessions;
+            runningNameMap, runningNameList, runningSessions, runningSession;
 
         if (!this.listenersAttached) {
             this.attachListeners();
@@ -25880,9 +25974,9 @@ Ext.define('Ext.fx.runner.CssTransition', {
 
             if (animation.onBeforeStart) {
                 animation.onBeforeStart.call(animation.scope || this, element);
-                animation.fireEvent('animationstart', animation);
-                this.fireEvent('animationstart', this, animation);
             }
+            animation.fireEvent('animationstart', animation);
+            this.fireEvent('animationstart', this, animation);
 
             data[elementId] = data;
 
@@ -25958,14 +26052,17 @@ Ext.define('Ext.fx.runner.CssTransition', {
                 }
             }
 
-            runningSessions.push({
+            runningSession = {
                 element: element,
                 map: sessionNameMap,
                 list: toPropertyNames.slice(),
                 length: propertiesLength,
                 data: data,
                 animation: animation
-            });
+            };
+            runningSessions.push(runningSession);
+
+            animation.on('stop', 'onAnimationStop', this);
 
             fromData[elementId] = from = Ext.apply(Ext.Object.chain(before), from);
 
@@ -25998,6 +26095,25 @@ Ext.define('Ext.fx.runner.CssTransition', {
 
         window.addEventListener('message', doApplyTo, false);
         window.postMessage(message, '*');
+    },
+
+    onAnimationStop: function(animation) {
+        var runningAnimationsData = this.runningAnimationsData,
+            id, runningData, sessions, i, ln, session;
+
+        for (id in runningAnimationsData) {
+            if (runningAnimationsData.hasOwnProperty(id)) {
+                runningData = runningAnimationsData[id];
+                sessions = runningData.sessions;
+
+                for (i = 0,ln = sessions.length; i < ln; i++) {
+                    session = sessions[i];
+                    if (session.animation === animation) {
+                        this.refreshRunningAnimationsData(session.element, session.list.slice(), true);
+                    }
+                }
+            }
+        }
     }
 });
 
@@ -26297,8 +26413,9 @@ Ext.define('Ext.viewport.Default', {
         preventPanning: true,
 
         /**
-         * @cfg
-         * @private
+         * @cfg {Boolean} preventZooming
+         * True to attempt to stop zooming when you double tap on the screen on mobile devices.
+         * @accessor
          */
         preventZooming: true,
 
@@ -26484,6 +26601,9 @@ Ext.define('Ext.viewport.Default', {
     },
 
     applyAutoMaximize: function(autoMaximize) {
+        if (Ext.browser.is.WebView) {
+            autoMaximize = false;
+        }
         if (autoMaximize) {
             this.on('ready', 'doAutoMaximizeOnReady', this, { single: true });
             this.on('orientationchange', 'doAutoMaximizeOnOrientationChange', this);
@@ -27015,7 +27135,7 @@ Ext.define('Ext.viewport.Android', {
     },
 
     applyAutoMaximize: function(autoMaximize) {
-        this.callParent(arguments);
+        autoMaximize = this.callParent(arguments);
 
         this.on('add', 'fixSize', this, { single: true });
         if (!autoMaximize) {
@@ -29044,8 +29164,16 @@ Ext.define('Ext.app.Application', {
     config: {
         /**
          * @cfg {String/Object} icon Path to the .png image file to use when your app is added to the home screen on an
-         * iOS device. When passed in as a String, the same icon will be used for both phone and tablet devices. To set
-         * different icons for tablets and phones see the {@link #tabletIcon} and {@link #phoneIcon} configs.
+         * iOS device. When passed in as a String, the same icon will be used for both phone and tablet devices. When
+         * passed as an abject, you can specify different sizes like so:
+         *
+         *     icon: {
+         *        57: 'resources/icons/icon.png',
+         *        72: 'resources/icons/icon-72.png',
+         *        114: 'resources/icons/icon-114.png'
+         *     }
+         *
+         * To set different icons for tablets and phones see the {@link #tabletIcon} and {@link #phoneIcon} configs.
          */
 
         /**
@@ -30330,16 +30458,12 @@ Ext.define('Ext.field.Checkbox', {
         return this._checked;
     },
 
-    getValue: function() {
-        return this.getChecked();
-    },
-
     /**
      * Returns the submit value for the checkbox which can be used when submitting forms.
      * @return {Boolean/String} value The value of {@link #value} or true, if {@link #checked}.
      */
     getSubmitValue: function() {
-        return (this.getChecked()) ? this._value || true : false;
+        return (this.getChecked()) ? this._value || true : null;
     },
 
     setChecked: function(newChecked) {
@@ -30349,6 +30473,11 @@ Ext.define('Ext.field.Checkbox', {
 
     updateChecked: function(newChecked) {
         this.getComponent().setChecked(newChecked);
+
+        // only call onChange (which fires events) if the component has been initialized
+        if (this.initialized) {
+            this.onChange();
+        }
     },
 
     // @private
@@ -30363,19 +30492,29 @@ Ext.define('Ext.field.Checkbox', {
         //we must manually update the input dom with the new checked value
         dom.checked = !dom.checked;
 
-        //continue as normal, like a normal tap
-        // this.onTap(component, e);
-
-        //calling getchecked will sync the new checked value
-        if (me.getChecked()) {
-            me.fireEvent('check', me, e);
-        }
-        else {
-            me.fireEvent('uncheck', me, e);
-        }
+        me.onChange(e);
 
         //return false so the mask does not disappear
         return false;
+    },
+
+    /**
+     * Fires the `check` or `uncheck` event when the checked value of this component changes.
+     * @private
+     */
+    onChange: function(e) {
+        var me = this,
+            oldChecked = me._checked,
+            newChecked = me.getChecked();
+
+        // only fire the event when the value changes
+        if (oldChecked != newChecked) {
+            if (newChecked) {
+                me.fireEvent('check', me, e);
+            } else {
+                me.fireEvent('uncheck', me, e);
+            }
+        }
     },
 
     /**
@@ -30422,9 +30561,11 @@ Ext.define('Ext.field.Checkbox', {
             components = [],
             elements, element, i, ln;
 
-
         if (!component) {
-            return null;
+            // <debug>
+            Ext.Logger.warn('Ext.field.Radio components must always be descendants of an Ext.form.Panel or Ext.form.FieldSet.');
+            // </debug>
+            component = Ext.Viewport;
         }
 
         // This is to handle ComponentQuery's lack of handling [name=foo[bar]] properly
@@ -30615,12 +30756,13 @@ Ext.define('Ext.field.Number', {
             value = Math.min(value, maxValue);
         }
 
-        return parseFloat(value);
+        value = parseFloat(value);
+        return (isNaN(value)) ? '' : value;
     },
 
     getValue: function() {
-        var value = this.callParent();
-        return parseFloat(value || 0);
+        var value = parseFloat(this.callParent(), 10);
+        return (isNaN(value)) ? null : value;
     },
 
     doClearIconTap: function(me, e) {
@@ -30784,7 +30926,6 @@ Ext.define('Ext.data.Operation', {
          * True if this Operation is to be executed synchronously. This property is inspected by a
          * {@link Ext.data.Batch Batch} to see if a series of Operations can be executed in parallel or not.
          * @accessor
-         * @private
          */
         synchronous: true,
 
@@ -30799,7 +30940,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Ext.util.Filter[]} filters
          * Optional array of filter objects. Only applies to 'read' actions.
          * @accessor
-         * @private
          */
         filters: null,
 
@@ -30807,7 +30947,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Ext.util.Sorter[]} sorters
          * Optional array of sorter objects. Only applies to 'read' actions.
          * @accessor
-         * @private
          */
         sorters: null,
 
@@ -30815,7 +30954,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Ext.util.Grouper} grouper
          * Optional grouping configuration. Only applies to 'read' actions where grouping is desired.
          * @accessor
-         * @private
          */
         grouper: null,
 
@@ -30823,7 +30961,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Number} start
          * The start index (offset), used in paging when running a 'read' action.
          * @accessor
-         * @private
          */
         start: null,
 
@@ -30831,7 +30968,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Number} limit
          * The number of records to load. Used on 'read' actions when paging is being used.
          * @accessor
-         * @private
          */
         limit: null,
 
@@ -30839,7 +30975,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Ext.data.Batch} batch
          * The batch that this Operation is a part of.
          * @accessor
-         * @private
          */
         batch: null,
 
@@ -30848,9 +30983,7 @@ Ext.define('Ext.data.Operation', {
          * Function to execute when operation completed.
          * @cfg {Ext.data.Model[]} callback.records Array of records.
          * @cfg {Ext.data.Operation} callback.operation The Operation itself.
-         * @cfg {Boolean} callback.success True when operation completed successfully.
          * @accessor
-         * @private
          */
         callback: null,
 
@@ -30858,7 +30991,6 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Object} scope
          * Scope for the {@link #callback} function.
          * @accessor
-         * @private
          */
         scope: null,
 
@@ -30898,6 +31030,7 @@ Ext.define('Ext.data.Operation', {
         /**
          * @cfg {Boolean} withCredentials
          * This field is necessary when using cross-origin resource sharing.
+         * @accessor
          */
         withCredentials: null,
 
@@ -30916,6 +31049,7 @@ Ext.define('Ext.data.Operation', {
          * @cfg {Ext.data.Model} model
          * The Model that this Operation will be dealing with. This configuration is required when defining any Operation.
          * Since Operations take care of creating, updating, destroying and reading records, it needs access to the Model.
+         * @accessor
          */
         model: undefined,
 
@@ -32102,7 +32236,7 @@ Ext.util.Inflector.singularize('sheep'); //'sheep'
 
 //ordinalizing numbers
 Ext.util.Inflector.ordinalize(11); //"11th"
-Ext.util.Inflector.ordinalize(21); //"21th"
+Ext.util.Inflector.ordinalize(21); //"21st"
 Ext.util.Inflector.ordinalize(1043); //"1043rd"
 </code></pre>
  * 
@@ -32793,7 +32927,20 @@ Ext.define('Ext.data.Connection', {
 
         useDefaultHeader : true,
         defaultPostHeader : 'application/x-www-form-urlencoded; charset=UTF-8',
+
+        /**
+         * @cfg {Boolean} useDefaultXhrHeader
+         * Set this to false to not send the default Xhr header (X-Requested-With) with every request.
+         * This should be set to false when making CORS (cross-domain) requests.
+         * @accessor
+         */
         useDefaultXhrHeader : true,
+
+        /**
+         * @cfg {String} defaultXhrHeader
+         * The value of the default Xhr header (X-Requested-With). This is only used when {@link #useDefaultXhrHeader}
+         * is set to true.
+         */
         defaultXhrHeader : 'XMLHttpRequest',
 
         autoAbort: false
@@ -33306,7 +33453,7 @@ Ext.define('Ext.data.Connection', {
             headers['Content-Type'] = contentType;
         }
 
-        if (me.getUseDefaultXhrHeader() && !headers['X-Requested-With']) {
+        if (((me.getUseDefaultXhrHeader() && options.useDefaultXhrHeader !== false) || options.useDefaultXhrHeader) && !headers['X-Requested-With']) {
             headers['X-Requested-With'] = me.getDefaultXhrHeader();
         }
         // set up all the request headers on the xhr object
@@ -34217,48 +34364,27 @@ Ext.define('Ext.mixin.Selectable', {
      * @param {Number} endRow The index of the last row in the range
      * @param {Boolean} keepExisting (optional) True to retain existing selections
      */
-    selectRange: function(startRecord, endRecord, keepExisting, dir) {
+    selectRange: function(startRecord, endRecord, keepExisting) {
         var me = this,
             store = me.getStore(),
-            startRow = store.indexOf(startRecord),
-            endRow = store.indexOf(endRecord),
-            selectedCount = 0,
-            tmp, dontDeselect, i;
+            records = [],
+            tmp, i;
 
         if (me.getDisableSelection()) {
             return;
         }
 
         // swap values
-        if (startRow > endRow) {
-            tmp = endRow;
-            endRow = startRow;
-            startRow = tmp;
+        if (startRecord > endRecord) {
+            tmp = endRecord;
+            endRecord = startRecord;
+            startRecord = tmp;
         }
 
-        for (i = startRow; i <= endRow; i++) {
-            if (me.isSelected(store.getAt(i))) {
-                selectedCount++;
-            }
+        for (i = startRecord; i <= endRecord; i++) {
+            records.push(store.getAt(i));
         }
-
-        if (!dir) {
-            dontDeselect = -1;
-        }
-        else {
-            dontDeselect = (dir == 'up') ? startRow : endRow;
-        }
-
-        for (i = startRow; i <= endRow; i++) {
-            if (selectedCount == (endRow - startRow + 1)) {
-                if (i != dontDeselect) {
-                    me.deselect(i, true);
-                }
-            } else {
-                me.select(i, true);
-            }
-
-        }
+        this.doMultiSelect(records, keepExisting);
     },
 
     /**
@@ -34415,7 +34541,7 @@ Ext.define('Ext.mixin.Selectable', {
             //<deprecated product=touch since=2.0>
             me.fireAction('beforeselectionchange', [me], function() {
             //</deprecated>
-                me.fireEvent('selectionchange', me, me.getSelection());
+                me.fireAction('selectionchange', [me], 'getSelection');
             //<deprecated product=touch since=2.0>
             });
             //</deprecated>
@@ -35580,8 +35706,8 @@ Ext.define('Ext.field.Spinner', {
         clearIcon: false,
 
         /**
-         * @cfg {Number} defaultValue The default value for this field when no value has been set. It is also used when
-         *                            the value is set to `NaN`.
+         * @cfg {Number} defaultValue The default value for this field when no value has been set.
+         * It is also used when the value is set to `NaN`.
          */
         defaultValue: 0,
 
@@ -35593,7 +35719,8 @@ Ext.define('Ext.field.Spinner', {
 
         /**
          * @cfg {Boolean} groupButtons
-         * True if you want to group the buttons to the right of the fields. False if you want the buttons to be at either side of the field.
+         * True if you want to group the buttons to the right of the fields. False if you want the buttons
+         * to be at either side of the field.
          */
         groupButtons: true,
 
@@ -37125,7 +37252,7 @@ Ext.define('Ext.form.Panel', {
          * go or enter inside a textfield.
          * @accessor
          */
-        submitOnAction : true,
+        submitOnAction: false,
 
         /**
          * @cfg {Ext.data.Model} record The model instance of this form. Can by dynamically set at any time
@@ -37159,11 +37286,6 @@ Ext.define('Ext.form.Panel', {
     initialize: function() {
         var me = this;
         me.callParent();
-
-        me.on({
-            action: 'onFieldAction',
-            scope : me
-        });
 
         me.element.on({
             submit: 'onSubmit',
@@ -37209,13 +37331,20 @@ Ext.define('Ext.form.Panel', {
             e.stopEvent();
         }
 
-        me.fireAction('submit', [me, me.getValues(true), e], 'doSubmit');
-
+        this.submit();
     },
 
-    doSubmit: function(me, values, e) {
-        if (e) {
-            e.stopEvent();
+    updateSubmitOnAction: function(newSubmitOnAction) {
+        if (newSubmitOnAction) {
+            this.on({
+                action: 'onFieldAction',
+                scope: this
+            });
+        } else {
+            this.un({
+                action: 'onFieldAction',
+                scope: this
+            });
         }
     },
 
@@ -37400,7 +37529,7 @@ Ext.define('Ext.form.Panel', {
      */
     setValues: function(values) {
         var fields = this.getFields(),
-            name, field, value;
+            name, field, value, ln, i, f;
 
         values = values || {};
 
@@ -37408,21 +37537,39 @@ Ext.define('Ext.form.Panel', {
             if (values.hasOwnProperty(name)) {
                 field = fields[name];
                 value = values[name];
+
                 if (field) {
+                    // If there are multiple fields with the same name. Checkboxes, radio fields and maybe event just normal fields..
                     if (Ext.isArray(field)) {
-                        field.forEach(function(f) {
+                        ln = field.length;
+
+                        // Loop through each of the fields
+                        for (i = 0; i < ln; i++) {
+                            f = field[i];
+
                             if (f.isRadio) {
+                                // If it is a radio field just use setGroupValue which will handle all of the radio fields
                                 f.setGroupValue(value);
-                            } else if (Ext.isArray(values[name])) {
-                                f.setChecked((value.indexOf(f.getValue()) != -1));
+                            } else if (f.isCheckbox) {
+                                if (Ext.isArray(value)) {
+                                   f.setChecked((value.indexOf(f._value) != -1));
+                               } else {
+                                   f.setChecked((value == f._value));
+                               }
                             } else {
-                                f.setChecked((value == f.getValue()));
+                                // If it is a bunch of fields with the same name, check if the value is also an array, so we can map it
+                                // to each field
+                                if (Ext.isArray(value)) {
+                                    f.setValue(value[i]);
+                                }
                             }
-                        });
+                        }
                     } else {
-                        if (field.setChecked) {
+                        if (field.isRadio || field.isCheckbox) {
+                            // If the field is a radio or a checkbox
                             field.setChecked(value);
                         } else {
+                            // If just a normal field
                             field.setValue(value);
                         }
                     }
@@ -37705,7 +37852,6 @@ Ext.define('Ext.form.Panel', {
     getNextField: function() {
         var fields = this.getFieldsArray(),
             focusedField = this.getFocusedField(),
-            ln = fields.length,
             index;
 
         if (focusedField) {
@@ -37742,7 +37888,6 @@ Ext.define('Ext.form.Panel', {
     getPreviousField: function() {
         var fields = this.getFieldsArray(),
             focusedField = this.getFocusedField(),
-            ln = fields.length,
             index;
 
         if (focusedField) {
@@ -38519,7 +38664,9 @@ Ext.define('Ext.data.Field', {
 
         // Used in LocalStorage stuff
         encode: null,
-        decode: null
+        decode: null,
+
+        bubbleEvents: 'action'
     },
 
     constructor : function(config) {
@@ -40416,7 +40563,7 @@ Ext.define('Ext.dataview.element.List', {
 
         if (dataview.getOnItemDisclosure()) {
             config.children.push({
-                cls: me.disclosureClsShortCache + ((data[dataview.getDisclosureProperty()] === false) ? me.hiddenDisplayCache : '')
+                cls: me.disclosureClsShortCache + ' ' + ((data[dataview.getDisclosureProperty()] === false) ? me.hiddenDisplayCache : '')
             });
         }
         return config;
@@ -40429,15 +40576,15 @@ Ext.define('Ext.dataview.element.List', {
             innerItem = extItem.down(me.labelClsCache, true),
             data = record.data,
             disclosureProperty = dataview.getDisclosureProperty(),
-            disclosure = data && data.hasOwnProperty(disclosureProperty),
+            hasDisclosureProperty = data && data.hasOwnProperty(disclosureProperty),
             iconSrc = data && data.hasOwnProperty('iconSrc'),
             disclosureEl, iconEl;
 
         innerItem.innerHTML = dataview.getItemTpl().apply(data);
 
-        if (disclosure && data[disclosureProperty] === false) {
+        if (hasDisclosureProperty) {
             disclosureEl = extItem.down(me.disclosureClsCache);
-            disclosureEl[disclosure ? 'removeCls' : 'addCls'](me.hiddenDisplayCache);
+            disclosureEl[data[disclosureProperty] === false ? 'removeCls' : 'addCls'](me.hiddenDisplayCache);
         }
 
         if (dataview.getIcon()) {
@@ -41315,6 +41462,7 @@ Ext.define('Ext.dataview.DataView', {
      * (either an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'}))
      */
     prepareData: function(data, index, record) {
+        data.xindex = index + 1;
         return data;
     },
 
@@ -41451,7 +41599,7 @@ Ext.define('Ext.dataview.DataView', {
 
     // invoked by the selection model to maintain visual UI cues
     doItemSelect: function(me, record) {
-        if (me.container) {
+        if (me.container && !me.isDestroyed) {
             var item = me.container.getViewItems()[me.getStore().indexOf(record)];
             if (Ext.isElement(item)) {
                 item = Ext.get(item);
@@ -41466,7 +41614,7 @@ Ext.define('Ext.dataview.DataView', {
     // invoked by the selection model to maintain visual UI cues
     onItemDeselect: function(record, suppressEvent) {
         var me = this;
-        if (me.container) {
+        if (me.container && !me.isDestroyed) {
             if (suppressEvent) {
                 me.doItemDeselect(me, record);
             }
@@ -41750,6 +41898,9 @@ Ext.define('Ext.dataview.DataView', {
         if (oldIndex !== newIndex) {
             container.moveItemsToCache(oldIndex, oldIndex);
             container.moveItemsFromCache([record]);
+            if (me.isSelected(record)) {
+                me.doItemSelect(me, record);
+            }
         }
         else {
             // Bypassing setter because sometimes we pass the same record (different data)
@@ -41920,7 +42071,22 @@ Ext.define('Ext.dataview.DataView', {
  * @aside guide list
  * @aside video list
  *
- * List is a custom styled DataView which allows Grouping, Indexing, Icons, and a Disclosure.
+ * List is a custom styled DataView which allows Grouping, Indexing, Icons, and a Disclosure. See the
+ * [Guide](#!/guide/list) and [Video](#!/video/list) for more.
+ *
+ *     @example miniphone preview
+ *     Ext.create('Ext.List', {
+ *         fullscreen: true,
+ *         itemTpl: '{title}',
+ *         data: [
+ *             { title: 'Item 1' },
+ *             { title: 'Item 2' },
+ *             { title: 'Item 3' },
+ *             { title: 'Item 4' }
+ *         ]
+ *     });
+ *
+ * A more advanced example showing a list of people groped by last name:
  *
  *     @example miniphone preview
  *     Ext.define('Contact', {
@@ -42502,7 +42668,7 @@ Ext.define('Ext.dataview.List', {
         var onItemDisclosure = me.getOnItemDisclosure();
 
         if (onItemDisclosure && onItemDisclosure.handler) {
-            onItemDisclosure.handler.call(me, record, item, index, e);
+            onItemDisclosure.handler.call(onItemDisclosure.scope || me, record, item, index, e);
         }
     },
 
@@ -42664,7 +42830,7 @@ Ext.define('Ext.data.writer.Json', {
 
     config: {
         /**
-         * @cfg {String} root
+         * @cfg {String} rootProperty
          * The key under which the records in this Writer will be placed. If you specify {@link #encode} to be true,
          * we default this to 'records'.
          *
@@ -42673,7 +42839,7 @@ Ext.define('Ext.data.writer.Json', {
          *     {'records': [{name: 'my record'}, {name: 'another record'}]}
          *
          */
-        root: undefined,
+        rootProperty: undefined,
 
         /**
          * @cfg {Boolean} encode
@@ -42707,7 +42873,7 @@ Ext.define('Ext.data.writer.Json', {
         encodeRequest: false
     },
 
-    applyRoot: function(root) {
+    applyRootProperty: function(root) {
         if (!root && (this.getEncode() || this.getEncodeRequest())) {
             root = 'data';
         }
@@ -42716,7 +42882,7 @@ Ext.define('Ext.data.writer.Json', {
 
     //inherit docs
     writeRecords: function(request, data) {
-        var root = this.getRoot(),
+        var root = this.getRootProperty(),
             params = request.getParams(),
             allowSingle = this.getAllowSingle(),
             jsonData;
@@ -42762,6 +42928,37 @@ Ext.define('Ext.data.writer.Json', {
         }
         return request;
     }
+
+    //<deprecated product=touch since=2.0.1>
+}, function() {
+    /**
+     * @cfg {String} root
+     * The key under which the records in this Writer will be placed. If you specify {@link #encode} to be true,
+     * we default this to 'records'.
+     *
+     * Example generated request, using root: 'records':
+     *
+     *     {'records': [{name: 'my record'}, {name: 'another record'}]}
+     *
+     * @deprecated 2.0.1 Please use the {@link #rootProperty} configuration instead.
+     */
+    this.override({
+        constructor: function(config) {
+            config = config || {};
+
+            if (config.root) {
+                // <debug>
+                Ext.Logger.deprecate('root has been deprecated as a configuration on Writer. Please use rootProperty instead.');
+                // </debug>
+
+                config.rootProperty = config.root;
+                delete config.root;
+            }
+
+            this.callOverridden([config]);
+        }
+    });
+    //</deprecated>
 });
 
 
@@ -45307,7 +45504,7 @@ Ext.define('Ext.data.proxy.Ajax', {
  *     });
  *
  *     //tells the Proxy to destroy the Model. Performs a DELETE request to /users/123
- *     user.destroy({
+ *     user.erase({
  *         success: function() {
  *             console.log('The User was destroyed!');
  *         }
@@ -46023,8 +46220,11 @@ Ext.define('Ext.data.Model', {
 
     /**
      * Saves the model instance using the configured proxy.
+     *
      * @param {Object/Function} options Options to pass to the proxy. Config object for {@link Ext.data.Operation}.
-     * If you pass a function, this will automatically become the callback method.
+     * If you pass a function, this will automatically become the callback method. For convenience the config
+     * object may also contain `success` and `failure` methods in addition to `callback` - they will all be invoked
+     * with the Model and Operation as arguments.
      * @param {Object} scope The scope to run your callback method in. This is only used if you passed a function
      * as the first argument.
      * @return {Ext.data.Model} The Model instance
@@ -46078,7 +46278,13 @@ Ext.define('Ext.data.Model', {
      * Note that this doesn't destroy this instance after the server comes back with a response.
      * It will however call afterErase on any Stores it is joined to. Stores by default will
      * automatically remove this instance from their data collection.
-     * @param {Object} options Options to pass to the proxy. Config object for {@link Ext.data.Operation}.
+     *
+     * @param {Object/Function} options Options to pass to the proxy. Config object for {@link Ext.data.Operation}.
+     * If you pass a function, this will automatically become the callback method. For convenience the config
+     * object may also contain `success` and `failure` methods in addition to `callback` - they will all be invoked
+     * with the Model and Operation as arguments.
+     * @param {Object} scope The scope to run your callback method in. This is only used if you passed a function
+     * as the first argument.
      * @return {Ext.data.Model} The Model instance
      */
     erase: function(options, scope) {
@@ -46758,7 +46964,7 @@ Ext.define('Ext.data.Model', {
                     cls.prototype.validations = cls.validations = cls.prototype._validations = (superCls && superCls.validations)
                         ? superCls.validations.clone()
                         : new Ext.util.Collection(function(validation) {
-                            return validation.field || validation.name;
+                            return validation.field ? (validation.field + '-' + validation.type) : (validation.name + '-' + validation.type);
                         });
 
                     cls.prototype = Ext.Object.chain(cls.prototype);
@@ -47864,8 +48070,11 @@ Ext.define('Ext.data.Store', {
 
         var me = this,
             sync = false,
+            data = this.data,
             ln = records.length,
             Model = this.getModel(),
+            existingRecords = [],
+            indices = [],
             modelDefaults = me.getModelDefaults(),
             i, record, added = false;
 
@@ -47882,25 +48091,48 @@ Ext.define('Ext.data.Store', {
                 Ext.Array.remove(this.removed, record);
             }
 
-            record.set(modelDefaults);
+            // If the record already exists in our data collection then we don't add it again
+            if (data.indexOf(record) !== -1) {
+                existingRecords.push(record);
+            }
 
-            // reassign the model in the array in case it wasn't created yet
-            records[i] = record;
+            record.set(modelDefaults);
             record.join(me);
+
+            records[i] = record;
 
             // If this is a newly created record, then we might want to sync it later
             sync = sync || (record.phantom === true);
         }
 
+        if (existingRecords.length) {
+            for (i = 0, ln = existingRecords.length; i < ln; i++) {
+                record = existingRecords[i];
+                record._tmpIndex = data.indexOf(record);
+            }
+
+            Ext.Array.sort(existingRecords, function(record1, record2) {
+                return record1._tmpIndex < record2._tmpIndex ? 1 : -1;
+            });
+
+            for (i = 0; i < ln; i++) {
+                record = existingRecords[i];
+                indices.push(record._tmpIndex);
+                delete record._tmpIndex;
+            }
+
+            me.fireEvent('removerecords', me, existingRecords, indices);
+        }
+
         // Now we insert all these records in one go to the collection. Saves many function
         // calls to data.insert. Does however create two loops over the records we are adding.
         if (ln === 1) {
-            added = this.data.insert(index, records[0]);
+            added = data.insert(index, records[0]);
             if (added) {
                 added = [added];
             }
         } else {
-            added = this.data.insertAll(index, records);
+            added = data.insertAll(index, records);
         }
 
         if (added) {
@@ -49109,7 +49341,7 @@ Ext.define('JWF.store.Runs', {
  * See the {@link Ext.picker.Picker} documentation on how to use slots.
  */
 Ext.define('Ext.picker.Slot', {
-    extend: 'Ext.DataView',
+    extend: 'Ext.dataview.DataView',
     xtype : 'pickerslot',
     alternateClassName: 'Ext.Picker.Slot',
     requires: [
@@ -49314,7 +49546,7 @@ Ext.define('Ext.picker.Slot', {
 
     updateData: function(data) {
         this.setStore(Ext.create('Ext.data.Store', {
-            model: 'x-textvalue',
+            fields: ['text', 'value'],
             data : data
         }));
     },
@@ -49371,14 +49603,7 @@ Ext.define('Ext.picker.Slot', {
             scrollable = this.getScrollable(),
             scroller = scrollable.getScroller(),
             titleHeight = 0,
-            barY, elY, barHeight, padding, paddingBottom;
-
-        barY = bar.getY();
-        elY = element.getY();
-
-        if (showTitle && title) {
-            elY += title.element.getHeight();
-        }
+            barHeight, padding;
 
         barHeight = bar.getHeight();
 
@@ -49387,7 +49612,6 @@ Ext.define('Ext.picker.Slot', {
         }
 
         padding = Math.ceil((element.getHeight() - titleHeight - barHeight) / 2);
-        this.slotPadding = padding;
 
         innerElement.setStyle({
             padding: padding + 'px 0 ' + (padding) + 'px'
@@ -49406,7 +49630,7 @@ Ext.define('Ext.picker.Slot', {
         me.selectedNode = item;
         me.scrollToItem(item, true);
 
-        me.fireEvent('slotpick', me, me.getValue(), me.selectedNode);
+        me.fireEvent('slotpick', me, me.getValue(true), me.selectedNode);
     },
 
     // @private
@@ -49414,7 +49638,6 @@ Ext.define('Ext.picker.Slot', {
         var y = item.getY(),
             parentEl = item.parent(),
             parentY = parentEl.getY(),
-            // padding = this.slotPadding,
             scrollView = this.getScrollable(),
             scroller = scrollView.getScroller(),
             difference;
@@ -49443,7 +49666,7 @@ Ext.define('Ext.picker.Slot', {
      * Returns the vlaue of this slot
      * @private
      */
-    getValue: function() {
+    getValue: function(useDom) {
         var store = this.getStore(),
             record, value;
 
@@ -49451,7 +49674,7 @@ Ext.define('Ext.picker.Slot', {
             return;
         }
 
-        if (!this.rendered) {
+        if (!this.rendered || !useDom) {
             return this._value;
         }
 
@@ -49463,7 +49686,7 @@ Ext.define('Ext.picker.Slot', {
         record = store.getAt(this.selectedIndex);
 
         value = record ? record.get(this.getValueField()) : null;
-        this._value = value;
+//        this._value = value;
 
         return value;
     },
@@ -49979,7 +50202,7 @@ Ext.define('Ext.picker.Picker', {
      */
     onDoneButtonTap: function() {
         var oldValue = this._value,
-            newValue = this.getValue();
+            newValue = this.getValue(true);
 
         if (newValue != oldValue) {
             this.fireEvent('change', this, newValue);
@@ -50001,8 +50224,8 @@ Ext.define('Ext.picker.Picker', {
      * @private
      * Called when a slot has been picked.
      */
-    onSlotPick: function(slot, value, node) {
-        this.fireEvent('pick', this, this.getValue(), slot);
+    onSlotPick: function(slot) {
+        this.fireEvent('pick', this, this.getValue(true), slot);
     },
 
     onShow: function() {
@@ -50021,13 +50244,13 @@ Ext.define('Ext.picker.Picker', {
         var me = this,
             slots = me.getInnerItems(),
             ln = slots.length,
-            key, slot, loopSlot, i;
+            key, slot, loopSlot, i, value;
 
         if (!values) {
             values = {};
             for (i = 0; i < ln; i++) {
-                //set the value to false so the slot will return null when getValue is set
-                values[slots[i].config.name] = false;
+                //set the value to false so the slot will return null when getValue is called
+                values[slots[i].config.name] = null;
             }
         }
 
@@ -50050,8 +50273,7 @@ Ext.define('Ext.picker.Picker', {
             }
         }
 
-        me._value = this.getValue();
-        me._values = me._value;
+        me._values = me._value = values;
 
         return me;
     },
@@ -50064,20 +50286,22 @@ Ext.define('Ext.picker.Picker', {
      * Returns the values of each of the pickers slots
      * @return {Object} The values of the pickers slots
      */
-    getValue: function() {
+    getValue: function(useDom) {
         var values = {},
             items = this.getItems().items,
             ln = items.length,
             item, i;
 
-        for (i = 0; i < ln; i++) {
-            item = items[i];
-            if (item && item.isSlot) {
-                values[item.getName()] = item.getValue();
+        if (useDom) {
+            for (i = 0; i < ln; i++) {
+                item = items[i];
+                if (item && item.isSlot) {
+                    values[item.getName()] = item.getValue(useDom);
+                }
             }
-        }
 
-        this._values = values;
+            this._values = values;
+        }
 
         return this._values;
     },
@@ -50117,15 +50341,7 @@ Ext.define('Ext.picker.Picker', {
      * @deprecated 2.0.0 Please use {@link #setActiveItem} instead
      */
     Ext.deprecateClassMethod(this, 'setCard', 'setActiveItem');
-
     //</deprecated>
-
-    Ext.define('x-textvalue', {
-        extend: 'Ext.data.Model',
-        config: {
-            fields: ['text', 'value']
-        }
-    });
 });
 
 
@@ -50268,17 +50484,16 @@ Ext.define('Ext.picker.Date', {
         this.callParent([value, animated]);
     },
 
-    getValue: function() {
+    getValue: function(useDom) {
         var values = {},
-            daysInMonth, day, month, year,
             items = this.getItems().items,
             ln = items.length,
-            item, i;
+            daysInMonth, day, month, year, item, i;
 
         for (i = 0; i < ln; i++) {
             item = items[i];
             if (item instanceof Ext.picker.Slot) {
-                values[item.getName()] = item.getValue();
+                values[item.getName()] = item.getValue(useDom);
             }
         }
 
@@ -50471,12 +50686,11 @@ Ext.define('Ext.picker.Date', {
     },
 
     onSlotPick: function() {
-        var value = this.getValue(),
+        var value = this.getValue(true),
             slot = this.getDaySlot(),
             year = value.getFullYear(),
             month = value.getMonth(),
             days = [],
-            selected = slot,
             daysInMonth, i;
 
         if (!value || !Ext.isDate(value) || !slot) {
@@ -50515,7 +50729,7 @@ Ext.define('Ext.picker.Date', {
         slot.selectedIndex = index;
         slot.scrollToItem(item);
 
-        slot._value = value;
+//        slot._value = value;
     },
 
     getDaySlot: function() {
@@ -50551,9 +50765,17 @@ Ext.define('Ext.picker.Date', {
 
     onDoneButtonTap: function() {
         var oldValue = this._value,
-            newValue = this.getValue();
+            newValue = this.getValue(true),
+            testValue = newValue;
 
-        if (newValue.toDateString() != oldValue.toDateString()) {
+        if (Ext.isDate(newValue)) {
+            testValue = newValue.toDateString();
+        }
+        if (Ext.isDate(oldValue)) {
+            oldValue = oldValue.toDateString();
+        }
+
+        if (testValue != oldValue) {
             this.fireEvent('change', this, newValue);
         }
 
@@ -50739,7 +50961,6 @@ Ext.define('Ext.field.DatePicker', {
 
         this.getComponent().on({
             scope: this,
-
             masktap: 'onMaskTap'
         });
 
@@ -50750,11 +50971,11 @@ Ext.define('Ext.field.DatePicker', {
 
     applyValue: function(value) {
         if (!Ext.isDate(value) && !Ext.isObject(value)) {
-            value = null;
+            return null;
         }
 
         if (Ext.isObject(value)) {
-            value = new Date(value.year, value.month - 1, value.day);
+            return new Date(value.year, value.month - 1, value.day);
         }
 
         return value;
@@ -50822,20 +51043,23 @@ Ext.define('Ext.field.DatePicker', {
     },
 
     getPicker: function() {
-        var picker = this._picker;
+        var picker = this._picker,
+            value = this.getValue();
 
         if (picker && !picker.isPicker) {
             picker = Ext.factory(picker, Ext.picker.Date);
-            picker.on({
-                scope: this,
-
-                change: 'onPickerChange',
-                hide  : 'onPickerHide'
-            });
-            picker.setValue(this.getValue());
-            Ext.Viewport.add(picker);
-            this._picker = picker;
+            if (value != null) {
+                picker.setValue(value);
+            }
         }
+
+        picker.on({
+            scope: this,
+            change: 'onPickerChange',
+            hide  : 'onPickerHide'
+        });
+        Ext.Viewport.add(picker);
+        this._picker = picker;
 
         return picker;
     },
@@ -50890,7 +51114,7 @@ Ext.define('Ext.field.DatePicker', {
 
     // @private
     destroy: function() {
-        var picker = this.getPicker();
+        var picker = this._picker;
 
         if (picker && picker.isPicker) {
             picker.destroy();
@@ -51007,7 +51231,7 @@ Ext.define('JWF.view.Form', {
  *                     format: 'json',
  *                     num_of_days: 5
  *                 },
- *                 success: function(result) {
+ *                 success: function(result, request) {
  *                     // Unmask the viewport
  *                     Ext.Viewport.unmask();
  *
@@ -51233,11 +51457,11 @@ Ext.define('Ext.data.JsonP', {
 
         if (request.errorType) {
             success = false;
-            Ext.callback(request.failure, request.scope, [request.errorType]);
+            Ext.callback(request.failure, request.scope, [request.errorType, request]);
         } else {
-            Ext.callback(request.success, request.scope, [result]);
+            Ext.callback(request.success, request.scope, [result, request]);
         }
-        Ext.callback(request.callback, request.scope, [success, result, request.errorType]);
+        Ext.callback(request.callback, request.scope, [success, result, request.errorType, request]);
     },
 
     /**
