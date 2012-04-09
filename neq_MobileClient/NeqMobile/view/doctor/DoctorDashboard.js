@@ -13,6 +13,8 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     config:{
         scrollable:true,
         layout:'vbox',
+        margin: 0,
+        padding: 15,
         items:[
 
             { xtype:'doctorheader'

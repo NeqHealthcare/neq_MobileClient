@@ -12,12 +12,14 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboardLab', {
     xtype:'doctordashboardlab',
     config:{
         title:'New Lab Results',
+        margin: '0',
+        padding: '5',
         items:[
             {xtype:'touchgridpanel',
                 itemId:'doctordashboardlab',
                 scrollable:false,
-                margin:'0',
-                padding:'5',
+                margin: 0,
+                padding: 5,
                 columns:[
                     {
                         header:'Patient ID',
