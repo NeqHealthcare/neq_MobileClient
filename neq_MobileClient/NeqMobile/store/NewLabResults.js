@@ -13,7 +13,7 @@ Ext.define('NeqMobile.store.NewLabResults', {
             storeId:'newlabresults',
             proxy:{
                 type:'neqproxy',
-                customUrl:'/labtest/all'
+                customUrl:'/labtest/watchlist/check/details'
             }
         }}
 );

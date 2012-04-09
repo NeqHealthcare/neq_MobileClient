@@ -2,11 +2,8 @@ Ext.define('NeqMobile.view.patient.PatientList', {
     extend:'Ext.Panel',
     requires:'NeqMobile.store.Patients',
     xtype:'patientlist',
-
     config:{
-
         layout:'hbox',
-
         items:[
             {
                 xtype:'panel',

@@ -19,7 +19,7 @@ Ext.define('NeqMobile.view.patient.PatientInfoImages', {
             image_container = this.down('#imageScreen');
             image_list.setStore(documentsstore);
             //image_container.src(documentsstore.get());
-            this.down('#patientListContainer').setActiveItem(0);
+            this.down('documentcontainer').setActiveItem(0);
             //image_list.itemtap(this, index, target, record, e, eOpts )
 
             //     setUrl();

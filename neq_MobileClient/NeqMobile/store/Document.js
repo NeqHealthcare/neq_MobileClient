@@ -15,9 +15,6 @@ Ext.define('NeqMobile.store.Document', {
             //autoLoad:true,
             //autoSync:true,
             storeId:'documents'
-
         }}
-
-
 );
 

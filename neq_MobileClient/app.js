@@ -11,11 +11,11 @@ Ext.application({
     appFolder:'NeqMobile',
 //    viewport:{ xclass: 'NeqMobile.view.Viewport'},
     name:'NeqMobile',
-    requires:['Ext.DateExtras','NeqMobile.util.Renderer','NeqMobile.proxy.NeqProxy',
+    requires:['Ext.ux.touch.grid.View','Ext.ux.touch.grid.feature.Expandable','Ext.DateExtras','NeqMobile.util.Renderer','NeqMobile.proxy.NeqProxy',
         'Ext.field.Password','Ext.Img','Ext.field.Select','Ext.Label','Ext.field.Search','Ext.field.DatePicker','Ext.field.Toggle'],
     controllers:['General', 'Session', 'settings.Domains', 'Workspace','PatientView','PatientLab','DoctorDashboard'],
     views:['Viewport'],
-    stores:['Patients', 'Domains'],
+    stores:['Patients', 'Domains','NewLabResults'],
     models:['Patient', 'Session', 'Domain','Diagnose'],
 
     launch:function () {

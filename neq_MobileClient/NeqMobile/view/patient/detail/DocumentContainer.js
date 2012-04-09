@@ -16,7 +16,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
         config:{
 
             xtype:'panel',
-            id:'patientListContainer',
+            id:'documentcontainer',
             layout:'card',
             //width:'100%',
             flex:1,
@@ -44,7 +44,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                             full_url = record.get('url_big');
                             console.log(full_url);
                             Ext.ComponentManager.get('imageScreen').applySrc(full_url);
-                            Ext.ComponentManager.get('patientListContainer').setActiveItem(1);
+                            Ext.ComponentManager.get('documentcontainer').setActiveItem(1);
                             //Ext.ComponentManager.get('backbutton').setStyle('opacity: 0.3;');
                             Ext.ComponentManager.get('backbutton').show();
 
@@ -81,7 +81,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                     hidden:true,
                     listeners:{
                         tap:function (obj, e, eOpts) {
-                            Ext.ComponentManager.get('patientListContainer').setActiveItem(0);
+                            Ext.ComponentManager.get('documentcontainer').setActiveItem(0);
                             this.hide();
                         }
                     }

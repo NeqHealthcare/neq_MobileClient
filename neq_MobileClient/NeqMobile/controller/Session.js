@@ -7,11 +7,11 @@
  */
 Ext.define('NeqMobile.controller.Session', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.manager.Session', 'NeqMobile.store.Domains', 'NeqMobile.store.Patients', 'NeqMobile.model.Domain',
-        'NeqMobile.view.menu.Settings', 'NeqMobile.view.settings.Domains'],
-
-    scope:this,
+    requires:['NeqMobile.manager.Session'],
     config:{
+        models:['Domain'],
+        stores:['Domains','Patients'],
+        views:['Workspace','menu.Settings','settings.Domains'],
         refs:{
             login:'Login',
             viewport:'Viewport',

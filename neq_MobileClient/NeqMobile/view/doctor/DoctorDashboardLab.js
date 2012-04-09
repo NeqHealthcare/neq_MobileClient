@@ -8,7 +8,7 @@
 
 Ext.define('NeqMobile.view.doctor.DoctorDashboardLab', {
     extend:'Ext.form.FieldSet',
-    requires:'Ext.form.FieldSet',
+    requires:['Ext.form.FieldSet', 'Ext.ux.touch.grid.View'],
     xtype:'doctordashboardlab',
     config:{
         title:'New Lab Results',
@@ -16,8 +16,8 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboardLab', {
             {xtype:'touchgridpanel',
                 itemId:'doctordashboardlab',
                 scrollable:false,
-                margin: '0',
-                padding: '5',
+                margin:'0',
+                padding:'5',
                 columns:[
                     {
                         header:'Patient ID',

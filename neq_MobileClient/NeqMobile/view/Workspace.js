@@ -8,9 +8,9 @@
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.Container',
         xtype:'workspace',
-        requires:['NeqMobile.view.patient.PatientView', 'NeqMobile.view.patient.PatientList',
-            'NeqMobile.view.patient.PatientLab', 'NeqMobile.view.patient.PatientInfoImages',
-            'NeqMobile.view.doctor.DoctorDashboard'],
+        requires:['NeqMobile.view.doctor.DoctorDashboard','NeqMobile.view.patient.PatientView', 'NeqMobile.view.patient.PatientList',
+            'NeqMobile.view.patient.PatientLab', 'NeqMobile.view.patient.PatientInfoImages'
+        ],
 
         config:{
             layout:'fit',
@@ -61,7 +61,7 @@ Ext.define('NeqMobile.view.Workspace', {
                             itemId:'dashboardcontainer',
                             items:[
                                 {
-                                    xclass:'NeqMobile.view.doctor.DoctorDashboard'
+                                   xtype:'doctordashboard'
                                 }
                             ]
                         }

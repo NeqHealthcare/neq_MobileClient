@@ -45,22 +45,23 @@ Ext.define('NeqMobile.controller.PatientView', {
     },
     loadPatientData:function (patientid) {
         // < var definitions
+        var me = this;
         NeqMobile.manager.Session.setCurrentPatient(patientid);
         var patientview = this.getPatientview();
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
         var patientinfoimages = patientview.down('patientinfoimages');
-        var me = this;
-        var finishcounterInfo = 0;
+
+        var dashboardcounter = 0;
         var finishcounterInfoimages = 0;
         var finishwaiter = function (viewtype) {
-            if (viewtype == 1) {
-                finishcounterInfoContd1++;
-                if (finishcounterInfoContd1 === 1) {
-                    patientInfoContd1.setMasked(false);
+            if (viewtype === 0) {
+               dashboardcounter++;
+                if (dashboardcounter === 3) {
+                    patientdashboard.setMasked(false);
                 }
 
-            } else if (viewtype == 2) {
+            } else if (viewtype === 2) {
                 finishcounterInfoimages++;
                 if (finishcounterInfoimages === 1) {
                     patientinfoimages.setMasked(false);
