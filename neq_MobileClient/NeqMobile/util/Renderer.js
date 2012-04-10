@@ -8,6 +8,10 @@
 Ext.define('NeqMobile.util.Renderer',
     {
         singleton:true,
+        longToDateRenderer:function(long, values){
+            var date = new Date(long);
+            return Ext.Date.format(date,'d.m.Y');
+        },
         daterenderer:function (date, values) {
             if (date)
             {
