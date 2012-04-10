@@ -75,7 +75,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             });
         }
         pollFn();
-        pollFn = setInterval(pollFn, 60000);
+        pollFn = setInterval(pollFn, 5000);
         this.setPollFn(pollFn);
     },
 

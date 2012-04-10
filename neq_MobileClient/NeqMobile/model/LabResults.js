@@ -16,12 +16,13 @@ Ext.define('NeqMobile.model.LabResults', {
             fields:[
                 'test',
                 'name',
+                'id',
                 'test_rec_name',
-                'pathologist_rec_name',
+                'patient',
+                'patient_rec_name',
                 'date_requested',
-                'date_analysis',
-                'requestor_rec_name'
-             ],
+                'date_analysis'
+            ],
             proxy:{
                 type:'neqproxy',
                 customUrl:'/labtest/one'
@@ -35,7 +36,7 @@ Ext.define('NeqMobile.model.LabResults', {
                     '/labtest/watchlist/remove',
                 method:'GET',
                 scope:me,
-                params:{session:session.get('sessionId'), labTestRequestId:this.get('test')},
+                params:{session:session.get('sessionId'), labTestRequestId:this.get('id')},
                 callback:function (opts, success, response) {
                     var obj = Ext.decode(response.responseText, true);
                     if (obj && obj.success && obj.success === 'true') {
