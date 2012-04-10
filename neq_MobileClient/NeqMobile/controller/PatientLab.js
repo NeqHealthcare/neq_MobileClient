@@ -12,9 +12,40 @@ Ext.define('NeqMobile.controller.PatientLab', {
             },
             'createlabtestrequestoverlay #x-submitLabTestRequestButton':{
                 tap:'onSubmitLabTestRequestTap'
-            }
+            },
+
+            'patientview patientlab labresultgrid':{beforeitemexpand:'showLabResultDetail'}
         }
     },
+    showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
+
+         var me = this;
+        //Hinweis an Joohee!
+        // Du musst die zeile expandfeature.expand aufrufen, aber vorher musst du
+        // die variable itemrecord durch eine model instanz der resultdetails ersetzen
+        // also z.b. itemrecorddetail = richtigeritemrecord;
+        // das ganze musst du im callback der load function machen
+        var labtestresultid = labrecordoverview.get('test');
+
+        var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
+
+        labdetailmodel.load(undefined, {
+            success:function (labdetailrecord) {
+                expandfeature.expand(dw,index,item,labdetailrecord,e,eOpts);
+            },
+            params:
+            {
+                 // hier kannst du noch parameter an die url übergeben
+                // das ist so ähnlich wie dieses setExtraParams() was wir sonst genutzt haben.
+                // z.B; labtest_id: 1    o.ä. ,
+
+                labTestId:labtestresultid
+            }   ,
+            scope:me
+        });
+
+    },
+
     onSubmitLabTestRequestTap:function (button, e, eOpts) {
         var me = this;
 

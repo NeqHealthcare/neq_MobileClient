@@ -17,7 +17,8 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         },
         detailCmp:undefined,
         expandeditem:undefined,
-        autoScroll:true
+        autoScroll:true,
+        autoExpand:true
     },
     handleTap:function (dw, index, item, record, e, eOpts) {
         //checking whether the user clicked on the Overview or the Detailview (when visible)
@@ -38,13 +39,19 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     doToggle:function (dw, index, item, itemrecord, e, eOpts) {
         //expanding or collapsing the item, depending on the previous status
         if (!item.expanded) {
+            if (this.getAutoExpand() === true)
+            {
             this.expand(dw, index, item, itemrecord, e, eOpts);
+            }
+            else
+            {
+                dw.fireEvent('beforeitemexpand', this, dw, index, item, itemrecord, e, eOpts);
+            }
         }
         else {
             this.collapse(dw, index, item, itemrecord, e, eOpts);
         }
     },
-
     expand:function (dw, index, item, itemrecord, e, eOpts) {
         var expandeditem = this.getExpandeditem();
 //        if (expandeditem){
@@ -60,7 +67,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         detailinstance.setMaxHeight(1000);
         item.detailinstance = detailinstance;
         if (this.getAutoScroll() === true)
-        this.autoScroll(dw, index, item, itemrecord, e, eOpts, detailinstance);
+            this.autoScroll(dw, index, item, itemrecord, e, eOpts, detailinstance);
 
         dw.fireEvent('itemexpanded', dw, index, item, itemrecord, e, eOpts, detailinstance)
     },
@@ -68,7 +75,9 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
         item.expanded = false;
         item.detailinstance.setMaxHeight(1);
-        Ext.defer(function() {item.detailinstance.destroy()},300);
+        Ext.defer(function () {
+            item.detailinstance.destroy()
+        }, 300);
         dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
     autoScroll:function (dw, index, item, record, e, eOpts, detailcont) {
