@@ -20,7 +20,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
     showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
 
          var me = this;
-         var labdetailrecord = Ext.create('NeqMobile.model.LabDetail');
+         var labrecordoverview = Ext.create('NeqMobile.model.LabDetail');
         var labtestresultid = labrecordoverview.get('test');
 
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');

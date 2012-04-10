@@ -28,23 +28,11 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                       ],
                       columns:[
                           {
-                              header:'Test ID',
-                              dataIndex:'name',
-                              style:'text-align: left; padding-left: 1em;',
-                              width:'10%'
-                          },
-                          {
                               header:'Test Type',
                               dataIndex:'test_rec_name',
                               style: 'text-align: right;',
                               cls:'centered-cell',
-                              width:'53%'
-                          },
-                          {
-                              header:'Type No.',
-                              dataIndex:'test',
-                              style:'text-align: center;',
-                              width:'7%'
+                              width:'40%'
                           },
                           {
                               header:'Date Requested',
@@ -59,6 +47,20 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                               style:'text-align: right;',
                               width:'15%'
                        //       renderer:NeqMobile.util.Renderer.daterenderer
+                          },
+                          {
+                              header:'Physician',
+                              dataIndex:'requestor_rec_name',
+                              style: 'text-align: right;',
+                              cls:'centered-cell',
+                              width:'15%'
+                          },
+                          {
+                              header:'Pathologist',
+                              dataIndex:'pathologist_rec_name',
+                              style: 'text-align: right;',
+                              cls:'centered-cell',
+                              width:'15%'
                           }
                       ]
                   }
