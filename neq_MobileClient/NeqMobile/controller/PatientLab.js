@@ -14,7 +14,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
                 tap:'onSubmitLabTestRequestTap'
             },
 
-            'patientview patientlab labresultgrid':{beforeitemexpand:'showLabResultDetail'}
+            'patientview patientlab #labresult':{beforeitemexpand:'showLabResultDetail'}
         }
     },
     showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
