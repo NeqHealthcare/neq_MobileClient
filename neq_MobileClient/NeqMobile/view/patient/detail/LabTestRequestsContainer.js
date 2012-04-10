@@ -17,7 +17,7 @@ var labTestRequestsTable = new Ext.XTemplate(
     '<tpl for=".">',
     '<tr>',
     '<td>{rec_name}</td>',
-    '<td>{date}</td>',
+    '<td>{[NeqMobile.util.Renderer.longToDateRenderer(values.date)]}</td>',
     '<td>{doctor_rec_name}</td>',
     '<td>{state}</td>',
     '</tr>',
