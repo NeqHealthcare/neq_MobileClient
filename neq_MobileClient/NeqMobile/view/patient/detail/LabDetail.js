@@ -26,8 +26,9 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                         layout: {
                             type: 'hbox'
                         },
-                        flex: 2,
-                        title: 'Laboratory Test Information',
+                        //flex: 2,
+                        padding: 10,
+                        title: 'Lab Test Information',
                         items: [
                             {
                                 //links
@@ -83,9 +84,60 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                     }
                 },
                 {
-                    //test result
-                    title: 'Test Results'
+                    xtype:'touchgridpanel',
+                    itemId:'labdetailtable',
+                    title: 'Lab Test Details',
+                    padding: 10,
+                    scrollable:false,
+                    features:[
+                        {
+                            ftype:'Ext.ux.touch.grid.feature.Expandable',
+                            launchFn:'initialize',
+                            detailCmp:{                           },
+                            config: {autoExpand: 'false'}
+                        }
+                    ],
+                    columns:[
+                        {
+                            header:'Name',
+                            dataIndex:'name',
+                            style: 'text-align: right;',
+                            cls:'centered-cell',
+                            width:'40%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                        },
+                        {
+                            header:'Upper Limit',
+                            dataIndex:'upper_limit',
+                            style:'text-align: right;',
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
 
+                        },
+                        {
+                            header:'Lower Limit',
+                            dataIndex:'lower_limit',
+                            style:'text-align: right;',
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                       },
+                        {
+                            header:'Result',
+                            dataIndex:'result',
+                            style: 'text-align: right;',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                        },
+                        {
+                            header:'Unit Name',
+                            dataIndex:'units_rec_name',
+                            style: 'text-align: right;',
+                            cls:'centered-cell',
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                        }
+                    ]
                 }
             ]
 

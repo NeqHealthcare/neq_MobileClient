@@ -12,6 +12,14 @@ Ext.define('NeqMobile.util.Renderer',
             var date = new Date(long);
             return Ext.Date.format(date,'d.m.Y');
         },
+
+        labresultrenderer: function (value, values){
+            if (values.excluded && !values.warning)
+                return '<span style="color:#696969;">'+value+'</span>'
+            if (!values.excluded && values.warning)
+                return '<span style="color:#FF0000;">'+value+'</span>'
+        },
+
         daterenderer:function (date, values) {
             if (date)
             {
@@ -52,6 +60,8 @@ Ext.define('NeqMobile.util.Renderer',
                 return '<div style="text-decoration: none;">'+value+'</div>'
         }
 }
+
+
 
 
     });

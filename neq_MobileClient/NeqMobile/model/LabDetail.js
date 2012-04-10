@@ -18,33 +18,33 @@ Ext.define('NeqMobile.model.LabDetail', {
             'pathologist_rec_name',
             'date_requested',
             'date_analysis',
-            'requestor_rec_name'
-     //       'criteria'
+            'requestor_rec_name',
+            'criteria'
         ],
  //       hasMany: {model: 'NeqMobile.model.LabDetail', name: 'criteria'},
 
         proxy:{
             type:'neqproxy',
-            customUrl:'/labtest/one/detail',
-            reader: {
-                type: 'json',
-                root: 'data'
-            },
-
-        associations: [{
-            type: 'hasMany',
-            model: 'NeqMobile.model.LabDetail',
-            primaryKey: 'test',
-            autoLoad: 'true',
-            associationKey: 'criteria'
-
-        },{
-            type: 'belongsTo',
-            model: 'NeqMobile.model.LabDetail',
-            primaryKey: 'test',
-            associationKey: 'data'
-        }
-        ]
+            customUrl:'/labtest/one/detail'
+//            reader: {
+//                type: 'json',
+//                root: 'data'
+//            },
+//
+//        associations: [{
+//            type: 'hasMany',
+//            model: 'NeqMobile.model.LabDetail',
+//            primaryKey: 'test',
+//            autoLoad: 'true',
+//            associationKey: 'criteria'
+//
+//        },{
+//            type: 'belongsTo',
+//            model: 'NeqMobile.model.LabDetail',
+//            primaryKey: 'test',
+//            associationKey: 'data'
+//        }
+//        ]
 }
 
 }

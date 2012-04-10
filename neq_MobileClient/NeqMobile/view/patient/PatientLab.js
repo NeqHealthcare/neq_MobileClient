@@ -20,6 +20,9 @@ Ext.define('NeqMobile.view.patient.PatientLab', {
             this.down('labdetail #labdetails').setStore(labdetailstore);
         },
 
+        loadLabCriteriaDetails:function (labdetailstore) {
+            this.down('labdetail #labdetailtable').setData(labdetailstore.criteria);
+        },
 
         config:{
             styleHtmlContent:true,
