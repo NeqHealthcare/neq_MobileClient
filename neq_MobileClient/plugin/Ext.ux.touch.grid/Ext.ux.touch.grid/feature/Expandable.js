@@ -39,12 +39,10 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     doToggle:function (dw, index, item, itemrecord, e, eOpts) {
         //expanding or collapsing the item, depending on the previous status
         if (!item.expanded) {
-            if (this.getAutoExpand() === true)
-            {
-            this.expand(dw, index, item, itemrecord, e, eOpts);
+            if (this.getAutoExpand() === true) {
+                this.autoExpand(dw, index, item, itemrecord, e, eOpts);
             }
-            else
-            {
+            else {
                 dw.fireEvent('beforeitemexpand', this, dw, index, item, itemrecord, e, eOpts);
             }
         }
@@ -52,23 +50,21 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
             this.collapse(dw, index, item, itemrecord, e, eOpts);
         }
     },
-    expand:function (dw, index, item, itemrecord, e, eOpts) {
-        var expandeditem = this.getExpandeditem();
-//        if (expandeditem){
-//        this.collapse(dw, index, expandeditem, itemrecord, e, eOpts); }
-        item.expanded = true;
-        this.setExpandeditem(item);
+    autoExpand:function (dw, index, item, itemrecord, e, eOpts) {
         var desiredCmp = this.getDetailCmp();
         desiredCmp.record = itemrecord;
         var detailinstance = Ext.ComponentManager.create(desiredCmp);
+        this.expand(dw,detailinstance,item);
+    },
+    expand:function (dw, detailinstance, item) {
+        item.expanded = true;
         detailinstance.setStyle('-webkit-transition: max-height 200ms ease-in-out;');
         detailinstance.setMaxHeight(1);
         detailinstance.renderTo(item);
         detailinstance.setMaxHeight(1000);
         item.detailinstance = detailinstance;
         if (this.getAutoScroll() === true)
-            this.autoScroll(dw, index, item, itemrecord, e, eOpts, detailinstance);
-
+            this.autoScroll(dw, item);
         dw.fireEvent('itemexpanded', dw, index, item, itemrecord, e, eOpts, detailinstance)
     },
     collapse:function (dw, index, item, itemrecord, e, eOpts) {
@@ -80,7 +76,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         }, 300);
         dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
-    autoScroll:function (dw, index, item, record, e, eOpts, detailcont) {
+    autoScroll:function (dw, item) {
 
         var me = this;
 

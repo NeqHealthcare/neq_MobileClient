@@ -1,5 +1,7 @@
 Ext.define('NeqMobile.controller.PatientLab', {
     extend:'Ext.app.Controller',
+    models:['LabDetail'],
+    requires:['NeqMobile.model.LabDetail'],
     config:{
         refs:{
             labTestRequestOverlay:'createlabtestrequestoverlay',
@@ -19,13 +21,14 @@ Ext.define('NeqMobile.controller.PatientLab', {
     },
     showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
 
+        console.log('showlabresultdetail called');
         var me = this;
         //Hinweis an Joohee!
         // Du musst die zeile expandfeature.expand aufrufen, aber vorher musst du
         // die variable itemrecord durch eine model instanz der resultdetails ersetzen
         // also z.b. itemrecorddetail = richtigeritemrecord;
         // das ganze musst du im callback der load function machen
-        labrecordoverview = Ext.create('NeqMobile.store.LabDetail');
+       // labrecordoverview = Ext.create('NeqMobile.store.LabDetail');
 
         var labtestresultid = labrecordoverview.get('test');
 
@@ -33,21 +36,34 @@ Ext.define('NeqMobile.controller.PatientLab', {
 
         labdetailmodel.load(undefined, {
             success:function (labdetailrecord) {
-                var labdetailstore = Ext.data.StoreManager.lookup('labdetails');
-                if (!labdetailstore) {
-                    labdetailstore = Ext.create('NeqMobile.store.LabDetail');
-                }
 
-                labdetailstore.getProxy().setExtraParam('test',labtestresultid);
-                labdetailstore.load({
-                    callback:function (records, operation, success) {
-                        var response = operation.getResponse();
-                        var responseObject = Ext.decode(response.responseText);
-                        me.patientview.down('patientlab').loadLabDetails(responseObject);
-                    },
-                    scope:this
-                })
-                expandfeature.expand(dw,index,item,labdetailrecord,e,eOpts);
+                console.log('lets show the lab detail criteria store');
+               var mystore = labdetailrecord.labtestcriteria();
+
+                var detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+                    {
+                        record:labdetailrecord
+                    });
+
+                detailinstance.down('#labdetailtable').setStore(mystore);
+
+
+
+//                var labdetailstore = Ext.data.StoreManager.lookup('labdetails');
+//                if (!labdetailstore) {
+//                    labdetailstore = Ext.create('NeqMobile.store.LabDetail');
+//                }
+//
+//                labdetailstore.getProxy().setExtraParam('test',labtestresultid);
+//                labdetailstore.load({
+//                    callback:function (records, operation, success) {
+//                        var response = operation.getResponse();
+//                        var responseObject = Ext.decode(response.responseText);
+//                        me.patientview.down('patientlab').loadLabDetails(responseObject);
+//                    },
+//                    scope:this
+//                })
+                expandfeature.expand(dw, detailinstance, item);
             },
             params:
             {

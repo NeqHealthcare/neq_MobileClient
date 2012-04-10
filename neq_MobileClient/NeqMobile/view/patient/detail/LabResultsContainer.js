@@ -23,7 +23,7 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                               ftype:'Ext.ux.touch.grid.feature.Expandable',
                               launchFn:'initialize',
                               detailCmp:{ xtype:'labdetail'},
-                              config: {autoExpand: 'false'}
+                              autoExpand: 'false'
                           }
                       ],
                       columns:[

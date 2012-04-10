@@ -87,31 +87,34 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                     xtype:'touchgridpanel',
                     itemId:'labdetailtable',
                     title: 'Lab Test Details',
+                    name:'criteria',
                     padding: 10,
                     scrollable:false,
-                    features:[
-                        {
-                            ftype:'Ext.ux.touch.grid.feature.Expandable',
-                            launchFn:'initialize',
-                            detailCmp:{                           },
-                            config: {autoExpand: 'false'}
-                        }
-                    ],
+//                    features:[
+//                        {
+//                            ftype:'Ext.ux.touch.grid.feature.Expandable',
+//                            launchFn:'initialize',
+//                            detailCmp:{ xtype:'lab'                          },
+//                            autoExpand: false
+//                        }
+  //                  ],
                     columns:[
                         {
                             header:'Name',
                             dataIndex:'name',
                             style: 'text-align: right;',
                             cls:'centered-cell',
-                            width:'40%',
-                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'40%'
+                            //,
+                         //   renderer: NeqMobile.util.Renderer.labresultrenderer
                         },
                         {
                             header:'Upper Limit',
                             dataIndex:'upper_limit',
                             style:'text-align: right;',
-                            width:'15%',
-                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'15%'
+                            //,
+                           // renderer: NeqMobile.util.Renderer.labresultrenderer
 
                         },
                         {

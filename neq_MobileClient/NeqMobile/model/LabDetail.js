@@ -10,6 +10,7 @@
 
 Ext.define('NeqMobile.model.LabDetail', {
     extend:'Ext.data.Model',
+    requires:['NeqMobile.model.LabTestCriteria'],
     config:{
         fields:[
             'test',
@@ -21,32 +22,19 @@ Ext.define('NeqMobile.model.LabDetail', {
             'requestor_rec_name',
             'criteria'
         ],
- //       hasMany: {model: 'NeqMobile.model.LabDetail', name: 'criteria'},
-
+        associations:[
+            {
+                type:'hasMany',
+                name:'labtestcriteria',
+                model:'NeqMobile.model.LabTestCriteria',
+//                primaryKey:'id',
+//                foreignKey:'patient',
+                autoLoad:true,
+                associationKey:'criteria' // read child data from child_groups
+            }
+        ],
         proxy:{
             type:'neqproxy',
-            customUrl:'/labtest/one/detail'
-//            reader: {
-//                type: 'json',
-//                root: 'data'
-//            },
-//
-//        associations: [{
-//            type: 'hasMany',
-//            model: 'NeqMobile.model.LabDetail',
-//            primaryKey: 'test',
-//            autoLoad: 'true',
-//            associationKey: 'criteria'
-//
-//        },{
-//            type: 'belongsTo',
-//            model: 'NeqMobile.model.LabDetail',
-//            primaryKey: 'test',
-//            associationKey: 'data'
-//        }
-//        ]
-}
+            customUrl:'/labtest/one/detail' }
 
-}
-
-});
+    }});
