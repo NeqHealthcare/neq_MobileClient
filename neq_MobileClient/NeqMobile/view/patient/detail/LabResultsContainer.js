@@ -18,37 +18,52 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                     xtype:'touchgridpanel',
                     itemId:'labresult',
                     scrollable:false,
-                    features:[
-                             {
-                            ftype:'Ext.ux.touch.grid.feature.Expandable',
-                            launchFn:'initialize'
-                            //  detailCmp:{ xtype:'labresult'}
-                            }
-                             ],
-                    columns:[
-                            {
-                            header:'No.',
-                            dataIndex:'test',
-                            style:'text-align: left; padding-left: 1em;',
-                            width:'33%'
-                        },
-                            {
-                            header:'Test Name',
-                            dataIndex:'name',
-                            style:'text-align: center;',
-                            width:'7%'
-                            },
-                            {
-                            header:'Test Type',
-                            dataIndex:'test_rec_name',
-                            style: 'text-align: center;',
-                            cls:'centered-cell',
-                            width:'10%'
-                            }
-        ]
-    }
-]
-}
+                      features:[
+                          {
+                              ftype:'Ext.ux.touch.grid.feature.Expandable',
+                              launchFn:'initialize',
+                              detailCmp:{ xtype:'labdetail'},
+                              config: {autoExpand: 'false'}
+                          }
+                      ],
+                      columns:[
+                          {
+                              header:'Test ID',
+                              dataIndex:'name',
+                              style:'text-align: left; padding-left: 1em;',
+                              width:'10%'
+                          },
+                          {
+                              header:'Test Type',
+                              dataIndex:'test_rec_name',
+                              style: 'text-align: right;',
+                              cls:'centered-cell',
+                              width:'53%'
+                          },
+                          {
+                              header:'Type No.',
+                              dataIndex:'test',
+                              style:'text-align: center;',
+                              width:'7%'
+                          },
+                          {
+                              header:'Date Requested',
+                              dataIndex:'date_requested',
+                              style:'text-align: right;',
+                              width:'15%'
+                         //     renderer:NeqMobile.util.Renderer.daterenderer
+                          },
+                          {
+                              header:'Date of the Analysis',
+                              dataIndex:'date_analysis',
+                              style:'text-align: right;',
+                              width:'15%'
+                       //       renderer:NeqMobile.util.Renderer.daterenderer
+                          }
+                      ]
+                  }
+            ]
+        }
     }
 
 )

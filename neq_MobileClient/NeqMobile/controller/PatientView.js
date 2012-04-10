@@ -171,6 +171,9 @@ Ext.define('NeqMobile.controller.PatientView', {
             },
             scope:this
         });
+
+
+
     }
 
 });

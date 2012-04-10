@@ -15,13 +15,13 @@ Ext.define('NeqMobile.model.LabResults', {
         config:{
             fields:[
                 'test',
-                'patient',
                 'name',
                 'test_rec_name',
-                'patient_rec_name',
+                'pathologist_rec_name',
                 'date_requested',
-                'date_analysis'
-            ],
+                'date_analysis',
+                'requestor_rec_name'
+             ],
             proxy:{
                 type:'neqproxy',
                 customUrl:'/labtest/one'

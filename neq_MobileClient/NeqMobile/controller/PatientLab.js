@@ -20,31 +20,37 @@ Ext.define('NeqMobile.controller.PatientLab', {
     showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
 
          var me = this;
-        //Hinweis an Joohee!
-        // Du musst die zeile expandfeature.expand aufrufen, aber vorher musst du
-        // die variable itemrecord durch eine model instanz der resultdetails ersetzen
-        // also z.b. itemrecorddetail = richtigeritemrecord;
-        // das ganze musst du im callback der load function machen
+         var labdetailrecord = Ext.create('NeqMobile.model.LabDetail');
         var labtestresultid = labrecordoverview.get('test');
 
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
 
         labdetailmodel.load(undefined, {
             success:function (labdetailrecord) {
+                var labdetailstore = Ext.data.StoreManager.lookup('labdetails');
+                if (!labdetailstore) {
+                    labdetailstore = Ext.create('NeqMobile.store.LabDetail');
+                }
+
+                labdetailstore.getProxy().setExtraParam('test',labtestresultid);
+                labdetailstore.load({
+                    callback:function (records, operation, success) {
+                        var response = operation.getResponse();
+                        var responseObject = Ext.decode(response.responseText);
+                        me.patientview.dbwn('patientlap').loadLabDetails(responseObject);
+                    },
+                    scope:this
+                })
                 expandfeature.expand(dw,index,item,labdetailrecord,e,eOpts);
             },
-            params:
-            {
-                 // hier kannst du noch parameter an die url übergeben
-                // das ist so ähnlich wie dieses setExtraParams() was wir sonst genutzt haben.
-                // z.B; labtest_id: 1    o.ä. ,
-
-                labTestId:labtestresultid
-            }   ,
-            scope:me
+           scope:me
         });
-
     },
+
+
+
+
+
 
     onSubmitLabTestRequestTap:function (button, e, eOpts) {
         var me = this;
