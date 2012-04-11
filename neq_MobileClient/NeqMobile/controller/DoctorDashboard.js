@@ -41,6 +41,11 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         var workspace = this.getWorkspace();
         workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
         this.refreshnewlabresults();
+        this.refreshdoctorinfo();
+    },
+    refreshdoctorinfo:function ()
+    {
+       // do something
     },
     onLabtestTap:function (dw, index, item, record, e, eOpts) {
         record.markAsRead();
