@@ -17,6 +17,13 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboardLab', {
         items:[
             {xtype:'touchgridpanel',
                 itemId:'doctordashboardlab',
+                features:[
+                    {
+                        ftype:'Ext.ux.touch.grid.feature.Expandable',
+                        launchFn:'initialize',
+                       // detailCmp:{ xtype:'labdetail'},
+                        autoExpand: 'false'
+                    }],
                 scrollable:false,
                 margin: 0,
                 padding: 5,

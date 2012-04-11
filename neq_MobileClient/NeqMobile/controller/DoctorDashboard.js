@@ -18,7 +18,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
-            'workspace doctordashboard touchgridpanel':{itemtap:'onLabtestTap'}
+            //   'workspace doctordashboard touchgridpanel':{itemtap:'onLabtestTap'},
+            'workspace doctordashboard #doctordashboardlab':{beforeitemexpand:'onLabtestTap'}
 
         },
         routes:{
@@ -43,14 +44,55 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
     },
-    refreshdoctorinfo:function ()
-    {
-       // do something
+    refreshdoctorinfo:function () {
+        // do something
     },
-    onLabtestTap:function (dw, index, item, record, e, eOpts) {
-        record.markAsRead();
-        this.redirectTo('patient/' + record.get('patient') + '/lab/' + record.get('id'));
+    onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
+        console.log('labtest on doctordashboard tapped');
+        this.showLabResultDetail(dw, labrecordoverview.get('id'), item, labrecordoverview);
+        //  record.markAsRead();
+        //   this.redirectTo('patient/' + record.get('patient') + '/lab/' + record.get('id'));
     },
+    showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
+
+        console.log(dw);
+        // console.log(dw.myFeatures().getCount());
+        //  console.log(dw.expandfeature);
+        var me = this;
+        var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
+
+        labdetailmodel.load(undefined, {
+            params:{
+                labTestId:labresultid
+            },
+            scope:me,
+            success:function (labdetailrecord) {
+                var criteriastore = labdetailrecord.labtestcriteria();
+                var detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+                    {
+                        record:labdetailrecord
+                    });
+                detailinstance.down('#labdetailtable').setStore(criteriastore);
+
+                var gotopatientbutton = Ext.create('Ext.Button',
+                    {
+                        iconMask:true,
+                        iconCls:'action',
+                        text:'Open Patient',
+                        width:200,
+                        docked:'top',
+                        handler:function () {
+                            item.expanded=false;
+                            me.redirectTo('patient/' + labrecordoverview.get('patient'));
+                        }
+                    }
+                );
+                detailinstance.add(gotopatientbutton);
+                dw.expandfeature.expand(dw, detailinstance, item);
+            }
+        });
+    },
+
     stoppolling:function () {
         console.log('stopping polling');
         var pollFn = this.getPollFn();
@@ -94,7 +136,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         mystore.load(
             {
                 //TODO TEMPORARY HARCODED DOCTOR ID
-                params:{doctor_id:1} ,
+                params:{doctor_id:1},
 
                 callback:function () {
 //                    console.log('trying to show newlab count')

@@ -19,7 +19,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
         }
     },
     onLabResultTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
-         console.log('the item')
+         console.log('the item');
         //console.log(item);
         this.showLabResultDetail(dw, labrecordoverview.get('id'),item);
     },
