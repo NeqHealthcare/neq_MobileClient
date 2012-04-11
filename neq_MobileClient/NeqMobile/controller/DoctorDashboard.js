@@ -9,7 +9,7 @@
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-
+    requires:[ 'NeqMobile.store.Doctor'],
     config:{
         refs:{
             doctordashboard:'doctordashboard',
