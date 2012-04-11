@@ -37,7 +37,8 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Number of patients:',
                                 labelWidth: '150px',
-                                name: 'patient_number'
+                                name: 'patient_number',
+                                value: '5'
                             },
                             {
                                 xtype: 'textfield',
