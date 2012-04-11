@@ -15,20 +15,25 @@ Ext.define('NeqMobile.controller.PatientLab', {
                 tap:'onSubmitLabTestRequestTap'
             },
 
-            'patientview patientlab #labresult':{beforeitemexpand:'showLabResultDetail'}
+            'patientview patientlab #labresult':{beforeitemexpand:'onLabResultTap'}
         }
     },
-    showLabResultDetail:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
+    onLabResultTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
+         console.log('the item')
+        //console.log(item);
+        this.showLabResultDetail(dw, labrecordoverview.get('id'),item);
+    },
+    showLabResultDetail:function (dw, labresultid,item) {
 
+       console.log(dw);
+        // console.log(dw.myFeatures().getCount());
+      //  console.log(dw.expandfeature);
         var me = this;
-
-        var labtestresultid = labrecordoverview.get('test');
-
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
 
         labdetailmodel.load(undefined, {
             params:{
-                labTestId:labtestresultid
+                labTestId:labresultid
             },
             scope:me,
             success:function (labdetailrecord) {
@@ -38,7 +43,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
                         record:labdetailrecord
                     });
                 detailinstance.down('#labdetailtable').setStore(criteriastore);
-                expandfeature.expand(dw, detailinstance, item);
+                dw.expandfeature.expand(dw, detailinstance, item);
             }
         });
     },

@@ -19,7 +19,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         },
         routes:{
             'patient/:id':'showPatient',
-            'patient/:id/lab':'showPatientLab'
+            'patient/:id/lab/:resultid':'showPatientLab'
         },
         before:{
         } },
@@ -50,9 +50,10 @@ Ext.define('NeqMobile.controller.PatientView', {
         this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
-    showPatientLab:function (id) {
+    showPatientLab:function (id,resultid) {
         this.showPatient(id);
         this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
+     //  var patientlabcontroller = this.getApplication().getController('PatientLab');
     },
     loadPatientData:function (patientid) {
         // < var definitions

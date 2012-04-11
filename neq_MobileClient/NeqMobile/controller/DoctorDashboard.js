@@ -44,7 +44,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     },
     onLabtestTap:function (dw, index, item, record, e, eOpts) {
         record.markAsRead();
-        this.redirectTo('patient/' + record.get('patient') + '/lab');
+        this.redirectTo('patient/' + record.get('patient') + '/lab/' + record.get('id'));
     },
     stoppolling:function () {
         console.log('stopping polling');

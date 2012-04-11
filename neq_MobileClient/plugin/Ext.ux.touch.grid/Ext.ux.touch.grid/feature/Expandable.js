@@ -65,7 +65,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         item.detailinstance = detailinstance;
         if (this.getAutoScroll() === true)
             this.autoScroll(dw, item);
-        dw.fireEvent('itemexpanded', dw, index, item, itemrecord, e, eOpts, detailinstance)
+        //dw.fireEvent('itemexpanded', dw, index, item, itemrecord, e, eOpts, detailinstance)
     },
     collapse:function (dw, index, item, itemrecord, e, eOpts) {
         // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
@@ -74,7 +74,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         Ext.defer(function () {
             item.detailinstance.destroy()
         }, 300);
-        dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
+      //  dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
     autoScroll:function (dw, item) {
 
