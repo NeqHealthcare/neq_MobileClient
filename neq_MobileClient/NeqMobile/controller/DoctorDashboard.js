@@ -44,8 +44,18 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
     },
-    refreshdoctorinfo:function () {
-        // do something
+    refreshdoctorinfo:function ()
+    {
+        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo');
+        userinfodata.load(1, {
+            success: function(userinfodata) {
+                console.log("userinfodata: " + userinfodata.get('name'));
+
+                userinfodata.LastLogin().each(function(LastLogin) {
+                    console.log("LastLogin for userinfodata: " + LastLogin.get('data'));
+                });
+            }
+        });
     },
     onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
         console.log('labtest on doctordashboard tapped');
