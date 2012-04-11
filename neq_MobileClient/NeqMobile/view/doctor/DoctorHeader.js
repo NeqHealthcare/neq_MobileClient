@@ -3,6 +3,7 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
     xtype: 'doctorheader',
     config: {
         scrollable:false,
+        padding: '0 0 10 0',
         layout: {
             itemId:'doctorheader',
             cls: 'x-doctorheader',
@@ -33,26 +34,26 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                             {
                                 xtype: 'textfield',
                                 itemId: 'mytextfield',
-                                padding: 5,
+                                padding: 7,
+                                label: 'Number of patients:',
+                                labelWidth: '150px',
+                                name: 'patient_number'
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'mytextfield',
+                                padding: 7,
                                 label: 'Name:',
-                                labelWidth: '180px',
+                                labelWidth: '150px',
                                 name: 'doc_rec_name'
                             },
                             {
                                 xtype: 'textfield',
                                 itemId: 'mytextfield',
-                                padding: 5,
+                                padding: 7,
                                 label: 'Last Login:',
-                                labelWidth: '180px',
+                                labelWidth: '150px',
                                 name: 'last_login'
-                            },
-                            {
-                                xtype: 'textfield',
-                                itemId: 'mytextfield',
-                                padding: 5,
-                                label: 'Number of patients:',
-                                labelWidth: '180px',
-                                name: 'patient_number'
                             }
                         ]
                     }
