@@ -14,9 +14,9 @@ Ext.define('NeqMobile.util.Renderer',
         },
 
         labresultrenderer: function (value, values){
-            if (values.excluded && !values.warning)
-                return '<span style="color:#696969;">'+value+'</span>'
-            if (!values.excluded && values.warning)
+            if (!values.excluded)
+                 return '<span style="color:#C0C0C0;">'+value+'</span>'
+            if (values.warning)
                 return '<span style="color:#FF0000;">'+value+'</span>'
         },
 

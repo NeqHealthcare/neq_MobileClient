@@ -27,8 +27,6 @@ Ext.define('NeqMobile.model.LabDetail', {
                 type:'hasMany',
                 name:'labtestcriteria',
                 model:'NeqMobile.model.LabTestCriteria',
-//                primaryKey:'id',
-//                foreignKey:'patient',
                 autoLoad:true,
                 associationKey:'criteria' // read child data from child_groups
             }

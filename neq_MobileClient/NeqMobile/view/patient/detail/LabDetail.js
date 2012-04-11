@@ -16,6 +16,8 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
             layout: {
                 type: 'vbox'
             },
+            padding: 50,
+            style: 'text-align: right; font-color: "#808080"',
             scrollable: false,
             items: [
                 {
@@ -24,59 +26,57 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                     itemId: 'labdetails',
                     config: {
                         layout: {
-                            type: 'hbox'
+                        //    type: 'hbox'
                         },
-                        //flex: 2,
                         padding: 10,
                         title: 'Lab Test Information',
                         items: [
                             {
                                 //links
-                                xtype: 'textfield',
+                                xtype: 'fieldset',
                                 layout:{type:'vbox'},
                                 items: [
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Test ID',
-                                        name: 'asdf',
+                                        name: 'name',
                                         readOnly:'true'
-
                                     },
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Date of the Analysis',
-                                        name: 'asdf',
+                                        name: 'date_analysis',
                                         readOnly:'true'
                                     },
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Date Requested',
-                                        name: 'asdf',
+                                        name: 'date_requested',
                                         readOnly:'true'
                                     }]
                             },
                             {
                                 //rechts
-                                xtype: 'textfield',
+                                xtype: 'fieldset',
                                 layout:{type:'vbox'},
                                 items: [
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Test Type',
-                                        name: 'test',
+                                        name: 'test_rec_name',
                                         readOnly:'true'
 
                                     },
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Pathologist',
-                                        name: 'test',
+                                        name: 'pathologist_rec_name',
                                         readOnly:'true'
                                     },
                                     {
-                                        xtype:'fieldset',
+                                        xtype:'textfield',
                                         label:'Physician',
-                                        name: 'test',
+                                        name: 'requestor_rec_name',
                                         readOnly:'true'
                                     }]
                             }
@@ -85,49 +85,33 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                 },
                 {
                     xtype:'touchgridpanel',
-                    itemId:'labdetailtable',
+                   itemId:'labdetailtable',
                     title: 'Lab Test Details',
                     name:'criteria',
-                    padding: 10,
                     scrollable:false,
-//                    features:[
-//                        {
-//                            ftype:'Ext.ux.touch.grid.feature.Expandable',
-//                            launchFn:'initialize',
-//                            detailCmp:{ xtype:'lab'                          },
-//                            autoExpand: false
-//                        }
-  //                  ],
                     columns:[
                         {
                             header:'Name',
                             dataIndex:'name',
-                            style: 'text-align: right;',
                             cls:'centered-cell',
-                            width:'40%'
-                            //,
-                         //   renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'40%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
                         },
                         {
                             header:'Upper Limit',
                             dataIndex:'upper_limit',
-                            style:'text-align: right;',
-                            width:'15%'
-                            //,
-                           // renderer: NeqMobile.util.Renderer.labresultrenderer
-
-                        },
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                       },
                         {
                             header:'Lower Limit',
                             dataIndex:'lower_limit',
-                            style:'text-align: right;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.labresultrenderer
                        },
                         {
                             header:'Result',
                             dataIndex:'result',
-                            style: 'text-align: right;',
                             cls:'centered-cell',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.labresultrenderer
@@ -135,7 +119,6 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                         {
                             header:'Unit Name',
                             dataIndex:'units_rec_name',
-                            style: 'text-align: right;',
                             cls:'centered-cell',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.labresultrenderer

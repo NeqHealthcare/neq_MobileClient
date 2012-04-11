@@ -38,15 +38,15 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                               header:'Date Requested',
                               dataIndex:'date_requested',
                               style:'text-align: right;',
-                              width:'15%'
-                         //     renderer:NeqMobile.util.Renderer.daterenderer
+                              width:'15%',
+                              renderer:NeqMobile.util.Renderer.longToDateRenderer
                           },
                           {
                               header:'Date of the Analysis',
                               dataIndex:'date_analysis',
                               style:'text-align: right;',
-                              width:'15%'
-                       //       renderer:NeqMobile.util.Renderer.daterenderer
+                              width:'15%',
+                              renderer:NeqMobile.util.Renderer.longToDateRenderer
                           },
                           {
                               header:'Physician',
