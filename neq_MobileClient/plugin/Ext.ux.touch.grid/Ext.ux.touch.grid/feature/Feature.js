@@ -28,12 +28,14 @@ Ext.define('Ext.ux.touch.grid.feature.Feature', {
                 cfg = feature;
                 feature = feature.ftype;
                 // this is removed, due it causes a bug:
-             //   delete cfg.ftype;
+                //   delete cfg.ftype;
             }
 
             cfg.grid = me;
 
             feature = Ext.create(feature, cfg);
+
+            me.expandfeature = feature;
 
             if (feature && typeof feature.init === 'function') {
                 me._features.add(feature);
