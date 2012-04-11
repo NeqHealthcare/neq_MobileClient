@@ -45,7 +45,16 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     },
     refreshdoctorinfo:function ()
     {
-       // do something
+        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo');
+        userinfodata.load(1, {
+            success: function(userinfodata) {
+                console.log("userinfodata: " + userinfodata.get('name'));
+
+                userinfodata.LastLogin().each(function(LastLogin) {
+                    console.log("LastLogin for userinfodata: " + LastLogin.get('data'));
+                });
+            }
+        });
     },
     onLabtestTap:function (dw, index, item, record, e, eOpts) {
         record.markAsRead();
