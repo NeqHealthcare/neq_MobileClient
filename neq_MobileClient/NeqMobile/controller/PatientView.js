@@ -53,7 +53,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     showPatientLab:function (id,resultid) {
         this.showPatient(id);
         this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
-       var patientlabcontroller = this.getApplication().getController('PatientLab');
+     //  var patientlabcontroller = this.getApplication().getController('PatientLab');
     },
     loadPatientData:function (patientid) {
         // < var definitions
