@@ -46,7 +46,8 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Name:',
                                 labelWidth: '150px',
-                                name: 'doc_rec_name'
+                                name: 'doc_rec_name',
+                                value: 'Dr. Jan Gansen'
                             },
                             {
                                 xtype: 'textfield',
@@ -54,7 +55,8 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Last Login:',
                                 labelWidth: '150px',
-                                name: 'last_login'
+                                name: 'last_login',
+                                value: '12.03.2012'
                             }
                         ]
                     }

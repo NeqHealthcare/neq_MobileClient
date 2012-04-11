@@ -9,7 +9,7 @@
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-
+    requires:[ 'NeqMobile.store.Doctor'],
     config:{
         refs:{
             doctordashboard:'doctordashboard',
@@ -44,13 +44,14 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
     },
-    refreshdoctorinfo:function () {
+    refreshdoctorinfo:function ()
+    {
         var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo');
         userinfodata.load(1, {
-            success:function (userinfodata) {
+            success: function(userinfodata) {
                 console.log("userinfodata: " + userinfodata.get('name'));
 
-                userinfodata.LastLogin().each(function (LastLogin) {
+                userinfodata.LastLogin().each(function(LastLogin) {
                     console.log("LastLogin for userinfodata: " + LastLogin.get('data'));
                 });
             }
