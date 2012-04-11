@@ -44,14 +44,13 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
     },
-    refreshdoctorinfo:function ()
-    {
+    refreshdoctorinfo:function () {
         var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo');
         userinfodata.load(1, {
-            success: function(userinfodata) {
+            success:function (userinfodata) {
                 console.log("userinfodata: " + userinfodata.get('name'));
 
-                userinfodata.LastLogin().each(function(LastLogin) {
+                userinfodata.LastLogin().each(function (LastLogin) {
                     console.log("LastLogin for userinfodata: " + LastLogin.get('data'));
                 });
             }
@@ -70,6 +69,34 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         //  console.log(dw.expandfeature);
         var me = this;
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
+        var detailinstance;
+
+        var somefunc = function () {
+
+            detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+                {
+                    //   record:labdetailrecord
+                });
+
+
+            var gotopatientbutton = Ext.create('Ext.Button',
+                {
+                    iconMask:true,
+                    iconCls:'action',
+                    text:'Open Patient',
+                    width:200,
+                    docked:'top',
+                    handler:function () {
+                        item.expanded = false;
+                        me.redirectTo('patient/' + labrecordoverview.get('patient'));
+                    }
+                }
+            );
+            detailinstance.add(gotopatientbutton);
+            dw.expandfeature.expand(dw, detailinstance, item);
+        };
+
+        somefunc();
 
         labdetailmodel.load(undefined, {
             params:{
@@ -77,28 +104,23 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             },
             scope:me,
             success:function (labdetailrecord) {
-                var criteriastore = labdetailrecord.labtestcriteria();
-                var detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
-                    {
-                        record:labdetailrecord
-                    });
-                detailinstance.down('#labdetailtable').setStore(criteriastore);
+                detailinstance.setRecord(labdetailrecord);
 
-                var gotopatientbutton = Ext.create('Ext.Button',
-                    {
-                        iconMask:true,
-                        iconCls:'action',
-                        text:'Open Patient',
-                        width:200,
-                        docked:'top',
-                        handler:function () {
-                            item.expanded=false;
-                            me.redirectTo('patient/' + labrecordoverview.get('patient'));
-                        }
-                    }
-                );
-                detailinstance.add(gotopatientbutton);
-                dw.expandfeature.expand(dw, detailinstance, item);
+                var criteriastore = labdetailrecord.labtestcriteria();
+
+
+                var myfn = function () {
+                    labdetailtable = detailinstance.down('#labdetailtable');
+                    labdetailtable.setStore(criteriastore);
+                }
+
+                var labdetailtable = detailinstance.down('#labdetailtable');
+                if (!labdetailtable) {
+                    Ext.defer(myfn, 100)
+                }
+                else (myfn());
+
+
             }
         });
     },
