@@ -143,9 +143,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
                 scope:me,
                 params:{session:session.get('sessionId'),
 
-                    //TODO temporary hardcoded doctorid due backend bug
-                    doctor_id:1
-                    //session.get('userinfo').get('physician_id')
+                    doctor_id:session.get('userinfo').get('physician_id')
                 },
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
@@ -168,8 +166,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.getDoctordashboard().down('#doctordashboardlab').setStore(mystore);
         mystore.load(
             {
-                //TODO TEMPORARY HARCODED DOCTOR ID
-                params:{doctor_id:1},
+
+                params:{doctor_id:NeqMobile.manager.Session.getSession().get('userinfo').get('physician_id')},
 
                 callback:function () {
 //                    console.log('trying to show newlab count')
