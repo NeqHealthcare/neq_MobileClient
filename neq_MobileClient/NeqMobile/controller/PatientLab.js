@@ -61,7 +61,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
         var rec_name = selectField.getValue();
         var request_type_id = selectField.getRecord().get('id');
         var doctor_rec_name = userinfo.get('name');
-        var doctor_id = 1;
+        var doctor_id = userinfo.get('physician_id');
         var date = datePickerField.getValue().getTime();
         var newRequest = Ext.create('NeqMobile.model.LabTestRequest', {
             patient_id:patient_id,
