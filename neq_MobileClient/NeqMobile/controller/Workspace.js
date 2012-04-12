@@ -31,7 +31,7 @@ Ext.define('NeqMobile.controller.Workspace', {
             }
         },
         onTapRefreshButton:function () {
-            var store = Ext.data.StoreManager.lookup('myPatientsStore');
+            var store = Ext.data.StoreManager.lookup('patients');
             store.load({
                 callback:function (records, operation, success) {
                     this.doFilter(this.getWorkspace().down('patientlist searchfield'));
@@ -41,7 +41,7 @@ Ext.define('NeqMobile.controller.Workspace', {
         },
 
         doFilter:function (searchfield, e, eOpts) {
-            var store = Ext.data.StoreManager.lookup('myPatientsStore');
+            var store = Ext.data.StoreManager.lookup('patients');
             var searchstring = Ext.String.trim(searchfield.getValue());
             searchstring = searchstring.replace(/\s+/g, '|')
             store.clearFilter();

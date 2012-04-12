@@ -9,6 +9,6 @@ Ext.define('NeqMobile.store.Patients', {
 //            autoLoad:true,
 //            autoSync:true,
 
-            storeId:'myPatientsStore'
+            storeId:'patients'
         }}
 );

@@ -83,11 +83,12 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('save sessionID...');
 
         // Creating the required Patient Store and its Proxy to load patient data from MAIS
-        Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('myPatientsStore'));
+       console.log('loading patients');
+        Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('patients'));
 
         var store = new NeqMobile.store.Patients(
             {
-                storeId:'myPatientsStore'
+                storeId:'patients'
             }
         );
         store.load();

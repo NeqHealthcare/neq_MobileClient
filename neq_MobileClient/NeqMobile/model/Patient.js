@@ -19,7 +19,7 @@ Ext.define('NeqMobile.model.Patient', {
             ],
             proxy:{
                 type:'neqproxy',
-                customUrl:'/patient/bla',
+                customUrl:'/patient',
                 extraParams:{ownonly:true}
             },
             associations:[

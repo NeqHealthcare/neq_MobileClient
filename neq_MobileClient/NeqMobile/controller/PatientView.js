@@ -80,12 +80,14 @@ Ext.define('NeqMobile.controller.PatientView', {
                 }
             }
         }
-        var patientmodel = Ext.ModelMgr.getModel('NeqMobile.model.Patient');
-        patientmodel.load(patientid, {
-            success:function (patientrecord) {
-                patientdashboard.loadPatientHeader(patientrecord);
-            }
-        });
+
+
+        var patientinfo = Ext.getStore('patients').getById(patientid);
+        patientdashboard.loadPatientHeader(patientinfo);
+
+
+
+
         patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
         patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
 

@@ -18,7 +18,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
-            //   'workspace doctordashboard touchgridpanel':{itemtap:'onLabtestTap'},
+            //   'workspace doctordashboard touchgridpanel'ui:{itemtap:'onLabtestTap'},
             'workspace doctordashboard #doctordashboardlab':{beforeitemexpand:'onLabtestTap'}
 
         },
