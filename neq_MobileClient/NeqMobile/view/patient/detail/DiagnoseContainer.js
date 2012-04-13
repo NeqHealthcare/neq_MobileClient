@@ -13,8 +13,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             ftype:'Ext.ux.touch.grid.feature.Expandable',
                             launchFn:'initialize',
-                            detailCmp:{ xtype:'diseasedetail'} ,
-                            autoExpand:false
+                            detailCmp:{ xtype:'diseasedetail'}
                         }
                     ],
                     columns:[
