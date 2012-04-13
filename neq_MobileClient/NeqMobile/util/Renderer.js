@@ -14,19 +14,20 @@ Ext.define('NeqMobile.util.Renderer',
         },
 
         labresultrenderer: function (value, values){
-            if (!values.excluded)
-                 return '<span style="color:#C0C0C0;">'+value+'</span>'
-            if (values.warning)
-                return '<span style="color:#FF0000;">'+value+'</span>'
+            if (values.excluded =="true")
+                 return '<span style="color:#C0C0C0;">'+value+'</span>';
+            else {if (values.warning=="true")
+                return '<span style="color:#FF0000;">'+value+'</span>';
+                else return value;
+                }
         },
-
         daterenderer:function (date, values) {
             if (date)
             {
             return Ext.Date.format(date, 'd.m.Y');
             }
             else
-            {return '-'}
+            {return '-';}
         },
         booleanrenderer:function (value, values) {
             if (value) {
@@ -45,16 +46,18 @@ Ext.define('NeqMobile.util.Renderer',
             if(value.charAt(0)>2){
                 barColor1="black"
             }
-            else(value.charAt(0)>1)
-            {
+            else{
+                if(value.charAt(0)>1)
+                   {
                 barColor1="black", barColor2="black"
-            }
+            }}
             return '<img src="theme/images/view/patient/'+barColor1+'_bar.png"><img src="theme/images/view/patient/'+barColor2+'_bar.png"><img src="theme/images/view/patient/blue_bar.png">';
+
         },
         completerenderer: function(value, values){
-            if(values.discontinued && !values.course_completed)
+            if(values.discontinued=="true")
                 return '<span style="color:#FF0000;">'+value+'</span>'
-            if (!values.discontinued && values.course_completed)
+            if (values.course_completed=="true")
                 return '<div style="text-decoration: line-through;">'+value+'</div>'
             else{
                 return '<div style="text-decoration: none;">'+value+'</div>'
