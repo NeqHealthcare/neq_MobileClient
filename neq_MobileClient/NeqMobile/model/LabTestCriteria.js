@@ -11,6 +11,7 @@ Ext.define('NeqMobile.model.LabTestCriteria', {
     config:{
         fields:[
             'name',
+            'name',
             'upper_limit',
             'lower_limit',
             'result',

@@ -18,6 +18,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
             'patientview patientlab #labresult':{beforeitemexpand:'onLabResultTap'}
         }
     },
+
     onLabResultTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
 
         this.showLabResultDetail(dw, labrecordoverview.get('id'),item);
@@ -130,3 +131,5 @@ Ext.define('NeqMobile.controller.PatientLab', {
         });
     }
 });
+
+var criteriastore;
