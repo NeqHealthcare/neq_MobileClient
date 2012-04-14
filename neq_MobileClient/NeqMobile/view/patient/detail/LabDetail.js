@@ -81,7 +81,8 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                 },
                 {
                     xtype:'touchgridpanel',
-                   itemId:'labdetailtable',
+                    itemId:'labdetailtable',
+                    id: 'labdetailview',
                     title: 'Lab Test Details',
                     name:'criteria',
                     scrollable:false,
@@ -90,35 +91,32 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                             header:'Name',
                             dataIndex:'name',
                             cls:'centered-cell',
-                            width:'40%',
-                            renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'40%'
                         },
                         {
                             header:'Upper Limit',
                             dataIndex:'upper_limit',
-                            width:'15%'
-                      //      renderer: NeqMobile.util.Renderer.labresultrenderer
-
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.limitRenderer
                        },
                         {
                             header:'Lower Limit',
                             dataIndex:'lower_limit',
-                            width:'15%'
-                        //    renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.limitRenderer
                        },
                         {
                             header:'Result',
                             dataIndex:'result',
                             cls:'centered-cell',
                             width:'15%'
-                          //  renderer: NeqMobile.util.Renderer.labresultrenderer
-                        },
+                         },
                         {
                             header:'Unit Name',
                             dataIndex:'units_rec_name',
                             cls:'centered-cell',
-                            width:'15%'
-                            //renderer: NeqMobile.util.Renderer.labresultrenderer
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.unitRenderer
                         }
                     ]
                 }

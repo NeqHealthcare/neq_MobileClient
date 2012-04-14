@@ -13,14 +13,20 @@ Ext.define('NeqMobile.util.Renderer',
             return Ext.Date.format(date,'d.m.Y');
         },
 
-        labresultrenderer: function (value, values){
-            if (values.excluded =="true")
-                 return '<span style="color:#C0C0C0;">'+value+'</span>';
-            else {if (values.warning=="true")
-                return '<span style="color:#FF0000;">'+value+'</span>';
-                else return value;
-                }
+         limitRenderer: function (value, values){
+            if (value.length>5){
+                return value.slice(0, value.indexOf(".")+2);
+            }
+            return value
         },
+
+        unitRenderer: function (value,values) {
+            if (value=="false")
+                return "-";
+            else
+                return value;
+        },
+
         daterenderer:function (date, values) {
             if (date)
             {
@@ -52,7 +58,6 @@ Ext.define('NeqMobile.util.Renderer',
                 barColor1="black", barColor2="black"
             }}
             return '<img src="theme/images/view/patient/'+barColor1+'_bar.png"><img src="theme/images/view/patient/'+barColor2+'_bar.png"><img src="theme/images/view/patient/blue_bar.png">';
-
         },
         completerenderer: function(value, values){
             if(values.discontinued=="true")
@@ -60,7 +65,7 @@ Ext.define('NeqMobile.util.Renderer',
             if (values.course_completed=="true")
                 return '<div style="text-decoration: line-through;">'+value+'</div>'
             else{
-                return '<div style="text-decoration: none;">'+value+'</div>'
+                return value
         }
 }
 
