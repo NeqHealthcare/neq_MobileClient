@@ -60,14 +60,11 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
         console.log('labtest on doctordashboard tapped');
         this.showLabResultDetail(dw, labrecordoverview.get('id'), item, labrecordoverview);
-        //  record.markAsRead();
-        //   this.redirectTo('patient/' + record.get('patient') + '/lab/' + record.get('id'));
+        record.markAsRead();
     },
     showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
 
         console.log(dw);
-        // console.log(dw.myFeatures().getCount());
-        //  console.log(dw.expandfeature);
         var me = this;
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
         var detailinstance;
