@@ -7,7 +7,7 @@
  */
 Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     extend:'Ext.ux.touch.grid.feature.Abstract',
-    requires:['Ext.ux.touch.grid.feature.Abstract', 'Ext.Anim'],
+    requires:['Ext.ux.touch.grid.feature.Abstract'],
 
     config:{
         events:{
@@ -18,9 +18,17 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         detailCmp:undefined,
         expandeditem:undefined,
         autoScroll:true,
-        autoExpand:true
+        autoExpand:true,
+        extraCls:'editable'
+    },
+    init:function (dw) {
+        var me = this;
+        console.log('Expandable Feature initialized and trying to extend grid functions...');
+        dw.expand = Ext.bind(me.expand,me);
     },
     handleTap:function (dw, index, item, record, e, eOpts) {
+
+        console.log(dw);
         //checking whether the user clicked on the Overview or the Detailview (when visible)
         var y = e.pageY;
         overviewEl = item.child('*:first-child');
@@ -54,7 +62,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         var desiredCmp = this.getDetailCmp();
         desiredCmp.record = itemrecord;
         var detailinstance = Ext.ComponentManager.create(desiredCmp);
-        this.expand(dw,detailinstance,item);
+        this.expand(dw, detailinstance, item);
     },
     expand:function (dw, detailinstance, item) {
         item.expanded = true;
@@ -74,7 +82,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         Ext.defer(function () {
             item.detailinstance.destroy()
         }, 300);
-      //  dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
+        //  dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
     autoScroll:function (dw, item) {
 

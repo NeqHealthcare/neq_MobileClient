@@ -19,8 +19,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
         }
     },
     onLabResultTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
-         console.log('the item');
-        //console.log(item);
+
         this.showLabResultDetail(dw, labrecordoverview.get('id'),item);
     },
     showLabResultDetail:function (dw, labresultid,item) {
@@ -43,7 +42,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
                         record:labdetailrecord
                     });
                 detailinstance.down('#labdetailtable').setStore(criteriastore);
-                dw.expandfeature.expand(dw, detailinstance, item);
+                dw.expand(dw, detailinstance, item);
             }
         });
     },

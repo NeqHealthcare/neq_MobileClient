@@ -6,23 +6,19 @@ Ext.define('Ext.ux.touch.grid.View', {
     mixins   : ['Ext.ux.touch.grid.feature.Feature'],
 
     config : {
-        columns      : [],
-        cls          : 'touchgridpanel',
-        header       : {
+        columns : [],
+        cls     : 'touchgridpanel',
+        header  : {
             xtype  : 'toolbar',
             docked : 'top',
             cls    : 'x-grid-header'
-        }
+        },
+        itemTpl : false
     },
 
     constructor: function(config) {
         var me       = this,
-            columns  = config.columns || me.config.columns || me.columns,
             features = me.features = config.features || me.config.features || me.features;
-
-        Ext.apply(config, {
-            itemTpl : me._buildTpl(columns, false)
-        });
 
         if (typeof me.initFeatures === 'function' && typeof config.features === 'object') {
             me.initFeatures(features, 'constructor');
@@ -37,16 +33,22 @@ Ext.define('Ext.ux.touch.grid.View', {
         var me = this;
 
         me.callParent();
+
         if (typeof me.initFeatures === 'function' && typeof me.features === 'object') {
             me.initFeatures(me.features, 'initialize');
         }
     },
 
+    refreshScroller : function() {
+        var scroller = this.getScrollable().getScroller();
+
+        scroller.refresh();
+    },
+
     applyHeader : function(config) {
         Ext.apply(config, {
             docked : 'top',
-            cls    : 'x-grid-header',
-            html   : this._buildTpl(this.getColumns(), true)
+            cls    : 'x-grid-header'
         });
 
         return Ext.factory(config, Ext.Toolbar);
@@ -84,17 +86,42 @@ Ext.define('Ext.ux.touch.grid.View', {
         return value;
     },
 
+    applyItemTpl : function(tpl) {
+        if (!tpl) {
+            tpl = this._buildTpl(this.getColumns(), false);
+        }
+
+        if (!(tpl instanceof Ext.XTemplate)) {
+            tpl = Ext.create('Ext.XTemplate', tpl.tpl, tpl.renderers);
+        }
+
+        return tpl;
+    },
+
+    updateItemTpl : function() {
+        var header = this.getHeader(),
+            html   = this._buildTpl(this.getColumns(), true);
+
+        header.setHtml(html.tpl);
+    },
+
     _buildTpl: function(columns, header) {
         var tpl        = [],
             c          = 0,
             cNum       = columns.length,
             basePrefix = Ext.baseCSSPrefix,
             renderers  = {},
-            column, css, styles, attributes, width, renderer, rendererName, innerText;
+            column, hidden, css, styles, attributes, width, renderer, rendererName, innerText;
 
         for (; c < cNum; c++) {
-            column        = columns[c];
-            css           = [basePrefix + 'grid-cell'],
+            column = columns[c];
+            hidden = column.hidden;
+
+            if (hidden) {
+                continue;
+            }
+
+            css           = [basePrefix + 'grid-cell'];
             styles        = [];
             attributes    = ['dataindex="' + column.dataIndex + '"'];
             width         = column.width;
@@ -131,11 +158,10 @@ Ext.define('Ext.ux.touch.grid.View', {
 
         tpl = tpl.join('');
 
-        if (!header) {
-            return Ext.create('Ext.XTemplate', tpl, renderers);
-        }
-
-        return tpl;
+        return {
+            tpl       : tpl,
+            renderers : renderers
+        };
     },
 
     getColumn: function(dataIndex) {
@@ -154,5 +180,28 @@ Ext.define('Ext.ux.touch.grid.View', {
         }
 
         return column;
+    },
+
+    toggleColumn : function(index, hide) {
+        var columns = this.getColumns(),
+            column  = columns[index],
+            itemTpl;
+
+        if (!Ext.isDefined(hide)) {
+            hide = !column.hidden;
+        }
+
+        column.hidden = hide;
+
+        this.setItemTpl(null); //trigger new tpl on items and header
+        this.refresh();
+    },
+
+    hideColumn : function(index) {
+        this.toggleColumn(index, true);
+    },
+
+    showColumn : function(index) {
+        this.toggleColumn(index, false);
     }
 });

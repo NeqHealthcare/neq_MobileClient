@@ -14,8 +14,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             workspace:'workspace'
         },
         control:{
-            'workspace patientlist list':{select:'onPatientSelect'},
-            'patientview #diagnoses':{beforeitemexpand:'testtap'}
+            'workspace patientlist list':{select:'onPatientSelect'}
         },
         routes:{
             'patient/:id':'showPatient',
@@ -24,15 +23,6 @@ Ext.define('NeqMobile.controller.PatientView', {
         before:{
         } },
 
-    testtap:function(expandfeature, dw, index, item, itemrecord, e, eOpts){
-
-        //dw.expand(dw,index,item,itemrecord,e,eOpts);
-
-        console.log('some item was tapped');
-
-        expandfeature.expand(dw,index,item,itemrecord,e,eOpts);
-
-    },
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
