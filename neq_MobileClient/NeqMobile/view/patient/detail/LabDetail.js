@@ -117,7 +117,7 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                 {
                     xtype:'touchgridpanel',
                     itemId:'labdetailtable',
-                    style: 'opacity: 0.7' ,
+                    //style: 'opacity: 0.7' ,
                     id: 'labdetailview',
                     title: 'Lab Test Details',
                     name:'criteria',
