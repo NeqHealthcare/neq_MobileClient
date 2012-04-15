@@ -9,12 +9,30 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
     extend:'Ext.data.proxy.Rest',
     alias : 'proxy.neqproxy',
     buildUrl:function (request) {
-        var me = this;
-        var url = NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + me.getCustomUrl();
-//        if (me.getNoCache()) {
-//            url = Ext.urlAppend(url, Ext.String.format("{0}={1}", me.getCacheString(), Ext.Date.now()));
-//        }
-        return url
+
+//        var me = this;
+//        var url = NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + me.getCustomUrl();
+////        if (me.getNoCache()) {
+////            url = Ext.urlAppend(url, Ext.String.format("{0}={1}", me.getCacheString(), Ext.Date.now()));
+////        }
+//        return url
+
+          var me        = this,
+            operation = request.getOperation(),
+            records   = operation.getRecords() || [],
+            record    = records[0],
+            model     = me.getModel(),
+            idProperty= model.getIdProperty(),
+            format    = me.getFormat(),
+            url       = me.getUrl(request),
+            params    = request.getParams() || {},
+            id        = (record && !record.phantom) ? record.getId() : params[idProperty];
+
+        var nequrl = NeqMobile.manager.Session.getSession().get('domain').getCoreURL() + me.getCustomUrl();
+
+        request.setUrl(nequrl);
+
+        return me.callParent([request]);
     },
     getExtraParams:function () {
         var params = this.callParent(arguments);
@@ -25,6 +43,7 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
         return params
     },
     config:{
+        appendId:false,
         customUrl:undefined,
         reader:{
             type:'json',
