@@ -5,7 +5,7 @@
  * Time: 19:09
  * To change this template use File | Settings | File Templates.
  */
-Ext.define('NeqMobile.store.Document', {
+Ext.define('NeqMobile.store.Documents', {
         extend:'Ext.data.Store',
         requires:'NeqMobile.model.Document',
 

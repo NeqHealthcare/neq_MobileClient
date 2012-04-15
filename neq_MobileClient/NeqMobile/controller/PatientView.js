@@ -7,8 +7,9 @@
  */
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.store.Patients'],
+    requires:[],
     config:{
+        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients'],
         refs:{
             patientview:'patientview',
             workspace:'workspace'
@@ -84,7 +85,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         var documentstore = Ext.data.StoreManager.lookup('documents');
 
         if (!documentstore) {
-            documentstore = Ext.create('NeqMobile.store.Document');
+            documentstore = Ext.create('NeqMobile.store.Documents');
         }
 
         documentstore.getProxy().setExtraParam('id', patientid);
