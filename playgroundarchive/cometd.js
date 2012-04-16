@@ -9,25 +9,38 @@ Ext.application({
     name:'lightweightExpandable',
     requires:['org.cometd'],
     launch:function () {
+
+        org.cometd.JSON.toJSON = Ext.encode;
+        org.cometd.JSON.fromJSON = Ext.decode;
+
         mycometd = new org.cometd.Cometd()
         var cometd = mycometd;
         var _connected = false;
         console.log(mycometd);
+        if (org.cometd.WebSocket) {
+            cometd.registerTransport('websocket', new org.cometd.WebSocketTransport());
+        }
+
+
+//        cometd.registerTransport('long-polling', new org.cometd.LongPollingTransport());
+//        cometd.registerTransport('callback-polling', new org.cometd.CallbackPollingTransport());
+
+        var initconnection = function () {
+            var cometd = mycometd;
+            console.log(cometd);
+            console.log('configuring...');
+            cometd.configure({
+                url:'http://localhost:8081/cometd/echo',
+                logLevel:'debug'
+            });
+            console.log('...configuration complete')
+            var subscription1 = cometd.addListener('/meta/connect', function (message) {
+                console.log(message)
+            });
+            cometd.handshake();
+        };
+
         cometd.addListener('/meta/connect', function (message) {
-            var initconnection = function () {
-                var cometd = mycometd;
-                console.log(cometd);
-                console.log('configuring...');
-                cometd.configure({
-                    url:'http://localhost:8081/cometd/echo',
-                    logLevel:'debug'
-                });
-                console.log('...configuration complete')
-                var subscription1 = cometd.addListener('/meta/connect', function (message) {
-                    console.log(message)
-                });
-                cometd.handshake();
-            };
 
             console.log('something arrived at the connect meta channel');
             // if (cometd.getStatus() === 'disconnecting' || cometd.getStatus() === 'disconnected')
@@ -50,6 +63,12 @@ Ext.application({
                 _connected = false;
             }
         });
+
+        var sendmessage = function () {
+            console.log('trying to send a message: "this is a NeqMobile test message"');
+            cometd.publish("/service/echo", { msg:'this is a NeqMobile test message' });
+        };
+
         Ext.create('Ext.Container',
             {fullscreen:true,
                 // width:1500,
@@ -59,7 +78,7 @@ Ext.application({
 //                    flex:1},
                 items:[
                     {xtype:'button', text:'start connection', handler:initconnection},
-                    {xtype:'button', text:'send a message', handler:this.sendmessage}
+                    {xtype:'button', text:'send a message', handler:sendmessage}
                 ]
             }
         )
