@@ -20,8 +20,8 @@ Ext.define('NeqMobile.model.LabResults', {
                 'test_rec_name',
                 'patient',
                 'patient_rec_name',
-                'date_requested',
-                'date_analysis'
+                {name: 'date_requested', type: 'date', dateFormat: 'time'},
+                {name: 'date_analysis', type: 'date', dateFormat: 'time'}
             ],
             proxy:{
                 type:'neqproxy',

@@ -5,8 +5,22 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
             title:'Diagnoses',
             margin: '0',
             padding: '5',
+            layout: 'vbox',
             items:[
+                {
+                    xtype:'button',
+                    id: 'diagnoseButton',
+                    iconCls:'add',
+                    iconMask:true,
+                    //right: '1%',
+                    width: '50px',
+                    height: '30px'
+                },
+                //  {
+                //      txype: 'spacer'
+                // },
                 {xtype:'touchgridpanel',
+                    margin: '0 0 0 0',
                     itemId:'diagnoses',
                     scrollable:false,
                     features:[
@@ -41,7 +55,6 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Infectability',
                             dataIndex:'is_infectious',
-                            hidden:true,
                             style:'text-align: center;',
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
@@ -51,15 +64,12 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Allergies',
                             dataIndex:'is_allergy',
-                            hidden:true,
                             style:'text-align: center; padding-right: 1em;',
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
                         }
                         ,
-
-
                         {
                             header:'Diagnosed Date',
                             dataIndex:'diagnosed_date',
@@ -70,7 +80,6 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Healed Date',
                             dataIndex:'healed_date',
-                            hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
@@ -78,6 +87,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         }
                     ]
                 }
+
             ]
         }
     }

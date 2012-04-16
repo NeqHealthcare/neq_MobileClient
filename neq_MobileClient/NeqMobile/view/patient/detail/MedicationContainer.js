@@ -35,7 +35,6 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                         {
                             header:'Start of Treatment',
                             dataIndex:'start_treatment',
-                            hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
@@ -45,7 +44,6 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
                         {
                             header:'End of Treatment',
                             dataIndex:'end_treatment',
-                            hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',

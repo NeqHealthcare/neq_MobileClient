@@ -17,10 +17,11 @@ Ext.define('NeqMobile.model.LabDetail', {
             'name',
             'test_rec_name',
             'pathologist_rec_name',
-            'date_requested',
-            'date_analysis',
+            {name: 'date_requested', type: 'date', dateFormat: 'time'},
+            {name: 'date_analysis', type: 'date', dateFormat: 'time'},
             'requestor_rec_name',
             'criteria'
+
         ],
         associations:[
             {

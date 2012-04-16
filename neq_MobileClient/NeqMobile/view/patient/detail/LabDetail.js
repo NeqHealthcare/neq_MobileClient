@@ -5,38 +5,6 @@
  * Time: 9:26 PM
  * To change this template use File | Settings | File Templates.
  */
-var labDetailTable = new Ext.XTemplate(
-    '<table border="1">',
-    '<thead>',
-    '<tr>',
-    '<th scope="col">Test Type</th>',
-    '<th scope="col">Test Type</th>',
-    '<th scope="col">Test Type</th>',
-    '<th scope="col">Date Requested</th>',
-    '<th scope="col">Upper Limit</th>',
-    '<th scope="col">Lower Limit</th>',
-    '<th scope="col">Units</th>',
-    '<th scope="col">Unit Name</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for=".">',
-    '<tr>',
-    '<td>{name}</td>',
-    '<td>{excluded}</td>',
-    '<td>{warning}</td>',
-    '<td>{upper_limit}</td>',
-    '<td>{lower_limit}</td>',
-    '<td>{result}</td>',
-    '<td>{units}</td>',
-    '<td>{unit_rec_name}</td>',
-    '</tr>',
-    '</tpl>',
-    '</tbody>',
-    '</table>'
-)
-
-
 
 Ext.define('NeqMobile.view.patient.detail.LabDetail', {
         extend: 'Ext.form.Panel',
@@ -68,13 +36,15 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                                 {
                                     xtype:'textfield',
                                     label:'Date of the Analysis',
-                                    name: 'date_analysis',
+                                    renderTpl:['<span>{[NeqMobile.util.Renderer.daterenderer(date_analysis)]}</span>'],
+                                    // name: 'date_analysis',
                                     readOnly:'true'
                                 },
                                 {
                                     xtype:'textfield',
                                     label:'Date Requested',
-                                    name: 'date_requested',
+                                    // renderTpl:['<span>{[NeqMobile.util.Renderer.daterenderer(date_requested)]}</span>'],
+                                    //name: 'date_requested',
                                     readOnly:'true'
                                 }
                             ],
@@ -110,14 +80,9 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                     ]
                 },
                 {
-                    xtype:'panel',
-                    id: 'labdetailtable',
-                    tpl: labDetailTable
-                },
-                {
                     xtype:'touchgridpanel',
                     itemId:'labdetailtable',
-                    style: 'opacity: 0.7' ,
+                  //  style: 'opacity: 0.7' ,
                     id: 'labdetailview',
                     title: 'Lab Test Details',
                     name:'criteria',
@@ -126,28 +91,33 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                         {
                             header:'Name',
                             dataIndex:'name',
+                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'40%'
                         },
                         {
                             header:'Upper Limit',
                             dataIndex:'upper_limit',
+                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.limitRenderer
                         },
                         {
                             header:'Lower Limit',
                             dataIndex:'lower_limit',
+                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.limitRenderer
                         },
                         {
                             header:'Result',
                             dataIndex:'result',
+                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%'
                         },
                         {
                             header:'Unit Name',
                             dataIndex:'units_rec_name',
+                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.unitRenderer
                         }

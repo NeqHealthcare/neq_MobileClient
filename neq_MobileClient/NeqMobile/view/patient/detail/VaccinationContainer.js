@@ -35,7 +35,6 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                         {
                             header:'Date',
                             dataIndex:'date',
-                            hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
@@ -45,7 +44,6 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                         {
                             header:'Next Dose',
                             dataIndex:'next_dose_date',
-                            hidden:true,
                             style:'text-align: right; padding-right: 1em;',
                             sortable:false,
                             width:'15%',
