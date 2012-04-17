@@ -94,6 +94,8 @@ Ext.define('NeqMobile.controller.Session', {
         store.load();
         this.getWorkspace().down('patientlist').down('list').setStore(store);
         var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
+        console.log('this is the userinfo issued from session controller');
+        console.log(userinfodata);
         this.getWorkspace().down('#doctorname').setData(userinfodata);
         this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
         this.redirectTo('doctordashboard');

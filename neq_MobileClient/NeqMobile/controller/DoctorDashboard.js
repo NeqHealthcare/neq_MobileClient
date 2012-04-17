@@ -9,7 +9,8 @@
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.store.Doctor'],
+    requires:[ 'NeqMobile.util.Renderer'],
+
     config:{
         refs:{
             doctordashboard:'doctordashboard',
@@ -44,18 +45,17 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
     },
-    refreshdoctorinfo:function ()
-    {
-        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo');
-        userinfodata.load(1, {
-            success: function(userinfodata) {
-                console.log("userinfodata: " + userinfodata.get('name'));
+    refreshdoctorinfo:function () {
+        var userinforecord = NeqMobile.manager.Session.getSession().get('userinfo');
 
-                userinfodata.LastLogin().each(function(LastLogin) {
-                    console.log("LastLogin for userinfodata: " + LastLogin.get('data'));
-                });
-            }
-        });
+        this.getDoctordashboard().down('doctorheader').setRecord(userinforecord);
+        this.getDoctordashboard().down('#doc_last_login').setValue(NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
+
+        console.log("userinfodata 1: " + userinforecord.get('name') + ' ' + userinforecord.get('id')
+                  + ' ' + userinforecord.get('physician_id') + ' ' + userinforecord.get('image_url')
+                  + ' ' + userinforecord.get('number_of_patients') + ' ' + NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
+                //'name', 'id', 'physician_id', 'image_url', 'number_of_patients', 'last_login'
+
     },
     onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
         console.log('labtest on doctordashboard tapped');

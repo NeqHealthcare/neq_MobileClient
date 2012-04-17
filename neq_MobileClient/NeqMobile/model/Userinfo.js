@@ -6,7 +6,13 @@
 Ext.define('NeqMobile.model.Userinfo', {
         extend:'Ext.data.Model',
         config: {
-            fields:['name', 'id', 'physician_id', 'image_url', 'number_of_patients', 'last_login'],
+            fields:['name',
+                    'id',
+                    'physician_id',
+                    'image_url',
+                    'number_of_patients',
+                    {name:'last_login', type:'date',dateFormat:'time'}
+            ],
 
             proxy: {
                 type:'neqproxy',

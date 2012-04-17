@@ -33,30 +33,30 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                             },
                             {
                                 xtype: 'textfield',
-                                itemId: 'mytextfield',
+                                itemId: 'doc_patient_number',
                                 padding: 7,
                                 label: 'Number of patients:',
                                 labelWidth: '150px',
-                                name: 'patient_number',
-                                value: '5'
+                                name: 'number_of_patients'
                             },
                             {
                                 xtype: 'textfield',
-                                itemId: 'mytextfield',
+                                itemId: 'doc_name',
                                 padding: 7,
                                 label: 'Name:',
                                 labelWidth: '150px',
-                                name: 'doc_rec_name',
-                                value: 'Dr. Jan Gansen'
+                                name: 'name'
                             },
                             {
                                 xtype: 'textfield',
-                                itemId: 'mytextfield',
+                                itemId: 'doc_last_login',
                                 padding: 7,
                                 label: 'Last Login:',
                                 labelWidth: '150px',
-                                name: 'last_login',
-                                value: '12.03.2012'
+                                name: 'last_login' /*,
+                                setValue:function(value)
+                                {NeqMobile.util.Renderer.daterenderer(value);
+                                console.log('some value');}*/
                             }
                         ]
                     }
