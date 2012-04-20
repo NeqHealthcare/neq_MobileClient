@@ -8,7 +8,8 @@
 
 Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     extend:'Ext.Container',
-    requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab', 'NeqMobile.view.chart.TestChart'],
+    requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab',
+              'NeqMobile.view.chart.TestChart', 'NeqMobile.view.doctor.DoctorNewsFeedContainer'],
     xtype:'doctordashboard',
     config:{
         styleHtmlContent:true,
@@ -22,17 +23,21 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
         padding: 15,
         items:[
 
-            { xtype:'doctorheader'
-
+            {
+                xtype:'doctorheader'
             },
-            {xtype:'doctordashboardlab'
-
+            {
+                xtype:'doctordashboardlab'
+            },
+            {
+                xtype: 'doctornewsfeedcontainer'
             }
 
 //            ,
-//            {xtype:'testchart'
+//          {
+                // xtype:'testchart'
 //            }
 
         ]
     }
-})
+});
