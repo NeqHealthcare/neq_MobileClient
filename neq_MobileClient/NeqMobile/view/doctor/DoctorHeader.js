@@ -37,7 +37,8 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Number of patients:',
                                 labelWidth: '150px',
-                                name: 'number_of_patients'
+                                name: 'number_of_patients',
+                                readOnly:true
                             },
                             {
                                 xtype: 'textfield',
@@ -45,7 +46,8 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Name:',
                                 labelWidth: '150px',
-                                name: 'name'
+                                name: 'name',
+                                readOnly:true
                             },
                             {
                                 xtype: 'textfield',
@@ -53,7 +55,9 @@ Ext.define('NeqMobile.view.doctor.DoctorHeader', {
                                 padding: 7,
                                 label: 'Last Login:',
                                 labelWidth: '150px',
-                                name: 'last_login' /*,
+                                name: 'last_login',
+                                readOnly:true
+                                 /*,
                                 setValue:function(value)
                                 {NeqMobile.util.Renderer.daterenderer(value);
                                 console.log('some value');}*/
