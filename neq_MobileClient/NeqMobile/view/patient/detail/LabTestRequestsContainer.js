@@ -39,9 +39,10 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                     xtype: 'button',
                     id: 'x-createNewLabRequestButton',
                     margin: '0 0 5 0',
-                    text: 'Create New Request',
-                    ui: 'normal',
-                    width: 200
+                    iconCls:'add',
+                    iconMask:true,
+                    width: '50px',
+                    height: '30px'
                 },
                 {
                     xtype: 'panel',

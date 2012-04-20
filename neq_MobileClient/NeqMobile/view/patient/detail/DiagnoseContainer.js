@@ -12,7 +12,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                     id: 'diagnoseButton',
                     iconCls:'add',
                     iconMask:true,
-                    //right: '1%',
+                    margin: '0 0 5 0',
                     width: '50px',
                     height: '30px'
                 },
