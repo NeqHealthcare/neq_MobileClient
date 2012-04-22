@@ -59,7 +59,8 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationDetail', {
                                                         label: 'Expiration Date:',
                                                         labelWidth: '55%',
                                                         name: 'date',
-                                                        placeHolder: 'mm/dd/yyyy',
+                                                        placeHolder: '-',
+                                                        dateFormat: 'd.m.Y',
                                                         readOnly: true
                                                      }
                                                 ]
