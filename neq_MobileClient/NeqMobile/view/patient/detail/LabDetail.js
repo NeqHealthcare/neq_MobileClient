@@ -12,14 +12,13 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
         config: {
             type: 'vbox',
             padding: '40',
-            style: 'text-align: left; background-color: #eeeeee',
+            style: 'text-align: left; background-color: white;',
             scrollable: false,
             items: [
                 {
                     xtype: 'panel',
                     itemId:'labdetails',
                     layout: 'hbox',
-                    margin: '0 0 0 0',
                     border: '3 0 0 0',
                     items:[
                         {
@@ -34,19 +33,22 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                                     readOnly:'true'
                                 },
                                 {
-                                    xtype:'textfield',
+                                    xtype:'datepickerfield',
                                     label:'Date of the Analysis',
-                                    renderTpl:['<span>{[NeqMobile.util.Renderer.daterenderer(date_analysis)]}</span>'],
-                                    // name: 'date_analysis',
-                                    readOnly:'true'
+                                    name: 'date_analysis',
+                                    readOnly:'true',
+                                    placeHolder: '-',
+                                    dateFormat: 'd.m.Y'
+                                    // renderTo: Ext.Date.format('date_analysis', 'd.m.Y')
                                 },
                                 {
-                                    xtype:'textfield',
+                                    xtype:'datepickerfield',
                                     label:'Date Requested',
-                                    // renderTpl:['<span>{[NeqMobile.util.Renderer.daterenderer(date_requested)]}</span>'],
-                                    //name: 'date_requested',
-                                    readOnly:'true'
-                                }
+                                    name: 'date_requested',
+                                    readOnly:'true',
+                                    placeHolder: '-',
+                                    dateFormat: 'd.m.Y'
+                               }
                             ],
                             flex:1
                         },
@@ -82,7 +84,6 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                 {
                     xtype:'touchgridpanel',
                     itemId:'labdetailtable',
-                  //  style: 'opacity: 0.7' ,
                     id: 'labdetailview',
                     title: 'Lab Test Details',
                     name:'criteria',

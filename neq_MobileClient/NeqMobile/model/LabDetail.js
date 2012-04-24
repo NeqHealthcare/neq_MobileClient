@@ -16,9 +16,17 @@ Ext.define('NeqMobile.model.LabDetail', {
             'test',
             'name',
             'test_rec_name',
-            'pathologist_rec_name',
+            {name: 'pathologist_rec_name', type: 'string',
+                convert: function(value){
+                    if (value != "false")
+                        {
+                            return value;
+                        }
+                    else
+                        return "-";
+                }},
             {name: 'date_requested', type: 'date', dateFormat: 'time'},
-            {name: 'date_analysis', type: 'date', dateFormat: 'time'},
+            {name:'date_analysis', type: 'date', dateFormat: 'time'},
             'requestor_rec_name',
             'criteria'
 
@@ -36,4 +44,5 @@ Ext.define('NeqMobile.model.LabDetail', {
             type:'neqproxy',
             customUrl:'/labtest/one/detail' }
 
-    }});
+    }
+});

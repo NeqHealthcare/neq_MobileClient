@@ -64,7 +64,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         xtype:'selectfield',
                                         height:54,
                                         style:'text-align: right;',
-                                        label:'Status of the disease:',
+                                        label:'Status of the Disease:',
                                         labelWidth:'57%',
                                         name:'is_active',
                                         readOnly:true,
@@ -83,7 +83,8 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                         label:'Date of diagnosis:',
                                         labelWidth:'50%',
                                         name:'diagnosed_date',
-                                        placeHolder:'mm/dd/yyyy',
+                                        placeHolder:'-',
+                                        dateFormat: 'd.m.Y',
                                         readOnly:true
                                     },
                                     {
@@ -194,12 +195,14 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 flex:1,
                                 items:[
                                     {
-                                        xtype:'textfield',
+                                        xtype:'datepickerfield',
                                         height:54,
                                         style:'text-align: right;',
                                         label:'Start of Treatment:',
                                         labelWidth:'57%',
                                         name:'date_start_treatment',
+                                        dateFormat: 'd.m.Y',
+                                        placeHolder: '-',
                                         readOnly:true
                                     },
                                     {
@@ -221,12 +224,14 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 flex:1,
                                 items:[
                                     {
-                                        xtype:'textfield',
+                                        xtype:'datepickerfield',
                                         height:54,
                                         style:'text-align: right;',
                                         label:'End of treatmeant:',
                                         labelWidth:'50%',
                                         name:'healed_date',
+                                        dateFormat: 'd.m.Y',
+                                        placeHolder: '-',
                                         readOnly:true
                                     },
                                     {

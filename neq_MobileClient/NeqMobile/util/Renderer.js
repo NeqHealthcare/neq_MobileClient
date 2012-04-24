@@ -13,18 +13,27 @@ Ext.define('NeqMobile.util.Renderer',
             return Ext.Date.format(date,'d.m.Y');
         },
 
+         undefinedRenderer: function (value, values){
+             if(value==null)
+                return "-";
+             else
+                return value;
+         },
+
          limitRenderer: function (value, values){
             if (value.length>5){
                 return value.slice(0, value.indexOf(".")+2);
             }
-            return value
+            return value;
         },
-        unitRenderer: function (value,values) {
+
+        unitRenderer: function (value, values) {
             if (value=="false")
                 return "-";
             else
                 return value;
         },
+
         daterenderer:function (date, values) {
             if (date)
             {
@@ -65,7 +74,13 @@ Ext.define('NeqMobile.util.Renderer',
             else{
                 return value
         }
-}
+        },
+        falseRenderer: function (value){
+            if (value == "false")
+                return "-";
+            else
+                return value;
+        }
 
 
 

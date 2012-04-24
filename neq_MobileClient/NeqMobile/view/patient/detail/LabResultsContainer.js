@@ -54,14 +54,16 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                             dataIndex:'requestor_rec_name',
                             style: 'text-align: left;padding-left: 1em;',
                             cls:'centered-cell',
-                            width:'15%'
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.undefinedRenderer
                         },
                         {
                             header:'Pathologist',
                             dataIndex:'pathologist_rec_name',
                             style: 'text-align: left;padding-left: 1em;',
                             cls:'centered-cell',
-                            width:'15%'
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.undefinedRenderer
                         }
                     ]
                 }
