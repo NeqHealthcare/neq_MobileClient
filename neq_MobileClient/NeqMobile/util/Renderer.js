@@ -19,14 +19,12 @@ Ext.define('NeqMobile.util.Renderer',
             }
             return value
         },
-
         unitRenderer: function (value,values) {
             if (value=="false")
                 return "-";
             else
                 return value;
         },
-
         daterenderer:function (date, values) {
             if (date)
             {
