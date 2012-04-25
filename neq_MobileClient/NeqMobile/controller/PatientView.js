@@ -7,15 +7,19 @@
  */
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
-    requires:[],
+    requires:['NeqMobile.view.patient.create.CreateDiagnose'],
     config:{
         stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients'],
         refs:{
             patientview:'patientview',
-            workspace:'workspace'
+            workspace:'workspace',
+            diagnoseoverlay: 'createnewdiagnoseOverlay'
         },
         control:{
-            'workspace patientlist list':{select:'onPatientSelect'}
+            'workspace patientlist list':{select:'onPatientSelect'},
+            'diagnosescontainer #createNewDaignosebutton':{
+                tap:'onCreateNewDiagnoseTap'
+            }
         },
         routes:{
             'patient/:id':'showPatient',
@@ -165,9 +169,16 @@ Ext.define('NeqMobile.controller.PatientView', {
             },
             scope:this
         });
-
-
-
+         },
+        onCreateNewDiagnoseTap:function (button, e, eOpts) {
+            var diagnoseOverlay;
+            if (this.getDiagnoseoverlay()) {
+                diagnoseOverlay = this.getDiagnoseoverlay();
+            } else {
+                diagnoseOverlay = Ext.create('NeqMobile.view.patient.create.CreateDiagnose');
+            }
+            this.overlay = Ext.Viewport.add(diagnoseOverlay);
+            this.overlay.show();
+        }
     }
-
-});
+);

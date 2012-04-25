@@ -9,7 +9,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
             items:[
                 {
                     xtype:'button',
-                    id: 'diagnoseButton',
+                    id: 'createNewDaignosebutton',
                     iconCls:'add',
                     iconMask:true,
                     margin: '0 0 5 0',
