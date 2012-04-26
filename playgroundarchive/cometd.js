@@ -6,31 +6,31 @@ Ext.Loader.setConfig({
 var mycometd;
 
 Ext.application({
-    name:'lightweightExpandable',
-    requires:['org.cometd'],
+    name:'CometDPlayground',
+    requires:['org.cometd','Ext.ux.CometD'],
     launch:function () {
 
-        org.cometd.JSON.toJSON = Ext.encode;
-        org.cometd.JSON.fromJSON = Ext.decode;
+      //  org.cometd.JSON.toJSON = Ext.encode;
+     //   org.cometd.JSON.fromJSON = Ext.decode;
 
-        mycometd = new org.cometd.Cometd()
-        var cometd = mycometd;
+        var cometd = new Ext.ux.CometD('defaultcometd');
+
         var _connected = false;
-        console.log(mycometd);
-        if (org.cometd.WebSocket) {
-            cometd.registerTransport('websocket', new org.cometd.WebSocketTransport());
-        }
+//        if (org.cometd.WebSocket) {
+//            cometd.registerTransport('websocket', new org.cometd.WebSocketTransport());
+//        }
 
 
-//        cometd.registerTransport('long-polling', new org.cometd.LongPollingTransport());
+   //     cometd.registerTransport('long-polling', new org.cometd.LongPollingTransport());
 //        cometd.registerTransport('callback-polling', new org.cometd.CallbackPollingTransport());
+        var url = 'http://localhost:8080/cometd';
 
         var initconnection = function () {
-            var cometd = mycometd;
-            console.log(cometd);
+
             console.log('configuring...');
+
             cometd.configure({
-                url:'http://localhost:8081/cometd/echo',
+                url:url,
                 logLevel:'debug'
             });
             console.log('...configuration complete')
@@ -43,6 +43,7 @@ Ext.application({
         cometd.addListener('/meta/connect', function (message) {
 
             console.log('something arrived at the connect meta channel');
+            console.warn('CONNECTING TO: ' + url);
             // if (cometd.getStatus() === 'disconnecting' || cometd.getStatus() === 'disconnected')
             if (cometd.isDisconnected()) // Available since 1.1.2
             {

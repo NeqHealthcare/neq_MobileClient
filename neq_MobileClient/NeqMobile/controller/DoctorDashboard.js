@@ -9,18 +9,23 @@
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.util.Renderer'],
+    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment'],
 
     config:{
         refs:{
             doctordashboard:'doctordashboard',
-            workspace:'workspace'
+            workspace:'workspace',
+            appointment:'appointment'
         },
+        stores: ['Appointment'],
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
             //   'workspace doctordashboard touchgridpanel'ui:{itemtap:'onLabtestTap'},
-            'workspace doctordashboard #doctordashboardlab':{beforeitemexpand:'onLabtestTap'}
+            'workspace doctordashboard #doctordashboardlab':{beforeitemexpand:'onLabtestTap'},
+            'workspace appointment selectfield':{
+                change:'onappointmentcountchange'
+            }
 
         },
         routes:{
@@ -35,6 +40,11 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         Ext.Viewport.on('logout', this.stoppolling, me);
     },
 
+    onappointmentcountchange:function(selectfield, newValue, oldValue, eOpts ){
+        console.log('changed number of appointments '+newValue);
+        this.showAppointments();
+    }
+,
     onHomeTap:function () {
         this.redirectTo('doctordashboard');
     },
@@ -44,6 +54,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
+        this.showAppointments();
     },
     refreshdoctorinfo:function () {
         var userinforecord = NeqMobile.manager.Session.getSession().get('userinfo');
@@ -191,5 +202,27 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
 
         testchart.setItems(mycircle);
+    },
+
+    showAppointments: function (){
+        var me = this;
+        var appointmentrequest = this.getAppointment();
+        var selectfield = appointmentrequest.down('selectfield');
+        var count = selectfield.getValue();
+        var appointmentstore = Ext.data.StoreManager.lookup('appointments');
+        if(!appointmentstore){
+            appointmentstore = Ext.create('NeqMobile.store.Appointment');
+        }
+        appointmentstore.getProxy().setExtraParam('count',count);
+        appointmentstore.load({
+            callback: function (records, operation, success){
+                this.getDoctordashboard().down('appointment').down('#appointmentlist').setStore(appointmentstore);
+            },
+            scope: this
+        });
+    },
+
+    onAppointmentSelect:function (list, appointmentrecord, options) {
+
     }
 });
