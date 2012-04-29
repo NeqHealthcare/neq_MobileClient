@@ -40,7 +40,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                     },
                     {
                         xtype: 'panel',
-                        minHeight: 360,
+                        minHeight: 350,
                         padding: 5,
                         items: [
                             {
