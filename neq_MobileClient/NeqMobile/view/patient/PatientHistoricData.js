@@ -19,7 +19,6 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                 items: [
                     {
                         xtype: 'panel',
-                        id:'vitaldatachart',
                         margin: '0 0 5 0',
                         minHeight: 300,
                         padding: 5,
@@ -34,39 +33,14 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 }
                             },
                             {
-                                xtype: 'container'
-                            },
-                            {
                                 xtype: 'container',
-                                docked: 'bottom',
-                                layout: {
-                                    align: 'start',
-                                    type: 'hbox'
-                                },
-                                items: [
-                                    {
-                                        xtype: 'button',
-                                        text: 'Day',
-                                        flex: 1
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        text: 'Week',
-                                        flex: 1
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        text: 'Month',
-                                        flex: 1
-                                    }
-                                ]
+                                id: 'vitaldatachart'
                             }
                         ]
                     },
                     {
                         xtype: 'panel',
-                        id:'fluidbalancechart',
-                        minHeight: 300,
+                        minHeight: 360,
                         padding: 5,
                         items: [
                             {
@@ -79,7 +53,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 }
                             },
                             {
-                                xtype: 'container'
+                                xtype: 'container',
+                                id: 'fluidbalancechart'
                             },
                             {
                                 xtype: 'container',
@@ -90,18 +65,24 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 items: [
                                     {
                                         xtype: 'button',
+                                        id: 'historicaldata_btn_day',
+                                        margin: '0 4 0 0',
                                         padding: 5,
                                         text: 'Day',
                                         flex: 1
                                     },
                                     {
                                         xtype: 'button',
+                                        id: 'historicaldata_btn_week',
+                                        margin: '0 4 0 4',
                                         padding: 5,
                                         text: 'Week',
                                         flex: 1
                                     },
                                     {
                                         xtype: 'button',
+                                        id: 'historicaldata_btn_month',
+                                        margin: '0 0 0 4',
                                         text: 'Month',
                                         flex: 1
                                     }
@@ -117,7 +98,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                 title: 'Additional Information',
                 items: [
                     {
-                        xtype: 'textareafield'
+                        xtype: 'textareafield',
+                        id: 'historicaldata_area_addinfo'
                     }
                 ]
             }
