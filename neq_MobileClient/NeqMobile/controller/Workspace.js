@@ -6,11 +6,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
+/* - Basic Definition ---------------------------------------------------------------------------------- */
+
 var selectedPatient;
 
 Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses', 'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest', 'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults'],
+        requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses',
+                  'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest',
+                  'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults'],
         config:{
             refs:{
                 workspace:'workspace'
@@ -22,6 +26,10 @@ Ext.define('NeqMobile.controller.Workspace', {
                 'workspace patientlist #showHidePatientListButton':{tap:'showHidePatientlist'}
             }
         },
+
+/* - Functions ---------------------------------------------------------------------------------- */
+
+        //
         showHidePatientlist:function (button, e, eOpts) {
             var patientListContainer = this.getWorkspace().down('patientlist #patientListContainer');
             if (patientListContainer.isHidden()) {
@@ -30,6 +38,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 patientListContainer.setHidden(true);
             }
         },
+        //
         onTapRefreshButton:function () {
             var store = Ext.data.StoreManager.lookup('patients');
             store.load({
@@ -39,7 +48,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 scope:this
             });
         },
-
+        //
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('patients');
             var searchstring = Ext.String.trim(searchfield.getValue());

@@ -5,29 +5,41 @@
  * Time: 22:06
  * To change this template use File | Settings | File Templates.
  */
+
+/* - Basic Definition ---------------------------------------------------------------------------------- */
+
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
     requires:['NeqMobile.view.patient.create.CreateDiagnose'],
+
     config:{
         stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients'],
+
         refs:{
             patientview:'patientview',
             workspace:'workspace',
             diagnoseoverlay: 'createnewdiagnoseOverlay'
         },
+
         control:{
             'workspace patientlist list':{select:'onPatientSelect'},
             'diagnosescontainer #createNewDaignosebutton':{
                 tap:'onCreateNewDiagnoseTap'
             }
         },
+        // enables calling a view directly by address
         routes:{
             'patient/:id':'showPatient',
             'patient/:id/lab/:resultid':'showPatientLab'
+            //'patient/:id/' route zu den patientBildern / Röntegenaufnahmen etc
         },
+
         before:{
         } },
 
+/* - Functions ---------------------------------------------------------------------------------- */
+
+    // Create initial view - show Patient startscreen
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
@@ -35,21 +47,25 @@ Ext.define('NeqMobile.controller.PatientView', {
             patientview.setActiveItem(1);
         }
     },
+    // show patient details after selecting patient from patientlist
     onPatientSelect:function (list, patientrecord, options) {
         console.log('on patient select called');
         this.redirectTo(patientrecord);
     },
+    //
     showPatient:function (id) {
         console.log('showing patient');
         this.createPatientView();
         this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
+    //
     showPatientLab:function (id,resultid) {
         this.showPatient(id);
         this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
      //  var patientlabcontroller = this.getApplication().getController('PatientLab');
     },
+    //
     loadPatientData:function (patientid) {
         // < var definitions
         var me = this;
@@ -170,6 +186,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             scope:this
         });
          },
+        //
         onCreateNewDiagnoseTap:function (button, e, eOpts) {
             var diagnoseOverlay;
             if (this.getDiagnoseoverlay()) {

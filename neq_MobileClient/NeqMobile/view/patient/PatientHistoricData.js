@@ -1,5 +1,10 @@
-Ext.define('NeqMobile.view.patient.detail.HistoricalDataContainer', {
+/**
+ * @author chopsuey
+ */
+
+Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     extend: 'Ext.Panel',
+    xtype: 'patienthistoricdata',
 
     config: {
         margin: 0,
@@ -14,6 +19,7 @@ Ext.define('NeqMobile.view.patient.detail.HistoricalDataContainer', {
                 items: [
                     {
                         xtype: 'panel',
+                        id:'vitaldatachart',
                         margin: '0 0 5 0',
                         minHeight: 300,
                         padding: 5,
@@ -21,7 +27,7 @@ Ext.define('NeqMobile.view.patient.detail.HistoricalDataContainer', {
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: 'Temperature, Blood pressure, BMI',
+                                title: 'Vital Data - Temperature, Blood pressure, BMI',
                                 layout: {
                                     align: 'start',
                                     type: 'hbox'
@@ -59,13 +65,14 @@ Ext.define('NeqMobile.view.patient.detail.HistoricalDataContainer', {
                     },
                     {
                         xtype: 'panel',
+                        id:'fluidbalancechart',
                         minHeight: 300,
                         padding: 5,
                         items: [
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
-                                title: 'Liquidity Balance',
+                                title: 'Fluid Balance',
                                 layout: {
                                     align: 'start',
                                     type: 'hbox'

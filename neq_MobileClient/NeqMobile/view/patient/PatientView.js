@@ -8,8 +8,10 @@
 
 Ext.define('NeqMobile.view.patient.PatientView', {
     extend:'Ext.carousel.Carousel',
-    requires:['NeqMobile.view.patient.PatientDashboard', 'NeqMobile.view.patient.PatientLab', 'NeqMobile.view.patient.PatientInfoImages'],
+    requires:['NeqMobile.view.patient.PatientDashboard', 'NeqMobile.view.patient.PatientLab',
+              'NeqMobile.view.patient.PatientInfoImages', 'NeqMobile.view.patient.PatientHistoricData'],
     xtype:'patientview',
+
     config:{
         items:[
 
@@ -22,6 +24,9 @@ Ext.define('NeqMobile.view.patient.PatientView', {
             ,
             {
                 xtype:'patientlab'
+            },
+            {
+                xtype:'patienthistoricdata'
             }
 
         ]
