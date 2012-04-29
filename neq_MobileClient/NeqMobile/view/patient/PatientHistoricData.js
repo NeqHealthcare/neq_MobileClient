@@ -26,6 +26,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
+                                height: 40,
+                                style: 'font-size: 10pt; font-style: normal; vertical-align: middle;',
                                 title: 'Vital Data - Temperature, Blood pressure, BMI',
                                 layout: {
                                     align: 'start',
@@ -46,6 +48,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                             {
                                 xtype: 'titlebar',
                                 docked: 'top',
+                                height: 40,
+                                style: 'font-size: 10pt; font-style: normal; vertical-align: middle;',
                                 title: 'Fluid Balance',
                                 layout: {
                                     align: 'start',
@@ -69,6 +73,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                         margin: '0 4 0 0',
                                         padding: 5,
                                         text: 'Day',
+                                        style: 'font-size: 10pt;',
                                         flex: 1
                                     },
                                     {
@@ -77,6 +82,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                         margin: '0 4 0 4',
                                         padding: 5,
                                         text: 'Week',
+                                        style: 'font-size: 10pt;',
                                         flex: 1
                                     },
                                     {
@@ -84,6 +90,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                         id: 'historicaldata_btn_month',
                                         margin: '0 0 0 4',
                                         text: 'Month',
+                                        style: 'font-size: 10pt;',
                                         flex: 1
                                     }
                                 ]
