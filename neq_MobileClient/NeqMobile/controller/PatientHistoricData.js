@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientHistoricData', {
     extend:'Ext.app.Controller',
-    requires: ['NeqMobile.controller.PatientVitalData', 'NeqMobile.controller.PatientFluidBalance'],
+    requires: ['NeqMobile.view.chart.PatientVitalData', 'NeqMobile.view.chart.PatientFluidBalance'],
 
     config:{
         models:['HistoricData'],
