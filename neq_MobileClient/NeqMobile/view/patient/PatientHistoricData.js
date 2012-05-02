@@ -3,27 +3,29 @@
  */
 // var fluidbalancechart =
 var store = new Ext.data.JsonStore({
-    fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5'],
+    fields: ['date', 'data1', 'data2', 'data3', 'data4', 'data5'],
     data: [
-        {'name':'metric one', 'data1':35, 'data2':0, 'data3':0, 'data4':8, 'data5':13},
-        {'name':'metric two', 'data1':38, 'data2':56, 'data3':56, 'data4':10, 'data5':3},
-        {'name':'metric three', 'data1':40, 'data2':99, 'data3':88, 'data4':12, 'data5':7},
-        {'name':'metric four', 'data1':39, 'data2':80, 'data3':66, 'data4':1, 'data5':23},
-        {'name':'metric five', 'data1':42, 'data2':240, 'data3':240, 'data4':13, 'data5':33}
+        {'date':'07/12/2011 14:34', 'data1':35, 'data2':0, 'data3':0, 'data4':8, 'data5':13},
+        {'date':'07/11/2011 11:34', 'data1':38, 'data2':56, 'data3':56, 'data4':10, 'data5':3},
+        {'date':'07/13/2011 15:34', 'data1':40, 'data2':99, 'data3':88, 'data4':12, 'data5':7},
+        {'date':'07/12/2011 16:34', 'data1':39, 'data2':80, 'data3':66, 'data4':1, 'data5':23},
+        {'date':'07/12/2011 17:12', 'data1':42, 'data2':240, 'data3':240, 'data4':13, 'data5':33}
     ]
 });
 
 var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
-    width: 800,
-    height: 250,
+    //width: 800,
+    height: 210,
     //autoSize: true,
+    xPadding: 5,
+    yPadding: 5,
     animate: true,
     showMarkers: true,
     store: store,
-    //legend: {
-    //    position: 'left'
-    //},
+    legend: {
+        position: 'left'
+    },
 
     axes: [{
         // Axis for Temperature from 35 to 42 Degrees, displayed on left side of the graph
@@ -43,50 +45,186 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
         maximum: 240
     },{
         // x-Axis displayed at the bottom to show the timeline when the data was measured
-        type: 'Category',//'Time',
+        type: 'Time',//'Time',
         position: 'bottom',
-        fields: ['name']
+        fields: ['date'],
         //title: 'Day',
-        //dateFormat: 'M d h m',
+        dateFormat: 'h:i A',//'m/d/y h:i',
         // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
         //constrain: true,
-        //fromDate: new Date('1/1/11'),
-        //toDate: new Date('1/1/11')
+        fromDate: new Date('07/11/2011'),
+        toDate: new Date('07/13/2011')
+        // turn lables on x-axis
+        //label: {
+        //    rotate: {
+        //        degrees: 315
+        //    }
+        //}
     }],
 
     series: [{
         type: 'line',
         showInLegend: true,
         label: 'Temperature',
+        title: 'Temperature',
         highlight: {
             size: 7,
             radius: 7
         },
         axis: 'left',
-        xField: 'name',
+        xField: 'date',
         yField: 'data1'
     },{
         type: 'line',
         showInLegend: true,
         label: 'Bloodpressure',
+        title: 'Bloodpressure',
         highlight: {
             size: 7,
             radius: 7
         },
         axis: 'right',
-        xField: 'name',
+        xField: 'date',
         yField: 'data2'
     },{
         type: 'line',
         showInLegend: true,
-        label: 'Puls',
+        label: 'Pulse',
+        title: 'Pulse',
         highlight: {
             size: 7,
             radius: 7
         },
         axis: 'right',
-        xField: 'name',
+        xField: 'date',
         yField: 'data3'
+    }]
+});
+
+var fluidbalancechart = Ext.create('Ext.chart.Chart', {
+
+    //width: 800,
+    height: 210,
+    //autoSize: true,
+    animate: true,
+    xPadding: 5,
+    yPadding: 5,
+    showMarkers: true,
+    store: store,
+    legend: {
+        position: 'left'
+    },
+    axes: [{
+        // Axis for Temperature from 35 to 42 Degrees, displayed on left side of the graph
+        type: 'Numeric',
+        position: 'left',
+        grid: {
+            odd: {stroke: '#555'},
+            even: {stroke: '#ccc'}
+        },
+        minimum: -600,
+        maximum: 600
+    },{
+        // Axis for Temperature from 35 to 42 Degrees, displayed on left side of the graph
+        type: 'Numeric',
+        position: 'right',
+        minimum: -600,
+        maximum: 600
+    }, {
+        // x-Axis displayed at the bottom to show the timeline when the data was measured
+        type: 'Time',//'Time',
+        position: 'bottom',
+        fields: ['date'],
+        //title: 'Day',
+        dateFormat: 'h:i A',//'m/d/y h:i',
+        // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
+        //constrain: true,
+        fromDate: new Date('07/11/2011'),
+        toDate: new Date('07/13/2011')
+        // turn lables on x-axis
+        //label: {
+        //    rotate: {
+        //        degrees: 315
+        //    }
+        //}
+        /* sencha 1 example for grouping
+         axes: [{
+         type: 'Time',
+         position: 'bottom',
+         fields: 'date',
+         title: 'Day',
+         dateFormat: 'M d',
+         groupBy: 'year,month,day',
+         aggregateOp: 'sum',
+
+
+         constrain: true,
+         fromDate: new Date('1/1/11'),
+         toDate: new Date('1/7/11')
+         }]
+         */
+
+    }],
+    series: [{
+        type: 'column',
+        markerConfig: {},
+        showInLegend: true,
+        highlight: {
+            size: 7,
+            radius: 7
+        },
+        axis: ['left', 'bottom'],
+        xField: 'date',
+        yField: 'data1',
+        //xPadding: 5,
+        //yPadding: 5,
+        label: {
+            display: 'insideEnd',
+            'text-anchor': 'middle',
+            field: 'data1',
+            //renderer: Ext.util.Format.numberRenderer('0'),
+            orientation: 'horizontal',
+            color: '#000'
+        },
+        style:'color: green;',
+        title: 'Fluid intake'
+    },{
+        type: 'column',
+        markerConfig: {},
+        showInLegend: true,
+        highlight: {
+            size: 7,
+            radius: 7
+        },
+        axis: ['left', 'bottom'],
+        xField: 'date',
+        yField: 'data2',
+        xPadding: 150,
+        //yPadding: 5,
+        label: {
+            display: 'insideEnd',
+            'text-anchor': 'middle',
+            field: 'data2',
+            //renderer: Ext.util.Format.numberRenderer('0'),
+            orientation: 'horizontal',
+            color: '#000'
+        },
+        style:'color: red;',
+        title: 'Fluid loss'
+    },{
+        type: 'line',
+        markerConfig: {},
+        showInLegend: true,
+        label: 'Balance',
+        title: 'Balance',
+        highlight: {
+            size: 7,
+            radius: 7
+        },
+        axis: 'right',
+        xField: 'date',
+        yField: 'data3',
+        style: 'color: #000'
     }]
 });
 
@@ -94,10 +232,6 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     extend: 'Ext.Panel',
     requires: ['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line'],
     xtype: 'patienthistoricdata',
-
-// - Chart erstellen -----------------------------------------
-
-
 
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
 
@@ -115,7 +249,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                     {
                         xtype: 'panel',
                         margin: '0 0 5 0',
-                        minHeight: 300,
+                        //minHeight: 300,
                         padding: 5,
                         items: [
                             {
@@ -138,7 +272,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                     },
                     {
                         xtype: 'panel',
-                        minHeight: 350,
+                        //minHeight: 350,
                         padding: 5,
                         items: [
                             {
@@ -154,8 +288,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                             },
                             {
                                 xtype: 'container',
-                                id: 'fluidbalancechart'//,
-                                //items: fluidbalancechart
+                                id: 'fluidbalancechart',
+                                items: fluidbalancechart
                             },
                             {
                                 xtype: 'container',
