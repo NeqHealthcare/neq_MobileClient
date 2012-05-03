@@ -165,6 +165,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
          */
 
     }],
+    maxGutter: [10, 10],
     series: [{
         type: 'column',
         markerConfig: {},
@@ -175,9 +176,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         },
         axis: ['left', 'bottom'],
         xField: 'date',
-        yField: 'data1',
-        //xPadding: 5,
-        //yPadding: 5,
+        yField: 'data5',
         label: {
             display: 'insideEnd',
             'text-anchor': 'middle',
@@ -186,8 +185,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
             orientation: 'horizontal',
             color: '#000'
         },
-        style:'color: green;',
-        title: 'Fluid intake'
+        title: 'Fluid intake/loss'
     },{
         type: 'column',
         markerConfig: {},
@@ -196,21 +194,18 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
             size: 7,
             radius: 7
         },
-        axis: ['left', 'bottom'],
+        axis: ['left', 'top'],
         xField: 'date',
-        yField: 'data2',
-        xPadding: 150,
-        //yPadding: 5,
+        yField: 'data5',
         label: {
             display: 'insideEnd',
             'text-anchor': 'middle',
-            field: 'data2',
+            field: 'data1',
             //renderer: Ext.util.Format.numberRenderer('0'),
             orientation: 'horizontal',
             color: '#000'
         },
-        style:'color: red;',
-        title: 'Fluid loss'
+        title: 'Fluid intake/loss'
     },{
         type: 'line',
         markerConfig: {},
@@ -334,6 +329,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                 xtype: 'fieldset',
                 padding: 5,
                 title: 'Additional Information',
+                readOnly: true,
                 items: [
                     {
                         xtype: 'textareafield',

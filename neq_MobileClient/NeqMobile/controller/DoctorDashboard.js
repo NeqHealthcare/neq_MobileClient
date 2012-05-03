@@ -15,9 +15,10 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         refs:{
             doctordashboard:'doctordashboard',
             workspace:'workspace',
-            appointment:'appointment'
+            appointment:'appointment',
+            doctornews:'doctornews'
         },
-        stores: ['Appointment'],
+        stores: ['Appointment', 'DoctorNews'],
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
@@ -25,6 +26,9 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             'workspace doctordashboard #doctordashboardlab':{beforeitemexpand:'onLabtestTap'},
             'workspace appointment selectfield':{
                 change:'onappointmentcountchange'
+            },
+            'workspace doctornews selectfield': {
+                change:'ondoctornewstopicchange'
             }
 
         },
@@ -202,6 +206,28 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
 
         testchart.setItems(mycircle);
+    },
+
+    showDoctorNews: function (){
+        var me = this;
+        var doctornewsdrequest = this.getAppointment();
+        var selectfield = doctornewsrequest.down('#doctornewsselectfield');
+        var topic = selectfield.getValue();
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
+        if(!doctornewsstore){
+            doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');
+        }
+        doctornewsstore.getProxy().setExtraParam('count',count);
+        doctornewsstore.load({
+            callback: function (records, operation, success){
+                this.getDoctordashboard().down('doctornews').down('#doctornews').setStore(doctornewsstore);
+            },
+            scope: this
+        });
+    },
+
+    onDoctorNewsSelect:function (list, appointmentrecord, options) {
+
     },
 
     showAppointments: function (){
