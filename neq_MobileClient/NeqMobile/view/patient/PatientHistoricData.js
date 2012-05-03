@@ -196,7 +196,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         },
         axis: ['left', 'top'],
         xField: 'date',
-        yField: 'data5',
+        yField: 'data4',
         label: {
             display: 'insideEnd',
             'text-anchor': 'middle',
