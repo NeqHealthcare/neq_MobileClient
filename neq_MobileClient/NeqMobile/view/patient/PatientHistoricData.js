@@ -233,7 +233,10 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     config: {
         margin: 0,
         padding: 5,
-        scrollable: true,
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
         items: [
             {
                 xtype: 'fieldset',
