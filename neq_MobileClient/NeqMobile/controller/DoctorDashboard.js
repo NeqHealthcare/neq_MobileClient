@@ -9,7 +9,7 @@
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment'],
+    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment', 'NeqMobile.store.DoctorNews', 'NeqMobile.store.DoctorNewsTopics'],
 
     config:{
         refs:{
@@ -18,7 +18,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             appointment:'appointment',
             doctornews:'doctornews'
         },
-        stores: ['Appointment', 'DoctorNews'],
+        stores: ['Appointment', 'DoctorNews', 'DoctorNewsTopics'],
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
@@ -229,6 +229,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     onDoctorNewsSelect:function (list, appointmentrecord, options) {
 
     },
+
+    ondoctornewstopicchange:function (){},
 
     showAppointments: function (){
         var me = this;
