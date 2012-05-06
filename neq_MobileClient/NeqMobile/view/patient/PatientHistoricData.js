@@ -230,7 +230,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
 
 Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     extend: 'Ext.Panel',
-    requires: ['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line'],
+    requires: ['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line','NeqMobile.view.patient.measurements.HeartbeatLive'],
     loadPatientHistoricData:function (chartdata) {
         vitaldatachart.setStore(chartdata);
         fluidbalancechart.setStore(chartdata);
@@ -246,7 +246,10 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
         padding: 5,
         scrollable: true,
         items: [
-            {
+            
+            {xtype:'fieldset',
+                items:{xtype:'heartbeatlive'}
+                                            ,
                 xtype: 'fieldset',
                 margin: 0,
                 padding: 5,
