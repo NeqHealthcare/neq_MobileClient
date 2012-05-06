@@ -12,6 +12,105 @@
 </p>
 
 <div id="releases">
+
+<div class="release">
+    <h1>
+        Release Notes for Sencha Touch 2.0.1
+    </h1>
+
+    <p class="notes">
+        Release Notes: Release Notes: April 23, 2012<br>
+        Version Number: 2.0.1
+    </p>
+
+    <div style="margin: 10px">
+        <p><b>Special Notes:</b></p>
+        <p><b>If you are using a LocalStorage proxy, from now on your Model's <i>identifier</i> strategy must generate unique id's.
+            We suggest you use the included UUID strategy by adding <i>identifier: 'uuid'</i> to your Model definition. Any existing
+            Models you have saved to LocalStorage will need to have this added. A warning will be thrown for any Model configured
+            with a LocalStorage proxy that doesn't have a unique id generating strategy.</b></p>
+        <p>The <strong>change</strong> event in <i>Ext.field.Select</i> has been changed to return the new and old
+            values and not records. This is to make it more consistent with all other form fields.</p>
+        <p>The <strong>change</strong> event in <i>Ext.field.Slider</i> has been changed event now passes the Slider component</p>
+        <p>Removed the default Ext.MessageBox requirement, added a proper error when Ext.Msg is used without Ext.MessageBox the requirement</p>
+        <p>Refactored NavigationBar.  NavigationBar now extends TitleBar and has ellipsis support. Animations in NavigationView on Android are now supported</p>
+        <p>Optimized Card Layout with extra absolute position wrapper, improves performance in complex applications and when docking items to the left/right</p>
+        <p>Implemented a new default ui for the radio field</p>
+        <p>Revamped Command, removed all binaries (now reside in SDK Tools installations entirely)</p>
+    </div>
+
+    <ul>
+        <li>Enhancements/Changes
+            <ul>
+                <li>[TOUCH-2697] Added support for Cordova (PhoneGap 1.5+)</li>
+                <li>Added timestamp to the URL of every request to burst the browser's cache</li>
+                <li>[TOUCH-2365, TOUCH-1766] Changed local storage proxy to not generate id's for records. Instead it always uses the id defined on the record. This means that the model's identifier strategy has to generate unique id's when saving to local storage</li>
+                <li>[TOUCH-2674] Ext.layout.Card now uses this.cls + '-container' instead of a hard coded class name</li>
+                <li>[TOUCH-2516] Viewport's 'preventZooming' config is now false by default</li>
+                <li>[TOUCH-2732] Documented Model.isModel as private</li>
+                <li>Updated default generated app with more documentation and more defaults</li>
+                <li>Added performance optimizations to the layout css</li>
+                <li>Added performance optimizations to Card layout to prevent reflows</li>
+                <li>Added cleanups for icon, startupImage, factory() and docs</li>
+                <li>Added default startup images for retina-iPad</li>
+                <li>[TOUCH-2757] Updated hidden field to extend from field.Text so name attributes are added onto the input/component</li>
+                <li>[TOUCH-2757] Updated standardSubmit in form.Panel so it enabled all input fields within spinner fields to be enabled so the value gets posted</li>
+                <li>Added "?breakpoint" support for the sencha-touch-all-debug.js build</li>
+                <li>Added error stack trace and cross-domain XHR for dependencies resolution script</li>
+                <li>[TOUCH-2784] Updated Flex documentation</li>
+            </ul>
+        </li>
+        <li>Bug Fixes
+            <ul>
+                <li>Fixed a bug for production microloader builds</li>
+                <li>[TOUCH-2643] Fixed a bug with datepickerfield where the date format was not being updated</li>
+                <li>[TOUCH-2668] Fixed animations and the location where you can tap a toggle field</li>
+                <li>[TOUCH-2685] Fixed for radio fields when their value is 0</li>
+                <li>[TOUCH-2384] Fixed requires not working within an overridden class</li>
+                <li>[TOUCH-2469] Fixed card layout animation config proxying to sub-animation instances</li>
+                <li>[TOUCH-2641, TOUCH-2682, TOUCH-2689] Fixed memory leaks related to removing items from Collections, Model Cache and Stores</li>
+                <li>[TOUCH-2468] Fixed handling of XHR status code 0</li>
+                <li>[TOUCH-2522] Fixed documentation for Ext.onReady and marked Ext.isReady flag as private</li>
+                <li>[TOUCH-2452] Fixed 'activate' being fired twice initially for a card item</li>
+                <li>[TOUCH-2657, TOUCH-2309] Fixed delayed repainting issue on iOS for button pressing</li>
+                <li>[TOUCH-1265] Fixed issue with update method not loading associated data in DataView/List</li>
+                <li>[TOUCH-2716] Fixed issue with ListPaging allowing loadMore to be tapped when there are no more records</li>
+                <li>Fixed issue with setting both 'docked' and a floating option of a component</li>
+                <li>[TOUCH-2419] Fixed Toggle's minValueCls and maxValueCls configs not being handled properly when changed</li>
+                <li>[TOUCH-2394]Fixed Draggable and SizeMonitor to cleanup properly when an element is destroyed</li>
+                <li>[TOUCH-2711] Fixed issue with initial tab configuration not showing</li>
+                <li>[TOUCH-2731] Fixed issue with select field where values passed to change event were just the display fields</li>
+                <li>[TOUCH-2665] Fixed issue with setActiveItem not working properly on a TabPanel</li>
+                <li>[TOUCH-2647] Fixed issue with 'selectionchange' not passing an array of the Models changed</li>
+                <li>[TOUCH-2720] Fixed an issue with selectfield where setting the value with no store/options would cause a hard error</li>
+                <li>[TOUCH-2747] Fixed issue with incorrect event signatures in NestedList and Slider</li>
+                <li>[TOUCH-2645] Fixed issues relating to filtering the same property multiple times</li>
+                <li>[TOUCH-2645] Fixed an issue where records would be destroyed before adding them to a store</li>
+                <li>[TOUCH-2462] Fixed Sencha Command not respecting 'ignore' items when generating native builds</li>
+                <li>[TOUCH-2761] Fixed issue with NavigationView not hiding the back button if no animation is used</li>
+                <li>Fixed issue with unwrapping Translated components on Android</li>
+                <li>Fixed issue with destroying a Card layout during animation on Android</li>
+                <li>Fixed sync loading to load "cache-busting" URLs</li>
+                <li>Fixed startup image logic for iOS <= 4.3 where media query is not supported properly</li>
+                <li>[TOUCH-2777] Fixed itemtaphold event on Component based DataViews</li>
+                <li>[TOUCH-2698] Fixed Android bottom TabBar blank icon issue on Android devices</li>
+                <li>Fixed paths with spaces not being decoded properly in Command</li>
+                <li>[TOUCH-2802] Fixed issue with Selectable not handling record removal properly</li>
+                <li>[TOUCH-2781] Fixed issue with togglefield where the value returned was an array</li>
+            </ul>
+        <li>Known Issues
+            <ul>
+                <li>Android 4 transitions are hampered by a <a
+                        href="http://code.google.com/p/android/issues/detail?id=25147" target="_blank">bug reported to
+                    the Android team</a>. Help get its attention by starring the issue.
+                </li>
+                <li>
+                    <a href="http://www.sencha.com/forum/showthread.php?173327-WebStorage-proxy-can-t-deal-with-associated-data&p=740031&viewfull=1#post740031"
+                       target="_blank">Dealing with localstorage and associations</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
 <div class="release">
     <h1>
         Release Notes for Sencha Touch 2.0.1.RC
