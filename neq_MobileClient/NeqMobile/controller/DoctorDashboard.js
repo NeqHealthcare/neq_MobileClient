@@ -36,7 +36,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
                 change:'onappointmentcountchange'
             },
             'workspace doctornews selectfield': {
-                change:'ondoctornewstopicchange'
+                change:'onDoctorNewsTopicChange'
             }
 
         },
@@ -113,11 +113,15 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
     },
 
+    // What to do when different NewsTopic is selected
     onDoctorNewsSelect:function (list, appointmentrecord, options) {
 
     },
 
-    ondoctornewstopicchange:function (){},
+    // load new scope of news according to selected topic
+    onDoctorNewsTopicChange:function (){
+
+    },
 
 /* - LabTest Functions/Events ---------------------------------------------------------------------------------- */
 
