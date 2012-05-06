@@ -7,7 +7,7 @@
  */
 
 
-Ext.define('NeqMobile.model.NewDiagnose', {
+Ext.define('NeqMobile.model.Procedure', {
     extend:'Ext.data.Model',
     config:{
         fields:[
@@ -16,7 +16,7 @@ Ext.define('NeqMobile.model.NewDiagnose', {
         ],
         proxy:{
             type:'neqproxy',
-            customUrl:'/diagnose/procedure'
+            customUrl:'/diagnose/procedures'
         }
 
     }

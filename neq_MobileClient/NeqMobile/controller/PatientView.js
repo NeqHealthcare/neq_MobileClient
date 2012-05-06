@@ -13,7 +13,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     requires:['NeqMobile.view.patient.create.CreateDiagnose'],
 
     config:{
-        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType'],
+        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure'],
 
         refs:{
             patientview:'patientview',
