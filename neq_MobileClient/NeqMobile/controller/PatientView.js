@@ -13,7 +13,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     requires:['NeqMobile.view.patient.create.CreateDiagnose'],
 
     config:{
-        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients'],
+        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData'],
 
         refs:{
             patientview:'patientview',
@@ -71,6 +71,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         var me = this;
         NeqMobile.manager.Session.setCurrentPatient(patientid);
         var patientview = this.getPatientview();
+        var vitaldataview = patientview.down('patienthistoricdata');
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
         var patientinfoimages = patientview.down('patientinfoimages');
@@ -185,6 +186,21 @@ Ext.define('NeqMobile.controller.PatientView', {
             },
             scope:this
         });
+
+       var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+        if (!vitaldatastore) {
+            vitaldatastore = Ext.create('NeqMobile.store.VitalData');
+        }
+        vitaldatastore.getProxy().setExtraParam('patientId', patientid);
+        vitaldatastore.getProxy().setExtraParam('start_Date', '10.03.2012');
+        vitaldatastore.getProxy().setExtraParam('end_Date', '15.04.2012');
+        vitaldatastore.load({
+            callback:function (records, operation, success) {
+                patientview.down('patienthistoricdata').loadPatientHistoricData(vitaldatastore);
+            },
+            scope:this
+        });
+
          },
         //
         onCreateNewDiagnoseTap:function (button, e, eOpts) {

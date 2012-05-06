@@ -3580,6 +3580,7 @@ Ext.JSON.encodeDate = function(d) {
      * Encodes an Object, Array or other value
      * @param {Object} o The variable to encode
      * @return {String} The JSON string
+     * @method
      */
     this.encode = function() {
         var ec;
@@ -3598,6 +3599,7 @@ Ext.JSON.encodeDate = function(d) {
      * @param {String} json The JSON string
      * @param {Boolean} safe (optional) Whether to return null or throw an exception if the JSON is invalid.
      * @return {Object} The resulting object
+     * @method
      */
     this.decode = function() {
         var dc;
@@ -6311,24 +6313,29 @@ var noArgs = [],
         },
 
         createOverride: function(className, data) {
-            var overriddenClassName = data.override;
+            var overriddenClassName = data.override,
+                requires = Ext.Array.from(data.requires);
 
             delete data.override;
+            delete data.requires;
 
             this.existCache[className] = true;
 
-            // Override the target class right after it's created
-            this.onCreated(function() {
-                this.get(overriddenClassName).override(data);
+            Ext.require(requires, function() {
+                // Override the target class right after it's created
+                this.onCreated(function() {
+                    this.get(overriddenClassName).override(data);
 
-                // This push the overridding file itself into Ext.Loader.history
-                // Hence if the target class never exists, the overriding file will
-                // never be included in the build
-                this.triggerCreated(className);
-            }, this, overriddenClassName);
+                    // This push the overridding file itself into Ext.Loader.history
+                    // Hence if the target class never exists, the overriding file will
+                    // never be included in the build
+                    this.triggerCreated(className);
+                }, this, overriddenClassName);
+            }, this);
 
             return this;
         },
+
         /**
          * Instantiate a class by its alias; usually invoked by the convenient shorthand {@link Ext#createByAlias Ext.createByAlias}
          * If {@link Ext.Loader} is {@link Ext.Loader#setConfig enabled} and the class has not been defined yet, it will
@@ -7711,8 +7718,7 @@ var noArgs = [],
                 isFileLoaded = this.isFileLoaded,
                 scriptElements = this.scriptElements,
                 noCacheUrl = url + (this.getConfig('disableCaching') ? ('?' + this.getConfig('disableCachingParam') + '=' + Ext.Date.now()) : ''),
-                isCrossOriginRestricted = false,
-                xhr, status, onScriptError;
+                xhr, status, content, onScriptError;
 
             if (isFileLoaded[url]) {
                 return this;
@@ -7748,7 +7754,7 @@ var noArgs = [],
                 }
 
                 try {
-                    xhr.open('GET', url, false);
+                    xhr.open('GET', noCacheUrl, false);
                     xhr.send(null);
                 }
                 catch (e) {
@@ -7760,13 +7766,13 @@ var noArgs = [],
                     //</debug>
                 }
 
-                status = (xhr.status === 1223) ? 204 : xhr.status;
+                status = (xhr.status == 1223) ? 204 : xhr.status;
+                content = xhr.responseText;
 
-                if (status === 0 || (status >= 200 && status < 300)) {
+                if ((status >= 200 && status < 300) || status == 304 || (status == 0 && content.length > 0)) {
                     // Debugger friendly, file names are still shown even though they're eval'ed code
                     // Breakpoints work on both Firebug and Chrome's Web Inspector
-                    Ext.globalEval(xhr.responseText + "\n//@ sourceURL=" + url);
-
+                    Ext.globalEval(content + "\n//@ sourceURL=" + url);
                     onLoad.call(scope);
                 }
                 else {
@@ -8162,8 +8168,7 @@ var noArgs = [],
     Ext.exclude = alias(Loader, 'exclude');
 
     /**
-     * Adds a listener to be notified when the document is ready (before onload and before images are loaded).
-     * Shorthand of {@link Ext.Loader#onReady}(fn, scope, true, options).
+     * Adds a listener to be notified when the document is ready and all dependencies are loaded.
      *
      * @param {Function} fn The method the event invokes.
      * @param {Object} [scope] The scope in which the handler function executes. Defaults to the browser window.
