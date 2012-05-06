@@ -10,22 +10,26 @@
 
 Ext.define('NeqMobile.controller.PatientHistoricData', {
     extend:'Ext.app.Controller',
-    requires: ['NeqMobile.view.chart.PatientVitalData', 'NeqMobile.view.chart.PatientFluidBalance'],
+    requires: ['NeqMobile.view.patient.PatientHistoricData'],
 
     config:{
-        models:['HistoricData'],
+        models:['VitalData'],
+        store:['VitalData'],
         refs:{
             vitalchartcontainer: '#vitaldatachart',
-            fluidchartcontainer: '#fluidbalancechart'
+            fluidchartcontainer: '#fluidbalancechart',
+            historicaldata_btn_day:  Ext.get("historicaldata_btn_day"),
+            historicaldata_btn_week:  Ext.ComponentManager.get("historicaldata_btn_week"),
+            patienthistoricdata: 'patienthistoricdata'
         },
         control:{
-            '#historicaldata_btn_day':{
+            historicaldata_btn_day:{
                 tap:'onShowDailyDataTap'
             },
-            '#historicaldata_btn_week':{
+            historicaldata_btn_week:{
                 tap:'onShowWeeklyDataTap'
             },
-            '#historicaldata_btn_month':{
+            'workspace patienthistoricdata #historicaldata_btn_month':{
                 tap:'onShowMonthlyDataTap'
             }
         }
@@ -33,7 +37,9 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
 
 /* - Functions ---------------------------------------------------------------------------------- */
 
-    onShowDailyDataTap:function (){},
+    onShowDailyDataTap:function (){
+        alert('test') ;
+    },
     // zeige Tagesausschnitt der aktuellsten Daten (heute();)
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
 
