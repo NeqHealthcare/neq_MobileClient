@@ -6,19 +6,27 @@
  * To change this template use File | Settings | File Templates.
  */
 
+/* - Basic Definitions of DoctorDashboard Controller ------------------------------------------------------------- */
 
 Ext.define('NeqMobile.controller.DoctorDashboard', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment', 'NeqMobile.store.DoctorNews', 'NeqMobile.store.DoctorNewsTopics'],
+    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment'],
 
     config:{
+
+        /* - References ---------------------------------------------------------------------------------- */
         refs:{
             doctordashboard:'doctordashboard',
             workspace:'workspace',
             appointment:'appointment',
-            doctornews:'doctornews'
+            doctornews:'doctornews',
+            doctornewstopics : 'doctornewstopics'
         },
+
+        /* - Used Stores ---------------------------------------------------------------------------------- */
         stores: ['Appointment', 'DoctorNews', 'DoctorNewsTopics'],
+
+        /* - Eventlistener ---------------------------------------------------------------------------------- */
         control:{
             //   'workspace patientlist list':{select:'someFunc'},
             'workspace #homebutton':{tap:'onHomeTap'},
@@ -28,15 +36,21 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
                 change:'onappointmentcountchange'
             },
             'workspace doctornews selectfield': {
-                change:'ondoctornewstopicchange'
+                change:'onDoctorNewsTopicChange'
             }
 
         },
+
+        /* - Document/Site Routing Definitions ------------------------------------------------------------------- */
         routes:{
             'doctordashboard':'switchtohome'
         },
+
+        /* - ? dont know whats that ?  --------------------------------------------------------------------------- */
         pollFn:undefined
     },
+
+    /* - Initializing Function - Starts when Controller gets called ---------------------------------------------- */
     init:function () {
         var me = this;
 
@@ -44,11 +58,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         Ext.Viewport.on('logout', this.stoppolling, me);
     },
 
-    onappointmentcountchange:function(selectfield, newValue, oldValue, eOpts ){
-        console.log('changed number of appointments '+newValue);
-        this.showAppointments();
-    }
-,
+/* - Basic Functions/Events --------------------------------------------------------------------------------------- */
+
     onHomeTap:function () {
         this.redirectTo('doctordashboard');
     },
@@ -59,24 +70,83 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
         this.showAppointments();
+        this.showDoctorNewsTopics();
     },
+
+/* - DoctorInfo Headerinformation Functions/Events ---------------------------------------------------------------- */
+
     refreshdoctorinfo:function () {
         var userinforecord = NeqMobile.manager.Session.getSession().get('userinfo');
 
         this.getDoctordashboard().down('doctorheader').setRecord(userinforecord);
-        this.getDoctordashboard().down('#doc_last_login').setValue(NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
+        this.getDoctordashboard().down('#doc_last_login').setValue(
+            NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
 
         console.log("userinfodata 1: " + userinforecord.get('name') + ' ' + userinforecord.get('id')
-                  + ' ' + userinforecord.get('physician_id') + ' ' + userinforecord.get('image_url')
-                  + ' ' + userinforecord.get('number_of_patients') + ' ' + NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
-                //'name', 'id', 'physician_id', 'image_url', 'number_of_patients', 'last_login'
+            + ' ' + userinforecord.get('physician_id') + ' ' + userinforecord.get('image_url')
+            + ' ' + userinforecord.get('number_of_patients') + ' '
+            + NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
+    },
+
+/* - DoctorNews Functions/Events ---------------------------------------------------------------------------------- */
+
+    showDoctorNewsTopics: function (){
+        var me = this;
+        var session = NeqMobile.manager.Session.getSession();
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewstopics')
+
+        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsTopics')}
+
+        me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewsstore);
+
+        doctornewsstore.load({
+            params:{session:session.get('sessionId')}//,
+            /*
+             callback:function(records, operation, success){
+             me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewsstore);
+             },
+             scope: me,
+             success:function (response, opts) {
+             var obj = Ext.decode(response.responseText);
+             console.log('Newstopic: ' + doctornewsstore.get('topic') + '' + 'Url:' + doctornewsstore.get('url') + ' ' + 'ID:' + doctornewsstore.get('id'));
+             }*/
+        });
+    },
+
+    showDoctorNews: function(){
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewsstore');
+
+        if (!doctornewsstore) {
+            doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');
+        }
+
+        doctornewsstore.getProxy().setExtraParam('id', patientid);
+        doctornewsstore.load({
+            callback:function (records, operation, success) {
+                patientdashboard.loadDiagnoses(doctornewsstore);
+                finishwaiter(0);
+        },
+        scope:this
+    });
+
+    // What to do when different NewsTopic is selected
+    onDoctorNewsSelect:function (list, appointmentrecord, options) {
 
     },
+
+    // load new scope of news according to selected topic
+    onDoctorNewsTopicChange:function (){
+
+    },
+
+/* - LabTest Functions/Events ---------------------------------------------------------------------------------- */
+
     onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
         console.log('labtest on doctordashboard tapped');
         this.showLabResultDetail(dw, labrecordoverview.get('id'), item, labrecordoverview);
         record.markAsRead();
     },
+
     showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
 
         console.log(dw);
@@ -143,6 +213,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         var pollFn = this.getPollFn();
         clearInterval(pollFn);
     },
+
     startpolling:function () {
         console.log('starting polling');
         var me = this;
@@ -189,48 +260,12 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         );
     },
 
-    createchart:function () {
-        var testchart = this.getDoctordashboard().down('testchart');
-        testchart.setHeight(750);
-//        testchart.setWidth(500);
-        var mycircle = new Ext.draw.Component({
-            items:[
-                {
-                    type:'circle',
-                    fill:'#ffc',
-                    radius:100,
-                    x:100,
-                    y:100
-                }
-            ]
-        });
+/* - Appointments Functions/Events ---------------------------------------------------------------------------------- */
 
-        testchart.setItems(mycircle);
+    onappointmentcountchange:function(selectfield, newValue, oldValue, eOpts ){
+        console.log('changed number of appointments '+newValue);
+        this.showAppointments();
     },
-
-    showDoctorNews: function (){
-        var me = this;
-        var doctornewsdrequest = this.getAppointment();
-        var selectfield = doctornewsrequest.down('#doctornewsselectfield');
-        var topic = selectfield.getValue();
-        var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
-        if(!doctornewsstore){
-            doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');
-        }
-        doctornewsstore.getProxy().setExtraParam('count',count);
-        doctornewsstore.load({
-            callback: function (records, operation, success){
-                this.getDoctordashboard().down('doctornews').down('#doctornews').setStore(doctornewsstore);
-            },
-            scope: this
-        });
-    },
-
-    onDoctorNewsSelect:function (list, appointmentrecord, options) {
-
-    },
-
-    ondoctornewstopicchange:function (){},
 
     showAppointments: function (){
         var me = this;
@@ -252,5 +287,26 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
 
     onAppointmentSelect:function (list, appointmentrecord, options) {
 
+    },
+
+/* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */
+
+    createchart:function () {
+        var testchart = this.getDoctordashboard().down('testchart');
+        testchart.setHeight(750);
+//        testchart.setWidth(500);
+        var mycircle = new Ext.draw.Component({
+            items:[
+                {
+                    type:'circle',
+                    fill:'#ffc',
+                    radius:100,
+                    x:100,
+                    y:100
+                }
+            ]
+        });
+
+        testchart.setItems(mycircle);
     }
 });

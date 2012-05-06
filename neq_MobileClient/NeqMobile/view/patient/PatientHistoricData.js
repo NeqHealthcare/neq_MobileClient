@@ -2,16 +2,17 @@
  * @author chopsuey
  */
 // var fluidbalancechart =
-var store = new Ext.data.JsonStore({
-    fields: ['date', 'data1', 'data2', 'data3', 'data4', 'data5'],
+/*var store = new Ext.data.JsonStore({
+    fields: [{name: 'date', type: 'date'},
+     'data1', 'data2', 'data3', 'data4', 'data5'],
     data: [
-        {'date':'07/12/2011 14:34', 'data1':35, 'data2':0, 'data3':0, 'data4':8, 'data5':13},
+        {'date': '07/12/2011 14:34', 'data1':35, 'data2':0, 'data3':0, 'data4':8, 'data5':13},
         {'date':'07/11/2011 11:34', 'data1':38, 'data2':56, 'data3':56, 'data4':10, 'data5':3},
         {'date':'07/13/2011 15:34', 'data1':40, 'data2':99, 'data3':88, 'data4':12, 'data5':7},
         {'date':'07/12/2011 16:34', 'data1':39, 'data2':80, 'data3':66, 'data4':1, 'data5':23},
         {'date':'07/12/2011 17:12', 'data1':42, 'data2':240, 'data3':240, 'data4':13, 'data5':33}
     ]
-});
+});*/
 
 var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
@@ -22,7 +23,9 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
     yPadding: 5,
     animate: true,
     showMarkers: true,
-    store: store,
+    xtyppe: 'vitaldatachart',
+    //store: vitaldata,
+    requires:'NeqMobile.store.VitalData',
     legend: {
         position: 'left'
     },
@@ -49,11 +52,11 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
         position: 'bottom',
         fields: ['date'],
         //title: 'Day',
-        dateFormat: 'h:i A',//'m/d/y h:i',
+        dateFormat: 'd-m-Y',
         // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
         //constrain: true,
-        fromDate: new Date('07/11/2011'),
-        toDate: new Date('07/13/2011')
+        fromDate: new Date('01-02-2012'),
+        toDate: new Date('01-05-2012')
         // turn lables on x-axis
         //label: {
         //    rotate: {
@@ -73,7 +76,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
         },
         axis: 'left',
         xField: 'date',
-        yField: 'data1'
+        yField: 'temprature'
     },{
         type: 'line',
         showInLegend: true,
@@ -85,19 +88,19 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
         },
         axis: 'right',
         xField: 'date',
-        yField: 'data2'
+        yField: 'blood_pressure'
     },{
         type: 'line',
         showInLegend: true,
-        label: 'Pulse',
-        title: 'Pulse',
+        label: 'BMI',
+        title: 'BMI',
         highlight: {
             size: 7,
             radius: 7
         },
         axis: 'right',
         xField: 'date',
-        yField: 'data3'
+        yField: 'bmi'
     }]
 });
 
@@ -110,7 +113,9 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
     xPadding: 5,
     yPadding: 5,
     showMarkers: true,
-    store: store,
+    xtype: 'fluidbalancechart',
+   // store: vitaldata,
+    requires:'NeqMobile.store.VitalData',
     legend: {
         position: 'left'
     },
@@ -136,11 +141,11 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         position: 'bottom',
         fields: ['date'],
         //title: 'Day',
-        dateFormat: 'h:i A',//'m/d/y h:i',
+        dateFormat: 'd-m-Y',
         // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
         //constrain: true,
-        fromDate: new Date('07/11/2011'),
-        toDate: new Date('07/13/2011')
+        fromDate: new Date('01-02-2012'),
+        toDate: new Date('01-05-2012')
         // turn lables on x-axis
         //label: {
         //    rotate: {
@@ -176,11 +181,11 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         },
         axis: ['left', 'bottom'],
         xField: 'date',
-        yField: 'data5',
+        yField: 'fluid_balace',
         label: {
             display: 'insideEnd',
             'text-anchor': 'middle',
-            field: 'data1',
+            field: 'fluid_balace',
             //renderer: Ext.util.Format.numberRenderer('0'),
             orientation: 'horizontal',
             color: '#000'
@@ -196,11 +201,11 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         },
         axis: ['left', 'top'],
         xField: 'date',
-        yField: 'data4',
+        yField: 'fluid_balace',
         label: {
             display: 'insideEnd',
             'text-anchor': 'middle',
-            field: 'data1',
+            field: 'fluid_balace',
             //renderer: Ext.util.Format.numberRenderer('0'),
             orientation: 'horizontal',
             color: '#000'
@@ -218,14 +223,20 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
         },
         axis: 'right',
         xField: 'date',
-        yField: 'data3',
+        yField: 'fluid_balace',
         style: 'color: #000'
     }]
 });
 
 Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     extend: 'Ext.Panel',
-    requires: ['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line'],
+    requires: ['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line','NeqMobile.view.patient.measurements.HeartbeatLive'],
+    loadPatientHistoricData:function (chartdata) {
+        vitaldatachart.setStore(chartdata);
+        fluidbalancechart.setStore(chartdata);
+    },
+
+
     xtype: 'patienthistoricdata',
 
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
@@ -233,12 +244,12 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
     config: {
         margin: 0,
         padding: 5,
-        scrollable: {
-            direction: 'vertical',
-            directionLock: true
-        },
+        scrollable: true,
         items: [
-            {
+            
+            {xtype:'fieldset',
+                items:{xtype:'heartbeatlive'}
+                                            ,
                 xtype: 'fieldset',
                 margin: 0,
                 padding: 5,
