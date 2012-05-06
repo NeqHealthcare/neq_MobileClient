@@ -127,7 +127,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
                 finishwaiter(0);
         },
         scope:this
-    });
+    })
+    },
 
     // What to do when different NewsTopic is selected
     onDoctorNewsSelect:function (list, appointmentrecord, options) {
@@ -309,4 +310,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
 
         testchart.setItems(mycircle);
     }
-});
+
+}
+
+);
