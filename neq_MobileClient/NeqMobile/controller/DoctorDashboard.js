@@ -113,6 +113,22 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
     },
 
+    showDoctorNews: function(){
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewsstore');
+
+        if (!doctornewsstore) {
+            doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');
+        }
+
+        doctornewsstore.getProxy().setExtraParam('id', patientid);
+        doctornewsstore.load({
+            callback:function (records, operation, success) {
+                patientdashboard.loadDiagnoses(doctornewsstore);
+                finishwaiter(0);
+        },
+        scope:this
+    });
+
     // What to do when different NewsTopic is selected
     onDoctorNewsSelect:function (list, appointmentrecord, options) {
 
