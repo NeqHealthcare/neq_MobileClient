@@ -23,7 +23,7 @@ Ext.application({
 
    //     cometd.registerTransport('long-polling', new org.cometd.LongPollingTransport());
 //        cometd.registerTransport('callback-polling', new org.cometd.CallbackPollingTransport());
-        var url = 'http://localhost:8080/cometd';
+        var url = 'http://localhost:8081/cometd/echo';
 
         var initconnection = function () {
 
@@ -67,7 +67,7 @@ Ext.application({
 
         var sendmessage = function () {
             console.log('trying to send a message: "this is a NeqMobile test message"');
-            cometd.publish("/service/echo", { msg:'this is a NeqMobile test message' });
+            cometd.publish("/cometd/echo", { msg:'this is a NeqMobile test message' });
         };
 
         Ext.create('Ext.Container',

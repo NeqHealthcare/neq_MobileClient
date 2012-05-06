@@ -9,7 +9,7 @@
 Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
     extend:'Ext.Container',
     requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab',
-              'NeqMobile.view.chart.TestChart', 'NeqMobile.view.doctor.DoctorNewsFeedContainer',
+              'NeqMobile.view.doctor.DoctorNewsFeedContainer',
               'NeqMobile.view.doctor.Appointment'],
     xtype:'doctordashboard',
 
