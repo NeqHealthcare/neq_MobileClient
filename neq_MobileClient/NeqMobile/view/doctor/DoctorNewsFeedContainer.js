@@ -29,6 +29,8 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
                     xtype:'touchgridpanel',
                     itemId:'hospitaldoctornews',
                     id:'hospitaldoctornews',
+                    //padding: 5,
+                    //margin: 5,
 
                     scrollable:false,
                     features:[

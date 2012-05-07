@@ -116,7 +116,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         var id = 1
         //var doctordash = DoctorDashboard.down('doctordashboard');
 
-        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');}
+        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');}
 
         me.getDoctordashboard().down('#hospitaldoctornews').setStore(doctornewsstore);
 
@@ -125,12 +125,12 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         doctornewsstore.getProxy().setExtraParam('count', count);
 
         doctornewsstore.load({
-            params:{session:session.get('sessionId'), id:id, count:count}//,
-            //callback:function (records, operation, success) {
-            //    doctordash.loadDoctorNews(doctornewsstore);
-            //    finishwaiter(0);
-            //},
-            //scope:this
+            params:{session:session.get('sessionId'), id:id, count:count},
+            callback:function (records, operation, success) {
+                me.getDoctordashboard().down('#hospitaldoctornews').loadDoctorNews(doctornewsstore);
+                finishwaiter(0);
+            },
+            scope:this
         });
     },
 
