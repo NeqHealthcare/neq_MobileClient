@@ -3,19 +3,30 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedDetail', {
     xtype: 'doctornewsfeeddetail',
 
     config: {
-        padding: 5,
+        //padding: 5,
         scrollable: false,
         items: [
             {
-                xtype: 'textareafield',
-                name:'description',
-                padding: 5,
-                //margin: 5,
-                //width: 250,
-                labelWidth: 0,
-                readOnly: true,
-                id: 'doctornewsfeeddetail'//,
-                //html: '<p><h2>Dies ist eine Beispielnews</h2></br> Lorum ipsum dolorum Lorum ipsum dolorum Lorum ipsum dolorum</p>'
+                xtype:'fieldset',
+                //margin:'10 10 10 0',
+                flex:1,
+                items:[
+                    {
+                        xtype: 'textareafield',
+                        name:'description',
+                        labelWidth: 0,
+                        readOnly: true,
+                        id: 'doctornewsfeeddetail'//,
+                    },
+                    {
+                        xtype:'textfield',
+                        style:'text-align: right;',
+                        label:'Link:',
+                        labelWidth:'50px',
+                        name:'link',
+                        readOnly:true
+                    }
+                ]
             }
         ]
     }

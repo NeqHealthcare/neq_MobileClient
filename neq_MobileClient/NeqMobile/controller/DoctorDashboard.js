@@ -125,12 +125,14 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         doctornewsstore.getProxy().setExtraParam('count', count);
 
         doctornewsstore.load({
-            params:{session:session.get('sessionId'), id:id, count:count},
+            params:{session:session.get('sessionId'), id:id, count:count}//,
+            /*
             callback:function (records, operation, success) {
-                me.getDoctordashboard().down('#hospitaldoctornews').loadDoctorNews(doctornewsstore);
+                me.getDoctordashboard().down('#hospitaldoctornews').setRecord(doctornewsstore);
                 finishwaiter(0);
             },
             scope:this
+            */
         });
     },
 
