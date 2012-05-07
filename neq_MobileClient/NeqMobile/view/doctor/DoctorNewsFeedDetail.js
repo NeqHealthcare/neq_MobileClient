@@ -7,6 +7,7 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedDetail', {
         items: [
             {
                 xtype: 'textareafield',
+                name:'description',
                 padding: 5,
                 width: 250,
                 labelWidth: 0,

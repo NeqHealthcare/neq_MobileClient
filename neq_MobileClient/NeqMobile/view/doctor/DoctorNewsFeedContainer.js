@@ -11,7 +11,7 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
                     xtype: 'selectfield',
                     id:'doctornewsfeedtopicselectfield',
                     label: 'Topic',
-                    value: 'all',
+                    displayField:'topic',
                     /*
                     options: [
                         {text: 'All', value:  'all' },
@@ -53,8 +53,6 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
                             width:'20%'
                         }
                     ]
-
-
                 }
             ]
         }

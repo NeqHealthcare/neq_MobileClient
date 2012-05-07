@@ -53,7 +53,6 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     /* - Initializing Function - Starts when Controller gets called ---------------------------------------------- */
     init:function () {
         var me = this;
-
         Ext.Viewport.on('login', this.startpolling, me);
         Ext.Viewport.on('logout', this.stoppolling, me);
     },
