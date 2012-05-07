@@ -20,7 +20,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             workspace:'workspace',
             appointment:'appointment',
             doctornews:'doctornews',
-            doctornewstopics : 'doctornewstopics'
+            doctornewstopics : 'doctornewstopics',
+            doctornewsfeeddetail : 'doctornewsfeeddetail'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -71,6 +72,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshdoctorinfo();
         this.showAppointments();
         this.showDoctorNewsTopics();
+        this.showDoctorNews();
     },
 
 /* - DoctorInfo Headerinformation Functions/Events ---------------------------------------------------------------- */
@@ -93,41 +95,43 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     showDoctorNewsTopics: function (){
         var me = this;
         var session = NeqMobile.manager.Session.getSession();
-        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewstopics')
+        var doctornewstopicsstore = Ext.data.StoreManager.lookup('doctornewstopics')
 
-        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsTopics')}
+        if (!doctornewstopicsstore) {doctornewstopicsstore = Ext.create('NeqMobile.store.DoctorNewsTopics')}
 
-        me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewsstore);
+        me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewstopicsstore);
 
-        doctornewsstore.load({
-            params:{session:session.get('sessionId')}//,
-            /*
-             callback:function(records, operation, success){
-             me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewsstore);
-             },
-             scope: me,
-             success:function (response, opts) {
-             var obj = Ext.decode(response.responseText);
-             console.log('Newstopic: ' + doctornewsstore.get('topic') + '' + 'Url:' + doctornewsstore.get('url') + ' ' + 'ID:' + doctornewsstore.get('id'));
-             }*/
+        doctornewstopicsstore.load({
+            params:{session:session.get('sessionId')}
         });
     },
 
     showDoctorNews: function(){
-        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewsstore');
+        var me = this;
+        var session = NeqMobile.manager.Session.getSession();
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
+        var selectfield = me.getDoctordashboard().down('#doctornewsfeedtopicselectfield');
+        var count = 10
+        // var id = selectfield.getValue();
+        var id = 1
+        //var doctordash = DoctorDashboard.down('doctordashboard');
 
-        if (!doctornewsstore) {
-            doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');
-        }
+        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');}
 
-        doctornewsstore.getProxy().setExtraParam('id', patientid);
+        me.getDoctordashboard().down('#hospitaldoctornews').setStore(doctornewsstore);
+
+        // needs session + id(id of topic selected) + count(number of entries to show)
+        doctornewsstore.getProxy().setExtraParam('id', id);
+        doctornewsstore.getProxy().setExtraParam('count', count);
+
         doctornewsstore.load({
-            callback:function (records, operation, success) {
-                patientdashboard.loadDiagnoses(doctornewsstore);
-                finishwaiter(0);
-        },
-        scope:this
-    })
+            params:{session:session.get('sessionId'), id:id, count:count}//,
+            //callback:function (records, operation, success) {
+            //    doctordash.loadDoctorNews(doctornewsstore);
+            //    finishwaiter(0);
+            //},
+            //scope:this
+        });
     },
 
     // What to do when different NewsTopic is selected
