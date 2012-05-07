@@ -53,6 +53,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     /* - Initializing Function - Starts when Controller gets called ---------------------------------------------- */
     init:function () {
         var me = this;
+
         Ext.Viewport.on('login', this.startpolling, me);
         Ext.Viewport.on('logout', this.stoppolling, me);
     },
@@ -110,6 +111,23 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
              console.log('Newstopic: ' + doctornewsstore.get('topic') + '' + 'Url:' + doctornewsstore.get('url') + ' ' + 'ID:' + doctornewsstore.get('id'));
              }*/
         });
+    },
+
+    showDoctorNews: function(){
+        var doctornewsstore = Ext.data.StoreManager.lookup('doctornewsstore');
+
+        if (!doctornewsstore) {
+            doctornewsstore = Ext.create('NeqMobile.store.DoctorNewsStore');
+        }
+
+        doctornewsstore.getProxy().setExtraParam('id', patientid);
+        doctornewsstore.load({
+            callback:function (records, operation, success) {
+                patientdashboard.loadDiagnoses(doctornewsstore);
+                finishwaiter(0);
+        },
+        scope:this
+    })
     },
 
     // What to do when different NewsTopic is selected

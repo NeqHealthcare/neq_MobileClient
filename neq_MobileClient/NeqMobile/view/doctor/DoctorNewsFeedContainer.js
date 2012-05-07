@@ -40,16 +40,16 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
                     columns:[
                         {
                             header:'News',
-                            dataIndex:  'news_short',
+                            dataIndex:  'title',
                             //style:'padding-left: 1em;',
-                            renderer: NeqMobile.util.Renderer.completerenderer,
+                            //renderer: NeqMobile.util.Renderer.completerenderer,
                             width:'80%'
                         },
                         {
-                            header:'Url',
-                            dataIndex:  'url',
+                            header:'Date',
+                            dataIndex:  'pubDate',
                             //style:'padding-left: 1em;',
-                            renderer: NeqMobile.util.Renderer.completerenderer,
+                            renderer: NeqMobile.util.Renderer.daterenderer,
                             width:'20%'
                         }
                     ]

@@ -42,54 +42,77 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
             //top part
             {
                 xtype: 'fieldset',
+                id: 'toppart',
                 layout: 'hbox',
                 items: [
                     {
                         xtype: 'fieldset',
                         title: 'Disease Information',
+                        id: 'diseaseInfo',
                         items:[
                             {
-                                xtype: 'textfield',
+                                xtype: 'selectfield',
                                 label: 'Disease',
-                                value: 'asdf'
+                                id: 'diseasefield'
+                                //tpl: '<bold>{categoriy_rec_name}</bold>'
                             },
                             {
-                                xtype: 'textfield',
+                                xtype: 'selectfield',
                                 label: 'Status',
-                                value: 'asdf'
+                                id:'status',
+                                options: [
+                                    {text: 'acute', value: 'a'},
+                                    {text: 'chronic', value: 'c'},
+                                    {text: 'unchanged', value: 'u' },
+                                    {text: 'healed', value: 'h'},
+                                    {text: 'improving', value:'i' },
+                                    {text: 'worsening', value: 'w'}
+                                ]
                             },
                             {
-                                xtype: 'textfield',
+                                xtype: 'selectfield',
                                 label: 'Severity',
-                                value: 'asdf'
+                                id: 'severity',
+                                options: [
+                                    {text: '-'},
+                                    {text: 'Mild', value: '1_mi'},
+                                    {text: 'Moderate', value: '2_mo'},
+                                    {text: 'Severe', value: '3_se'}
+                                ]
                             },
                             {
                                 xtype: 'checkboxfield',
-                                label: 'Infectious'
-                                //id
+                                label: 'Infectious',
+                                id: 'infectability',
+                                value: false
                             },
                             {
                                 xtype: 'checkboxfield',
-                                label: 'Active'
-                                //id
+                                label: 'Active',
+                                id: 'activeness',
+                                value: false
                             }
                         ]
                     },
                     {
                         xtype:'fieldset',
+                        id: 'therapy',
                         title: 'Therapy',
                         items:[
                             {
                                 xtype: 'checkboxfield',
                                 label: 'Currently on Treatment:',
-                                value: 'asdf'
+                                id: 'treatment',
+                                value: false
                             },
                             {
-                                xtype: 'selectfield',
-                                label: 'Treatment Description'
+                                xtype: 'textfield',
+                                label: 'Treatment Description',
+                                id: 'description'
                             },
                             {
                                 xtype: 'datepickerfield',
+                                id: 'treatmentStart',
                                 destroyPickerOnHide: true,
                                 name: 'date',
                                 dateFormat: 'd.m.Y.',
@@ -103,6 +126,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             },
                             {
                                 xtype: 'datepickerfield',
+                                id: 'treatmentEnd',
                                 destroyPickerOnHide: true,
                                 name: 'date',
                                 dateFormat: 'd.m.Y.',
@@ -116,8 +140,8 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             },
                             {
                                 xtype: 'selectfield',
-                                label: 'Code'
-                                //id
+                                label: 'Code',
+                                id: 'procedures'
                             }
                         ]
                     }
@@ -127,13 +151,16 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
             {
                     xtype: 'fieldset',
                     layout: 'hbox',
+                    id: 'middlepart',
                     items: [
                         {
                             xtype: 'fieldset',
                             title: 'Diagnose Information',
+                            id: 'diagnoseInfo',
                             items:[
                                 {
                                     xtype: 'datepickerfield',
+                                    id: 'diagnosisDate',
                                     destroyPickerOnHide: true,
                                     name: 'date',
                                     dateFormat: 'd.m.Y.',
@@ -147,11 +174,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'numberfield',
-                                    label: 'Age when diagnosed'
-                                   // value: 'asdf'
+                                    label: 'Age when diagnosed',
+                                    minValue:0,
+                                    maxValue: 150,
+                                    id: 'age'
                                 },
                                 {
                                     xtype: 'datepickerfield',
+                                    id: 'healedDate',
                                     destroyPickerOnHide: true,
                                     name: 'date',
                                     dateFormat: 'd.m.Y.',
@@ -164,34 +194,47 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     }
                                 },
                                 {
-                                    xtype: 'selectfield',
-                                    label: 'Physician'
-                                    //id
+                                    xtype: 'textfield',
+                                    label: 'Physician',
+                                    id: 'physicianSelectfield',
+                                    readOnly: true
                                 }
                             ]
                         },
                         {
                             xtype:'fieldset',
                             title: 'Allergies & Pregnancy',
+                            id: 'allergies',
                             items:[
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Allergic Disease',
-                                    value: 'asdf'
+                                    id: 'allergicDisese',
+                                    value: false
                                 },
                                 {
                                     xtype: 'selectfield',
-                                    label: 'Allergy Type'
+                                    label: 'Allergy Type',
+                                    id: 'allergyType',
+                                    options: [
+                                        {text: 'Drug Allergy', value:'da'},
+                                        {text: 'Food Allergy', value:'fa'},
+                                        {text: 'Misc Allergy', value:'ma'},
+                                        {text: 'Misc Contraindication', value:'mc'}
+                                    ]
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Pregnancy Warning',
-                                    value: 'asdf'
+                                    id:'pregnancyWarning',
+                                    value: false
                                 },
                                 {
                                     xtype: 'numberfield',
-                                    label: 'Contracted in pregnancy week #'
-                                    //id
+                                    label: 'Contracted in pregnancy week #',
+                                    minValue: 0,
+                                    maxValue: 45,
+                                    id:'pregnancy'
                                 }
                             ]
                         }

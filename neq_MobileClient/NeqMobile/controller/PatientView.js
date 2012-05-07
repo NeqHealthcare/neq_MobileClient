@@ -13,7 +13,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     requires:['NeqMobile.view.patient.create.CreateDiagnose'],
 
     config:{
-        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData'],
+        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure'],
 
         refs:{
             patientview:'patientview',
@@ -25,6 +25,9 @@ Ext.define('NeqMobile.controller.PatientView', {
             'workspace patientlist list':{select:'onPatientSelect'},
             'diagnosescontainer #createNewDaignosebutton':{
                 tap:'onCreateNewDiagnoseTap'
+            },
+            'diagnoseoverlay #x-submitDiagnoseButton':{
+                tap: 'onSubmitNewDiagnoseTap'
             }
         },
         // enables calling a view directly by address
@@ -204,14 +207,74 @@ Ext.define('NeqMobile.controller.PatientView', {
          },
         //
         onCreateNewDiagnoseTap:function (button, e, eOpts) {
-            var diagnoseOverlay;
+            var diagnoseoverlay;
             if (this.getDiagnoseoverlay()) {
                 diagnoseOverlay = this.getDiagnoseoverlay();
             } else {
                 diagnoseOverlay = Ext.create('NeqMobile.view.patient.create.CreateDiagnose');
             }
+
+            var physicianname= diagnoseOverlay.down('#middlepart').down('#diagnoseInfo').down('#physicianSelectfield');
+            physicianname.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
+
+            var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
+            if (!diseasetypestore) {
+                diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
+            }
+            diseasetypestore.load({
+                callback:function (records, operation, success) {
+                    diagnoseOverlay.down('#toppart').down('#diseaseInfo').down('#diseasefield').setStore(diseasetypestore);
+
+                },
+                scope:this
+            });
+
+            var procedures = Ext.data.StoreManager.lookup('procedure');
+            if (!procedures) {
+                procedures = Ext.create('NeqMobile.store.Procedure');
+            }
+            procedures.load({
+                callback:function (records, operation, success) {
+                    diagnoseOverlay.down('#toppart').down('#therapy').down('#procedures').setStore(procedures);
+
+                },
+                scope:this
+            });
             this.overlay = Ext.Viewport.add(diagnoseOverlay);
             this.overlay.show();
+        },
+
+        onSubmitNewDiagnoseTap:function (button, e, eOpts) {
+            var me = this;
+
+            var diagnoseoverlay = this.getDiagnoseoverlay();
+            var toppart = diagnoseoverlay.down('#toppart');
+            var diseaseInfo = toppart.down('diseaseInfo');
+            var diseasefield = diseaseInfo.down('#diseasefield').getValue();
+            var statusfield = diseaseInfo.down('#status').getValue();
+            var severityfield = diseaseInfo.down('#severity').getValue();
+            var infectability = diseaseInfo.down('#infectability').getValue();
+            var activeness = diseaseInfo.down('#activeness').getValue();
+            var therapy = toppart.down('therapy');
+            var treatment = therapy.down('#treatment').getValue();
+            var description = therapy.down('#description').getValue();
+            var treatmentStart = therapy.down('#treatmentStart').getValue();
+            var treatmentEnd = therapy.down('#treatmentEnd').getValue();
+
+            var middlepart = diagnoseoverlay.down('#middlepart');
+            var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
+            var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue();
+            var age = diagnoseInfo.down('#age').getValue();
+            var healedDate = diagnoseInfo.down('#healedDate').getValue();
+            var physicianSelectfield = diagnoseInfo.down('#physicianSelectfield').getValue();
+            var allergies = diagnoseoverlay.down('#diagnoseInfo');
+            var allergicDisese = allergies.down('#allergicDisese').getValue();
+            var allergyType = allergies.down('#allergyType').getValue();
+            var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
+            var pregnancy = allergies.down('#pregnancy').getValue();
+
+
         }
+
     }
 );
