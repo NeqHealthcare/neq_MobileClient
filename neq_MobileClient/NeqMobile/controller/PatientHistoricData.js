@@ -48,7 +48,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
 
     init:function () {
         var me = this;
-        Ext.Viewport.on('login', this.startHeartbeatLive, me);
+      //  Ext.Viewport.on('login', this.startHeartbeatLive, me);
 //        Ext.Viewport.on('logout', this.stoppolling, me);
     },
     startHeartbeatLive:function () {
@@ -73,8 +73,8 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
             cometd.publish("/cometd/pulse/1", { msg:'this is a NeqMobile test message' });
 
             var subscription2 = cometd.subscribe('/cometd/pulse/1', function (message) {
-                console.log('RECEIVED THE FOLLOWING COMETD DATA:')
-                console.log(message);
+                //console.log('RECEIVED THE FOLLOWING COMETD DATA:')
+                //console.log(message);
 
                 var values = Ext.decode(message.data);
 

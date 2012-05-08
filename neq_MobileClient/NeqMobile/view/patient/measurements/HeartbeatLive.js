@@ -6,13 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-mystore = Ext.create('Ext.data.Store', {
-    model: 'NeqMobile.model.HeartbeatCoordinate',
-    data : [
-        {x: 0.1,    y: 0.1} ,
-        {x: 0.2,    y: 0.2}
-    ]
-});
 
 Ext.define('NeqMobile.view.patient.measurements.HeartbeatLive',
     {

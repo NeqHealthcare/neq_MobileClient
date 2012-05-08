@@ -18,7 +18,7 @@ Ext.application({
     controllers:['General', 'Session', 'settings.Domains', 'Workspace','PatientView','PatientLab','DoctorDashboard', 'PatientHistoricData'],
     views:['Viewport'],
     stores:['Patients', 'Domains','NewLabResults'],
-    models:['Patient', 'Session', 'Domain','Diagnose','HeartbeatCoordinate'],
+    models:['Patient', 'Session', 'Domain','Diagnose'],
 
     launch:function () {
 
