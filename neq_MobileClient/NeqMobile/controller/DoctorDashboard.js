@@ -73,7 +73,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         this.refreshdoctorinfo();
         this.showAppointments();
         this.showDoctorNewsTopics();
-        this.showDoctorNews(1, 5);
+        this.showDoctorNews(1, 10);
     },
 
 /* - DoctorInfo Headerinformation Functions/Events ---------------------------------------------------------------- */
@@ -143,7 +143,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             value = value.get(field.getValueField());
         }
         console.log('Selectfield value changed to: ' + value);
-        this.showDoctorNews(value, 5);
+        this.showDoctorNews(value, 10);
         return value;
     },
 
