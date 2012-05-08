@@ -36,7 +36,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             'workspace appointment selectfield':{
                 change:'onappointmentcountchange'
             },
-            'workspace doctornews selectfield': {
+            'workspace doctordashboard #doctornewsfeedtopicselectfield': {
                 change:'onDoctorNewsTopicChange'
             }
 
@@ -66,13 +66,14 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     },
 
     switchtohome:function (button, e, eOpts) {
-        var workspace = this.getWorkspace();
+        var me = this;
+        var workspace = me.getWorkspace();
         workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
         this.showAppointments();
         this.showDoctorNewsTopics();
-        this.showDoctorNews();
+        this.showDoctorNews(onDoctorNewsTopicChange(), 5);
     },
 
 /* - DoctorInfo Headerinformation Functions/Events ---------------------------------------------------------------- */
@@ -106,15 +107,15 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
     },
 
-    showDoctorNews: function(){
+    showDoctorNews: function(id, count){
         var me = this;
         var session = NeqMobile.manager.Session.getSession();
         var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
-        var selectfield = me.getDoctordashboard().down('#doctornewsfeedtopicselectfield');
-        var count = 10
-        // var id = selectfield.getValue();
-        var id = 1
-        //var doctordash = DoctorDashboard.down('doctordashboard');
+        //var selectfield = me.getDoctordashboard().down('#doctornewsfeedtopicselectfield');
+        //var id = selectfield.getValue();
+        //var id = 1
+        //var count = 10
+
 
         if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');}
 
@@ -136,14 +137,13 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         });
     },
 
-    // What to do when different NewsTopic is selected
-    onDoctorNewsSelect:function (list, appointmentrecord, options) {
-
-    },
-
     // load new scope of news according to selected topic
-    onDoctorNewsTopicChange:function (){
-
+    onDoctorNewsTopicChange:function (field, value){
+        if (value instanceof Ext.data.Model) {
+            value = value.get(field.getValueField());
+        }
+        console.log('Selectfield value changed to: ' + value);
+        return value;
     },
 
 /* - LabTest Functions/Events ---------------------------------------------------------------------------------- */

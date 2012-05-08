@@ -12,14 +12,7 @@ Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
                     id:'doctornewsfeedtopicselectfield',
                     label: 'Topic',
                     displayField:'topic',
-                    /*
-                    options: [
-                        {text: 'All', value:  'all' },
-                        {text: 'Hospital', value: 'hospital'},
-                        {text: 'Medication', value: 'medication'},
-                        {text: 'Diseases', value: 'diseases'}
-                    ],
-                     */
+                    valueField:'id',
                     store:'doctornewstopics',
                     padding: 5,
                     width: 250,
