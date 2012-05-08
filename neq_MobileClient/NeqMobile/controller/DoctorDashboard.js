@@ -20,8 +20,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             workspace:'workspace',
             appointment:'appointment',
             doctornews:'doctornews',
-            doctornewstopics : 'doctornewstopics',
-            doctornewsfeeddetail : 'doctornewsfeeddetail'
+            doctornewstopics :'doctornewstopics',
+            doctornewsfeeddetail :'doctornewsfeeddetail'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */

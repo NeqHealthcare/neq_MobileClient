@@ -14,7 +14,8 @@ Ext.define('NeqMobile.controller.Workspace', {
         extend:'Ext.app.Controller',
         requires:['NeqMobile.view.Viewport', 'NeqMobile.store.Patients', 'NeqMobile.store.Diagnoses',
                   'NeqMobile.store.Vaccinations', 'NeqMobile.store.Medications', 'NeqMobile.model.LabTestRequest',
-                  'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults', 'NeqMobile.store.VitalData'],
+                  'NeqMobile.view.patient.create.CreateLabTestRequest', 'NeqMobile.store.LabResults', 'NeqMobile.store.VitalData',
+        'NeqMobile.view.patient.measurements.HeartbeatLive'],
         config:{
             refs:{
                 workspace:'workspace'

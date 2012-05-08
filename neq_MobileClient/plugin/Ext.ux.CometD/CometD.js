@@ -32,14 +32,17 @@
 
 Ext.require('org.cometd');
 
-org.cometd.JSON.toJSON = Ext.encode;
-org.cometd.JSON.fromJSON = Ext.decode;
+
 
 Ext.define('Ext.ux.CometD',
     {
         cometd:undefined,
         requires:'org.cometd',
         constructor:function (name) {
+
+            org.cometd.JSON.toJSON = Ext.encode;
+            org.cometd.JSON.fromJSON = Ext.decode;
+
             var me = this;
             me.cometd = new org.cometd.Cometd(name);
             var cometd = me.cometd;
@@ -80,4 +83,4 @@ Ext.define('Ext.ux.CometD',
     });
 
 // The default cometd instance
-Ext.ux.cometd = Ext.create('Ext.ux.CometD');
+//Ext.ux.cometd = Ext.create('Ext.ux.CometD');

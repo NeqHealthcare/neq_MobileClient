@@ -6,6 +6,8 @@ Ext.Loader.setConfig({
 Ext.Loader.setPath('Ext.ux.touch.grid','./plugin/Ext.ux.touch.grid/Ext.ux.touch.grid');
 Ext.Loader.setPath('Ext.plugin.Pinchemu','plugin/Ext.plugin.Pinchemu/Ext.plugin.Pinchemu.js');
 Ext.Loader.setPath('Ux.PinchZoomImage','plugin/Ux.PinchZoomImage/Ux/PinchZoomImage.js');
+Ext.Loader.setPath('Ext.ux.CometD','plugin/Ext.ux.CometD/CometD.js');
+Ext.Loader.setPath('org.cometd','plugin/Ext.ux.CometD/lib/cometd.js');
 
 Ext.application({
     appFolder:'NeqMobile',
@@ -16,9 +18,12 @@ Ext.application({
     controllers:['General', 'Session', 'settings.Domains', 'Workspace','PatientView','PatientLab','DoctorDashboard', 'PatientHistoricData'],
     views:['Viewport'],
     stores:['Patients', 'Domains','NewLabResults'],
-    models:['Patient', 'Session', 'Domain','Diagnose'],
+    models:['Patient', 'Session', 'Domain','Diagnose','HeartbeatCoordinate'],
 
     launch:function () {
+
+        Ext.cometd = new Ext.ux.CometD('defaultcometd');
+
         Ext.Viewport.add(
             Ext.create('NeqMobile.view.Viewport'));
     }

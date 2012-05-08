@@ -3,7 +3,7 @@ Ext.Loader.setConfig({
     disableCaching:true // for debugging
 });
 
-var mycometd;
+
 
 Ext.application({
     name:'CometDPlayground',
@@ -13,7 +13,7 @@ Ext.application({
       //  org.cometd.JSON.toJSON = Ext.encode;
      //   org.cometd.JSON.fromJSON = Ext.decode;
 
-        var cometd = new Ext.ux.CometD('defaultcometd');
+
 
         var _connected = false;
 //        if (org.cometd.WebSocket) {

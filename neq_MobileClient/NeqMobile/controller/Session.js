@@ -10,8 +10,8 @@ Ext.define('NeqMobile.controller.Session', {
     requires:['NeqMobile.manager.Session'],
     config:{
         models:['Domain'],
-        stores:['Domains','Patients'],
-        views:['Workspace','menu.Settings','settings.Domains'],
+        stores:['Domains', 'Patients'],
+        views:['Workspace', 'menu.Settings', 'settings.Domains'],
         refs:{
             login:'Login',
             viewport:'Viewport',
@@ -26,6 +26,60 @@ Ext.define('NeqMobile.controller.Session', {
             'menuSettings #logoutbutton':{tap:'onLogoutClick'},
             'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'}
         }
+    },
+
+    init:function () {
+        var me = this;
+        Ext.Viewport.on('login', this.prepareCometD, me);
+    },
+
+    prepareCometD:function () {
+        var _connected = false;
+        var url = 'http://localhost:8082/cometd/pulse';
+
+        var cometd = Ext.cometd;
+
+
+        console.log('configuring...');
+
+        cometd.configure({
+            url:url
+            //,
+          //  logLevel:'debug'
+        });
+        console.log('...configuration complete')
+        var subscription1 = cometd.addListener('/meta/connect', function (message) {
+            console.log(message)
+        });
+
+
+        cometd.addListener('/meta/connect', function (message) {
+
+            console.log('something arrived at the connect meta channel');
+            console.warn('CONNECTING TO: ' + url);
+            // if (cometd.getStatus() === 'disconnecting' || cometd.getStatus() === 'disconnected')
+            if (cometd.isDisconnected()) // Available since 1.1.2
+            {
+                return;
+            }
+            var wasConnected = _connected;
+            _connected = message.successful;
+            if (!wasConnected && _connected) {
+                console.log('reconneted')
+            }
+            else if (wasConnected && !_connected) {
+                console.log('disconneted)')
+            }
+        });
+
+        cometd.addListener('/meta/disconnect', function (message) {
+            if (message.successful) {
+                _connected = false;
+            }
+        });
+
+
+        cometd.handshake();
     },
     onBackFromDomainSettings:function () {
         this.getViewport().setActiveItem(this.getLogin());
@@ -83,7 +137,7 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('save sessionID...');
 
         // Creating the required Patient Store and its Proxy to load patient data from MAIS
-       console.log('loading patients');
+        console.log('loading patients');
         Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('patients'));
 
         var store = new NeqMobile.store.Patients(

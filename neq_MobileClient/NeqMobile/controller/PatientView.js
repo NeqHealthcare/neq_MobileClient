@@ -18,7 +18,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         refs:{
             patientview:'patientview',
             workspace:'workspace',
-            diagnoseoverlay: 'createnewdiagnoseOverlay'
+            diagnoseoverlay:'createnewdiagnoseOverlay'
         },
 
         control:{
