@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.patient.create.CreateDiagnose'],
+    requires:['NeqMobile.view.patient.create.CreateDiagnose', 'Ext.DateExtras'],
 
     config:{
         stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure'],
@@ -18,7 +18,8 @@ Ext.define('NeqMobile.controller.PatientView', {
         refs:{
             patientview:'patientview',
             workspace:'workspace',
-            diagnoseoverlay:'createnewdiagnoseOverlay'
+            diagnoseoverlay:'createnewdiagnoseoverlay',
+            diseasetype: 'diseasetype'
         },
 
         control:{
@@ -26,9 +27,9 @@ Ext.define('NeqMobile.controller.PatientView', {
             'diagnosescontainer #createNewDaignosebutton':{
                 tap:'onCreateNewDiagnoseTap'
             },
-            'diagnoseoverlay #x-submitDiagnoseButton':{
-                tap: 'onSubmitNewDiagnoseTap'
-            }
+            'createnewdiagnoseoverlay #submitDiagnoseButton':{tap: 'onSubmitNewDiagnoseTap'},
+            'createnewdiagnoseoverlay #toppart #diseaseInfo #diseasebutton':{tap: 'onDiseaseTypeSelect'},
+            'diseasetype':{select:'onDiseaseTypeTap'}
         },
         // enables calling a view directly by address
         routes:{
@@ -42,7 +43,10 @@ Ext.define('NeqMobile.controller.PatientView', {
 
 /* - Functions ---------------------------------------------------------------------------------- */
 
-    // Create initial view - show Patient startscreen
+
+
+
+// Create initial view - show Patient startscreen
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
@@ -194,9 +198,13 @@ Ext.define('NeqMobile.controller.PatientView', {
         if (!vitaldatastore) {
             vitaldatastore = Ext.create('NeqMobile.store.VitalData');
         }
+        var date = new Date();
+        //alert(Ext.Date.format(date, 'j/d/Y'));
         vitaldatastore.getProxy().setExtraParam('patientId', patientid);
-        vitaldatastore.getProxy().setExtraParam('start_Date', '10.03.2012');
-        vitaldatastore.getProxy().setExtraParam('end_Date', '15.04.2012');
+        vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+        date = Ext.Date.add(date, Ext.Date.DAY, -30);
+        vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+
         vitaldatastore.load({
             callback:function (records, operation, success) {
                 patientview.down('patienthistoricdata').loadPatientHistoricData(vitaldatastore);
@@ -205,7 +213,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         });
 
          },
-        //
+
         onCreateNewDiagnoseTap:function (button, e, eOpts) {
             var diagnoseoverlay;
             if (this.getDiagnoseoverlay()) {
@@ -217,22 +225,13 @@ Ext.define('NeqMobile.controller.PatientView', {
             var physicianname= diagnoseOverlay.down('#middlepart').down('#diagnoseInfo').down('#physicianSelectfield');
             physicianname.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
 
-            var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
-            if (!diseasetypestore) {
-                diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
-            }
-            diseasetypestore.load({
-                callback:function (records, operation, success) {
-                    diagnoseOverlay.down('#toppart').down('#diseaseInfo').down('#diseasefield').setStore(diseasetypestore);
 
-                },
-                scope:this
-            });
 
             var procedures = Ext.data.StoreManager.lookup('procedure');
             if (!procedures) {
                 procedures = Ext.create('NeqMobile.store.Procedure');
             }
+            //   console.log(diagnoseOverlay.down('#toppart').down('#therapy').down('#treatmentStart').getValue().getTime());
             procedures.load({
                 callback:function (records, operation, success) {
                     diagnoseOverlay.down('#toppart').down('#therapy').down('#procedures').setStore(procedures);
@@ -240,40 +239,73 @@ Ext.define('NeqMobile.controller.PatientView', {
                 },
                 scope:this
             });
+
+           // console.log(diagnoseOverlay.down('#toppart').down('#diagnoseInfo').down('infectability'));
+            //.getValue());
             this.overlay = Ext.Viewport.add(diagnoseOverlay);
             this.overlay.show();
         },
 
         onSubmitNewDiagnoseTap:function (button, e, eOpts) {
-            var me = this;
 
-            var diagnoseoverlay = this.getDiagnoseoverlay();
-            var toppart = diagnoseoverlay.down('#toppart');
-            var diseaseInfo = toppart.down('diseaseInfo');
-            var diseasefield = diseaseInfo.down('#diseasefield').getValue();
-            var statusfield = diseaseInfo.down('#status').getValue();
-            var severityfield = diseaseInfo.down('#severity').getValue();
-            var infectability = diseaseInfo.down('#infectability').getValue();
-            var activeness = diseaseInfo.down('#activeness').getValue();
-            var therapy = toppart.down('therapy');
-            var treatment = therapy.down('#treatment').getValue();
-            var description = therapy.down('#description').getValue();
-            var treatmentStart = therapy.down('#treatmentStart').getValue();
-            var treatmentEnd = therapy.down('#treatmentEnd').getValue();
+//            var me = this;
+//
+//            var diagnoseoverlay = this.getDiagnoseoverlay();
+//            var toppart = diagnoseoverlay.down('#toppart');
+//            var diseaseInfo = toppart.down('#diseaseInfo');
+//            var diseasefield = diseaseInfo.down('#diseasefield').getValue();
+//            var statusfield = diseaseInfo.down('#status').getValue();
+//            var severityfield = diseaseInfo.down('#severity').getValue();
+//            var infectability = diseaseInfo.down('#infectability').getValue();
+//            var activeness = diseaseInfo.down('#activeness').getValue();
+//            var therapy = toppart.down('#therapy');
+//            var treatment = therapy.down('#treatment').getValue();
+//            var description = therapy.down('#description').getValue();
+//            var treatmentStart = therapy.down('#treatmentStart').getValue();
+//            var treatmentEnd = therapy.down('#treatmentEnd').getValue();
+//
+//            var middlepart = diagnoseoverlay.down('#middlepart');
+//            var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
+//            var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue();
+//            var age = diagnoseInfo.down('#age').getValue();
+//            var healedDate = diagnoseInfo.down('#healedDate').getValue();
+//            var physicianSelectfield = diagnoseInfo.down('#physicianSelectfield').getValue();
+//            var allergies = diagnoseoverlay.down('#diagnoseInfo');
+//            var allergicDisese = allergies.down('#allergicDisese').getValue();
+//            var allergyType = allergies.down('#allergyType').getValue();
+//            var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
+//            var pregnancy = allergies.down('#pregnancy').getValue();
+    },
 
-            var middlepart = diagnoseoverlay.down('#middlepart');
-            var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
-            var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue();
-            var age = diagnoseInfo.down('#age').getValue();
-            var healedDate = diagnoseInfo.down('#healedDate').getValue();
-            var physicianSelectfield = diagnoseInfo.down('#physicianSelectfield').getValue();
-            var allergies = diagnoseoverlay.down('#diagnoseInfo');
-            var allergicDisese = allergies.down('#allergicDisese').getValue();
-            var allergyType = allergies.down('#allergyType').getValue();
-            var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
-            var pregnancy = allergies.down('#pregnancy').getValue();
+        onDiseaseTypeSelect: function(button, e, eOpts){
+            console.log('hallo');
+            var diseasetypeoverlay;
+            if (this.getDiseasetype()) {
+                diseasetypeoverlay = this.getDiseasetype();
+            } else {
+                diseasetypeoverlay = Ext.create('NeqMobile.view.patient.create.DiseaseType');
+            }
+            var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
+            if (!diseasetypestore) {
+                diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
+            }
+            diseasetypestore.load({
+                callback:function (records, operation, success) {
+                    diseasetypeoverlay.setStore(diseasetypestore);
 
+                },
+                scope:this
+            });
 
+            this.overlay = Ext.Viewport.add(diseasetypeoverlay);
+            this.overlay.show();
+
+        },
+        // Ext.dataview.DataView this, Number index, Ext.Element/Ext.dataview.component.DataItem target,
+        // Ext.data.Model record, Ext.EventObject e, Object eOpts
+        onListSelect: function(list, record, eOpts){
+            var selectedDisease = this.getDiseasetype().getSelection();
+            console.log(selectedDisease[0]);
         }
 
     }

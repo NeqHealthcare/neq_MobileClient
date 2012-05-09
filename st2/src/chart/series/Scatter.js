@@ -592,6 +592,18 @@ Ext.define('Ext.chart.series.Scatter', {
         point = item.point;
         return (point[0] - tolerance <= x && point[0] + tolerance >= x &&
             point[1] - tolerance <= y && point[1] + tolerance >= y);
+    }      ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });
 

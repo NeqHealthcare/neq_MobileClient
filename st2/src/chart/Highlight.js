@@ -167,6 +167,18 @@ Ext.define('Ext.chart.Highlight', {
             delete this.highlightedItem;
         }
         this.unHighlightSprite();
-    }
+    },
+
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    },
 });
 

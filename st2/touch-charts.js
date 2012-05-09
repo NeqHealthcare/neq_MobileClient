@@ -8401,7 +8401,19 @@ Ext.define('Ext.chart.theme.Style', {
         this.themeStyle = Ext.Object.chain(this.themeStyle);
         this.style = Ext.Object.chain(this.themeStyle);
         Ext.apply(this.style, config);
+    }   ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });
 
 /**
@@ -10180,6 +10192,7 @@ Ext.define('Ext.chart.Panel', {
         }
         return chart;
     }
+
 });
 
 /**
@@ -10753,6 +10766,19 @@ Ext.define('Ext.chart.Label', {
             }
         }
     }
+    ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    }
+
 });
 
 /**

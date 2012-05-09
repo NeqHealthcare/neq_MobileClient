@@ -1039,5 +1039,17 @@ Ext.define('Ext.chart.series.Line', {
         }
 
         return '#000';
+    }     ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });

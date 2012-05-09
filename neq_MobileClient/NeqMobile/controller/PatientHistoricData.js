@@ -10,37 +10,49 @@
 
 Ext.define('NeqMobile.controller.PatientHistoricData', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.patient.PatientHistoricData', 'Ext.ux.CometD'],
+    requires:['NeqMobile.view.patient.PatientHistoricData', 'org.cometd', 'Ext.ux.CometD',  'Ext.DateExtras'],
 
     config:{
         models:['VitalData'],
         store:['VitalData'],
         refs:{
 
-            workspace:'workspace'
-//            vitalchartcontainer:'#vitaldatachart',
-//            fluidchartcontainer:'#fluidbalancechart',
-//            historicaldata_btn_day:Ext.get("historicaldata_btn_day"),
+              workspace:'workspace',
+              vitalchartcontainer:'vitaldatachart',
+              fluidchartcontainer:'fluidbalancechart',
+//              historicaldata_btn_day: 'patienthistoricdata [name=historicaldata_btn_day]'
 //            historicaldata_btn_week:Ext.ComponentManager.get("historicaldata_btn_week"),
-//            patienthistoricdata:'patienthistoricdata'
+              patienthistoricdata:'patienthistoricdata'
         },
         control:{
-//            historicaldata_btn_day:{
-//                tap:'onShowDailyDataTap'
-//            },
-//            historicaldata_btn_week:{
-//                tap:'onShowWeeklyDataTap'
-//            },
-//            'workspace patienthistoricdata #historicaldata_btn_month':{
-//                tap:'onShowMonthlyDataTap'
-//            },
-            'workspace #startheartbeatlive':{
-                tap:'shityou'
+            '[name=historicaldata_btn_day]':{
+                tap:'onShowDailyDataTap'
             }
+          ,
+            '[name=historicaldata_btn_week]':{
+                tap:'onShowWeeklyDataTap'
+           },
+          '[name=historicaldata_btn_month]':{
+               tap:'onShowMonthlyDataTap'
+          },
+            'workspace [name=startheartbeatlive]':{
+                tap:'startHeartbeatLive'
+           },
+            patienthistoricdata:
+            {
+              show:'fetchData'
+
+            }
+
         }
     },
 
     /* - Functions ---------------------------------------------------------------------------------- */
+
+    fetchData:function()
+    {
+
+    },
 
     shityou:function () {
         alert('something');
@@ -88,39 +100,75 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
     },
 
     onShowDailyDataTap:function () {
-        alert('test');
+        var date = new Date();
+        var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+
+        vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+        date = Ext.Date.add(date, Ext.Date.DAY, -1);
+        vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+        //vitaldatastore.filterBy(this.dateFilter);
+        vitaldatastore.filter(Ext.create(
+        'Ext.util.Filter',
+            {filterFn: function(item) {
+            var store = Ext.data.StoreManager.lookup('vitaldata');
+            store.config.startDate = Ext.Date.add(new Date(), Ext.Date.DAY, -1);
+            return (Ext.Date.between(item.get('date'), store.config.startDate, store.config.endDate))
+        }
+
+        }));
+
+
+        //vitaldatastore.sync();
     },
+    dateFilter: new Ext.util.Filter({
+        filterFn: function(item) {
+            return (Ext.Date.between(item.date, vitaldatastore.startDate, vitaldatastore.endDate))
+
+        }
+    }),
     // zeige Tagesausschnitt der aktuellsten Daten (heute();)
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
 
     onShowWeeklyDataTap:function () {
+        var date = new Date();
+        var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+
+        vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+        date = Ext.Date.add(date, Ext.Date.DAY, -7);
+        vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+        //vitaldatastore.filterBy(this.dateFilter);
+        vitaldatastore.filter(Ext.create(
+            'Ext.util.Filter',
+            {filterFn: function(item) {
+                var store = Ext.data.StoreManager.lookup('vitaldata');
+                store.config.startDate = Ext.Date.add(new Date(), Ext.Date.DAY, -7);
+                return (Ext.Date.between(item.get('date'), store.config.startDate, store.config.endDate))
+            }
+            }));
+
     },
     // zeige Wochenausschnitt der aktuellsten Daten (heute();)
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
 
-    onShowMonthlyDataTap:function () {
+    onShowMonthlyDataTap: function () {
+    var date = new Date();
+    var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+
+    vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+    date = Ext.Date.add(date, Ext.Date.DAY, -30);
+    vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+    //vitaldatastore.filterBy(this.dateFilter);
+    vitaldatastore.filter(Ext.create(
+        'Ext.util.Filter',
+        {filterFn: function(item) {
+            var store = Ext.data.StoreManager.lookup('vitaldata');
+            store.config.startDate = Ext.Date.add(new Date(), Ext.Date.DAY, -30);
+            return (Ext.Date.between(item.get('date'), store.config.startDate, store.config.endDate))
+        }
+        }
+    ));
+
+
     }
-    // zeige Monatsausschnitt der aktuellsten Daten (heute();)
-    // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
-
-    /*
-     createchart:function () {
-     var testchart = this.getDoctordashboard().down('testchart');
-     testchart.setHeight(750);
-     //        testchart.setWidth(500);
-     var mycircle = new Ext.draw.Component({
-     items:[
-     {
-     type:'circle',
-     fill:'#ffc',
-     radius:100,
-     x:100,
-     y:100
-     }
-     ]
-     });
-
-     testchart.setItems(mycircle);
-     }
-     */
-});
+    }
+);

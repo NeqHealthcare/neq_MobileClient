@@ -256,5 +256,17 @@ Ext.define('Ext.chart.axis.Numeric', {
     applyData: function() {
         this.callParent(arguments);
         return this.calcEnds();
+    }   ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });

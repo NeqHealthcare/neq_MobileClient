@@ -111,5 +111,17 @@ Ext.define("Ext.chart.Shape", {
             stroke: 'none',
             fill: '#fff'
         });
+    } ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });

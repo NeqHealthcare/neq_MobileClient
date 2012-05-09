@@ -1252,6 +1252,17 @@ Ext.define('Ext.chart.Chart', {
     isXType: function(xtype) {
         return xtype === 'chart';
     },
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    },
 
     getRefItems: function(deep) {
         var me = this,
@@ -1294,6 +1305,7 @@ Ext.define('Ext.chart.Chart', {
                 ans = ans.concat(interaction.getRefItems(deep));
             }
         });
+
 
         return ans;
     }
