@@ -343,7 +343,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 items:[
                                     {
                                         xtype:'button',
-                                        name:'historicaldata_btn_day',
+                                        id:'historicaldata_btn_day',
                                         margin:'0 4 0 0',
                                         padding:5,
                                         text:'Day',
@@ -352,7 +352,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        name:'historicaldata_btn_week',
+                                        id:'historicaldata_btn_week',
                                         margin:'0 4 0 4',
                                         padding:5,
                                         text:'Week',
@@ -361,7 +361,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        name:'historicaldata_btn_month',
+                                        id:'historicaldata_btn_month',
                                         margin:'0 0 0 4',
                                         text:'Month',
                                         style:'font-size: 10pt;',

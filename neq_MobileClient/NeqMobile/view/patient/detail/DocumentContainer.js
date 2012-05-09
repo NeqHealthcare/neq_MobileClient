@@ -4,13 +4,13 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
         extend:'Ext.Panel',
         xtype:'documentcontainer',
-        requires:'Ux.PinchZoomImage',
-        plugins:[
-            {
-                xclass:'Ext.plugin.Pinchemu',
-                helpers:true
-            }
-        ],
+        requires:'Ux.PinchZoomImage'  ,
+//        plugins:[
+//            {
+//                xclass:'Ext.plugin.Pinchemu',
+//                helpers:true
+//            }
+//        ],
 
 
         config:{
