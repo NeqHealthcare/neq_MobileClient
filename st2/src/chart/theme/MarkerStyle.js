@@ -18,5 +18,17 @@ Ext.define('Ext.chart.theme.MarkerStyle', {
     
     isXType: function(xtype) {
         return xtype === 'marker';
+    },
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });

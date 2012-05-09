@@ -1,6 +1,6 @@
 Ext.define('NeqMobile.store.VitalData', {
         extend:'Ext.data.Store',
-        requires:'NeqMobile.model.VitalData',
+        requires:['NeqMobile.model.VitalData', 'Ext.DateExtras'],
 
 
         config:{
@@ -8,6 +8,17 @@ Ext.define('NeqMobile.store.VitalData', {
             sorters:'date',
             //autoLoad:true,
             //autoSync:true,
-            storeId:'vitaldata'
+            storeId:'vitaldata',
+            startDate: function(){
+                console.log(Ext.Date.add(new Date(), Ext.Date.DAY, -100));
+                return Ext.Date.add(new Date(), Ext.Date.DAY, -7);
+            }(),
+            endDate: new Date()
+
+
         }}
 );
+
+
+
+

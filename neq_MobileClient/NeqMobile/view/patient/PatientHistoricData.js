@@ -23,7 +23,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
     yPadding:5,
     animate:true,
     showMarkers:true,
-    xtyppe:'vitaldatachart',
+    xtype:'vitaldatachart',
     //store: vitaldata,
     requires:'NeqMobile.store.VitalData',
     legend:{
@@ -270,7 +270,16 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                 items:[
                     {
                         html:'<canvas id="mycanvas" width="650" height="150"></canvas>'
-                    }
+                    }  ,
+                    {xtype:'button',
+                        name:'startheartbeatlive',
+                        text:'start live heartbeat',
+                        ui:'action',
+                        //    iconMask:true,
+                        margin:'0 0 5 0',
+                        width:'150px',
+                        height:'30px'}
+
                 //    {xtype:'heartbeatlive'}
                 ]
             },
@@ -334,7 +343,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 items:[
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_day',
+                                        name:'historicaldata_btn_day',
                                         margin:'0 4 0 0',
                                         padding:5,
                                         text:'Day',
@@ -343,7 +352,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_week',
+                                        name:'historicaldata_btn_week',
                                         margin:'0 4 0 4',
                                         padding:5,
                                         text:'Week',
@@ -352,7 +361,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_month',
+                                        name:'historicaldata_btn_month',
                                         margin:'0 0 0 4',
                                         text:'Month',
                                         style:'font-size: 10pt;',

@@ -241,5 +241,17 @@ Ext.define('Ext.chart.Label', {
                 labelsGroup.getAt(len).hide(true);
             }
         }
-    }
+    } ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    },
+
 });
