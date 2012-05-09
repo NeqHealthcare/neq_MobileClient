@@ -278,7 +278,6 @@ Ext.define('NeqMobile.controller.PatientView', {
     },
 
         onDiseaseTypeSelect: function(button, e, eOpts){
-            console.log('hallo');
             var diseasetypeoverlay;
             if (this.getDiseasetype()) {
                 diseasetypeoverlay = this.getDiseasetype();
@@ -301,9 +300,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             this.overlay.show();
 
         },
-        // Ext.dataview.DataView this, Number index, Ext.Element/Ext.dataview.component.DataItem target,
-        // Ext.data.Model record, Ext.EventObject e, Object eOpts
-        onListSelect: function(list, record, eOpts){
+         onListSelect: function(list, record, eOpts){
             var selectedDisease = this.getDiseasetype().getSelection();
             console.log(selectedDisease[0]);
         }
