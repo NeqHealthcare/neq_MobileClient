@@ -54,14 +54,24 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             flex:1,
                             items:[
                                 {
-
-                                   //xtype: 'selectfield',
-                                   //label: 'Disease',
-                                   //id: 'diseasefield'
-                                    xtype:'button',
-                                    text:'Type',
-                                    id: 'diseasebutton'
                                     //tpl: '<bold>{categoriy_rec_name}</bold>'
+                                    xtype:'container',
+                                    layout: 'hbox',
+                                    id: 'diseasename',
+                                    items:[
+                                        {
+                                            xtype: 'textfield',
+                                            label: 'Disease',
+                                            id: 'diseasefield',
+                                            flex: 7
+                                        },
+                                        {
+                                        xtype:'button',
+                                        text:'Type',
+                                        id: 'diseasebutton',
+                                            flex:1
+                                        }
+                                    ]
                                 },
                                 {
                                     xtype: 'selectfield',
