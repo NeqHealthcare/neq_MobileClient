@@ -8,6 +8,18 @@ Ext.setup({
         'Ext.chart.axis.Numeric',
         'Ext.chart.axis.Category',
         'Ext.chart.series.Line'],
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    } ,
+
     onReady: function () {
         window.initExample('Line Chart', "Tapping a data point will bring up detailed information about it");
 

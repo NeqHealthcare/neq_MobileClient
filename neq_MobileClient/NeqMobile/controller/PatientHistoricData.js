@@ -17,25 +17,26 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
         store:['VitalData'],
         refs:{
 
-            workspace:'workspace'
+              workspace:'workspace',
 //            vitalchartcontainer:'#vitaldatachart',
 //            fluidchartcontainer:'#fluidbalancechart',
-//            historicaldata_btn_day:Ext.get("historicaldata_btn_day"),
+//              historicaldata_btn_day: 'patienthistoricdata [name=historicaldata_btn_day]'
 //            historicaldata_btn_week:Ext.ComponentManager.get("historicaldata_btn_week"),
 //            patienthistoricdata:'patienthistoricdata'
         },
         control:{
-//            historicaldata_btn_day:{
-//                tap:'onShowDailyDataTap'
-//            },
-//            historicaldata_btn_week:{
-//                tap:'onShowWeeklyDataTap'
-//            },
-//            'workspace patienthistoricdata #historicaldata_btn_month':{
-//                tap:'onShowMonthlyDataTap'
-//            },
-            'workspace #startheartbeatlive':{
-                tap:'shityou'
+            '[name=historicaldata_btn_day]':{
+                tap:'onShowDailyDataTap'
+            }
+          ,
+            '[name=historicaldata_btn_week]':{
+                tap:'onShowWeeklyDataTap'
+           },
+          '[name=historicaldata_btn_month]':{
+               tap:'onShowMonthlyDataTap'
+          },
+            'workspace [name=startheartbeatlive]':{
+                tap:'startHeartbeatLive'
             }
         }
     },
@@ -94,11 +95,13 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
 
     onShowWeeklyDataTap:function () {
+        alert('somet2hing');
     },
     // zeige Wochenausschnitt der aktuellsten Daten (heute();)
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen
 
     onShowMonthlyDataTap:function () {
+        alert('some3thing');
     }
     // zeige Monatsausschnitt der aktuellsten Daten (heute();)
     // springt bei klick auf die aktuellsten Daten - anschließend kann man zurück scrollen um ältere Daten zu sehen

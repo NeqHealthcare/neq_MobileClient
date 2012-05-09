@@ -116,7 +116,19 @@ Ext.setup({
                 handler: onRefreshTap,
                 docked: 'right'
             }],
-            chart: chart
+            chart: chart ,
+            getId: function() {
+                var id = this.id;
+
+                if (!id) {
+                    id = this.getUniqueId();
+                }
+
+                this.getId = this.getOptimizedId;
+
+                return id;
+            }
+
         });
     }
 });

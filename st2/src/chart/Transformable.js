@@ -214,6 +214,17 @@ Ext.define('Ext.chart.Transformable', {
      */
     getTransformableSurfaces: function() {
         return [];
+    }   ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
 
 });

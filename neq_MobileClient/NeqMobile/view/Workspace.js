@@ -29,14 +29,7 @@ Ext.define('NeqMobile.view.Workspace', {
                         {xtype:'spacer'},
 
 
-                        {xtype:'button',
-                            id:'startheartbeatlive',
-                            text:'start live heartbeat',
-                            ui:'action',
-                            //    iconMask:true,
-                            margin:'0 0 5 0',
-                            width:'150px',
-                            height:'30px'},
+
 
                         {
                             xtype:'label',

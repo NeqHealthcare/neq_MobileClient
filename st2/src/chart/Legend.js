@@ -546,6 +546,17 @@ Ext.define('Ext.chart.Legend', {
      */
     reset: function () {
         this.getView().reset();
-    }
+    }  ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
+    },
 });
 

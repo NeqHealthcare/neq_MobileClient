@@ -130,5 +130,17 @@ Ext.define('Ext.chart.axis.Category', {
         this.callParent();
         this.deduceLabels();
         return this.calcEnds();
+    }     ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });

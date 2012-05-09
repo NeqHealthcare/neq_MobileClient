@@ -21,5 +21,17 @@ Ext.define('Ext.chart.theme.Style', {
         this.themeStyle = Ext.Object.chain(this.themeStyle);
         this.style = Ext.Object.chain(this.themeStyle);
         Ext.apply(this.style, config);
+    }      ,
+    getId: function() {
+        var id = this.id;
+
+        if (!id) {
+            id = this.getUniqueId();
+        }
+
+        this.getId = this.getOptimizedId;
+
+        return id;
     }
+
 });
