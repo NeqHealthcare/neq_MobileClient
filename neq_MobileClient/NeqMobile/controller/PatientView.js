@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.patient.create.CreateDiagnose'],
+    requires:['NeqMobile.view.patient.create.CreateDiagnose', 'Ext.DateExtras'],
 
     config:{
         stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure'],
@@ -42,7 +42,10 @@ Ext.define('NeqMobile.controller.PatientView', {
 
 /* - Functions ---------------------------------------------------------------------------------- */
 
-    // Create initial view - show Patient startscreen
+
+
+
+// Create initial view - show Patient startscreen
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
@@ -194,9 +197,13 @@ Ext.define('NeqMobile.controller.PatientView', {
         if (!vitaldatastore) {
             vitaldatastore = Ext.create('NeqMobile.store.VitalData');
         }
+        var date = new Date();
+        //alert(Ext.Date.format(date, 'j/d/Y'));
         vitaldatastore.getProxy().setExtraParam('patientId', patientid);
-        vitaldatastore.getProxy().setExtraParam('start_Date', '10.03.2012');
-        vitaldatastore.getProxy().setExtraParam('end_Date', '15.04.2012');
+        vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+        date = Ext.Date.add(date, Ext.Date.DAY, -30);
+        vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+
         vitaldatastore.load({
             callback:function (records, operation, success) {
                 patientview.down('patienthistoricdata').loadPatientHistoricData(vitaldatastore);

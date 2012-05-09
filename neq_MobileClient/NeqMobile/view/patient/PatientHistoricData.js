@@ -23,7 +23,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
     yPadding:5,
     animate:true,
     showMarkers:true,
-    xtyppe:'vitaldatachart',
+    xtype:'vitaldatachart',
     //store: vitaldata,
     requires:'NeqMobile.store.VitalData',
     legend:{
