@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientHistoricData', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.patient.PatientHistoricData', 'org.cometd', 'Ext.ux.CometD'],
+    requires:['NeqMobile.view.patient.PatientHistoricData', 'Ext.ux.CometD'],
 
     config:{
         models:['VitalData'],
