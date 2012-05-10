@@ -29,7 +29,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             },
             'createnewdiagnoseoverlay #submitDiagnoseButton':{tap: 'onSubmitNewDiagnoseTap'},
             'createnewdiagnoseoverlay #toppart #diseaseInfo #diseasebutton':{tap: 'onDiseaseTypeSelect'},
-            'diseasetype':{select:'onDiseaseTypeTap'}
+            'diseasetype':{select:'onListSelect'}
         },
         // enables calling a view directly by address
         routes:{
@@ -299,7 +299,6 @@ Ext.define('NeqMobile.controller.PatientView', {
 
             this.overlay = Ext.Viewport.add(diseasetypeoverlay);
             this.overlay.show();
-
         },
         // Ext.dataview.DataView this, Number index, Ext.Element/Ext.dataview.component.DataItem target,
         // Ext.data.Model record, Ext.EventObject e, Object eOpts
