@@ -16,7 +16,6 @@ Ext.define('NeqMobile.view.doctor.Appointment',{
         margin: '0',
         padding: '5',
         //layout: 'vbox',
-       // scrollable:false,
         title: 'Appointments',
         items: [
             {
@@ -34,6 +33,8 @@ Ext.define('NeqMobile.view.doctor.Appointment',{
             },
             {
                 xtype: 'list',
+                width: 300,
+                height: 200,
                 scrollable:false,
                 itemId: 'appointmentlist',
                 itemTpl:['<div>{patient_rec_name}</div>'],

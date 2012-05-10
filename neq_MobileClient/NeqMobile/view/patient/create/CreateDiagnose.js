@@ -43,6 +43,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                 {
                     xtype: 'fieldset',
                     id: 'toppart',
+                    width: '100%',
                     padding: 10,
                     margin: 5,
                     layout: 'hbox',
@@ -62,12 +63,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                         {
                                             xtype: 'textfield',
                                             label: 'Disease',
+                                            labelWidth:'35%',
                                             id: 'diseasefield',
-                                            flex: 7
+                                            flex: 10
                                         },
                                         {
                                         xtype:'button',
-                                        text:'Type',
+                                        //text:'Type',
+                                        iconCls: 'add',
                                         id: 'diseasebutton',
                                             flex:1
                                         }
@@ -76,9 +79,9 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'selectfield',
                                     label: 'Status',
+                                    labelWidth:'30%',
                                     id:'status',
                                     options: [
-                                        {text: '-', value:false},
                                         {text: 'acute', value: 'a'},
                                         {text: 'chronic', value: 'c'},
                                         {text: 'unchanged', value: 'u' },
@@ -90,10 +93,10 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'selectfield',
                                     label: 'Severity',
+                                    labelWidth:'30%',
                                     id: 'severity',
                                     options: [
-                                        {text: '-'},
-                                        {text: 'Mild', value: '1_mi'},
+                                       {text: 'Mild', value: '1_mi'},
                                         {text: 'Moderate', value: '2_mo'},
                                         {text: 'Severe', value: '3_se'}
                                     ]
@@ -101,12 +104,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Infectious',
+                                    labelWidth:'30%',
                                     id: 'infectability',
                                     value: false
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Active',
+                                    labelWidth:'30%',
                                     id: 'activeness',
                                     value: ""
                                 }
@@ -121,12 +126,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Currently on Treatment:',
+                                    labelWidth:'30%',
                                     id: 'treatment',
                                     value: false
                                 },
                                 {
                                     xtype: 'textfield',
                                     label: 'Treatment Description',
+                                    labelWidth:'30%',
                                     id: 'description'
                                 },
                                 {
@@ -137,6 +144,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     name: 'date',
                                     dateFormat: 'd.m.Y',
                                     label: 'Start of Treatment:',
+                                    labelWidth:'30%',
                                     labelWidth: '30%',
                                     width: '100%',
                                     value: new Date(),
@@ -161,6 +169,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'selectfield',
                                     label: 'Code',
+                                    labelWidth:'30%',
                                     id: 'procedures'
                                 }
                             ]
@@ -172,6 +181,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                     xtype: 'fieldset',
                     layout: 'hbox',
                     padding: 10,
+                    width: '100%',
                     margin: 5,
                     id: 'middlepart',
                     items: [
@@ -198,6 +208,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'numberfield',
                                     label: 'Age when diagnosed',
+                                    labelWidth:'30%',
                                     minValue:0,
                                     maxValue: 150,
                                     id: 'age'
@@ -219,6 +230,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'textfield',
                                     label: 'Physician',
+                                    labelWidth:'30%',
                                     id: 'physicianSelectfield',
                                     readOnly: true
                                 }
@@ -234,11 +246,13 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'checkboxfield',
                                     label: 'Allergic Disease',
                                     id: 'allergicDisese',
+                                    labelWidth:'30%',
                                     value: false
                                 },
                                 {
                                     xtype: 'selectfield',
                                     label: 'Allergy Type',
+                                    labelWidth:'30%',
                                     id: 'allergyType',
                                     options: [
                                         {text: 'Drug Allergy', value:'da'},
@@ -250,12 +264,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Pregnancy Warning',
+                                    labelWidth:'30%',
                                     id:'pregnancyWarning',
                                     value: false
                                 },
                                 {
                                     xtype: 'numberfield',
                                     label: 'Contracted in pregnancy week #',
+                                    labelWidth:'30%',
                                     minValue: 0,
                                     maxValue: 45,
                                     id:'pregnancy',
@@ -269,11 +285,13 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                 {
                     xtype: 'textareafield',
                     label: 'Extra Info',
+                    width: '100%',
                     labelAlign: 'top',
                     name: 'notes'
                 },
                 //button
                 {
+                    align: 'right',
                     width: 250,
                     xtype: 'button',
                     id: 'submitDiagnoseButton',

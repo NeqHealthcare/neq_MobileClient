@@ -225,8 +225,6 @@ Ext.define('NeqMobile.controller.PatientView', {
             var physicianname= diagnoseOverlay.down('#middlepart').down('#diagnoseInfo').down('#physicianSelectfield');
             physicianname.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
 
-
-
             var procedures = Ext.data.StoreManager.lookup('procedure');
             if (!procedures) {
                 procedures = Ext.create('NeqMobile.store.Procedure');
@@ -301,7 +299,11 @@ Ext.define('NeqMobile.controller.PatientView', {
         },
          onListSelect: function(list, record, eOpts){
             var selectedDisease = this.getDiseasetype().getSelection();
-            console.log(selectedDisease[0]);
+             console.log(record);
+            console.log(selectedDisease);
+             this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue(record);
+
+             this.getDiseasetype().setHidden(true);
         }
 
     }
