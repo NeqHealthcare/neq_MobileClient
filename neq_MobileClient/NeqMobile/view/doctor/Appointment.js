@@ -8,11 +8,15 @@
 
 
 Ext.define('NeqMobile.view.doctor.Appointment',{
-    extend:'Ext.Panel',
+    extend:'Ext.form.FieldSet',
     xtype: 'appointment',
 
     config: {
-        layout: 'hbox',
+        title:'Hospital Doctor News',
+        margin: '0',
+        padding: '5',
+        //layout: 'vbox',
+       // scrollable:false,
         title: 'Appointments',
         items: [
             {
@@ -30,6 +34,7 @@ Ext.define('NeqMobile.view.doctor.Appointment',{
             },
             {
                 xtype: 'list',
+                scrollable:false,
                 itemId: 'appointmentlist',
                 itemTpl:['<div>{patient_rec_name}</div>'],
                 store: 'appointments'
