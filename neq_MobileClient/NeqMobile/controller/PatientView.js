@@ -202,7 +202,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         //alert(Ext.Date.format(date, 'j/d/Y'));
         vitaldatastore.getProxy().setExtraParam('patientId', patientid);
         vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
-        date = Ext.Date.add(date, Ext.Date.DAY, -30);
+        date = Ext.Date.add(date, Ext.Date.DAY, -360);
         vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
 
         vitaldatastore.load({

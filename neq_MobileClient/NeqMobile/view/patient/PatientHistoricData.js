@@ -55,11 +55,11 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
             position:'bottom',
             fields:['date'],
             //title: 'Day',
-            dateFormat:'d-m-Y',
+            dateFormat:'d-m-Y'
             // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
             //constrain: true,
-            fromDate:new Date('01-02-2012'),
-            toDate:new Date('01-05-2012')
+            //fromDate:new Date('01-02-2012'),
+            //toDate:new Date('01-05-2012')
             // turn lables on x-axis
             //label: {
             //    rotate: {
@@ -152,11 +152,11 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
             position:'bottom',
             fields:['date'],
             //title: 'Day',
-            dateFormat:'d-m-Y',
+            dateFormat:'d-m-Y'
             // we have to adjust this according to the events button pushed (show daily/weekly/monthly)
             //constrain: true,
-            fromDate:new Date('01-02-2012'),
-            toDate:new Date('01-05-2012')
+            //fromDate:new Date('01-02-2012'),
+            //toDate:new Date('01-05-2012')
             // turn lables on x-axis
             //label: {
             //    rotate: {
@@ -343,7 +343,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                 items:[
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_day',
+                                        name:'historicaldata_btn_day',
                                         margin:'0 4 0 0',
                                         padding:5,
                                         text:'Day',
@@ -352,7 +352,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_week',
+                                        name:'historicaldata_btn_week',
                                         margin:'0 4 0 4',
                                         padding:5,
                                         text:'Week',
@@ -361,7 +361,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                                     },
                                     {
                                         xtype:'button',
-                                        id:'historicaldata_btn_month',
+                                        name:'historicaldata_btn_month',
                                         margin:'0 0 0 4',
                                         text:'Month',
                                         style:'font-size: 10pt;',
