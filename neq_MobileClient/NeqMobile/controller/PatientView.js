@@ -245,35 +245,92 @@ Ext.define('NeqMobile.controller.PatientView', {
         },
 
         onSubmitNewDiagnoseTap:function (button, e, eOpts) {
+            this.getDiagnoseoverlay().setHidden(true);
+            var me = this;
+            //disease Code
 
-//            var me = this;
-//
-//            var diagnoseoverlay = this.getDiagnoseoverlay();
-//            var toppart = diagnoseoverlay.down('#toppart');
-//            var diseaseInfo = toppart.down('#diseaseInfo');
-//            var diseasefield = diseaseInfo.down('#diseasefield').getValue();
-//            var statusfield = diseaseInfo.down('#status').getValue();
-//            var severityfield = diseaseInfo.down('#severity').getValue();
-//            var infectability = diseaseInfo.down('#infectability').getValue();
-//            var activeness = diseaseInfo.down('#activeness').getValue();
-//            var therapy = toppart.down('#therapy');
-//            var treatment = therapy.down('#treatment').getValue();
-//            var description = therapy.down('#description').getValue();
-//            var treatmentStart = therapy.down('#treatmentStart').getValue();
-//            var treatmentEnd = therapy.down('#treatmentEnd').getValue();
-//
-//            var middlepart = diagnoseoverlay.down('#middlepart');
-//            var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
-//            var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue();
-//            var age = diagnoseInfo.down('#age').getValue();
-//            var healedDate = diagnoseInfo.down('#healedDate').getValue();
-//            var physicianSelectfield = diagnoseInfo.down('#physicianSelectfield').getValue();
-//            var allergies = diagnoseoverlay.down('#diagnoseInfo');
-//            var allergicDisese = allergies.down('#allergicDisese').getValue();
-//            var allergyType = allergies.down('#allergyType').getValue();
-//            var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
-//            var pregnancy = allergies.down('#pregnancy').getValue();
-    },
+            var diagnoseoverlay = this.getDiagnoseoverlay();
+            var extrainfo = diagnoseoverlay.down('#extrainfo');
+            var toppart = diagnoseoverlay.down('#toppart');
+            var diseaseInfo = toppart.down('#diseaseInfo');
+
+            var diseaseId = diseaseInfo.down('#diseasefield').getValue();
+
+            var statusfield = diseaseInfo.down('#status').getValue();
+            var severityfield = diseaseInfo.down('#severity').getValue();
+            var infectability = diseaseInfo.down('#infectability').getValue();
+            var activeness = diseaseInfo.down('#activeness').getValue();
+            var therapy = toppart.down('#therapy');
+            var treatment = therapy.down('#treatment').getValue();
+            var description = therapy.down('#description').getValue();
+            var treatmentStart = therapy.down('#treatmentStart').getValue().getTime();
+            var treatmentEnd = therapy.down('#treatmentEnd').getValue().getTime();
+
+            var middlepart = diagnoseoverlay.down('#middlepart');
+            var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
+            var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue().getTime();
+            var age = diagnoseInfo.down('#age').getValue();
+            var healedDate = diagnoseInfo.down('#healedDate').getValue().getTime();
+            var allergies = diagnoseoverlay.down('#allergies');
+            var allergicDisease = allergies.down('#allergicDisease').getValue();
+            var allergyType = allergies.down('#allergyType').getValue();
+            var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
+            var pregnancy = allergies.down('#pregnancy').getValue();
+
+            var physicianId = (NeqMobile.manager.Session.getSession()).get('userinfo').get('id');
+            var patient_id = NeqMobile.manager.Session.getCurrentPatient();
+            var shortComment = false;
+            var procedures = false;
+            var newDisease = Ext.create('NeqMobile.model.Diagnose', {
+                status:statusfield,
+                allergy:allergies,
+                doctor:physicianId,
+                pregnancy_warning: pregnancyWarning,
+                age: age,
+                allergy_type :allergyType,
+                weeks_of_pregnancy: pregnancy,
+                date_start_treatment: treatmentStart,
+                short_comment:shortComment,
+                is_on_treatment: treatment,
+                is_active:activeness,
+                diagnosed_date: diagnosisDate,
+                treatment_description: description,
+                healed_date: healedDate,
+                date_stop_treatment: treatmentEnd,
+                pcs_code: procedures,
+                pathology: diseaseId,
+                diseas_severity: severityfield,
+                is_infectious: infectability,
+                extra_info: extrainfo,
+                patient_id:patient_id
+            });
+            newDisease.save({
+                    success:function (newDisease) {
+                        console.log("diagnose successfully saved");
+                        var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
+                        if (!diagnosestore) {
+                            diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
+                        }
+                        diagnosestore.load({
+                            callback:function (records, operation, success) {
+                                var response = operation.getResponse();
+                                var responseObject = Ext.decode(response.responseText);
+                                me.getPatientview().loadDiagnoses(responseObject);
+                            },
+                            scope:this
+                        });
+                    },
+                    failure:function (response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
+                        console.log('login failed - server not reachable')
+                        Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
+                            'It occured a technical connection problem. Possible causes are:<br><br>' +
+                            '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
+
+                        failureCallback.apply(scope);
+                    }
+            })
+        },
 
         onDiseaseTypeSelect: function(button, e, eOpts){
             var diseasetypeoverlay;
@@ -298,12 +355,9 @@ Ext.define('NeqMobile.controller.PatientView', {
             this.overlay.show();
         },
          onListSelect: function(list, record, eOpts){
-            var selectedDisease = this.getDiseasetype().getSelection();
-             console.log(record);
-            console.log(selectedDisease);
-             this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue(record);
-
-             this.getDiseasetype().setHidden(true);
+            var selectedDisease = this.getDiseasetype().getSelection()[0].get('name');
+            this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue(selectedDisease);
+            this.getDiseasetype().setHidden(true);
         }
 
     }

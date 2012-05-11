@@ -12,6 +12,16 @@ Ext.define('NeqMobile.util.Renderer',
             var date = new Date(long);
             return Ext.Date.format(date,'d.m.Y');
         },
+        urgencyrenderer: function (value, values){
+            if(value =='a')
+                return 'Normal';
+            else {
+                if(value == 'b')
+                    return 'Urgent';
+                else
+                    return 'Medical Emergency';
+            }
+        },
 
          undefinedRenderer: function (value, values){
              if(value==null)

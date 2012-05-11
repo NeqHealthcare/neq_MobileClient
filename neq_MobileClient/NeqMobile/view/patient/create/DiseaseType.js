@@ -31,8 +31,8 @@ Ext.define('NeqMobile.view.patient.create.DiseaseType',{
             type: 'vbox'
         },
         width:400,
-        height:200,
-        itemTpl:'{name}'
+        height:400,
+        itemTpl:'{name} {code},    {id}'
 
 
     }

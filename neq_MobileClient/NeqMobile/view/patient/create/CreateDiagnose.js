@@ -113,7 +113,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     label: 'Active',
                                     labelWidth:'30%',
                                     id: 'activeness',
-                                    value: ""
+                                    value: false
                                 }
                             ]
                         },
@@ -155,13 +155,12 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'datepickerfield',
                                     id: 'treatmentEnd',
-                                    destroyPickerOnHide: true,
-                                    name: 'date',
+                                   name: 'date',
                                     dateFormat: 'd.m.Y',
                                     label: 'End of Treatment:',
                                     labelWidth: '30%',
                                     width: '100%',
-                                    // value: new Date(),
+                                    value: new Date(),
                                     picker: {
                                         yearFrom: new Date().getYear()
                                     }
@@ -245,7 +244,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Allergic Disease',
-                                    id: 'allergicDisese',
+                                    id: 'allergicDisease',
                                     labelWidth:'30%',
                                     value: false
                                 },
@@ -285,6 +284,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                 {
                     xtype: 'textareafield',
                     label: 'Extra Info',
+                    id: 'extrainfo',
                     width: '100%',
                     labelAlign: 'top',
                     name: 'notes'
