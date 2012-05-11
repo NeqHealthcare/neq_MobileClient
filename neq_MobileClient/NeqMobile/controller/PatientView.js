@@ -265,7 +265,6 @@ Ext.define('NeqMobile.controller.PatientView', {
             var description = therapy.down('#description').getValue();
             var treatmentStart = therapy.down('#treatmentStart').getValue().getTime();
             var treatmentEnd = therapy.down('#treatmentEnd').getValue().getTime();
-
             var middlepart = diagnoseoverlay.down('#middlepart');
             var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
             var diagnosisDate = diagnoseInfo.down('#diagnosisDate').getValue().getTime();
@@ -276,7 +275,6 @@ Ext.define('NeqMobile.controller.PatientView', {
             var allergyType = allergies.down('#allergyType').getValue();
             var pregnancyWarning = allergies.down('#pregnancyWarning').getValue();
             var pregnancy = allergies.down('#pregnancy').getValue();
-
             var physicianId = (NeqMobile.manager.Session.getSession()).get('userinfo').get('id');
             var patient_id = NeqMobile.manager.Session.getCurrentPatient();
             var shortComment = false;

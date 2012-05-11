@@ -10,29 +10,23 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
     extend:'Ext.Container',
     xtype: 'appointmentview',
     config:{
-        //layout: 'card',
+        layout: 'card',
+        padding: 5,
+        width: 300,
+        height:270,
+
         items: [
             {
             xtype: 'list',
             id:'appointmentlist',
-            width: 300,
-            height: 200,
-            scrollable:false,
-            itemTpl:['<div>{[NeqMobile.util.Renderer.daterenderer(values.appointment_date)]}'+'{patient_rec_name}</div>'],
+            scrollable:true,
+            itemTpl:['<div>{[NeqMobile.util.Renderer.daterenderer(values.appointment_date)]} '+'{patient_rec_name}</div>'],
             store: 'appointments'
             },
             {
                 xtype:'container',
                 id:'appointmentdetail',
-                width: 300,
-                height:400,
-                items: [
-                    {
-                        width: 40,
-                        xtype: 'button',
-                        iconCls:'reply',
-                        iconMask:true
-                    },
+               items: [
                     {
                         xtype: 'datepickerfield',
                         label: 'Appointment Time',
@@ -70,9 +64,14 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
                         label: 'Consultation Service',
                         id: 'consultation',
                         readOnly: 'true',
-                        placeHolder: '-',
-                        readOnly: 'true'
-                    }
+                        placeHolder: '-'
+                    },
+                   {
+                       width: 300,
+                       xtype: 'button',
+                       iconCls:'reply',
+                       iconMask:true
+                   }
 
                 ]
             }
