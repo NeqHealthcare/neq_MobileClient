@@ -92,7 +92,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
                 });
             }
 
-            Ext.defer(afunc, 15000);
+            afunc();
 
         },
 
