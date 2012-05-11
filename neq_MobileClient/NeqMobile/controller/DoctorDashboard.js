@@ -21,7 +21,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             appointment:'appointment',
             doctornews:'doctornews',
             doctornewstopics : 'doctornewstopics',
-            doctornewsfeeddetail : 'doctornewsfeeddetail'
+            doctornewsfeeddetail : 'doctornewsfeeddetail',
+            appointmentview :'appointmentview'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -38,6 +39,12 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             },
             'workspace doctordashboard #doctornewsfeedtopicselectfield': {
                 change:'onDoctorNewsTopicChange'
+            },
+            'workspace appointment appointmentview #appointmentlist':{
+                select:'onAppointmentSelect'
+            },
+            'workspace appointment appointmentview #appointmentdetail #button':{
+                tap:'onAppointmentView'
             }
 
         },
@@ -271,8 +278,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
 /* - Appointments Functions/Events ---------------------------------------------------------------------------------- */
 
     onappointmentcountchange:function(selectfield, newValue, oldValue, eOpts ){
-        console.log('changed number of appointments '+newValue);
         this.showAppointments();
+        console.log('changed number of appointments '+newValue);
     },
 
     showAppointments: function (){
@@ -287,14 +294,37 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         appointmentstore.getProxy().setExtraParam('count',count);
         appointmentstore.load({
             callback: function (records, operation, success){
-                this.getDoctordashboard().down('appointment').down('#appointmentlist').setStore(appointmentstore);
+                this.getDoctordashboard().down('appointment').down('appointmentview').down('#appointmentlist').setStore(appointmentstore);
             },
             scope: this
         });
+        this.getAppointmentview().setActiveItem(1);
     },
 
     onAppointmentSelect:function (list, appointmentrecord, options) {
+        console.log('selected');
+        var appointmentview = this.getAppointmentview();
+        var appointmentDetail = appointmentview.down('#appointmentdetail');
+        var selectedAppointment = appointmentview.down('#appointmentlist').getSelection()[0];
+        appointmentDetail.down('#consultation').setValue(selectedAppointment.get('consultations_description'));
+        appointmentDetail.down('#appointmenttime').setValue(selectedAppointment.get('appointment_date'));
+        appointmentDetail.down('#patientname').setValue(selectedAppointment.get('patient_rec_name'));
+        appointmentDetail.down('#speciality').setValue(selectedAppointment.get('speciality_rec_name'));
+        appointmentDetail.down('#appointmenttype').setValue(selectedAppointment.get('appointment_type'));
+        var urgencyLevel = NeqMobile.util.Renderer.urgencyrenderer(selectedAppointment.get('urgency_level'));
+        appointmentDetail.down('#urgency').setValue(urgencyLevel);
+        console.log(selectedAppointment.get('consultations_description'));
+        console.log(appointmentDetail.down('#consultation').getValue());
+        //console.log(appointmentDetail.get('').getTime());
+        console.log(selectedAppointment.get('appointment_date').getTimezoneOffset( ));
 
+        //appointmentContainer.down('consultation').setValue(appointmentstore.patient_rec_name);
+     //   appointmentview.setActiveItem(1);
+
+    },
+
+    onAppointmentBackButton:function (button, e, eOpts){
+        //zurück
     },
 
 /* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */
