@@ -69,7 +69,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                         },
                                         {
                                         xtype:'button',
-                                        //text:'Type',
+                                        iconMask: true,
                                         iconCls: 'add',
                                         id: 'diseasebutton',
                                             flex:1

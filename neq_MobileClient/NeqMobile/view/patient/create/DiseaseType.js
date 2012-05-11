@@ -8,7 +8,7 @@
 
 Ext.define('NeqMobile.view.patient.create.DiseaseType',{
     extend:'Ext.List',
-        requires:['NeqMobile.store.DiseaseType'],
+    requires:['NeqMobile.store.DiseaseType'],
     xtype: 'diseasetype',
     config:{
         modal: true,
@@ -32,9 +32,7 @@ Ext.define('NeqMobile.view.patient.create.DiseaseType',{
         },
         width:400,
         height:400,
-        itemTpl:'{name} {code},    {id}'
-
-
+        itemTpl: '<bold>{name}   </bold> <span style="font-size: 80%; color: grey" > {code}'
     }
 }
 );

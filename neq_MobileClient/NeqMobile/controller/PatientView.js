@@ -229,8 +229,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             if (!procedures) {
                 procedures = Ext.create('NeqMobile.store.Procedure');
             }
-            //   console.log(diagnoseOverlay.down('#toppart').down('#therapy').down('#treatmentStart').getValue().getTime());
-            procedures.load({
+             procedures.load({
                 callback:function (records, operation, success) {
                     diagnoseOverlay.down('#toppart').down('#therapy').down('#procedures').setStore(procedures);
 
@@ -238,8 +237,7 @@ Ext.define('NeqMobile.controller.PatientView', {
                 scope:this
             });
 
-           // console.log(diagnoseOverlay.down('#toppart').down('#diagnoseInfo').down('infectability'));
-            //.getValue());
+
             this.overlay = Ext.Viewport.add(diagnoseOverlay);
             this.overlay.show();
         },
