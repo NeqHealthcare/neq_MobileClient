@@ -27,7 +27,6 @@ Ext.define('NeqMobile.model.NewDiagnose', {
             {name:'healed_date', type:'date',dateFormat:'time'},
             {name:'date_stop_treatment', type:'date',dateFormat:'time'},
             'pcs_code',
-            //disease_id
             'pathology',
             'allergy_type',
             'diseas_severity',
@@ -35,8 +34,8 @@ Ext.define('NeqMobile.model.NewDiagnose', {
             'extra_info',
             'patient_id',
             'doctor',
-            'doctor_rec_name',
-            'extra_info'
+            'doctor_rec_name'
+
         ],
         proxy:{
             type:'neqproxy',

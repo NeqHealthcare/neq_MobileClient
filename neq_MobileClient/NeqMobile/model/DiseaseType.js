@@ -14,7 +14,8 @@ Ext.define('NeqMobile.model.DiseaseType', {
         fields:[
             'code',
             'name',
-            'category_reg_name'
+            'category_reg_name',
+            'id'
         ],
         proxy:{
             type:'neqproxy',
