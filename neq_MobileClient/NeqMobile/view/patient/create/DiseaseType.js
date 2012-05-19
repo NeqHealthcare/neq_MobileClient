@@ -7,7 +7,7 @@
  */
 
 Ext.define('NeqMobile.view.patient.create.DiseaseType',{
-    extend:'Ext.List',
+    extend:'Ext.Panel',
     requires:['NeqMobile.store.DiseaseType'],
     xtype: 'diseasetype',
     config:{
@@ -28,11 +28,34 @@ Ext.define('NeqMobile.view.patient.create.DiseaseType',{
         layout: {
             align: 'center',
             pack: 'center',
-            type: 'vbox'
+            type: 'vbox',
+            width: 400,
+            height: 450
         },
-        width:400,
-        height:400,
-        itemTpl: '<bold>{name}   </bold> <span style="font-size: 80%; color: grey" > {code}'
-    }
+        items: [
+            {xtype:'toolbar',
+                ui:'searchbar',
+                docked:'top',
+                items:[
+                    {
+                        xtype:'searchfield',
+                        itemId:'diseasesearchfield'
+                    },
+                    {
+                        iconMask: true,
+                        iconCls: 'refresh',
+                        itemId: 'refreshbutton'
+                    }
+                ]
+            },
+                {
+                    xtype:'list',
+                    id:'diseaselist',
+                    width:400,
+                    height:400,
+                    itemTpl: '<bold>{name}   </bold> <span style="font-size: 80%; color: grey" > {code}'
+                }
+            ]
 }
+    }
 );

@@ -8,7 +8,7 @@
 
 
 Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
-        extend:'Ext.Panel',
+        extend:'Ext.form.Panel',
         xtype: 'createnewdiagnoseoverlay',
         config:{
             modal: true,
@@ -55,7 +55,6 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             flex:1,
                             items:[
                                 {
-                                    //tpl: '<bold>{categoriy_rec_name}</bold>'
                                     xtype:'container',
                                     layout: 'hbox',
                                     id: 'diseasename',
@@ -68,9 +67,15 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                             flex: 10
                                         },
                                         {
+                                            xtype: 'textfield',
+                                            label: 'Pathology',
+                                            id: 'pathology',
+                                            hidden: true
+                                        },
+                                        {
                                         xtype:'button',
                                         iconMask: true,
-                                        iconCls: 'add',
+                                        iconCls: 'search',
                                         id: 'diseasebutton',
                                             flex:1
                                         }
@@ -94,7 +99,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'selectfield',
                                     label: 'Severity',
                                     labelWidth:'30%',
-                                    id: 'severity',
+                                    id: 'disease_severity',
                                     options: [
                                        {text: 'Mild', value: '1_mi'},
                                         {text: 'Moderate', value: '2_mo'},
@@ -105,14 +110,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'checkboxfield',
                                     label: 'Infectious',
                                     labelWidth:'30%',
-                                    id: 'infectability',
+                                    id: 'is_infectious',
                                     value: false
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Active',
                                     labelWidth:'30%',
-                                    id: 'activeness',
+                                    id: 'is_active',
                                     value: false
                                 }
                             ]
@@ -127,18 +132,19 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'checkboxfield',
                                     label: 'Currently on Treatment:',
                                     labelWidth:'30%',
-                                    id: 'treatment',
+                                    id: 'is_on_treatment',
                                     value: false
                                 },
                                 {
                                     xtype: 'textfield',
                                     label: 'Treatment Description',
                                     labelWidth:'30%',
-                                    id: 'description'
+                                    id: 'treatment_description',
+                                    placeHolder: '-'
                                 },
                                 {
                                     xtype: 'datepickerfield',
-                                    id: 'treatmentStart',
+                                    id: 'date_start_treatment',
                                     placeHolder: '-',
                                     destroyPickerOnHide: true,
                                     name: 'date',
@@ -154,7 +160,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'datepickerfield',
-                                    id: 'treatmentEnd',
+                                    id: 'date_stop_treatment',
                                    name: 'date',
                                     dateFormat: 'd.m.Y',
                                     label: 'End of Treatment:',
@@ -166,10 +172,25 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     }
                                 },
                                 {
-                                    xtype: 'selectfield',
-                                    label: 'Code',
-                                    labelWidth:'30%',
-                                    id: 'procedures'
+                                    xtype: 'container',
+                                    id: 'procedure',
+                                    layout: 'hbox',
+                                    items: [
+                                        {
+                                            xtype: 'textfield',
+                                            label: 'Code',
+                                            labelWidth:'35%',
+                                            id: 'pcs_code',
+                                            flex: 10
+                                        },
+                                       {
+                                            xtype:'button',
+                                            iconMask: true,
+                                            iconCls: 'search',
+                                            id: 'pcdbutton',
+                                            flex:1
+                                        }
+                                        ]
                                 }
                             ]
                         }
@@ -192,7 +213,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             items:[
                                 {
                                     xtype: 'datepickerfield',
-                                    id: 'diagnosisDate',
+                                    id: 'diagnosed_date',
                                     destroyPickerOnHide: true,
                                     name: 'date',
                                     dateFormat: 'd.m.Y.',
@@ -214,7 +235,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'datepickerfield',
-                                    id: 'healedDate',
+                                    id: 'healed_date',
                                     destroyPickerOnHide: true,
                                     name: 'date',
                                     dateFormat: 'd.m.Y.',
@@ -244,7 +265,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 {
                                     xtype: 'checkboxfield',
                                     label: 'Allergic Disease',
-                                    id: 'allergicDisease',
+                                    id: 'is_allergy',
                                     labelWidth:'30%',
                                     value: false
                                 },
@@ -252,7 +273,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'selectfield',
                                     label: 'Allergy Type',
                                     labelWidth:'30%',
-                                    id: 'allergyType',
+                                    id: 'allergy_type',
                                     options: [
                                         {text: 'Drug Allergy', value:'da'},
                                         {text: 'Food Allergy', value:'fa'},
@@ -264,7 +285,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     xtype: 'checkboxfield',
                                     label: 'Pregnancy Warning',
                                     labelWidth:'30%',
-                                    id:'pregnancyWarning',
+                                    id:'pregnancy_warning',
                                     value: false
                                 },
                                 {
@@ -273,7 +294,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     labelWidth:'30%',
                                     minValue: 0,
                                     maxValue: 45,
-                                    id:'pregnancy',
+                                    id:'weeks_of_pregnancy',
                                     placeHolder: '-'
                                 }
                             ]
@@ -286,8 +307,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                     label: 'Extra Info',
                     id: 'extrainfo',
                     width: '100%',
-                    labelAlign: 'top',
-                    name: 'notes'
+                    labelAlign: 'top'
                 },
                 //button
                 {
