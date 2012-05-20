@@ -12,11 +12,10 @@ Ext.define('NeqMobile.model.NewDiagnose', {
     config:{
         fields:[
             'status',
-            'allergy',
+            'is_allergy',
             'doctor',
             'pregnancy_warning',
             'age',
-            'allergy_type',
             'weeks_of_pregnancy',
             {name:'date_start_treatment', type:'date',dateFormat:'time'},
             'short_comment',
@@ -29,13 +28,10 @@ Ext.define('NeqMobile.model.NewDiagnose', {
             'pcs_code',
             'pathology',
             'allergy_type',
-            'diseas_severity',
+            'disease_severity',
             'is_infectious',
             'extra_info',
-            'patient_id',
-            'doctor',
-            'doctor_rec_name'
-
+            'patient_id'
         ],
         proxy:{
             type:'neqproxy',

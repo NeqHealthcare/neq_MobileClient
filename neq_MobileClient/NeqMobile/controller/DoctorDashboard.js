@@ -43,8 +43,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             'workspace appointment appointmentview #appointmentlist':{
                 select:'onAppointmentSelect'
             },
-            'workspace appointment appointmentview #appointmentdetail #button':{
-                tap:'onAppointmentView'
+            'workspace appointment appointmentview #appointmentdetail button':{
+                tap:'onAppointmentBackButton'
             }
 
         },
@@ -298,7 +298,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             },
             scope: this
         });
-        this.getAppointmentview().setActiveItem(1);
+        this.getAppointmentview().setActiveItem(0);
     },
 
     onAppointmentSelect:function (list, appointmentrecord, options) {
@@ -319,12 +319,13 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         console.log(selectedAppointment.get('appointment_date').getTimezoneOffset( ));
 
         //appointmentContainer.down('consultation').setValue(appointmentstore.patient_rec_name);
-     appointmentview.setActiveItem(appointview.down('#appointmentdetail'));
+        appointmentview.setActiveItem(1);
 
     },
 
     onAppointmentBackButton:function (button, e, eOpts){
-        //zurück
+        console.log('clicked');
+        this.getAppointmentview().setActiveItem(0);
     },
 
 /* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */

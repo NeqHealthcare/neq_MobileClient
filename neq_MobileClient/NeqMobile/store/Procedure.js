@@ -12,6 +12,6 @@ Ext.define('NeqMobile.store.Procedure', {
 
         config:{
             model:'NeqMobile.model.Procedure',
-            storeId:'procedure'
+            storeId:'procedures'
         }}
 );
