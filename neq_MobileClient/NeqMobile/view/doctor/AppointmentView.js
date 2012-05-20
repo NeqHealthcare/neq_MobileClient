@@ -10,7 +10,8 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
     extend:'Ext.Container',
     xtype: 'appointmentview',
     config:{
-        //layout: 'card',
+        layout: 'card',
+
         items: [
             {
             xtype: 'list',

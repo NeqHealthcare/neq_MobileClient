@@ -319,7 +319,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         console.log(selectedAppointment.get('appointment_date').getTimezoneOffset( ));
 
         //appointmentContainer.down('consultation').setValue(appointmentstore.patient_rec_name);
-     //   appointmentview.setActiveItem(1);
+     appointmentview.setActiveItem(appointview.down('#appointmentdetail'));
 
     },
 

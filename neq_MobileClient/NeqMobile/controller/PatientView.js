@@ -326,7 +326,6 @@ Ext.define('NeqMobile.controller.PatientView', {
                         Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
                             'It occured a technical connection problem. Possible causes are:<br><br>' +
                             '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
-
                         failureCallback.apply(scope);
                     }
             })
