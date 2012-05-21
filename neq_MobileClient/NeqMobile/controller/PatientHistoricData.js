@@ -20,10 +20,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
                 workspace:'workspace',
                 vitalchartcontainer:'vitaldatachart',
                 fluidchartcontainer:'fluidbalancechart',
-//              historicaldata_btn_day: 'patienthistoricdata [name=historicaldata_btn_day]'
-//            historicaldata_btn_week:Ext.ComponentManager.get("historicaldata_btn_week"),
-                patienthistoricdata:'patienthistoricdata'
-            },
+                patienthistoricdata:'patienthistoricdata'},
             control:{
                 '[name=historicaldata_btn_day]':{
                     tap:'onShowDailyDataTap'
@@ -37,22 +34,30 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
                 'workspace [name=startheartbeatlive]':{
                     tap:'startHeartbeatLive'
                 },
-                patienthistoricdata:{
-                    show:'fetchData'
+                'patientview':{activeitemchange:'onPatientViewItemChange'},
 
-                }
+                'patienthistoricdata':{show:'fetchData'}
 
             }
-        },
+
+        }
+        ,
+        smoothiechart:undefined,
+        smoothieline:undefined,
+        subscription:undefined
+        ,
 
         /* - Functions ---------------------------------------------------------------------------------- */
-
-        fetchData:function () {
-
-        },
-
-        shityou:function () {
-            alert('something');
+        onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
+            var me = this;
+            if (newvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
+                console.log('enabling live heartbeat')
+                me.startHeartbeatLive();
+            }
+            else if (oldvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
+                console.log('disabling live heartbeat')
+                me.stopHeartbeatLive();
+            }
         },
 
         init:function () {
@@ -63,39 +68,35 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
         startHeartbeatLive:function () {
 
             var me = this;
-            console.log('starting live heartbeat');
 
-            var afunc = function () {
+            me.smoothiechart = me.getPatienthistoricdata().getHeartbeatchart();
+            me.smoothieline = new TimeSeries(
+                { grid:{strokeStyle:'rgb(200, 200, 200)', fillStyle:'rgb(255, 255, 255)'} }
+            );
+            me.smoothiechart.addTimeSeries(me.smoothieline,
+                { strokeStyle:'rgb(255, 0, 255)', lineWidth:2 });
 
+            var cometd = Ext.cometd;
+            console.log('trying to send a message: "this is a NeqMobile test message"');
 
-                var smoothie = new SmoothieChart();
-                smoothie.streamTo(document.getElementById("mycanvas"), 10);
-                var line1 = new TimeSeries(
-                    { grid:{strokeStyle:'rgb(200, 200, 200)', fillStyle:'rgb(255, 255, 255)'} }
-                );
-                smoothie.addTimeSeries(line1,
-                    { strokeStyle:'rgb(255, 0, 255)', fillStyle:'rgba(255, 0, 255, 0.3)', lineWidth:2 });
-
-                var cometd = Ext.cometd;
-
-                console.log('trying to send a message: "this is a NeqMobile test message"');
-                cometd.publish("/cometd/pulse/1", { msg:'this is a NeqMobile test message' });
-
-                var subscription2 = cometd.subscribe('/cometd/pulse/1', function (message) {
-                    //console.log('RECEIVED THE FOLLOWING COMETD DATA:')
-                    //console.log(message);
-
-                    var values = Ext.decode(message.data);
-
-                    line1.append(new Date().getTime(), values.y);
-
-                });
-            }
-
-            afunc();
-
+            var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
+            cometd.publish(channelurl, {});
+            me.subscription = cometd.subscribe(channelurl, function (message) {
+                var values = Ext.decode(message.data);
+                console.log(values);
+                me.smoothieline.append(values.timestamp, values.y);
+            });
         },
-
+    stopHeartbeatLive:function()
+    {
+        var me = this;
+        var cometd = Ext.cometd;
+        cometd.unsubscribe(me.subscription);
+        var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
+        cometd.publish(channelurl, {});
+        me.smoothiechart.removeTimeSeries(me.smoothieline);
+        me.smoothieline=undefined;
+    },
         onShowDailyDataTap:function () {
             var date = new Date();
             var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
