@@ -261,6 +261,9 @@ Ext.define('NeqMobile.controller.PatientView', {
             var diseaseInfo = toppart.down('#diseaseInfo');
             var pathology1 = diseaseInfo.down('#pathology').getValue();
             var status1 = diseaseInfo.down('#status').getValue();
+            if(status1 == null){
+                status1 = false;
+            }
             var diseaseSeverity = diseaseInfo.down('#disease_severity').getValue();
             var isInfectious = diseaseInfo.down('#is_infectious').getValue();
             var isActive = diseaseInfo.down('#is_active').getValue();
@@ -288,7 +291,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             var pregnancyWarning = allergies.down('#pregnancy_warning').getValue();
             var weeksOfPregnancy = allergies.down('#weeks_of_pregnancy').getValue();
 
-            var doctor1 = (NeqMobile.manager.Session.getSession()).get('userinfo').get('id');
+            var doctor1 = (NeqMobile.manager.Session.getSession()).get('userinfo').get('physician_id');
             var patientId = NeqMobile.manager.Session.getCurrentPatient();
             var shortComment = false;
             var pcsCode = false;
@@ -320,27 +323,27 @@ Ext.define('NeqMobile.controller.PatientView', {
             newDisease.set(status,status1);
             console.log(status1);
             console.log(newDisease.get(status));
-            newDisease.set('is_allergy',isAllergy);
-            newDisease.set('doctor',doctor1);
-            newDisease.set('pregnancy_warning',pregnancyWarning);
-            newDisease.set('age',age1);
-            newDisease.set('weeks_of_pregnancy',weeksOfPregnancy);
-            newDisease.set('date_start_treatment',dateStartTreatment);
-            newDisease.set('short_comment',shortComment);
-            newDisease.set('is_on_treatment',isOnTreatment);
-            newDisease.set('is_active',isActive);
-            newDisease.set('diagnosed_date',diagnosedDate);
-            newDisease.set('treatment_description',treatmentDescription);
-            newDisease.set('healed_date',healedDate);
-            newDisease.set('date_stop_treatment',dateStopTreatment);
-            newDisease.set('pcs_code',pcsCode);
-            newDisease.set('pathology',pathology1);
-            newDisease.set('allergy_type',allergyType);
-            newDisease.set('disease_severity',diseaseSeverity);
-            newDisease.set('is_infectious',isInfectious);
-            newDisease.set('extra_info',extraInfo);
-            newDisease.set('patient_id',patientId);
-            console.log(newDisease.get('patient_id'));
+            newDisease.getProxy().setExtraParam('is_allergy',isAllergy);
+            newDisease.getProxy().setExtraParam('doctor',doctor1);
+            newDisease.getProxy().setExtraParam('pregnancy_warning',pregnancyWarning);
+            newDisease.getProxy().setExtraParam('age',age1);
+            newDisease.getProxy().setExtraParam('weeks_of_pregnancy',weeksOfPregnancy);
+            newDisease.getProxy().setExtraParam('date_start_treatment',dateStartTreatment);
+            newDisease.getProxy().setExtraParam('short_comment',shortComment);
+            newDisease.getProxy().setExtraParam('is_on_treatment',isOnTreatment);
+            newDisease.getProxy().setExtraParam('is_active',isActive);
+            newDisease.getProxy().setExtraParam('diagnosed_date',diagnosedDate);
+            newDisease.getProxy().setExtraParam('treatment_description',treatmentDescription);
+            newDisease.getProxy().setExtraParam('healed_date',healedDate);
+            newDisease.getProxy().setExtraParam('date_stop_treatment',dateStopTreatment);
+            newDisease.getProxy().setExtraParam('pcs_code',pcsCode);
+            newDisease.getProxy().setExtraParam('pathology',pathology1);
+            newDisease.getProxy().setExtraParam('allergy_type',allergyType);
+            newDisease.getProxy().setExtraParam('disease_severity',diseaseSeverity);
+            newDisease.getProxy().setExtraParam('is_infectious',isInfectious);
+            newDisease.getProxy().setExtraParam('extra_info',extraInfo);
+            newDisease.getProxy().setExtraParam('patient_id',patientId);
+            console.log('patient id: '+newDisease.get('patient_id'));
             console.log('2. date_start_treatment+ '+newDisease.get('date_start_treatment'));
             console.log('2. date_start_treatment+ '+dateStartTreatment);
              newDisease.save({
