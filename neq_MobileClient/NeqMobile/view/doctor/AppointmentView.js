@@ -13,8 +13,7 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
         layout: 'card',
         padding: 5,
        // width: 300,
-        height:150,
-
+        height:270,
         items: [
             {
             xtype: 'list',
@@ -26,7 +25,7 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
             {
                 xtype:'container',
                 id:'appointmentdetail',
-                scrollable: true,
+                scrollable: false,
                items: [
                     {
                         xtype: 'datepickerfield',
@@ -68,7 +67,8 @@ Ext.define('NeqMobile.view.doctor.AppointmentView',{
                         placeHolder: '-'
                     },
                    {
-                       width: 300,
+                       align: 'center',
+                       width: 50,
                        xtype: 'button',
                        iconCls:'reply',
                        iconMask:true

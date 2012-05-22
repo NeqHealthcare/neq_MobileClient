@@ -302,7 +302,6 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     },
 
     onAppointmentSelect:function (list, appointmentrecord, options) {
-        console.log('selected');
         var appointmentview = this.getAppointmentview();
         var appointmentDetail = appointmentview.down('#appointmentdetail');
         var selectedAppointment = appointmentview.down('#appointmentlist').getSelection()[0];
@@ -313,18 +312,11 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         appointmentDetail.down('#appointmenttype').setValue(selectedAppointment.get('appointment_type'));
         var urgencyLevel = NeqMobile.util.Renderer.urgencyrenderer(selectedAppointment.get('urgency_level'));
         appointmentDetail.down('#urgency').setValue(urgencyLevel);
-        console.log(selectedAppointment.get('consultations_description'));
-        console.log(appointmentDetail.down('#consultation').getValue());
-        //console.log(appointmentDetail.get('').getTime());
-        console.log(selectedAppointment.get('appointment_date').getTimezoneOffset( ));
-
-        //appointmentContainer.down('consultation').setValue(appointmentstore.patient_rec_name);
         appointmentview.setActiveItem(1);
 
     },
 
     onAppointmentBackButton:function (button, e, eOpts){
-        console.log('clicked');
         this.getAppointmentview().setActiveItem(0);
     },
 
