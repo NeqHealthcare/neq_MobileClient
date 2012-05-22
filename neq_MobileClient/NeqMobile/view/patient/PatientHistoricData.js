@@ -258,6 +258,18 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
 
     config:{
+        listeners: {
+            painted: function() {
+                var smoothie = new SmoothieChart({
+                    grid: { strokeStyle:'rgb(125, 0, 0)', fillStyle:'rgb(255, 255, 255)',
+                    },
+                labels: { fillStyle:'rgb(60, 0, 0)' }
+                });
+                smoothie.streamTo(document.getElementById("mycanvas"), 10);
+                this.setHeartbeatchart(smoothie);
+            }
+        },
+        heartbeatchart:undefined,
         margin:0,
         padding:5,
         scrollable:true,
@@ -270,17 +282,7 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
                 items:[
                     {
                         html:'<canvas id="mycanvas" width="650" height="150"></canvas>'
-                    }  ,
-                    {xtype:'button',
-                        name:'startheartbeatlive',
-                        text:'start live heartbeat',
-                        ui:'action',
-                        //    iconMask:true,
-                        margin:'0 0 5 0',
-                        width:'150px',
-                        height:'30px'}
-
-                //    {xtype:'heartbeatlive'}
+                    }
                 ]
             },
             {
