@@ -13,6 +13,6 @@ Ext.define('NeqMobile.store.NewDiagnose', {
 
 
         config:{model:'NeqMobile.model.NewDiagnose',
-                storeId:'newdiagnoses'
+                storeId:'newdiagnose'
         }}
 );

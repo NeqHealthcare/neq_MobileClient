@@ -13,7 +13,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     requires:['NeqMobile.view.patient.create.CreateDiagnose', 'Ext.DateExtras','NeqMobile.view.patient.create.Procedure'],
 
     config:{
-        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure'],
+        stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure', 'NewDiagnose'],
 
         refs:{
             patientview:'patientview',
@@ -260,7 +260,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             var toppart = diagnoseoverlay.down('#toppart');
             var diseaseInfo = toppart.down('#diseaseInfo');
             var pathology = diseaseInfo.down('#pathology').getValue();
-            var status = diseaseInfo.down('#status').getValue();
+            var status1 = diseaseInfo.down('#status').getValue();
             var disease_severity = diseaseInfo.down('#disease_severity').getValue();
             var is_infectious = diseaseInfo.down('#is_infectious').getValue();
             var is_active = diseaseInfo.down('#is_active').getValue();
@@ -292,7 +292,8 @@ Ext.define('NeqMobile.controller.PatientView', {
             var patient_id = NeqMobile.manager.Session.getCurrentPatient();
             var shortComment = false;
             var pcs_code = false;
-            var newDisease = Ext.create('NeqMobile.model.Diagnose', {
+
+            var newDisease = Ext.create('NeqMobile.model.NewDiagnose', {
                 status: status,
                 is_allergy:is_allergy,
                 doctor: doctor,
@@ -315,10 +316,37 @@ Ext.define('NeqMobile.controller.PatientView', {
                 extra_info:extra_info,
                 patient_id:patient_id
             });
-            newDisease.save({
+            console.log('1. date_start_treatment+ '+newDisease.get(date_start_treatment));
+            newDisease.set(status,status1);
+            console.log(status1);
+            console.log(newDisease.get(status));
+            newDisease.set(is_allergy,is_allergy);
+            newDisease.set(doctor,doctor);
+            newDisease.set(pregnancy_warning,pregnancy_warning);
+            newDisease.set(age,age);
+            newDisease.set(weeks_of_pregnancy,weeks_of_pregnancy);
+            newDisease.set(date_start_treatment,date_start_treatment);
+            newDisease.set(shortComment,shortComment);
+            newDisease.set(is_on_treatment,is_on_treatment);
+            newDisease.set(is_active,is_active);
+            newDisease.set(diagnosed_date,diagnosed_date);
+            newDisease.set(treatment_description,treatment_description);
+            newDisease.set(healed_date,healed_date);
+            newDisease.set(date_stop_treatment,date_stop_treatment);
+            newDisease.set(pcs_code,pcs_code);
+            newDisease.set(pathology,pathology);
+            newDisease.set(allergy_type,allergy_type);
+            newDisease.set(disease_severity,disease_severity);
+            newDisease.set(is_infectious,is_infectious);
+            newDisease.set(extra_info,extra_info);
+            newDisease.set(patient_id,patient_id);
+            console.log(newDisease.get(patient_id));
+            console.log('2. date_start_treatment+ '+newDisease.get(date_start_treatment));
+
+             newDisease.save({
                     success:function (newDisease) {
                         console.log("diagnose successfully saved");
-                        var diagnosestore = Ext.data.StoreManager.lookup('newdiagnoses');
+                        var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
                         if (!diagnosestore) {
                             diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
                         }
@@ -333,7 +361,6 @@ Ext.define('NeqMobile.controller.PatientView', {
                     },
                     failure:function (response, opts) {
                         console.log('server-side failure with status code ' + response.status);
-                        console.log('login failed - server not reachable')
                         Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
                             'It occured a technical connection problem. Possible causes are:<br><br>' +
                             '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);

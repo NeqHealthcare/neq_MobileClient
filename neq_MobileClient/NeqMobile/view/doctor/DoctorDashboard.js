@@ -28,6 +28,7 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
 
             {
                 xtype:'doctorheader'
+
             },
             {
                 xtype:'doctordashboardlab'
@@ -38,7 +39,6 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
             {
                 xtype: 'appointment'
             }
-
 //            ,
 //          {
                 // xtype:'testchart'

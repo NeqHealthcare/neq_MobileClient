@@ -12,19 +12,18 @@ Ext.define('NeqMobile.view.doctor.Appointment',{
     requires:'NeqMobile.view.doctor.AppointmentView',
     xtype: 'appointment',
     config: {
-        margin: '5',
-        padding: '5',
-        width:300,
-        title: 'Appointments',
+        padding: '0 0 10 0',
+       // width:300,
+       // title: 'Appointments',
         items: [
             {
                 xtype: 'selectfield',
                 id: 'appointmentsnumberselctfield',
                 label: 'Appointments',
+                labelWidth: '35%',
                 padding:'0, 0, 10, 0',
                 value: '10',
                 options: [
-                    {text: '1', value: '1'},
                     {text: '5', value: '5'},
                     {text: '10', value: '10'},
                     {text: '15', value: '15'}
