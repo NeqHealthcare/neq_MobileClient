@@ -253,96 +253,96 @@ Ext.define('NeqMobile.controller.PatientView', {
             var me = this;
             //disease Code
             var diagnoseoverlay = this.getDiagnoseoverlay();
-            var extra_info = diagnoseoverlay.down('#extrainfo').getValue();
-            if (!extra_info){
-                extra_info = false;
+            var extraInfo = diagnoseoverlay.down('#extrainfo').getValue();
+            if (!extraInfo){
+                extraInfo = false;
             }
             var toppart = diagnoseoverlay.down('#toppart');
             var diseaseInfo = toppart.down('#diseaseInfo');
-            var pathology = diseaseInfo.down('#pathology').getValue();
+            var pathology1 = diseaseInfo.down('#pathology').getValue();
             var status1 = diseaseInfo.down('#status').getValue();
-            var disease_severity = diseaseInfo.down('#disease_severity').getValue();
-            var is_infectious = diseaseInfo.down('#is_infectious').getValue();
-            var is_active = diseaseInfo.down('#is_active').getValue();
+            var diseaseSeverity = diseaseInfo.down('#disease_severity').getValue();
+            var isInfectious = diseaseInfo.down('#is_infectious').getValue();
+            var isActive = diseaseInfo.down('#is_active').getValue();
             var therapy = toppart.down('#therapy');
-            var is_on_treatment = therapy.down('#is_on_treatment').getValue();
-            var treatment_description = therapy.down('#treatment_description').getValue();
-            if (!treatment_description){
-                treatment_description = false;
+            var isOnTreatment = therapy.down('#is_on_treatment').getValue();
+            var treatmentDescription = therapy.down('#treatment_description').getValue();
+            if (!treatmentDescription){
+                treatmentDescription = false;
             }
-            var date_start_treatment = therapy.down('#date_start_treatment').getValue().getTime();
-            var date_stop_treatment = therapy.down('#date_stop_treatment').getValue().getTime();
+            var dateStartTreatment = therapy.down('#date_start_treatment').getValue().getTime();
+            var dateStopTreatment = therapy.down('#date_stop_treatment').getValue().getTime();
 
             var middlepart = diagnoseoverlay.down('#middlepart');
             var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
-            var diagnosed_date = diagnoseInfo.down('#diagnosed_date').getValue().getTime();
-            var age = diagnoseInfo.down('#age').getValue();
-            var healed_date = diagnoseInfo.down('#healed_date').getValue().getTime();
+            var diagnosedDate = diagnoseInfo.down('#diagnosed_date').getValue().getTime();
+            var age1 = diagnoseInfo.down('#age').getValue();
+            var healedDate = diagnoseInfo.down('#healed_date').getValue().getTime();
 
             var allergies = diagnoseoverlay.down('#allergies');
-            var is_allergy = allergies.down('#is_allergy').getValue();
-            var allergy_type = allergies.down('#allergy_type').getValue();
-            if (!allergy_type){
-                allergy_type = false;
+            var isAllergy = allergies.down('#is_allergy').getValue();
+            var allergyType = allergies.down('#allergy_type').getValue();
+            if (!allergyType){
+                allergyType = false;
             }
-            var pregnancy_warning = allergies.down('#pregnancy_warning').getValue();
-            var weeks_of_pregnancy = allergies.down('#weeks_of_pregnancy').getValue();
+            var pregnancyWarning = allergies.down('#pregnancy_warning').getValue();
+            var weeksOfPregnancy = allergies.down('#weeks_of_pregnancy').getValue();
 
-            var doctor = (NeqMobile.manager.Session.getSession()).get('userinfo').get('id');
-            var patient_id = NeqMobile.manager.Session.getCurrentPatient();
+            var doctor1 = (NeqMobile.manager.Session.getSession()).get('userinfo').get('id');
+            var patientId = NeqMobile.manager.Session.getCurrentPatient();
             var shortComment = false;
-            var pcs_code = false;
+            var pcsCode = false;
 
             var newDisease = Ext.create('NeqMobile.model.NewDiagnose', {
-                status: status,
-                is_allergy:is_allergy,
-                doctor: doctor,
-                pregnancy_warning:pregnancy_warning,
-                age:age,
-                weeks_of_pregnancy:weeks_of_pregnancy,
-                date_start_treatment:date_start_treatment,
+                status: status1,
+                is_allergy:isAllergy,
+                doctor: doctor1,
+                pregnancy_warning:pregnancyWarning,
+                age:age1,
+                weeks_of_pregnancy:weeksOfPregnancy,
+                date_start_treatment:dateStartTreatment,
                 short_comment:shortComment,
-                is_on_treatment:is_on_treatment,
-                is_active:is_active,
-                diagnosed_date:diagnosed_date,
-                treatment_description:treatment_description,
-                healed_date:healed_date,
-                date_stop_treatment:date_stop_treatment,
-                pcs_code:pcs_code,
-                pathology:pathology,
-                allergy_type:allergy_type,
-                disease_severity:disease_severity,
-                is_infectious:is_infectious,
-                extra_info:extra_info,
-                patient_id:patient_id
+                is_on_treatment:isOnTreatment,
+                is_active:isActive,
+                diagnosed_date:diagnosedDate,
+                treatment_description:treatmentDescription,
+                healed_date:healedDate,
+                date_stop_treatment:dateStopTreatment,
+                pcs_code:pcsCode,
+                pathology:pathology1,
+                allergy_type:allergyType,
+                disease_severity:diseaseSeverity,
+                is_infectious:isInfectious,
+                extra_info:extraInfo,
+                patient_id:patientId
             });
             console.log('1. date_start_treatment+ '+newDisease.get(date_start_treatment));
             newDisease.set(status,status1);
             console.log(status1);
             console.log(newDisease.get(status));
-            newDisease.set(is_allergy,is_allergy);
-            newDisease.set(doctor,doctor);
-            newDisease.set(pregnancy_warning,pregnancy_warning);
-            newDisease.set(age,age);
-            newDisease.set(weeks_of_pregnancy,weeks_of_pregnancy);
-            newDisease.set(date_start_treatment,date_start_treatment);
-            newDisease.set(shortComment,shortComment);
-            newDisease.set(is_on_treatment,is_on_treatment);
-            newDisease.set(is_active,is_active);
-            newDisease.set(diagnosed_date,diagnosed_date);
-            newDisease.set(treatment_description,treatment_description);
-            newDisease.set(healed_date,healed_date);
-            newDisease.set(date_stop_treatment,date_stop_treatment);
-            newDisease.set(pcs_code,pcs_code);
-            newDisease.set(pathology,pathology);
-            newDisease.set(allergy_type,allergy_type);
-            newDisease.set(disease_severity,disease_severity);
-            newDisease.set(is_infectious,is_infectious);
-            newDisease.set(extra_info,extra_info);
-            newDisease.set(patient_id,patient_id);
-            console.log(newDisease.get(patient_id));
-            console.log('2. date_start_treatment+ '+newDisease.get(date_start_treatment));
-
+            newDisease.set('is_allergy',isAllergy);
+            newDisease.set('doctor',doctor1);
+            newDisease.set('pregnancy_warning',pregnancyWarning);
+            newDisease.set('age',age1);
+            newDisease.set('weeks_of_pregnancy',weeksOfPregnancy);
+            newDisease.set('date_start_treatment',dateStartTreatment);
+            newDisease.set('short_comment',shortComment);
+            newDisease.set('is_on_treatment',isOnTreatment);
+            newDisease.set('is_active',isActive);
+            newDisease.set('diagnosed_date',diagnosedDate);
+            newDisease.set('treatment_description',treatmentDescription);
+            newDisease.set('healed_date',healedDate);
+            newDisease.set('date_stop_treatment',dateStopTreatment);
+            newDisease.set('pcs_code',pcsCode);
+            newDisease.set('pathology',pathology1);
+            newDisease.set('allergy_type',allergyType);
+            newDisease.set('disease_severity',diseaseSeverity);
+            newDisease.set('is_infectious',isInfectious);
+            newDisease.set('extra_info',extraInfo);
+            newDisease.set('patient_id',patientId);
+            console.log(newDisease.get('patient_id'));
+            console.log('2. date_start_treatment+ '+newDisease.get('date_start_treatment'));
+            console.log('2. date_start_treatment+ '+dateStartTreatment);
              newDisease.save({
                     success:function (newDisease) {
                         console.log("diagnose successfully saved");
