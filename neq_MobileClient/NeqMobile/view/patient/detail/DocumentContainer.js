@@ -18,6 +18,10 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
             xtype:'panel',
             id:'documentcontainer',
             layout:'card',
+            scrollable: {
+                direction: 'vertical',
+                directionLock: true
+            },
             //width:'100%',
             flex:1,
             //height:1000,

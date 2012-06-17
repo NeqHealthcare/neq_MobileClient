@@ -272,7 +272,10 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
         heartbeatchart:undefined,
         margin:0,
         padding:5,
-        scrollable:true,
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
 
         items:[
 
