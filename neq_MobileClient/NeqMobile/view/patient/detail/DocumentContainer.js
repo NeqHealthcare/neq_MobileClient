@@ -31,10 +31,9 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                 {
                     xtype:'fieldset',
-                    title:'Documents',
+                    title:'Pictures',
                     layout:'vbox',
                     flex:1,
-                    title:'Documents',
                     items:[
 
                         {
