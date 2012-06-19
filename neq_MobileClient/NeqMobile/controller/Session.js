@@ -10,19 +10,21 @@ Ext.define('NeqMobile.controller.Session', {
     requires:['NeqMobile.manager.Session'],
     config:{
         models:['Domain'],
-        stores:['Domains', 'Patients'],
-        views:['Workspace', 'menu.Settings', 'settings.Domains'],
+        stores:['Domains', 'Patients','ChatterUsers'],
+        views:['Workspace', 'menu.Settings', 'settings.Domains', 'settings.UserSettings'],
         refs:{
             login:'Login',
             viewport:'Viewport',
             workspace:'workspace',
             menuSettings:'menuSettings',
-            settingsDomains:'settingsDomains'
+            settingsDomains:'settingsDomains',
+            userSettings:'userSettings'
         },
         control:{
             'Login #submitButton':{tap:'onLoginTry'},
             'Login #settingsbutton':{tap:'onSettingsClick'},
             'workspace #doctorimage':{tap:'onShowLogoutMenu'},
+            'workspace #SettingsButton':{tap:'onUserSettingsClick'},
             'menuSettings #logoutbutton':{tap:'onLogoutClick'},
             'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'}
         }
@@ -97,6 +99,36 @@ Ext.define('NeqMobile.controller.Session', {
         }
         this.getViewport().setActiveItem(settingsdomains);
     },
+
+    onUserSettingsClick:function () {
+        console.log('switching card');
+        var userSettings;
+        if (this.getUserSettings()) {
+
+            userSettings = this.getUserSettings();
+        }
+        else {
+            userSettings = Ext.create('NeqMobile.view.settings.UserSettings');
+        }
+        this.getViewport().setActiveItem(userSettings);
+        userSettings.setMasked(true);
+        var chatterUserTable = userSettings.down('touchgridpanel');
+        var chatterUsersStore = Ext.data.StoreManager.lookup('chatterUsers');
+        if (!chatterUsersStore) {
+            chatterUsersStore = Ext.create('NeqMobile.store.ChatterUsers');
+        }
+        var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
+        var doctor_id = userinfo.get('physician_id');
+        chatterUsersStore.getProxy().setExtraParam('id', doctor_id);
+        chatterUsersStore.load({
+            callback:function (records, operation, success) {
+                chatterUserTable.loadChatterUsers(chatterUsersStore);
+                userSettings.setMasked(false);
+            },
+            scope:this
+        });
+    },
+
 
     onShowLogoutMenu:function (button) {
 
