@@ -205,27 +205,27 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
             },
             title:'Fluid intake/loss'
         },
-        {
-            type:'column',
-            markerConfig:{},
-            showInLegend:true,
-            highlight:{
-                size:7,
-                radius:7
-            },
-            axis:['left', 'top'],
-            xField:'date',
-            yField:'fluid_balace',
-            label:{
-                display:'insideEnd',
-                'text-anchor':'middle',
-                field:'fluid_balace',
-                //renderer: Ext.util.Format.numberRenderer('0'),
-                orientation:'horizontal',
-                color:'#000'
-            },
-            title:'Fluid intake/loss'
-        },
+        /* {
+         type:'column',
+         markerConfig:{},
+         showInLegend:true,
+         highlight:{
+         size:7,
+         radius:7
+         },
+         axis:['left', 'top'],
+         xField:'date',
+         yField:'fluid_balace',
+         label:{
+         display:'insideEnd',
+         'text-anchor':'middle',
+         field:'fluid_balace',
+         //renderer: Ext.util.Format.numberRenderer('0'),
+         orientation:'horizontal',
+         color:'#000'
+         },
+         title:'Fluid intake/loss'
+         },*/
         {
             type:'line',
             markerConfig:{},
@@ -258,12 +258,12 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
 
     config:{
-        listeners: {
-            painted: function() {
+        listeners:{
+            painted:function () {
                 var smoothie = new SmoothieChart({
-                    grid: { strokeStyle:'rgb(125, 0, 0)', fillStyle:'rgb(255, 255, 255)',
+                    grid:{ strokeStyle:'rgb(125, 0, 0)', fillStyle:'rgb(255, 255, 255)',
                     },
-                labels: { fillStyle:'rgb(60, 0, 0)' }
+                    labels:{ fillStyle:'rgb(60, 0, 0)' }
                 });
                 smoothie.streamTo(document.getElementById("mycanvas"), 10);
                 this.setHeartbeatchart(smoothie);
@@ -272,9 +272,9 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
         heartbeatchart:undefined,
         margin:0,
         padding:5,
-        scrollable: {
-            direction: 'vertical',
-            directionLock: true
+        scrollable:{
+            direction:'vertical',
+            directionLock:true
         },
 
         items:[
