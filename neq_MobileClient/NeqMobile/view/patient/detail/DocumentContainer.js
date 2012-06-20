@@ -1,5 +1,21 @@
 var full_url = "";
 
+var tpl = new Ext.XTemplate(
+  ['<div class="x-container x-panel" id="list-document">',
+   '<img class="x-container x-panel x-docked-left" style="background-size: cover; background-position: center center;',
+        ' background: #ddd; border-radius: 3px;' ,
+        ' -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' ,
+        ' src="{url}" width="145" height="145"/>',
+    '<div class="x-inner x-panel-inner x-layout-vbox" id="ext-element-102" style="-webkit-box-align: stretch; padding: 5px !important; "><div class="x-container x-field-text x-field x-label-align-left x-field-labeled">',
+    '<div x-container x-field-text x-field x-label-align-left x-field-labeled" id="list-block-bold">{description}<div/>' ,
+    '<div x-container x-field-text x-field x-label-align-left x-field-labeled> {name} </div>' ,
+    '<div x-container x-field-text x-field x-label-align-left x-field-labeled" id="list-block-normal">Last used by: {last_user}&nbsp;</div>',
+    '</div></div></div>'].join('')
+
+
+);
+
+
 Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
         extend:'Ext.Panel',
@@ -36,13 +52,20 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                     flex:1,
                     items:[
 
+
                         {
                             xtype:'list',
                             flex:1,
-                            itemTpl:'<div class="list">' +
-                                '<div>{description}</div>' +
-                                '<img src={url} height="100">' +
-                                ' </div>',
+
+
+
+                            itemTpl:tpl,
+                            /*'<div class="list">' +
+                                '<p><img src={url} height="100"/><p/>' +
+                                '<p>{description}</p>'+
+                                '<p>{name}</p>'           +
+                                '<p>{last_user}</p>'+
+                                '</div>',*/
                             id:'documentList',
                             //store: store
                             listeners:{

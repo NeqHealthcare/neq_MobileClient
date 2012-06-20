@@ -45,6 +45,7 @@ Ext.define('NeqMobile.proxy.NeqProxy', {
     config:{
         appendId:false,
         customUrl:undefined,
+
         reader:{
             type:'json',
             rootProperty:'data'
