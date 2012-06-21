@@ -1,5 +1,6 @@
 Ext.define('NeqMobile.controller.PatientLab', {
     extend:'Ext.app.Controller',
+    requires:['NeqMobile.store.LabTestTypes'],
     config:{
         models:['LabDetail'],
         refs:{
