@@ -70,6 +70,11 @@ Ext.define('NeqMobile.util.Renderer',
             }
             else return '<img src="theme/images/view/patient/bullet_red.png"/>'
         },
+
+        imageRenderer:function (value, values) {
+                return '<img src="'+value+'">'
+        },
+
         severityrenderer:function (value, values) {
             var barColor1="blue", barColor2="blue";
             if(value.charAt(0)>2){

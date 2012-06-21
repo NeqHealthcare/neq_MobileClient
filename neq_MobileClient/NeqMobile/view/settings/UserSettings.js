@@ -58,10 +58,19 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                 scrollable:false,
                 items:[
                     {xtype:'fieldset',
-                        title:'Select the other user you want to follow',
+                        title:'People',
+                        instructions:'Select people you want to follow',
                         margin: '0',
                         padding: '5',
+                        layout:'vbox',
                         items:[
+
+                            {
+                                xtype:'searchfield',
+                                itemId:'chatterSearchfield',
+                                width:'25%'
+
+                            },
                             {
                                 xtype:'touchgridpanel',
                                 itemId:'chatterUserTable',
@@ -70,13 +79,21 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                 scrollable:false,
                                 columns:[
                                     {
+                                        header:'',
+                                        dataIndex:'image_url',
+                                        style:'text-align: center;',
+                                        width:'45px',
+                                        height: '45px',
+                                        enderer:NeqMobile.util.Renderer.imageRenderer
+                                    },
+                                    {
                                         header:'Name',
                                         dataIndex:'rec_name',
                                         style: 'padding-left: 1em; background-color: #FFFFFF;',
-                                        width:'80%'
+                                        width:'70%'
                                     },
                                     {
-                                        header:'Following?',
+                                        header:'Following',
                                         dataIndex:'isFollowed',
                                         style:'text-align: center;',
                                         width:'20%',

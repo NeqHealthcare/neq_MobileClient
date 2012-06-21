@@ -3,12 +3,13 @@ Ext.define('NeqMobile.model.ChatterUser', {
     config:{
         fields:[
             'id',
-            'name',
+            'image_url',
+            'rec_name',
             'isFollowed'
         ],
         proxy:{
             type:'neqproxy',
-            customUrl:'/chatter/followingUsers'
+            customUrl:'/chatter/people'
         }
 
     }

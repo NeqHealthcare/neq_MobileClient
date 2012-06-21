@@ -22,7 +22,8 @@ Ext.define('NeqMobile.view.settings.Domains', {
                 items:[
                     {
                         ui:'back',
-                        text:'Back',
+                        iconMask:true,
+                        iconCls:'reply',
                         itemId:'backbutton'
                     }
                 ]

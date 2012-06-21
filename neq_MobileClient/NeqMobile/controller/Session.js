@@ -111,8 +111,7 @@ Ext.define('NeqMobile.controller.Session', {
             userSettings = Ext.create('NeqMobile.view.settings.UserSettings');
         }
         this.getViewport().setActiveItem(userSettings);
-        userSettings.setMasked(true);
-        var chatterUserTable = userSettings.down('touchgridpanel');
+        userSettings.setMasked({xtype:'loadmask', message:'loading people', transparent:true});
         var chatterUsersStore = Ext.data.StoreManager.lookup('chatterUsers');
         if (!chatterUsersStore) {
             chatterUsersStore = Ext.create('NeqMobile.store.ChatterUsers');
@@ -122,7 +121,7 @@ Ext.define('NeqMobile.controller.Session', {
         chatterUsersStore.getProxy().setExtraParam('id', doctor_id);
         chatterUsersStore.load({
             callback:function (records, operation, success) {
-                chatterUserTable.loadChatterUsers(chatterUsersStore);
+                userSettings.loadChatterUsers(chatterUsersStore);
                 userSettings.setMasked(false);
             },
             scope:this
