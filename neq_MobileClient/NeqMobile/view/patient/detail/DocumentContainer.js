@@ -41,7 +41,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
             //width:'100%',
             flex:1,
             //height:1000,
-            margin:'1.2em',
+            margin:'15em',
 
             items:[
 
@@ -49,6 +49,8 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                     xtype:'fieldset',
                     title:'Pictures',
                     layout:'vbox',
+                    margin: '0',
+                    padding: '5',
                     flex:1,
                     items:[
 
@@ -88,19 +90,6 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                         }
                     ]
                 },
-
-
-                {
-                    id:'imageScreen',
-                    xtype:'imageviewer',
-                    flex:1
-                    //width:1000,
-                    //height:1000
-
-
-                }   ,
-
-
                 {
 
                     id:'backbutton',
@@ -112,7 +101,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                     round:true,
                     width:50,
                     top:5,
-                    right:5,
+                    left:5,
                     hidden:true,
                     listeners:{
                         tap:function (obj, e, eOpts) {
@@ -120,7 +109,21 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                             this.hide();
                         }
                     }
+                },
+
+
+                {
+                    id:'imageScreen',
+                    xtype:'imageviewer',
+                    flex:1
+                    //width:1000,
+                    //height:1000
+
+
                 }
+
+
+
             ]
 
 
