@@ -5,12 +5,14 @@
  */
 Ext.define('NeqMobile.view.settings.UserSettings', {
     extend:'Ext.Container',
- //   requires:['NeqMobile.store.UserSettings'],
+    requires:[    'Ext.ux.touch.grid.View',
+        'Ext.ux.touch.grid.feature.Feature',
+        'NeqMobile.controller.settings.UserSettings',
+        'Ext.ux.touch.grid.feature.Sorter'],
     xtype:'userSettings',
     loadChatterUsers:function (chatterUsersStore) {
-
+        chatterUsersStore.sort('rec_name','ASC');
         this.down('#chatterUserTable').setStore(chatterUsersStore);
-
     },
     config:{
         //  styleHtmlContent:true,
@@ -54,8 +56,12 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
             {
                 flex:5,
                 styleHtmlContent:true,
-                xtype:'formpanel',
-                scrollable:false,
+                xtype:'container',
+                scrollable: {
+                    direction: 'vertical',
+                    directionLock: true
+                },
+                maxWidth:'100%',
                 items:[
                     {xtype:'fieldset',
                         title:'People',
@@ -77,12 +83,18 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                 id: 'chatterUserTableView',
                                 width: '100%',
                                 scrollable:false,
+                                features   : [
+                                    {
+                                        ftype    : 'NeqMobile.controller.settings.UserSettings',
+                                        launchFn : 'initialize'
+                                    }
+                                ],
                                 columns:[
                                     {
                                         header:'',
                                         dataIndex:'image_url',
                                         style:'text-align: center;',
-                                        width:'45px',
+                                        width:'10%',
                                         height: '45px',
                                         enderer:NeqMobile.util.Renderer.imageRenderer
                                     },
@@ -90,13 +102,13 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                         header:'Name',
                                         dataIndex:'rec_name',
                                         style: 'padding-left: 1em; background-color: #FFFFFF;',
-                                        width:'70%'
+                                        width:'80%'
                                     },
                                     {
                                         header:'Following',
                                         dataIndex:'isFollowed',
                                         style:'text-align: center;',
-                                        width:'20%',
+                                        width:'10%',
                                         renderer:NeqMobile.util.Renderer.followRenderer
                                     }
 

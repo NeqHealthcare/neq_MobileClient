@@ -66,9 +66,9 @@ Ext.define('NeqMobile.util.Renderer',
         },
         followRenderer:function (value, values) {
             if (value) {
-                return '<img src="theme/images/view/patient/bullet_black.png">'
+                return '<img src="theme/images/view/unfollow.png">'
             }
-            else return '<img src="theme/images/view/patient/bullet_red.png"/>'
+            else return '<img src="theme/images/view/follow.png"/>'
         },
 
         imageRenderer:function (value, values) {
@@ -102,6 +102,7 @@ Ext.define('NeqMobile.util.Renderer',
             else
                 return value;
         }
+
 
 
 

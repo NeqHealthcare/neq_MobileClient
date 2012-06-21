@@ -70,13 +70,17 @@ Ext.define('NeqMobile.view.settings.Domains', {
             {
                 flex:5,
                 styleHtmlContent:true,
-                xtype:'formpanel',
-                scrollable:false,
-                maxWidth:500,
+                xtype:'container',
+                scrollable: {
+                    direction: 'vertical',
+                    directionLock: true
+                },
+                maxWidth:'100%',
                 items:[
                     {xtype:'fieldset',
                         title:'Connection Settings',
                         instructions:'Enter the Connection data, you received from your administrator',
+                        maxWidth:500,
                         items:[
                             {
                                 xtype:'textfield',
