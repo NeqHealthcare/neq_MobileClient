@@ -4,7 +4,7 @@
 
 Ext.define('NeqMobile.view.doctor.chatter.ChatterContainer', {
     extend:'Ext.Container',
-    requires:['NeqMobile.view.doctor.dashboard.DoctorHeader'],
+    requires:['NeqMobile.view.doctor.chatter.NewPostContainer'],
     xtype:'chattercontainer',
 
 
@@ -19,7 +19,7 @@ Ext.define('NeqMobile.view.doctor.chatter.ChatterContainer', {
         padding: 15,
         items:[
             {
-                xtype:'doctorheader'
+                xtype:'newpostcontainer'
 
             }
         ]
