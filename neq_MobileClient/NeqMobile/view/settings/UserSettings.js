@@ -26,7 +26,7 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                 // ui:'light',
                 items:[
                     {
-                        iconMask:true, ui:'back', iconCls:'reply', itemId:'backbutton',
+                        iconMask:true, ui:'back', iconCls:'reply', itemId:'userSettingsBackbutton',
                         handler:function () {
                             history.back();
                         }
