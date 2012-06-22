@@ -16,7 +16,10 @@ Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
 
     config:{
         styleHtmlContent:true,
-        scrollable:true,
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
         layout:{
             itemId: 'doctordashboard',
             layout: 'vbox',

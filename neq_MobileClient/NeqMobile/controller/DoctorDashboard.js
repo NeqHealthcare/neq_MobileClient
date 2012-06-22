@@ -13,7 +13,6 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment'],
 
     config:{
-
         /* - References ---------------------------------------------------------------------------------- */
         refs:{
             doctordashboard:'doctordashboard',
@@ -75,7 +74,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
     switchtohome:function (button, e, eOpts) {
         var me = this;
         var workspace = me.getWorkspace();
-        workspace.down('#dashboardcontainer').setActiveItem(workspace.down('doctordashboard'));
+        workspace.down('#userviewcontainer').setActiveItem(workspace.down('userview'));
+
         this.refreshnewlabresults();
         this.refreshdoctorinfo();
         this.showAppointments();
