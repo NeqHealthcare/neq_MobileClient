@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('NeqMobile.view.doctor.AppointmentView',{
+Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
     extend:'Ext.Container',
     xtype: 'appointmentview',
     config:{

@@ -6,11 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('NeqMobile.view.doctor.DoctorDashboard', {
+Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboard', {
     extend:'Ext.Container',
-    requires:['NeqMobile.view.doctor.DoctorHeader', 'NeqMobile.view.doctor.DoctorDashboardLab',
-              'NeqMobile.view.doctor.DoctorNewsFeedContainer',
-              'NeqMobile.view.doctor.Appointment'],
+    requires:['NeqMobile.view.doctor.dashboard.DoctorHeader', 'NeqMobile.view.doctor.dashboard.DoctorDashboardLab',
+              'NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer',
+              'NeqMobile.view.doctor.dashboard.Appointment'],
     xtype:'doctordashboard',
 
 

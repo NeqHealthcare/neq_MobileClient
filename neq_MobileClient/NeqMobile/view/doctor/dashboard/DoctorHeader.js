@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.doctor.DoctorHeader', {
+Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
     extend: 'Ext.form.Panel',
     xtype: 'doctorheader',
     config: {

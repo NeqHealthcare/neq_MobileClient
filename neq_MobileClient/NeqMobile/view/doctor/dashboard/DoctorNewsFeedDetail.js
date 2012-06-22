@@ -1,4 +1,4 @@
-Ext.define('NeqMobile.view.doctor.DoctorNewsFeedDetail', {
+Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedDetail', {
     extend: 'Ext.form.Panel',
     xtype: 'doctornewsfeeddetail',
 

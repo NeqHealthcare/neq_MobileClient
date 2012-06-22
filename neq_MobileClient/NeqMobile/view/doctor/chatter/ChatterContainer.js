@@ -2,9 +2,9 @@
  * Created by Jan Gansen
  */
 
-Ext.define('NeqMobile.view.doctor.ChatterContainer', {
+Ext.define('NeqMobile.view.doctor.chatter.ChatterContainer', {
     extend:'Ext.Container',
-    requires:['NeqMobile.view.doctor.DoctorHeader'],
+    requires:['NeqMobile.view.doctor.dashboard.DoctorHeader'],
     xtype:'chattercontainer',
 
 
