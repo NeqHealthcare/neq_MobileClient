@@ -8,7 +8,7 @@
 
 /* - Basic Definitions of DoctorDashboard Controller ------------------------------------------------------------- */
 
-Ext.define('NeqMobile.controller.DoctorDashboard', {
+Ext.define('NeqMobile.controller.UserView', {
     extend:'Ext.app.Controller',
     requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment'],
 
@@ -45,6 +45,8 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
             'workspace appointment appointmentview #appointmentdetail button':{
                 tap:'onAppointmentBackButton'
             }
+            ,
+            userview: {activeitemchange: 'onUserViewItemChange'}
 
         },
 
@@ -67,6 +69,19 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
 
 /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
+    onUserViewItemChange:function (container, newvalue, oldvalue, eOpts) {
+        console.log('user view was switched!!!!!!!!!');
+        var me = this;
+        if (newvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
+            console.log('switched to chatter container')
+        }else if(newvalue instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard){
+            console.log('switched to doctordashboard')
+        } else if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
+            console.log('shutt down chatter container cometd')
+        }
+    },
+
+
     onHomeTap:function () {
         this.redirectTo('doctordashboard');
     },
@@ -75,6 +90,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         var me = this;
         var workspace = me.getWorkspace();
         workspace.down('#userviewcontainer').setActiveItem(workspace.down('userview'));
+        workspace.down('userview').setActiveItem(this.getDoctordashboard());
 
         this.refreshnewlabresults();
         this.refreshdoctorinfo();

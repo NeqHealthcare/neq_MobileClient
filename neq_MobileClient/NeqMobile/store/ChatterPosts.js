@@ -1,15 +1,15 @@
 /**
  * Created by JanGansen
  */
-Ext.define('NeqMobile.store.ChatterUsers', {
+Ext.define('NeqMobile.store.ChatterPosts', {
         extend:'Ext.data.Store',
-        requires:'NeqMobile.model.ChatterUser',
+        requires:'NeqMobile.model.ChatterPost',
 
 
         config:{model:'NeqMobile.model.ChatterUser',
-              sorters: 'rec_name',
+            sorters: 'timestamp',
             //           autoLoad:true,
             //           autoSync:true,
-            storeId:'chatterUsers'
+            storeId:'chatterPosts'
         }}
 );

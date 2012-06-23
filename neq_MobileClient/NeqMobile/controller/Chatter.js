@@ -11,7 +11,8 @@ Ext.define('NeqMobile.controller.Chatter', {
             stores:[''],
 
             refs:{
-                chattercontainer:'chattercontainer'
+                chattercontainer:'chattercontainer',
+                workspace:'workspace'
             },
 
             control:{
@@ -24,9 +25,7 @@ Ext.define('NeqMobile.controller.Chatter', {
             },
             // enables calling a view directly by address
             routes:{
-                'patient/:id':'showPatient',
-                'patient/:id/lab/:resultid':'showPatientLab'
-                //'patient/:id/' route zu den patientBildern / Röntegenaufnahmen etc
+                'chatter':'chattersLoadChatterdata'
             },
 
             before:{
@@ -34,11 +33,22 @@ Ext.define('NeqMobile.controller.Chatter', {
 
         /* - Functions ---------------------------------------------------------------------------------- */
 
+        chattersLoadChatterdata:function (button, e, eOpts) {
+            this.getWorkspace().down('#userviewcontainer').setActiveItem(workspace.down('userview'));
+
+            var postStore = new NeqMobile.store.ChatterPosts(
+                {
+                    storeId:'chatterPosts'
+                }
+            );
+            postStore.load();
+            this.getChattercontainer().down('#chatterPostContainer').setStore(postStore);
+        },
+
 
         onCreateNewPostButton: function(button, e, eOpts){
 
         }
-
     }
 
 );

@@ -26,7 +26,8 @@ Ext.define('NeqMobile.controller.Session', {
             'workspace #doctorimage':{tap:'onShowLogoutMenu'},
             'workspace #SettingsButton':{tap:'onUserSettingsClick'},
             'menuSettings #logoutbutton':{tap:'onLogoutClick'},
-            'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'}
+            'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'
+            }
         }
     },
 
