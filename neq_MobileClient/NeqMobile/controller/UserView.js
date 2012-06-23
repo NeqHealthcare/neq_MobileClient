@@ -16,6 +16,7 @@ Ext.define('NeqMobile.controller.UserView', {
         /* - References ---------------------------------------------------------------------------------- */
         refs:{
             doctordashboard:'doctordashboard',
+            chattercontainer:'chattercontainer',
             workspace:'workspace',
             appointment:'appointment',
             doctornews:'doctornews',
@@ -52,7 +53,8 @@ Ext.define('NeqMobile.controller.UserView', {
 
         /* - Document/Site Routing Definitions ------------------------------------------------------------------- */
         routes:{
-            'doctordashboard':'switchtohome'
+            'doctordashboard':'switchtodoctordashboard',
+            'chatter':'switchtochatter'
         },
 
         /* - ? dont know whats that ?  --------------------------------------------------------------------------- */
@@ -67,17 +69,22 @@ Ext.define('NeqMobile.controller.UserView', {
         Ext.Viewport.on('logout', this.stoppolling, me);
     },
 
+    newActiveItem:undefined,
+
 /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
     onUserViewItemChange:function (container, newvalue, oldvalue, eOpts) {
-        console.log('user view was switched!!!!!!!!!');
         var me = this;
+        me.newActiveItem = newvalue;
         if (newvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
-            console.log('switched to chatter container')
+            this.redirectTo('chatter');
         }else if(newvalue instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard){
-            console.log('switched to doctordashboard')
+            if(oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer){
+                console.log('shut down chatter container cometd')
+            }
+            this.redirectTo('doctordashboard');
         } else if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
-            console.log('shutt down chatter container cometd')
+            console.log('shut down chatter container cometd')
         }
     },
 
@@ -86,11 +93,52 @@ Ext.define('NeqMobile.controller.UserView', {
         this.redirectTo('doctordashboard');
     },
 
-    switchtohome:function (button, e, eOpts) {
+    switchtochatter:function (button, e, eOpts) {
         var me = this;
         var workspace = me.getWorkspace();
-        workspace.down('#userviewcontainer').setActiveItem(workspace.down('userview'));
-        workspace.down('userview').setActiveItem(this.getDoctordashboard());
+        var chatterContainer = me.getChattercontainer();
+        var userview = workspace.down('userview');
+        var userviewcontainer = workspace.down('#userviewcontainer');
+
+        userviewcontainer.setActiveItem(userview);
+
+     //   console.log('------ active item for chatter: '+me.newActiveItem);
+
+        if (!(me.newActiveItem  instanceof NeqMobile.view.doctor.chatter.ChatterContainer)) {
+      //      console.log('------ chatter is set as new active item through event');
+            userview.setActiveItem(chatterContainer);
+
+        }
+        me.newActiveItem = undefined;
+
+//        console.log('before definition');
+//        var postStore = new NeqMobile.store.ChatterPosts(
+//            {
+//                storeId:'chatterPosts'
+//            }
+//        );
+//        console.log('before loading');
+//        postStore.load();
+//        console.log('after loading');
+//        chatterContainer.down('#chatterPostContainer').setStore(postStore);
+    },
+
+    switchtodoctordashboard:function (button, e, eOpts) {
+        var me = this;
+        var workspace = me.getWorkspace();
+        var userview = workspace.down('userview');
+        var userviewcontainer = workspace.down('#userviewcontainer');
+
+        userviewcontainer.setActiveItem(userview);
+
+   //     console.log('------ active item for doctordashboard: '+me.newActiveItem);
+
+        if(!(me.newActiveItem instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard)){
+            userview.setActiveItem(this.getDoctordashboard());
+       //     console.log('------ dashboard is set as new active item through event');
+        }
+
+        me.newActiveItem = undefined;
 
         this.refreshnewlabresults();
         this.refreshdoctorinfo();

@@ -34,15 +34,7 @@ Ext.define('NeqMobile.controller.Chatter', {
         /* - Functions ---------------------------------------------------------------------------------- */
 
         chattersLoadChatterdata:function (button, e, eOpts) {
-            this.getWorkspace().down('#userviewcontainer').setActiveItem(workspace.down('userview'));
 
-            var postStore = new NeqMobile.store.ChatterPosts(
-                {
-                    storeId:'chatterPosts'
-                }
-            );
-            postStore.load();
-            this.getChattercontainer().down('#chatterPostContainer').setStore(postStore);
         },
 
 
