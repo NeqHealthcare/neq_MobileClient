@@ -97,10 +97,12 @@ Ext.define('NeqMobile.controller.UserView', {
         var channelurl = "/cometd/chatter";
 //        cometd.publish(channelurl, {});
         this.subscription = cometd.subscribe(channelurl, function (message) {
-            var values = Ext.decode(message.data);
+            var values = (Ext.decode(message.data)).toString();
+            var tempIds = new Array();
+            tempIds = values.split(',');
             var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
-            var doctor_id = userinfo.get('id');
-            if(values.contains(doctor_id)){
+            var doctor_id = (userinfo.get('id'));
+            if(tempIds.indexOf(doctor_id) != -1){
                 var store = Ext.data.StoreManager.lookup('chatterPosts');
                 store.load({
                     callback:function (records, operation, success) {
@@ -109,7 +111,6 @@ Ext.define('NeqMobile.controller.UserView', {
                     scope:this
                 });
             }
-          console.log('+++++++++++++++++ yeah a subscription reached my device:'+values);
 
         });
     },
