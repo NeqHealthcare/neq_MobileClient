@@ -110,17 +110,15 @@ Ext.define('NeqMobile.controller.UserView', {
 
         }
         me.newActiveItem = undefined;
-
-//        console.log('before definition');
-//        var postStore = new NeqMobile.store.ChatterPosts(
-//            {
-//                storeId:'chatterPosts'
-//            }
-//        );
-//        console.log('before loading');
-//        postStore.load();
-//        console.log('after loading');
-//        chatterContainer.down('#chatterPostContainer').setStore(postStore);
+        chatterContainer.setMasked({xtype:'loadmask', message:'loading posts', transparent:true});
+        var postStore = new NeqMobile.store.ChatterPosts(
+            {
+                storeId:'chatterPosts'
+            }
+        );
+        postStore.load();
+        chatterContainer.setMasked(false);
+        chatterContainer.down('#chatterPostContainer').setStore(postStore);
     },
 
     switchtodoctordashboard:function (button, e, eOpts) {

@@ -37,10 +37,10 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboard', {
                 xtype:'doctordashboardlab'
             },
             {
-                xtype: 'doctornewsfeedcontainer'
+                xtype: 'appointment'
             },
             {
-                xtype: 'appointment'
+                xtype: 'doctornewsfeedcontainer'
             }
 //            ,
 //          {
