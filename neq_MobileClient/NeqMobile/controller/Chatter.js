@@ -38,6 +38,13 @@ Ext.define('NeqMobile.controller.Chatter', {
                     me.getNewposttextarea().setValue('');
                     me.getNewposttextarea().setPlaceHolder("What do you wanna share?");
                     me.getChattercontainer().down('#chatterPostContainer').refresh();
+                    var store = Ext.data.StoreManager.lookup('chatterPosts');
+                    store.load({
+                        callback:function (records, operation, success) {
+                            console.log('store reloaded');
+                        },
+                        scope:this
+                    });
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);
