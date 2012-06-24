@@ -10,7 +10,10 @@
 
 Ext.define('NeqMobile.controller.UserView', {
     extend:'Ext.app.Controller',
-    requires:[ 'NeqMobile.util.Renderer', 'NeqMobile.store.Appointment','org.cometd', 'Ext.ux.CometD'],
+    requires:[ 'NeqMobile.util.Renderer',
+        'NeqMobile.store.Appointment',
+        'org.cometd',
+        'Ext.ux.CometD'],
 
     config:{
         /* - References ---------------------------------------------------------------------------------- */

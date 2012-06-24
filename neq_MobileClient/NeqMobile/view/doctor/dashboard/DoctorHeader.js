@@ -30,10 +30,16 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
                                 xtype:'panel',
                                 docked: 'left',
                                 padding: 7,
-                                name:'image_url',
-                                icon:'theme/images/user/doctor_avatar_big.jpg',
+                                //name:'image_url',
+                                //icon:'theme/images/user/doctor_avatar_big.jpg',
                                 //align:'right',
-                                itemId:'doctorimage_big'
+                                itemId:'doctorimage_big',
+                                itemTpl:['<img src="http://{image_url}?width=145&height=145' +
+                                    'style="background-size: cover; background-position: center center;' +
+                                    'background: #ddd; border-radius: 3px;' +
+                                    '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
+                                    'height=145 width=145' +
+                                    '/>'].join('')
                                 /*html: '<img style="background-size: cover; background-position: center center;' +
                                     ' background: #ddd; border-radius: 3px;' +
                                     ' -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
