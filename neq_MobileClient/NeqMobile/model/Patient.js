@@ -2,7 +2,7 @@ Ext.define('NeqMobile.model.Patient', {
         extend:'Ext.data.Model',
         config:{
             fields:['id', 'rec_name', {name:'dob', type:'date', dateFormat:'time'},
-                'diseases', 'latestDiagnoseRecName', 'primary_care_doctor_name', 'primary_care_doctor_rec_name',
+                'diseases', 'latestDiagnoseRecName', 'primary_care_doctor_name', 'primary_care_doctor_rec_name','photo',
                 {
                     name:'sex',
                     convert:function (value, record) {
@@ -31,7 +31,17 @@ Ext.define('NeqMobile.model.Patient', {
                     filterProperty:'primary_care_doctor_name',
                     autoLoad:true
                     // associationKey:'diseases'
-                }
+                }//,
+                //{
+                //    type:'hasOne',
+                //    model:'NeqMobile.model.PatientPicture'//,
+                    //primaryKey:'id',
+                    //foreignKey:'id',
+                    //filterProperty:'',
+                    //autoLoad: true
+                    // associationKey:''
+                //}
+
             ]
         }
     }
