@@ -26,6 +26,17 @@ $table_color_bottom: #105484;
 @include sencha-layout;
 @include sencha-form;
 @include sencha-sheet;
+// include pictos from resources/themes/images/default/pictos
+// for patientview
+@include pictos-iconmask('photo2');
+@include pictos-iconmask('user');
+@include pictos-iconmask('lab');
+@include pictos-iconmask('heart');
+// for doctor/user dashboard
+@include pictos-iconmask('home');
+// for chatter
+@include pictos-iconmask('chat3');
+@include pictos-iconmask('team1');
 
 @include sencha-button-ui('login-button', $login-button-color, 'glossy');
 // 2 VIEWS

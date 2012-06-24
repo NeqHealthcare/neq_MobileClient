@@ -17,7 +17,7 @@ Ext.define('NeqMobile.view.doctor.UserView', {
                 },
                 items: [
                     { iconMask: true, iconCls: 'home', itemId:'showUserDashboardIcon' },
-                    { iconMask: true, iconCls: 'team', itemId:'showChatterIcon' }
+                    { iconMask: true, iconCls: 'chat3', itemId:'showChatterIcon' }
                 ],
                 layout: {
                     pack : 'center',

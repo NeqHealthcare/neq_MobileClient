@@ -9329,6 +9329,48 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-bottom: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.photo2,
+.x-button .x-button-icon.x-icon-mask.photo2 {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAADvklEQVRoBe2a24tNURzHz54xY4wxETJuObmElEuKTJR3ivLiQSFK5sGTB6+Kv8CtPOHF65SIkldSJCZMjQcZRci1YRhzfL6ns09nTmdm9uW39hx7n199nH32Xuu3ft/1W2etNWvzCoVCLkvWlCWx0toQnPaMNzLcyHDKeiBzQ3pa3AR6nteFj33QDS1x/Y1Tf4T796CXfcPHccoEu62NR1RoYS5cgXfwF7SLccEoft/CJeiMGq/qRRZbrJzL9RDAMLgQWcvnL9raMyWCaXgRvEhQrN8BD2mzI6roOJPWARpeBUnbRhrcG7VRj4pb4CCoB4Oayu6GfNAKxuVe4u8uKP6gprJX9U8/LAlaq1ROgmdAnBESsskxxTWJ/YQwguVgUBU0u05V4AoiSRuV4DBDOcngnLSVlcyWOy/2TqvsKdiFRpN+f75phPn495x+JiFYk8t7uAOP4DF8AAldClpmtsF2mA+aDJ2aet0VEncSfCHaazeVdmkSrJ9UK7TDMlDZZ+AqHvl14nwIv9dAIlqD7Ioopw6Q+A1wA1ztzc0FfybYQ9ABXhCxlWWoo6zPg9PwB6yzbepQE9JhaKkUEeUaH51wBupWsMSeg7YoAmvVwdccuA6Wos2cPSGwfK3A49zD52YYtBJttfFQdi/Ca7C2pzi8YOXUSvArArpNJjX0TA2XmrhuwicLx1aC+whGRzCubADHynRssxCsrPaRCa2bTgzfWtdNfi4Wgn8QzBsnSsc6fc7X32Nvhf/2Pwk2mR8sBPtrZPjuDlejbgRr478gXOyRSmuf3RypZkUliwxrC5iv8OnqcjmO60KwOm0Tr1wsOq9mZ+F7Jg9W1nwY8qZVkKtpd3HItsMUX0FhtRHbrASvIZJuMuHFjqjKAS51KrMDFlY9ivzVn2Xjft4ngi7tLi3B51rQOh83vmJ9qwwTT24rHCcjmk1NDF9aAU5B2BcFE7Zv0nO0ID/adR2BQMc6E40E+YATMAyWMZo6U2Bf4Ci0TyRovGfU0zwwG46BfFmKlS9zh3L6Fc6CZtdAZ1uUay6VXc/nedC7YGuxBfVmUTWfLkwTWW8J/VcFifAP5rgsn1RO51q/012wHyTaibkWrKC/Qz/o79kHoMOCEZBpyVkHOsbR8axGxCxwZkkI9oPXSPoGehPhjyq1r5lY29NELEnBiQiarBHLdXiyturieSYFa+bMig1plrwMO0HrYJpNh4y3NGnpb00tB22QZtNIHii+3UuzymptmZy0qjsh1d8bGU51ehHXyHAjwynrgX8m2ff2RghemQAAAABJRU5ErkJggg==');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.user,
+.x-button .x-button-icon.x-icon-mask.user {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAEWElEQVRoBe2aS0gVYRiGO1lmF8nQQlETutGFokAiqEV0ISKwgmrdMtzUpnW7drWKbFGbQAKpJIhuUGIUFUkW0T1Jq4V2U4ui7GLPexpDD+ecuX1jHqcPHseZ+f9vvnf++e8n0d/fPyZONjZOYqU1doLHRV3CiURCz5gMxTANJsJg+8XJJ+iBt9BHNdO1SCwRZR1GbAFRl8F8WAFLoRwGLME/ffAM7kETvIYPxPWDo7lFIhiheURaCVtgBywHXXOzbhJcggZoRvR7twy+76uELSEAtQsqySPwGdQN+KWDPHuh2DI2+TIVm3T455M9G0Bk6ktRvd4NBZaiTQUT3AQnSNW/VAFBzl/iZw0kq56FcOtuaQHB7QIv9ZVkrqZ2YA9Mck3pMYGZYKeh2sBz1SJb2mqcmfk0E0xQ6l9rwNoKcWjm11JwEYFVW6t1/K218mspeB5B5VsFluKnIuU88Kml4PGBo3DPqBGZiVkKNgvKRFkGJ5aCv2Z4xoi6bCm4DWUaXERhZhMJS8FfolDq+DSbRFgKjrIOa8poYpaCTQKK2sl/wSHfcFSNlll1sSzhn7ys3pAvLFP275lu+L1uKVhBPfYbgMf0zz2mc01mKfgbT7vi+kT/CeT3sv9s6XNYCtbg4CJ0pX9U4Kv3yXk3cO6UjGaCWX5Rg/UArqY8I8yp1qdPQ08YJ4Pzmgl2nCqwc2DVyKjunuddqkE0MVPBBKYSuQ7tJtEhFj9apDczU8FOVB0ctZiuHYUw9obMjbxErW2bmblgApTQengVIkq1B83QEsJH2qzmgp2n3ObYCEGndZ3krbcuXcUWiWACldCjoA0yv6a8J6HJb0Yv6SMRrAcj+gmHA+B3aneDPHXk/8jR3LR3a2rOfnAlTmfDVPDb6Khrq8bPDI5PoRPxZpMSk+1SgtOKpTa8l8BC0JaLmAkloA1xr/aOhJqEtINGWeqW7jjHXrQHbRdw4WxSJf8L8Aeh2m1QaWoBfiUsA61PTwGtUYeZ1qlP1zhan3YraBSnz/0mdAUVHqiEESoxKs0a2AxloJIMI5DsWU0vQH2z2oZToAnFI7+fu2/BiF3PgzbCKqgC1bXhNH3S6rba4BocR7TquifzLBih5XjcCSrROaAGKbJWHt9uJuGq67fgAki4zrNaVsGIzCP3dNgE20B1VJ+uro8UUz3Xr39UvxugCeEZl3UzCkZsBZn1+W6HRaB6qtZ4pJp2PtTna+58DFoR3sVxqHFxyM8euFsIW6EeXoDeoPrBXEEbAlpqqoN1kD9YY6rYxSQ4DGoE9KOSXBGZLk4NYB7CfigZEP1XMBfVEJ0BJUznIFevaSBzEEolOimYkyo4AfocclVYtrjViB0C9SzJEdE+jrn+CWcTrHvdUKuRUSm0gPrZ0W7tGjjMhTiIVWFWSbAGEnGxhAT/y+HhsL9oiVWFjo3FqnRVqrETrG5pFmiSEAuTYC3TFMVCLSIzTg9H6wuIXR2OneDfMJq1NmzzbS8AAAAASUVORK5CYII=');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.lab,
+.x-button .x-button-icon.x-icon-mask.lab {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAEkklEQVRoBe2byYsVVxSHfR2HOERFEmdtlUYUTCCSKIrDwl5oNqIYUUEIgjtB/wFFQQS3QVeJZKUbBTeCoCIunGkExygqUeOAEyZGnE37fU2VFO1rfd3v3rKEOvD1rar33rnnd88dqrxlpbW1tVteVqlUvqCu4TAhqfMi5W1ieJOcxy8UnAcoqcBPcAxsZfHYaw15xGAd3aksL2ukosUwCY5DA3wLi+A8XIfolqfgiaixK5+FDWDG18EwsJt//oIZs2ZRs/veg/swGeaCNhpa4JkneVjwDCNSn2ZtBvwAijarR+EAKHgNaHfgEFyCXKziQA5lidgp+NsEszN+reQg/ApfwjzQ9sA+Yviv7SyPP6FmR2J1yXES2gkKlKdgN/4/OT9M2Ryqzq74SccYcdRtZs7u6jLzAszo/IRdyTUbZCo9oQ/lJ7GQY7gXCgaDYv6CbWRgP2U3BDoLO0s3wTgYAZchdwuZYRuvX6LgJeWjjJrnHIv19YCQDY272i1kxY7XG6CwobCIzHr+LzRDE9jVXW9f8tlMSnvEVbhIb/B38a0rA7/ab4jU7H0Hu8EJS3HX4DTYGF5zaVoK6+EheO0SrIS+1fyGvmaQQYzAnIkdl3+AIuy6jWAjOKF5zc/uwhQYBNoYcM0eCdEtZJf2IeQZXXUvUdttl4NCnMT2wQ44Bz9C0HrxV7MFrxjRr6jdbizvGQ1iY3jnNRX6w004CbcgugW906o1WkQP4LsuU05aV+By0lAcxrUgghFQIcxhsAx8MPD8Q/aaD1+AD/6OddfwjuaTC3z2O/xJo7jc1Wc4qfsfAIjgG1gFPvU484bERvkNJoaItaNWxX+nrCfftps6G4e2dLn7OoTjUJOWNxfOwC5LI8EM69uG6IqZVbu8fvS9HfRdtwUZw0bBMFbcKBgOrrFL4GfwKcqufgKcjb2jyo5xjxthVlJStN2gbKH8Gx7DFbqzNy91W6gMOw84oVwVxHtrOR28GUkF+/S0Ff6B9oJnc83GUrjmI2ULPoNktc1j8ieY4KxTjh13Cs2a4t8gwvKdJTO8s7bdNzV/m22U9HrdZahJq5ZAOhLg9Y4+q8Vvp76Tp+BOBRbry6XgWC1bFL9lhouSiVhxlBmO1bJF8VtmuCiZiBVHmeFYLVsUv2WGi5KJWHGUGY7VskXxW2a4KJmIFUeZ4VgtWxS/ZYaLkolYcZQZjtWyRfFbZrgomYgVR1EynN1miaW1zW9egj8kyG0W95V9EyC6xRSc9a0YN8iqCXebdQQMgdSi7Tdlg0orC1G6me2WZyrwK459X2sMtDffHJgEbqRrboY/AH0Et1iC3cQ+A2nQZmwO/ML26FhoSPA1hmWwEHqD5tapv3XnP7gFewOgfWQIauLaZlBMam6aK+YAPIGZMA18Xys13+FawT5yS3ohaInjut/iqeaDIJ2IFsB1sGvXgq81rIaB1XyGuBZFbBoYgfeDpXALPibY/wawFoakv49RRhVswJjvWq6C8+DrDtWE3+T6RhgQQ2TWZ7QxTPDvjPHssjQefEuvGb4Hlykb4QjsgVMElk5ynMaxtynf0d4aZUvHAAAAAElFTkSuQmCC');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.heart,
+.x-button .x-button-icon.x-icon-mask.heart {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFSElEQVRoBeWabYgVVRjH793V1bUyRbFVS1eDskw0FTNNJEQjEO1T+cVPfRUKJCSi7xEq6hehPrjiC1GZGpWV2uqHzURFpBdESJEIbSFsXd00t7bff+6cy7nXOfdl3nZ37oEfM3Nm5jzPf57nnHvumckPDAzkGqk0NZJYaW04wSOqRTifz4/kmgdhAoyD0TAWmuFf6IG/4Br00kXusY2lYFv+jYHJMB4e8I/ZeDZl6wb8CTehH/v/sXWWvKsPY0yCZGwKPAnPw1yYBE+BzvXBT3ABjvj7Et5XzTDXOAu285xsgTaQrVUwH2bANNCD/hEk8hychp/BPPR/2A8sgYKxN5GrF8JLPjJaS5ETR+EA/IJoRb6ugm09yMfhBVgHS0EPv1r5jQuOQyfIh27s68GUFkXYwBn16SfgHZDzGsLDcJL73gS1NcK0X23LtY/Bq3AIbkMY20rvzaCMbCm3aYtVGillD0M/hDFm36N0/xyWQ2u5YfuY8+qrM2EnKC3tdsLuK81le2SJLXPAiakgB8MacN2n/r0Wxhpb9pb6UbAE9sFdcLUTpv4U7SnSXteVXS/CVLTCJogjskGOXaTt12FCgFiNE2dB/S3o3qh1X9DuRGPXCF5MpZyK2nil+7tpfyOM95504eftRY4lttJ9Uc+pa70GTb5dL6W2J2zUOK0BZQNMBkX2ezDnktx+hp02I7idAz39JA3abV/D1vtwPkWbf2NrDWhgzq0H26E09uVAGnZsG1ux2aLf3ZWQdtH0NO2i0bpVghelbXmQ7GkSNFo5fQdGDZITaZudrQg3ilg93HYJbqQyptEE90uw879jxkKvn6g/JPhKxoS55PRw4rIEf+W6ImP1J9BzS4K/hqyntdK5E+5KsNaEzkCWy1XEdfHnwRu0tO60FzQByWo5iLBLnjj/L5NWAr8DhT5rXEfTYukUSmmV36EDbkGWitaovwUtSBaKUc5RG2gAy1KEL6JnmdGobXHV0jvI5V7hgssZEd2LjregZJm4XLBeZbwBN2A4R1oLDB/CVDu690XYj/I4LtwGmpkMR9Hqt1rDmlUuNlCwL3o6N+wCTUiGk2gt9Z6C4qhcLrokpe2T3DQHjsBwEa3IdsFqKC6825q8YJZX2MfcuBQ+grjfCCSRNUfx82UoGaRsPVUFexcUIv0xDd2DJByNo81OfFsOzsga4c6UNhf4op+lsQMw1NJbaXwcVoD3ZsH2O2i/JsGW6KEUaYn9ARTZ5iBxQXU1C/ZFP0LjH8BQ6NOH8OMZqJrGtvC6BPuip2PkvUEW3YF9fZVQUxpHEuyL1suwzZDU69UB2naxh3NaVK8rskZ03REu3lh4gS7RaY3emlR8GUWsFywjIMwW44r0LkijTx/GzjwIFVmjL3SEiw0UvrjpwJEk01szvrlQd581fpptHIL1fqod9DoyCdH7aVfT3MhiJTqy4OKTK3xytCNm0ftob1ZcYmMV7DWWyz2Kc4p01BmZJhVK41jFxi7YFz0FR3dDlNFbLwciD1Dyp5z7KsovCHOMszNhC4SJtNJYfbbm6WI9PiYiWA5QlN7boZ6Vk0+4/mmI9NNT6QEkJtgXPQ3n3wZ9K+WaOane/OuZzX4so7FLdKKCfdH6MlfprTVvl+hvOPccJCrW88f1JOKsR4gGMn2bFRTpY9QvgIorFXH5k3iEjaMI0jRU6a2Puk2kP2VfiwuJDFDGtr1NTbCMUpTe74Iirf+zsc2gbFGV9r3REMOpFb54fwhjy+BXuIRz3pNIy4HBEKy598NwB62pv6JNXXBakXTZMa9LXeczV99wgv8H9+SsbJqu5v0AAAAASUVORK5CYII=');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.home,
+.x-button .x-button-icon.x-icon-mask.home {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAEK0lEQVRoBe2Zy28NURzHe/vwqEepYkFIQzxWaCOC2HhELEgQImhXIrqyIEXikVQi+gdIwx9AItg1NiJELMSGhKQbobY2VY9Srfp8m5lmTO/cOXN7Zu656f0ln8zMnTNnft/z+505j5sbGxurmk5WPZ3ESuu0E1xbigjncrka3jsbftClIvsU5RZ65aLK5Lj/C75SzSjHWCuJYLxqhPXwBgYhylq4sRaixChDP8EzGIJ4UwNnCR6tgFswANegKer93LsLim4herm/JKqO8O+ZRdhL42acOwunYAacg2Hu3ePYj3Ph1A1fU2ySmZSZeCiTjxaC1LAboRs6QGJl8+AKXIU1kLqlHmHEqlFboQv2gD40QdPHqx3qKdtJkD8Hb9o+TzXCXmT1cboB+cT6evTVPgIXeWYl6DoVSy3COF2Hx0rjTthp4L0a/4xXrofn33OeqH8avKMqFcE4O4uXb4ULsNfEEa+M0v00LIIuCKc/P03NrAtGrD5Iiuh10Dia1JTOR0EZsjjpw3HlrQpGbD0v3AzFig36e4CLkeAPNs6tCUbsHBxS+mpsLSayYT2KtLBqVgQjdgFe7QP1u9VWPbRc2ZQFe2LV5zSBWG7ZP+vVTUkwYhvx6DicB+fFqvWKFuyJ1QxJ00It48rCNNgnNi+N23hQaVw2YiU0cYQRq9Q9CJdBKV1q02zMeEaWSDBil1L5JTgBDeCCzcUJ8cXImfACOeqayjbBffgDfqu6cPyJP3dgVZTvwd9jdzuoSFmgicRDGAYXRIZ9+I5fPbA6KC7feUHBVKD5rJZ1EutaZMOiv+HjbWjJJ9T/LVIwDyqyh+ApuC7WFy/RCk4r5HyRwWNewRSW2N3wGv6CX2E5HBWcB9AaFOqfTxJMQa1lNewosqNQDiLDPmqv+hFsgzpfrI7/CeamVjwnQZEtV7G+eEX6MeyHGl/0hGB+1MJdYt+B/1C5H9UdX8J2qJ6IMBfz4Ri8hXIXGfZfmdoLWr5W1zJ7ktg2aId18BuiTHNvDVUumQSNxDikLSdtBzdok0yCD8MyiLNmCqhxXBL9An+egNI3yqRT9z+O92FO/O2UuOMuymoqF06bUl53489MQw21Gm8lWmkRa6R/oVaMfT6lAmrsUVMNRa2HU3I8k2orgjNp5hK+ZLwPp/x+fR+0ONfMp9BfJ+qLmulpyze1zMtC8AACbkI/xAneQZkO0JiZimUheAjPn0MfxAnWVo3RiEG5oiwLwXJsmGFDK5iCxrCnGZNSOzVLra+EPDZ9T6EMCFVZ3KWpI8XV7uBTFcEOBsWqS5UIW21OByurRNjBoFh1qRJhq83pYGWVCDsYFKsuVSJstTkdrGz8L0VTv1i+NVF2CyTJDC0LX7E8HIx7D/Vrb3wDaLvY1D5QsI/6jXZUEwk29cDlckki5bIOY9+mneB/GfbU3e4Ey5kAAAAASUVORK5CYII=');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.chat3,
+.x-button .x-button-icon.x-icon-mask.chat3 {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFSklEQVRoBe2aXYxcYxjHd8qyXbYfWtoqUqWIpqIXFI1NfFVaaZW6kYYrLrgirkQUiSBESqKIC6kLFySCIKmP0NSdaONCaDUkVFU2oSi77ba1fr/TeY8zs7Nzzkxns2fm7JP8cr7e953nf573fd73nDOlkZGRriLZlCKJVeuk4E6P+InVAkulklHvhlOgB0owkXaUH/8bhsg37h+XlZJJqyx2Oi0ugZvhcjgJJiqzGZABeAM+g334e5ht86bgsmgjq8DNMASKzBNf4c966As+N7NNil1GY9/mTGT1DT+If0/AzGbElgMbjdGraeTHnItNin8MX6c2I5p6XafB+5BsMO/7+/F3RbOC11L53zYTbEDegymNijZR3Q0TPfXgQsN2FTXmNlpLwf2NVspJ+T78uLZRX5znTm20Uk7K2ytnJn1hHTGD4xPAhcow3d2uX2GjVloVV/N/EK+8EKuWh2EOvAM7OLcXzYfYr7C8Z+Sx/HPFdW9IWuy7HN4Gobz7JuTeUMatY7iTLNmFXVu8AncSaZ8JIus0wUFX2J7OzrNwRxDd6YIV3gv3wWIPiiBYnRfDahNbUQQreg30FUmwz/i9RRLsPD2rSILR23Vu0QQXKmkZ4cJMS5HYScHxbejgnaIlrY4bw/FT0Vid1AgnH6nGKpfX80nf1TIvzVEL/ZpWKKfXfdO6J+Gbr3cqXvkkrsW7Cv40PmqvHQP1ZcLli9j3rUddU/DTsLtuqXxefIZXNsne6XcnP/zVNQX7PelF8E1fu9gWHH07OMtz7kL2l0P6+3VfbGG+6XsBhsETeWY7/l0J0VcHt/AoDEGa3+uir4dl0WdTYRPszVAxreHxuH4Avz6EVdCtz2W/L+XYXprlN9fF76WpvIeu8SQVTQQ3wRUwH7KYGXMQ0rtUltb+L2O7f8FP8Am8Cd/j62G2Xfh7BhvfV53ncQYrVfwDwAo04ieMBWC0fdWZZn9QYCPYM1ptR2nwT/gBTFADiDWS+nkOmw1wG0yHLNYfRziUpr0DNLaA4wvCuTrb37hmr3gN/FjdSrO3KO4IPsVt45ufUvyQdj9cB9Mgi9nWz/EY9saVb57dYyvYneqNi++4fhfMCnXHc8vv+Ceb8+Ee2AEOoXr+VV9zWMyuiDB3zxfXD8Iy8A7XMrPhNnAq24pIx5hdzDlQh4yAP9YKsx3bnQuXwY1gVz4TzM6N2OcUHowF4/CFnHgOroGToZa9y0kTx8ewH7FHLERdx/3jsBJaLXgqbfaUMcrNmNF9CX8HQze+hBNG7RBUdwUTxwdgV1oIPcmuy7FD4HVw4eIwaDXV/jRz/BB+RR/VQoQV+g8MgBHyPxS74Isyu9maoA4iVkFG1S5lRDeAN8wo5M0Mliuyl6Po6p3RwhTunHZWGcfIbPBjuQvyaPqqimwv558Cp4tm7vp419mHX8/DnKTfo+ZhCmQyImxSmwFr4Bawa88DIx3dRbatMNtyHIfemNamSfQjeAu2INZ1QmxNCw4toFtnTCb2ivESPI22H4FFkGYugFwp7kJsPH+HSlnvWig/akujTlNDCHfc7xxVoDUnzBfml42wOKVJp9Yb4Oua5ZL9O8/7OO98vBScGk1G9XLAL1xfWUtPlLRqXcjjOUQ4g8yHTVAvWTqTfANLq3W0leDgPEJMjMvhVfCxsVa0Fe3Uenuo57YtBUeOH1taOnWugM1gDqkWrmi7961B9HFnaRqbUCNZ2s3N4v5Jth+uhyVgRu8GXw48gGCnqmMLCnfa2RBtFndd4BTpgsgEp1jPDcPvCPbpqjMEKySreWcKZZOCOz3c/wGkloWUOruj4gAAAABJRU5ErkJggg==');
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000320}}
+.x-tab .x-button-icon.team1,
+.x-button .x-button-icon.x-icon-mask.team1 {
+  -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAEq0lEQVRoBe2aWahNXxzHz7mumXTLEJL+5cFM6Z+XGx7IUP4oL2SIB/HkRYmU/KM8eDGWIhme8IB4kX+h/pSUsczcDOEf+huumevzPc7Wds4+a6+1uHtzz171ae291vpNa97n3nxTU1OumlJNNQWrWLOAW/qIZyOcjXAL64FsSrewAS0LJxvhsi5pYQW1v0I8+Xy+NX50h3oYBl0guPN+5PkKHIUHXIXfk3unfNp3aYLthvfzYQHUQTsILzUFriCfwm7Yhs/3yP2SAk4LPNZIbofnoMBMfKb+BRyCXr4+pxlsWxxfCo1gCrS07i3td0Irn6DDUwcdiaY+WFsIHRytqqMmwlhHuULzVAJm3eaxPh76+jiNjNb99KIeJxWpBIyHsjsCFLhvGoBgR1fhtAJuhaP9XJ0tae/lu5dQieHf6jXNgH9kOnt3svNNi42iN9a0Q2oNtgddCu6CzsfrHBWfyOOS2jSAblbJJtuzDK+07uaBrnm6ALwDBatcZ+l/sBHq4nTSRrrWQ+kZ6/J+CvlOcbZK611GeDIGNoFGtXQ6tqFM56muh7XMgsUYirvz6uaUeLJawwTQCc9WgIIqDTbstAKfAaPChc30LD9MvkSatQoYyUkwNFJDeaHux4vKi8tKbG2XCRYLXpG/qVRZqdzWaFcUaH3ZJn31mJKm82VTA4u6BpaNPh2dkm3ANjtv2LCxPY6q846DPgR8kr6u/vERtA3YR3eczCMa7I9rVKH+FuUHKtQZi1MLmEF+iWd74YPRw/JKzY6DyHvNjtQCLsbxL/mF8piMJQ+p3WJsYai0Ddh1+7dqzyg9w7fD4LL57EDuiSEmY5VtwNcdnNIOfN5o9fvKrbyeAZtTQLNh8/fijm/0VuzPPKjUd+c1kFNxaAcdY6M3aEP7KaAf6Uy6dXObE8j45lZXS5Q3ctvag8G/IS7doP3xuEbo0081+ogXgyDuKqqLxmjkyHI34Ap2/teLU7LtKZT2Av08ahoFrcUJlXRSp6tnf1gJOkcfg0lfpTrt8KdhNfwJhZ92K9kNl8dO56AxSvWFsxwUVJQjWrvHoEMgE+SUaSbptrYELoJGM0qHa5mOtKuwATRL2gY2K+VWAaNI80h/HRgCwQYTdk6d0AD1YUO8q5PqYCZcgtcQlvtZz7J/BzQg+oFPHVz4I0PYHz0bA0ZIu3hnUO/Ngp3QAGFH1ctHYUignGcFqo+IejgCahOWaa5nXWlPwTToCa0Dn4I8MmAaakS1qYyEtXAfopxUz+6DPoXe+yrXnvdxsB70NRMll0SZrp6zoQfURAasCtAGMBCWQdxRdJI2fYvBahr9AavAdzP62R2hfWUXaCkWRvvbCKsABoNGVBtBnHHtlCNCI/sX72ct5OL0Nkf9TfyaD7WFgHnoWCxQhe1620Hbr72Wy/XmOWozaw7nfXU+xMcxUDguNpLr68NF2dTQ6M5FVtPHRT6Ntjr7c2s8HR1eDFiXiXWeOhIPugZHtaP+aJLjv0VSwFqzVZMUcFUlnZ3nwGeUG4s9pel8G04U33/pLPV/akm6d6puSmcBJz3FkraXjXDSPZ60vWyEk+7xpO1lI5x0jydtr+pG+AtvuGAnrIFRuAAAAABJRU5ErkJggg==');
+}
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000332}}
 .x-button.x-button-login-button, .x-toolbar .x-button.x-button-login-button, .x-button.x-button-login-button-round, .x-toolbar .x-button.x-button-login-button-round, .x-button.x-button-login-button-small, .x-toolbar .x-button.x-button-login-button-small {
   border: 1px solid #8a8a8a;
@@ -9367,7 +9409,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ------------------------------ */
 /* ------------------------------ */
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000351}}
 .x-login #avatar {
   background-size: cover;
   background-position: center center;
@@ -9380,7 +9422,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ------------------------------ */
 /* ------------------------------ */
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000372}}
 #showHidePatientListButton {
   border-radius: 0px;
   -webkit-border-radius: 0px;
@@ -9388,7 +9430,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background-image: -webkit-linear-gradient(left, #ebebeb 26%, #d6d6d6 63%, #bfbfbf 82%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000379}}
 .x-patientslist {
   /* FUNZT zur Zeit nicht oO ??
   .x-item-pressed,
@@ -9405,7 +9447,7 @@ input[type="search"]::-webkit-search-cancel-button {
   }
   */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000380}}
 .x-patientslist div#list-patient-image {
   float: left;
   height: 45px;
@@ -9417,14 +9459,14 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 3px;
   -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000392}}
 .x-patientslist span#list-block-bold {
   display: block;
   font-size: 14px;
   font-weight: bold;
   color: #666;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\0000398}}
 .x-patientslist span#list-block-normal {
   display: block;
   font-size: 14px;
@@ -9434,7 +9476,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* ------------------------------ */
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003126}}
 #labTestRequestsTable table th {
   background-image: -moz-linear-gradient(bottom, #105484 20%, #177abf 90%);
   background-image: -webkit-linear-gradient(bottom, #105484 20%, #177abf 90%);
@@ -9442,13 +9484,13 @@ input[type="search"]::-webkit-search-cancel-button {
   text-shadow: black 0px -1px;
   line-height: 2em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003133}}
 #labTestRequestsTable table td {
   font-weight: bold;
 }
 
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003140}}
 #labdetailview * * .x-inner.x-toolbar-inner {
   background-color: #CBCACA;
 }
@@ -9456,7 +9498,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ------------------------------ */
 /* ------------------------------ */
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003150}}
 .x-settingsDomains .x-list .x-list-disclosure {
   overflow: visible;
   -webkit-mask: 0 0 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAFBElEQVRoBe2aS4gdRRRA8+L/m0QIJkYNLlQUNOAvigpRcCEIcSsiCLoLLoILcaM7QVBX4koRshDxt9CFKCoiuvGDCP5QkxCiJhInRo2Ovzie80gPNWX1dL3uesM09IUz3V1169a9daur+031aG5ubkUpGY1GK7G1Dq4Cz9vKiIY74Sv8+72tkWQ7Ay4Bxo+Hu2E3/AuOZBf+ov2TsL6Ef5WNUsGazXvgEHQJMm77N/aeg3Mrh7seOweMM2bWYH+B2OES1/9g9w0oEnSngHHCYO+FGSgRXJ0NM/0idA565BRpKyxSt9J2B5xWY+Mw5Udq6uqKT6XimESlmX4d7sTnA4n6rKJjs7QSSgTrSno7nJyodtFyGr4AP4G6TeLIHweb4A44C0LR1xtgCzwP7aTtIkBvLlSfQjwNZyl7FNa0sU077V4DX0Js25X7cRjPzDb2Nd5FnK7xPbGXskdwxsxOLLRzdnwIj8GvkQFnypqobKLLrgGnOjMzP6cqJijzfn0NXPljmXRNWNC+dcBHM7HA2NELp10nwbaz5iC4OsdidTyrYp3a68ZFi7XJFfNsOBGcUmFnPpbiBWkVZefT7g+OXcTF0EUsFPtaje0Lw0LOzfoM49B4Gy36WMKwK+WDcC2cAmGwXK7YAAYdym9c+NiIdUOdnHODc6DjpPioix9LBvwtPE3QOzjWi7MjBS0M8CGY1huUA1ISg/4cNqXiqcqSwVqJ3AQ/QEmnpm3LR+IzsLYKMD4mA6bBOfAKuFpO28nS9v0Bcxckn9V1Ad9Pg2m/H5cONLT3Mf5fFGfX63hBQG8s7/LXxcdV0nvjMtgKp0MojuaroM60xYB8Z78ZTog6c515B1ylXey+ARe3/0tqFNCy0RjrkdvgOwhH0TeiB2A1uMBNGx9Ta+FZiP34mrIrQR39cECSUzqZYYIcR0mjJtmFwmHUvdenLjwmnUl7Eh05+LP40fjvoGTACYN1Rc6CecGhM7lw2lt+AA7Fg4fOespXgYO0j3pvnXmh3rY+/52+vrXtRSd841rQJ/WV1JVX9eNj14DnjeHnJVw8DBeAnX8A2ynfXwXN+cWUPQUOjNl6i7Jt1I9nCOe+1V0NT4AB/wkvw31QRIoFjDfnwRXgfVbJGZzsry44boTNUGVjlvOToPpV5FvbjXApKE7VLZ6UkpWlDGHH+96pV93/4TSsujGA8MeF51Xw6njuO3soKTth/UTnJQOeqONFlKsBW0SlfdVyDLh9NBkth4AzBqnXKkOGe52+DOeHDGcMUq9Vhgz3On0Zzg8ZzhikXqsMGe51+jKcHzKcMUi9Vhky3Ov0ZTg/ZDhjkHqtMmS41+nLcH7IcMYg9VplOWY4/Md88cEtHbDOVg5Xx9jpsM9Yx52JeAcw1ontTXRdcm9pFz3vBveHdNJN6YPVRhrnivtMlruZ5g7DFxBuXLut8j7sA/d43Yr5CIpJsYAJ7DN2/27Bsw1gwAb3I8wLOp+g4w6+nw/6HddOyszqWDg/Qv2bXFwH4+1SyhyUYtI1YLc85wXn/ORAagWdPVRKUqh3AJwtdTLeWq2rbCoP76cm3bjeLG6ELjZim03XJujyJqXF6rtmeDvGNzMN/ajEAZi2rKOD67t00jVgN7+3dnFgqdsu5XRc6tiS/eUGvBTTNengBIVZPuYG7LcYPjdluYk++bTw++pGyQ34bSy9B35Vs5zEYGfgJfg+x7H/ADoy2VfnrtXoAAAAAElFTkSuQmCC");
@@ -9469,7 +9511,7 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ------------------------------ */
 /* ------------------------------ */
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003154}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003165}}
 .x-doctordashboard {
   font-size: 14px;
   font-weight: normal;
@@ -9477,7 +9519,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /* ------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003163}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003174}}
 x-chatterPostsContainer div#chatter-post-image {
   float: left;
   height: 45px;
@@ -9489,19 +9531,19 @@ x-chatterPostsContainer div#chatter-post-image {
   border-radius: 3px;
   -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003175}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003186}}
 x-chatterPostsContainer #list-block-bold {
   display: block;
   font-weight: bold;
   color: #666;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003180}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003191}}
 x-chatterPostsContainer #list-block-normal {
   display: block;
   font-weight: normal;
   color: #666;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/Andreas\/Sites\/neq_MobileClient\/neq_MobileClient\/theme\/scss\/neq_MobileClient_Light\.scss}line{font-family:\00003196}}
 x-chatterPostsContainer #list-block-thin {
   display: block;
   font-weight: thin;
