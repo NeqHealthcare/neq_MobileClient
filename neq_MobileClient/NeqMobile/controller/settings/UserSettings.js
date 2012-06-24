@@ -44,7 +44,6 @@ Ext.define('NeqMobile.controller.settings.UserSettings', {
                     '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
                 failureCallback.apply(scope);
             }
-        }) ,
-        tempRecord.destroy();
+        })
     }
 });

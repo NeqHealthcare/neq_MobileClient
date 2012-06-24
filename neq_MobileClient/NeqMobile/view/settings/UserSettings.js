@@ -16,7 +16,7 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
     },
     config:{
         //  styleHtmlContent:true,
-        cls: 'x-settingsDomains',
+        cls: 'x-UserSettings',
         layout:'hbox',
         items:[
 
@@ -73,7 +73,7 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
 
                             {
                                 xtype:'searchfield',
-                                itemId:'chatterSearchfield',
+                                itemId:'peoplesearchfield',
                                 width:'25%'
 
                             },
@@ -93,22 +93,28 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                     {
                                         header:'',
                                         dataIndex:'image_url',
-                                        style:'text-align: center;',
-                                        width:'10%',
+                                        style:'text-align: center;background-color: #FFFFFF;',
+                                        width:'15%',
                                         height: '45px',
                                         enderer:NeqMobile.util.Renderer.imageRenderer
+                                    },
+                                    {
+                                        header:'Id',
+                                        dataIndex:'id',
+                                        style: 'text-align: center; background-color: #FFFFFF;',
+                                        width:'10%'
                                     },
                                     {
                                         header:'Name',
                                         dataIndex:'rec_name',
                                         style: 'padding-left: 1em; background-color: #FFFFFF;',
-                                        width:'80%'
+                                        width:'60%'
                                     },
                                     {
                                         header:'Following',
                                         dataIndex:'isFollowed',
                                         style:'text-align: center;',
-                                        width:'10%',
+                                        width:'15%',
                                         renderer:NeqMobile.util.Renderer.followRenderer
                                     }
 

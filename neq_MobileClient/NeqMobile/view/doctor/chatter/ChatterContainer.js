@@ -1,23 +1,16 @@
 /**
  * Created by Jan Gansen
  */
-
-
 var postsContainer = new Ext.XTemplate(
-    '<p>id: {id}</p>',
-    '<p>message: {message}</p>',
-    '<p>timestamp: {timestamp}</p>',
-    '<p>parent_id: {parent_id}</p>',
-    '<p>creator_id: {creator_id}</p>',
-    '<p>child_posts: {child_posts[0].id}</p>',
-    '<p>Childs: ',
+    '<div id="chatter-post-image"><img src="{image_url}" /></div>',
+    '<span id="list-block-normal">{message}</span>',
+    '<div id="list-block-thin"> {creator_name}  {[NeqMobile.util.Renderer.daterenderer(values.dob)]}</div>',
+    '<p>Comments: ',
     '<tpl for="child_posts">',
         '<tpl for=".">',
-            '<p>id: {id}</p>',
-            '<p>message: {message}</p>',
-            '<p>timestamp: {timestamp}</p>',
-            '<p>parent_id: {parent_id}</p>',
-            '<p>creator_id: {creator_id}</p>',
+            '<div id="chatter-post-image"><img src="{image_url}" /></div>',
+            '<span id="list-block-normal">{message}</span>',
+            '<div id="list-block-thin"> {creator_name}  {[NeqMobile.util.Renderer.daterenderer(values.dob)]}</div>',
         '</tpl>',
     '</tpl></p>'
 )
@@ -45,7 +38,6 @@ Ext.define('NeqMobile.view.doctor.chatter.ChatterContainer', {
                     direction: 'vertical',
                     directionLock: true
                 },
-                flex:1,
                 id: 'chatterPostContainer',
                 cls:'x-chatterPostsContainer',
                 itemTpl:postsContainer
