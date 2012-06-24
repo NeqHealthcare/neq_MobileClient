@@ -151,7 +151,7 @@ Ext.define('NeqMobile.controller.Session', {
         else {
             console.log('no item selected');
             //  Ext.Viewport.setMasked(true);
-            Ext.Msg.alert('Create a Connection', 'Create and Choose a connection by clicking on the Settings button in the upper right corner.', Ext.emptyFn);
+            Ext.Msg.alert('No Domain Selected', 'Please select a domain or create a new domain by clicking on the settings button in the upper right corner.', Ext.emptyFn);
             //  Ext.Viewport.setMasked(false);
         }
     },
