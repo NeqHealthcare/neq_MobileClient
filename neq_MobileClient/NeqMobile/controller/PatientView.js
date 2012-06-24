@@ -120,8 +120,8 @@ Ext.define('NeqMobile.controller.PatientView', {
 
 
 
-        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
-        patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
+//        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
+//        patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
 
         var documentstore = Ext.data.StoreManager.lookup('documents');
 
@@ -134,7 +134,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         documentstore.load({
             callback:function (records, operation, success) {
                 patientinfoimages.loadDocument(documentstore);
-                finishwaiter(2);
+  //              finishwaiter(2);
             },
             scope:this
         });
@@ -148,7 +148,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         diagnosestore.load({
             callback:function (records, operation, success) {
                 patientdashboard.loadDiagnoses(diagnosestore);
-                finishwaiter(0);
+    //            finishwaiter(0);
             },
             scope:this
         });
@@ -162,7 +162,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         vaccinationstore.load({
             callback:function (records, operation, success) {
                 patientdashboard.loadVaccinations(vaccinationstore);
-                finishwaiter(0);
+   //             finishwaiter(0);
             },
             scope:this
         });
@@ -175,7 +175,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         medicationstore.load({
             callback:function (records, operation, success) {
                 patientdashboard.loadMedications(medicationstore);
-                finishwaiter(0);
+ //               finishwaiter(0);
 
             },
             scope:this
