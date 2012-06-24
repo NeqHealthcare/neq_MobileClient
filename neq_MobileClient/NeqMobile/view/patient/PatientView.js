@@ -28,10 +28,10 @@ Ext.define('NeqMobile.view.patient.PatientView', {
                     ui      : 'plain'
                 },
                 items: [
-                    { iconMask: true, iconCls: 'compose', itemId:'showDocuments' },
-                    { iconMask: true, iconCls: 'home', itemId:'showPatientMain' },
-                    { iconMask: true, iconCls: 'maps', itemId:'showLabTest' },
-                    { iconMask: true, iconCls: 'locate', itemId:'showVitalData' }
+                    { iconMask: true, iconCls: 'photo2', itemId:'showDocuments' },
+                    { iconMask: true, iconCls: 'user', itemId:'showPatientMain' },
+                    { iconMask: true, iconCls: 'lab', itemId:'showLabTest' },
+                    { iconMask: true, iconCls: 'heart', itemId:'showVitalData' }
                 ],
                 layout: {
                     pack : 'center',
