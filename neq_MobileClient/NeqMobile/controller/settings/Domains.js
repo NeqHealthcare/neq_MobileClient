@@ -60,7 +60,7 @@ Ext.define('NeqMobile.controller.settings.Domains', {
             console.log('finished deleting');
         }
         console.log('showing confirm box...');
-        Ext.Msg.confirm('Delete ' + record.get('name'), 'Really wanna delete the connection: ' + record.get('name') + ' ?', callback, this);
+        Ext.Msg.confirm('Delete ' + record.get('name'), 'Are you sure to delete ' + record.get('name') + ' ?', callback, this);
     },
     DeleteItem:function (record) {
         console.log('removing record: ' + record.get('name'));
@@ -69,7 +69,41 @@ Ext.define('NeqMobile.controller.settings.Domains', {
         mystore.remove(record);
         mystore.sync();
     },
-    onSaveClick:function () {
+
+    onSaveClick: function(){
+        //check whether connection name, IP/domain address or port empty
+        //backend ID empty
+        var connectionname = this.getSettingsDomains().down('formpanel').down('fieldset').down('#connectionname').getValue();
+        var backendname = this.getSettingsDomains().down('formpanel').down('fieldset').down('#backendSid').getValue();
+        var domainaddress = this.getSettingsDomains().down('formpanel').down('fieldset').down('#domainaddress').getValue();
+       if(connectionname === ''){
+            Ext.Msg.alert('Connection Name','Please insert a name'+'<br>'+ 'for the connection setting', Ext.emptyFn);
+        }
+        if(backendname === ''){
+            Ext.Msg.alert('Backend SID','Please insert a Backend SID'+'<br>'+ 'for the connection setting', Ext.emptyFn);
+        }
+        if(domainaddress === ''){
+            Ext.Msg.alert('Domain Address','Please insert a domain name'+'<br>'+ 'for the connection setting', Ext.emptyFn);
+        }
+       else
+        {
+            var backendButton = function (buttonid){
+                if(buttonid == 'yes'){
+                    console.log('yes clicked');
+                    this.saveSetting();
+                }
+            }
+            if(backendname ===''){
+                Ext.Msg.confirm("Backend SID", "Backend SID is missing. Are you sure to save the connection setting?",backendButton, this);
+                }
+            else{
+                this.saveSetting();
+            }
+
+                }
+        },
+
+    saveSetting:function () {
         var formdata = this.getSettingsDomains().down('formpanel').getValues();
         if (this.getDomainsList().hasSelection()) {
             console.log('trying to update the selected record');

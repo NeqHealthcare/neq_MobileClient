@@ -85,6 +85,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
                             {
                                 xtype:'textfield',
                                 label:'Connection Name',
+                                id: 'connectionname',
                                 name:'name',
                                 placeHolder:'Enter a self chosen Connection Name',
                                 autoComplete:true,
@@ -93,6 +94,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
                             },
                             {
                                 xtype:'textfield',
+                                id:'domainaddress',
                                 label:'IP / Domain Address',
                                 name:'ip',
                                 placeHolder:'www.yourdomain.com',
@@ -101,12 +103,14 @@ Ext.define('NeqMobile.view.settings.Domains', {
 
                             {
                                 xtype:'numberfield',
+                                id: 'port',
                                 label:'Port',
                                 name:'port',
                                 placeHolder:'8080',
                                 cls:'settings_Domains'
                             },
                             {xtype:'textfield',
+                                id: 'backendSid',
                                 label:'Backend SID',
                                 name:'backendSid',
                                 cls:'settings_Domains'}
