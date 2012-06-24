@@ -21,34 +21,43 @@ Ext.define('NeqMobile.view.Workspace', {
                     id:'mainToolbar',
                     docked:'top',
                     items:[
-                        { iconMask:true, ui:'back', iconCls:'reply', itemId:'backbutton',
+                        {
+                            iconMask:true,
+                            ui:'back',
+                            iconCls:'reply',
+                            itemId:'backbutton',
                             handler:function () {
                                 history.back();
-                            }},
-                        { iconMask:true, iconCls:'home', itemId:'homebutton'},
-
-                        {xtype:'spacer'},
-
-
-
-
+                            }
+                        },
+                        {
+                            iconMask:true,
+                            iconCls:'home',
+                            itemId:'homebutton'
+                        },
+                        {
+                            xtype:'spacer'
+                        },
                         {
                             xtype:'label',
                             tpl:'<span style="color:#E6E6E6">{name}</span>',
                             align:'right',
-                            itemId:'doctorname'
+                            itemId:'doctorname',
+                            iconMask: true
                         },
                         {
                             xtype:'button',
-                            icon:'theme/images/user/doctor_avatar_small.jpg',
+                            //icon:'theme/images/user/doctor_avatar_small.jpg',
                             align:'right',
-                            itemId:'doctorimage'
+                            itemId:'doctorimage',
+                            tpl:'<img src="http://{image_url}?height=28&width=28" height="28" width="28" />',
+                            iconMask: true
                         }
                         ,
                         {
                             xtype:'button',
                             itemId:'SettingsButton',
-                            iconCls:'settings',
+                            iconCls:'team1',
                             iconMask:true,
                             align:'right'}
                     ]
