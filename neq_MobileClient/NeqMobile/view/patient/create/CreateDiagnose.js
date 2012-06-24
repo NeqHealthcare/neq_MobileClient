@@ -311,8 +311,8 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                 },
                 //button
                 {
-                    align: 'right',
                     width: 250,
+                    padding: '10 0 0 0',
                     xtype: 'button',
                     id: 'submitDiagnoseButton',
                     text: 'Save Diagnose'

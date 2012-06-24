@@ -76,7 +76,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     showPatient:function (id) {
         console.log('showing patient');
         this.createPatientView();
-        this.getWorkspace().down('#dashboardcontainer').setActiveItem(this.getPatientview());
+        this.getWorkspace().down('#userviewcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
     //

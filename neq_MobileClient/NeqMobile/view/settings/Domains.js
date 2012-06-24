@@ -22,7 +22,8 @@ Ext.define('NeqMobile.view.settings.Domains', {
                 items:[
                     {
                         ui:'back',
-                        text:'Back',
+                        iconMask:true,
+                        iconCls:'reply',
                         itemId:'backbutton'
                     }
                 ]
@@ -70,12 +71,16 @@ Ext.define('NeqMobile.view.settings.Domains', {
                 flex:5,
                 styleHtmlContent:true,
                 xtype:'formpanel',
-                scrollable:false,
-                maxWidth:500,
+                scrollable: {
+                    direction: 'vertical',
+                    directionLock: true
+                },
+                maxWidth:'100%',
                 items:[
                     {xtype:'fieldset',
                         title:'Connection Settings',
-                        instructions:'Enter the Connection data, you received from your administrator',
+                        instructions:'Create, update and delete connections. Please ask your system adminstrator for guidance.',
+                        maxWidth:500,
                         items:[
                             {
                                 xtype:'textfield',
@@ -118,7 +123,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
                             ,
                             {
                                 xtype:'button',
-                                text:'save changes',
+                                text:'Save',
                                 //  style:'border:5px solid black; margin:20px; background-color:grey; border-radius: 15px;',
                                 itemId:'savebutton',
                                 cls:'settings_Domains'

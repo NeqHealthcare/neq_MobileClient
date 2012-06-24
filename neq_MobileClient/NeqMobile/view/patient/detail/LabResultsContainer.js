@@ -10,7 +10,7 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
         xtype:'labresultscontainer',
 
         config:{
-            title:'Laboratory Results',
+            title:'Lab Results',
             margin: '0',
             padding: '5',
             border: '5',

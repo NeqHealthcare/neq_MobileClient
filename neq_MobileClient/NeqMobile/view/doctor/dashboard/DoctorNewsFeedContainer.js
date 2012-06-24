@@ -1,6 +1,6 @@
-Ext.define('NeqMobile.view.doctor.DoctorNewsFeedContainer', {
+Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer', {
         extend:'Ext.form.FieldSet',
-        requires: ['NeqMobile.view.doctor.DoctorNewsFeedDetail'],
+        requires: ['NeqMobile.view.doctor.dashboard.DoctorNewsFeedDetail'],
         xtype:'doctornewsfeedcontainer',
         config:{
             title:'Hospital Doctor News',

@@ -7,9 +7,9 @@
  */
 
 
-Ext.define('NeqMobile.view.doctor.Appointment',{
+Ext.define('NeqMobile.view.doctor.dashboard.Appointment',{
     extend:'Ext.form.FieldSet',
-    requires:'NeqMobile.view.doctor.AppointmentView',
+    requires:'NeqMobile.view.doctor.dashboard.AppointmentView',
     xtype: 'appointment',
     config: {
         padding: '5',

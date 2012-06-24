@@ -9,11 +9,11 @@ Ext.define('NeqMobile.store.VitalData', {
             //autoLoad:true,
             //autoSync:true,
             storeId:'vitaldata',
-            startDate: function(){
-                console.log(Ext.Date.add(new Date(), Ext.Date.DAY, -100));
+            startDate:function () {
+                //console.log(Ext.Date.add(new Date(), Ext.Date.DAY, -100));
                 return Ext.Date.add(new Date(), Ext.Date.DAY, -7);
             }(),
-            endDate: new Date()
+            endDate:new Date()
 
 
         }}

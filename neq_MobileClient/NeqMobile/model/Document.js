@@ -19,7 +19,7 @@ Ext.define('NeqMobile.model.Document', {
 
     config:{
         fields:[
-            "id", "link", "description", "type", "url", "url_big"
+            "id", "link", "description", "type", "url", "url_big" , "last_user"  , "name"
         ],
         proxy:
         {

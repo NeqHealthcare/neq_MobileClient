@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('NeqMobile.view.doctor.DoctorDashboardLab', {
+Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboardLab', {
     extend:'Ext.form.FieldSet',
     requires:['Ext.form.FieldSet', 'Ext.ux.touch.grid.View'],
     xtype:'doctordashboardlab',
