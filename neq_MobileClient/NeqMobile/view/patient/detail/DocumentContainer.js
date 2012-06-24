@@ -43,14 +43,32 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
             //height:1000,
             margin:'15em',
 
+            listeners:{
+                activeitemchange:function (container, value, oldValue, eOpts) {
+                    if (container.getScrollable() && oldValue.src) {
+                        oldValue.resetZoom();
+                        this.getActiveItem().resize();
+                    }
+                },
+
+                /*  resize: function(component, eOpts){
+                 this.getActiveItem().resize();
+                 },
+                 */
+                activate:function (component) {
+                    component.setActiveItem(0);
+                }
+            },
+
+
             items:[
 
                 {
                     xtype:'fieldset',
                     title:'Pictures',
                     layout:'vbox',
-                    margin: '0',
-                    padding: '5',
+                    margin:'0',
+                    padding:'5',
                     flex:1,
                     items:[
 
@@ -74,22 +92,52 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                                 //Ext.Viewport.add(self.touchHelpers[0]);
                                 //                                 }
 
-                                select:function (el, record, eOpts) {
+                                itemtap:function (ref, index, target, record, e, eOpts) {
                                     full_url = record.get('url_big');
                                     console.log(full_url);
-                                    Ext.ComponentManager.get('imageScreen').loadImage(full_url);
                                     Ext.ComponentManager.get('documentcontainer').setActiveItem(1);
+                                    if (!Ext.ComponentManager.get('documentcontainer').imageSrc) {
+
+                                        Ext.Function.defer(function () {
+                                                Ext.ComponentManager.get('imageScreen').loadImage(full_url);
+                                                console.log('Do smth');
+                                            }
+                                            , 500);
+
+                                    }
+
+                                    else {
+                                        Ext.ComponentManager.get('imageScreen').loadImage(full_url);
+                                    }
+
+
                                     //Ext.ComponentManager.get('backbutton').setStyle('opacity: 0.3;');
                                     Ext.ComponentManager.get('backbutton').show();
 
+                                },
+                                deactivate:function () {
+                                    console.log('hii');
                                 }
 
 
 
                             }
                         }
+
                     ]
                 },
+
+                {
+                    id:'imageScreen',
+                    xtype:'imageviewer',
+                    flex:1
+                    //width:1000,
+                    //height:1000
+
+
+                },
+
+
                 {
 
                     id:'backbutton',
@@ -109,19 +157,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                             this.hide();
                         }
                     }
-                },
-
-
-                {
-                    id:'imageScreen',
-                    xtype:'imageviewer',
-                    flex:1
-                    //width:1000,
-                    //height:1000
-
-
                 }
-
 
 
             ]
