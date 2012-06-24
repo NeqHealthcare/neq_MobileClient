@@ -89,6 +89,7 @@ Ext.define('NeqMobile.controller.DoctorDashboard', {
         var userinforecord = NeqMobile.manager.Session.getSession().get('userinfo');
 
         this.getDoctordashboard().down('doctorheader').setRecord(userinforecord);
+        //this.getWorkspace().down('#doctorimage_big').setIcon(userinforecord.image_url);
         this.getDoctordashboard().down('#doc_last_login').setValue(
             NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
 

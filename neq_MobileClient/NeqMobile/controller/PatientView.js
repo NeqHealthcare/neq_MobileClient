@@ -1,6 +1,6 @@
 /**
  * Created by JetBrains WebStorm.
- * User: geekflyer
+ * User: geekflyer, chopsuey
  * Date: 31.03.12
  * Time: 22:06
  * To change this template use File | Settings | File Templates.
@@ -28,13 +28,21 @@ Ext.define('NeqMobile.controller.PatientView', {
             'diagnosescontainer #createNewDaignosebutton':{
                 tap:'onCreateNewDiagnoseTap'
             },
-            'createnewdiagnoseoverlay #submitDiagnoseButton':{tap: 'onSubmitNewDiagnoseTap'},
-            'createnewdiagnoseoverlay #toppart #diseaseInfo #diseasebutton':{tap: 'onDiseaseTypeSelect'},
-            'diseasetype #diseaselist':{select:'onDiseaseSelect'},
-            'diseasetype #diseasesearchfield':{keyup:'doFilter'},
-            'diseasetype #refreshbutton':{tap:'onTapRefreshButton'},
-            'createnewdiagnoseoverlay #toppart #therapy #pcdbutton':{tap: 'onProcedureSelect'},
-            'procedure #pcdlist': {select: 'onDProcedureListSelect'}
+            'createnewdiagnoseoverlay #submitDiagnoseButton'                :{tap: 'onSubmitNewDiagnoseTap'},
+            'createnewdiagnoseoverlay #toppart #diseaseInfo #diseasebutton' :{tap: 'onDiseaseTypeSelect'},
+
+            'diseasetype #diseaselist'                                      :{select:'onDiseaseSelect'},
+            'diseasetype #diseasesearchfield'                               :{keyup:'doFilter'},
+            'diseasetype #refreshbutton'                                    :{tap:'onTapRefreshButton'},
+
+            'createnewdiagnoseoverlay #toppart #therapy #pcdbutton'         :{tap: 'onProcedureSelect'},
+            'procedure #pcdlist'                                            : {select: 'onDProcedureListSelect'},
+
+            'patientview #showDocuments'                                    : {tap:'onTapShowDocuments'},
+            'patientview #showPatientMain'                                  : {tap:'onTapShowPatientMain'},
+            'patientview #showLabTest'                                      : {tap:'onTapShowLabTest'},
+            'patientview #showVitalData'                                    : {tap:'onTapShowVitalData'}
+
         },
         // enables calling a view directly by address
         routes:{
@@ -455,12 +463,28 @@ Ext.define('NeqMobile.controller.PatientView', {
             this.overlay = Ext.Viewport.add(procedureoverlay);
             this.overlay.show();
         },
+
         onDProcedureListSelect: function(list, record, eOpts){
             var selectedProcedure = this.getProcedure().down('#pcdlist').getSelection()[0];
             this.getDiagnoseoverlay().down('#toppart').down('#therapy').down('#procedure').down('#pcs_code').setValue(selectedProcedure.get('description'));
             this.getProcedure().setHidden(true);
-        }
+        },
 
+        onTapShowDocuments: function(button, e, eOpts){
+            this.getPatientview().setActiveItem(0);
+        },
+
+        onTapShowPatientMain: function(){
+            this.getPatientview().setActiveItem(1);
+        },
+
+        onTapShowLabTest: function(){
+            this.getPatientview().setActiveItem(2);
+        },
+
+        onTapShowVitalData: function(){
+            this.getPatientview().setActiveItem(3);
+        }
 }
 
 );

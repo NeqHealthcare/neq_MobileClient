@@ -19,6 +19,26 @@ Ext.define('NeqMobile.view.patient.PatientView', {
                 xtype:'patientinfoimages'
             },
             {
+                xtype : 'toolbar',
+                ui: 'neutral',
+                docked: 'top',
+                scrollable: false,
+                defaults: {
+                    iconMask: true,
+                    ui      : 'plain'
+                },
+                items: [
+                    { iconMask: true, iconCls: 'compose', itemId:'showDocuments' },
+                    { iconMask: true, iconCls: 'home', itemId:'showPatientMain' },
+                    { iconMask: true, iconCls: 'maps', itemId:'showLabTest' },
+                    { iconMask: true, iconCls: 'locate', itemId:'showVitalData' }
+                ],
+                layout: {
+                    pack : 'center',
+                    align: 'center'
+                }
+            },
+            {
                 xtype:'patientdashboard'
             }
             ,
