@@ -57,7 +57,7 @@ Ext.define('NeqMobile.view.Workspace', {
                         {
                             xtype:'button',
                             itemId:'SettingsButton',
-                            iconCls:'team1',
+                            iconCls:'settings',
                             iconMask:true,
                             align:'right'}
                     ]
