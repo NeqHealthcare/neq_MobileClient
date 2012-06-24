@@ -12,7 +12,14 @@
 Ext.define('NeqMobile.view.patient.PatientDashboard', {
         extend:'Ext.Container',
         xtype:'patientdashboard',
-        requires:['NeqMobile.view.patient.detail.PatientHeader','NeqMobile.view.patient.detail.MedicationContainer','NeqMobile.view.patient.detail.VaccinationContainer','NeqMobile.view.patient.detail.DiagnoseContainer','NeqMobile.view.patient.detail.DiseaseDetail','NeqMobile.view.patient.detail.MedicationDetail','NeqMobile.view.patient.detail.VaccinationDetail'],
+
+        requires:['NeqMobile.view.patient.detail.PatientHeader',
+            'NeqMobile.view.patient.detail.MedicationContainer',
+            'NeqMobile.view.patient.detail.VaccinationContainer',
+            'NeqMobile.view.patient.detail.DiagnoseContainer',
+            'NeqMobile.view.patient.detail.DiseaseDetail',
+            'NeqMobile.view.patient.detail.MedicationDetail',
+            'NeqMobile.view.patient.detail.VaccinationDetail'],
 
         loadPatientHeader:function (patientrecord) {
             this.down('#patientheader').setRecord(patientrecord);
