@@ -28,6 +28,9 @@ Ext.define('NeqMobile.controller.Session', {
             'menuSettings #logoutbutton':{tap:'onLogoutClick'},
             'settingsDomains toolbar #backbutton':{tap:'onBackFromDomainSettings'
             }
+        },
+        routes:{
+            'userSettings':'switchToUserSettings'
         }
     },
 
@@ -101,7 +104,11 @@ Ext.define('NeqMobile.controller.Session', {
         this.getViewport().setActiveItem(settingsdomains);
     },
 
-    onUserSettingsClick:function () {
+    onUserSettingsClick:function(){
+        this.redirectTo('userSettings');
+    },
+
+    switchToUserSettings:function () {
         console.log('switching card');
         var userSettings;
         if (this.getUserSettings()) {

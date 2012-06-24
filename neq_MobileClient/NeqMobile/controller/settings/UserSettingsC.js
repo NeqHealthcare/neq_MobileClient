@@ -16,10 +16,15 @@ Ext.define('NeqMobile.controller.settings.UserSettingsC', {
 
             control:{
                 'userSettings fieldset #peoplesearchfield':{keyup:'doFilter'}
+//                'userSettings #userSettingsBackbutton':{tap:'goBack'}
             }
         },
 
         /* - Functions ---------------------------------------------------------------------------------- */
+
+//        goBack:function(){
+//            this.redirectTo(history.back());
+//        },
 
         doFilter:function (searchfield, e, eOpts) {
             var store = Ext.data.StoreManager.lookup('chatterUsers');
