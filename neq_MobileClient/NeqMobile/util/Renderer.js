@@ -12,6 +12,20 @@ Ext.define('NeqMobile.util.Renderer',
             var date = new Date(long);
             return Ext.Date.format(date,'d.m.Y');
         },
+
+        longToTimerenderer: function(long,values){
+            var date = new Date(long);
+            return Ext.Date.format(date,'d.m.Y - H:i:s');
+        },
+
+        dateTimerenderer: function(date,values) {
+            if (date) {
+                return Ext.Date.format(date, 'd.m.Y - H:i:s');
+            }
+            else {
+                return '-';
+            }
+        },
         urgencyrenderer: function (value, values){
             if(value =='a')
                 return 'Normal';

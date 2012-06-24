@@ -119,7 +119,6 @@ Ext.define('NeqMobile.controller.UserView', {
     {
         var cometd = Ext.cometd;
         cometd.unsubscribe(this.subscription);
-        console.log('++++++++++++++++++++    I unsubscribed:');
     },
 
     onHomeTap:function () {

@@ -70,7 +70,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
             {
                 flex:5,
                 styleHtmlContent:true,
-                xtype:'container',
+                xtype:'formpanel',
                 scrollable: {
                     direction: 'vertical',
                     directionLock: true
