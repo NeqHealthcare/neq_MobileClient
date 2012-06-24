@@ -46,9 +46,10 @@ Ext.define('NeqMobile.controller.UserView', {
             },
             'workspace appointment appointmentview #appointmentdetail button':{
                 tap:'onAppointmentBackButton'
-            }
-            ,
-            userview: {activeitemchange: 'onUserViewItemChange'}
+            },
+            'userview #showUserDashboardIcon': {tap:'onTapShowUserDashboard'},
+            'userview #showChatterIcon': {tap:'onTapShowCatterIcon'},
+             userview: {activeitemchange: 'onUserViewItemChange'}
 
         },
 
@@ -74,6 +75,14 @@ Ext.define('NeqMobile.controller.UserView', {
     subscription:undefined,
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
+
+    onTapShowUserDashboard: function(){
+        this.redirectTo('doctordashboard');
+    },
+    onTapShowCatterIcon: function(){
+        this.redirectTo('chatter');
+    },
+
 
     onUserViewItemChange:function (container, newvalue, oldvalue, eOpts) {
         var me = this;

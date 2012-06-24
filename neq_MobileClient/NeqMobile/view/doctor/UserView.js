@@ -6,6 +6,24 @@ Ext.define('NeqMobile.view.doctor.UserView', {
     config:{
         itemId: 'userview',
         items:[
+            {
+                xtype : 'toolbar',
+                ui: 'neutral',
+                docked: 'top',
+                scrollable: false,
+                defaults: {
+                    iconMask: true,
+                    ui      : 'plain'
+                },
+                items: [
+                    { iconMask: true, iconCls: 'home', itemId:'showUserDashboardIcon' },
+                    { iconMask: true, iconCls: 'team', itemId:'showChatterIcon' }
+                ],
+                layout: {
+                    pack : 'center',
+                    align: 'center'
+                }
+            },
 
             {
                 xtype:'doctordashboard'
