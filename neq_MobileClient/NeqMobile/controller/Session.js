@@ -61,8 +61,8 @@ Ext.define('NeqMobile.controller.Session', {
 
         cometd.addListener('/meta/connect', function (message) {
 
-            console.log('something arrived at the connect meta channel');
-            console.warn('CONNECTING TO: ' + url);
+         //   console.log('something arrived at the connect meta channel');
+         //   console.warn('CONNECTING TO: ' + url);
             // if (cometd.getStatus() === 'disconnecting' || cometd.getStatus() === 'disconnected')
             if (cometd.isDisconnected()) // Available since 1.1.2
             {
@@ -89,10 +89,10 @@ Ext.define('NeqMobile.controller.Session', {
     },
     onBackFromDomainSettings:function () {
         this.getViewport().setActiveItem(this.getLogin());
-        console.log('itemcount: ' + this.getViewport().getItems().length);
+      //  console.log('itemcount: ' + this.getViewport().getItems().length);
     },
     onSettingsClick:function () {
-        console.log('switching card');
+       // console.log('switching card');
         var settingsdomains;
         if (this.getSettingsDomains()) {
 
@@ -143,25 +143,33 @@ Ext.define('NeqMobile.controller.Session', {
         settingsmenu.showBy(button);
     },
     onLoginTry:function () {
-        console.log('trying to login');
-        // console.dir(this.getLogin().down('list').getSelection().getAt(0));
-        var loginForm = this.getLogin().down('formpanel');
-        var myselectfield = this.getLogin().down('selectfield');
-
-        if
-        //this.getLogin().down('list').getSelection().length != 0)
-            (myselectfield.getRecord() != undefined) {
-            Ext.Viewport.setMasked({ xtype:'loadmask', message:'trying to login...' });
-            NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
-                loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
+        var usernamefield = this.getLogin().down('formpanel').down('#textfield').getValue();
+        var pwdfield = this.getLogin().down('formpanel').down('#passwordfield').getValue();
+        var domainfield = this.getLogin().down('selectfield').getValue();
+        if(usernamefield == ""){
+            Ext.Msg.alert('Username missing','Please insert your username', Ext.emptyFn);
         }
-        else {
-            console.log('no item selected');
-            //  Ext.Viewport.setMasked(true);
-            Ext.Msg.alert('No Domain Selected', 'Please select a domain or create a new domain by clicking on the settings button in the upper right corner.', Ext.emptyFn);
-            //  Ext.Viewport.setMasked(false);
+        else{
+            if(pwdfield == ''){
+                Ext.Msg.alert('Password missing','Please insert your password', Ext.emptyFn);
+            }
+            else{
+                if(domainfield == null){
+                    Ext.Msg.alert('No Domain Selected', 'Please select a domain or create a new domain in the settings', Ext.emptyFn);
+                }
+                else{
+                    this.loginToServer();
+                }
+            }
         }
     },
+    loginToServer: function(){
+        var loginForm = this.getLogin().down('formpanel');
+        Ext.Viewport.setMasked({ xtype:'loadmask', message:'trying to login...' });
+        NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
+            loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
+    },
+
     onLoginFailure:function () {
         Ext.Viewport.setMasked(false);
     },

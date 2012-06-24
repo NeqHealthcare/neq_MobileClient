@@ -83,7 +83,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
             cometd.publish(channelurl, {});
             me.subscription = cometd.subscribe(channelurl, function (message) {
                 var values = Ext.decode(message.data);
-                console.log(values);
+              //  console.log(values);
                 me.smoothieline.append(values.timestamp, values.y);
             });
         },
