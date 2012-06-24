@@ -274,14 +274,24 @@ Ext.define('NeqMobile.controller.PatientView', {
 //                },
 //                scope:this
 //            });
-
-
             this.overlay = Ext.Viewport.add(diagnoseOverlay);
             this.overlay.show();
 
         },
 
         onSubmitNewDiagnoseTap:function (button, e, eOpts) {
+            var diseaseInformation = this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo');
+            var diseasefield = diseaseInformation.down('#diseasefield').getValue();
+            console.log(diseasefield);
+            if(diseasefield == ""){
+                Ext.Msg.alert('Disease missing','Please insert the diagnosed disease', Ext.emptyFn);
+            }
+            else{
+             this.submitDiagnose();
+            }
+        },
+
+        submitDiagnose : function (){
             this.getDiagnoseoverlay().setHidden(true);
             var me = this;
             //disease Code
@@ -379,29 +389,29 @@ Ext.define('NeqMobile.controller.PatientView', {
             console.log('patient id: '+newDisease.get('patient_id'));
             console.log('2. date_start_treatment+ '+newDisease.get('date_start_treatment'));
             console.log('2. date_start_treatment+ '+dateStartTreatment);
-             newDisease.save({
-                    success:function (newDisease) {
-                        console.log("diagnose successfully saved");
-                        var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
-                        if (!diagnosestore) {
-                            diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
-                        }
-                        diagnosestore.load({
-                            callback:function (records, operation, success) {
-                                var response = operation.getResponse();
-                                var responseObject = Ext.decode(response.responseText);
-                                me.getPatientview().loadNewDiagnose(responseObject);
-                            },
-                            scope:this
-                        });
-                    },
-                    failure:function (response, opts) {
-                        console.log('server-side failure with status code ' + response.status);
-                        Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
-                            'It occured a technical connection problem. Possible causes are:<br><br>' +
-                            '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
-
+            newDisease.save({
+                success:function (newDisease) {
+                    console.log("diagnose successfully saved");
+                    var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
+                    if (!diagnosestore) {
+                        diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
                     }
+                    diagnosestore.load({
+                        callback:function (records, operation, success) {
+                            var response = operation.getResponse();
+                            var responseObject = Ext.decode(response.responseText);
+                            me.getPatientview().loadNewDiagnose(responseObject);
+                        },
+                        scope:this
+                    });
+                },
+                failure:function (response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                    Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
+                        'It occured a technical connection problem. Possible causes are:<br><br>' +
+                        '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
+
+                }
             })
         },
 
