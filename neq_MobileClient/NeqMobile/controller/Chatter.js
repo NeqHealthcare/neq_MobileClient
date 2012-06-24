@@ -32,7 +32,17 @@ Ext.define('NeqMobile.controller.Chatter', {
             list.deselectAll();
         },
 
+
         onCreateNewPostButton: function(button, e, eOpts){
+            var messageT = this.getNewposttextarea().getValue();
+            if(messageT == ''){
+                Ext.Msg.alert('Content missing','Please insert the content you want to share', Ext.emptyFn);
+            }
+            else{
+                this.createNewPost();
+            }
+        },
+        createNewPost: function(){
             var me = this;
             var messageT = this.getNewposttextarea().getValue();
             var parentId = -1;
@@ -80,46 +90,56 @@ Ext.define('NeqMobile.controller.Chatter', {
 
         },
         onSubmitCommentButton:function (button, e, eOpts){
-                var me = this;
+            var comment = this.getCreateCommentOverlay().down('#createCommentFieldSet').down('#commentTextArea').getValue();
+             if (comment == ""){
+                 Ext.Msg.alert('Comment Missing','Please insert a comment', Ext.emptyFn);
+             }
+            else {
 
-                var createCommentOverlay = this.getCreateCommentOverlay();
-                var fieldSet = createCommentOverlay.getComponent('createCommentFieldSet');
-                var textarea = fieldSet.getComponent(0);
-                var parentId = null;
-                if(selectedPost != undefined && selectedPost != null){
-                    parentId = selectedPost;
-                }else{
-                    parentId = -1;
+             }
+        },
+
+        submitComment:function (){
+            var me = this;
+
+            var createCommentOverlay = this.getCreateCommentOverlay();
+            var fieldSet = createCommentOverlay.getComponent('createCommentFieldSet');
+            var textarea = fieldSet.getComponent(0);
+            var parentId = null;
+            if(selectedPost != undefined && selectedPost != null){
+                parentId = selectedPost;
+            }else{
+                parentId = -1;
+            }
+            console.log('---------------------- -------------------- -------------------- -------------------');
+            console.log('parent_id ist: '+parentId);
+            var messageT = textarea.getValue();
+            var tempPost = Ext.create('NeqMobile.model.ChatterPost', {
+                message: messageT,
+                parent_id: parentId
+            });
+            tempPost.getProxy().setExtraParam('parentId', parentId);
+            tempPost.getProxy().setExtraParam('message', messageT);
+
+            tempPost.save({
+                success:function (tempPost) {
+
+                    var store = Ext.data.StoreManager.lookup('chatterPosts');
+                    store.load({
+                        callback:function (records, operation, success) {
+                            console.log('store reloaded');
+                        },
+                        scope:this
+                    });
+                },
+                failure:function (response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                    Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
+                        'It occured a technical connection problem. Possible causes are:<br><br>' +
+                        '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
+                    failureCallback.apply(scope);
                 }
-                console.log('---------------------- -------------------- -------------------- -------------------');
-                console.log('parent_id ist: '+parentId);
-                var messageT = textarea.getValue();
-                var tempPost = Ext.create('NeqMobile.model.ChatterPost', {
-                    message: messageT,
-                    parent_id: parentId
-                });
-                tempPost.getProxy().setExtraParam('parentId', parentId);
-                tempPost.getProxy().setExtraParam('message', messageT);
-
-                tempPost.save({
-                    success:function (tempPost) {
-
-                        var store = Ext.data.StoreManager.lookup('chatterPosts');
-                        store.load({
-                            callback:function (records, operation, success) {
-                                console.log('store reloaded');
-                            },
-                            scope:this
-                        });
-                    },
-                    failure:function (response, opts) {
-                        console.log('server-side failure with status code ' + response.status);
-                        Ext.Msg.alert('Server not responding', 'status code: ' + response.status + '<br>' +
-                            'It occured a technical connection problem. Possible causes are:<br><br>' +
-                            '1. The server ist not responding - check your network connection or the connection settings of the app (ask the administrator.)', Ext.emptyFn);
-                        failureCallback.apply(scope);
-                    }
-                });
+            });
             createCommentOverlay.setHidden(true);
         }
     }
