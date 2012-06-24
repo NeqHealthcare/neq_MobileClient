@@ -22,7 +22,8 @@ Ext.define('NeqMobile.controller.UserView', {
             doctornews:'doctornews',
             doctornewstopics : 'doctornewstopics',
             doctornewsfeeddetail : 'doctornewsfeeddetail',
-            appointmentview :'appointmentview'
+            appointmentview :'appointmentview',
+            patientList:'workspace patientlist list'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -159,6 +160,7 @@ Ext.define('NeqMobile.controller.UserView', {
         var workspace = me.getWorkspace();
         var userview = workspace.down('userview');
         var userviewcontainer = workspace.down('#userviewcontainer');
+        this.getPatientList().deselectAll();
 
         userviewcontainer.setActiveItem(userview);
 

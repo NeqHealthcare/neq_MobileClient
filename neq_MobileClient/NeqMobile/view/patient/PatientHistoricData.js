@@ -245,7 +245,7 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
 });
 
 Ext.define('NeqMobile.view.patient.PatientHistoricData', {
-    extend:'Ext.Panel',
+    extend:'Ext.Container',
     requires:['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line',
         'NeqMobile.view.patient.measurements.HeartbeatLive'],
     loadPatientHistoricData:function (chartdata) {
@@ -270,8 +270,8 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
             }
         },
         heartbeatchart:undefined,
-        margin:0,
-        padding:5,
+        styleHtmlContent:true,
+        layout:'vbox',
         scrollable:{
             direction:'vertical',
             directionLock:true
@@ -282,6 +282,9 @@ Ext.define('NeqMobile.view.patient.PatientHistoricData', {
             {
                 xtype:'fieldset',
                 title:'Live Heartbeat',
+                width: '100%',
+                margin:0,
+                padding:5,
                 items:[
                     {
                         html:'<canvas id="mycanvas" width="650" height="150"></canvas>'
