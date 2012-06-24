@@ -61,6 +61,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     items:[
                                         {
                                             xtype: 'textfield',
+                                            readOnly: true,
                                             label: 'Disease',
                                             labelWidth:'35%',
                                             id: 'diseasefield',

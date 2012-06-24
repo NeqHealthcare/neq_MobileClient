@@ -53,9 +53,9 @@ Ext.define('NeqMobile.controller.Session', {
             //,
           //  logLevel:'debug'
         });
-        console.log('...configuration complete')
+    //    console.log('...configuration complete')
         var subscription1 = cometd.addListener('/meta/connect', function (message) {
-            console.log(message)
+    //        console.log(message)
         });
 
 
