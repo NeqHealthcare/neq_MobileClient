@@ -9,7 +9,7 @@ Ext.define('NeqMobile.view.patient.PatientLab', {
         requires:['NeqMobile.view.patient.detail.LabTestRequestsContainer','NeqMobile.view.patient.detail.LabResultsContainer', 'NeqMobile.view.patient.detail.LabDetail'],
 
         loadLabTestRequests:function (labtestrequests) {
-            this.down('labtestrequestscontainer #labTestRequestsTable').setData(labtestrequests.data);
+            this.down('labtestrequestscontainer #labTestRequestsTable').setStore(labtestrequests);
         },
 
         loadLabResults:function (labresultstore) {

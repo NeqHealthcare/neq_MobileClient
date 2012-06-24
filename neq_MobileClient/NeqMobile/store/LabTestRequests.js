@@ -6,6 +6,13 @@ Ext.define('NeqMobile.store.LabTestRequests', {
         requires:'NeqMobile.model.LabTestRequest',
 
         config:{model:'NeqMobile.model.LabTestRequest',
+            sorters:[
+                {
+                    property : 'date',
+                    direction: 'DESC'
+                }
+            ],
+
             storeId:'labtestrequests'
         }}
 );

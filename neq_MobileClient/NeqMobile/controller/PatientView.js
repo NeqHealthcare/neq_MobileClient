@@ -190,7 +190,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             callback:function (records, operation, success) {
                 var response = operation.getResponse();
                 var responseObject = Ext.decode(response.responseText);
-                patientview.down('patientlab').loadLabTestRequests(responseObject);
+                patientview.down('patientlab').loadLabTestRequests(labtestrequeststore);
             },
             scope:this
         });

@@ -2,30 +2,6 @@
  * @author Jan Gansen
  */
 
-
-var labTestRequestsTable = new Ext.XTemplate(
-    '<table border="1">',
-    '<thead>',
-    '<tr>',
-    '<th scope="col">Test Type</th>',
-    '<th scope="col">Date</th>',
-    '<th scope="col">Physician</th>',
-    '<th scope="col">State</th>',
-    '</tr>',
-    '</thead>',
-    '<tbody>',
-    '<tpl for=".">',
-    '<tr>',
-    '<td>{rec_name}</td>',
-    '<td>{[NeqMobile.util.Renderer.longToDateRenderer(values.date)]}</td>',
-    '<td>{doctor_rec_name}</td>',
-    '<td>{state}</td>',
-    '</tr>',
-    '</tpl>',
-    '</tbody>',
-    '</table>'
-)
-
 Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
 
         extend:'Ext.form.FieldSet',
@@ -34,6 +10,7 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
             title:'Lab Test Requests',
             margin: '0',
             padding: '5',
+            layout:'vbox',
             items:[
                 {
                     xtype: 'button',
@@ -45,10 +22,45 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                     height: '30px'
                 },
                 {
-                    xtype: 'panel',
+                    xtype:'touchgridpanel',
+                    itemId:'labTestRequestsTable',
                     id: 'labTestRequestsTable',
-                    data: null,
-                    tpl: labTestRequestsTable
+                    width: '100%',
+                    scrollable:false,
+                    features   : [
+                        {
+                            ftype    : 'NeqMobile.controller.settings.UserSettings',
+                            launchFn : 'initialize'
+                        }
+                    ],
+                    columns:[
+                        {
+                            header:'Test Type',
+                            dataIndex:'rec_name',
+                            style:'padding-left: 1em;',
+                            width:'40%'
+                        },
+                        {
+                            header:'Date',
+                            dataIndex:'date',
+                            style:'text-align: right; padding-right: 1em;',
+                            width:'15%',
+                            renderer: NeqMobile.util.Renderer.daterenderer
+                        },
+                        {
+                            header:'Physician',
+                            dataIndex:'doctor_rec_name',
+                            style:'padding-left: 1em;',
+                            width:'30%'
+                        },
+                        {
+                            header:'State',
+                            dataIndex:'state',
+                            style:'padding-left: 1em;',
+                            width:'15%'
+                        }
+
+                    ]
                 }
 
             ]
