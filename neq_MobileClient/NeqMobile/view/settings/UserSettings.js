@@ -23,6 +23,7 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
             {   //this is the toolbar at the top
                 docked:'top',
                 xtype:'toolbar',
+                title:'User Settings',
                 // ui:'light',
                 items:[
                     {

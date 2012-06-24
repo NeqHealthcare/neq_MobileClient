@@ -26,7 +26,8 @@ Ext.define('NeqMobile.controller.UserView', {
             doctornewstopics : 'doctornewstopics',
             doctornewsfeeddetail : 'doctornewsfeeddetail',
             appointmentview :'appointmentview',
-            patientList:'workspace patientlist list'
+            patientList:'workspace patientlist list',
+            mainToolbar:'workspace #mainToolbar'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -49,9 +50,10 @@ Ext.define('NeqMobile.controller.UserView', {
             },
             'workspace appointment appointmentview #appointmentdetail button':{
                 tap:'onAppointmentBackButton'
-            }
-            ,
-            userview: {activeitemchange: 'onUserViewItemChange'}
+            },
+            'userview #showUserDashboardIcon': {tap:'onTapShowUserDashboard'},
+            'userview #showChatterIcon': {tap:'onTapShowCatterIcon'},
+             userview: {activeitemchange: 'onUserViewItemChange'}
 
         },
 
@@ -77,6 +79,14 @@ Ext.define('NeqMobile.controller.UserView', {
     subscription:undefined,
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
+
+    onTapShowUserDashboard: function(){
+        this.redirectTo('doctordashboard');
+    },
+    onTapShowCatterIcon: function(){
+        this.redirectTo('chatter');
+    },
+
 
     onUserViewItemChange:function (container, newvalue, oldvalue, eOpts) {
         var me = this;
@@ -137,6 +147,7 @@ Ext.define('NeqMobile.controller.UserView', {
         var userviewcontainer = workspace.down('#userviewcontainer');
 
         userviewcontainer.setActiveItem(userview);
+        this.getMainToolbar().setTitle('Chatter');
 
         //   console.log('------ active item for chatter: '+me.newActiveItem);
 
@@ -166,6 +177,7 @@ Ext.define('NeqMobile.controller.UserView', {
         this.getPatientList().deselectAll();
 
         userviewcontainer.setActiveItem(userview);
+        this.getMainToolbar().setTitle('User Dashboard');
 
         //     console.log('------ active item for doctordashboard: '+me.newActiveItem);
 

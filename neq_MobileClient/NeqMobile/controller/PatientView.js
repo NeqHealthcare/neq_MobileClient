@@ -20,7 +20,8 @@ Ext.define('NeqMobile.controller.PatientView', {
             workspace:'workspace',
             diagnoseoverlay:'createnewdiagnoseoverlay',
             diseasetype: 'diseasetype',
-            procedure: 'procedure'
+            procedure: 'procedure',
+            mainToolbar:'workspace #mainToolbar'
         },
 
         control:{
@@ -41,7 +42,8 @@ Ext.define('NeqMobile.controller.PatientView', {
             'patientview #showDocuments'                                    : {tap:'onTapShowDocuments'},
             'patientview #showPatientMain'                                  : {tap:'onTapShowPatientMain'},
             'patientview #showLabTest'                                      : {tap:'onTapShowLabTest'},
-            'patientview #showVitalData'                                    : {tap:'onTapShowVitalData'}
+            'patientview #showVitalData'                                    : {tap:'onTapShowVitalData'},
+            patientview: {activeitemchange: 'onPatientViewItemChange'}
 
         },
         // enables calling a view directly by address
@@ -54,12 +56,34 @@ Ext.define('NeqMobile.controller.PatientView', {
         before:{
         } },
 
+        newActiveItem:undefined,
+
 /* - Functions ---------------------------------------------------------------------------------- */
 
 
 
 
 // Create initial view - show Patient startscreen
+    onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
+        var me = this;
+        me.newActiveItem = newvalue;
+        if (newvalue instanceof NeqMobile.view.patient.PatientDashboard) {
+//            this.redirectTo('patientdashboard');
+            this.getMainToolbar().setTitle('Patient Dashboard');
+        }else if(newvalue instanceof NeqMobile.view.patient.PatientLab){
+//            this.redirectTo('patientlab');
+            this.getMainToolbar().setTitle('Patient Laboratory');
+        } else if (newvalue instanceof NeqMobile.view.patient.PatientInfoImages) {
+//            this.redirectTo('patientlab');
+             this.getMainToolbar().setTitle('Patient Images');
+        }   else if (newvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
+//              this.redirectTo('patienthistoricdata');
+                this.getMainToolbar().setTitle('Patient Statistics');
+        }
+    },
+
+
+
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
             console.log('creating Patient View Container');
@@ -76,6 +100,7 @@ Ext.define('NeqMobile.controller.PatientView', {
     showPatient:function (id) {
         console.log('showing patient');
         this.createPatientView();
+        this.getPatientview().setActiveItem(1);
         this.getWorkspace().down('#userviewcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
