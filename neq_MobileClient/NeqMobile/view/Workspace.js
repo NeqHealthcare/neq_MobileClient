@@ -18,6 +18,7 @@ Ext.define('NeqMobile.view.Workspace', {
             items:[
 
                 {xtype:'toolbar',
+                    id:'mainToolbar',
                     docked:'top',
                     items:[
                         { iconMask:true, ui:'back', iconCls:'reply', itemId:'backbutton',

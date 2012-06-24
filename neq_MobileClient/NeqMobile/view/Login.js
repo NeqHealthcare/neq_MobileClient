@@ -15,6 +15,7 @@ Ext.define('NeqMobile.view.Login', {
                 xtype: 'toolbar',
                 docked: 'top',
                 //ui: 'light',
+                title:'NEQ Mobile Application',
                 items: [
                     {
                         xtype: 'button',

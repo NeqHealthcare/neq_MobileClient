@@ -23,7 +23,8 @@ Ext.define('NeqMobile.controller.UserView', {
             doctornewstopics : 'doctornewstopics',
             doctornewsfeeddetail : 'doctornewsfeeddetail',
             appointmentview :'appointmentview',
-            patientList:'workspace patientlist list'
+            patientList:'workspace patientlist list',
+            mainToolbar:'workspace #mainToolbar'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -143,6 +144,7 @@ Ext.define('NeqMobile.controller.UserView', {
         var userviewcontainer = workspace.down('#userviewcontainer');
 
         userviewcontainer.setActiveItem(userview);
+        this.getMainToolbar().setTitle('Chatter');
 
         //   console.log('------ active item for chatter: '+me.newActiveItem);
 
@@ -172,6 +174,7 @@ Ext.define('NeqMobile.controller.UserView', {
         this.getPatientList().deselectAll();
 
         userviewcontainer.setActiveItem(userview);
+        this.getMainToolbar().setTitle('User Dashboard');
 
         //     console.log('------ active item for doctordashboard: '+me.newActiveItem);
 

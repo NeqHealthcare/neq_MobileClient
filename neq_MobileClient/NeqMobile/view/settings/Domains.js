@@ -18,6 +18,7 @@ Ext.define('NeqMobile.view.settings.Domains', {
             {   //this is the toolbar at the top
                 docked:'top',
                 xtype:'toolbar',
+                title:'Connection Settings',
                 // ui:'light',
                 items:[
                     {
