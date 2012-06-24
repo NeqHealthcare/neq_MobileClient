@@ -18,7 +18,7 @@ var tpl = new Ext.XTemplate(
 
 Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
-        extend:'Ext.Panel',
+        extend:'Ext.Container',
         xtype:'documentcontainer',
         requires:'Arkivus.ImageViewer', //Ux.ImageViewer.js
 //        plugins:[
@@ -31,7 +31,6 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
         config:{
 
-            xtype:'panel',
             id:'documentcontainer',
             layout:'card',
             scrollable:{
@@ -100,7 +99,6 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                                         Ext.Function.defer(function () {
                                                 Ext.ComponentManager.get('imageScreen').loadImage(full_url);
-                                                console.log('Do smth');
                                             }
                                             , 500);
 
@@ -116,7 +114,6 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                                 },
                                 deactivate:function () {
-                                    console.log('hii');
                                 }
 
 
