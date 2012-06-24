@@ -78,7 +78,7 @@ Ext.define('NeqMobile.controller.PatientView', {
              this.getMainToolbar().setTitle('Patient Images');
         }   else if (newvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
 //              this.redirectTo('patienthistoricdata');
-                this.getMainToolbar().setTitle('Patient Historic Data');
+                this.getMainToolbar().setTitle('Patient Statistics');
         }
     },
 

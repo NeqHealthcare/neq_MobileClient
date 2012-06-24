@@ -17,13 +17,15 @@ Ext.define('NeqMobile.view.Login', {
                 //ui: 'light',
                 title:'NEQ Mobile Application',
                 items: [
+                    {xtype:'spacer'},
                     {
                         xtype: 'button',
-                        docked: 'right',
+                        align: 'right',
                         itemId: 'settingsbutton',
                         iconCls: 'settings',
                         iconMask: true
                     }
+
                 ]
             },
             {
