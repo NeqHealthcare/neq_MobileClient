@@ -2,9 +2,9 @@
  * Created by Jan Gansen
  */
 var postsContainer = new Ext.XTemplate(
-    '<div id="chatter-post-image"><img src="{image_url}" /></div>',
+    '<div id="chatter-post-image"><img src="http://{image_url}?width=45&height=45" /></div>',
     '<span id="list-block-normal">{message}</span>',
-    '<div id="list-block-thin"> {creator_name}  {[NeqMobile.util.Renderer.dateTimerenderer(values.timestamp)]}</div>',
+    '<div id="list-block-thin"> {creator_name}  {[NeqMobile.util.Renderer.longToTimerenderer(values.timestamp)]}</div>',
     '<p>Comments: ',
     '<tpl for="child_posts">',
         '<tpl for=".">',
