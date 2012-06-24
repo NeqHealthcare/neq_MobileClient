@@ -74,7 +74,8 @@ Ext.define('NeqMobile.view.Workspace', {
                                 }
                             ]
                         }
-                    ]                  }
+                    ]
+                }
             ]
         }
     }

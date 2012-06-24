@@ -4,9 +4,9 @@ Ext.define('Arkivus.ImageViewer', {
         doubleTapScale:1, maxScale:4, loadingMask:true, previewSrc:false, resizeOnLoad:true, imageSrc:false, initOnActivate:false, cls:'imageBox', scrollable:'both', html:'<figure><img></figure>'
     }, xtype:'imageviewer', initialize:function () {
         if (this.initOnActivate)
-            this.addListener('activate', this.initViewer, this, {delay:10, single:true});
+            this.addListener('activate', this.initViewer, this, {delay:50, single:false});
         else
-            this.addListener('painted', this.initViewer, this, {delay:10, single:true});
+            this.addListener('painted', this.initViewer, this, {delay:50, single:false});
     }, initViewer:function () {
 
         //disable scroller
@@ -56,6 +56,7 @@ Ext.define('Arkivus.ImageViewer', {
             this.loadImage(this.getImageSrc());
     }, loadImage:function (src) {
         if (this.imgEl) {
+            console.log("Updating image")
             this.imgEl.dom.src = src;
             this.imgEl.dom.onload = Ext.Function.bind(this.onLoad, this, this.imgEl, 0);
         }

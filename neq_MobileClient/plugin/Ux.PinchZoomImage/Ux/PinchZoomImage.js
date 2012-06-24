@@ -1,7 +1,34 @@
+/**
+ * Pinch Zoom Image
+ * creates a pinch zoom able image in a scrollable container
+ *
+ * Can be uses with dynamic size from the height width of the container
+ *
+ * @example
+ *     {
+ *         flex: 1,
+ *         xtype: 'pinchzoomimage',
+ *         src: '/resources/images/casinomenu.jpg'
+ *     }
+ *
+ * or with fixed sizes
+ *
+ * {
+ *         xtype: 'pinchzoomimage',
+ *         src: '/resources/images/casinomenu.jpg',
+ *         width: 320,
+ *         height: 440
+ *     }
+ *
+ *
+ * @author     Nils Dehl <mail@nils-dehl.de>
+ * @www     http://www.nils-dehl.de
+ *
+ * @version: 1.0.0
+ */
 Ext.define('Ux.PinchZoomImage', {
     extend:'Ext.Container',
     xtype:'pinchzoomimage',
-
     alias:'widget.pinchzoomimage',
 
 
@@ -11,20 +38,7 @@ Ext.define('Ux.PinchZoomImage', {
          *
          * @type String
          */
-        src:null,
-        flex:1,
-        //type: 'vbox',
-
-        /* initComponent: function()
-         {
-         this.setTpl(new Ext.XTemplate(
-         '<div style="padding:10px 5px 5px 5px;">',
-         '<tpl for=".">',
-         '<div class="node" style="">',
-         '</div>',
-         '</tpl>',
-         '</div>'));
-         },*/
+        src:'',
 
 
         /**
@@ -32,9 +46,7 @@ Ext.define('Ux.PinchZoomImage', {
          *
          * @type int
          */
-        //height:null,
-        currentWidth:null,
-        currentHeight:null,
+        height:null,
 
 
         /**
@@ -42,7 +54,7 @@ Ext.define('Ux.PinchZoomImage', {
          *
          * @type int
          */
-        //width:null,
+        width:null,
 
 
         scrollable:true,
@@ -57,24 +69,19 @@ Ext.define('Ux.PinchZoomImage', {
      *
      * @param {} newImageSrc
      */
-
-
     initImage:function (newImageSrc) {
         var height = this.getHeight() || this.element.getHeight(),
             width = this.getWidth() || this.element.getWidth(),
             src = this.getSrc() || newImageSrc,
-            currentWidth = width,
-            currentHeight = height,
             image = null;
 
 
         if (Ext.isString(src) && src !== '') {
             image = Ext.create('Ext.Img', {
                 // set mode auf empty to create a real image tag
-                //mode:'',
+                mode:'',
                 height:height,
                 width:width,
-                flex:1,
                 src:src,
                 listeners:{
                     pinch:{
@@ -88,18 +95,10 @@ Ext.define('Ux.PinchZoomImage', {
                         fn:this.onImageDoubletap
                     }
                 }
-
             });
 
 
             this.add(image);
-            //image.opacity(0.3);
-            //image.setFlex(1);
-            image.setHeight(1000);
-            image.setWidth(1000);
-            image.setStyle('background-size: 100%');
-
-
         }
     },
 
@@ -130,46 +129,21 @@ Ext.define('Ux.PinchZoomImage', {
      * @param {} e eventobject
      */
     onImagePinch:function (e) {
-        var
-            initialWidth = this.getInitialConfig('width'),
+        var initialWidth = this.getInitialConfig('width'),
             initialHeight = this.getInitialConfig('height'),
-            newWidth = this.element.getWidth() * e.scale,
-            newHeight = this.element.getHeight() * e.scale,
+            newWidth = initialWidth * e.scale,
+            newHeight = initialHeight * e.scale,
             container = this,
             image = this.element,
             scroller = this.up('container').getScrollable().getScroller(),
-            posX,
-            posY;
-
-        posX = e.pageX * (newWidth - initialWidth) / newWidth;    //might work in fullscreen mode
-        posY = e.pageY * (newHeight - initialHeight) / newHeight;
-
-        /*newWidth = function () {
-         if (initialWidth != this.currentWidth)
-         return this.currentWidth * e.sca;
-         else
-         return initialWidth * e.scale;
-         }();
-         newHeight = function () {
-         if (initialHeight != this.currentHeight)
-         return this.currentHeight * e.scale;
-         else
-         return initialHeight * e.scale;
-         }();*/
+            pos = scroller.getMaxPosition();
 
 
-        //this.currentWidth = newWidth * e.scaleOnExit;
-        //this.currentHeight = newHeight * e.scaleOnExit;
-
-        //image.webkitTransform = 'scale(' + e.scale  + ',' + e.scale + ')';
-        //container.webkitTransform = 'scale(' + e.scale  + ',' + e.scale + ')';
-
-        //container.setWidth(newWidth);
-        //container.setHeight(newHeight);
+        container.setWidth(newWidth);
+        container.setHeight(newHeight);
         image.setWidth(newWidth);
         image.setHeight(newHeight);
-        //scroller.scrollTo(posX, posY);
-
+        scroller.scrollTo(pos.x / 2, pos.y / 2);
     },
 
 
@@ -194,5 +168,4 @@ Ext.define('Ux.PinchZoomImage', {
     }
 
 
-
-});
+});  

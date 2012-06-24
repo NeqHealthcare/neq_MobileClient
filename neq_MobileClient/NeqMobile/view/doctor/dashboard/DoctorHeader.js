@@ -31,13 +31,14 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
                                 docked: 'left',
                                 padding: 7,
                                 name:'image_url',
-                                //icon:'theme/images/user/doctor_avatar_big.jpg',
+                                icon:'theme/images/user/doctor_avatar_big.jpg',
                                 //align:'right',
-                                itemId:'doctorimage_big',
-                                html: '<img style="background-size: cover; background-position: center center;' +
+                                itemId:'doctorimage_big'
+                                /*html: '<img style="background-size: cover; background-position: center center;' +
                                     ' background: #ddd; border-radius: 3px;' +
                                     ' -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
                                     ' src="theme/images/user/doctor_avatar_big.jpg" width="145" height="145">'
+                                */
                             },
                             /*
                             {
