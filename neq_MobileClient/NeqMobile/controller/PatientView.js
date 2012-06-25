@@ -284,11 +284,11 @@ Ext.define('NeqMobile.controller.PatientView', {
             var diseaseInformation = this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo');
             var diseasefield = diseaseInformation.down('#diseasefield').getValue();
             console.log(diseasefield);
-            if(diseasefield == ""){
-                Ext.Msg.alert('Disease missing','Please insert the diagnosed disease', Ext.emptyFn);
-            }
+            if(diseasefield != ""){
+                this.submitDiagnose();
+             }
             else{
-             this.submitDiagnose();
+                Ext.Msg.alert('Disease missing','Please insert the diagnosed disease', Ext.emptyFn);
             }
         },
 
