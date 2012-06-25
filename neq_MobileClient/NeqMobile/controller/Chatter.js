@@ -91,11 +91,11 @@ Ext.define('NeqMobile.controller.Chatter', {
         },
         onSubmitCommentButton:function (button, e, eOpts){
             var comment = this.getCreateCommentOverlay().down('#createCommentFieldSet').down('#commentTextArea').getValue();
-             if (comment == ""){
-                 Ext.Msg.alert('Comment Missing','Please insert a comment', Ext.emptyFn);
+             if (comment != ""){
+                this.submitComment();
              }
             else {
-
+                 Ext.Msg.alert('Comment Missing','Please insert a comment', Ext.emptyFn);
              }
         },
 
