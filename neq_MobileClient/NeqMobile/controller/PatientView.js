@@ -77,8 +77,8 @@ Ext.define('NeqMobile.controller.PatientView', {
         } else if (newvalue instanceof NeqMobile.view.patient.PatientInfoImages) {
 //            this.redirectTo('patientlab');
              this.getMainToolbar().setTitle('Patient Images');
-        }   else if (newvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
-//              this.redirectTo('patienthistoricdata');
+        }   else if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
+//              this.redirectTo('patientstatistics');
                 this.getMainToolbar().setTitle('Patient Statistics');
         }
     },
@@ -117,7 +117,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         var me = this;
         NeqMobile.manager.Session.setCurrentPatient(patientid);
         var patientview = this.getPatientview();
-        var vitaldataview = patientview.down('patienthistoricdata');
+        var vitaldataview = patientview.down('patientstatistics');
         var patientdashboard = patientview.down('patientdashboard');
         //  var definitions >
         var patientinfoimages = patientview.down('patientinfoimages');
@@ -246,7 +246,7 @@ Ext.define('NeqMobile.controller.PatientView', {
 
         vitaldatastore.load({
             callback:function (records, operation, success) {
-                patientview.down('patienthistoricdata').loadPatientHistoricData(vitaldatastore);
+                patientview.down('patientstatistics').loadPatientStatistics(vitaldatastore);
             },
             scope:this
         });
