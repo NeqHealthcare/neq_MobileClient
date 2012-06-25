@@ -31,7 +31,8 @@ Ext.define('NeqMobile.controller.Session', {
             }
         },
         routes:{
-            'userSettings':'switchToUserSettings'
+            'userSettings':'switchToUserSettings',
+            'login':'switchToLogin'
         }
     },
 
@@ -207,6 +208,10 @@ Ext.define('NeqMobile.controller.Session', {
         this.redirectTo('userdashboard');
     },
     onLogoutClick:function () {
+        this.redirectTo('login');
+    },
+
+    switchToLogin:function () {
         console.log('trying to logout');
         Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
