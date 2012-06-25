@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientView', {
     extend:'Ext.app.Controller',
-    requires:['NeqMobile.view.patient.create.CreateDiagnose', 'Ext.DateExtras','NeqMobile.view.patient.create.Procedure'],
+    requires:['NeqMobile.view.patient.create.CreateDiagnose', 'Ext.DateExtras','NeqMobile.view.patient.create.Procedure','NeqMobile.view.patient.PatientView'],
 
     config:{
         stores:['Documents','LabTestRequests','LabResults','Diagnoses','Patients', 'VitalData','DiseaseType','Procedure', 'NewDiagnose'],
@@ -21,11 +21,12 @@ Ext.define('NeqMobile.controller.PatientView', {
             diagnoseoverlay:'createnewdiagnoseoverlay',
             diseasetype: 'diseasetype',
             procedure: 'procedure',
-            mainToolbar:'workspace #mainToolbar'
+            mainToolbar:'workspace #mainToolbar',
+            viewholder:'viewholder'
         },
 
         control:{
-            'workspace patientlist list':{select:'onPatientSelect'},
+            'viewholder patientlist list':{select:'onPatientSelect'},
             'diagnosescontainer #createNewDaignosebutton':{
                 tap:'onCreateNewDiagnoseTap'
             },
@@ -86,7 +87,6 @@ Ext.define('NeqMobile.controller.PatientView', {
 
     createPatientView:function () {
         if (this.getPatientview() === null || this.getPatientview() === undefined) {
-            console.log('creating Patient View Container');
             var patientview = new NeqMobile.view.patient.PatientView;
             patientview.setActiveItem(1);
         }
@@ -101,6 +101,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         console.log('showing patient');
         this.createPatientView();
         this.getPatientview().setActiveItem(1);
+        this.getWorkspace().down('#contentcontainer').setActiveItem(this.getViewholder());
         this.getWorkspace().down('#userviewcontainer').setActiveItem(this.getPatientview());
         this.loadPatientData(id);
     },
