@@ -15,26 +15,9 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
         this.down('#chatterUserTable').setStore(chatterUsersStore);
     },
     config:{
-        //  styleHtmlContent:true,
         cls: 'x-UserSettings',
         layout:'hbox',
         items:[
-
-//            {   //this is the toolbar at the top
-//                docked:'top',
-//                xtype:'toolbar',
-//                title:'User Settings',
-//                // ui:'light',
-//                items:[
-//                    {
-//                        iconMask:true, ui:'back', iconCls:'reply', itemId:'userSettingsBackbutton'
-//                      ,
-//                        handler:function () {
-//                            history.back();
-//                        }
-//                    }
-//                ]
-//            },
             {
                 xtype:'container',
                 flex:1,
