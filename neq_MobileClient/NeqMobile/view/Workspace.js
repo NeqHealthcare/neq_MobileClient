@@ -62,11 +62,18 @@ Ext.define('NeqMobile.view.Workspace', {
                     ]
                 },
                 {
-                    layout:'card',
+                    layout:{
+                        type:'card',
+                        animation:{
+                            type:'slide',
+                            direction:'left'
+                        }
+                    },
                     itemId:'contentcontainer',
                     items:[
                         {
                             xtype:'viewholder'
+
                         }
                     ]
                 }
