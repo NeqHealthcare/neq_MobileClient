@@ -244,16 +244,16 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
     ]
 });
 
-Ext.define('NeqMobile.view.patient.PatientHistoricData', {
+Ext.define('NeqMobile.view.patient.PatientStatistics', {
     extend:'Ext.Container',
     requires:['Ext.chart.Panel', 'Ext.chart.axis.Numeric', 'Ext.chart.axis.Category', 'Ext.chart.series.Line',
         'NeqMobile.view.patient.measurements.HeartbeatLive'],
-    loadPatientHistoricData:function (chartdata) {
+    loadPatientStatistics:function (chartdata) {
         vitaldatachart.setStore(chartdata);
         fluidbalancechart.setStore(chartdata);
     },
 
-    xtype:'patienthistoricdata',
+    xtype:'patientstatistics',
 
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
 

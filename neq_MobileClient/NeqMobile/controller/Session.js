@@ -18,7 +18,8 @@ Ext.define('NeqMobile.controller.Session', {
             workspace:'workspace',
             menuSettings:'menuSettings',
             settingsDomains:'settingsDomains',
-            userSettings:'userSettings'
+            userSettings:'userSettings',
+            mainToolbar:'workspace #mainToolbar'
         },
         control:{
             'Login #submitButton':{tap:'onLoginTry'},
@@ -30,7 +31,8 @@ Ext.define('NeqMobile.controller.Session', {
             }
         },
         routes:{
-            'userSettings':'switchToUserSettings'
+            'userSettings':'switchToUserSettings',
+            'login':'switchToLogin'
         }
     },
 
@@ -118,7 +120,11 @@ Ext.define('NeqMobile.controller.Session', {
         else {
             userSettings = Ext.create('NeqMobile.view.settings.UserSettings');
         }
-        this.getViewport().setActiveItem(userSettings);
+        //this.getWorkspace().down('patientlist').setHidden(true);
+        this.getWorkspace().down('#contentcontainer').setActiveItem(userSettings);
+        this.getMainToolbar().setTitle('User Settings');
+
+
         userSettings.setMasked({xtype:'loadmask', message:'loading people', transparent:true});
         var chatterUsersStore = Ext.data.StoreManager.lookup('chatterUsers');
         if (!chatterUsersStore) {
@@ -174,9 +180,11 @@ Ext.define('NeqMobile.controller.Session', {
         Ext.Viewport.setMasked(false);
     },
     onLoginSuccess:function () {
+        var me = this;
         Ext.Viewport.setMasked(false);
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
+
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         console.log('firing login event');
         Ext.Viewport.fireEvent('login');
@@ -199,9 +207,14 @@ Ext.define('NeqMobile.controller.Session', {
         console.log(userinfodata);
         this.getWorkspace().down('#doctorname').setData(userinfodata);
         this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
-        this.redirectTo('doctordashboard');
+        this.redirectTo('userdashboard');
+      //  Ext.defer(function(){me.},1000)
     },
     onLogoutClick:function () {
+        this.redirectTo('login');
+    },
+
+    switchToLogin:function () {
         console.log('trying to logout');
         Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
