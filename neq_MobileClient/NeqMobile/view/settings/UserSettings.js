@@ -95,22 +95,14 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                     {
                                         header:'',
                                         dataIndex:'image_url',
-                                        style:'text-align: center;background-color: #FFFFFF;',
                                         width:'15%',
-                                        height: '45px',
-                                        enderer:NeqMobile.util.Renderer.imageRenderer
-                                    },
-                                    {
-                                        header:'Id',
-                                        dataIndex:'id',
-                                        style: 'text-align: center; background-color: #FFFFFF;',
-                                        width:'10%'
+                                        renderer:NeqMobile.util.Renderer.chatterSettingsImageRenderer
                                     },
                                     {
                                         header:'Name',
                                         dataIndex:'rec_name',
-                                        style: 'padding-left: 1em; background-color: #FFFFFF;',
-                                        width:'60%'
+                                        style: 'padding-left: 1em;',
+                                        width:'70%'
                                     },
                                     {
                                         header:'Following',
