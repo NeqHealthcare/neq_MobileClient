@@ -10,7 +10,7 @@
 
 Ext.define('NeqMobile.controller.PatientStatistics', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.patient.PatientTrends', 'org.cometd', 'Ext.ux.CometD', 'Ext.DateExtras'],
+        requires:['NeqMobile.view.patient.PatientStatistics', 'org.cometd', 'Ext.ux.CometD', 'Ext.DateExtras'],
 
         config:{
             models:['VitalData'],

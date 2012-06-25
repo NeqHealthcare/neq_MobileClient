@@ -180,9 +180,11 @@ Ext.define('NeqMobile.controller.Session', {
         Ext.Viewport.setMasked(false);
     },
     onLoginSuccess:function () {
+        var me = this;
         Ext.Viewport.setMasked(false);
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
+
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         console.log('firing login event');
         Ext.Viewport.fireEvent('login');
@@ -206,6 +208,7 @@ Ext.define('NeqMobile.controller.Session', {
         this.getWorkspace().down('#doctorname').setData(userinfodata);
         this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
         this.redirectTo('userdashboard');
+      //  Ext.defer(function(){me.},1000)
     },
     onLogoutClick:function () {
         this.redirectTo('login');
