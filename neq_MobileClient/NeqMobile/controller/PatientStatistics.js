@@ -8,9 +8,9 @@
 
 /* - Basic Definition ---------------------------------------------------------------------------------- */
 
-Ext.define('NeqMobile.controller.PatientHistoricData', {
+Ext.define('NeqMobile.controller.PatientStatistics', {
         extend:'Ext.app.Controller',
-        requires:['NeqMobile.view.patient.PatientHistoricData', 'org.cometd', 'Ext.ux.CometD', 'Ext.DateExtras'],
+        requires:['NeqMobile.view.patient.PatientTrends', 'org.cometd', 'Ext.ux.CometD', 'Ext.DateExtras'],
 
         config:{
             models:['VitalData'],
@@ -20,7 +20,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
                 workspace:'workspace',
                 vitalchartcontainer:'vitaldatachart',
                 fluidchartcontainer:'fluidbalancechart',
-                patienthistoricdata:'patienthistoricdata'},
+                patientstatistics:'patientstatistics'},
             control:{
                 '[name=historicaldata_btn_day]':{
                     tap:'onShowDailyDataTap'
@@ -36,7 +36,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
                 },
                 'patientview':{activeitemchange:'onPatientViewItemChange'},
 
-                'patienthistoricdata':{show:'fetchData'}
+                'patientstatistics':{show:'fetchData'}
 
             }
 
@@ -48,11 +48,11 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
         /* - Functions ---------------------------------------------------------------------------------- */
         onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
             var me = this;
-            if (newvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
+            if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
                 console.log('enabling live heartbeat')
                 me.startHeartbeatLive();
             }
-            else if (oldvalue instanceof NeqMobile.view.patient.PatientHistoricData) {
+            else if (oldvalue instanceof NeqMobile.view.patient.PatientStatistics) {
                 console.log('disabling live heartbeat')
                 me.stopHeartbeatLive();
             }
@@ -82,7 +82,7 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
 
             var me = this;
 
-            me.smoothiechart = me.getPatienthistoricdata().getHeartbeatchart();
+            me.smoothiechart = me.getPatientstatistics().getHeartbeatchart();
             me.smoothieline = new TimeSeries(
                 { grid:{strokeStyle:'rgb(200, 200, 200)', fillStyle:'rgb(255, 255, 255)'} }
             );
