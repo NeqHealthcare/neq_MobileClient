@@ -352,7 +352,7 @@ Ext.define('NeqMobile.controller.UserView', {
                 },
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
-                    console.log('anzahl neuer labresults: ' + obj.data.length);
+//                    console.log('anzahl neuer labresults: ' + obj.data.length);
                     me.getWorkspace().down('#homebutton').setBadgeText(obj.data.length);
                 }
             });
