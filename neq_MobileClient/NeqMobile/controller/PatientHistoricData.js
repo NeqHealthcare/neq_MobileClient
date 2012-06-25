@@ -40,12 +40,10 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
 
             }
 
-        }
-        ,
+        },
         smoothiechart:undefined,
         smoothieline:undefined,
-        subscription:undefined
-        ,
+        subscription:undefined,
 
         /* - Functions ---------------------------------------------------------------------------------- */
         onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
@@ -62,8 +60,23 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
 
         init:function () {
             var me = this;
-            //  Ext.Viewport.on('login', this.startHeartbeatLive, me);
-//        Ext.Viewport.on('logout', this.stoppolling, me);
+            var date = new Date();
+            var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+
+            //vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+            date = Ext.Date.add(date, Ext.Date.DAY, -7);
+            //vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+            //vitaldatastore.filterBy(this.dateFilter);
+            vitaldatastore.clearFilter(true);
+            vitaldatastore.filter(Ext.create(
+                'Ext.util.Filter',
+                {filterFn:function (item) {
+                    var store = Ext.data.StoreManager.lookup('vitaldata');
+                    store.config.startDate = Ext.Date.add(new Date(), Ext.Date.DAY, -14);
+                    return (Ext.Date.between(item.get('date'), store.config.startDate, store.config.endDate))
+                }
+                }));
+
         },
         startHeartbeatLive:function () {
 
@@ -83,20 +96,19 @@ Ext.define('NeqMobile.controller.PatientHistoricData', {
             cometd.publish(channelurl, {});
             me.subscription = cometd.subscribe(channelurl, function (message) {
                 var values = Ext.decode(message.data);
-              //  console.log(values);
+                //  console.log(values);
                 me.smoothieline.append(values.timestamp, values.y);
             });
         },
-    stopHeartbeatLive:function()
-    {
-        var me = this;
-        var cometd = Ext.cometd;
-        cometd.unsubscribe(me.subscription);
-        var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
-        cometd.publish(channelurl, {});
-        me.smoothiechart.removeTimeSeries(me.smoothieline);
-        me.smoothieline=undefined;
-    },
+        stopHeartbeatLive:function () {
+            var me = this;
+            var cometd = Ext.cometd;
+            cometd.unsubscribe(me.subscription);
+            var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
+            cometd.publish(channelurl, {});
+            me.smoothiechart.removeTimeSeries(me.smoothieline);
+            me.smoothieline = undefined;
+        },
         onShowDailyDataTap:function () {
             var date = new Date();
             var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
