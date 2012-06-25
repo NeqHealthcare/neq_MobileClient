@@ -85,8 +85,9 @@ Ext.define('NeqMobile.util.Renderer',
             else return '<img src="theme/images/view/follow.png"/>'
         },
 
-        imageRenderer:function (value, values) {
-                return '<img src="'+value+'">'
+        chatterSettingsImageRenderer:function (value, values) {
+                var id = value.substring(value.indexOf("image/")+6);
+                return '<img src="http://'+value+'?width=45&height=45" style="display: table-cell;  vertical-align: middle; float: left" />'+'<span style="display: table-cell;  vertical-align: middle;height: 45px;min-width:5px; margin-left: 3px; text-align:left">'+"&nbsp;"+'ID: '+id+'</span>'
         },
 
         severityrenderer:function (value, values) {
