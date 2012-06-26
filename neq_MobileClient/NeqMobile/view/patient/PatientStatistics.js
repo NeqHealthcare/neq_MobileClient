@@ -348,7 +348,8 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                         ]
                     }
                 ]
-            },
+            }
+            /*,
             {
                 xtype:      'fieldset',
                 padding:    5,
@@ -361,7 +362,7 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                         id:     'historicaldata_area_addinfo'
                     }
                 ]
-            }
+            }*/
         ]
     }
 
