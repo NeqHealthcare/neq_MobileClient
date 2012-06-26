@@ -110,9 +110,16 @@ $table_color_bottom: #105484;
 /* ------------------------------ */
 /* ------------------------------ */
 // 2-3-5 LabDetail.js
-#labdetailview * * .x-inner.x-toolbar-inner {
-    background-color: #ccc;
+
+#labdetailview .x-grid-cell-hd, #labdetailview .x-grid-header, #labdetailview .x-grid-header .x-inner, #labdetailview .x-grid-header .x-inner x-innerhtml {
     color: black;
+    background-color: #ddd;
+    text-shadow  : none;
+}
+
+/* background */
+#labdetails .touchgridpanel .x-dataview-container x-inner x-form-inner {
+    background-color: #ddd;
 }
 
 /* ------------------------------ */

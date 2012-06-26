@@ -9,10 +9,11 @@
 Ext.define('NeqMobile.view.patient.detail.LabDetail', {
         extend: 'Ext.form.Panel',
         xtype:'labdetail',
+        id:'labdetailcontainer',
         config: {
             type: 'vbox',
             padding: '40',
-            style: 'text-align: left; background-color: white;',
+            style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
             scrollable: false,
             items: [
                 {
@@ -86,6 +87,7 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                     itemId:'labdetailtable',
                     id: 'labdetailview',
                     title: 'Lab Test Details',
+                    style:'background-color: #fff;',
                     name:'criteria',
                     scrollable:false,
                     columns:[

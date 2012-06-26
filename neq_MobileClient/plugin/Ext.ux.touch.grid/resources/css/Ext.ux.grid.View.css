@@ -8,7 +8,7 @@
 
 .touchgridpanel .x-grid-hd-row {
     background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9aa7b2), color-stop(2%, #647482), color-stop(100%, #434d57));
-    background-color: #000;
+    background-color: #fff;
 }
 
 .touchgridpanel .x-dataview-item {
@@ -33,19 +33,21 @@
     text-align   : center !important;
     padding      : 0 !important;
 	color        : #fff;
-	text-shadow  : rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+/*	text-shadow  : rgba(0, 0, 0, 0.5) 0 -0.08em 0;  */
     font-size      : 1em;
     font-weight: bold;
     border-left    : 1px solid #ccc;
 }
 
-/*.touchgridpanel .x-item-selected {*/
-	/*-webkit-transform : translate3d(0, 0, 0);*/
-	/*background-image  : -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #7fb6e7), color-stop(2%, #2986d6), color-stop(100%, #1d5e96));*/
-	/*color             : #fff;*/
-	/*border-color      : #103656;*/
-	/*text-shadow       : 0 1px 0 rgba(0, 0, 0, 0.5);*/
-/*}*/
+.touchgridpanel .x-item-selected > .x-grid-cell {
+	font-weight: bold;
+}
+
+#labTestRequestsTable.touchgridpanel .x-item-selected > .x-grid-cell, #chatterUserTableView.touchgridpanel .x-item-selected > .x-grid-cell {
+    font-weight: normal;
+}
+
+
 
 .touchgridpanel .x-grid-sort-asc {
     background: url('data:image/gif;base64,R0lGODlhDQAFAIcAAGGQzUD/QOPu+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAEALAAAAAANAAUAAAgbAAMIDABgoEGDABIeRJhQ4cKGEA8KmEiRosGAADs=') no-repeat right center;

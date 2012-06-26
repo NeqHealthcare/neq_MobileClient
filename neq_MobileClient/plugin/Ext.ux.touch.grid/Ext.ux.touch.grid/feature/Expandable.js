@@ -55,6 +55,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
             }
         }
         else {
+            dw.deselect(itemrecord);
             this.collapse(dw, index, item, itemrecord, e, eOpts);
         }
     },
