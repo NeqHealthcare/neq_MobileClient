@@ -27,7 +27,8 @@ Ext.define('NeqMobile.controller.UserView', {
             doctornewsfeeddetail : 'doctornewsfeeddetail',
             appointmentview :'appointmentview',
             patientList:'workspace patientlist list',
-            mainToolbar:'workspace #mainToolbar'
+            mainToolbar:'workspace #mainToolbar',
+            viewholder:'viewholder'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -59,7 +60,7 @@ Ext.define('NeqMobile.controller.UserView', {
 
         /* - Document/Site Routing Definitions ------------------------------------------------------------------- */
         routes:{
-            'doctordashboard':'switchtodoctordashboard',
+            'userdashboard':'switchtouserdashboard',
             'chatter':'switchtochatter'
         },
 
@@ -81,7 +82,7 @@ Ext.define('NeqMobile.controller.UserView', {
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
     onTapShowUserDashboard: function(){
-        this.redirectTo('doctordashboard');
+        this.redirectTo('userdashboard');
     },
     onTapShowCatterIcon: function(){
         this.redirectTo('chatter');
@@ -97,7 +98,7 @@ Ext.define('NeqMobile.controller.UserView', {
             if(oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer){
                 this.stopChatterSync();
             }
-            this.redirectTo('doctordashboard');
+            this.redirectTo('userdashboard');
         } else if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
             this.stopChatterSync();
         }
@@ -136,16 +137,18 @@ Ext.define('NeqMobile.controller.UserView', {
     },
 
     onHomeTap:function () {
-        this.redirectTo('doctordashboard');
+        this.redirectTo('userdashboard');
     },
 
     switchtochatter:function (button, e, eOpts) {
         var me = this;
-        var workspace = me.getWorkspace();
-        var chatterContainer = me.getChattercontainer();
-        var userview = workspace.down('userview');
-        var userviewcontainer = workspace.down('#userviewcontainer');
 
+        var viewholder = this.getViewholder();
+        var userview = viewholder.down('userview');
+        var userviewcontainer = viewholder.down('#userviewcontainer');
+        var chatterContainer = me.getChattercontainer();
+
+        this.getWorkspace().down('#contentcontainer').setActiveItem(viewholder);
         userviewcontainer.setActiveItem(userview);
         this.getMainToolbar().setTitle('Chatter');
 
@@ -169,13 +172,15 @@ Ext.define('NeqMobile.controller.UserView', {
         this.startChatterSync();
     },
 
-    switchtodoctordashboard:function (button, e, eOpts) {
+    switchtouserdashboard:function (button, e, eOpts) {
         var me = this;
-        var workspace = me.getWorkspace();
-        var userview = workspace.down('userview');
-        var userviewcontainer = workspace.down('#userviewcontainer');
+        var viewholder = this.getViewholder();
+        var userview = viewholder.down('userview');
+        var userviewcontainer = viewholder.down('#userviewcontainer');
+
         this.getPatientList().deselectAll();
 
+        this.getWorkspace().down('#contentcontainer').setActiveItem(viewholder);
         userviewcontainer.setActiveItem(userview);
         this.getMainToolbar().setTitle('User Dashboard');
 
@@ -231,10 +236,6 @@ Ext.define('NeqMobile.controller.UserView', {
         var me = this;
         var session = NeqMobile.manager.Session.getSession();
         var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
-        //var selectfield = me.getDoctordashboard().down('#doctornewsfeedtopicselectfield');
-        //var id = selectfield.getValue();
-        //var id = 1
-        //var count = 10
 
 
         if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');}
@@ -246,14 +247,7 @@ Ext.define('NeqMobile.controller.UserView', {
         doctornewsstore.getProxy().setExtraParam('count', count);
 
         doctornewsstore.load({
-            params:{session:session.get('sessionId'), id:id, count:count}//,
-            /*
-             callback:function (records, operation, success) {
-             me.getDoctordashboard().down('#hospitaldoctornews').setRecord(doctornewsstore);
-             finishwaiter(0);
-             },
-             scope:this
-             */
+            params:{session:session.get('sessionId'), id:id, count:count}
         });
     },
 
@@ -358,7 +352,7 @@ Ext.define('NeqMobile.controller.UserView', {
                 },
                 success:function (response, opts) {
                     var obj = Ext.decode(response.responseText);
-                    console.log('anzahl neuer labresults: ' + obj.data.length);
+//                    console.log('anzahl neuer labresults: ' + obj.data.length);
                     me.getWorkspace().down('#homebutton').setBadgeText(obj.data.length);
                 }
             });

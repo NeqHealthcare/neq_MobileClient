@@ -8,8 +8,7 @@
 Ext.define('NeqMobile.view.Workspace', {
         extend:'Ext.Container',
         xtype:'workspace',
-        requires:['NeqMobile.view.doctor.UserView', 'NeqMobile.view.patient.PatientView', 'NeqMobile.view.patient.PatientList',
-            'NeqMobile.view.patient.PatientLab', 'NeqMobile.view.patient.PatientInfoImages', 'NeqMobile.view.patient.PatientHistoricData'
+        requires:['NeqMobile.view.ViewHolder'
         ],
 
         config:{
@@ -63,26 +62,18 @@ Ext.define('NeqMobile.view.Workspace', {
                     ]
                 },
                 {
-                    layout:'hbox',
+                    layout:{
+                        type:'card',
+                        animation:{
+                            type:'slide',
+                            direction:'left'
+                        }
+                    },
+                    itemId:'contentcontainer',
                     items:[
                         {
-                            region:'west',
-                            xtype:'patientlist'
-                        },
-                        {
-                            xtype:'container',
-                            layout:{
-                                type:'card',
-                                animation:'fade'
-                            },
-                            flex:5,
-                            region:'center',
-                            itemId:'userviewcontainer',
-                            items:[
-                                {
-                                    xtype:'userview'
-                                }
-                            ]
+                            xtype:'viewholder'
+
                         }
                     ]
                 }
