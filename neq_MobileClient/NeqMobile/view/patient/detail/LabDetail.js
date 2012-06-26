@@ -92,33 +92,28 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                         {
                             header:'Name',
                             dataIndex:'name',
-                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'40%'
                         },
                         {
                             header:'Upper Limit',
                             dataIndex:'upper_limit',
-                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.limitRenderer
                         },
                         {
                             header:'Lower Limit',
                             dataIndex:'lower_limit',
-                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.limitRenderer
                         },
                         {
                             header:'Result',
                             dataIndex:'result',
-                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%'
                         },
                         {
                             header:'Unit Name',
                             dataIndex:'units_rec_name',
-                            style: 'padding-left: 1em; background-color: #FFFFFF;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.unitRenderer
                         }
