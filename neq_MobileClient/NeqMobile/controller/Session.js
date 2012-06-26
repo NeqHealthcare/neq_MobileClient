@@ -39,10 +39,19 @@ Ext.define('NeqMobile.controller.Session', {
     init:function () {
         var me = this;
         Ext.Viewport.on('login', this.prepareCometD, me);
+        Ext.Viewport.on('logout', this.disconnectCometD, me);
     },
 
+    disconnectCometD: function()
+    {var cometd = Ext.cometd;
+     cometd.disconnect();
+    }
+     ,
     prepareCometD:function () {
         var _connected = false;
+        var domain = NeqMobile.manager.Session.getSession().get('domain');
+        var url = domain.get('protocol') + '://' + domain.get('ip') + ':' + "8082" + '/cometd/pulse';
+
         var url = 'http://localhost:8082/cometd/pulse';
 
         var cometd = Ext.cometd;
@@ -85,7 +94,6 @@ Ext.define('NeqMobile.controller.Session', {
                 _connected = false;
             }
         });
-
 
         cometd.handshake();
     },
@@ -184,7 +192,6 @@ Ext.define('NeqMobile.controller.Session', {
         Ext.Viewport.setMasked(false);
         console.log('switching card');
         this.getViewport().remove(this.getWorkspace(), true);
-
         this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         console.log('firing login event');
         Ext.Viewport.fireEvent('login');
