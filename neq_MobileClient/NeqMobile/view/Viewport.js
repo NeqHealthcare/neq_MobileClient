@@ -2,15 +2,17 @@ Ext.define('NeqMobile.view.Viewport', {
         extend:'Ext.Container',
         requires:['NeqMobile.view.Login'],
         xtype:'Viewport',
-        initialize:function () {
-            console.log('registering deactive event');
-            Ext.ComponentQuery.query('Viewport')[0].on('deactivate', function (oldActiveItem, container, newActiveItem, eOpts) {
-                console.log('destroying old viewport item');
-                oldActiveItem.destroy();
-            });
-        },
+
 
         config:{
+//
+//            listeners:{
+//                activeitemchange:function (container, newvalue, oldvalue, eOpts) {
+//                    console.log('destroying old viewport item');
+//                    Ext.defer(oldvalue.destroy(),25000);
+//                    return;
+//                }},
+
             autoDestroy:true,
             fullscreen:true,
             layout:{

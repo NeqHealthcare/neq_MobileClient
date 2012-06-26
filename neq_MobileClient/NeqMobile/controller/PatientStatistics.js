@@ -37,7 +37,6 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 'patientview':{activeitemchange:'onPatientViewItemChange'},
 
                 'patientstatistics':{show:'fetchData'}
-
             }
 
         },
@@ -92,8 +91,7 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
             var cometd = Ext.cometd;
             console.log('trying to send a message: "this is a NeqMobile test message"');
 
-            var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
-            cometd.publish(channelurl, {});
+            var channelurl = "/cometd/pulse/1"; // + NeqMobile.manager.Session.getCurrentPatient();
             me.subscription = cometd.subscribe(channelurl, function (message) {
                 var values = Ext.decode(message.data);
                 //  console.log(values);
@@ -104,8 +102,6 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
             var me = this;
             var cometd = Ext.cometd;
             cometd.unsubscribe(me.subscription);
-            var channelurl = "/cometd/pulse/" + NeqMobile.manager.Session.getCurrentPatient();
-            cometd.publish(channelurl, {});
             me.smoothiechart.removeTimeSeries(me.smoothieline);
             me.smoothieline = undefined;
         },
