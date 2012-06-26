@@ -39,7 +39,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                 },
                                 {
                                     xtype: 'textfield',
-                                    padding: '5 5 5 5',
+                                    padding: 5,
                                     labelWidth: '140px',
                                     label: 'Name: ',
                                     name:'rec_name',
@@ -48,7 +48,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                 },
                                 {
                                     xtype: 'textfield',
-                                    padding: '5 5 5 5',
+                                    padding: 5,
                                     labelWidth: '140px',
                                     label: 'Sex: ',
                                     name: 'sex',
@@ -56,7 +56,7 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                 },
                                 {
                                     xtype: 'textfield',
-                                    padding: '5 5 5 5',
+                                    padding: 5,
                                     labelWidth: '140px',
                                     label: 'Latest Diagnose: ',
                                     name: 'latestDiagnoseRecName',

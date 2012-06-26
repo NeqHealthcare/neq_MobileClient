@@ -34,12 +34,12 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
                                 //icon:'theme/images/user/doctor_avatar_big.jpg',
                                 //align:'right',
                                 itemId:'doctorimage_big',
-                                itemTpl:['<img src="http://{image_url}?width=145&height=145' +
+                                tpl:'<img src="http://{image_url}?width=145&height=145"' +
                                     'style="background-size: cover; background-position: center center;' +
                                     'background: #ddd; border-radius: 3px;' +
                                     '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
                                     'height=145 width=145' +
-                                    '/>'].join('')
+                                    '/>'
                                 /*html: '<img style="background-size: cover; background-position: center center;' +
                                     ' background: #ddd; border-radius: 3px;' +
                                     ' -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
@@ -57,27 +57,27 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
                             {
                                 xtype: 'textfield',
                                 itemId: 'doc_name',
-                                padding: 7,
+                                padding: 5,
                                 label: 'Name:',
-                                labelWidth: '150px',
+                                labelWidth: '140px',
                                 name: 'name',
                                 readOnly:true
                             },
                             {
                                 xtype: 'textfield',
                                 itemId: 'doc_patient_number',
-                                padding: 7,
+                                padding: 5,
                                 label: 'Number of patients:',
-                                labelWidth: '150px',
+                                labelWidth: '140px',
                                 name: 'number_of_patients',
                                 readOnly:true
                             },
                             {
                                 xtype: 'textfield',
                                 itemId: 'doc_last_login',
-                                padding: 7,
+                                padding: 5,
                                 label: 'Last Login:',
-                                labelWidth: '150px',
+                                labelWidth: '140px',
                                 name: 'last_login',
                                 readOnly:true
                                  /*,
