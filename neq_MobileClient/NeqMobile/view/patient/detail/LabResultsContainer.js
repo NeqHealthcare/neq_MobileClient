@@ -31,28 +31,28 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                         {
                             header:'Test Type',
                             dataIndex:'test_rec_name',
-                            style: 'text-align: left;padding-left: 1em;',
+                            style: 'text-align: left;',
                             cls:'centered-cell',
                             width:'40%'
                         },
                         {
                             header:'Date Requested',
                             dataIndex:'date_requested',
-                            style:'text-align: left;padding-left: 1em;',
+                            style:'text-align: right;',
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
                         {
                             header:'Date of the Analysis',
                             dataIndex:'date_analysis',
-                            style:'text-align: left;padding-left: 1em;',
+                            style:'text-align: left;',
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
                         {
                             header:'Physician',
                             dataIndex:'requestor_rec_name',
-                            style: 'text-align: left;padding-left: 1em;',
+                            style: 'text-align: left;',
                             cls:'centered-cell',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.undefinedRenderer
@@ -60,7 +60,7 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                         {
                             header:'Pathologist',
                             dataIndex:'pathologist_rec_name',
-                            style: 'text-align: left;padding-left: 1em;',
+                            style: 'text-align: left;',
                             cls:'centered-cell',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.undefinedRenderer

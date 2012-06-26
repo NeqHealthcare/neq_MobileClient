@@ -37,26 +37,23 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                         {
                             header:'Test Type',
                             dataIndex:'rec_name',
-                            style:'padding-left: 1em;',
                             width:'40%'
                         },
                         {
                             header:'Date',
                             dataIndex:'date',
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: right;',
                             width:'15%',
                             renderer: NeqMobile.util.Renderer.daterenderer
                         },
                         {
                             header:'Physician',
                             dataIndex:'doctor_rec_name',
-                            style:'padding-left: 1em;',
                             width:'30%'
                         },
                         {
                             header:'State',
                             dataIndex:'state',
-                            style:'padding-left: 1em;',
                             width:'15%'
                         }
 

@@ -21,21 +21,20 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                         {
                             header:'Vaccine',
                             dataIndex:'vaccine_rec_name',
-                            style:'padding-left: 1em;',
                             width:'60%'
 
                         },
                         {
                             header:'Dose Number',
                             dataIndex:'dose',
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: right;',
                             width:'10%',
                             filter:{ type:'numeric' }
                         },
                         {
                             header:'Date',
                             dataIndex:'date',
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: right;',
                             sortable:false,
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
@@ -44,7 +43,7 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationContainer', {
                         {
                             header:'Next Dose',
                             dataIndex:'next_dose_date',
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: right;',
                             sortable:false,
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
