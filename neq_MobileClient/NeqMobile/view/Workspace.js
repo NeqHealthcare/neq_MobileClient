@@ -49,8 +49,13 @@ Ext.define('NeqMobile.view.Workspace', {
                             //icon:'theme/images/user/doctor_avatar_small.jpg',
                             align:'right',
                             itemId:'doctorimage',
-                            tpl:'<img src="http://{image_url}?height=28&width=28" height="28" width="28" />',
-                            iconMask: true
+                            tpl:'<img src="http://{image_url}?height=48&width=48" height="48" width="48" />',
+                            //iconMask: false
+                            style:'border: none; background-color: none;'
+                            ,height: 48
+                            ,width: 48
+                            //,padding: 10
+                            ,margin: '0 10 0 10'
                         }
                         ,
                         {
@@ -58,7 +63,11 @@ Ext.define('NeqMobile.view.Workspace', {
                             itemId:'SettingsButton',
                             iconCls:'settings',
                             iconMask:true,
-                            align:'right'}
+                            align:'right'
+                            //,margin: 0
+                            //,padding: 10
+                            //,style:'border: none;'
+                        }
                     ]
                 },
                 {

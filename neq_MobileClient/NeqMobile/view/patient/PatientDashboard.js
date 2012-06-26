@@ -45,6 +45,8 @@ Ext.define('NeqMobile.view.patient.PatientDashboard', {
             },
             styleHtmlContent:true,
             layout:'vbox',
+            margin: 0,
+            padding: 15,
             items:[
                 {xtype:'patientheader'
                 }
