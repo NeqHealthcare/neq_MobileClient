@@ -34,7 +34,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Disease',
                             dataIndex:'pathology_rec_name',
-                            style:'text-align: left; padding-left: 1em;',
+                            style:'text-align: left;',
                             width:'33%'
                         },
                         {
@@ -64,7 +64,7 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Allergies',
                             dataIndex:'is_allergy',
-                            style:'text-align: center; padding-right: 1em;',
+                            style:'text-align: center;',
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
                             width:'10%'
@@ -73,14 +73,14 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                         {
                             header:'Diagnosed Date',
                             dataIndex:'diagnosed_date',
-                            style:'padding-right: 1em; text-align: right;',
+                            style:'text-align: right;',
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
                         {
                             header:'Healed Date',
                             dataIndex:'healed_date',
-                            style:'text-align: right; padding-right: 1em;',
+                            style:'text-align: right;',
                             sortable:false,
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer

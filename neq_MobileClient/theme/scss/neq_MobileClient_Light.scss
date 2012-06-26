@@ -91,54 +91,28 @@ $table_color_bottom: #105484;
   }
   span#list-block-bold {
     display: block;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: bold;
-    color: #666;
+    color: #444444;
   }
   span#list-block-normal {
     display: block;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: normal;
     color: #666;
   }
-  /* FUNZT zur Zeit nicht oO ??
-  .x-item-pressed,
-  .x-item-selected {
-    border-top-color: #D1D1D1 !important;
-  }
-  .x-field-select, .x-form-label {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
-  .x-select-overlay {
-    margin-top: 50px;
-    background-color: #BDBDBD;
-  }
-  */
+
 }
 
 // 2-3-3 DiseasesDetail.js
 /* ------------------------------ */
 // 2-3-4 MedicationDetail.js
 /* ------------------------------ */
-// 2-3-4 LabTestRequestTable.js
-#labTestRequestsTable table {
-    th {
-        background-image: -moz-linear-gradient(bottom, $table_color_bottom 20%, $table_color_top 90%);
-        background-image: -webkit-linear-gradient(bottom, $table_color_bottom 20%, $table_color_top 90%);
-        color: white;
-        text-shadow: black 0px -1px;
-        line-height: 2em;
-    }
-    td {
-        font-weight: bold;
-    }
-
-}
 /* ------------------------------ */
 // 2-3-5 LabDetail.js
 #labdetailview * * .x-inner.x-toolbar-inner {
-    background-color: #CBCACA;
+    background-color: #ccc;
+    color: black;
 }
 
 /* ------------------------------ */
@@ -162,11 +136,6 @@ $table_color_bottom: #105484;
 /* ------------------------------ */
 // 2-5-1 DoctorDashboard.js
 /* ------------------------------ */
-.x-doctordashboard {
-  font-size: 14px;
-  font-weight: normal;
-  color: #666;
-}
 
 // 2-5-2 ChatterContainer
 /* ------------------------------ */

@@ -1,7 +1,3 @@
-.touchgridpanel .x-dataview-item {
-    border-bottom : 1px solid #000;
-}
-
 .touchgridpanel .x-dataview-container {
     margin-bottom : 2.5em;
 }
@@ -12,19 +8,25 @@
 
 .touchgridpanel .x-grid-hd-row {
     background-image : -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #9aa7b2), color-stop(2%, #647482), color-stop(100%, #434d57));
+    background-color: #000;
+}
+
+.touchgridpanel .x-dataview-item {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
 .touchgridpanel .x-grid-cell {
     display        : inline-block;
+    padding      : 0 0.5em 0 0.5em !important;
     overflow       : hidden;
     text-overflow  : ellipsis;
 	white-space    : nowrap;
 	vertical-align : middle;
-	line-height    : 2em;
+	line-height    : 2.5em;
 	font-size      : 1em;
-	font-weight    : bold;
-    border-left    : 1px solid #ccc;
-    border-right   : 1px solid #ccc;
+	font-weight    : normal; /* standard: bold*/
+    border-left   : 1px solid #ccc;
 }
 
 .touchgridpanel .x-grid-cell-hd {
@@ -32,7 +34,9 @@
     padding      : 0 !important;
 	color        : #fff;
 	text-shadow  : rgba(0, 0, 0, 0.5) 0 -0.08em 0;
-    border       : 0;
+    font-size      : 1em;
+    font-weight: bold;
+    border-left    : 1px solid #ccc;
 }
 
 /*.touchgridpanel .x-item-selected {*/

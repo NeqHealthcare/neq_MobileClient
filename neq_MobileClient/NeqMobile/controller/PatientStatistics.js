@@ -15,12 +15,13 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
         config:{
             models:['VitalData'],
             store:['VitalData'],
-            refs:{
 
-                workspace:'workspace',
-                vitalchartcontainer:'vitaldatachart',
-                fluidchartcontainer:'fluidbalancechart',
-                patientstatistics:'patientstatistics'},
+            refs:{
+                workspace:              'workspace',
+                vitalchartcontainer:    'vitaldatachart',
+                fluidchartcontainer:    'fluidbalancechart',
+                patientstatistics:      'patientstatistics'},
+
             control:{
                 '[name=historicaldata_btn_day]':{
                     tap:'onShowDailyDataTap'
@@ -86,7 +87,7 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 { grid:{strokeStyle:'rgb(200, 200, 200)', fillStyle:'rgb(255, 255, 255)'} }
             );
             me.smoothiechart.addTimeSeries(me.smoothieline,
-                { strokeStyle:'rgb(255, 0, 255)', lineWidth:2 });
+                { strokeStyle:'rgb(0, 255, 0)', lineWidth:2 });
 
             var cometd = Ext.cometd;
             console.log('trying to send a message: "this is a NeqMobile test message"');
