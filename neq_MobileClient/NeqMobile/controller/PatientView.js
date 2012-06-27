@@ -142,9 +142,7 @@ Ext.define('NeqMobile.controller.PatientView', {
 
         var patientinfo = Ext.getStore('patients').getById(patientid);
         patientdashboard.loadPatientHeader(patientinfo);
-
-
-
+        patientview.down('#patientheaderimage').setData({'photo':patientinfo.get('photo')});
 
 //        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
 //        patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});

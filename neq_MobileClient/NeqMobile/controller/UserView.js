@@ -429,7 +429,8 @@ Ext.define('NeqMobile.controller.UserView', {
 
     onAppointmentBackButton:function (button, e, eOpts) {
         this.getAppointmentview().setActiveItem(0);
-        this.showAppointments();
+        //this.showAppointments();
+        this.getAppointmentview.deselectAll();
     },
 
     /* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */

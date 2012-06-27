@@ -37,11 +37,11 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorHeader', {
                                 itemId:'doctorimage_big',
                                 //data:{'image_url':'ideidie'},
 
-                                tpl:'<img src="http://{image_url}?width=145&height=145"' +
+                                tpl:'<img src="http://{image_url}?width=137&height=137"' +
                                     'style="background-size: cover; background-position: center center;' +
                                     'background: #ddd; border-radius: 3px;' +
                                     '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
-                                    'height=145' +
+                                    //'height=135' +
                                     '/>'
                                 /*html: '<img style="background-size: cover; background-position: center center;' +
                                  ' background: #ddd; border-radius: 3px;' +
