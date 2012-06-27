@@ -33,7 +33,8 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                        width: 50,
                        xtype: 'button',
                        iconCls:'reply',
-                       iconMask:true
+                       iconMask:true,
+                       ui:'back'
                    },
                    {
                         xtype: 'datepickerfield',

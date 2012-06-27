@@ -59,208 +59,208 @@ Ext.define('NeqMobile.controller.PatientView', {
 
         newActiveItem:undefined,
 
-/* - Functions ---------------------------------------------------------------------------------- */
+        /* - Functions ---------------------------------------------------------------------------------- */
 
 
 
 
 // Create initial view - show Patient startscreen
-    onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
-        var me = this;
-        me.newActiveItem = newvalue;
-        if (newvalue instanceof NeqMobile.view.patient.PatientDashboard) {
+        onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
+            var me = this;
+            me.newActiveItem = newvalue;
+            if (newvalue instanceof NeqMobile.view.patient.PatientDashboard) {
 //            this.redirectTo('patientdashboard');
-            this.getMainToolbar().setTitle('Patient Dashboard');
-        }else if(newvalue instanceof NeqMobile.view.patient.PatientLab){
+                this.getMainToolbar().setTitle('Patient Dashboard');
+            }else if(newvalue instanceof NeqMobile.view.patient.PatientLab){
 //            this.redirectTo('patientlab');
-            this.getMainToolbar().setTitle('Patient Laboratory');
-        } else if (newvalue instanceof NeqMobile.view.patient.PatientInfoImages) {
+                this.getMainToolbar().setTitle('Patient Laboratory');
+            } else if (newvalue instanceof NeqMobile.view.patient.PatientInfoImages) {
 //            this.redirectTo('patientlab');
-             this.getMainToolbar().setTitle('Patient Images');
-        }   else if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
+                this.getMainToolbar().setTitle('Patient Images');
+            }   else if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
 //              this.redirectTo('patientstatistics');
                 this.getMainToolbar().setTitle('Patient Statistics');
-        }
-    },
+            }
+        },
 
 
 
-    createPatientView:function () {
-        if (this.getPatientview() === null || this.getPatientview() === undefined) {
-            var patientview = new NeqMobile.view.patient.PatientView;
-            patientview.setActiveItem(1);
-        }
-    },
-    // show patient details after selecting patient from patientlist
-    onPatientSelect:function (list, patientrecord, options) {
-        console.log('on patient select called');
-        this.redirectTo(patientrecord);
-    },
-    //
-    showPatient:function (id) {
-        console.log('showing patient');
-        this.createPatientView();
-        this.getPatientview().setActiveItem(1);
-        this.getWorkspace().down('#contentcontainer').setActiveItem(this.getViewholder());
-        this.getWorkspace().down('#userviewcontainer').setActiveItem(this.getPatientview());
-        this.loadPatientData(id);
-    },
-    //
-    showPatientLab:function (id,resultid) {
-        this.showPatient(id);
-        this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
-     //  var patientlabcontroller = this.getApplication().getController('PatientLab');
-    },
-    //
-    loadPatientData:function (patientid) {
-        // < var definitions
-        var me = this;
-        NeqMobile.manager.Session.setCurrentPatient(patientid);
-        var patientview = this.getPatientview();
-        var vitaldataview = patientview.down('patientstatistics');
-        var patientdashboard = patientview.down('patientdashboard');
-        //  var definitions >
-        var patientinfoimages = patientview.down('patientinfoimages');
+        createPatientView:function () {
+            if (this.getPatientview() === null || this.getPatientview() === undefined) {
+                var patientview = new NeqMobile.view.patient.PatientView;
+                patientview.setActiveItem(1);
+            }
+        },
+        // show patient details after selecting patient from patientlist
+        onPatientSelect:function (list, patientrecord, options) {
+            console.log('on patient select called');
+            this.redirectTo(patientrecord);
+        },
+        //
+        showPatient:function (id) {
+            console.log('showing patient');
+            this.createPatientView();
+            this.getPatientview().setActiveItem(1);
+            this.getWorkspace().down('#contentcontainer').setActiveItem(this.getViewholder());
+            this.getWorkspace().down('#userviewcontainer').setActiveItem(this.getPatientview());
+            this.loadPatientData(id);
+        },
+        //
+        showPatientLab:function (id,resultid) {
+            this.showPatient(id);
+            this.getPatientview().setActiveItem(this.getPatientview().down('patientlab'));
+            //  var patientlabcontroller = this.getApplication().getController('PatientLab');
+        },
+        //
+        loadPatientData:function (patientid) {
+            // < var definitions
+            var me = this;
+            NeqMobile.manager.Session.setCurrentPatient(patientid);
+            var patientview = this.getPatientview();
+            var vitaldataview = patientview.down('patientstatistics');
+            var patientdashboard = patientview.down('patientdashboard');
+            //  var definitions >
+            var patientinfoimages = patientview.down('patientinfoimages');
 
-        var dashboardcounter = 0;
-        var finishcounterInfoimages = 0;
-        var finishwaiter = function (viewtype) {
-            if (viewtype === 0) {
-               dashboardcounter++;
-                if (dashboardcounter === 3) {
-                    patientdashboard.setMasked(false);
-                }
+            var dashboardcounter = 0;
+            var finishcounterInfoimages = 0;
+            var finishwaiter = function (viewtype) {
+                if (viewtype === 0) {
+                    dashboardcounter++;
+                    if (dashboardcounter === 3) {
+                        patientdashboard.setMasked(false);
+                    }
 
-            } else if (viewtype === 2) {
-                finishcounterInfoimages++;
-                if (finishcounterInfoimages === 1) {
-                    patientinfoimages.setMasked(false);
+                } else if (viewtype === 2) {
+                    finishcounterInfoimages++;
+                    if (finishcounterInfoimages === 1) {
+                        patientinfoimages.setMasked(false);
+                    }
                 }
             }
-        }
 
 
-        var patientinfo = Ext.getStore('patients').getById(patientid);
-        patientdashboard.loadPatientHeader(patientinfo);
-
-
-
+            var patientinfo = Ext.getStore('patients').getById(patientid);
+            patientdashboard.loadPatientHeader(patientinfo);
+            patientview.down('#patientheaderimage').setData({'photo':patientinfo.get('photo')});
 
 //        patientdashboard.setMasked({xtype:'loadmask', message:'loading patient details', transparent:true});
 //        patientinfoimages.setMasked({ xtype:'loadmask', message:'loading patient documents'});
 
-        var documentstore = Ext.data.StoreManager.lookup('documents');
+            var documentstore = Ext.data.StoreManager.lookup('documents');
 
-        if (!documentstore) {
-            documentstore = Ext.create('NeqMobile.store.Documents');
-        }
-
-        documentstore.getProxy().setExtraParam('id', patientid);
-
-        documentstore.load({
-            callback:function (records, operation, success) {
-                patientinfoimages.loadDocument(documentstore);
-  //              finishwaiter(2);
-            },
-            scope:this
-        });
-
-
-        var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
-        if (!diagnosestore) {
-            diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
-        }
-        diagnosestore.getProxy().setExtraParam('id', patientid);
-        diagnosestore.load({
-            callback:function (records, operation, success) {
-                patientdashboard.loadDiagnoses(diagnosestore);
-    //            finishwaiter(0);
-            },
-            scope:this
-        });
-
-
-        var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
-        if (!vaccinationstore) {
-            vaccinationstore = Ext.create('NeqMobile.store.Vaccinations');
-        }
-        vaccinationstore.getProxy().setExtraParam('patientId', patientid);
-        vaccinationstore.load({
-            callback:function (records, operation, success) {
-                patientdashboard.loadVaccinations(vaccinationstore);
-   //             finishwaiter(0);
-            },
-            scope:this
-        });
-        var medicationstore = Ext.data.StoreManager.lookup('medications');
-        if (!medicationstore) {
-            medicationstore = Ext.create('NeqMobile.store.Medications');
-        }
-
-        medicationstore.getProxy().setExtraParam('patientId', patientid);
-        medicationstore.load({
-            callback:function (records, operation, success) {
-                patientdashboard.loadMedications(medicationstore);
- //               finishwaiter(0);
-
-            },
-            scope:this
-        });
-
-        var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
-        if (!labtestrequeststore) {
-            labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
-        }
-        labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
-        labtestrequeststore.load({
-            callback:function (records, operation, success) {
-                var response = operation.getResponse();
-                var responseObject = Ext.decode(response.responseText);
-                patientview.down('patientlab').loadLabTestRequests(labtestrequeststore);
-            },
-            scope:this
-        });
-
-        var labresultstore = Ext.data.StoreManager.lookup('labresults');
-        if (!labresultstore) {
-            labresultstore = Ext.create('NeqMobile.store.LabResults');
-        }
-        labresultstore.getProxy().setExtraParam('patientId', patientid);
-        labresultstore.load({
-            callback:function (records, operation, success) {
-                patientview.down('patientlab').loadLabResults(labresultstore);
-            },
-            scope:this
-        });
-
-       var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
-        if (!vitaldatastore) {
-            vitaldatastore = Ext.create('NeqMobile.store.VitalData');
-        }
-        var date = new Date();
-        //alert(Ext.Date.format(date, 'j/d/Y'));
-        vitaldatastore.getProxy().setExtraParam('patientId', patientid);
-        vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
-        date = Ext.Date.add(date, Ext.Date.DAY, -360);
-        vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
-
-        vitaldatastore.load({
-            callback:function (records, operation, success) {
-                patientview.down('patientstatistics').loadPatientStatistics(vitaldatastore);
-            },
-            scope:this
-        });
-
-         },
-
-        onCreateNewDiagnoseTap:function (button, e, eOpts) {
-            var diagnoseoverlay;
-            if (this.getDiagnoseoverlay()) {
-                diagnoseOverlay = this.getDiagnoseoverlay();
-            } else {
-                diagnoseOverlay = Ext.create('NeqMobile.view.patient.create.CreateDiagnose');
+            if (!documentstore) {
+                documentstore = Ext.create('NeqMobile.store.Documents');
             }
 
+            documentstore.getProxy().setExtraParam('id', patientid);
+
+            documentstore.load({
+                callback:function (records, operation, success) {
+                    patientinfoimages.loadDocument(documentstore);
+                    //              finishwaiter(2);
+                },
+                scope:this
+            });
+
+
+            var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
+            if (!diagnosestore) {
+                diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
+            }
+            diagnosestore.getProxy().setExtraParam('id', patientid);
+            diagnosestore.load({
+                callback:function (records, operation, success) {
+                    patientdashboard.loadDiagnoses(diagnosestore);
+                    //            finishwaiter(0);
+                },
+                scope:this
+            });
+
+
+            var vaccinationstore = Ext.data.StoreManager.lookup('vaccinations');
+            if (!vaccinationstore) {
+                vaccinationstore = Ext.create('NeqMobile.store.Vaccinations');
+            }
+            vaccinationstore.getProxy().setExtraParam('patientId', patientid);
+            vaccinationstore.load({
+                callback:function (records, operation, success) {
+                    patientdashboard.loadVaccinations(vaccinationstore);
+                    //             finishwaiter(0);
+                },
+                scope:this
+            });
+            var medicationstore = Ext.data.StoreManager.lookup('medications');
+            if (!medicationstore) {
+                medicationstore = Ext.create('NeqMobile.store.Medications');
+            }
+
+            medicationstore.getProxy().setExtraParam('patientId', patientid);
+            medicationstore.load({
+                callback:function (records, operation, success) {
+                    patientdashboard.loadMedications(medicationstore);
+                    //               finishwaiter(0);
+
+                },
+                scope:this
+            });
+
+            var labtestrequeststore = Ext.data.StoreManager.lookup('labtestrequests');
+            if (!labtestrequeststore) {
+                labtestrequeststore = Ext.create('NeqMobile.store.LabTestRequests');
+            }
+            labtestrequeststore.getProxy().setExtraParam('patientId', patientid);
+            labtestrequeststore.load({
+                callback:function (records, operation, success) {
+                    var response = operation.getResponse();
+                    var responseObject = Ext.decode(response.responseText);
+                    patientview.down('patientlab').loadLabTestRequests(labtestrequeststore);
+                },
+                scope:this
+            });
+
+            var labresultstore = Ext.data.StoreManager.lookup('labresults');
+            if (!labresultstore) {
+                labresultstore = Ext.create('NeqMobile.store.LabResults');
+            }
+            labresultstore.getProxy().setExtraParam('patientId', patientid);
+            labresultstore.load({
+                callback:function (records, operation, success) {
+                    patientview.down('patientlab').loadLabResults(labresultstore);
+                },
+                scope:this
+            });
+
+            var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
+            if (!vitaldatastore) {
+                vitaldatastore = Ext.create('NeqMobile.store.VitalData');
+            }
+            var date = new Date();
+            //alert(Ext.Date.format(date, 'j/d/Y'));
+            vitaldatastore.getProxy().setExtraParam('patientId', patientid);
+            vitaldatastore.getProxy().setExtraParam('end_Date', Ext.Date.format(date, 'd.m.Y'));
+            date = Ext.Date.add(date, Ext.Date.DAY, -360);
+            vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y') );
+
+            vitaldatastore.load({
+                callback:function (records, operation, success) {
+                    patientview.down('patientstatistics').loadPatientStatistics(vitaldatastore);
+                },
+                scope:this
+            });
+
+        },
+
+        onCreateNewDiagnoseTap:function (button, e, eOpts) {
+            var diagnoseOverlay;
+            if (this.getDiagnoseoverlay()) {
+                diagnoseOverlay = this.getDiagnoseoverlay();
+                diagnoseOverlay.down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue("");
+            }
+            else
+            {
+                diagnoseOverlay = Ext.create('NeqMobile.view.patient.create.CreateDiagnose');
+            }
             var physicianname= diagnoseOverlay.down('#middlepart').down('#diagnoseInfo').down('#physicianSelectfield');
             physicianname.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
 
@@ -416,27 +416,31 @@ Ext.define('NeqMobile.controller.PatientView', {
             })
         },
 
+
         onDiseaseTypeSelect: function(button, e, eOpts){
             var diseasetypeoverlay;
             if (this.getDiseasetype()) {
                 diseasetypeoverlay = this.getDiseasetype();
+                diseasetypeoverlay.clearListeners();
             }
             else {
                 diseasetypeoverlay = Ext.create('NeqMobile.view.patient.create.DiseaseType');
             }
-
             var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
             if (!diseasetypestore) {
                 diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
             }
-           diseasetypestore.load({
+            diseasetypeoverlay.setMasked(true);
+            diseasetypestore.load({
                 callback:function (records, operation, success) {
                     diseasetypeoverlay.down('#diseaselist').setStore(diseasetypestore);
-
                 },
                 scope:this
             });
+            diseasetypeoverlay.setMasked(false);
+
             this.overlay = Ext.Viewport.add(diseasetypeoverlay);
+
             this.overlay.show();
         },
         onDiseaseSelect: function(list, record, eOpts){

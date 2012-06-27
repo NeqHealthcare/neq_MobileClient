@@ -31,7 +31,8 @@ Ext.define('NeqMobile.view.Login', {
             {
                 xtype: 'formpanel',
                 padding: '20 0 0 0',
-                layout: {
+                layout:
+                {
                     align: 'center',
                     pack: 'center',
                     type: 'vbox'
@@ -59,7 +60,7 @@ Ext.define('NeqMobile.view.Login', {
                                 xtype: 'textfield',
                                 id: 'textfield',
                                 label: 'User:',
-                                labelWidth: '40%',
+                                labelWidth: '112px',
                                 name: 'user',
                                 value: 'jgansen',
                                 autoComplete: true,
@@ -70,7 +71,7 @@ Ext.define('NeqMobile.view.Login', {
                                 xtype: 'passwordfield',
                                 id: 'passwordfield',
                                 label: 'Password:',
-                                labelWidth: '40%',
+                                labelWidth: '112px',
                                 name: 'password',
                                 value: 'iswi223<<',
                                 placeHolder: 'Enter Password'
@@ -79,7 +80,7 @@ Ext.define('NeqMobile.view.Login', {
                                 xtype: 'selectfield',
                                 id: 'selectfield',
                                 label: 'Domain:',
-                                labelWidth: '40%',
+                                labelWidth: '112px',
                                 displayField: 'name',
                                 store: 'Domains',
                                 valueField: 'id'
@@ -97,7 +98,8 @@ Ext.define('NeqMobile.view.Login', {
             },
             {
                 xtype: 'panel',
-                layout: {
+                layout:
+                {
                     align: 'center',
                     pack: 'center',
                     type: 'vbox'
