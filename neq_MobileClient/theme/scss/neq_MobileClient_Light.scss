@@ -39,6 +39,7 @@ $table_color_bottom: #105484;
 @include pictos-iconmask('team1');
 
 @include sencha-button-ui('login-button', $login-button-color, 'glossy');
+
 // 2 VIEWS
 
 // 2-1 BASIC - ROOT
@@ -174,4 +175,15 @@ x-chatterPostsContainer {
     font-weight: thin;
     color: #666;
     }
+}
+
+
+
+
+.hline_bottom_border {
+     border-bottom: 1px solid #ccc;
+}
+
+.detail_view_labels .x-form-label {
+    background-color: white;
 }

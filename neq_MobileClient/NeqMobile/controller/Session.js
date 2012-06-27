@@ -154,8 +154,16 @@ Ext.define('NeqMobile.controller.Session', {
     onShowLogoutMenu:function (button) {
 
         var settingsmenu = NeqMobile.view.menu.Settings;
-        settingsmenu.showBy(button);
+        var statusMenu = settingsmenu.getHidden();
+        if (statusMenu){
+            settingsmenu.setHidden(false);
+            settingsmenu.showBy(button);
+           }
+        else{
+            settingsmenu.setHidden(true);
+        }
     },
+
     onLoginTry:function () {
         var usernamefield = this.getLogin().down('formpanel').down('#textfield').getValue();
         var pwdfield = this.getLogin().down('formpanel').down('#passwordfield').getValue();

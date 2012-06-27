@@ -78,14 +78,14 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
                                     {
                                         header:'',
                                         dataIndex:'image_url',
-                                        width:'15%',
+                                        width:'20%',
                                         renderer:NeqMobile.util.Renderer.chatterSettingsImageRenderer
                                     },
                                     {
                                         header:'Name',
                                         dataIndex:'rec_name',
                                         style: 'padding-left: 1em;',
-                                        width:'70%'
+                                        width:'65%'
                                     },
                                     {
                                         header:'Following',

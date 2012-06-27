@@ -23,6 +23,7 @@ Ext.define('NeqMobile.view.menu.Settings', {
     config:{
        // modal:true,
         hideOnMaskTap:true,
+        hidden: true,
         // hidden:true,
         // height:300,
         width: 120,
