@@ -98,6 +98,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
                                     if (!Ext.ComponentManager.get('documentcontainer').imageSrc) {
 
                                         Ext.Function.defer(function () {
+
                                                 Ext.ComponentManager.get('imageScreen').loadImage(full_url);
                                             }
                                             , 500);
@@ -106,6 +107,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                                     else {
                                         Ext.ComponentManager.get('imageScreen').loadImage(full_url);
+                                        Ext.ComponentManager.get('imageScreen').resetZoom();
                                     }
 
 

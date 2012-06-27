@@ -23,16 +23,16 @@ Ext.define('NeqMobile.controller.UserView', {
             workspace:'workspace',
             appointment:'appointment',
             doctornews:'doctornews',
-            doctornewstopics : 'doctornewstopics',
-            doctornewsfeeddetail : 'doctornewsfeeddetail',
-            appointmentview :'appointmentview',
+            doctornewstopics:'doctornewstopics',
+            doctornewsfeeddetail:'doctornewsfeeddetail',
+            appointmentview:'appointmentview',
             patientList:'workspace patientlist list',
             mainToolbar:'workspace #mainToolbar',
             viewholder:'viewholder'
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
-        stores: ['Appointment', 'DoctorNews', 'DoctorNewsTopics'],
+        stores:['Appointment', 'DoctorNews', 'DoctorNewsTopics'],
 
         /* - Eventlistener ---------------------------------------------------------------------------------- */
         control:{
@@ -43,7 +43,7 @@ Ext.define('NeqMobile.controller.UserView', {
             'workspace appointment selectfield':{
                 change:'onappointmentcountchange'
             },
-            'workspace doctordashboard #doctornewsfeedtopicselectfield': {
+            'workspace doctordashboard #doctornewsfeedtopicselectfield':{
                 change:'onDoctorNewsTopicChange'
             },
             'workspace appointment appointmentview #appointmentlist':{
@@ -52,9 +52,9 @@ Ext.define('NeqMobile.controller.UserView', {
             'workspace appointment appointmentview #appointmentdetail button':{
                 tap:'onAppointmentBackButton'
             },
-            'userview #showUserDashboardIcon': {tap:'onTapShowUserDashboard'},
-            'userview #showChatterIcon': {tap:'onTapShowCatterIcon'},
-             userview: {activeitemchange: 'onUserViewItemChange'}
+            'userview #showUserDashboardIcon':{tap:'onTapShowUserDashboard'},
+            'userview #showChatterIcon':{tap:'onTapShowCatterIcon'},
+            userview:{activeitemchange:'onUserViewItemChange'}
 
         },
 
@@ -81,10 +81,10 @@ Ext.define('NeqMobile.controller.UserView', {
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
-    onTapShowUserDashboard: function(){
+    onTapShowUserDashboard:function () {
         this.redirectTo('userdashboard');
     },
-    onTapShowCatterIcon: function(){
+    onTapShowCatterIcon:function () {
         this.redirectTo('chatter');
     },
 
@@ -94,8 +94,8 @@ Ext.define('NeqMobile.controller.UserView', {
         me.newActiveItem = newvalue;
         if (newvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
             this.redirectTo('chatter');
-        }else if(newvalue instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard){
-            if(oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer){
+        } else if (newvalue instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard) {
+            if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
                 this.stopChatterSync();
             }
             this.redirectTo('userdashboard');
@@ -104,8 +104,7 @@ Ext.define('NeqMobile.controller.UserView', {
         }
     },
 
-    startChatterSync:function()
-    {
+    startChatterSync:function () {
         var cometd = Ext.cometd;
 //        console.log('starting chatter sync');
 
@@ -117,7 +116,7 @@ Ext.define('NeqMobile.controller.UserView', {
             tempIds = values.split(',');
             var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
             var doctor_id = (userinfo.get('id'));
-            if(tempIds.indexOf(doctor_id) != -1){
+            if (tempIds.indexOf(doctor_id) != -1) {
                 var store = Ext.data.StoreManager.lookup('chatterPosts');
                 store.load({
                     callback:function (records, operation, success) {
@@ -130,8 +129,7 @@ Ext.define('NeqMobile.controller.UserView', {
         });
     },
 
-    stopChatterSync:function()
-    {
+    stopChatterSync:function () {
         var cometd = Ext.cometd;
         cometd.unsubscribe(this.subscription);
     },
@@ -186,7 +184,7 @@ Ext.define('NeqMobile.controller.UserView', {
 
         //     console.log('------ active item for doctordashboard: '+me.newActiveItem);
 
-        if(!(me.newActiveItem instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard)){
+        if (!(me.newActiveItem instanceof NeqMobile.view.doctor.dashboard.DoctorDashboard)) {
             userview.setActiveItem(this.getDoctordashboard());
             //     console.log('------ dashboard is set as new active item through event');
         }
@@ -206,7 +204,8 @@ Ext.define('NeqMobile.controller.UserView', {
         var userinforecord = NeqMobile.manager.Session.getSession().get('userinfo');
 
         this.getDoctordashboard().down('doctorheader').setRecord(userinforecord);
-        //this.getWorkspace().down('#doctorimage_big').setIcon(userinforecord.image_url);
+        this.getWorkspace().down('#doctorimage_big').setData({'image_url':userinforecord.get('image_url')});
+        console.log(this.getWorkspace().down('#doctorimage_big'));
         this.getDoctordashboard().down('#doc_last_login').setValue(
             NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
 
@@ -218,12 +217,14 @@ Ext.define('NeqMobile.controller.UserView', {
 
     /* - DoctorNews Functions/Events ---------------------------------------------------------------------------------- */
 
-    showDoctorNewsTopics: function (){
+    showDoctorNewsTopics:function () {
         var me = this;
         var session = NeqMobile.manager.Session.getSession();
         var doctornewstopicsstore = Ext.data.StoreManager.lookup('doctornewstopics')
 
-        if (!doctornewstopicsstore) {doctornewstopicsstore = Ext.create('NeqMobile.store.DoctorNewsTopics')}
+        if (!doctornewstopicsstore) {
+            doctornewstopicsstore = Ext.create('NeqMobile.store.DoctorNewsTopics')
+        }
 
         me.getDoctordashboard().down('#doctornewsfeedtopicselectfield').setStore(doctornewstopicsstore);
 
@@ -232,13 +233,15 @@ Ext.define('NeqMobile.controller.UserView', {
         });
     },
 
-    showDoctorNews: function(id, count){
+    showDoctorNews:function (id, count) {
         var me = this;
         var session = NeqMobile.manager.Session.getSession();
         var doctornewsstore = Ext.data.StoreManager.lookup('doctornews');
 
 
-        if (!doctornewsstore) {doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');}
+        if (!doctornewsstore) {
+            doctornewsstore = Ext.create('NeqMobile.store.DoctorNews');
+        }
 
         me.getDoctordashboard().down('#hospitaldoctornews').setStore(doctornewsstore);
 
@@ -252,7 +255,7 @@ Ext.define('NeqMobile.controller.UserView', {
     },
 
     // load new scope of news according to selected topic
-    onDoctorNewsTopicChange:function (field, value){
+    onDoctorNewsTopicChange:function (field, value) {
         if (value instanceof Ext.data.Model) {
             value = value.get(field.getValueField());
         }
@@ -384,26 +387,26 @@ Ext.define('NeqMobile.controller.UserView', {
 
     /* - Appointments Functions/Events ---------------------------------------------------------------------------------- */
 
-    onappointmentcountchange:function(selectfield, newValue, oldValue, eOpts ){
+    onappointmentcountchange:function (selectfield, newValue, oldValue, eOpts) {
         this.showAppointments();
-        console.log('changed number of appointments '+newValue);
+        console.log('changed number of appointments ' + newValue);
     },
 
-    showAppointments: function (){
+    showAppointments:function () {
         var me = this;
         var appointmentrequest = this.getAppointment();
         var selectfield = appointmentrequest.down('selectfield');
         var count = selectfield.getValue();
         var appointmentstore = Ext.data.StoreManager.lookup('appointments');
-        if(!appointmentstore){
+        if (!appointmentstore) {
             appointmentstore = Ext.create('NeqMobile.store.Appointment');
         }
-        appointmentstore.getProxy().setExtraParam('count',count);
+        appointmentstore.getProxy().setExtraParam('count', count);
         appointmentstore.load({
-            callback: function (records, operation, success){
+            callback:function (records, operation, success) {
                 this.getDoctordashboard().down('appointment').down('appointmentview').down('#appointmentlist').setStore(appointmentstore);
             },
-            scope: this
+            scope:this
         });
         this.getAppointmentview().setActiveItem(0);
     },
@@ -423,7 +426,7 @@ Ext.define('NeqMobile.controller.UserView', {
 
     },
 
-    onAppointmentBackButton:function (button, e, eOpts){
+    onAppointmentBackButton:function (button, e, eOpts) {
         this.getAppointmentview().setActiveItem(0);
     },
 
