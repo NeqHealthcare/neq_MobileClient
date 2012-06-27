@@ -192,7 +192,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                             }
 
                         ]
-                    },
+                    }
 
         ]
     }
