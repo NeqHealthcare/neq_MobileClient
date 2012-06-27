@@ -27,15 +27,12 @@ Ext.define('NeqMobile.view.patient.detail.PatientHeader',{
                                     docked: 'left',
                                     itemId:'patientheaderimage',
                                     cls:'x-patientheaderimage',
-                                    //html: '<img style="background-size: cover; background-position: center center; background: #ddd; border-radius: 3px; -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);" src="http://{photo}.jpg" width="145" height="145">'
-
-                                    //name:'photo',
-                                    itemTpl:['<img src="http://{photo}?width=145&height=145' +
-                                     'style="background-size: cover; background-position: center center;' +
-                                     'background: #ddd; border-radius: 3px;' +
-                                     '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
-                                     'height=145 width=145' +
-                                     '/>'].join('')
+                                    tpl:'<img src="http://{photo}?width=137&height=137"' +
+                                        'style="background-size: cover; background-position: center center;' +
+                                        'background: #ddd; border-radius: 3px;' +
+                                        '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
+                                        //'height=135' +
+                                        '/>'
                                 },
                                 {
                                     xtype: 'textfield',

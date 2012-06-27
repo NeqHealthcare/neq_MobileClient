@@ -42,11 +42,10 @@ Ext.define('NeqMobile.controller.Session', {
         Ext.Viewport.on('logout', this.disconnectCometD, me);
     },
 
-    disconnectCometD: function()
-    {var cometd = Ext.cometd;
-     cometd.disconnect();
-    }
-     ,
+    disconnectCometD:function () {
+        var cometd = Ext.cometd;
+        cometd.disconnect();
+    },
     prepareCometD:function () {
         var _connected = false;
         var domain = NeqMobile.manager.Session.getSession().get('domain');
@@ -155,11 +154,11 @@ Ext.define('NeqMobile.controller.Session', {
 
         var settingsmenu = NeqMobile.view.menu.Settings;
         var statusMenu = settingsmenu.getHidden();
-        if (statusMenu){
+        if (statusMenu) {
             settingsmenu.setHidden(false);
             settingsmenu.showBy(button);
-           }
-        else{
+        }
+        else {
             settingsmenu.setHidden(true);
         }
     },
@@ -221,9 +220,9 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('this is the userinfo issued from session controller');
         console.log(userinfodata);
         this.getWorkspace().down('#doctorname').setData(userinfodata);
-        this.getWorkspace().down('#doctorimage').setIcon(userinfodata.image_url);
+        //this.getWorkspace().down('#doctorimage').setDa(userinfodata.image_url);
         this.redirectTo('userdashboard');
-      //  Ext.defer(function(){me.},1000)
+        //  Ext.defer(function(){me.},1000)
     },
     onLogoutClick:function () {
         this.redirectTo('login');
