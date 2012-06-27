@@ -49,7 +49,7 @@ Ext.define('NeqMobile.controller.Session', {
     prepareCometD:function () {
         var _connected = false;
         var domain = NeqMobile.manager.Session.getSession().get('domain');
-        var url = domain.get('protocol') + '://' + domain.get('ip') + ':' + "8082" + '/cometd/pulse';
+       // var url = 'ws' + '://' + domain.get('ip') + ':' + '8082' + '/cometd/pulse';
 
         var url = 'http://localhost:8082/cometd/pulse';
 

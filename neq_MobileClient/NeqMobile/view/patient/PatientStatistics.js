@@ -210,14 +210,24 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
 
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
 
+    constructor: function()
+    {
+        this.callParent(arguments);
+
+    }                                    ,
+
     config:{
         listeners:{
 
+            erased:function ()
+            {console.log('patientstatistics view REMOVED')
+
+
+            },
+
             painted:function () {
-                //var smoothie = new SmoothieChart({
-                //    grid:   { strokeStyle:'#007d00', fillStyle:'#fff'},
-                //    labels: { fillStyle:'#007d00' }
-                //});
+                console.log('patientstatistics view PAINTED')
+                console.log('intializing patientstatistics')  ;
                 var smoothie = new SmoothieChart({
                     grid: { strokeStyle:'rgb(0,90, 0)', fillStyle:'rgb(0, 40, 0)',
                         lineWidth: 1, millisPerLine: 250, verticalSections: 6
@@ -226,9 +236,16 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                 });
                 //smoothie.addTimeSeries(timeSeries,
                 //    { strokeStyle:'rgb(0, 255, 0)', fillStyle:'rgba(0, 255, 0, 0.4)', lineWidth:3 });
-
                 smoothie.streamTo(document.getElementById("mycanvas"), 10);
+
+                this.on('erased',function(){
+                  smoothie.stop();
+                }, this, {
+                    single: true
+                });
+
                 this.setHeartbeatchart(smoothie);
+
             }
         },
         heartbeatchart:     undefined,
