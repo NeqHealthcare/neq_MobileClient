@@ -14,6 +14,12 @@ Ext.define('NeqMobile.store.Diagnoses', {
             //  sorters: 'lastName',
  //           autoLoad:true,
  //           autoSync:true,
-            storeId:'diagnoses'
+            storeId:'diagnoses',
+            sorters: [
+                {
+                    property:'diagnosed_date',
+                    direction:'DESC'
+                }
+            ]
         }}
 );

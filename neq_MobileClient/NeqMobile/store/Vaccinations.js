@@ -7,6 +7,12 @@ Ext.define('NeqMobile.store.Vaccinations', {
 
         config:{
             model:'NeqMobile.model.Vaccination',
-            storeId:'vaccinations'
+            storeId:'vaccinations',
+            sorters: [
+                {
+                    property:'next_dose_date',
+                    direction:'DESC'
+                }
+            ],
         }}
 );

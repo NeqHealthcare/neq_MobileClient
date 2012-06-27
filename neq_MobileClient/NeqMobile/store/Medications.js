@@ -6,6 +6,12 @@ Ext.define('NeqMobile.store.Medications', {
         requires:'NeqMobile.model.Medication',
 
         config:{model:'NeqMobile.model.Medication',
-            storeId:'medications'
+            storeId:'medications',
+            sorters: [
+                {
+                    property:'start_treatment',
+                    direction:'DESC'
+                }
+            ]
         }}
 );
