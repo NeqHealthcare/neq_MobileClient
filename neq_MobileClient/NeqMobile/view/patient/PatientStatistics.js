@@ -161,13 +161,13 @@ var fluidbalancechart = Ext.create('Ext.chart.Chart', {
             xField: 'date',
             yField: 'fluid_balace',
 
-            label:{
-                display:        'insideEnd',
-                'text-anchor':  'middle',
-                field:          'fluid_balace',
-                orientation:    'horizontal',
-                color:          '#000'
-            },
+            //label:{
+            //    display:        'insideEnd',
+            //    'text-anchor':  'middle',
+            //    field:          'fluid_balace',
+            //    orientation:    'horizontal',
+            //    color:          '#000'
+            //},
 
             title:  'Fluid intake/loss'
         },
@@ -348,7 +348,8 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                         ]
                     }
                 ]
-            },
+            }
+            /*,
             {
                 xtype:      'fieldset',
                 padding:    5,
@@ -361,7 +362,7 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                         id:     'historicaldata_area_addinfo'
                     }
                 ]
-            }
+            }*/
         ]
     }
 

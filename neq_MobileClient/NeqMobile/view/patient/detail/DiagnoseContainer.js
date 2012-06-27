@@ -35,14 +35,14 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             header:'Disease',
                             dataIndex:'pathology_rec_name',
                             style:'text-align: left;',
-                            width:'33%'
+                            width:'37%'
                         },
                         {
                             header:'Status',
                             dataIndex:'is_active',
                             style:'text-align: center;',
                             renderer:NeqMobile.util.Renderer.bulletRenderer,
-                            width:'7%'
+                            width:'10%'
                         },
                         {
                             header:'Severity',
@@ -53,32 +53,24 @@ Ext.define('NeqMobile.view.patient.detail.DiagnoseContainer', {
                             renderer: NeqMobile.util.Renderer.severityrenderer
                         },
                         {
-                            header:'Infectability',
+                            header:'Infectious',
                             dataIndex:'is_infectious',
                             style:'text-align: center;',
                             sortable:false,
                             renderer:NeqMobile.util.Renderer.booleanrenderer,
-                            width:'10%'
+                            width:'13%'
 
-                        },
-                        {
-                            header:'Allergies',
-                            dataIndex:'is_allergy',
-                            style:'text-align: center;',
-                            sortable:false,
-                            renderer:NeqMobile.util.Renderer.booleanrenderer,
-                            width:'10%'
                         }
                         ,
                         {
-                            header:'Diagnosed Date',
+                            header:'Diagnosed',
                             dataIndex:'diagnosed_date',
                             style:'text-align: right;',
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
                         {
-                            header:'Healed Date',
+                            header:'Healed',
                             dataIndex:'healed_date',
                             style:'text-align: right;',
                             sortable:false,

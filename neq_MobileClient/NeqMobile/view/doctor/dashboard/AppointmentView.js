@@ -14,6 +14,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
         padding: 5,
        // width: 300,
         height:270,
+        //scrollable: false,
         items: [
             {
             xtype: 'list',
@@ -27,30 +28,45 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                 id:'appointmentdetail',
                 scrollable: false,
                items: [
-                    {
+                   {
+                       align: 'center',
+                       width: 50,
+                       xtype: 'button',
+                       iconCls:'reply',
+                       iconMask:true
+                   },
+                   {
                         xtype: 'datepickerfield',
                         label: 'Appointment Time',
                         dateFormat: 'd.m.Y H:i',
                         id:'appointmenttime',
                         readOnly: 'true'
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
                     },
                     {
                         xtype: 'textfield',
                         label: 'Patient',
                         id:'patientname',
                         readOnly: 'true'
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
                     },
                     {
                         xtype: 'textfield',
                         label: 'Urgency Level',
                         id:'urgency',
                         readOnly: 'true'
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
                     },
                     {
                         xtype: 'textfield',
                         label: 'Type',
                         id:'appointmenttype',
                         readOnly: 'true'
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
                     },
                     {
                         xtype: 'textfield',
@@ -58,6 +74,8 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                         id: 'speciality',
                         placeHolder: '-',
                         readOnly: 'true'
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
                     },
                     {
                         xtype: 'textfield',
@@ -65,15 +83,9 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                         id: 'consultation',
                         readOnly: 'true',
                         placeHolder: '-'
-                    },
-                   {
-                       align: 'center',
-                       width: 50,
-                       xtype: 'button',
-                       iconCls:'reply',
-                       iconMask:true
-                   }
-
+                        ,style:'background-color: white;'
+                        ,labelWidth: 180
+                    }
                 ]
             }
 

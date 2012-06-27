@@ -5,6 +5,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedDetail', {
     config: {
         //padding: 5,
         scrollable: false,
+        style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         items: [
             {
                 xtype:'fieldset',

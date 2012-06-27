@@ -11,6 +11,12 @@ Ext.define('NeqMobile.store.LabResults', {
         requires:'NeqMobile.model.LabResults',
         config:{
             model:'NeqMobile.model.LabResults',
-            storeId:'labresults'
+            storeId:'labresults',
+            sorters: [
+                {
+                    property:'date_analysis',
+                    direction:'DESC'
+                }
+            ]
         }}
 );
