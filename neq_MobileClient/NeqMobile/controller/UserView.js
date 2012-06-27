@@ -54,7 +54,8 @@ Ext.define('NeqMobile.controller.UserView', {
             },
             'userview #showUserDashboardIcon':{tap:'onTapShowUserDashboard'},
             'userview #showChatterIcon':{tap:'onTapShowCatterIcon'},
-            userview:{activeitemchange:'onUserViewItemChange'}
+            userview:{activeitemchange:'onUserViewItemChange'},
+            'workspace #chatterButton':{tap:'onTapShowCatterIcon'}
 
         },
 
@@ -87,7 +88,6 @@ Ext.define('NeqMobile.controller.UserView', {
     onTapShowCatterIcon:function () {
         this.redirectTo('chatter');
     },
-
 
     onUserViewItemChange:function (container, newvalue, oldvalue, eOpts) {
         var me = this;
