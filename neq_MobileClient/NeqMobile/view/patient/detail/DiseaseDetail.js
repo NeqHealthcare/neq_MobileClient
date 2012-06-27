@@ -35,6 +35,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
         layout:{
             type:'hbox'
         },
+        style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         scrollable:false,
         items:[
             {

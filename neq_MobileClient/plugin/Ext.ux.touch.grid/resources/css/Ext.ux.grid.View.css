@@ -43,7 +43,7 @@
 	font-weight: bold;
 }
 
-#labTestRequestsTable.touchgridpanel .x-item-selected > .x-grid-cell, #chatterUserTableView.touchgridpanel .x-item-selected > .x-grid-cell {
+.touchgridpanel .touchgridpanel .x-item-selected > .x-grid-cell, #chatterUserTableView.touchgridpanel .x-item-selected > .x-grid-cell {
     font-weight: normal;
 }
 

@@ -16,6 +16,7 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationDetail', {
         layout: {
             type: 'vbox'
         },
+        style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         scrollable: false,
         items: [
 
