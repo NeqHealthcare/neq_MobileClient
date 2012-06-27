@@ -42,20 +42,22 @@ Ext.define('NeqMobile.view.Workspace', {
                             tpl:'<span style="color:#E6E6E6">{name}</span>',
                             align:'right',
                             itemId:'doctorname',
-                            iconMask: true
+                            iconMask:true
                         },
                         {
                             xtype:'button',
                             //icon:'theme/images/user/doctor_avatar_small.jpg',
                             align:'right',
                             itemId:'doctorimage',
-                            tpl:'<img src="http://{image_url}?height=48&width=48" height="48" width="48" />',
+                            tpl:'<img src="http://{image_url}?height=48&width=48" ' +
+                                'style="background-size: cover; background-position: center center;' +
+                                'background: #ddd; border-radius: 3px;' +
+                                '-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.6);"' +
+                                'height=48' +
+                                '/>',
                             //iconMask: false
-                            style:'border: none; background-color: none;'
-                            ,height: 48
-                            ,width: 48
-                            //,padding: 10
-                            ,margin: '0 10 0 10'
+                            style:'border: none; background-color: none;', height:48, width:48
+                            //,padding: 10, margin:'0 10 0 10'
                         }
                         ,
                         {
