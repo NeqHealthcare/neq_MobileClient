@@ -73,35 +73,49 @@ Ext.define('NeqMobile.controller.settings.Domains', {
     onSaveClick: function(){
         //check whether connection name, IP/domain address or port empty
         //backend ID empty
+
         var connectionname = this.getSettingsDomains().down('formpanel').down('fieldset').down('#connectionname').getValue();
         var backendname = this.getSettingsDomains().down('formpanel').down('fieldset').down('#backendSid').getValue();
         var domainaddress = this.getSettingsDomains().down('formpanel').down('fieldset').down('#domainaddress').getValue();
-       if(connectionname === ''){
+        console.log(connectionname);
+       if(connectionname == ''){
             Ext.Msg.alert('Connection Name','Please insert a name'+'<br>'+ 'for the connection setting', Ext.emptyFn);
         }
-        if(backendname === ''){
-            Ext.Msg.alert('Backend SID','Please insert a Backend SID'+'<br>'+ 'for the connection setting', Ext.emptyFn);
-        }
-        if(domainaddress === ''){
-            Ext.Msg.alert('Domain Address','Please insert a domain name'+'<br>'+ 'for the connection setting', Ext.emptyFn);
-        }
-       else
-        {
-            var backendButton = function (buttonid){
-                if(buttonid == 'yes'){
-                    console.log('yes clicked');
-                    this.saveSetting();
-                }
+        else {
+               if(domainaddress === ''){
+                        Ext.Msg.alert('Domain Address','Please insert a domain name'+'<br>'+ 'for the connection setting', Ext.emptyFn);
+                    }
+                else {
+                   console.log('checkDuplicate'+this.checkDuplicate(connectionname));
+                         if(this.checkDuplicate(connectionname)){
+                             Ext.Msg.alert('Connection Name Not Available','The Connection Name is alreay assigned'+'<br>'+ 'please insert a different name', Ext.emptyFn);
+                          }
+                         else{
+                             var backendButton = function (buttonid){
+                                if(buttonid == 'yes'){
+                                  console.log('yes clicked');
+                                   this.saveSetting();
+                               }
+                            }
+                            if(backendname ===''){
+                            Ext.Msg.confirm("Backend SID", "Backend SID is missing. Are you sure to save the connection setting?",backendButton, this);
+                            }
+                          else{
+                            this.saveSetting();
+                         }
+                     }
+                 }
             }
-            if(backendname ===''){
-                Ext.Msg.confirm("Backend SID", "Backend SID is missing. Are you sure to save the connection setting?",backendButton, this);
-                }
-            else{
-                this.saveSetting();
-            }
-
-                }
         },
+
+    checkDuplicate:function(connectionname){
+        var duplicate = this.getDomainsList().getStore();
+        duplicate = this.getDomainsList().getStore().find('name', connectionname);
+        if (duplicate>=0)
+            return true;
+        else
+            return false;
+    },
 
     saveSetting:function () {
         var formdata = this.getSettingsDomains().down('formpanel').getValues();

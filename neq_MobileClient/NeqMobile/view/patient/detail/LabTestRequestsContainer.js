@@ -49,6 +49,7 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                         {
                             header:'Physician',
                             dataIndex:'doctor_rec_name',
+                            renderer: NeqMobile.util.Renderer.unitRenderer,
                             width:'30%'
                         },
                         {
