@@ -22,7 +22,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.Appointment',{
                 width: 250,
                 id: 'appointmentsnumberselctfield',
                 label: 'Appointments',
-                labelWidth: 180,
+                labelWidth: 150,
                 padding:'0, 0, 10, 0',
                 value: '10',
                 options: [
