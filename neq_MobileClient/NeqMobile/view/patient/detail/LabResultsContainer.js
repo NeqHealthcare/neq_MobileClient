@@ -45,7 +45,7 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                         {
                             header:'Analysis Date',
                             dataIndex:'date_analysis',
-                            style:'text-align: left;',
+                            style:'text-align: right;',
                             width:'20%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
