@@ -88,7 +88,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
                     callback:function (records, operation, success) {
                         var response = operation.getResponse();
                         var responseObject = Ext.decode(response.responseText);
-                        me.getPatientlab().loadLabTestRequests(responseObject);
+                        me.getPatientlab().loadLabTestRequests(labtestrequeststore);
                     },
                     scope:this
                 });
