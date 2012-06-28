@@ -70,6 +70,11 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationDetail', {
                                 readOnly: true
                             }
                         ]
+                    } ,
+                    {
+                        xtype: 'container',
+                        html:'<div>&nbsp;</div>'
+
                     }
 
                 ]

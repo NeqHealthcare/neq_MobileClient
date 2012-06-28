@@ -113,6 +113,11 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
                                 ]
                             }
                         ]
+                },
+                {
+                    xtype: 'label',
+                    html: ''
+
                 }
 
             ]

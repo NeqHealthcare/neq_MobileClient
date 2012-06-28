@@ -28,8 +28,6 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboardLab', {
                     }],
 
                 scrollable:false,
-                margin: 0,
-                padding: 5,
                 columns:[
 
                     {

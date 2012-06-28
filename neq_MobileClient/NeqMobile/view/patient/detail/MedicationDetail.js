@@ -200,6 +200,11 @@ Ext.define('NeqMobile.view.patient.detail.MedicationDetail', {
                     }
 
                 ]
+            },
+            {
+                xtype: 'label',
+                html: ''
+
             }
         ]
     }

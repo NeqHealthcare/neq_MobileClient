@@ -13,7 +13,6 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
             title:'Lab Results',
             margin: '0',
             padding: '5',
-            border: '5',
             items:[
                 {
                     xtype:'touchgridpanel',
