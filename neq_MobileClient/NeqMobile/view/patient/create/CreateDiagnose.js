@@ -38,7 +38,6 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                     xtype: 'toolbar',
                     title: 'Create New Diagnose'
                 },
-                //top part
                         {
                             xtype: 'fieldset',
                             title: 'Disease Information',
@@ -290,7 +289,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                         //button
                         {
                             width: 250,
-                            padding: '10 0 0 0',
+                            margin: '10 0 0 0',
                             xtype: 'button',
                             id: 'submitDiagnoseButton',
                             text: 'Save Diagnose'
