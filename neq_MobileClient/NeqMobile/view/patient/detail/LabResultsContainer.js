@@ -36,16 +36,9 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                             width:'40%'
                         },
                         {
-                            header:'Date Requested',
+                            header:'Requested',
                             dataIndex:'date_requested',
                             style:'text-align: right;',
-                            width:'15%',
-                            renderer:NeqMobile.util.Renderer.daterenderer
-                        },
-                        {
-                            header:'Date of the Analysis',
-                            dataIndex:'date_analysis',
-                            style:'text-align: left;',
                             width:'15%',
                             renderer:NeqMobile.util.Renderer.daterenderer
                         },
@@ -54,16 +47,15 @@ Ext.define('NeqMobile.view.patient.detail.LabResultsContainer', {
                             dataIndex:'requestor_rec_name',
                             style: 'text-align: left;',
                             cls:'centered-cell',
-                            width:'15%',
+                            width:'30%',
                             renderer: NeqMobile.util.Renderer.undefinedRenderer
                         },
                         {
-                            header:'Pathologist',
-                            dataIndex:'pathologist_rec_name',
-                            style: 'text-align: left;',
-                            cls:'centered-cell',
+                            header:'Analyzed',
+                            dataIndex:'date_analysis',
+                            style:'text-align: right;',
                             width:'15%',
-                            renderer: NeqMobile.util.Renderer.undefinedRenderer
+                            renderer:NeqMobile.util.Renderer.daterenderer
                         }
                     ]
                 }

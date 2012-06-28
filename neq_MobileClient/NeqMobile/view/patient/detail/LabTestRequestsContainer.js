@@ -40,7 +40,7 @@ Ext.define('NeqMobile.view.patient.detail.LabTestRequestsContainer', {
                             width:'40%'
                         },
                         {
-                            header:'Date',
+                            header:'Requested',
                             dataIndex:'date',
                             style:'text-align: right;',
                             width:'15%',
