@@ -20,8 +20,7 @@ Ext.define('NeqMobile.controller.Workspace', {
             'NeqMobile.model.LabTestRequest',
             'NeqMobile.view.patient.create.CreateLabTestRequest',
             'NeqMobile.store.LabResults',
-            'NeqMobile.store.VitalData',
-            'NeqMobile.view.patient.measurements.HeartbeatLive'],
+            'NeqMobile.store.VitalData'],
         config:{
             refs:{
                 workspace:'workspace'

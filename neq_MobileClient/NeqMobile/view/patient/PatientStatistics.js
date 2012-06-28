@@ -64,7 +64,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
             axis:'left',
             xField:'date',
-            yField:'temprature'
+            yField:'temperature'
         },
         {
             type:'line',
@@ -197,8 +197,7 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
     requires:['Ext.chart.Panel',
         'Ext.chart.axis.Numeric',
         'Ext.chart.axis.Category',
-        'Ext.chart.series.Line',
-        'NeqMobile.view.patient.measurements.HeartbeatLive'
+        'Ext.chart.series.Line'
     ],
 
     loadPatientStatistics:function (chartdata) {
@@ -208,46 +207,10 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
 
     xtype:'patientstatistics',
 
-// - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen
-
-    constructor:function () {
-        this.callParent(arguments);
-
-    },
+// - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen                                 ,
 
     config:{
-        listeners:{
-
-            erased:function () {
-                console.log('patientstatistics view REMOVED')
-
-
-            },
-
-            painted:function () {
-                console.log('patientstatistics view PAINTED')
-                console.log('intializing patientstatistics');
-                var smoothie = new SmoothieChart({
-                    grid:{ strokeStyle:'rgb(0,90, 0)', fillStyle:'rgb(0, 40, 0)',
-                        lineWidth:1, millisPerLine:250, verticalSections:6
-                    },
-                    labels:{ fillStyle:'rgb(0, 60, 0)' }
-                });
-                //smoothie.addTimeSeries(timeSeries,
-                //    { strokeStyle:'rgb(0, 255, 0)', fillStyle:'rgba(0, 255, 0, 0.4)', lineWidth:3 });
-                smoothie.streamTo(document.getElementById("mycanvas"), 10);
-
-                this.on('erased', function () {
-                    smoothie.stop();
-                }, this, {
-                    single:true
-                });
-
-                this.setHeartbeatchart(smoothie);
-
-            }
-        },
-        heartbeatchart:undefined,
+        //   heartbeatchart:     undefined,
         styleHtmlContent:true,
         layout:'vbox',
 
@@ -263,10 +226,6 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                 width:'100%',
                 margin:0,
                 padding:5,
-                layout:{
-                    type:'hbox',
-                    align:'middle'
-                },
 
                 items:[
                     {
