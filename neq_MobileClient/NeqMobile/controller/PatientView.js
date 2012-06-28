@@ -391,18 +391,21 @@ Ext.define('NeqMobile.controller.PatientView', {
             newDisease.save({
                 success:function (newDisease) {
                     console.log("diagnose successfully saved");
-                    var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
+
+                    var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
                     if (!diagnosestore) {
-                        diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
+                        diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
                     }
+                    diagnosestore.getProxy().setExtraParam('id', patientId);
                     diagnosestore.load({
                         callback:function (records, operation, success) {
-                            var response = operation.getResponse();
-                            var responseObject = Ext.decode(response.responseText);
-                            me.getPatientview().loadNewDiagnose(responseObject);
+                            var patientview = me.getPatientview();
+                            var patientdashboard = patientview.down('patientdashboard');
+                            patientdashboard.loadDiagnoses(diagnosestore);
                         },
                         scope:this
                     });
+
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);

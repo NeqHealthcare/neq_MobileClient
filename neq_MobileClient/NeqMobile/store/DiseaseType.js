@@ -11,6 +11,12 @@ Ext.define('NeqMobile.store.DiseaseType', {
         requires:'NeqMobile.model.DiseaseType',
 
         config:{model:'NeqMobile.model.DiseaseType',
-            storeId:'diseasetypes'
+            storeId:'diseasetypes',
+            sorters: [
+                {
+                    property:'name',
+                    direction:'ASC'
+                }
+            ]
         }}
 );
