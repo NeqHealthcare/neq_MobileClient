@@ -24,16 +24,16 @@ Ext.define('NeqMobile.manager.Session',
         },
         authenticate:function(params)
         {
-          var success;
+            var success;
 
-          if (this.isAuthenicated() === true)
-          {
-              success = true;
-          }
+            if (this.isAuthenicated() === true)
+            {
+                success = true;
+            }
             else
-          {
-             // (domain, user, password, success, failure, scope)
-          }
+            {
+                // (domain, user, password, success, failure, scope)
+            }
         },
         logout:function (successCallback, failureCallback, scope) {
 

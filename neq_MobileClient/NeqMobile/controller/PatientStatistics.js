@@ -32,31 +32,9 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 '[name=historicaldata_btn_month]':{
                     tap:'onShowMonthlyDataTap'
                 },
-                'workspace [name=startheartbeatlive]':{
-                    tap:'startHeartbeatLive'
-                },
-                'patientview':{activeitemchange:'onPatientViewItemChange'},
-
-                'patientstatistics':{show:'fetchData'},
-                'viewholder patientlist list':{select:'stopHeartbeatLive'}
+                'patientstatistics':{initialize:'addpainteraselisteners'}
             }
 
-        },
-        smoothiechart:undefined,
-        smoothieseries:undefined,
-        subscription:undefined,
-
-        /* - Functions ---------------------------------------------------------------------------------- */
-        onPatientViewItemChange:function (container, newvalue, oldvalue, eOpts) {
-            var me = this;
-            if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
-                console.log('enabling live heartbeat')
-                me.startHeartbeatLive();
-            }
-            else if (oldvalue instanceof NeqMobile.view.patient.PatientStatistics) {
-                console.log('disabling live heartbeat')
-                me.stopHeartbeatLive();
-            }
         },
 
         init:function () {
@@ -80,11 +58,30 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
 
 
         },
+
+        addpainteraselisteners:function(cmp,eOpts){
+            var me = this;
+           cmp.on('painted',me.startHeartbeatLive,me);
+           cmp.on('erased',me.stopHeartbeatLive,me);
+        }
+        ,
+
+        smoothiechart:undefined,
+        smoothieseries:undefined,
+        subscription:undefined,
+
         startHeartbeatLive:function () {
             console.log('starting heartbeat');
             var me = this;
 
-            me.smoothiechart = me.getPatientstatistics().getHeartbeatchart();
+            me.smoothiechart = new SmoothieChart({
+                grid:{ strokeStyle:'rgb(0,90, 0)', fillStyle:'rgb(0, 40, 0)',
+                    lineWidth:1, millisPerLine:250, verticalSections:6
+                },
+                labels:{ fillStyle:'rgb(0, 60, 0)' }
+            });
+
+            me.smoothiechart.streamTo(document.getElementById("mycanvas"), 10);
 
             if (me.smoothieseries) {
                 me.smoothiechart.removeTimeSeries(me.smoothieseries);
@@ -112,7 +109,11 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 cometd.unsubscribe(me.subscription);
                 me.subscription = null;
             }
+            if (me.smoothiechart) {
+                me.smoothiechart.stop();
+            }
         },
+
         onShowDailyDataTap:function () {
             var date = new Date();
             var vitaldatastore = Ext.data.StoreManager.lookup('vitaldata');
