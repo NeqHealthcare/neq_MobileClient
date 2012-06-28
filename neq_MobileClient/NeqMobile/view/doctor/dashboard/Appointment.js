@@ -38,7 +38,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.Appointment',{
                         label: 'Appointments',
                         labelWidth: 135,
                         padding:'0, 0, 10, 0',
-                        value: '10',
+                        value: '5',
                         options: [
                             {text: '5', value: '5'},
                             {text: '10', value: '10'},
