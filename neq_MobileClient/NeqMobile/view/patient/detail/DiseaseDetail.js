@@ -37,7 +37,6 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
         },
         style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         scrollable:false,
-        cls:'detail_view_labels',
         items:[
                     {
                       xtype:'fieldset',
@@ -68,8 +67,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                               style:'text-align: right;',
                               label:'Infectious disease:',
                               labelWidth:'30%',
-                              name:'is_infectious',
-                              readOnly:true
+                              name:'is_infectious'
                           },
                           {
                               xtype:'selectfield',
@@ -100,10 +98,11 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 readOnly:true
                             },
                             {
-                                xtype: 'numberfield',
+                                xtype: 'textfield',
                                 label: 'Age when diagnosed',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
+                                name:'age',
                                 readOnly:true
                             },
                             {
@@ -143,7 +142,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 name:'is_allergy'
                             },
                             {
-                                xtype:'selectfield',
+                                xtype:'textfield',
                                 style:'text-align: right;',
                                 label:'Allergy type:',
                                 labelWidth:'30%',
@@ -154,14 +153,15 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                             {
                                 xtype: 'togglefield',
                                 label: 'Pregnancy Warning',
+                                name: 'pregnancy_warning',
                                 style:'text-align: right;',
-                                labelWidth:'30%',
-                                readOnly: true
+                                labelWidth:'30%'
                             },
                             {
-                                xtype: 'numberfield',
+                                xtype: 'textfield',
                                 label: 'Pregnancy week #',
                                 style:'text-align: right;',
+                                name: 'weeks_of_pregnancy',
                                 labelWidth:'30%',
                                 readOnly: true
                             }
@@ -179,8 +179,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 label:'Currently on treatment:',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
-                                name:'is_on_treatment',
-                                readOnly:true
+                                name:'is_on_treatment'
                             },
                             {
                                 xtype:'textfield',
