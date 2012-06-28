@@ -45,7 +45,7 @@ Ext.define('NeqMobile.view.Login', {
                         height: 200,
                         width: 200,
                         margin: '0 0 10 0',
-                        src: 'theme/images/user/user_avatar.png'
+                        src: 'theme/images/user/userAvatar.png'
                     },
                     {
                         xtype: 'fieldset',
