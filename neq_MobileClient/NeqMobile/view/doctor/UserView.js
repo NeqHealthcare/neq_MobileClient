@@ -4,6 +4,13 @@ Ext.define('NeqMobile.view.doctor.UserView', {
     xtype:'userview',
 
     config:{
+
+        listeners:{
+            erased:function (cmp, eOpts) {
+                cmp.destroy();
+                console.log('userview destroyed')
+            }
+        },
         itemId: 'userview',
         items:[
             {

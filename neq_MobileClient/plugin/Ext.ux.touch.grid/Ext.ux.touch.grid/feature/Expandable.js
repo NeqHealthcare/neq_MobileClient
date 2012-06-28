@@ -28,7 +28,6 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     },
     handleTap:function (dw, index, item, record, e, eOpts) {
 
-        console.log(dw);
         //checking whether the user clicked on the Overview or the Detailview (when visible)
         var y = e.pageY;
         overviewEl = item.child('*:first-child');

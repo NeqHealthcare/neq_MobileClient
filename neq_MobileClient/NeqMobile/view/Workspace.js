@@ -10,10 +10,16 @@ Ext.define('NeqMobile.view.Workspace', {
         xtype:'workspace',
         requires:['NeqMobile.view.ViewHolder'
         ],
-
         config:{
+
+            listeners:
+            {
+              erased:function(cmp,eOpts){
+                  cmp.destroy();
+                  console.log('workspace destroyed')
+              }
+            }   ,
             layout:'fit',
-            autoDestroy:true,
             items:[
 
                 {xtype:'toolbar',
@@ -42,6 +48,19 @@ Ext.define('NeqMobile.view.Workspace', {
                         {
                             xtype:'spacer'
                         },
+                        {
+                            xtype: 'button',
+                            align: 'right',
+                            itemId: 'countbutton',
+                            iconCls: 'help',
+                            iconMask: true,
+                            handler:function()
+                            {
+
+                                console.log('workspace count: ' + Ext.ComponentQuery.query('workspace').length);
+                            }
+                        },
+
                         {
                             xtype:'label',
                             tpl:'<span style="color:#E6E6E6">{name}</span>',
@@ -86,13 +105,12 @@ Ext.define('NeqMobile.view.Workspace', {
                             direction:'left'
                         }
                     },
-                    itemId:'contentcontainer',
-                    items:[
-                        {
-                            xtype:'viewholder'
-
-                        }
-                    ]
+                    itemId:'contentcontainer'
+//                    items:[
+//                        {
+//                           xtype:'viewholder'
+//                        }
+                //    ]
                 }
             ]
         }

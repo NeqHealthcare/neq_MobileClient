@@ -15,7 +15,12 @@ Ext.define('NeqMobile.controller.Session', {
         refs:{
             login:'Login',
             viewport:'Viewport',
-            workspace:'workspace',
+            workspace:
+            {
+                selector:'workspace',
+                xtype:'workspace',
+                autoCreate:true
+            } ,
             menuSettings:'menuSettings',
             settingsDomains:'settingsDomains',
             userSettings:'userSettings',
@@ -33,7 +38,7 @@ Ext.define('NeqMobile.controller.Session', {
         },
         routes:{
             'userSettings':'switchToUserSettings',
-            'login':'switchToLogin'
+            'login':'doLogout'
         }
     },
 
@@ -180,14 +185,14 @@ Ext.define('NeqMobile.controller.Session', {
                     Ext.Msg.alert('No Domain Selected', 'Please select a domain or create a new domain in the settings', Ext.emptyFn);
                 }
                 else {
-                    this.loginToServer();
+                    this.requestLogin();
                 }
             }
         }
     },
-    loginToServer:function () {
+    requestLogin:function() {
         var loginForm = this.getLogin().down('formpanel');
-        Ext.Viewport.setMasked({ xtype:'loadmask', message:'Login in process...' });
+        Ext.Viewport.setMasked({ xtype:'loadmask', message:'Login in progres...' });
         NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
             loginForm.getFields('password').getValue(), this.onLoginSuccess, this.onLoginFailure, this);
     },
@@ -198,43 +203,52 @@ Ext.define('NeqMobile.controller.Session', {
     onLoginSuccess:function () {
         var me = this;
         Ext.Viewport.setMasked(false);
-        console.log('switching card');
-        this.getViewport().remove(this.getWorkspace(), true);
-        this.getViewport().setActiveItem(Ext.create('NeqMobile.view.Workspace'));
         console.log('firing login event');
-        Ext.Viewport.fireEvent('login');
+
         this.getLogin().down('formpanel').getFields('password').reset();
-        console.log('save sessionID...');
 
         // Creating the required Patient Store and its Proxy to load patient data from MAIS
-        console.log('loading patients');
-        Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('patients'));
 
+        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
+        Ext.data.StoreManager.unregister(Ext.data.StoreManager.lookup('patients'));
         var store = new NeqMobile.store.Patients(
             {
                 storeId:'patients'
             }
         );
         store.load();
-        this.getWorkspace().down('patientlist').down('list').setStore(store);
-        var userinfodata = NeqMobile.manager.Session.getSession().get('userinfo').data;
-        console.log('this is the userinfo issued from session controller');
-        console.log(userinfodata);
-        this.getWorkspace().down('#doctorname').setData(userinfodata);
-        //this.getWorkspace().down('#doctorimage').setDa(userinfodata.image_url);
+        var workspace = this.getWorkspace();
+        workspace.down('#doctorname').setData(userinfodata);
+
+        Ext.Viewport.fireEvent('login');
+        this.getViewport().setActiveItem(workspace);
         this.redirectTo('userdashboard');
-        //  Ext.defer(function(){me.},1000)
+
+        console.log('loading patients');
+
+    //    var workspace =  this.getWorkspace();
+    //    var patientlist = workspace.down('patientlist');
+    //    var plist = patientlist.down('list');
+    //    plist.setStore(store);
+
     },
     onLogoutClick:function () {
+
         this.redirectTo('login');
     },
 
-    switchToLogin:function () {
+    doLogout:function () {
         console.log('trying to logout');
         Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
-        this.getViewport().remove(this.getWorkspace(), true);
-        this.getMenuSettings().setHidden(true);
+        var loginview = this.getLogin();
+        if (!loginview)
+        {
+            loginview = Ext.create('NeqMobile.view.Login');
+        }
+       this.getViewport().setActiveItem(loginview);
+       // this.getViewport().remove(this.getWorkspace(), true);
+       this.getMenuSettings().setHidden(true);
         //    this.getMenuSettings().destroy();
     }
 })
