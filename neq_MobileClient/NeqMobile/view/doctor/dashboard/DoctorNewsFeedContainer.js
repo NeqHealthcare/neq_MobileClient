@@ -8,15 +8,39 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer', {
             padding: '5',
             items:[
                 {
-                    xtype: 'selectfield',
-                    id:'doctornewsfeedtopicselectfield',
-                    label: 'Topic',
-                    displayField:'topic',
-                    valueField:'id',
-                    store:'doctornewstopics',
-                    padding: 5,
-                    width: 300,
-                    labelWidth: 75
+                   xtype: 'fieldset',
+                   layout: 'hbox',
+                    items:[
+                        {
+                            xtype: 'selectfield',
+                            id:'doctornewsfeedtopicselectfield',
+                            label: 'Topic',
+                            displayField:'topic',
+                            valueField:'id',
+                            store:'doctornewstopics',
+                            padding: 5,
+                            width: 300,
+                            labelWidth: 75
+                        },
+                        {
+
+                        },
+                        {
+                            xtype: 'selectfield',
+                            width: 250,
+                            id: 'newsnumberselection',
+                            label: '# of News',
+                            labelWidth: 135,
+                            padding:'0, 0, 10, 0',
+                            value: '5',
+                            options: [
+                                {text: '5', value: '5'},
+                                {text: '10', value: '10'},
+                                {text: '15', value: '15'}
+                            ]
+
+                        }
+                    ]
                 },
                 {
                     xtype:'touchgridpanel',
