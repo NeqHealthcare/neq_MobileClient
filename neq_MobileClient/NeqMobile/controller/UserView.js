@@ -49,7 +49,7 @@ Ext.define('NeqMobile.controller.UserView', {
             'workspace appointment appointmentview #appointmentlist':{
                 select:'onAppointmentSelect'
             },
-            'workspace appointment appointmentview #appointmentdetail button':{
+            'workspace appointment #appointmentBackButton':{
                 tap:'onAppointmentBackButton'
             },
             'userview #showUserDashboardIcon':{tap:'onTapShowUserDashboard'},
@@ -414,6 +414,8 @@ Ext.define('NeqMobile.controller.UserView', {
 
     onAppointmentSelect:function (list, appointmentrecord, options) {
         var appointmentview = this.getAppointmentview();
+        var backButton = this.getAppointment().down('#appointmentBackButton');
+        backButton.setHidden(false);
         var appointmentDetail = appointmentview.down('#appointmentdetail');
         var selectedAppointment = appointmentview.down('#appointmentlist').getSelection()[0];
         appointmentDetail.down('#consultation').setValue(selectedAppointment.get('consultations_description'));
@@ -428,9 +430,12 @@ Ext.define('NeqMobile.controller.UserView', {
     },
 
     onAppointmentBackButton:function (button, e, eOpts) {
-        this.getAppointmentview().setActiveItem(0);
+        var appointmentview = this.getAppointmentview();
+        var backButton = this.getAppointment().down('#appointmentBackButton');
+        backButton.setHidden(true);
+        appointmentview.setActiveItem(0);
         //this.showAppointments();
-        this.getAppointmentview().down('#appointmentlist').deselectAll();
+        appointmentview.down('#appointmentlist').deselectAll();
     },
 
     /* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */

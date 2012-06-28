@@ -86,8 +86,6 @@ Ext.define('NeqMobile.controller.PatientLab', {
                 labtestrequeststore.getProxy().setExtraParam('patientId', patient_id);
                 labtestrequeststore.load({
                     callback:function (records, operation, success) {
-                        var response = operation.getResponse();
-                        var responseObject = Ext.decode(response.responseText);
                         me.getPatientlab().loadLabTestRequests(labtestrequeststore);
                     },
                     scope:this
