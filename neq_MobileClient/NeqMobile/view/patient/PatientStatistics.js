@@ -1,7 +1,3 @@
-/**
- * @author chopsuey
- */
-
 var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
     height:240,
@@ -64,7 +60,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
             axis:'left',
             xField:'date',
-            yField:'temperature'
+            yField:'temprature'
         },
         {
             type:'line',
@@ -207,10 +203,7 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
 
     xtype:'patientstatistics',
 
-// - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen                                 ,
-
     config:{
-        //   heartbeatchart:     undefined,
         styleHtmlContent:true,
         layout:'vbox',
 
@@ -226,6 +219,10 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                 width:'100%',
                 margin:0,
                 padding:5,
+                layout:{
+                    type:'hbox',
+                    align:'middle'
+                },
 
                 items:[
                     {
