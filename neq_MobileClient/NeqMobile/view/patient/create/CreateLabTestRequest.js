@@ -21,7 +21,7 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
             },
             centered:true,
             width: 400,
-            height: 250,
+            height: 300,
             styleHtmlContent:true,
             layout: {
                 align: 'center',
@@ -60,6 +60,7 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                             label: 'Date:',
                             labelWidth: '30%',
                             width: '100%',
+                            dateFormat: 'd.m.Y',
                             value: new Date(),
                             picker: {
                                 yearFrom: new Date().getYear()
