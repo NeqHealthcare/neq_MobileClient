@@ -42,7 +42,7 @@ Ext.define('NeqMobile.controller.PatientView', {
                 mainToolbar:'workspace #mainToolbar',
 
                 contentcontainer:'#contentcontainer',
-                userviewcontainer:'#userviewcontainer'
+                userviewcontainer:'#userviewcontainer',
                 medicationdetail: 'medicationdetail',
                 patientdashboard: 'patientdashboard'
             },
