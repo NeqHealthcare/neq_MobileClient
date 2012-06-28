@@ -38,6 +38,8 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 'patientview':{activeitemchange:'onPatientViewItemChange'},
 
                 'patientstatistics':{show:'fetchData'},
+
+
                 'viewholder patientlist list':{select:'stopHeartbeatLive'}
             }
 
@@ -58,6 +60,11 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 me.stopHeartbeatLive();
             }
         },
+        /* initHeartRateSim: function ( me,  eOpts ){
+         me.setData({'rate': 60});
+         console.log('Test') ;
+
+         },*/
 
         init:function () {
             var me = this;
