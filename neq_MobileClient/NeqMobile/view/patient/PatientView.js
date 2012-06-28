@@ -13,6 +13,12 @@ Ext.define('NeqMobile.view.patient.PatientView', {
     xtype:'patientview',
 
     config:{
+        listeners:{
+            erased:function (cmp, eOpts) {
+                cmp.destroy();
+                console.log('patientview destroyed')
+            }
+        },
         items:[
 
             {

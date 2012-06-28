@@ -18,8 +18,6 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
 
             refs:{
                 workspace:'workspace',
-                vitalchartcontainer:'vitaldatachart',
-                fluidchartcontainer:'fluidbalancechart',
                 patientstatistics:'patientstatistics'},
 
             control:{
