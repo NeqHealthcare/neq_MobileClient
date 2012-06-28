@@ -52,14 +52,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                         {
                                             xtype: 'textfield',
                                             readOnly: true,
-                                            label: 'Disease',
+                                            label: 'Disease:',
                                             labelWidth:'35%',
                                             id: 'diseasefield',
                                             flex: 10
                                         },
                                         {
                                             xtype: 'textfield',
-                                            label: 'Pathology',
+                                            label: 'Pathology:',
                                             id: 'pathology',
                                             hidden: true
                                         },
@@ -74,7 +74,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'selectfield',
-                                    label: 'Status',
+                                    label: 'Status:',
                                     labelWidth:'30%',
                                     id:'status',
                                     options: [
@@ -88,7 +88,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'selectfield',
-                                    label: 'Severity',
+                                    label: 'Severity:',
                                     labelWidth:'30%',
                                     id: 'disease_severity',
                                     options: [
@@ -99,14 +99,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'checkboxfield',
-                                    label: 'Infectious',
+                                    label: 'Infectious:',
                                     labelWidth:'30%',
                                     id: 'is_infectious',
                                     value: false
                                 },
                                 {
                                     xtype: 'checkboxfield',
-                                    label: 'Active',
+                                    label: 'Active:',
                                     labelWidth:'30%',
                                     id: 'is_active',
                                     value: false
@@ -128,7 +128,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'textfield',
-                                    label: 'Treatment Description',
+                                    label: 'Treatment Description:',
                                     labelWidth:'30%',
                                     id: 'treatment_description',
                                     placeHolder: '-'
@@ -169,7 +169,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     items: [
                                         {
                                             xtype: 'textfield',
-                                            label: 'Code',
+                                            label: 'Code:',
                                             labelWidth:'35%',
                                             id: 'pcs_code',
                                             flex: 10
@@ -207,7 +207,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'numberfield',
-                                    label: 'Age when diagnosed',
+                                    label: 'Age when diagnosed:',
                                     labelWidth:'30%',
                                     minValue:0,
                                     maxValue: 150,
@@ -229,7 +229,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'textfield',
-                                    label: 'Physician',
+                                    label: 'Physician:',
                                     labelWidth:'30%',
                                     id: 'physicianSelectfield',
                                     readOnly: true
@@ -244,14 +244,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                             items:[
                                 {
                                     xtype: 'checkboxfield',
-                                    label: 'Allergic Disease',
+                                    label: 'Allergic Disease:',
                                     id: 'is_allergy',
                                     labelWidth:'30%',
                                     value: false
                                 },
                                 {
                                     xtype: 'selectfield',
-                                    label: 'Allergy Type',
+                                    label: 'Allergy Type:',
                                     labelWidth:'30%',
                                     id: 'allergy_type',
                                     options: [
@@ -263,14 +263,14 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                 },
                                 {
                                     xtype: 'checkboxfield',
-                                    label: 'Pregnancy Warning',
+                                    label: 'Pregnancy Warning:',
                                     labelWidth:'30%',
                                     id:'pregnancy_warning',
                                     value: false
                                 },
                                 {
                                     xtype: 'numberfield',
-                                    label: 'Contracted in pregnancy week #',
+                                    label: 'Contracted in pregnancy week #:',
                                     labelWidth:'30%',
                                     minValue: 0,
                                     maxValue: 45,
@@ -281,7 +281,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                         },
                         {
                             xtype: 'textareafield',
-                            label: 'Extra Info',
+                            label: 'Extra Info:',
                             id: 'extrainfo',
                             width: '100%',
                             labelAlign: 'top'

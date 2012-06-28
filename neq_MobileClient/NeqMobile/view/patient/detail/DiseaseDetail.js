@@ -99,7 +99,7 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                             },
                             {
                                 xtype: 'textfield',
-                                label: 'Age when diagnosed',
+                                label: 'Age when diagnosed:',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
                                 name:'age',
@@ -152,14 +152,14 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                             },
                             {
                                 xtype: 'togglefield',
-                                label: 'Pregnancy Warning',
+                                label: 'Pregnancy Warning:',
                                 name: 'pregnancy_warning',
                                 style:'text-align: right;',
                                 labelWidth:'30%'
                             },
                             {
                                 xtype: 'textfield',
-                                label: 'Pregnancy week #',
+                                label: 'Pregnancy week #:',
                                 style:'text-align: right;',
                                 name: 'weeks_of_pregnancy',
                                 labelWidth:'30%',
