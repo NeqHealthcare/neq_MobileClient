@@ -31,13 +31,13 @@ Ext.define('NeqMobile.controller.PatientView', {
                 tap:'onCreateNewDiagnoseTap'
             },
             'createnewdiagnoseoverlay #submitDiagnoseButton'                :{tap: 'onSubmitNewDiagnoseTap'},
-            'createnewdiagnoseoverlay #toppart #diseaseInfo #diseasebutton' :{tap: 'onDiseaseTypeSelect'},
+            'createnewdiagnoseoverlay #diseaseInfo #diseasebutton' :{tap: 'onDiseaseTypeSelect'},
 
             'diseasetype #diseaselist'                                      :{select:'onDiseaseSelect'},
             'diseasetype #diseasesearchfield'                               :{keyup:'doFilter'},
             'diseasetype #refreshbutton'                                    :{tap:'onTapRefreshButton'},
 
-            'createnewdiagnoseoverlay #toppart #therapy #pcdbutton'         :{tap: 'onProcedureSelect'},
+            'createnewdiagnoseoverlay #therapy #pcdbutton'         :{tap: 'onProcedureSelect'},
             'procedure #pcdlist'                                            : {select: 'onDProcedureListSelect'},
 
             'patientview #showDocuments'                                    : {tap:'onTapShowDocuments'},
@@ -255,13 +255,13 @@ Ext.define('NeqMobile.controller.PatientView', {
             var diagnoseOverlay;
             if (this.getDiagnoseoverlay()) {
                 diagnoseOverlay = this.getDiagnoseoverlay();
-                diagnoseOverlay.down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue("");
+                diagnoseOverlay.down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue("");
             }
             else
             {
                 diagnoseOverlay = Ext.create('NeqMobile.view.patient.create.CreateDiagnose');
             }
-            var physicianname= diagnoseOverlay.down('#middlepart').down('#diagnoseInfo').down('#physicianSelectfield');
+            var physicianname= diagnoseOverlay.down('#diagnoseInfo').down('#physicianSelectfield');
             physicianname.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
 
 //            var procedures = Ext.data.StoreManager.lookup('procedure');
@@ -281,7 +281,7 @@ Ext.define('NeqMobile.controller.PatientView', {
         },
 
         onSubmitNewDiagnoseTap:function (button, e, eOpts) {
-            var diseaseInformation = this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo');
+            var diseaseInformation = this.getDiagnoseoverlay().down('#diseaseInfo');
             var diseasefield = diseaseInformation.down('#diseasefield').getValue();
             console.log(diseasefield);
             if(diseasefield != ""){
@@ -301,8 +301,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             if (!extraInfo){
                 extraInfo = false;
             }
-            var toppart = diagnoseoverlay.down('#toppart');
-            var diseaseInfo = toppart.down('#diseaseInfo');
+            var diseaseInfo = diagnoseoverlay.down('#diseaseInfo');
             var pathology1 = diseaseInfo.down('#pathology').getValue();
             var status1 = diseaseInfo.down('#status').getValue();
             if(status1 == null){
@@ -311,7 +310,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             var diseaseSeverity = diseaseInfo.down('#disease_severity').getValue();
             var isInfectious = diseaseInfo.down('#is_infectious').getValue();
             var isActive = diseaseInfo.down('#is_active').getValue();
-            var therapy = toppart.down('#therapy');
+            var therapy = diagnoseoverlay.down('#therapy');
             var isOnTreatment = therapy.down('#is_on_treatment').getValue();
             var treatmentDescription = therapy.down('#treatment_description').getValue();
             if (!treatmentDescription){
@@ -320,7 +319,6 @@ Ext.define('NeqMobile.controller.PatientView', {
             var dateStartTreatment = therapy.down('#date_start_treatment').getValue().getTime();
             var dateStopTreatment = therapy.down('#date_stop_treatment').getValue().getTime();
 
-            var middlepart = diagnoseoverlay.down('#middlepart');
             var diagnoseInfo = diagnoseoverlay.down('#diagnoseInfo');
             var diagnosedDate = diagnoseInfo.down('#diagnosed_date').getValue().getTime();
             var age1 = diagnoseInfo.down('#age').getValue();
@@ -445,8 +443,8 @@ Ext.define('NeqMobile.controller.PatientView', {
         },
         onDiseaseSelect: function(list, record, eOpts){
             var selectedDisease = this.getDiseasetype().down('#diseaselist').getSelection()[0];
-            this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue(selectedDisease.get('name'));
-            this.getDiagnoseoverlay().down('#toppart').down('#diseaseInfo').down('#diseasename').down('#pathology').setValue(selectedDisease.get('id'));
+            this.getDiagnoseoverlay().down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue(selectedDisease.get('name'));
+            this.getDiagnoseoverlay().down('#diseaseInfo').down('#diseasename').down('#pathology').setValue(selectedDisease.get('id'));
             this.getDiseasetype().setHidden(true);
         },
 
@@ -506,7 +504,7 @@ Ext.define('NeqMobile.controller.PatientView', {
 
         onDProcedureListSelect: function(list, record, eOpts){
             var selectedProcedure = this.getProcedure().down('#pcdlist').getSelection()[0];
-            this.getDiagnoseoverlay().down('#toppart').down('#therapy').down('#procedure').down('#pcs_code').setValue(selectedProcedure.get('description'));
+            this.getDiagnoseoverlay().down('#therapy').down('#procedure').down('#pcs_code').setValue(selectedProcedure.get('description'));
             this.getProcedure().setHidden(true);
         },
 

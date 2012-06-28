@@ -28,9 +28,8 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
             height: 500,
             styleHtmlContent:true,
             layout: {
-                align: 'center',
-                pack: 'center',
-                type: 'vbox'
+                type: 'vbox',
+                align: 'center'
             },
             scrollable: true,
             items:[
@@ -40,19 +39,11 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                     title: 'Create New Diagnose'
                 },
                 //top part
-                {
-                    xtype: 'fieldset',
-                    id: 'toppart',
-                    width: '100%',
-                    padding: 10,
-                    margin: 5,
-                    layout: 'hbox',
-                    items: [
                         {
                             xtype: 'fieldset',
                             title: 'Disease Information',
                             id: 'diseaseInfo',
-                            flex:1,
+                            width: '100%',
                             items:[
                                 {
                                     xtype:'container',
@@ -126,8 +117,8 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                         {
                             xtype:'fieldset',
                             id: 'therapy',
-                            flex: 1,
                             title: 'Therapy',
+                            width: '100%',
                             items:[
                                 {
                                     xtype: 'checkboxfield',
@@ -194,23 +185,12 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                         ]
                                 }
                             ]
-                        }
-                    ]
-                },
-                //Middle Part
-                {
-                    xtype: 'fieldset',
-                    layout: 'hbox',
-                    padding: 10,
-                    width: '100%',
-                    margin: 5,
-                    id: 'middlepart',
-                    items: [
+                        },
                         {
                             xtype: 'fieldset',
                             title: 'Diagnose Information',
-                            flex: 1,
                             id: 'diagnoseInfo',
+                            width: '100%',
                             items:[
                                 {
                                     xtype: 'datepickerfield',
@@ -260,8 +240,8 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                         {
                             xtype:'fieldset',
                             title: 'Allergies & Pregnancy',
-                            flex: 1,
                             id: 'allergies',
+                            width: '100%',
                             items:[
                                 {
                                     xtype: 'checkboxfield',
@@ -299,25 +279,22 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     placeHolder: '-'
                                 }
                             ]
+                        },
+                        {
+                            xtype: 'textareafield',
+                            label: 'Extra Info',
+                            id: 'extrainfo',
+                            width: '100%',
+                            labelAlign: 'top'
+                        },
+                        //button
+                        {
+                            width: 250,
+                            padding: '10 0 0 0',
+                            xtype: 'button',
+                            id: 'submitDiagnoseButton',
+                            text: 'Save Diagnose'
                         }
-                    ]
-                },
-                //Bottom Part
-                {
-                    xtype: 'textareafield',
-                    label: 'Extra Info',
-                    id: 'extrainfo',
-                    width: '100%',
-                    labelAlign: 'top'
-                },
-                //button
-                {
-                    width: 250,
-                    padding: '10 0 0 0',
-                    xtype: 'button',
-                    id: 'submitDiagnoseButton',
-                    text: 'Save Diagnose'
-                }
             ]
         }
     }

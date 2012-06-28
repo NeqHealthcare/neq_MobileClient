@@ -35,6 +35,11 @@ Ext.define('NeqMobile.view.Workspace', {
                             itemId:'homebutton'
                         },
                         {
+                            iconMask:true,
+                            iconCls:'chat3',
+                            itemId:'chatterButton'
+                        },
+                        {
                             xtype:'spacer'
                         },
                         {
