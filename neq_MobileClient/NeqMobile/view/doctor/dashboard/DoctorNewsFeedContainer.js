@@ -15,8 +15,8 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer', {
                     valueField:'id',
                     store:'doctornewstopics',
                     padding: 5,
-                    width: 250,
-                    labelWidth: 50
+                    width: 300,
+                    labelWidth: 75
                 },
                 {
                     xtype:'touchgridpanel',
