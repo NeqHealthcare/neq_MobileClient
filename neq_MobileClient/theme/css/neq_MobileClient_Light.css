@@ -775,7 +775,8 @@ input, textarea {
   padding: 4px 10px 4px 5px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/compass\.app\.windows\.v1\.16\/compass\.app\/lib\/ruby\/compass_0\.12\/compass-0\.12\.2\/frameworks\/blueprint\/stylesheets\/blueprint\/_typography\.scss}line{font-family:\0000385}}
-.x-html table.striped tr:nth-child(even) td, .x-html table tr.even td {
+.x-html table.striped tr:nth-child(even) td,
+.x-html table tr.even td {
   background: #e5ecf9;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/compass\.app\.windows\.v1\.16\/compass\.app\/lib\/ruby\/compass_0\.12\/compass-0\.12\.2\/frameworks\/blueprint\/stylesheets\/blueprint\/_typography\.scss}line{font-family:\0000386}}
@@ -6214,7 +6215,9 @@ audio {
   background-color: #1985d0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_panel\.scss}line{font-family:\0000327}}
-.x-panel.x-floating > .x-panel-inner, .x-panel.x-floating .x-scroll-view, .x-panel.x-floating .x-body,
+.x-panel.x-floating > .x-panel-inner,
+.x-panel.x-floating .x-scroll-view,
+.x-panel.x-floating .x-body,
 .x-msgbox.x-floating > .x-panel-inner,
 .x-msgbox.x-floating .x-scroll-view,
 .x-msgbox.x-floating .x-body,
@@ -7046,7 +7049,10 @@ audio {
   padding-right: 1.6em !important;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar-forms\.scss}line{font-family:\0000389}}
-.x-toolbar .x-field-textarea .x-component-outer, .x-toolbar .x-field-text .x-component-outer, .x-toolbar .x-field-number .x-component-outer, .x-toolbar .x-field-search .x-component-outer {
+.x-toolbar .x-field-textarea .x-component-outer,
+.x-toolbar .x-field-text .x-component-outer,
+.x-toolbar .x-field-number .x-component-outer,
+.x-toolbar .x-field-search .x-component-outer {
   -webkit-border-radius: 0.3em;
   border-radius: 0.3em;
   background-color: white;
@@ -7074,7 +7080,8 @@ audio {
   color: black;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_toolbar-forms\.scss}line{font-family:\00003122}}
-.x-toolbar .x-field-select .x-component-outer, .x-toolbar .x-field-search .x-component-outer {
+.x-toolbar .x-field-select .x-component-outer,
+.x-toolbar .x-field-search .x-component-outer {
   -webkit-border-radius: 0.8em;
   border-radius: 0.8em;
 }
@@ -7546,17 +7553,41 @@ audio {
   border-left-color: black;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000332}}
-.x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before {
+.x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button,
+.x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer,
+.x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before {
   border: 1px solid #061f31;
   border-top-color: #092e47;
   color: white;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000337}}
-.x-toolbar-dark .x-button.x-button-back:before, .x-toolbar-dark .x-button.x-button-forward:before, .x-toolbar .x-toolbar-dark .x-button.x-button-back:before, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:before, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:before, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:before {
+.x-toolbar-dark .x-button.x-button-back:before, .x-toolbar-dark .x-button.x-button-forward:before, .x-toolbar .x-toolbar-dark .x-button.x-button-back:before, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:before,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-back:before,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-back:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:before,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:before,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:before {
   background: #061f31;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000341}}
-.x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
+.x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after,
+.x-toolbar-dark .x-field-select .x-component-outer,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after,
+.x-toolbar-dark .x-field-select .x-component-outer:before,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
   background-image: none;
   background-color: #11598c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1985d0), color-stop(3%, #1468a2), color-stop(100%, #0e4b75));
@@ -7564,7 +7595,11 @@ audio {
   background-image: linear-gradient(top, #1985d0, #1468a2 3%, #0e4b75);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000345}}
-.x-toolbar-dark .x-button .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-dark .x-button .x-button-icon.x-icon-mask, .x-toolbar-dark .x-field-select .x-component-outer .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer .x-button-icon.x-icon-mask, .x-toolbar-dark .x-field-select .x-component-outer:before .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before .x-button-icon.x-icon-mask {
+.x-toolbar-dark .x-button .x-button-icon.x-icon-mask, .x-toolbar .x-toolbar-dark .x-button .x-button-icon.x-icon-mask,
+.x-toolbar-dark .x-field-select .x-component-outer .x-button-icon.x-icon-mask, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer .x-button-icon.x-icon-mask,
+.x-toolbar-dark .x-field-select .x-component-outer:before .x-button-icon.x-icon-mask, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before .x-button-icon.x-icon-mask {
   background-image: none;
   background-color: white;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(3%, #ffffff), color-stop(100%, #e8f4fc));
@@ -7572,7 +7607,31 @@ audio {
   background-image: linear-gradient(top, #ffffff, #ffffff 3%, #e8f4fc);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/_mixins\.scss}line{font-family:\0000350}}
-.x-toolbar-dark .x-button.x-button-pressing, .x-toolbar-dark .x-button.x-button-pressing:after, .x-toolbar-dark .x-button.x-button-pressed, .x-toolbar-dark .x-button.x-button-pressed:after, .x-toolbar-dark .x-button.x-button-active, .x-toolbar-dark .x-button.x-button-active:after, .x-toolbar .x-toolbar-dark .x-button.x-button-pressing, .x-toolbar .x-toolbar-dark .x-button.x-button-pressing:after, .x-toolbar .x-toolbar-dark .x-button.x-button-pressed, .x-toolbar .x-toolbar-dark .x-button.x-button-pressed:after, .x-toolbar .x-toolbar-dark .x-button.x-button-active, .x-toolbar .x-toolbar-dark .x-button.x-button-active:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing, .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed, .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-active, .x-toolbar-dark .x-field-select .x-component-outer.x-button-active:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-active, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-active:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active:after {
+.x-toolbar-dark .x-button.x-button-pressing, .x-toolbar-dark .x-button.x-button-pressing:after, .x-toolbar-dark .x-button.x-button-pressed, .x-toolbar-dark .x-button.x-button-pressed:after, .x-toolbar-dark .x-button.x-button-active, .x-toolbar-dark .x-button.x-button-active:after, .x-toolbar .x-toolbar-dark .x-button.x-button-pressing, .x-toolbar .x-toolbar-dark .x-button.x-button-pressing:after, .x-toolbar .x-toolbar-dark .x-button.x-button-pressed, .x-toolbar .x-toolbar-dark .x-button.x-button-pressed:after, .x-toolbar .x-toolbar-dark .x-button.x-button-active, .x-toolbar .x-toolbar-dark .x-button.x-button-active:after,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing:after,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed:after,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-active,
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-active:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressing:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-pressed:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-active, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer.x-button-active:after,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing:after,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed:after,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active,
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressing:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-pressed:after, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active, .x-toolbar
+.x-toolbar-dark .x-field-select .x-component-outer:before.x-button-active:after {
   background-image: none;
   background-color: #0f517e;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0a3351), color-stop(10%, #0c4267), color-stop(65%, #0f517e), color-stop(100%, #0f5280));
@@ -8582,7 +8641,8 @@ html, body {
   min-width: 3.7em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003172}}
-.x-field .x-field-input, .x-field .x-input-el {
+.x-field .x-field-input,
+.x-field .x-input-el {
   width: 100%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003177}}
@@ -8680,13 +8740,15 @@ html, body {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003275}}
-.x-field-required label:after, .x-field-required .x-form-label:after {
+.x-field-required label:after,
+.x-field-required .x-form-label:after {
   content: "*";
   display: inline;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003283}}
-.x-item-disabled label:after, .x-item-disabled .x-form-label:after {
+.x-item-disabled label:after,
+.x-item-disabled .x-form-label:after {
   color: #666 !important;
 }
 
@@ -8788,7 +8850,8 @@ html, body {
   text-align: center;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003384}}
-.x-spinner .x-field-input input::-webkit-outer-spin-button, .x-spinner .x-field-input input::-webkit-inner-spin-button {
+.x-spinner .x-field-input input::-webkit-outer-spin-button,
+.x-spinner .x-field-input input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -9062,7 +9125,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/d056680\/Downloads\/dev\/neq_MobileClient\/st2\/resources\/themes\/stylesheets\/sencha-touch\/default\/widgets\/_form\.scss}line{font-family:\00003485}}
-.x-field-number input::-webkit-outer-spin-button, .x-field-number input::-webkit-inner-spin-button {
+.x-field-number input::-webkit-outer-spin-button,
+.x-field-number input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

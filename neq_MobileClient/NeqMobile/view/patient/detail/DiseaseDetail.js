@@ -104,7 +104,6 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 label: 'Age when diagnosed',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
-                                id: 'age',
                                 readOnly:true
                             },
                             {
@@ -157,7 +156,6 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 label: 'Pregnancy Warning',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
-                                id:'pregnancy_warning',
                                 readOnly: true
                             },
                             {
@@ -165,7 +163,6 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 label: 'Pregnancy week #',
                                 style:'text-align: right;',
                                 labelWidth:'30%',
-                                id:'weeks_of_pregnancy',
                                 readOnly: true
                             }
                         ]
