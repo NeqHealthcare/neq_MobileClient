@@ -55,8 +55,8 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
             }
         }
         else {
-            dw.deselect(itemrecord);
             this.collapse(dw, index, item, itemrecord, e, eOpts);
+            dw.deselect(itemrecord);
         }
     },
     autoExpand:function (dw, index, item, itemrecord, e, eOpts) {
@@ -79,7 +79,8 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
     collapse:function (dw, index, item, itemrecord, e, eOpts) {
         // during collapsing the DetailView is destroyed to get not only hidden, but also to save memory.
         item.expanded = false;
-        item.detailinstance.setMaxHeight(1);
+        item.detailinstance.setMaxHeight(0);
+        item.detailinstance.hide();
         Ext.defer(function () {
             item.detailinstance.destroy()
         }, 300);
