@@ -12,7 +12,7 @@ Ext.define('NeqMobile.controller.settings.Domains', {
         refs:{
             viewport:'viewport',
             SettingsDomains:'settingsDomains',
-            DomainsList:'settingsDomains container #domainslist',
+            DomainsList:'settingsDomains container #domainslist'
         }
     },
     init:function () {
