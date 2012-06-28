@@ -73,6 +73,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                         {
                             xtype:'list',
+                            style:'background-color:white;',
                             flex:1,
 
 
