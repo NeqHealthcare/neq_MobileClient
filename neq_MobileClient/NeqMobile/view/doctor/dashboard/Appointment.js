@@ -18,20 +18,38 @@ Ext.define('NeqMobile.view.doctor.dashboard.Appointment',{
         title: 'Appointments',
         items: [
             {
-                xtype: 'selectfield',
-                width: 250,
-                id: 'appointmentsnumberselctfield',
-                label: 'Appointments',
-                labelWidth: 150,
-                padding:'0, 0, 10, 0',
-                value: '10',
-                options: [
-                    {text: '5', value: '5'},
-                    {text: '10', value: '10'},
-                    {text: '15', value: '15'}
-                ]
+                type: 'container',
+                layout:'hbox',
+                width: '100%',
+                items: [
+                    {
+                        xtype: 'button',
+                        iconCls:'arrow_left',
+                        iconMask:true,
+                        id: 'appointmentBackButton',
+                        round:true,
+                        margin: '0px 10 px 0px 0px',
+                        hidden:true
+                    },
+                    {
+                        xtype: 'selectfield',
+                        width: 250,
+                        id: 'appointmentsnumberselctfield',
+                        label: 'Appointments',
+                        labelWidth: 135,
+                        padding:'0, 0, 10, 0',
+                        value: '10',
+                        options: [
+                            {text: '5', value: '5'},
+                            {text: '10', value: '10'},
+                            {text: '15', value: '15'}
+                        ]
 
+                    }
+                ]
             },
+
+
             {
                 xtype: 'appointmentview',
                 padding: 5
