@@ -12,7 +12,7 @@ Ext.define('NeqMobile.view.patient.create.DiseaseType',{
     xtype: 'diseasetype',
     config:{
         modal: true,
-        hideOnMaskTap: false,
+        hideOnMaskTap: true,
         showAnimation: {
             type: 'popIn',
             duration: 250,
