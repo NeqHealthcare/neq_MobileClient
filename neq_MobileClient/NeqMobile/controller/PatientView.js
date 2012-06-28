@@ -257,11 +257,24 @@ Ext.define('NeqMobile.controller.PatientView', {
             if (this.getDiagnoseoverlay()) {
                 diagnoseOverlay = this.getDiagnoseoverlay();
                 diagnoseOverlay.down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue("");
+                diagnoseOverlay.down('#diseaseInfo').down('#status').reset();
+                diagnoseOverlay.down('#diseaseInfo').down('#disease_severity').reset();
+                diagnoseOverlay.down('#diseaseInfo').down('#is_infectious').reset();
+                diagnoseOverlay.down('#diseaseInfo').down('#is_active').reset();
+
+                diagnoseOverlay.down('#therapy').down('#is_on_treatment').reset();
+                diagnoseOverlay.down('#therapy').down('#treatment_description').reset();
+                diagnoseOverlay.down('#therapy').down('#procedure').down('#pcs_code').reset();
                 diagnoseOverlay.down('#therapy').down('#date_start_treatment').reset();
                 diagnoseOverlay.down('#therapy').down('#date_stop_treatment').reset();
+
                 diagnoseOverlay.down('#diagnoseInfo').down('#diagnosed_date').reset();
+                diagnoseOverlay.down('#diagnoseInfo').down('#age').reset();
                 diagnoseOverlay.down('#diagnoseInfo').down('#healed_date').reset();
                 diagnoseOverlay.down('#allergies').down('#weeks_of_pregnancy').reset();
+                diagnoseOverlay.down('#allergies').down('#allergy_type').reset();
+                diagnoseOverlay.down('#allergies').down('#pregnancy_warning').reset();
+
             }
             else
             {
@@ -400,21 +413,18 @@ Ext.define('NeqMobile.controller.PatientView', {
             newDisease.save({
                 success:function (newDisease) {
                     console.log("diagnose successfully saved");
-
-                    var diagnosestore = Ext.data.StoreManager.lookup('diagnoses');
+                    var diagnosestore = Ext.data.StoreManager.lookup('newdiagnose');
                     if (!diagnosestore) {
-                        diagnosestore = Ext.create('NeqMobile.store.Diagnoses');
+                        diagnosestore = Ext.create('NeqMobile.store.NewDiagnose');
                     }
-                    diagnosestore.getProxy().setExtraParam('id', patientId);
                     diagnosestore.load({
                         callback:function (records, operation, success) {
-                            var patientview = me.getPatientview();
-                            var patientdashboard = patientview.down('patientdashboard');
-                            patientdashboard.loadDiagnoses(diagnosestore);
+                            var response = operation.getResponse();
+                            var responseObject = Ext.decode(response.responseText);
+                            me.getPatientview().loadNewDiagnose(responseObject);
                         },
                         scope:this
                     });
-
                 },
                 failure:function (response, opts) {
                     console.log('server-side failure with status code ' + response.status);
@@ -436,21 +446,19 @@ Ext.define('NeqMobile.controller.PatientView', {
             }
             else {
                 diseasetypeoverlay = Ext.create('NeqMobile.view.patient.create.DiseaseType');
+                var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
+                if (!diseasetypestore) {
+                    diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
+                }
+                diseasetypestore.load({
+                    callback:function (records, operation, success) {
+                        diseasetypeoverlay.down('#diseaselist').setStore(diseasetypestore);
+                        //           this.getPatientdashboard().setMasked(false);
+                    },
+                    scope:this
+                });
             }
-            var diseasetypestore = Ext.data.StoreManager.lookup('diseasetypes');
-            if (!diseasetypestore) {
-                diseasetypestore = Ext.create('NeqMobile.store.DiseaseType');
-            }
-            diseasetypestore.load({
-                callback:function (records, operation, success) {
-                    diseasetypeoverlay.down('#diseaselist').setStore(diseasetypestore);
-         //           this.getPatientdashboard().setMasked(false);
-                },
-                scope:this
-            });
-
             this.overlay = Ext.Viewport.add(diseasetypeoverlay);
-
             this.overlay.show();
         },
         onDiseaseSelect: function(list, record, eOpts){
