@@ -73,10 +73,12 @@ Ext.define('NeqMobile.util.Renderer',
             else return '<input type="checkbox" disabled/>'
         },
         bulletRenderer:function (value, values) {
+            var url_1 ='<div style="background:url(theme/images/view/patient/';
+            var url_2 = ') no-repeat center center;height:2.5em;"></div>';
             if (value) {
-                return '<img src="theme/images/view/patient/bullet_black.png">'
+                return url_1+'active.png'+url_2;
             }
-            else return '<img src="theme/images/view/patient/bullet_red.png"/>'
+            else return url_1+'inactive.png'+url_2;
         },
         followRenderer:function (value, values) {
             if (value) {
@@ -91,16 +93,18 @@ Ext.define('NeqMobile.util.Renderer',
         },
 
         severityrenderer:function (value, values) {
-            var barColor1="blue", barColor2="blue";
+            var severity = 'severity_3';
+            var url_1 ='<div style="background:url(theme/images/view/patient/';
+            var url_2 = ') no-repeat center center;height:2.5em;"></div>';
             if(value.charAt(0)>2){
-                barColor1="black"
+                severity="severity_1";
             }
             else{
                 if(value.charAt(0)>1)
                    {
-                barColor1="black", barColor2="black"
+                       severity="severity_2";
             }}
-            return '<img src="theme/images/view/patient/'+barColor1+'_bar.png"><img src="theme/images/view/patient/'+barColor2+'_bar.png"><img src="theme/images/view/patient/blue_bar.png">';
+            return url_1+severity+'.png'+url_2;
         },
         completerenderer: function(value, values){
             if(values.discontinued=="true")

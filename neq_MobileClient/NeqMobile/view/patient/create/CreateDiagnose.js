@@ -157,7 +157,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     label: 'End of Treatment:',
                                     labelWidth: '30%',
                                     width: '100%',
-                                    value: new Date(),
+                                  //  value: new Date(),
                                     picker: {
                                         yearFrom: new Date().getYear()
                                     }
@@ -196,7 +196,7 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     id: 'diagnosed_date',
                                     destroyPickerOnHide: true,
                                     name: 'date',
-                                    dateFormat: 'd.m.Y.',
+                                    dateFormat: 'd.m.Y',
                                     label: 'Date of Diagnosis:',
                                     labelWidth: '30%',
                                     width: '100%',
@@ -218,11 +218,11 @@ Ext.define('NeqMobile.view.patient.create.CreateDiagnose',{
                                     id: 'healed_date',
                                     destroyPickerOnHide: true,
                                     name: 'date',
-                                    dateFormat: 'd.m.Y.',
+                                    dateFormat: 'd.m.Y',
                                     label: 'Healed:',
                                     labelWidth: '30%',
                                     width: '100%',
-                                    value: new Date(),
+                                   // value: new Date(),
                                     picker: {
                                         yearFrom: new Date().getYear()
                                     }
