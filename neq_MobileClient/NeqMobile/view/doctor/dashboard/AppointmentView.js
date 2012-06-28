@@ -32,7 +32,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                        align: 'center',
                        width: 50,
                        xtype: 'button',
-                       iconCls:'reply',
+                       iconCls:'arrow_left',
                        iconMask:true,
                        ui:'back'
                    },
