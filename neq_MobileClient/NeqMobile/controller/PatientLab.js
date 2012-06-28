@@ -53,7 +53,7 @@ Ext.define('NeqMobile.controller.PatientLab', {
         var me = this;
 
         var labTestRequestOverlay = this.getLabTestRequestOverlay();
-        var fieldSet = labTestRequestOverlay.getComponent('createLabtestRequestFieldSet');
+        var fieldSet = labTestRequestOverlay.down('fieldset');
         var selectField = fieldSet.getComponent(0);
         var datePickerField = fieldSet.getComponent(1);
         var userinfo = NeqMobile.manager.Session.getSession().get('userinfo');
@@ -113,7 +113,8 @@ Ext.define('NeqMobile.controller.PatientLab', {
         } else {
             labTestRequestOverlay = Ext.create('NeqMobile.view.patient.create.CreateLabTestRequest');
         }
-        var doctorTextField = (labTestRequestOverlay.getComponent('createLabtestRequestFieldSet')).getComponent('doctorNameField');
+        var fieldset = labTestRequestOverlay.down('fieldset');
+        var doctorTextField = fieldset.down('#doctorNameField');
         doctorTextField.setValue(((NeqMobile.manager.Session.getSession()).get('userinfo')).get('name'));
         this.getPatientlab().setMasked({ xtype:'loadmask', message:'loading parameters'});
 

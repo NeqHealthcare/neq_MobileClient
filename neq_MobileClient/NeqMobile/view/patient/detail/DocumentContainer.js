@@ -8,8 +8,7 @@ var tpl = new Ext.XTemplate(
         ' src="{url}" width="145" height="145"/>',
         '<div class="x-inner x-panel-inner x-layout-vbox" id="ext-element-102" style="-webkit-box-align: stretch; padding: 5px !important; "><div class="x-container x-field-text x-field x-label-align-left x-field-labeled">',
         '<div x-container x-field-text x-field x-label-align-left x-field-labeled" id="list-block-bold">{description}<div/>' ,
-        '<div x-container x-field-text x-field x-label-align-left x-field-labeled> {name} </div>' ,
-        '<div x-container x-field-text x-field x-label-align-left x-field-labeled" id="list-block-normal">Last used by: {last_user}&nbsp;</div>',
+        '<div x-container x-field-text x-field x-label-align-left x-field-labeled> {name} </div>',
         '</div></div></div>'].join('')
 
 
@@ -74,6 +73,7 @@ Ext.define('NeqMobile.view.patient.detail.DocumentContainer', {
 
                         {
                             xtype:'list',
+                            style:'background-color:white;',
                             flex:1,
 
 

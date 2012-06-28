@@ -6,6 +6,11 @@ Ext.define('NeqMobile.store.LabTestTypes', {
         requires:'NeqMobile.model.LabTestType',
 
         config:{model:'NeqMobile.model.LabTestType',
+            sorters: [
+                {
+                    property : 'name',
+                    direction: 'ASC'
+                }],
             storeId:'labtesttypes'
         }}
 );

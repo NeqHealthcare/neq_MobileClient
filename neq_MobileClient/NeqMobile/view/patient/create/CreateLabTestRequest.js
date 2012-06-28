@@ -25,7 +25,6 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
             styleHtmlContent:true,
             layout: {
                 align: 'center',
-                pack: 'center',
                 type: 'vbox'
             },
             scrollable: true,
@@ -38,45 +37,42 @@ Ext.define('NeqMobile.view.patient.create.CreateLabTestRequest', {
                 {
                     xtype: 'fieldset',
                     id: 'createLabtestRequestFieldSet',
-                    style: 'text-align: right;',
+                    id: 'diseaseInfo',
                     width: '100%',
-                    layout: {
-                        align: 'start',
-                        type: 'vbox'
-                    },
-                    items: [
-                        {
-                            xtype: 'selectfield',
-                            label: 'Test Type:',
-                            labelWidth: '30%',
-                            width: '100%',
-                            valueField: 'name',
-                            displayField: 'name'
-                        },
-                        {
-                            xtype: 'datepickerfield',
-                            destroyPickerOnHide: true,
-                            name: 'date',
-                            label: 'Date:',
-                            labelWidth: '30%',
-                            width: '100%',
-                            value: new Date(),
-                            picker: {
-                                yearFrom: new Date().getYear()
+                    items:[
+                            {
+                                xtype: 'selectfield',
+                                label: 'Test Type:',
+                                labelWidth: '30%',
+                                width: '100%',
+                                valueField: 'name',
+                                displayField: 'name'
+                            },
+                            {
+                                xtype: 'datepickerfield',
+                                destroyPickerOnHide: true,
+                                name: 'date',
+                                label: 'Date:',
+                                labelWidth: '30%',
+                                width: '100%',
+                                dateFormat: 'd.m.Y',
+                                value: new Date(),
+                                picker: {
+                                    yearFrom: new Date().getYear()
+                                }
+                            },
+                            {
+                                xtype: 'textfield',
+                                itemId: 'doctorNameField',
+                                name: 'physician',
+                                label: 'Physician:',
+                                labelWidth: '30%',
+                                width: '100%',
+                                placeHolder: 'Current User',
+                                autoCapitalize: true,
+                                clearIcon: false
                             }
-                        },
-                        {
-                            xtype: 'textfield',
-                            itemId: 'doctorNameField',
-                            name: 'physician',
-                            label: 'Physician:',
-                            labelWidth: '30%',
-                            width: '100%',
-                            placeHolder: 'Current User',
-                            autoCapitalize: true,
-                            clearIcon: false
-                        }
-                    ]
+                        ]
                 },
                 {
                     width: 250,

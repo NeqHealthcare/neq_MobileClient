@@ -3,32 +3,37 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedDetail', {
     xtype: 'doctornewsfeeddetail',
 
     config: {
-        //padding: 5,
-        scrollable: false,
+        type: 'vbox',
         style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
+        scrollable: false,
         items: [
             {
                 xtype:'fieldset',
-                //margin:'10 10 10 0',
-                flex:1,
+                title:' ',
+                margin: '3 6 3 6',
+                layout: 'vbox',
                 items:[
                     {
                         xtype: 'textareafield',
                         //styleHtmlContent: true,
                         name:'description',
-                        labelWidth: 0,
+                        width: '100%',
                         readOnly: true,
                         id: 'doctornewsfeeddetail'//,
                     },
                     {
                         xtype:'textfield',
-                        style:'text-align: right;',
-                        label:'Link:',
-                        labelWidth:'50px',
+                        style:'background-color: none;border: none;',
+                        width: '100%',
                         name:'link',
                         readOnly:true
                     }
                 ]
+            },
+            {
+                xtype: 'container',
+                html:'<div>&nbsp;</div>'
+
             }
         ]
     }

@@ -8,7 +8,7 @@ Ext.define('NeqMobile.view.patient.detail.MedicationContainer', {
             items:[
                 {xtype:'touchgridpanel',
                     itemId:'medications',
-
+                    margin: '0 0 0 0',
                     scrollable:false,
                     features:[
                         {

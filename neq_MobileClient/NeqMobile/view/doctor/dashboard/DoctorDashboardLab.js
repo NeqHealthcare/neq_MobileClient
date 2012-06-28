@@ -28,14 +28,12 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboardLab', {
                     }],
 
                 scrollable:false,
-                margin: 0,
-                padding: 5,
                 columns:[
 
                     {
                         header:'Patient',
                         dataIndex:'patient',
-                        width:'20%',
+                        width:'50%',
                         style:'text-align: center; padding-left: 1em;' ,
                         renderer:function(value,values)
                         {return values.patient_rec_name + " (" + values.patient + ")"}
@@ -44,13 +42,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorDashboardLab', {
                         header:'Test Type',
                         dataIndex:'test_rec_name',
                         style:'text-align: center; padding-left: 1em;' ,
-                       width:'20%'
-                    },
-                    {
-                        header:'Test ID',
-                        dataIndex:'id',
-                        style:'text-align: center; padding-left: 1em;' ,
-                       width:'20%'
+                       width:'50%'
                     }
                 ]
             }

@@ -13,6 +13,12 @@ Ext.define('NeqMobile.store.Appointment', {
 
 
         config:{model:'NeqMobile.model.Appointment',
-            storeId:'appointments'
+            storeId:'appointments',
+            sorters: [
+                {
+                    property:'appointment_date',
+                    direction:'DESC'
+                }
+            ]
         }}
 );

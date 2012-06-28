@@ -37,21 +37,14 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
         },
         style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         scrollable:false,
-        cls:'detail_view_labels',
         items:[
                     {
-                      xtype:'container',
+                      xtype:'fieldset',
                       layout: 'vbox',
-                      padding: '3 6 3 6',
+                      margin: '3 6 3 6',
                       pack: 'center',
-                      cls:'hline_bottom_border',
+                      title: 'Disease Information',
                       items:[
-                          {
-                              xtype: 'label',
-                              padding: '10 0 0 0',
-                              html: '<span style="font-weight: bold;">General Information</span>'
-
-                          },
                           {
                               xtype:'textfield',
                               style:'text-align: right;',
@@ -59,15 +52,6 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                               labelWidth:'30%',
                               name:'pathology_rec_name',
                               readOnly:true
-                          },
-                          {
-                              xtype:'selectfield',
-                              style:'text-align: right;',
-                              label:'Status of the Disease:',
-                              labelWidth:'30%',
-                              name:'is_active',
-                              readOnly:true,
-                              store:'diagnoses'
                           },
                           {
                               xtype:'selectfield',
@@ -86,76 +70,39 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                               name:'is_infectious'
                           },
                           {
-                              xtype:'datepickerfield',
+                              xtype:'selectfield',
                               style:'text-align: right;',
-                              label:'Date of diagnosis:',
+                              label:'Status of the Disease:',
                               labelWidth:'30%',
-                              name:'diagnosed_date',
-                              placeHolder:'-',
-                              dateFormat: 'd.m.Y',
-                              readOnly:true
-                          },
-                          {
-                              xtype:'textfield',
-                              style:'text-align: right;',
-                              label:'Physician:',
-                              labelWidth:'30%',
-                              name:'doctor_rec_name',
-                              readOnly:true
+                              name:'is_active',
+                              readOnly:true,
+                              store:'diagnoses'
                           }
                       ]
                     },
                     {
-                        xtype:'container',
+                        xtype:'fieldset',
                         layout: 'vbox',
-                        padding: '3 6 3 6',
+                        margin: '3 6 3 6',
                         pack: 'center',
-                        cls:'hline_bottom_border',
+                        title: 'Diagnose Information',
                         items:[
-                            {
-                                xtype: 'label',
-                                padding: '10 0 0 0',
-                                html: '<span style="font-weight: bold;">Allergies</span>'
-
-                            },
-                            {
-                                xtype:'selectfield',
-                                style:'text-align: right;',
-                                label:'Allergy type:',
-                                labelWidth:'30%',
-                                name:'allergy_type',
-                                readOnly:true,
-                                store:'diagnoses'
-                            },
-                            {
-                                xtype:'togglefield',
-                                style:'text-align: right;',
-                                label:'Allergic disease:',
-                                labelWidth:'30%',
-                                name:'is_allergy'
-                            }
-                        ]
-                    },
-                    {
-                        xtype:'container',
-                        layout: 'vbox',
-                        padding: '3 6 3 6',
-                        pack: 'center',
-                        items:[
-                            {
-                                xtype: 'label',
-                                padding: '10 0 0 0',
-                                html: '<span style="font-weight: bold;">Therapie</span>'
-
-                            },
                             {
                                 xtype:'datepickerfield',
                                 style:'text-align: right;',
-                                label:'Start of Treatment:',
+                                label:'Date of diagnosis:',
                                 labelWidth:'30%',
-                                name:'date_start_treatment',
+                                name:'diagnosed_date',
+                                placeHolder:'-',
                                 dateFormat: 'd.m.Y',
-                                placeHolder: '-',
+                                readOnly:true
+                            },
+                            {
+                                xtype: 'textfield',
+                                label: 'Age when diagnosed:',
+                                style:'text-align: right;',
+                                labelWidth:'30%',
+                                name:'age',
                                 readOnly:true
                             },
                             {
@@ -171,9 +118,95 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                             {
                                 xtype:'textfield',
                                 style:'text-align: right;',
+                                label:'Physician:',
+                                labelWidth:'30%',
+                                name:'doctor_rec_name',
+                                readOnly:true
+                            }
+
+                        ]
+                    },
+
+                    {
+                        xtype:'fieldset',
+                        layout: 'vbox',
+                        padding: '3 6 3 6',
+                        pack: 'center',
+                        title:'Allergies & Pregnancy',
+                        items:[
+                            {
+                                xtype:'togglefield',
+                                style:'text-align: right;',
+                                label:'Allergic disease:',
+                                labelWidth:'30%',
+                                name:'is_allergy'
+                            },
+                            {
+                                xtype:'textfield',
+                                style:'text-align: right;',
+                                label:'Allergy type:',
+                                labelWidth:'30%',
+                                name:'allergy_type',
+                                readOnly:true,
+                                store:'diagnoses'
+                            },
+                            {
+                                xtype: 'togglefield',
+                                label: 'Pregnancy Warning:',
+                                name: 'pregnancy_warning',
+                                style:'text-align: right;',
+                                labelWidth:'30%'
+                            },
+                            {
+                                xtype: 'textfield',
+                                label: 'Pregnancy week #:',
+                                style:'text-align: right;',
+                                name: 'weeks_of_pregnancy',
+                                labelWidth:'30%',
+                                readOnly: true
+                            }
+                        ]
+                    },
+                    {
+                        xtype:'fieldset',
+                        layout: 'vbox',
+                        padding: '3 6 3 6',
+                        pack: 'center',
+                        title: 'Therapie',
+                        items:[
+                            {
+                                xtype:'togglefield',
+                                label:'Currently on treatment:',
+                                style:'text-align: right;',
+                                labelWidth:'30%',
+                                name:'is_on_treatment'
+                            },
+                            {
+                                xtype:'textfield',
+                                style:'text-align: right;',
                                 label:'Treatment description:',
                                 labelWidth:'30%',
                                 name:'extra_info',
+                                readOnly:true
+                            },
+                            {
+                                xtype:'datepickerfield',
+                                style:'text-align: right;',
+                                label:'Start of Treatment:',
+                                labelWidth:'30%',
+                                name:'date_start_treatment',
+                                dateFormat: 'd.m.Y',
+                                placeHolder: '-',
+                                readOnly:true
+                            },
+                            {
+                                xtype:'datepickerfield',
+                                style:'text-align: right;',
+                                label:'End of Treatment:',
+                                labelWidth:'30%',
+                                name:'date_end_treatment',
+                                dateFormat: 'd.m.Y',
+                                placeHolder: '-',
                                 readOnly:true
                             },
                             {
@@ -183,15 +216,14 @@ Ext.define('NeqMobile.view.patient.detail.DiseaseDetail', {
                                 labelWidth:'30%',
                                 name:'id',
                                 readOnly:true
-                            },
-                            {
-                                xtype:'togglefield',
-                                label:'Currently on treatment:',
-                                labelWidth:'30%',
-                                name:'is_on_treatment'
                             }
 
                         ]
+                    },
+                    {
+                        xtype: 'label',
+                        html: ''
+
                     }
 
         ]

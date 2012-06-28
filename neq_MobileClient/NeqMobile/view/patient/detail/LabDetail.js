@@ -12,115 +12,114 @@ Ext.define('NeqMobile.view.patient.detail.LabDetail', {
         id:'labdetailcontainer',
         config: {
             type: 'vbox',
-            padding: '40',
             style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
             scrollable: false,
             items: [
                 {
-                    xtype: 'panel',
-                    itemId:'labdetails',
-                    layout: 'hbox',
-                    border: '3 0 0 0',
-                    items:[
+
+                    xtype: 'fieldset',
+                    title: 'General Information',
+                    layout: 'vbox',
+                    margin: '3 6 3 6',
+                    items: [
                         {
-                            //left column
-                            xtype: 'fieldset',
-                            layout: 'vbox',
-                            items: [
-                                {
-                                    xtype: 'textfield',
-                                    label: 'Test ID',
-                                    name: 'name',
-                                    readOnly:'true'
-                                },
-                                {
-                                    xtype:'datepickerfield',
-                                    label:'Date of the Analysis',
-                                    name: 'date_analysis',
-                                    readOnly:'true',
-                                    placeHolder: '-',
-                                    dateFormat: 'd.m.Y'
-                                    // renderTo: Ext.Date.format('date_analysis', 'd.m.Y')
-                                },
-                                {
-                                    xtype:'datepickerfield',
-                                    label:'Date Requested',
-                                    name: 'date_requested',
-                                    readOnly:'true',
-                                    placeHolder: '-',
-                                    dateFormat: 'd.m.Y'
-                               }
-                            ],
-                            flex:1
+                            xtype: 'textfield',
+                            label: 'Test ID',
+                            name: 'name',
+                            readOnly:'true'
                         },
                         {
-                            //right column
-                            xtype: 'fieldset',
-                            layout:{type:'vbox'},
-                            items: [
-                                {
-                                    xtype:'textfield',
-                                    label:'Test Type',
-                                    name: 'test_rec_name',
-                                    readOnly:'true'
+                            xtype:'datepickerfield',
+                            label:'Date of the Analysis',
+                            name: 'date_analysis',
+                            readOnly:'true',
+                            placeHolder: '-',
+                            dateFormat: 'd.m.Y'
+                            // renderTo: Ext.Date.format('date_analysis', 'd.m.Y')
+                        },
+                        {
+                            xtype:'datepickerfield',
+                            label:'Date Requested',
+                            name: 'date_requested',
+                            readOnly:'true',
+                            placeHolder: '-',
+                            dateFormat: 'd.m.Y'
+                       },
+                        {
+                            xtype:'textfield',
+                            label:'Test Type',
+                            name: 'test_rec_name',
+                            readOnly:'true'
 
-                                },
-                                {
-                                    xtype:'textfield',
-                                    label:'Pathologist',
-                                    name: 'pathologist_rec_name',
-                                    readOnly:'true'
-                                },
-                                {
-                                    xtype:'textfield',
-                                    label:'Physician',
-                                    name: 'requestor_rec_name',
-                                    readOnly:'true'
-                                }],
-                            flex: 1
+                        },
+                        {
+                            xtype:'textfield',
+                            label:'Pathologist',
+                            name: 'pathologist_rec_name',
+                            readOnly:'true'
+                        },
+                        {
+                            xtype:'textfield',
+                            label:'Physician',
+                            name: 'requestor_rec_name',
+                            readOnly:'true'
                         }
-
                     ]
                 },
                 {
-                    xtype:'touchgridpanel',
-                    itemId:'labdetailtable',
-                    id: 'labdetailview',
-                    title: 'Lab Test Details',
-                    style:'background-color: #fff;',
-                    name:'criteria',
-                    scrollable:false,
-                    columns:[
-                        {
-                            header:'Name',
-                            dataIndex:'name',
-                            width:'40%'
-                        },
-                        {
-                            header:'Upper Limit',
-                            dataIndex:'upper_limit',
-                            width:'15%',
-                            renderer: NeqMobile.util.Renderer.limitRenderer
-                        },
-                        {
-                            header:'Lower Limit',
-                            dataIndex:'lower_limit',
-                            width:'15%',
-                            renderer: NeqMobile.util.Renderer.limitRenderer
-                        },
-                        {
-                            header:'Result',
-                            dataIndex:'result',
-                            width:'15%'
-                        },
-                        {
-                            header:'Unit Name',
-                            dataIndex:'units_rec_name',
-                            width:'15%',
-                            renderer: NeqMobile.util.Renderer.unitRenderer
-                        }
-                    ]
+
+                    xtype: 'fieldset',
+                    title: 'Detailed Information',
+                    layout: 'vbox',
+                    margin: '3 6 3 6',
+                    items: [
+                            {
+                                xtype:'touchgridpanel',
+                                itemId:'labdetailtable',
+                                id: 'labdetailview',
+                                title: 'Lab Test Details',
+                                style:'background-color: #fff;',
+                                name:'criteria',
+                                scrollable:false,
+                                columns:[
+                                    {
+                                        header:'Name',
+                                        dataIndex:'name',
+                                        width:'40%'
+                                    },
+                                    {
+                                        header:'Upper Limit',
+                                        dataIndex:'upper_limit',
+                                        width:'15%',
+                                        renderer: NeqMobile.util.Renderer.limitRenderer
+                                    },
+                                    {
+                                        header:'Lower Limit',
+                                        dataIndex:'lower_limit',
+                                        width:'15%',
+                                        renderer: NeqMobile.util.Renderer.limitRenderer
+                                    },
+                                    {
+                                        header:'Result',
+                                        dataIndex:'result',
+                                        width:'15%'
+                                    },
+                                    {
+                                        header:'Unit Name',
+                                        dataIndex:'units_rec_name',
+                                        width:'15%',
+                                        renderer: NeqMobile.util.Renderer.unitRenderer
+                                    }
+                                ]
+                            }
+                        ]
+                },
+                {
+                    xtype: 'label',
+                    html: ''
+
                 }
+
             ]
 
 

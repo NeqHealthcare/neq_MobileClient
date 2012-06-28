@@ -32,13 +32,13 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                        align: 'center',
                        width: 50,
                        xtype: 'button',
-                       iconCls:'reply',
+                       iconCls:'arrow_left',
                        iconMask:true,
                        ui:'back'
                    },
                    {
                         xtype: 'datepickerfield',
-                        label: 'Appointment Time',
+                        label: 'Appointment Time:',
                         dateFormat: 'd.m.Y H:i',
                         id:'appointmenttime',
                         readOnly: 'true'
@@ -47,7 +47,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Patient',
+                        label: 'Patient:',
                         id:'patientname',
                         readOnly: 'true'
                         ,style:'background-color: white;'
@@ -55,7 +55,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Urgency Level',
+                        label: 'Urgency Level:',
                         id:'urgency',
                         readOnly: 'true'
                         ,style:'background-color: white;'
@@ -71,7 +71,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Speciality',
+                        label: 'Speciality:',
                         id: 'speciality',
                         placeHolder: '-',
                         readOnly: 'true'
@@ -80,7 +80,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.AppointmentView',{
                     },
                     {
                         xtype: 'textfield',
-                        label: 'Consultation Service',
+                        label: 'Consultation Service:',
                         id: 'consultation',
                         readOnly: 'true',
                         placeHolder: '-'

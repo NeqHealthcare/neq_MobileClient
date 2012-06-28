@@ -12,6 +12,12 @@ Ext.define('NeqMobile.store.LabTestRequests', {
                     direction: 'DESC'
                 }
             ],
+            filters: [
+                {
+                    property: 'state',
+                    value   : 'draft'
+                }
+            ],
 
             storeId:'labtestrequests'
         }}

@@ -19,100 +19,64 @@ Ext.define('NeqMobile.view.patient.detail.VaccinationDetail', {
         style: 'text-align: left; background-color: #f7f7f7; border-top: 1px solid #ccc;',
         scrollable: false,
         items: [
-
-
                     {
-                        xtype: 'fieldset',
-                        padding: '0 10 0 10',
+                        xtype:'fieldset',
+                        layout: 'vbox',
+                        margin: '3 6 3 6',
+                        pack: 'center',
+                        title: 'General Information',
+                        items:[
 
-                        items: [
                             {
-                                xtype: 'panel',
-                                margin: '10 0 10 0',
-                                layout: {
-                                    type: 'hbox'
-                                },
-                                flex: 2,
-                                items: [
-                                    {
-                                        xtype: 'panel',
-                                        flex: 5,
-                                        items: [
-                                            {
-                                                xtype: 'fieldset',
-                                                margin: '10 0 10 10',
-                                                layout: {
-                                                    align: 'start',
-                                                    type: 'default'
-                                                },
-                                                items: [
-                                                    {
-                                                        xtype: 'textfield',
-                                                        style: 'text-align: right;',
-                                                        label: 'Institution:',
-                                                        labelWidth: '55%',
-                                                        name: 'institution_rec_name',
-                                                        readOnly: true
-                                                    },
-                                                    {
-                                                        xtype: 'datepickerfield',
-                                                        style: 'text-align: right;',
-                                                        label: 'Expiration Date:',
-                                                        labelWidth: '55%',
-                                                        name: 'date',
-                                                        placeHolder: '-',
-                                                        dateFormat: 'd.m.Y',
-                                                        readOnly: true
-                                                     }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        flex: 1
-                                    },
-                                    {
-                                        xtype: 'panel',
-                                        flex: 5,
-                                        items: [
-                                            {
-                                                xtype: 'fieldset',
-                                                margin: '10 10 10 0',
-                                                layout: {
-                                                    type: 'default'
-                                                },
-                                                items: [
-                                                    {
-                                                        xtype: 'textfield',
-                                                        style: 'text-align: right;',
-                                                        label: 'Lot Number:',
-                                                        labelWidth: '55%',
-                                                        name: 'vaccine_lot',
-                                                        readOnly: true
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
+                                xtype: 'textfield',
+                                style: 'text-align: right;',
+                                label: 'Institution:',
+                                labelWidth: '30%',
+                                name: 'institution_rec_name',
+                                readOnly: true
                             },
                             {
-                                xtype: 'fieldset',
-                                margin: '10 10 10 10',
-                                flex: 1,
-                                items: [
-                                    {
-                                        xtype: 'textareafield',
-                                        label: 'Notes',
-                                        labelAlign: 'top',
-                                        name: 'observations',
-                                        readOnly: true
-                                    }
-                                ]
+                                xtype: 'datepickerfield',
+                                style: 'text-align: right;',
+                                label: 'Expiration Date:',
+                                labelWidth: '30%',
+                                name: 'date',
+                                placeHolder: '-',
+                                dateFormat: 'd.m.Y',
+                                readOnly: true
+                            },
+                            {
+                                xtype: 'textfield',
+                                style: 'text-align: right;',
+                                label: 'Lot Number:',
+                                labelWidth: '30%',
+                                name: 'vaccine_lot',
+                                readOnly: true
                             }
                         ]
+                    },
+                    {
+                        xtype:'fieldset',
+                        layout: 'vbox',
+                        margin: '3 6 3 6',
+                        pack: 'center',
+                        title: 'Notes',
+                        items:[
+
+                            {
+                                xtype: 'textareafield',
+                                labelAlign: 'top',
+                                name: 'observations',
+                                readOnly: true
+                            }
+                        ]
+                    } ,
+                    {
+                        xtype: 'container',
+                        html:'<div>&nbsp;</div>'
+
                     }
+
                 ]
             }
 

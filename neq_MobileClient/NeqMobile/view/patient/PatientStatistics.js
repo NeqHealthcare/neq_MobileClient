@@ -64,7 +64,7 @@ var vitaldatachart = Ext.create('Ext.chart.Chart', {
 
             axis:'left',
             xField:'date',
-            yField:'temprature'
+            yField:'temperature'
         },
         {
             type:'line',
@@ -209,7 +209,7 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
 
 // - Restliche Formen / UI Elemente erstellen und Chart als Item einbinden/zuweisen                                 ,
 
-    config:
+    config:{
         //   heartbeatchart:     undefined,
         styleHtmlContent:true,
         layout:'vbox',
@@ -230,6 +230,25 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
                 items:[
                     {
                         html:'<canvas id="mycanvas" width="650" height="150"></canvas>'
+
+                    },
+                    {
+                        xtype:'panel',
+                        title:'Heartrate',
+                        width:150,
+
+                        height:50,
+                        margin:0,
+                        padding:5,
+                        border:5,
+                        id:'heartratepanel',
+                        data:{'rate':Math.floor(60 + 20 * Math.random())},
+                        tpl:'Heart rate: <span>{rate}</span> BPM'
+
+
+
+
+
                     }
                 ]
             },
@@ -345,5 +364,4 @@ Ext.define('NeqMobile.view.patient.PatientStatistics', {
         ]
     }
 
-})
-;
+});

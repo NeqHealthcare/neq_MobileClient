@@ -3,7 +3,7 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer', {
         requires: ['NeqMobile.view.doctor.dashboard.DoctorNewsFeedDetail'],
         xtype:'doctornewsfeedcontainer',
         config:{
-            title:'Hospital Doctor News',
+            title:'Hospital News',
             margin: '0',
             padding: '5',
             items:[
@@ -15,8 +15,8 @@ Ext.define('NeqMobile.view.doctor.dashboard.DoctorNewsFeedContainer', {
                     valueField:'id',
                     store:'doctornewstopics',
                     padding: 5,
-                    width: 250,
-                    labelWidth: 50
+                    width: 300,
+                    labelWidth: 75
                 },
                 {
                     xtype:'touchgridpanel',
