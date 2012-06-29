@@ -71,7 +71,6 @@ Ext.define('NeqMobile.view.Login', {
                                 label: 'User:',
                                 labelWidth: '112px',
                                 name: 'user',
-                                value: 'jgansen',
                                 autoComplete: true,
                                 autoCorrect: true,
                                 placeHolder: 'Enter Username'
@@ -82,7 +81,6 @@ Ext.define('NeqMobile.view.Login', {
                                 label: 'Password:',
                                 labelWidth: '112px',
                                 name: 'password',
-                                value: 'iswi223<<',
                                 placeHolder: 'Enter Password'
                             },
                             {
