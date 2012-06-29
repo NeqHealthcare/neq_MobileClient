@@ -10,6 +10,15 @@ Ext.define('NeqMobile.view.settings.Domains', {
    requires:['NeqMobile.store.Domains'],
     xtype:'settingsDomains',
     config:{
+
+        listeners:
+        {
+            erased:function(cmp,eOpts){
+                cmp.destroy();
+                console.log('settingsdomains destroyed')
+            }
+        } ,
+
       //  styleHtmlContent:true,
         cls: 'x-settingsDomains',
         layout:'hbox',

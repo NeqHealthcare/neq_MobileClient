@@ -19,7 +19,7 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
         {
             erased:function(cmp,eOpts){
                 cmp.destroy();
-                console.log('workspace destroyed')
+                console.log('usersettings destroyed')
             }
         } ,
         cls: 'x-UserSettings',

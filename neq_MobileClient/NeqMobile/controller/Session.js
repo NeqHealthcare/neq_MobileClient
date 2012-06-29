@@ -19,15 +19,16 @@ Ext.define('NeqMobile.controller.Session', {
                 autoCreate:true
             },
             viewport:'Viewport',
-            workspace:
-            {
+            workspace:{
                 selector:'workspace',
                 xtype:'workspace',
                 autoCreate:true
-            } ,
+            },
             menuSettings:'menuSettings',
             settingsDomains:'settingsDomains',
-            userSettings:'userSettings',
+            userSettings:{selector:'userSettings',
+                xtype:'userSettings',
+                autoCreate:'true'},
             mainToolbar:'workspace #mainToolbar'
         },
         control:{
@@ -129,14 +130,7 @@ Ext.define('NeqMobile.controller.Session', {
 
     switchToUserSettings:function () {
         console.log('switching card');
-        var userSettings;
-        if (this.getUserSettings()) {
-
-            userSettings = this.getUserSettings();
-        }
-        else {
-            userSettings = Ext.create('NeqMobile.view.settings.UserSettings');
-        }
+        var userSettings = this.getUserSettings();
         //this.getWorkspace().down('patientlist').setHidden(true);
         this.getWorkspace().down('#contentcontainer').setActiveItem(userSettings);
         this.getMainToolbar().setTitle('User Settings');
@@ -194,7 +188,7 @@ Ext.define('NeqMobile.controller.Session', {
             }
         }
     },
-    requestLogin:function() {
+    requestLogin:function () {
         var loginForm = this.getLogin().down('formpanel');
         Ext.Viewport.setMasked({ xtype:'loadmask', message:'Login in progres...' });
         NeqMobile.manager.Session.login(this.getLogin().down('selectfield').getRecord(), loginForm.getFields('user').getValue(),
@@ -230,10 +224,10 @@ Ext.define('NeqMobile.controller.Session', {
 
         console.log('loading patients');
 
-    //    var workspace =  this.getWorkspace();
-    //    var patientlist = workspace.down('patientlist');
-    //    var plist = patientlist.down('list');
-    //    plist.setStore(store);
+        //    var workspace =  this.getWorkspace();
+        //    var patientlist = workspace.down('patientlist');
+        //    var plist = patientlist.down('list');
+        //    plist.setStore(store);
 
     },
     onLogoutClick:function () {
@@ -246,9 +240,9 @@ Ext.define('NeqMobile.controller.Session', {
         Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
         var login = this.getLogin();
-       this.getViewport().setActiveItem(login);
-       // this.getViewport().remove(this.getWorkspace(), true);
-       this.getMenuSettings().setHidden(true);
+        this.getViewport().setActiveItem(login);
+        // this.getViewport().remove(this.getWorkspace(), true);
+        this.getMenuSettings().setHidden(true);
         //    this.getMenuSettings().destroy();
     }
 })

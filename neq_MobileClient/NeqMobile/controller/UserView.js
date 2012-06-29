@@ -89,6 +89,7 @@ Ext.define('NeqMobile.controller.UserView', {
 
     newActiveItem:undefined,
     subscription:undefined,
+    newlabresultcount:undefined,
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
@@ -290,7 +291,7 @@ Ext.define('NeqMobile.controller.UserView', {
     onLabtestTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
         console.log('labtest on doctordashboard tapped');
         this.showLabResultDetail(dw, labrecordoverview.get('id'), item, labrecordoverview);
-        record.markAsRead();
+        labrecordoverview.markAsRead();
     },
 
     showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
@@ -299,20 +300,7 @@ Ext.define('NeqMobile.controller.UserView', {
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
         var detailinstance;
 
-        var i = 0;
-        var mywaiter = function () {
-            i++;
-            if (i === 2) {
-                detailinstance.down('#labdetailtable').setStore(criteriastore);
-            }
-        }
-
-        detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
-            {
-                listeners:{
-                    painted:{ fn:mywaiter, scope:me, single:true }
-                }
-            });
+        detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail');
         dw.expand(dw, detailinstance, item);
 
         labdetailmodel.load(undefined, {
@@ -323,9 +311,20 @@ Ext.define('NeqMobile.controller.UserView', {
             success:function (labdetailrecord) {
                 detailinstance.setRecord(labdetailrecord);
                 var criteriastore = labdetailrecord.labtestcriteria();
-                mywaiter();
+                console.log('calling mywaiter');
+                //var i = 0;
+                var checkavailability = function mywaiter() {
+                    var labdetailtable = detailinstance.down('#labdetailtable');
+                    if (labdetailtable) {
+                        labdetailtable.setStore(criteriastore);
+                        clearInterval(checkFn);
+                    }
+                }
+
+                var checkFn = setInterval(checkavailability, 60);
             }
-        });
+        })
+
     },
 
     stoppolling:function () {
@@ -352,11 +351,15 @@ Ext.define('NeqMobile.controller.UserView', {
                     var obj = Ext.decode(response.responseText);
 //                    console.log('anzahl neuer labresults: ' + obj.data.length);
                     me.getWorkspace().down('#homebutton').setBadgeText(obj.data.length);
+                    if (me.newlabresultcount != obj.data.length && Ext.ComponentQuery.query('userview')[0])
+                    {
+                        me.refreshnewlabresults();
+                    }
                 }
             });
         }
         pollFn();
-        pollFn = setInterval(pollFn, 60000);
+        pollFn = setInterval(pollFn, 10000);
         this.setPollFn(pollFn);
     },
 
@@ -369,13 +372,7 @@ Ext.define('NeqMobile.controller.UserView', {
         this.getDoctordashboard().down('#doctordashboardlab').setStore(mystore);
         mystore.load(
             {
-
-                params:{doctor_id:NeqMobile.manager.Session.getSession().get('userinfo').get('physician_id')},
-
-                callback:function () {
-//                    console.log('trying to show newlab count')
-//                     me.getWorkspace().down('#homebutton').setBadgeText(mystore.getCount());
-                }
+               params:{doctor_id:NeqMobile.manager.Session.getSession().get('userinfo').get('physician_id')},
             }
         );
     },
@@ -426,26 +423,5 @@ Ext.define('NeqMobile.controller.UserView', {
         appointmentview.setActiveItem(0);
         //this.showAppointments();
         appointmentview.down('#appointmentlist').deselectAll();
-    },
-
-    /* - ChartsDemo Functions/Events ---------------------------------------------------------------------------------- */
-
-    createchart:function () {
-        var testchart = this.getDoctordashboard().down('testchart');
-        testchart.setHeight(750);
-//        testchart.setWidth(500);
-        var mycircle = new Ext.draw.Component({
-            items:[
-                {
-                    type:'circle',
-                    fill:'#ffc',
-                    radius:100,
-                    x:100,
-                    y:100
-                }
-            ]
-        });
-
-        testchart.setItems(mycircle);
     }
 });

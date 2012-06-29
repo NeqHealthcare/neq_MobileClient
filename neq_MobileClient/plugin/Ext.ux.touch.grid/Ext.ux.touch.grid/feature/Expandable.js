@@ -80,12 +80,12 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         item.expanded = false;
         item.detailinstance.setMaxHeight(0);
         item.detailinstance.hide();
-        dw.deselect(item);
-//        Ext.defer(function () {
-//
-         item.detailinstance.destroy();
-//        }, 300);
-        //  dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
+        dw.deselect(itemrecord);
+        Ext.defer(function () {
+
+      item.detailinstance.destroy();
+        }, 100);
+//        dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
     autoScroll:function (dw, item) {
 
