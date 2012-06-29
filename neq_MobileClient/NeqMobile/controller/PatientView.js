@@ -274,12 +274,13 @@ Ext.define('NeqMobile.controller.PatientView', {
             date = Ext.Date.add(date, Ext.Date.DAY, -360);
             vitaldatastore.getProxy().setExtraParam('start_Date', Ext.Date.format(date, 'd.m.Y'));
 
-            vitaldatastore.load({
-                callback:function (records, operation, success) {
-                    patientview.down('patientstatistics').loadPatientStatistics(vitaldatastore);
-                },
-                scope:this
-            });
+            vitaldatastore.load();
+//            {
+//                callback:function (records, operation, success) {
+//                    patientview.down('patientstatistics').loadPatientStatistics(vitaldatastore);
+//                },
+//                scope:this
+//            });
 
         },
         onCreateNewDiagnoseTap:function (button, e, eOpts) {

@@ -22,15 +22,29 @@ Ext.define('NeqMobile.controller.PatientLab', {
 
     onLabResultTap:function (expandfeature, dw, index, item, labrecordoverview, e, eOpts) {
 
-        this.showLabResultDetail(dw, labrecordoverview.get('id'),item);
+        this.showLabResultDetail(dw, labrecordoverview.get('id'), item);
     },
-    showLabResultDetail:function (dw, labresultid,item) {
+    showLabResultDetail:function (dw, labresultid, item) {
 
-       console.log(dw);
-        // console.log(dw.myFeatures().getCount());
-      //  console.log(dw.expandfeature);
         var me = this;
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
+        var detailinstance;
+
+        var i = 0;
+        var mywaiter = function () {
+            i++;
+            if (i === 2) {
+                detailinstance.down('#labdetailtable').setStore(criteriastore);
+            }
+        }
+
+        detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+            {
+                listeners:{
+                    painted:{ fn:mywaiter, scope:me, single:true }
+                }
+            });
+        dw.expand(dw, detailinstance, item);
 
         labdetailmodel.load(undefined, {
             params:{
@@ -38,13 +52,9 @@ Ext.define('NeqMobile.controller.PatientLab', {
             },
             scope:me,
             success:function (labdetailrecord) {
+                detailinstance.setRecord(labdetailrecord);
                 var criteriastore = labdetailrecord.labtestcriteria();
-                var detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
-                    {
-                        record:labdetailrecord
-                    });
-                detailinstance.down('#labdetailtable').setStore(criteriastore);
-                dw.expand(dw, detailinstance, item);
+                mywaiter();
             }
         });
     },

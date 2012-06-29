@@ -55,7 +55,7 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         }
         else {
             this.collapse(dw, index, item, itemrecord, e, eOpts);
-            dw.deselect(itemrecord);
+        //    dw.deselect(itemrecord);
         }
     },
     autoExpand:function (dw, index, item, itemrecord, e, eOpts) {
@@ -80,9 +80,11 @@ Ext.define('Ext.ux.touch.grid.feature.Expandable', {
         item.expanded = false;
         item.detailinstance.setMaxHeight(0);
         item.detailinstance.hide();
-        Ext.defer(function () {
-            item.detailinstance.destroy()
-        }, 300);
+        dw.deselect(item);
+//        Ext.defer(function () {
+//
+         item.detailinstance.destroy();
+//        }, 300);
         //  dw.fireEvent('itemcollapsed', dw, index, item, itemrecord, e, eOpts)
     },
     autoScroll:function (dw, item) {

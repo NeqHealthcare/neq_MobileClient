@@ -7,6 +7,7 @@ Ext.define('NeqMobile.view.patient.PatientInfoImages', {
 
             documentsstore.each(function (record) {
                 record.setUrl();
+                console.log('loading document')
             });
             image_list = this.down('#documentList')
             image_container = this.down('#imageScreen');

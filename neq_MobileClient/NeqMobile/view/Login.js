@@ -30,19 +30,6 @@ Ext.define('NeqMobile.view.Login', {
                     {
                         xtype: 'button',
                         align: 'right',
-                        itemId: 'countbutton',
-                        iconCls: 'help',
-                        iconMask: true,
-                        handler:function()
-                        {
-
-                            console.log('workspace count: ' + Ext.ComponentQuery.query('workspace').length);
-                        }
-                    },
-
-                    {
-                        xtype: 'button',
-                        align: 'right',
                         itemId: 'settingsbutton',
                         iconCls: 'settings',
                         iconMask: true

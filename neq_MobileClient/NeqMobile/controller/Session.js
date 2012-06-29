@@ -13,7 +13,11 @@ Ext.define('NeqMobile.controller.Session', {
         stores:['Domains', 'Patients', 'ChatterUsers'],
         views:['Workspace', 'menu.Settings', 'settings.Domains', 'settings.UserSettings'],
         refs:{
-            login:'Login',
+            login:{
+                selector:'Login',
+                xtype:'Login',
+                autoCreate:true
+            },
             viewport:'Viewport',
             workspace:
             {
@@ -55,9 +59,9 @@ Ext.define('NeqMobile.controller.Session', {
     prepareCometD:function () {
         var _connected = false;
         var domain = NeqMobile.manager.Session.getSession().get('domain');
-       // var url = 'ws' + '://' + domain.get('ip') + ':' + '8082' + '/cometd/pulse';
+        var url = 'ws' + '://' + domain.get('ip') + ':' + '8082' + '/cometd/pulse';
 
-        var url = 'http://localhost:8082/cometd/pulse';
+        //var url = 'http://localhost:8082/cometd/pulse';
 
         var cometd = Ext.cometd;
 
@@ -241,12 +245,8 @@ Ext.define('NeqMobile.controller.Session', {
         console.log('trying to logout');
         Ext.Viewport.fireEvent('logout');
         NeqMobile.manager.Session.logout();
-        var loginview = this.getLogin();
-        if (!loginview)
-        {
-            loginview = Ext.create('NeqMobile.view.Login');
-        }
-       this.getViewport().setActiveItem(loginview);
+        var login = this.getLogin();
+       this.getViewport().setActiveItem(login);
        // this.getViewport().remove(this.getWorkspace(), true);
        this.getMenuSettings().setHidden(true);
         //    this.getMenuSettings().destroy();

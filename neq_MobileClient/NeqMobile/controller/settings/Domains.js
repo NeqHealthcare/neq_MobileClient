@@ -36,13 +36,6 @@ Ext.define('NeqMobile.controller.settings.Domains', {
             }
         )
     },
-    launch:function () {
-
-        this.callParent(arguments);
-    },
-    test:function () {
-        console.log('test function called!!!')
-    },
     onAddDomain:function () {
         this.getDomainsList().deselect(this.getDomainsList().getSelection());
         this.getSettingsDomains().down('formpanel').reset();

@@ -33,10 +33,8 @@ Ext.define('NeqMobile.controller.UserView', {
                 selector:'viewholder',
                 xtype:'viewholder',
                 autoCreate:true
-            }
-            ,
-            userview:
-            {
+            },
+            userview:{
                 selector:'userview',
                 xtype:'userview',
                 autoCreate:true
@@ -94,8 +92,8 @@ Ext.define('NeqMobile.controller.UserView', {
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
 
-    prepareUserView:function()
-    {},
+    prepareUserView:function () {
+    },
 
 
     onTapShowUserDashboard:function () {
@@ -184,10 +182,7 @@ Ext.define('NeqMobile.controller.UserView', {
         chatterContainer.setMasked(false);
         chatterContainer.down('#chatterPostContainer').setStore(postStore);
         this.startChatterSync();
-    }
-
-
-     ,
+    },
     switchtouserdashboard:function (button, e, eOpts) {
         var me = this;
         var viewholder = me.getViewholder();
@@ -198,8 +193,7 @@ Ext.define('NeqMobile.controller.UserView', {
 
         var plist = me.getPatientlist()
 
-        if (plist)
-        {
+        if (plist) {
             console.log('plist does exist');
             plist.deselectAll();
         }
@@ -301,37 +295,25 @@ Ext.define('NeqMobile.controller.UserView', {
 
     showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
 
-        console.log(dw);
         var me = this;
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
         var detailinstance;
 
-        var somefunc = function () {
+        var i = 0;
+        var mywaiter = function () {
+            i++;
+            if (i === 2) {
+                detailinstance.down('#labdetailtable').setStore(criteriastore);
+            }
+        }
 
-            detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
-                {
-                    //   record:labdetailrecord
-                });
-
-
-            var gotopatientbutton = Ext.create('Ext.Button',
-                {
-                    iconMask:true,
-                    iconCls:'action',
-                    text:'Open Patient',
-                    width:200,
-                    docked:'top',
-                    handler:function () {
-                        item.expanded = false;
-                        me.redirectTo('patient/' + labrecordoverview.get('patient'));
-                    }
+        detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+            {
+                listeners:{
+                    painted:{ fn:mywaiter, scope:me, single:true }
                 }
-            );
-            detailinstance.add(gotopatientbutton);
-            dw.expandfeature.expand(dw, detailinstance, item);
-        };
-
-        somefunc();
+            });
+        dw.expand(dw, detailinstance, item);
 
         labdetailmodel.load(undefined, {
             params:{
@@ -340,22 +322,8 @@ Ext.define('NeqMobile.controller.UserView', {
             scope:me,
             success:function (labdetailrecord) {
                 detailinstance.setRecord(labdetailrecord);
-
                 var criteriastore = labdetailrecord.labtestcriteria();
-
-
-                var myfn = function () {
-                    labdetailtable = detailinstance.down('#labdetailtable');
-                    labdetailtable.setStore(criteriastore);
-                }
-
-                var labdetailtable = detailinstance.down('#labdetailtable');
-                if (!labdetailtable) {
-                    Ext.defer(myfn, 100)
-                }
-                else (myfn());
-
-
+                mywaiter();
             }
         });
     },
