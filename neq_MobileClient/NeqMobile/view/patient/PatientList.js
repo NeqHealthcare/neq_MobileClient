@@ -25,6 +25,7 @@ Ext.define('NeqMobile.view.patient.PatientList', {
 
                     {
                         xtype:'list',
+                        store:'patients',
                         flex:1,
                         cls:'x-patientslist',
                         itemTpl:['<div id="list-patient-image" style="background-image:url(http://{photo}?width=45&height=45)"></div>',

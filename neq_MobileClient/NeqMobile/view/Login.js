@@ -8,6 +8,14 @@ Ext.define('NeqMobile.view.Login', {
     xtype:'Login',
 
     config: {
+
+        listeners:
+        {
+            erased:function(cmp,eOpts){
+                cmp.destroy();
+                console.log('Login destroyed')
+            }
+        },
         cls: 'x-login',
         scrollable: 'auto',
         items: [
@@ -18,6 +26,7 @@ Ext.define('NeqMobile.view.Login', {
                 title:'NEQ Mobile Application',
                 items: [
                     {xtype:'spacer'},
+
                     {
                         xtype: 'button',
                         align: 'right',

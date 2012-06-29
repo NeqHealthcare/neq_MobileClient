@@ -10,10 +10,16 @@ Ext.define('NeqMobile.view.Workspace', {
         xtype:'workspace',
         requires:['NeqMobile.view.ViewHolder'
         ],
-
         config:{
+
+            listeners:
+            {
+              erased:function(cmp,eOpts){
+                  cmp.destroy();
+                  console.log('workspace destroyed')
+              }
+            }   ,
             layout:'fit',
-            autoDestroy:true,
             items:[
 
                 {xtype:'toolbar',
@@ -42,12 +48,24 @@ Ext.define('NeqMobile.view.Workspace', {
                         {
                             xtype:'spacer'
                         },
+
                         {
                             xtype:'label',
                             tpl:'<span style="color:#E6E6E6">{name}</span>',
                             align:'right',
                             itemId:'doctorname',
                             iconMask:true
+                        },
+                        {
+                            xtype:'button',
+                            //icon:'theme/images/user/doctor_avatar_small.jpg',
+                            align:'right',
+                            itemId:'asdf',
+                            text:'bla',
+                            handler:function(
+
+                                )
+                            {Ext.ComponentQuery.query('medicationdetail')[0].destroy();}
                         },
                         {
                             xtype:'button',
@@ -89,8 +107,7 @@ Ext.define('NeqMobile.view.Workspace', {
                     itemId:'contentcontainer',
                     items:[
                         {
-                            xtype:'viewholder'
-
+                           xtype:'medicationdetail'
                         }
                     ]
                 }

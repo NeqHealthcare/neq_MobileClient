@@ -15,6 +15,13 @@ Ext.define('NeqMobile.view.settings.UserSettings', {
         this.down('#chatterUserTable').setStore(chatterUsersStore);
     },
     config:{
+        listeners:
+        {
+            erased:function(cmp,eOpts){
+                cmp.destroy();
+                console.log('workspace destroyed')
+            }
+        } ,
         cls: 'x-UserSettings',
         layout:'hbox',
         items:[

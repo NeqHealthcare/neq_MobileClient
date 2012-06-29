@@ -26,9 +26,19 @@ Ext.define('NeqMobile.controller.UserView', {
             doctornewstopics:'doctornewstopics',
             doctornewsfeeddetail:'doctornewsfeeddetail',
             appointmentview:'appointmentview',
-            patientList:'workspace patientlist list',
+            patientlist:'patientlist list',
             mainToolbar:'workspace #mainToolbar',
-            viewholder:'viewholder'
+
+            viewholder:{
+                selector:'viewholder',
+                xtype:'viewholder',
+                autoCreate:true
+            },
+            userview:{
+                selector:'userview',
+                xtype:'userview',
+                autoCreate:true
+            }
         },
 
         /* - Used Stores ---------------------------------------------------------------------------------- */
@@ -81,6 +91,10 @@ Ext.define('NeqMobile.controller.UserView', {
     subscription:undefined,
 
     /* - Basic Functions/Events --------------------------------------------------------------------------------------- */
+
+    prepareUserView:function () {
+    },
+
 
     onTapShowUserDashboard:function () {
         this.redirectTo('userdashboard');
@@ -141,8 +155,8 @@ Ext.define('NeqMobile.controller.UserView', {
     switchtochatter:function (button, e, eOpts) {
         var me = this;
 
-        var viewholder = this.getViewholder();
-        var userview = viewholder.down('userview');
+        var viewholder = me.getViewholder();
+        var userview = me.getUserview();
         var userviewcontainer = viewholder.down('#userviewcontainer');
         var chatterContainer = me.getChattercontainer();
 
@@ -169,15 +183,22 @@ Ext.define('NeqMobile.controller.UserView', {
         chatterContainer.down('#chatterPostContainer').setStore(postStore);
         this.startChatterSync();
     },
-
     switchtouserdashboard:function (button, e, eOpts) {
         var me = this;
-        var viewholder = this.getViewholder();
-        var userview = viewholder.down('userview');
+        var viewholder = me.getViewholder();
+        var userview = me.getUserview();
+
         var userviewcontainer = viewholder.down('#userviewcontainer');
 
-        this.getPatientList().deselectAll();
 
+        var plist = me.getPatientlist()
+
+        if (plist) {
+            console.log('plist does exist');
+            plist.deselectAll();
+        }
+
+        console.log('activating viewholder');
         this.getWorkspace().down('#contentcontainer').setActiveItem(viewholder);
         userviewcontainer.setActiveItem(userview);
         this.getMainToolbar().setTitle('User Dashboard');
@@ -206,7 +227,6 @@ Ext.define('NeqMobile.controller.UserView', {
         this.getDoctordashboard().down('doctorheader').setRecord(userinforecord);
         this.getWorkspace().down('#doctorimage_big').setData({'image_url':userinforecord.get('image_url')});
         this.getWorkspace().down('#doctorimage').setData({'image_url':userinforecord.get('image_url')});
-        console.log(this.getWorkspace().down('#doctorimage'));
         this.getDoctordashboard().down('#doc_last_login').setValue(
             NeqMobile.util.Renderer.daterenderer(userinforecord.get('last_login')));
 
@@ -275,37 +295,25 @@ Ext.define('NeqMobile.controller.UserView', {
 
     showLabResultDetail:function (dw, labresultid, item, labrecordoverview) {
 
-        console.log(dw);
         var me = this;
         var labdetailmodel = Ext.ModelMgr.getModel('NeqMobile.model.LabDetail');
         var detailinstance;
 
-        var somefunc = function () {
+        var i = 0;
+        var mywaiter = function () {
+            i++;
+            if (i === 2) {
+                detailinstance.down('#labdetailtable').setStore(criteriastore);
+            }
+        }
 
-            detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
-                {
-                    //   record:labdetailrecord
-                });
-
-
-            var gotopatientbutton = Ext.create('Ext.Button',
-                {
-                    iconMask:true,
-                    iconCls:'action',
-                    text:'Open Patient',
-                    width:200,
-                    docked:'top',
-                    handler:function () {
-                        item.expanded = false;
-                        me.redirectTo('patient/' + labrecordoverview.get('patient'));
-                    }
+        detailinstance = Ext.create('NeqMobile.view.patient.detail.LabDetail',
+            {
+                listeners:{
+                    painted:{ fn:mywaiter, scope:me, single:true }
                 }
-            );
-            detailinstance.add(gotopatientbutton);
-            dw.expandfeature.expand(dw, detailinstance, item);
-        };
-
-        somefunc();
+            });
+        dw.expand(dw, detailinstance, item);
 
         labdetailmodel.load(undefined, {
             params:{
@@ -314,22 +322,8 @@ Ext.define('NeqMobile.controller.UserView', {
             scope:me,
             success:function (labdetailrecord) {
                 detailinstance.setRecord(labdetailrecord);
-
                 var criteriastore = labdetailrecord.labtestcriteria();
-
-
-                var myfn = function () {
-                    labdetailtable = detailinstance.down('#labdetailtable');
-                    labdetailtable.setStore(criteriastore);
-                }
-
-                var labdetailtable = detailinstance.down('#labdetailtable');
-                if (!labdetailtable) {
-                    Ext.defer(myfn, 100)
-                }
-                else (myfn());
-
-
+                mywaiter();
             }
         });
     },
@@ -403,12 +397,8 @@ Ext.define('NeqMobile.controller.UserView', {
             appointmentstore = Ext.create('NeqMobile.store.Appointment');
         }
         appointmentstore.getProxy().setExtraParam('count', count);
-        appointmentstore.load({
-            callback:function (records, operation, success) {
-                this.getDoctordashboard().down('appointment').down('appointmentview').down('#appointmentlist').setStore(appointmentstore);
-            },
-            scope:this
-        });
+        this.getDoctordashboard().down('appointment').down('appointmentview').down('#appointmentlist').setStore(appointmentstore);
+        appointmentstore.load();
         this.getAppointmentview().setActiveItem(0);
     },
 

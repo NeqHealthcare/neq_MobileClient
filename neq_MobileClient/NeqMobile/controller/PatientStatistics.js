@@ -18,9 +18,12 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
 
             refs:{
                 workspace:'workspace',
-                vitalchartcontainer:'vitaldatachart',
-                fluidchartcontainer:'fluidbalancechart',
-                patientstatistics:'patientstatistics'},
+                patientstatistics:'patientstatistics',
+                patientcharts:{
+                    selector:'patientcharts',
+                    xtype:'patientcharts',
+                    autoCreate:true}
+            },
 
             control:{
                 '[name=historicaldata_btn_day]':{
@@ -32,6 +35,7 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
                 '[name=historicaldata_btn_month]':{
                     tap:'onShowMonthlyDataTap'
                 },
+                'patientview':{activeitemchange:'rendercharts'},
                 'patientstatistics':{initialize:'addpainteraselisteners'}
             }
 
@@ -59,12 +63,23 @@ Ext.define('NeqMobile.controller.PatientStatistics', {
 
         },
 
-        addpainteraselisteners:function(cmp,eOpts){
+        rendercharts:function (container, newvalue, oldvalue, eOpts) {
+            if (newvalue instanceof NeqMobile.view.patient.PatientStatistics) {
+                newvalue.add([this.getPatientcharts()])
+            }
+            else if (oldvalue instanceof NeqMobile.view.patient.PatientStatistics) {
+                var patientcharts = Ext.ComponentQuery.query('patientcharts')[0]
+                if (patientcharts) {
+                    patientcharts.destroy();
+                }
+            }
+        },
+
+        addpainteraselisteners:function (cmp, eOpts) {
             var me = this;
-           cmp.on('painted',me.startHeartbeatLive,me);
-           cmp.on('erased',me.stopHeartbeatLive,me);
-        }
-        ,
+            cmp.on('painted', me.startHeartbeatLive, me);
+            cmp.on('erased', me.stopHeartbeatLive, me);
+        },
 
         smoothiechart:undefined,
         smoothieseries:undefined,
