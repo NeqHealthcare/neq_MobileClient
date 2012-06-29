@@ -64,10 +64,7 @@ Ext.define('NeqMobile.controller.Workspace', {
                 {filterFn:function (item) {
                     var name = item.get('rec_name');
                     var id = item.get('id');
-                    console.log(name);
-                    console.log(id);
                     var searchexpr = new RegExp(searchstring, 'i');
-                    console.log(searchexpr);
                     if (searchexpr.test(name) || searchexpr.test(id)) {
                         return true
                     }
