@@ -113,7 +113,7 @@ Ext.define('NeqMobile.controller.UserView', {
             if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
                 this.stopChatterSync();
             }
-            this.redirectTo('userdashboard');
+            if (window.location.hash === '#chatter'){this.redirectTo('userdashboard');}
         } else if (oldvalue instanceof NeqMobile.view.doctor.chatter.ChatterContainer) {
             this.stopChatterSync();
         }
@@ -311,7 +311,7 @@ Ext.define('NeqMobile.controller.UserView', {
             success:function (labdetailrecord) {
                 detailinstance.setRecord(labdetailrecord);
                 var criteriastore = labdetailrecord.labtestcriteria();
-                console.log('calling mywaiter');
+
                 //var i = 0;
                 var checkavailability = function mywaiter() {
                     var labdetailtable = detailinstance.down('#labdetailtable');

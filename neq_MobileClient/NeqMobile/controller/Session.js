@@ -218,6 +218,7 @@ Ext.define('NeqMobile.controller.Session', {
 
         Ext.Viewport.fireEvent('login');
         this.getViewport().setActiveItem(workspace);
+
         this.redirectTo('userdashboard');
 
         console.log('loading patients');
