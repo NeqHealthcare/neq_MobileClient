@@ -256,24 +256,7 @@ Ext.define('NeqMobile.controller.PatientView', {
             var diagnoseOverlay;
             if (this.getDiagnoseoverlay()) {
                 diagnoseOverlay = this.getDiagnoseoverlay();
-                diagnoseOverlay.down('#diseaseInfo').down('#diseasename').down('#diseasefield').setValue("");
-                diagnoseOverlay.down('#diseaseInfo').down('#status').reset();
-                diagnoseOverlay.down('#diseaseInfo').down('#disease_severity').reset();
-                diagnoseOverlay.down('#diseaseInfo').down('#is_infectious').reset();
-                diagnoseOverlay.down('#diseaseInfo').down('#is_active').reset();
-
-                diagnoseOverlay.down('#therapy').down('#is_on_treatment').reset();
-                diagnoseOverlay.down('#therapy').down('#treatment_description').reset();
-                diagnoseOverlay.down('#therapy').down('#procedure').down('#pcs_code').reset();
-                diagnoseOverlay.down('#therapy').down('#date_start_treatment').reset();
-                diagnoseOverlay.down('#therapy').down('#date_stop_treatment').reset();
-
-                diagnoseOverlay.down('#diagnoseInfo').down('#diagnosed_date').reset();
-                diagnoseOverlay.down('#diagnoseInfo').down('#age').reset();
-                diagnoseOverlay.down('#diagnoseInfo').down('#healed_date').reset();
-                diagnoseOverlay.down('#allergies').down('#weeks_of_pregnancy').reset();
-                diagnoseOverlay.down('#allergies').down('#allergy_type').reset();
-                diagnoseOverlay.down('#allergies').down('#pregnancy_warning').reset();
+                diagnoseOverlay.reset();
 
             }
             else
